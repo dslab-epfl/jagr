@@ -1,0 +1,199 @@
+$RESETCOOKIES
+GET /estore/ HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=1p3eu2463r0dc
+
+
+
+GET /estore/populate?command=checkTables&redirect=/control/language%253Flanguage%253DEnglish HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/
+Cookie: JSESSIONID=1p3eu2463r0dc
+
+
+
+GET /estore/control/language?language=English HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/
+Cookie: JSESSIONID=3b54kc8do90tn
+
+
+
+GET /estore/control/category?category_id=FISH HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/language?language=English
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/product?product_id=FI-SW-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=FISH
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/productdetails?item_id=EST-1 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=FI-SW-01
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/category?category_id=DOGS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-1
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/product?product_id=K9-DL-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=DOGS
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/search?search_text=bird&search.x=0&search.y=0 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?productList_DOGS_startIndex=5&productList_DOGS_next=true&category_id=DOGS&x=63&y=17
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/bird4.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=bird&search.x=0&search.y=0
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/product?product_id=AV-SB-02 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=bird&search.x=0&search.y=0
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/productdetails?item_id=EST-19 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=AV-SB-02
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/search?search_text=iguana&search.x=0&search.y=0 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-19
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+
+GET /estore/control/main HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=iguana&search.x=0&search.y=0
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+
+

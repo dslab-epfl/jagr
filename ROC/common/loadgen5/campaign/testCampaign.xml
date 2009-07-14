@@ -1,0 +1,24 @@
+<campaign>
+  <event>
+    <eventID>Event 1</eventID>
+    <sessionID>http session 1</sessionID>
+    <tracefile>traces/petstore1.trc</tracefile>
+    <numClients>15</numClients>
+    <delay>2500</delay>
+  </event>
+  <event>
+    <eventID>Event 2</eventID>
+    <sessionID>http session 1</sessionID>
+    <tracefile>traces/petstore1.trc</tracefile>
+    <numClients>10</numClients>
+    <delay>12500</delay>
+  </event>
+ <event>
+    <eventID>Event 3</eventID>
+    <sessionID>http session 1</sessionID>
+    <tracefile>traces/petstore1.trc</tracefile>
+    <numClients>100</numClients>
+    <delay>40000</delay>
+  </event>
+
+</campaign>

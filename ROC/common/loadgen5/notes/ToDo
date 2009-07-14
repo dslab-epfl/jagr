@@ -1,0 +1,5 @@
+Create class for RubisSession that extends HttpSession and overwrites with special commands/variables for rubis, such as username (1-99) / password pairs, etc.
+
+Figure out how to make the engine close gracefully when nothing is scheduled and all threads have exited.
+
+Make sure the session threads are exitting when they finish running.

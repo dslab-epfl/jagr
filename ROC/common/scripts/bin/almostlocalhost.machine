@@ -1,0 +1,7 @@
+client=rr4
+frontend=rr3
+backend=
+dbmachine=rr4
+pinpoint=rr6
+recomgr=rr3
+ssm=swig swig swig

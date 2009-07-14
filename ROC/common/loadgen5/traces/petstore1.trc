@@ -1,0 +1,389 @@
+GET /petstore/main.screen HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=bja83jgp6qmjg
+
+
+
+GET /petstore/images/us_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Wed, 27 Aug 2003 02:00:56 GMT
+
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Wed, 27 Aug 2003 02:00:56 GMT
+
+
+
+GET /petstore/images/ja_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Wed, 27 Aug 2003 02:00:56 GMT
+
+
+
+GET /petstore/images/zh_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Wed, 27 Aug 2003 02:00:56 GMT
+
+
+
+GET /petstore/images/splash.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/main.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+POST /petstore/j_signon_check HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 46
+LG-POSTDATA j_username=j2ee&j_password=j2ee&submit=Sign+In
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/category.screen?category_id=BIRDS HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/images/us_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/images/ja_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/product.screen?product_id=AV-CB-01 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/images/zh_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/product.screen?product_id=AV-CB-01
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/cart.do?action=purchase&itemId=EST-18 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/product.screen?product_id=AV-CB-01
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/category.screen?category_id=REPTILES HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/cart.do?action=purchase&itemId=EST-18
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/product.screen?product_id=RP-SN-01 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/category.screen?category_id=REPTILES
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/cart.do?action=purchase&itemId=EST-11 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/product.screen?product_id=RP-SN-01
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/cart.do?action=update&itemQuantity_EST-11=1&itemQuantity_EST-18=2 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/cart.do?action=purchase&itemId=EST-11
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+GET /petstore/enter_order_information.screen HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/cart.do?action=update&itemQuantity_EST-11=1&itemQuantity_EST-18=2
+Cookie: JSESSIONID=3rnxbwglxmnv
+
+
+
+POST /petstore/order.do HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/enter_order_information.screen
+Cookie: JSESSIONID=3rnxbwglxmnv
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 477
+LG-POSTDATA given_name_a=Web&family_name_a=Test&address_1_a=Gates+Building&address_2_a=Room+440&city_a=Stanford&state_or_province_a=California&postal_code_a=94305&country_a=United+States&telephone_number_a=650-497-2222&email_a=roc%40swig.stanford.edu&given_name_b=Web&family_name_b=Test&address_1_b=Gates+Building&address_2_b=Room+440&city_b=Stanford&state_or_province_b=California&postal_code_b=94305&country_b=United+States&telephone_number_b=650-497-2222&email_b=roc%40swig.stanford.edu
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/order.do
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/images/us_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/order.do
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/images/ja_flag.gif HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/order.do
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/signoff.do HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept-Language: en-us, e;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Referer: http://localhost:8000/petstore/order.do
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT
+
+
+
+GET /petstore/signoff.do HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, e;q=0.50
+Accept-Encoding: gzip, deflate, compress; q=0.9
+Accept-Charset: ISO-8859-1, utf-8; q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/petstore/order.do
+Cookie: JSESSIONID=3rnxbwglxmnv
+If-Modified-Since: Mon, 06 Oct 2003 22:26:12 GMT

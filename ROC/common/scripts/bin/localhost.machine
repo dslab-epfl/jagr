@@ -1,0 +1,7 @@
+client=localhost
+frontend=localhost
+backend=
+dbmachine=localhost
+pinpoint=localhost
+recomgr=localhost
+ssm=localhost localhost localhost

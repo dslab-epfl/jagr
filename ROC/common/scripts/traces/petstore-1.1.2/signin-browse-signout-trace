@@ -1,0 +1,184 @@
+$RESETCOOKIES
+GET /estore/control/category?category_id=CATS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=CATS
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/product?product_id=FL-DLH-02 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=CATS
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/signin HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=FL-DLH-02
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/createnewaccount HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/signin
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/validatenewaccount?action=createAccount&user_name=$NEWUSER&password=$NEWPASSWORD&user_email=asdfasdf&given_name=&family_name=Kiciman&address_1=2429+Locust+St&address_2=&city=Philadelphia&state_or_province=California&postal_code=19103&country=USA&telephone_number=215+563+0163&language=English&favorite_category=birds&Submit.x=66&Submit.y=4 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/createnewaccount
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=DOGS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatenewaccount?action=createAccount&user_name=$USER&password=$PASSWORD&user_email=asdfasdf&given_name=klj&family_name=Kiciman&address_1=2429+Locust+St&address_2=&city=Philadelphia&state_or_province=California&postal_code=19103&country=USA&telephone_number=215+563+0163&language=English&favorite_category=birds&Submit.x=41&Submit.y=11
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=REPTILES HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=DOGS
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=CATS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=REPTILES
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=FISH HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=CATS
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=BIRDS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=FISH
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/product?product_id=AV-CB-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=BIRDS
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+
+GET /estore/control/category?category_id=DOGS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=AV-CB-01
+Cookie: JSESSIONID=6w6nr13nra81
+
+
+GET /estore/control/signout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/commitorder
+Cookie: JSESSIONID=317w2cigx9rf0
+
+
+
+
+

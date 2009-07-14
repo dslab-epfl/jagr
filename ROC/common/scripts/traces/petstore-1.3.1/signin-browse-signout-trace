@@ -1,0 +1,980 @@
+$RESETCOOKIES
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/splash.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+
+POST /petstore/createuser.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 92
+LG-POSTDATA
+j_username=$NEWUSER&j_password=$NEWPASSWORD&j_password_2=$PASSWORD&submit=Create+New+Account
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/us_flag.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+
+GET /petstore/images/ja_flag.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/zh_flag.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+POST /petstore/createcustomer.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 422
+LG-POSTDATA
+action=create&given_name_a=Duke&family_name_a=BluesPrints&address_1_a=1234+Moon+Way&address_2_a=&city_a=Sunville&state_or_province_a=California&postal_code_a=10001&country_a=USA&telephone_number_a=408-555-5555&email_a=aaa%40bbb.ccc&credit_card_number=0100-001-0001&credit_card_type=Java%28TM%29+Card&credit_card_expiry_month=01&credit_card_expiry_year=2001&language=en_US&favorite_category=BIRDS&mylist_on=on&banners_on=on
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/splash.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+
+POST /petstore/createuser.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=6dmj5ndt674b
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 75
+LG-POSTDATA
+j_username=$NEWUSER&j_password=$NEWPASSWORD&j_password_2=$PASSWORD&submit=Create+New+Account
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+POST /petstore/createcustomer.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=6dmj5ndt674b
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 408
+LG-POSTDATA
+action=create&given_name_a=Duke&family_name_a=BluesPrints&address_1_a=1234+Moon+Way&address_2_a=&city_a=Sunville&state_or_province_a=California&postal_code_a=10001&country_a=USA&telephone_number_a=408-555-5555&email_a=aaa%40bbb.ccc&credit_card_number=0100-001-0001&credit_card_type=Java%28TM%29+Card&credit_card_expiry_month=01&credit_card_expiry_year=2001&language=en_US&favorite_category=BIRDS&mylist_on=on
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/splash.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/category.screen?category_id=FISH HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=FISH
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/product.screen?product_id=FI-FW-02 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=FISH
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/product.screen?product_id=FI-FW-02
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/item.screen?item_id=EST-21 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/product.screen?product_id=FI-FW-02
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-21
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/fish2.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-21
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+GET /petstore/category.screen?category_id=BIRDS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-21
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+GET /petstore/category.screen?category_id=CATS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=CATS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/category.screen?category_id=FISH HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=CATS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=FISH
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+GET /petstore/category.screen?category_id=BIRDS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=FISH
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/product.screen?product_id=AV-SB-02 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/product.screen?product_id=AV-SB-02
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/item.screen?item_id=EST-19 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/product.screen?product_id=AV-SB-02
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-19
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+GET /petstore/category.screen?category_id=DOGS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-19
+Cookie: JSESSIONID=6dmj5ndt674b
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=DOGS
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=6dmj5ndt674b
+
+
+
+GET /petstore/images/splash.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+
+POST /petstore/createuser.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 72
+LG-POSTDATA
+
+
+
+GET /petstore/images/banner_logo.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+
+POST /petstore/createcustomer.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 408
+LG-POSTDATA
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=1vpp4gbkr9nqv
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Cookie: JSESSIONID=2726sh1lp3c68
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=4k3c6d9uk0g8r
+
+
+
+POST /petstore/createuser.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=4k3c6d9uk0g8r
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 72
+LG-POSTDATA
+j_username=$NEWUSER&j_password=$NEWPASSWORD&j_password_2=$PASSWORD&submit=Create+New+Account
+
+
+POST /petstore/createcustomer.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=4k3c6d9uk0g8r
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 409
+LG-POSTDATA
+action=create&given_name_a=Duke&family_name_a=BluesPrints&address_1_a=1234+Moon+Way&address_2_a=&city_a=Sunville&state_or_province_a=California&postal_code_a=10001&country_a=USA&telephone_number_a=408-555-5555&email_a=aaa%40bbb.ccc&credit_card_number=0100-001-0001&credit_card_type=Java%28TM%29+Card&credit_card_expiry_month=01&credit_card_expiry_year=2001&language=en_US&favorite_category=BIRDS&banners_on=on
+
+
+GET /petstore/signoff.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-1
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+GET /petstore/main.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signoff.do
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/images/zh_flag.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/signon_welcome.screen HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/main.screen
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/images/us_flag.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+POST /petstore/createuser.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signon_welcome.screen
+Cookie: JSESSIONID=239bh4tm7ceaq
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 92
+LG-POSTDATA
+j_username=$NEWUSER&j_password=$NEWPASSWORD&j_password_2=$NEWPASSWORD&submit=Create+New+Account
+
+
+POST /petstore/createcustomer.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createuser.do
+Cookie: JSESSIONID=239bh4tm7ceaq
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 409
+LG-POSTDATA
+action=create&given_name_a=Duke&family_name_a=BluesPrints&address_1_a=1234+Moon+Way&address_2_a=&city_a=Sunville&state_or_province_a=California&postal_code_a=10001&country_a=USA&telephone_number_a=408-555-5555&email_a=aaa%40bbb.ccc&credit_card_number=0100-001-0001&credit_card_type=Java%28TM%29+Card&credit_card_expiry_month=01&credit_card_expiry_year=2001&language=en_US&favorite_category=BIRDS&banners_on=on
+
+
+GET /petstore/category.screen?category_id=BIRDS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/createcustomer.do
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/product.screen?product_id=AV-CB-01 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=BIRDS
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/category.screen?category_id=DOGS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/product.screen?product_id=AV-CB-01
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/category.screen?category_id=DOGS&start=2&count=2 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=DOGS
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/category.screen?category_id=DOGS&start=4&count=2 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=DOGS&start=2&count=2
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/search.screen?keywords=fish HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/category.screen?category_id=DOGS&start=4&count=2
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/item.screen?item_id=EST-1 HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/search.screen?keywords=fish
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/images/fish3.gif HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-1
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/signoff.do HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/item.screen?item_id=EST-1
+Cookie: JSESSIONID=239bh4tm7ceaq
+
+
+
+GET /petstore/category.screen?category_id=DOGS HTTP/1.1
+Host: x28.millennium.berkeley.edu:10000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x28.millennium.berkeley.edu:10000/petstore/signoff.do
+Cookie: JSESSIONID=4ljsedv2dkep4
+
+
+
+
+
+
+

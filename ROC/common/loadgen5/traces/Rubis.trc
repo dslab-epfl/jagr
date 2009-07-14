@@ -1,0 +1,187 @@
+GET /ejb_rubis_web/browse.html HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/index.html
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/browse.html
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=7&categoryName=Computers HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBidAuth?itemId=11647 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=7&categoryName=Computers
+
+
+
+POST /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBid HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBidAuth?itemId=11647
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 48
+LG-POSTDATA itemId=11647&nickname=user82&password=password82
+
+POST /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBid
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 72
+LG-POSTDATA minBid=3527.0&userId=28&itemId=11647&maxQty=1&bid=4750&maxBid=5800&qty=1
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/browse.html
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=9&categoryName=Dolls+%26+Bears HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBidAuth?itemId=11429 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=9&categoryName=Dolls+%26+Bears
+
+
+
+POST /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBid HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBidAuth?itemId=11429
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 48
+LG-POSTDATA itemId=11429&nickname=user28&password=password28
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutCommentAuth?to=70&itemId=11429 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.PutBid
+
+
+
+POST /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/sell.html
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 35
+LG-POSTDATA nickname=user28&password=password28
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SellItemForm?category=19&user=82 HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories
+
+
+
+POST /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20030225
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Encoding: gzip, deflate, compress;q=0.9
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://localhost:8000/ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SellItemForm?category=19&user=82
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 150
+LG-POSTDATA name=Really+Cool+Card#2&description=Its+cool%2C+I+swear!!!%21&initialPrice=10000&reservePrice=15000&buyNow=16000&quantity=1&duration=1&userId=28&categoryId=19
+

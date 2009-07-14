@@ -1,0 +1,187 @@
+<html>
+<head>
+  <title>
+    Quickstart guide
+  </title>
+</head>
+<body>
+
+  <b><p>This README is a little bit out of date.  I've made some changes
+     to the structure of the .pl.  README will be updated soon -- Emre, 
+emrek@cs.stanford.edu
+</p></b>
+ 
+  <h2>Overview</h2>
+
+  <p>The run.pl script attempts to centralize and add structure to the various scripts currently 
+used for testing JBoss applications by creating a plugin-based architecture.  This document is a reference to help import old scripts and create new scripts under this new design.</p>
+
+  <h2>Options</h2>
+  
+  <p>All plugins are started by the run.pl wrapper script.  This wrapper is controlled through its command-line options.  There are several "blessed" options (listed below), but the program will pass all options through to the plugins.</p>
+  <dl>
+    <dt>--app=[appname]</dt>
+    <dd>This option (required) tells the wrapper script to use the plugin located at 'appname.pl'.</dd>
+    <dt>--interactive</dt>
+    <dd>This flag turns on interactive mode, described below in check_env_var.</dd>
+    <dt>--config=[configfile]</dt>
+    <dd>This flag causes the script to read in additional options from specified config file.  The options should be listed one per line in the form 'name=[value]' (no quotes or brackets).  Note: command-line options take precedence over those listed in the configuration file.</dd>
+    <dt>--tag=[identifying string]</dt>
+    <dd>If specified, the value of the tag option is put in a file called ID in the log directory.</dd>
+  </dl>
+
+  <h2>Plugin methods</h2>
+
+  <p>To create a new plugin, you simply need to create a new perl script named [app].pl.  This plugin will be automatically detected -- no changes to the run.pl script are necessary.  The plugin must implement the three methods listed below.  Note: due to some syntatic oddities of Perl, such as the fact that every plugin must contain the line "return 1;", I highly recommend that you base your scripts on the <a name=templatestart><a href=#template>included template</a> (template.pl).</p>
+
+  <dl>
+    <dt>init_[app]</dt>
+    <dd>This function should set up all necessary environment variables.</dd>
+    <dt>deploy_[app]</dt>
+    <dd>This function should deploy the jboss application and start up any required helper applications (e.g., recovery manager, stall proxy, pinpoint, database).  This function should return the name of the <a name=configstart><a href=#config>directory in $JBOSS_HOME/server containing the configuration files</a> (i.e. petstore-backend-1).</dd>
+    <dt>kill_[app]</dt>
+    <dd>This function is called by the interrupt signal handler and should take care of all of the application specific cleanup (i.e. stopping helper applications).</dd>
+  </dl>
+
+  <p>run.pl performs the following actions:
+  <ol>
+    <li>Calls init_[app].
+    <li>Calls deploy_[app].
+    <li>Starts JBoss using the configuration directory returned from deploy_app.
+    <li>Waits for an interrupt signal.
+    <li>Upon receiving an interrupt, calls kill_[app].
+  </ol>
+  </p>
+
+  <p>For a simple example, check out this <a name=petstorestart><a href=#petstore>sample plugin</a> and corresponding <a name=petstoreconfigstart><a href=#petstoreconfig>configuration file</a> to start up a single-node instance of Petstore 1.1.2.</p>
+
+  <h2>Library functions</h2>
+
+  <p>I wrote several "library" functions to handle common tasks.  These are automatically available to every plugin.</p>
+
+  <dl>
+    <dt>getopt(name)</dt>
+    <dd>Returns the value corresponding to the given option name, or undefined if the name doesn't exist.</dd>
+    <dt>check_env_var(name)</dt>
+    <dd>Checks if the environment variable with the given name is defined. In interactive mode, prompts the user for the value if it doesn't exist.  In non-interactive mode, program exits.</dd>
+    <dt>exec_and_match(cmd, regex)</dt>
+    <dd>Executes the command, only displaying the output for lines that match the regular expression.  Useful when we only care about certain output of the command, such as exceptions, error messages, etc.</dd>
+    <dt>exec_in_back(cmd, regex)</dt>
+    <dd>Executes the command, splitting off from the process when its output matches the given regular expressions.  This is useful for determining when helper processes (databases, etc.) have finished initializing.</dd>
+  </dl>
+
+  <h2>Logging</h2>
+
+  <p>The run.pl script automatically logs its stderr and stdout to a timestamped directory for later review.  Features are currently being added...</p>
+
+  <h2>Requirements</h2>
+
+  <p>The run.pl script does not require anything more than the basic Perl modules included in Perl 5.8.  The plugin files must be placed in the same directory as the run.pl script.</p>
+
+  <hr>
+  <h2>Appendix</h2>
+
+  <a name=config>
+  <h3>JBoss Configuration</h3>
+  <p>JBoss is structured such that the server configuration is stored in a directory in $JBOSS_HOME/server.  This directory contains the subdirectories lib (jar files needed by this server configuration), deploy (war and ear files of applications and services to be deployed), and conf (configuration modifications).  For more information, look at <a href="http://www.monkeymachine.ltd.uk/JBossStart/ch02s01.html">http://www.monkeymachine.ltd.uk/JBossStart/ch02s01.html</a></p> 
+  <p><small><a href=#configstart>[back]</a></small></p>
+
+  <a name=template>
+  <h3>Plugin Template</h3>  
+  <p><pre>
+#!/usr/bin/perl -w
+
+sub init_[app] {
+
+}
+
+sub deploy_[app] {
+
+  # should return the name of the config file
+}
+
+sub kill_[app] {
+  
+}
+
+return 1; # DO NOT REMOVE THIS LINE!
+  </pre></p>
+  <p><small><a href=#templatestart>[back]</a></small></p>
+
+  <a name=petstore>
+  <h3>Single-node Petstore 1.1.2 Plugin</h3>
+  <p><pre>
+#!/usr/bin/perl -w
+
+sub init_petstore {
+  print "Running Petstore!\n";
+
+  # make sure that environment variables are setup correctly
+  check_env_var('JBOSS_HOME');
+  check_env_var('JAVA_HOME');
+  check_env_var('J2EE_HOME');
+
+  # check for required application specific configuration flags
+  if (!defined(getopt('petstore'))) {die "need to set --petstore=[root of petstore source tree]\n";}
+  if (!defined(getopt('xmldir'))) {die "need to set --xmldir=[location of cloudscape-service.xml and login-config.xml]\n";}
+}
+
+sub deploy_petstore {
+
+  $JBOSS_HOME = $ENV{'JBOSS_HOME'};
+  $J2EE_HOME = $ENV{'J2EE_HOME'};
+  $PETSTORE = getopt('petstore');
+  $XMLDIR = getopt('xmldir');
+
+  # deploy cloudscape files
+  system("cp $XMLDIR/cloudscape-service.xml $JBOSS_HOME/server/default/deploy ");
+  system("cp $XMLDIR/login-config.xml $JBOSS_HOME/server/default/conf ");
+
+  system("cp $J2EE_HOME/lib/system/cloudscape.jar $JBOSS_HOME/server/default/lib");
+  system("cp $J2EE_HOME/lib/system/cloudutil.jar $JBOSS_HOME/server/default/lib");
+  system("cp $J2EE_HOME/lib/cloudscape/cloudclient.jar $JBOSS_HOME/server/default/lib");
+  system("cp $J2EE_HOME/lib/cloudscape/RmiJdbc.jar $JBOSS_HOME/server/default/lib");
+
+  # deploy petstore files
+  system("cp $PETSTORE/src/petstore/build/petstore.ear $JBOSS_HOME/server/default/deploy");
+
+  # start cloudscape
+  print ">>> Starting Cloudscape database...";
+  system("$J2EE_HOME/bin/cloudscape -stop 2&>1 > /dev/null");
+  system("$J2EE_HOME/bin/cloudscape -start &");
+
+  # return the name of the configuration directory
+  return "default";
+}
+
+sub kill_petstore {
+  print "Cleaning up after Petstore (killing java)...\n";
+  `pkill java`;
+}
+
+return 1; # DO NOT REMOVE THIS LINE!
+  </pre></p>
+  <p><small><a href=#petstorestart>[back]</a></small></p>
+
+  <a name=petstoreconfig>
+  <h3>Single-node Petstore 1.1.2 Configuration File</h3>
+  <p><pre>
+# name of the application
+app=petstore
+
+# tag (goes in ID file)
+tag=vanilla petstore
+
+# root of petstore source tree
+petstore=/home/mrubens/vanilla_jboss/petstore/jps1.1.2/
+
+# location of cloudscape-service.xml and login-config.xml
+xmldir=/home/mrubens/
+
+# run in interactive mode (ask for env vars if not defined)
+interactive
+  </pre></p>
+  <p><small><a href=#petstoreconfigstart>[back]</a></small></p>
+
+</body>
+</html>
