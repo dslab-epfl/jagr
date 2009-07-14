@@ -1,0 +1,45 @@
+
+Notes:
+------
+
+* In the JAGR setup, we only use Pinpoint's component interaction analysis.
+  we do not use Pinpoint's path-shape analysis because the decision-tree
+  localization isn't always very good.  Though path-shape detection detects
+  failures better, the decision-tree localization afterwards is poorly developed...
+     IMPACT: be careful not to pull path-shape analysis results from OSDI
+             and imply that we used path-shape analysis.
+
+* the GAW output of the loadgenerator goes into the directory specified the
+  "reportdir" interceptor argument to GAWInterceptor in
+   ROC/jagr/loadgen/conf/RubisConf.conf.   This directory can be relative to
+   the current directory, or absolute.  It must already exist.  Any existing
+   logs in that directory will be overwritten.
+   
+* Pinpoint exposes a fair amount of visibility via both an HTTP interface and
+  its stdout/stderr output.
+      - to look at the anomaly rank of the components in the system, go to:
+          http://[pinpointhost]:8888/service/httpfe?cmd=recordlist&collectionname=mergedAnomalies&page=1
+      - to look at only anomalies that pass threshold
+          http://[pinpointhost]:8888/service/httpfe?cmd=recordlist&collectionname=filteredAnomalies&page=1
+      - to see when failure reports are generated, grep pinpoint's stderr for 'FailureReport'.
+
+* To run Pinpoint:
+      1. edit ROC/PP/pinpoint/conf/main/ci-analysis-online.conf  and make sure the JagrConnector's
+         hostname for the recovery manager [the default is localhost]
+         
+      2. 
+      cd ROC/PP/pinpoint/bin
+      ./run-pinpoint.sh ../conf/main/ci-analysis-online.conf historicaldir=$ROC_TOP/jagr/jagr-rubis/good-profile/hgcb
+      
+* If you want to see the total # of requests / avg latency / throughput, take a look at Loadgen's
+   PerformanceLoggingInterceptor : grep loadgen's output for "Perf"
+
+* I don't think you'll need to do this, but if you do need to regenerate the good profile of components for
+  any reason, here's what you do:
+      1. run pinpoint with the cmd: ./run-pinpoint.sh ../conf/main/save-observations-to-disk.conf output=pinpoint.observations
+      2. run jboss as normal, place load on it for a while, then kill everything when you're done (incl. pinpoint)
+      3. re-run pinpoint to turn the saved observations into the behavior profiles:
+            ./run-pinpoint.sh ../conf/main/ci-generate-historical-model.conf inputfile=pinpoint.observations outputdir=$ROC_TOP/jagr/jagr-rubis/good-profile/hgcb
+            
+
+      

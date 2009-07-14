@@ -1,0 +1,20 @@
+<!-- $Id: faultload.xml,v 1.2 2004/07/29 01:58:48 candea Exp $ -->
+
+<fault-injections>
+
+  <unbind-jndi> 
+     <name>BuyNowLocalHome</name>
+     <time-second>0</time-second>
+  </unbind-jndi>
+
+  <nullmap>
+     <name>SB_StoreBid</name>
+     <time-second>40</time-second>
+  </nullmap>
+
+  <deadlock> 
+     <name>SB_ViewItem</name>
+     <time-second>60</time-second>
+  </deadlock>
+
+</fault-injections>

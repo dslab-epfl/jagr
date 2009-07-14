@@ -1,0 +1,14 @@
+ObservationCollector: loadSubscriber(...) 5 
+
+
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+loaded Record class
+/home/emrek/work/ROC/PP/pinpoint/bin/run-pinpoint.sh: line 77: 31235 Killed                  java $JAVA_OPTS -Xms128M -Xmx196M -cp $CLASSPATH roc.pinpoint.analysis.AnalysisEngine $@

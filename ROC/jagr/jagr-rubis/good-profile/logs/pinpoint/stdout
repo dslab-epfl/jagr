@@ -1,0 +1,16 @@
+==================================================
+CVS_RSH=ssh
+JAVA_HOME=/usr/java/j2sdk1.4.1_04
+PATH=/usr/local/bin:/bin:/usr/bin:/usr/java/j2sdk1.4.1_04/bin:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/tools/bin
+TOP=/home/emrek/work
+ROC_TOP=/home/emrek/work/ROC
+PP_ROOT=
+==================================================
+Loading Configuration file: ../conf/main/save-observations-to-disk.conf
+Loading Subconfigurations...
+Loading collections...
+    creating collection: observations                       [ OK ]
+Loading plugins...
+    loading plugin: observationCollector(roc.pinpoint.analysis.plugins2.observations.ObservationCollector)                                                            [ OK ]
+    loading plugin: savetodisk(roc.pinpoint.analysis.plugins2.records.SaveRecordsToDisk)                                                            [ OK ]
+Loading subanalysis...

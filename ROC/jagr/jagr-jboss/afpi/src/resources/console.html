@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title>AFPI Console</title>
+</head>
+
+<body>
+
+<font face=Helvetica>
+
+<center><H2>AFPI Console</H2>
+$Id: console.html,v 1.1 2004/06/08 13:33:04 emrek Exp $
+</center>
+
+<form method="post" action="http://localhost:8080/jmx-console/HtmlAdaptor">
+   <input type="hidden" name="action" value="invokeOp">
+   <input type="hidden" name="name" value="RR:service=FaultInjectionService">
+   <input type="hidden" name="methodIndex" value="8">
+   <hr align="left" width="80">
+   <p><font size=+1>Show fault injection console</font>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit" value="Display">
+</form>
+
+<form method="post" action="http://localhost:8080/jmx-console/HtmlAdaptor">
+   <input type="hidden" name="action" value="invokeOp">
+   <input type="hidden" name="name" value="RR:service=FaultInjectionService">
+   <input type="hidden" name="methodIndex" value="2">
+   <hr align="left" width="80">
+   <p><font size=+1>Show all components known to AFPI</font>
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="submit" value="Display">
+</form>
+
+<form method="post" action="http://localhost:8080/jmx-console/HtmlAdaptor">
+   <input type="hidden" name="action" value="invokeOp">
+   <input type="hidden" name="name" value="RR:service=FaultInjectionService">
+   <input type="hidden" name="methodIndex" value="5">
+   <hr align="left" width="80">
+
+   <p><font size=+1>Reboot a J2EE application</font></br>
+   <p>Application <input type="text" name="arg">&nbsp;
+      <input type="submit" value="Reboot">
+
+</form>
+
+</body></html>
+
+
+

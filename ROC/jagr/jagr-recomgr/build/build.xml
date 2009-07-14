@@ -1,0 +1,106 @@
+<project name="JAGR Recovery Manager" default="dist" basedir="..">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+  <property name="project.name" value="jagrrecomgr"/>
+
+  <!-- source files -->
+  <property name="src" location="src/main"/>
+
+  <!-- generated/output locations -->
+  <property name="gen-src" location="build/gen-src"/>
+  <property name="build" location="build/output"/>
+  <property name="dist"  location="dist"/>
+
+  <property name="roc.root" location="${basedir}/../.."/>
+  <property name="roc.common" value="${roc.root}/common"/>
+  <property name="roc.common.tools" value="${roc.common}/tools"/>
+  <property name="roc.jagr" value="${roc.root}/jagr"/>
+  <property name="roc.jagr.jagrrecomgr" value="${roc.jagr}/jagr-recomgr"/>
+  <property name="roc.jagr.jboss" value="${roc.jagr}/jboss-3.2.1-src"/>
+
+  <property name="log4j" value="${roc.jagr.jboss}/thirdparty/apache/log4j/lib/"/>
+
+  <path id="roc.classpath">
+<!--
+    <fileset dir="${roc.common}/swig-util/dist/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+-->
+  </path>
+
+  <path id="thirdparty.classpath">
+<!--
+    <fileset dir="${roc.common}/swig-util/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+-->
+
+    <fileset dir="${log4j}">
+      <include name="**/*.jar"/>
+    </fileset>
+
+    <fileset dir="${roc.jagr.jagrrecomgr}/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+
+    <fileset dir="${roc.jagr.jboss}/console/output/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+
+  </path>
+
+  <!-- The classpath -->
+  <path id="javac.classpath">
+    <path refid="roc.classpath"/>
+    <path refid="thirdparty.classpath"/>
+  </path>
+
+  <!-- xdoclet -->
+  <path id="xdoclet.task.classpath">
+    <path refid="javac.classpath"/>
+    <pathelement location="${roc.common.tools}/lib/xdoclet.jar"/>
+    <pathelement location="${roc.common.tools}/lib/xjavadoc.jar"/>
+    <pathelement location="${roc.common.tools}/lib/ant.jar"/>
+    <pathelement location="${roc.common.tools}/lib/log4j-core.jar"/>
+  </path>
+  <property name="xdoclet.task.classpath" 
+	    refid="xdoclet.task.classpath"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile-classes" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac destdir="${build}"
+           debug="true"
+	   source="1.4">
+      <classpath refid="javac.classpath"/>
+      <src path="${src}"/>
+    </javac>
+  </target>
+
+  <target name="compile" depends="compile-classes"/>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/${project.name}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>	
+    <delete dir="${dist}"/>
+  </target>
+</project>

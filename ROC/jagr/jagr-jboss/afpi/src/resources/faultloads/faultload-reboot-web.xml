@@ -1,0 +1,16 @@
+<!-- $Id: faultload-reboot-web.xml,v 1.1 2004/06/08 13:33:04 emrek Exp $ -->
+
+<fault-injections>
+
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>30</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>40</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>50</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>60</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>70</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>80</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>90</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>100</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>110</time-second> </microreboot>
+  <microreboot> <jndi-name>ejb_rubis_web.war</jndi-name> <time-second>120</time-second> </microreboot>
+
+</fault-injections>

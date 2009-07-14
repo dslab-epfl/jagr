@@ -1,0 +1,69 @@
+cluster client machines are: (1) rr4
+cluster frontend machines are: (1) rr3
+cluster backend machines are: (0) 
+cluster db machine is: rr5
+Initializing ssh-cluster environment script
+Initializing Open-ended experiment script
+Initializing RR-RUBiS application script
+killing jboss ...
+    config is: notdeployed
+    machines are: rr3
+java(12094): Operation not permitted
+java(12096): Operation not permitted
+java(12098): Operation not permitted
+java(13230): Operation not permitted
+java(13232): Operation not permitted
+java(13235): Operation not permitted
+java: no process killed
+./bin/mysqladmin: connect to server at 'localhost' failed
+error: 'Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)'
+Check that mysqld is running and that the socket: '/tmp/mysql.sock' exists!
+killing SSM brick 1 on rr4 
+java(10867): Operation not permitted
+java: no process killed
+killing SSM brick 2 on rr4 
+java(10867): Operation not permitted
+java: no process killed
+killing SSM brick 3 on rr4 
+java(10867): Operation not permitted
+java: no process killed
+deploying pinpoint to /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubis
+running pinpoint on machine: rr6
+running jagr recovery manager on machine: rr3
+starting SSM brick 1 on rr4 
+starting SSM brick 2 on rr4 
+starting SSM brick 3 on rr4 
+Starting jboss (rr-rubis)... on machines rr3
+Starting mysqld daemon with databases from /home/emrek/work/mysql-max-3.23.58-pc-linux-i686/data
+Press enter to end experiment
+[INFO] (roc.jagr.recomgr.RecoveryManager) Loading worker: class roc.jagr.recomgr.worker.ReportWorker
+[INFO] (roc.jagr.recomgr.RecoveryManager) Loading policy: class roc.jagr.recomgr.policy.SimpleMicrorebootPolicy
+[INFO] (roc.jagr.recomgr.worker.ReportWorker) listening on port 2999
+Ending experiment...
+killing jboss ...
+    config is: rr-rubis
+    machines are: rr3
+/home/emrek/work/ROC/jagr/jagr-recomgr/bin/run-recomgr.sh: line 27: 32714 Killed                  java $JAVA_OPTS -Xss128M -Xmx512M -cp $CLASSPATH roc.jagr.recomgr.RecoveryManager $@
+java(12094): Operation not permitted
+java(12096): Operation not permitted
+java(12098): Operation not permitted
+java(13230): Operation not permitted
+java(13232): Operation not permitted
+java(13235): Operation not permitted
+040723 12:23:09  mysqld ended
+
+killing SSM brick 1 on rr4 
+java(10867): Operation not permitted
+killing SSM brick 2 on rr4 
+java(10867): Operation not permitted
+killing SSM brick 3 on rr4 
+java(10867): Operation not permitted
+killing jagr recomgr on machine: rr3
+java(12094): Operation not permitted
+java(12096): Operation not permitted
+java(12098): Operation not permitted
+java(13230): Operation not permitted
+java(13232): Operation not permitted
+java(13235): Operation not permitted
+java: no process killed
+killing pinpoint on machine: rr6

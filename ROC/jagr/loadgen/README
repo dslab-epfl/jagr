@@ -1,0 +1,82 @@
+README for LoadGen4
+-------------------
+Emre Kiciman
+emrek@cs.stanford.edu
+-------------------
+
+LoadGen4 is designed to be a modularized, extensible load
+generator.   Most of loadgen's functionality is implemented
+outside of its core, using pluggable Java classes configured
+through an xml configuration file.
+
+BUILDING
+--------
+
+0. cvs checkout ROC/common/tools/  ROC/common/swig-util/ and
+   ROC/common/loadgen4/
+
+1. LoadGen depends on a couple libraries:
+    * ROC/common/swig-util library.  Build swig-util and
+      make sure ROC/common/swig-util/dist/lib/swigutil.jar is
+      in your classpath.
+    * Xerces XML parser.  Make sure the files
+      ROC/common/swig-util/lib/*.jar are in your classpath.
+
+2. build LoadGen4 by running ROC/common/loadgen4/build/build.sh
+
+3. add ROC/common/loadgen4/dist/lib/loadgen.jar to your classpath.
+
+
+USAGE
+-----
+
+to run LoadGen with an already-written configuration file:
+
+  java roc.loadgen.Engine [configfile] [arg1=value arg2=value...]
+
+* Replace [configfile] with the path to your configuration file.
+* Replace the arg=value arguments with any arguments required by
+  the configuration file.
+
+
+CLASSES
+-------
+
+Here's a run-through of the important classes in LoadGen4
+
+roc.loadgen.Engine:	core Engine, loads the configuration and
+			ties together all the plugins...
+roc.loadgen.Session:	(abstract class) manages session information
+			such as HTTP cookies, and creates the next
+			request that needs to be made.
+roc.loadgen.RequestInterceptor:  (abstract class)
+			request interceptors are chained together
+			to form the main functionality of LoadGen.
+			These interceptors do everything from log
+			the requests and responses, implement pausing,
+			and retries, etc.
+
+To generate load against an HTTP server, use the following plugins:
+
+roc.loadgen.http.HttpSession:   loads an HTTP trace, manages cookies.
+roc.loadgen.http.DoHttpInterceptor: the request interceptor that actually
+				    sends an HTTP request to a server.
+
+If you want to generate load against another service, e.g., a JNDI
+server, a database, or an EJB, you'd want to write two new plugins,
+e.g., FooSession, and DoFooInterceptor.
+
+Most request interceptors are protocol-neutral:
+
+roc.loadgen.interceptors.LogInterceptor: logs some minimal info
+roc.loadgen.interceptors.PeriodicInterceptor: periodically pauses a client 
+                            (use this to generate a varying workload)
+roc.loadgen.interceptors.RetryInterceptor: retries on an error
+roc.loadgen.interceptors.TPCThinkTimeInterceptor: adds a random wait 
+                  between requests to simulate a person's think-time.
+
+
+CONFIGURATION
+-------------
+
+see ROC/common/loadgen4/conf/*.conf for example configurations

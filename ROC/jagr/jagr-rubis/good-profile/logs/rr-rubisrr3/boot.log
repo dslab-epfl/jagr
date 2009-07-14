@@ -1,0 +1,325 @@
+12:13:53,802 INFO  [Server] Starting JBoss (MX MicroKernel)...
+12:13:53,803 INFO  [Server] Release ID: JBoss [WonderLand] 3.2.1 (build: CVSTag=JBoss_3_2_1 date=200407222219)
+12:13:53,804 DEBUG [Server] Using config: org.jboss.system.server.ServerConfigImpl@16fd0b7
+12:13:53,804 DEBUG [Server] Server type: class org.jboss.system.server.ServerImpl
+12:13:53,804 INFO  [Server] Home Dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1
+12:13:53,804 INFO  [Server] Home URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/
+12:13:53,804 INFO  [Server] Library URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/lib/
+12:13:53,805 INFO  [Server] Patch URL: null
+12:13:53,806 INFO  [Server] Server Name: rr-rubisrr3
+12:13:53,806 INFO  [Server] Server Home Dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3
+12:13:53,806 INFO  [Server] Server Home URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/
+12:13:53,838 INFO  [Server] Server Data Dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/data
+12:13:53,838 INFO  [Server] Server Temp Dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp
+12:13:53,838 INFO  [Server] Server Config URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/
+12:13:53,838 INFO  [Server] Server Library URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/
+12:13:53,838 INFO  [Server] Root Deployemnt Filename: jboss-service.xml
+12:13:53,842 INFO  [Server] Starting General Purpose Architecture (GPA)...
+12:13:54,037 DEBUG [ModelMBeanInvoker] No persistence-manager descriptor found, null persistence will be used
+12:13:54,055 DEBUG [Server] Created MBeanServer: org.jboss.mx.server.MBeanServerImpl@1193779
+12:13:54,082 DEBUG [Server] Boot url list: [file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/]
+12:13:54,082 DEBUG [Server] Creating loader for URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/
+12:13:54,092 DEBUG [UnifiedClassLoader] New jmx UCL with url file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/
+12:13:54,094 DEBUG [UnifiedLoaderRepository3] Adding org.jboss.mx.loading.UnifiedClassLoader3@129f3b5{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/ ,addedOrder=0}
+12:13:54,117 INFO  [ServerInfo] Java version: 1.4.1_04,Sun Microsystems Inc.
+12:13:54,118 INFO  [ServerInfo] Java VM: Java HotSpot(TM) Server VM 1.4.1_04-b01,Sun Microsystems Inc.
+12:13:54,118 INFO  [ServerInfo] OS-System: Linux 2.4.22-1.2115.nptl,i386
+12:13:54,118 DEBUG [ServerInfo] Full System Properties Dump
+12:13:54,118 DEBUG [ServerInfo]     java.runtime.name: Java(TM) 2 Runtime Environment, Standard Edition
+12:13:54,118 DEBUG [ServerInfo]     jboss.server.base.dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server
+12:13:54,118 DEBUG [ServerInfo]     java.protocol.handler.pkgs: org.jboss.net.protocol
+12:13:54,118 DEBUG [ServerInfo]     sun.boot.library.path: /usr/java/j2sdk1.4.1_04/jre/lib/i386
+12:13:54,118 DEBUG [ServerInfo]     jboss.server.lib.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/
+12:13:54,118 DEBUG [ServerInfo]     java.vm.version: 1.4.1_04-b01
+12:13:54,118 DEBUG [ServerInfo]     java.vm.vendor: Sun Microsystems Inc.
+12:13:54,118 DEBUG [ServerInfo]     java.vendor.url: http://java.sun.com/
+12:13:54,118 DEBUG [ServerInfo]     path.separator: :
+12:13:54,118 DEBUG [ServerInfo]     java.vm.name: Java HotSpot(TM) Server VM
+12:13:54,119 DEBUG [ServerInfo]     file.encoding.pkg: sun.io
+12:13:54,119 DEBUG [ServerInfo]     user.country: US
+12:13:54,119 DEBUG [ServerInfo]     sun.os.patch.level: unknown
+12:13:54,119 DEBUG [ServerInfo]     program.name: run.sh
+12:13:54,119 DEBUG [ServerInfo]     java.vm.specification.name: Java Virtual Machine Specification
+12:13:54,119 DEBUG [ServerInfo]     user.dir: /home/emrek/work/ROC/common/scripts/bin
+12:13:54,119 DEBUG [ServerInfo]     roc.pinpoint.publishto.maxqueue: 100000
+12:13:54,119 DEBUG [ServerInfo]     jboss.server.base.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/
+12:13:54,119 DEBUG [ServerInfo]     java.runtime.version: 1.4.1_04-b01
+12:13:54,119 DEBUG [ServerInfo]     java.awt.graphicsenv: sun.awt.X11GraphicsEnvironment
+12:13:54,119 DEBUG [ServerInfo]     java.endorsed.dirs: /usr/java/j2sdk1.4.1_04/jre/lib/endorsed
+12:13:54,119 DEBUG [ServerInfo]     os.arch: i386
+12:13:54,119 DEBUG [ServerInfo]     java.io.tmpdir: /tmp
+12:13:54,119 DEBUG [ServerInfo]     line.separator: 
+
+12:13:54,119 DEBUG [ServerInfo]     jbossmx.loader.repository.class: org.jboss.mx.loading.UnifiedLoaderRepository3
+12:13:54,119 DEBUG [ServerInfo]     java.vm.specification.vendor: Sun Microsystems Inc.
+12:13:54,119 DEBUG [ServerInfo]     os.name: Linux
+12:13:54,119 DEBUG [ServerInfo]     roc.pinpoint.tracing.Publisher: roc.pinpoint.tracing.java.TCPFastObservationPublisher
+12:13:54,119 DEBUG [ServerInfo]     sun.java2d.fontpath: 
+12:13:54,119 DEBUG [ServerInfo]     jboss.server.temp.dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp
+12:13:54,120 DEBUG [ServerInfo]     jboss.home.dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1
+12:13:54,120 DEBUG [ServerInfo]     java.library.path: /usr/java/j2sdk1.4.1_04/jre/lib/i386/server:/usr/java/j2sdk1.4.1_04/jre/lib/i386:/usr/java/j2sdk1.4.1_04/jre/../lib/i386
+12:13:54,120 DEBUG [ServerInfo]     jboss.server.home.dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3
+12:13:54,120 DEBUG [ServerInfo]     java.specification.name: Java Platform API Specification
+12:13:54,120 DEBUG [ServerInfo]     java.class.version: 48.0
+12:13:54,120 DEBUG [ServerInfo]     jboss.server.config.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/
+12:13:54,120 DEBUG [ServerInfo]     java.util.prefs.PreferencesFactory: java.util.prefs.FileSystemPreferencesFactory
+12:13:54,120 DEBUG [ServerInfo]     os.version: 2.4.22-1.2115.nptl
+12:13:54,120 DEBUG [ServerInfo]     jboss.home.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/
+12:13:54,120 DEBUG [ServerInfo]     user.home: /home/emrek
+12:13:54,120 DEBUG [ServerInfo]     user.timezone: America/Los_Angeles
+12:13:54,120 DEBUG [ServerInfo]     java.awt.printerjob: sun.print.PSPrinterJob
+12:13:54,120 DEBUG [ServerInfo]     java.specification.version: 1.4
+12:13:54,120 DEBUG [ServerInfo]     file.encoding: ANSI_X3.4-1968
+12:13:54,120 DEBUG [ServerInfo]     jboss.server.home.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/
+12:13:54,120 DEBUG [ServerInfo]     roc.pinpoint.publishto.hostname: rr6
+12:13:54,120 DEBUG [ServerInfo]     user.name: emrek
+12:13:54,120 DEBUG [ServerInfo]     java.class.path: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/bin/run.jar:/usr/java/j2sdk1.4.1_04/lib/tools.jar:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/lib/pinpoint.jar
+12:13:54,120 DEBUG [ServerInfo]     jboss.lib.url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/lib/
+12:13:54,120 DEBUG [ServerInfo]     jboss.server.name: rr-rubisrr3
+12:13:54,120 DEBUG [ServerInfo]     java.vm.specification.version: 1.0
+12:13:54,121 DEBUG [ServerInfo]     sun.arch.data.model: 32
+12:13:54,121 DEBUG [ServerInfo]     java.home: /usr/java/j2sdk1.4.1_04/jre
+12:13:54,121 DEBUG [ServerInfo]     java.specification.vendor: Sun Microsystems Inc.
+12:13:54,121 DEBUG [ServerInfo]     user.language: en
+12:13:54,121 DEBUG [ServerInfo]     java.vm.info: mixed mode
+12:13:54,121 DEBUG [ServerInfo]     java.version: 1.4.1_04
+12:13:54,121 DEBUG [ServerInfo]     java.ext.dirs: /usr/java/j2sdk1.4.1_04/jre/lib/ext
+12:13:54,121 DEBUG [ServerInfo]     jboss.server.data.dir: /home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/data
+12:13:54,121 DEBUG [ServerInfo]     sun.boot.class.path: /usr/java/j2sdk1.4.1_04/jre/lib/rt.jar:/usr/java/j2sdk1.4.1_04/jre/lib/i18n.jar:/usr/java/j2sdk1.4.1_04/jre/lib/sunrsasign.jar:/usr/java/j2sdk1.4.1_04/jre/lib/jsse.jar:/usr/java/j2sdk1.4.1_04/jre/lib/jce.jar:/usr/java/j2sdk1.4.1_04/jre/lib/charsets.jar:/usr/java/j2sdk1.4.1_04/jre/classes
+12:13:54,121 DEBUG [ServerInfo]     java.vendor: Sun Microsystems Inc.
+12:13:54,121 DEBUG [ServerInfo]     file.separator: /
+12:13:54,121 DEBUG [ServerInfo]     java.vendor.url.bug: http://java.sun.com/cgi-bin/bugreport.cgi
+12:13:54,121 DEBUG [ServerInfo]     sun.cpu.endian: little
+12:13:54,121 DEBUG [ServerInfo]     sun.io.unicode.encoding: UnicodeLittle
+12:13:54,121 DEBUG [ServerInfo]     sun.cpu.isalist: 
+12:13:54,123 DEBUG [Server] Created system MBean: jboss.system:type=ServerInfo
+12:13:54,152 INFO  [ServiceController] Controller MBean online
+12:13:54,155 DEBUG [Server] Created system MBean: jboss.system:service=ServiceController
+12:13:54,191 DEBUG [Server] Created system MBean: jboss.system:service=MainDeployer
+12:13:54,192 DEBUG [ServiceController] Creating service jboss.system:service=MainDeployer
+12:13:54,211 INFO  [MainDeployer] Creating
+12:13:54,231 INFO  [MainDeployer] Created
+12:13:54,231 DEBUG [ServiceController] Creating dependent components for: jboss.system:service=MainDeployer dependents are: []
+12:13:54,231 DEBUG [ServiceController] starting service jboss.system:service=MainDeployer
+12:13:54,232 INFO  [MainDeployer] Starting
+12:13:54,232 INFO  [MainDeployer] Started
+12:13:54,232 DEBUG [ServiceController] Starting dependent components for: jboss.system:service=MainDeployer dependent components: []
+12:13:54,236 DEBUG [Server] Shutdown hook added
+12:13:54,313 DEBUG [Server] Created system MBean: jboss.system:service=JARDeployer
+12:13:54,313 DEBUG [ServiceController] Creating service jboss.system:service=JARDeployer
+12:13:54,314 INFO  [JARDeployer] Creating
+12:13:54,369 INFO  [JARDeployer] Created
+12:13:54,370 DEBUG [ServiceController] Creating dependent components for: jboss.system:service=JARDeployer dependents are: []
+12:13:54,370 DEBUG [ServiceController] starting service jboss.system:service=JARDeployer
+12:13:54,371 INFO  [JARDeployer] Starting
+12:13:54,371 INFO  [MainDeployer] Adding deployer: org.jboss.deployment.JARDeployer@80fa6f
+12:13:54,371 INFO  [JARDeployer] Started
+12:13:54,371 DEBUG [ServiceController] Starting dependent components for: jboss.system:service=JARDeployer dependent components: []
+12:13:54,380 DEBUG [Server] Created system MBean: jboss.system:service=ServiceDeployer
+12:13:54,380 DEBUG [ServiceController] Creating service jboss.system:service=ServiceDeployer
+12:13:54,380 INFO  [SARDeployer] Creating
+12:13:54,408 INFO  [SARDeployer] Created
+12:13:54,408 DEBUG [ServiceController] Creating dependent components for: jboss.system:service=ServiceDeployer dependents are: []
+12:13:54,408 DEBUG [ServiceController] starting service jboss.system:service=ServiceDeployer
+12:13:54,408 INFO  [SARDeployer] Starting
+12:13:54,408 INFO  [MainDeployer] Adding deployer: org.jboss.deployment.SARDeployer@1f26605
+12:13:54,496 INFO  [SARDeployer] Started
+12:13:54,496 DEBUG [ServiceController] Starting dependent components for: jboss.system:service=ServiceDeployer dependent components: []
+12:13:54,496 INFO  [Server] Core system initialized
+12:13:54,524 INFO  [MainDeployer] Starting deployment of package: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:54,524 DEBUG [MainDeployer] Starting deployment (init step) of package at: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:54,530 DEBUG [MainDeployer] using deployer org.jboss.deployment.SARDeployer@1f26605
+12:13:55,036 DEBUG [SARDeployer] about to copy 0 local directories
+12:13:55,037 DEBUG [SARDeployer] looking for nested deployments in : file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:55,041 DEBUG [DeploymentInfo] createLoaderRepository from config: LoaderRepositoryConfig(repositoryName: JMImplementation:service=LoaderRepository,name=Default, repositoryClassName: null, configParserClassName: null, repositoryConfig: null)
+12:13:55,041 DEBUG [UnifiedClassLoader] New jmx UCL with url file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml
+12:13:55,041 DEBUG [UnifiedLoaderRepository3] Adding org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=0}
+12:13:55,044 DEBUG [MainDeployer] found 0 subpackages of file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:55,044 DEBUG [MainDeployer] Watching new file: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:55,044 DEBUG [MainDeployer] create step for deployment file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:55,044 DEBUG [SARDeployer] Deploying SAR, create step: url file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/conf/jboss-service.xml
+12:13:55,046 DEBUG [SARDeployer] Found classpath element: [classpath: null]
+12:13:55,051 DEBUG [SARDeployer] codebase URL is file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/
+12:13:55,051 DEBUG [SARDeployer] listing codebase for archives matching *
+12:13:55,057 DEBUG [SARDeployer] URLLister class is org.jboss.net.protocol.file.FileURLLister
+12:13:55,102 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/afpi.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,102 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/afpi.jar
+12:13:55,161 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbossha.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,161 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbossha.jar
+12:13:55,162 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mail-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,162 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mail-plugin.jar
+12:13:55,163 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jpl-pattern.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,163 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jpl-pattern.jar
+12:13:55,169 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-jaas.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,169 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-jaas.jar
+12:13:55,181 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-j2ee.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,181 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-j2ee.jar
+12:13:55,183 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jcert.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,183 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jcert.jar
+12:13:55,184 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/scheduler-plugin-example.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,184 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/scheduler-plugin-example.jar
+12:13:55,321 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jsse.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,321 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jsse.jar
+12:13:55,531 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,531 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss.jar
+12:13:55,585 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbosssx.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,585 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbosssx.jar
+12:13:55,588 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jpl-util.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,588 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jpl-util.jar
+12:13:55,621 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mysql-connector-java-3.0.8-stable-bin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,621 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mysql-connector-java-3.0.8-stable-bin.jar
+12:13:55,625 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-common-jdbc-wrapper.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,625 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-common-jdbc-wrapper.jar
+12:13:55,666 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/log4j.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,666 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/log4j.jar
+12:13:55,679 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/scheduler-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,679 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/scheduler-plugin.jar
+12:13:55,786 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xalan.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,786 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xalan.jar
+12:13:55,798 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jmx-adaptor-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,798 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jmx-adaptor-plugin.jar
+12:13:55,827 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/tyrex.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,827 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/tyrex.jar
+12:13:55,867 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jts.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,867 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jts.jar
+12:13:55,869 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/autonumber-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,869 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/autonumber-plugin.jar
+12:13:55,953 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/ant.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,953 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/ant.jar
+12:13:55,955 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-jsr77.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,956 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-jsr77.jar
+12:13:55,977 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-management.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,978 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-management.jar
+12:13:55,995 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bsh-core-1.2b7.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,995 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bsh-core-1.2b7.jar
+12:13:55,996 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jnet.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:55,996 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jnet.jar
+12:13:56,008 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/snmp-support.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,008 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/snmp-support.jar
+12:13:56,012 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-transaction.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,012 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jboss-transaction.jar
+12:13:56,090 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bcel.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,090 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bcel.jar
+12:13:56,137 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/pinpoint.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,137 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/pinpoint.jar
+12:13:56,164 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/hsqldb.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,165 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/hsqldb.jar
+12:13:56,207 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mail.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,207 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/mail.jar
+12:13:56,223 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xmlParserAPIs.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,223 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xmlParserAPIs.jar
+12:13:56,229 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/activation.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,229 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/activation.jar
+12:13:56,231 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/properties-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,231 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/properties-plugin.jar
+12:13:56,293 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbossmq.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,293 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jbossmq.jar
+12:13:56,303 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/javax.servlet.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,303 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/javax.servlet.jar
+12:13:56,315 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/swigutil.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,315 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/swigutil.jar
+12:13:56,320 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/hsqldb-plugin.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,320 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/hsqldb-plugin.jar
+12:13:56,324 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jnpserver.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,324 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/jnpserver.jar
+12:13:56,326 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bsh-deployer.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,326 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/bsh-deployer.jar
+12:13:56,432 DEBUG [UnifiedClassLoader] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xercesImpl.jar, to ucl: org.jboss.mx.loading.UnifiedClassLoader3@177b3cd{ url=file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/tmp/deploy/server/rr-rubisrr3/conf/jboss-service.xml/1.jboss-service.xml ,addedOrder=2}
+12:13:56,432 DEBUG [SARDeployer] deployed classes for file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/lib/xercesImpl.jar
+12:13:56,432 DEBUG [SARDeployer] Registering service UCL=jmx.loading:UCL=177b3cd
+12:13:56,492 DEBUG [ServiceCreator] About to create bean: jboss.system:type=Log4jService,service=Logging with code: org.jboss.logging.Log4jService
+12:13:56,876 DEBUG [ServiceCreator] Created bean: jboss.system:type=Log4jService,service=Logging
+12:13:56,880 DEBUG [ServiceConfigurator] ConfigurationURL set to resource:log4j.xml in jboss.system:type=Log4jService,service=Logging
+12:13:56,881 DEBUG [ServiceConfigurator] Log4jQuiteMode set to true in jboss.system:type=Log4jService,service=Logging
+12:13:56,881 DEBUG [ServiceCreator] About to create bean: jboss.rmi:type=RMIClassLoader with code: org.jboss.util.property.jmx.SystemPropertyClassValue
+12:13:56,884 DEBUG [ServiceCreator] Created bean: jboss.rmi:type=RMIClassLoader
+12:13:56,886 DEBUG [ServiceConfigurator] Property set to java.rmi.server.RMIClassLoaderSpi in jboss.rmi:type=RMIClassLoader
+12:13:56,887 DEBUG [ServiceConfigurator] ClassName set to org.jboss.system.JBossRMIClassLoader in jboss.rmi:type=RMIClassLoader
+12:13:56,887 DEBUG [ServiceCreator] About to create bean: jboss:service=WebService with code: org.jboss.web.WebService
+12:13:56,911 DEBUG [ServiceCreator] Created bean: jboss:service=WebService
+12:13:56,911 DEBUG [ServiceConfigurator] Port set to 8083 in jboss:service=WebService
+12:13:56,912 DEBUG [ServiceConfigurator] DownloadServerClasses set to true in jboss:service=WebService
+12:13:56,912 DEBUG [ServiceCreator] About to create bean: jboss.management.local:j2eeType=J2EEDomain,name=Manager with code: org.jboss.management.j2ee.LocalJBossServerDomain
+12:13:56,957 DEBUG [LocalJBossServerDomain] ctor, name: jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:56,969 DEBUG [LocalJBossServerDomain] postRegister(), parent: null
+12:13:56,969 DEBUG [LocalJBossServerDomain] postCreation(), create J2EEServer instance
+12:13:56,975 DEBUG [J2EEServer] postRegister(), parent: jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,001 DEBUG [JVM] postRegister(), parent: jboss.management.local:j2eeType=J2EEServer,name=Local
+12:13:57,002 DEBUG [LocalJBossServerDomain] Registered as listener of: jboss.system:service=ServiceController
+12:13:57,002 DEBUG [ServiceCreator] Created bean: jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,006 DEBUG [ServiceConfigurator] MainDeployer set to jboss.system:service=MainDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,010 DEBUG [ServiceConfigurator] SARDeployer set to jboss.system:service=ServiceDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,014 DEBUG [ServiceConfigurator] EARDeployer set to jboss.j2ee:service=EARDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,020 DEBUG [ServiceConfigurator] EJBDeployer set to jboss.ejb:service=EJBDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,023 DEBUG [ServiceConfigurator] RARDeployer set to jboss.jca:service=RARDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,028 DEBUG [ServiceConfigurator] CMDeployer set to jboss.jca:service=ConnectionFactoryDeployer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,032 DEBUG [ServiceConfigurator] WARDeployer set to jboss.web:service=WebServer in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,037 DEBUG [ServiceConfigurator] MailService set to jboss:service=Mail in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,040 DEBUG [ServiceConfigurator] JMSService set to jboss.mq:service=DestinationManager in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,044 DEBUG [ServiceConfigurator] JNDIService set to jboss:service=Naming in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,047 DEBUG [ServiceConfigurator] JTAService set to jboss:service=TransactionManager in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,050 DEBUG [ServiceConfigurator] UserTransactionService set to jboss:service=ClientUserTransaction in jboss.management.local:j2eeType=J2EEDomain,name=Manager
+12:13:57,051 DEBUG [ServiceCreator] About to create bean: jboss:service=Naming with code: org.jboss.naming.NamingService
+12:13:57,068 DEBUG [ServiceCreator] Created bean: jboss:service=Naming
+12:13:57,068 DEBUG [ServiceConfigurator] Port set to 1099 in jboss:service=Naming
+12:13:57,069 DEBUG [ServiceCreator] About to create bean: jboss:service=JNDIView with code: org.jboss.naming.JNDIView
+12:13:57,080 DEBUG [ServiceCreator] Created bean: jboss:service=JNDIView
+12:13:57,080 DEBUG [ServiceCreator] About to create bean: jboss.security:service=SecurityConfig with code: org.jboss.security.plugins.SecurityConfig
+12:13:57,085 DEBUG [ServiceCreator] Created bean: jboss.security:service=SecurityConfig
+12:13:57,086 DEBUG [ServiceConfigurator] LoginConfig set to jboss.security:service=XMLLoginConfig in jboss.security:service=SecurityConfig
+12:13:57,086 DEBUG [ServiceCreator] About to create bean: jboss.security:service=XMLLoginConfig with code: org.jboss.security.auth.login.XMLLoginConfig
+12:13:57,101 DEBUG [ServiceCreator] Created bean: jboss.security:service=XMLLoginConfig
+12:13:57,102 DEBUG [ServiceConfigurator] ConfigResource set to login-config.xml in jboss.security:service=XMLLoginConfig
+12:13:57,104 DEBUG [ServiceCreator] About to create bean: jboss.security:service=JaasSecurityManager with code: org.jboss.security.plugins.JaasSecurityManagerService
+12:13:57,133 DEBUG [ServiceCreator] Created bean: jboss.security:service=JaasSecurityManager
+12:13:57,135 DEBUG [ServiceConfigurator] SecurityManagerClassName set to org.jboss.security.plugins.JaasSecurityManager in jboss.security:service=JaasSecurityManager
+12:13:57,137 DEBUG [ServiceCreator] About to create bean: jboss.ejb:service=EJBDeployer with code: org.jboss.ejb.EJBDeployer
+12:13:57,155 DEBUG [ServiceCreator] Created bean: jboss.ejb:service=EJBDeployer
+12:13:57,155 DEBUG [ServiceConfigurator] VerifyDeployments set to true in jboss.ejb:service=EJBDeployer
+12:13:57,155 DEBUG [ServiceConfigurator] ValidateDTDs set to false in jboss.ejb:service=EJBDeployer
+12:13:57,156 DEBUG [ServiceConfigurator] MetricsEnabled set to false in jboss.ejb:service=EJBDeployer
+12:13:57,157 DEBUG [ServiceConfigurator] VerifierVerbose set to true in jboss.ejb:service=EJBDeployer
+12:13:57,157 DEBUG [ServiceConfigurator] StrictVerifier set to true in jboss.ejb:service=EJBDeployer
+12:13:57,157 DEBUG [ServiceController] recording that jboss.ejb:service=EJBDeployer depends on jboss:service=TransactionManager
+12:13:57,158 DEBUG [ServiceConfigurator] considering TransactionManagerServiceName with object name jboss:service=TransactionManager
+12:13:57,158 DEBUG [ServiceController] recording that jboss.ejb:service=EJBDeployer depends on jboss:service=WebService
+12:13:57,158 DEBUG [ServiceConfigurator] considering WebServiceName with object name jboss:service=WebService
+12:13:57,158 DEBUG [ServiceCreator] About to create bean: jboss.j2ee:service=EARDeployer with code: org.jboss.deployment.EARDeployer
+12:13:57,164 DEBUG [ServiceCreator] Created bean: jboss.j2ee:service=EARDeployer
+12:13:57,165 DEBUG [ServiceCreator] About to create bean: jboss.scripts:service=BSHDeployer with code: org.jboss.varia.deployment.BeanShellSubDeployer
+12:13:57,171 DEBUG [ServiceCreator] Created bean: jboss.scripts:service=BSHDeployer
+12:13:57,171 DEBUG [ServiceCreator] About to create bean: jboss:service=invoker,type=jrmp with code: org.jboss.invocation.jrmp.server.JRMPInvoker
+12:13:57,191 DEBUG [ServiceCreator] Created bean: jboss:service=invoker,type=jrmp
+12:13:57,191 DEBUG [ServiceController] recording that jboss:service=invoker,type=jrmp depends on jboss:service=TransactionManager
+12:13:57,191 DEBUG [ServiceConfigurator] considering <anonymous> with object name jboss:service=TransactionManager
+12:13:57,192 DEBUG [ServiceCreator] About to create bean: jboss:service=invoker,type=local with code: org.jboss.invocation.local.LocalInvoker
+12:13:57,196 DEBUG [ServiceCreator] Created bean: jboss:service=invoker,type=local
+12:13:57,196 DEBUG [ServiceController] recording that jboss:service=invoker,type=local depends on jboss:service=TransactionManager
+12:13:57,196 DEBUG [ServiceConfigurator] considering <anonymous> with object name jboss:service=TransactionManager
+12:13:57,197 DEBUG [ServiceCreator] About to create bean: jboss:service=invoker,type=pooled with code: org.jboss.invocation.pooled.server.PooledInvoker
+12:13:57,207 DEBUG [ServiceCreator] Created bean: jboss:service=invoker,type=pooled
+12:13:57,207 DEBUG [ServiceConfigurator] NumAcceptThreads set to 1 in jboss:service=invoker,type=pooled
+12:13:57,208 DEBUG [ServiceConfigurator] MaxPoolSize set to 300 in jboss:service=invoker,type=pooled
+12:13:57,208 DEBUG [ServiceConfigurator] ClientMaxPoolSize set to 300 in jboss:service=invoker,type=pooled
+12:13:57,209 DEBUG [ServiceConfigurator] SocketTimeout set to 60000 in jboss:service=invoker,type=pooled
+12:13:57,209 DEBUG [ServiceConfigurator] ServerBindPort set to 0 in jboss:service=invoker,type=pooled
+12:13:57,209 DEBUG [ServiceConfigurator] ClientConnectPort set to 0 in jboss:service=invoker,type=pooled
+12:13:57,210 DEBUG [ServiceConfigurator] EnableTcpNoDelay set to false in jboss:service=invoker,type=pooled
+12:13:57,210 DEBUG [ServiceController] recording that jboss:service=invoker,type=pooled depends on jboss:service=TransactionManager
+12:13:57,210 DEBUG [ServiceConfigurator] considering TransactionManagerService with object name jboss:service=TransactionManager
+12:13:57,210 DEBUG [ServiceCreator] About to create bean: jboss.deployment:type=DeploymentScanner,flavor=URL with code: org.jboss.deployment.scanner.URLDeploymentScanner
+12:13:57,228 DEBUG [ServiceCreator] Created bean: jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,228 DEBUG [ServiceController] recording that jboss.deployment:type=DeploymentScanner,flavor=URL depends on jboss.system:service=MainDeployer
+12:13:57,228 DEBUG [ServiceConfigurator] considering Deployer with object name jboss.system:service=MainDeployer
+12:13:57,262 DEBUG [ServiceConfigurator] URLComparator set to org.jboss.deployment.DeploymentSorter in jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,264 DEBUG [ServiceConfigurator] Filter set to org.jboss.deployment.scanner.DeploymentFilter in jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,267 DEBUG [ServiceConfigurator] ScanPeriod set to 5000 in jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,268 DEBUG [ServiceConfigurator] URLs set to deploy/ in jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,268 DEBUG [URLDeploymentScanner] Adding URL from spec: deploy/
+12:13:57,269 DEBUG [URLDeploymentScanner] URL: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/deploy/
+12:13:57,269 DEBUG [URLDeploymentScanner] Added url: file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/deploy/
+12:13:57,269 DEBUG [URLDeploymentScanner] URL list: [file:/home/emrek/work/ROC/jagr/jboss-3.2.1-src/build/output/jboss-3.2.1/server/rr-rubisrr3/deploy/]
+12:13:57,269 DEBUG [ServiceConfigurator] RecursiveSearch set to true in jboss.deployment:type=DeploymentScanner,flavor=URL
+12:13:57,269 DEBUG [ServiceController] Creating service jboss.system:type=Log4jService,service=Logging
+12:13:57,270 INFO  [Log4jService] Creating
+12:13:57,273 INFO  [Log4jService$URLWatchTimerTask] Configuring from URL: resource:log4j.xml
