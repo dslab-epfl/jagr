@@ -1,0 +1,23 @@
+
+As User
+------
+
+Default
+
+[prem@rrapp1 test]$ ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+Completes the loop upto 1000000
+
+

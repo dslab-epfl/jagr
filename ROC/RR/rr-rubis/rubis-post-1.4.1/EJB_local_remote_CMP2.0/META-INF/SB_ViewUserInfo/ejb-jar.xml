@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<!-- SB_ViewUserInfo -->
+
+<ejb-jar>
+    <enterprise-beans> 
+       <session>
+    	    <description>Deployment descriptor for Rubis SB_ViewUserInfo Bean</description>
+            <display-name>RUBiS SB_ViewUserInfo Bean</display-name>
+            <ejb-name>SB_ViewUserInfo</ejb-name>
+            <home>edu.rice.rubis.beans.SB_ViewUserInfoHome</home>
+            <remote>edu.rice.rubis.beans.SB_ViewUserInfo</remote>
+            <ejb-class>edu.rice.rubis.beans.SB_ViewUserInfoBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Bean</transaction-type>
+	    <ejb-local-ref>
+                <description>This is the reference to the user bean</description>
+                <ejb-ref-name>ejb/User</ejb-ref-name>
+		<ejb-ref-type>Entity</ejb-ref-type>
+		<ejb-link>User</ejb-link>
+		<local-home>edu.rice.rubis.beans.UserLocalHome</local-home>
+		<local>edu.rice.rubis.beans.UserLocal</local>
+            </ejb-local-ref>
+	    <ejb-local-ref>
+                <description>This is the reference to the comment bean</description>
+                <ejb-ref-name>ejb/Comment</ejb-ref-name>
+		<ejb-ref-type>Entity</ejb-ref-type>
+		<ejb-link>Comment</ejb-link>
+		<local-home>edu.rice.rubis.beans.CommentLocalHome</local-home>
+		<local>edu.rice.rubis.beans.CommentLocal</local>
+            </ejb-local-ref>
+            <resource-ref>
+                <res-ref-name>jdbc/rubis</res-ref-name>
+                <res-type>javax.sql.DataSource</res-type>
+                <res-auth>Container</res-auth>
+            </resource-ref>
+         </session>
+    </enterprise-beans>
+</ejb-jar>

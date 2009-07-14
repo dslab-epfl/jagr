@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Standard JBossCMP-JDBC Configuration                                 -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: utiljbosscmp-jdbc.xml,v 1.1.1.1 2003/04/25 08:04:22 mdelgado Exp $ -->
+
+<jaws>
+   <datasource>ECPerfDS</datasource>
+   <type-mapping>Oracle8</type-mapping>
+   <enterprise-beans>
+      <entity>
+            <ejb-name>SequenceEnt</ejb-name>
+            <table-name>U_sequences</table-name>
+            <create-table>false</create-table>
+            <cmp-field>
+                <field-name>id</field-name>
+                <column-name>s_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>nextNumber</field-name>
+                <column-name>s_nextnum</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>blockSize</field-name>
+                <column-name>s_blocksize</column-name>
+            </cmp-field>
+        </entity>
+   </enterprise-beans>
+</jaws>

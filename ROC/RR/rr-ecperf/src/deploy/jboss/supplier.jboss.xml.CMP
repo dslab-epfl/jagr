@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<jboss>
+
+<container-configurations>
+<container-configuration extends="Standard CMP EntityBean">
+   <container-name>ECPerf CMP</container-name>
+   <commit-option>B</commit-option>
+<!--   <optiond-refresh-rate>6000000</optiond-refresh-rate>  -->
+</container-configuration>
+</container-configurations>
+
+
+
+  <enterprise-beans>
+    <session>
+      <ejb-name>BuyerSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <ejb-ref>
+	<ejb-ref-name>ejb/SComponent</ejb-ref-name>
+	<jndi-name>SComponentEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/Supplier</ejb-ref-name>
+	<jndi-name>SupplierEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/POEnt</ejb-ref-name>
+	<jndi-name>POEnt</jndi-name>
+      </ejb-ref>
+    </session>
+    <session>
+      <ejb-name>ReceiverSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <ejb-ref>
+	<ejb-ref-name>ejb/SComponent</ejb-ref-name>
+	<jndi-name>SComponentEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/POEnt</ejb-ref-name>
+	<jndi-name>POEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/ReceiveSes</ejb-ref-name>
+	<jndi-name>ReceiveSes</jndi-name>
+      </ejb-ref>
+    </session>
+    <entity>
+      <ejb-name>SupplierEnt</ejb-name>
+     <configuration-name>Instance Per Transaction CMP EntityBean</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SupplierCompEnt</ejb-ref-name>
+	<jndi-name>SupplierCompEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+    </entity>
+    <entity>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <ejb-name>SupplierCompEnt</ejb-name>
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+      -->
+    </entity>
+    <entity>
+      <ejb-name>SComponentEnt</ejb-name> 
+      <configuration-name>ECPerf CMP</configuration-name>
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+         <method>
+            <method-name>checkForPO</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+      -->
+    </entity>
+    <entity>
+      <ejb-name>POEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<jndi-name>SequenceSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/POLineEnt</ejb-ref-name>
+	<jndi-name>POLineEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>generateXml</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+      -->
+    </entity>
+    <entity>
+      <ejb-name>POLineEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SComponent</ejb-ref-name>
+	<jndi-name>SComponentEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+    </entity>
+    <session>
+      <ejb-name>SupplierAuditSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <resource-ref>
+         <res-ref-name>SupplierDataSource</res-ref-name>
+         <resource-name>SupplierDataSource</resource-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <resource-managers>
+    <resource-manager>
+        <res-name>SupplierDataSource</res-name>
+        <res-jndi-name>java:/ECPerfDS</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

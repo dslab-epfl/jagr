@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt;
+Java[tm] Pet Store &gt; Using databases other than Cloudscape</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet
+Store</font></b></a> &gt; <b>Using databases other than
+Cloudscape</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Using databases other than Cloudscape</h1>
+
+<p>The Java Pet Store is configured to use the Cloudscape database by
+default. This document describes how to configure the Java Pet Store
+to run with another database on the J2EE Reference Implementation
+server.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> The Japanese tables
+work with only the Cloudscape databases. They do not work with the
+Oracle or Sybase databases.  <hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<p>The examples in these instructions are for an Oracle
+database. (Some knowledge of Oracle is assumed.) Please note that,
+with slight modifications, you can use these instructions to configure
+the Java Pet Store to run with other databases, like Sybase.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<ol>
+
+<li><p><b>Include the Oracle JDBC driver in the J2EE Reference
+Implementation server classpath.</b></p>
+
+<ul>
+<li><p><b>UNIX</b>: Open the shell script
+<code>$J2EE_HOME/bin/userconfig.sh</code> and add the full location of
+the Oracle JDBC driver to the <code>J2EE_CLASSPATH</code>
+variable.</p>
+
+<p>For example, if this is <code>/opt/oracle/jdbc/oracle.zip</code>,
+then the following lines will set the <code>J2EE_CLASSPATH</code>
+variable appropriately:</p>
+
+<blockquote><pre><code>J2EE_CLASSPATH=/opt/oracle/jdbc/oracle.zip
+export J2EE_CLASSPATH</code></pre></blockquote>
+</li>
+
+<li><p><b>Win32</b>: Open the batch file
+<code>%J2EE_HOME%\bin\userconfig.bat</code> and add the full location
+of the Oracle JDBC driver to the <code>J2EE_CLASSPATH</code>
+variable.</p>
+
+<p>For example, if this is <code>c:\oracle\jdbc\oracle.zip</code>,
+then the following line will set the <code>J2EE_CLASSPATH</code>
+variable appropriately:</p>
+
+<blockquote><pre><code>set J2EE_CLASSPATH=c:\oracle\jdbc\oracle.zip</code></pre></blockquote>
+</li>
+</ul>
+</li>
+
+<li><p><b>Include Oracle references in the J2EE Reference
+Implementation server default properties.</b></p>
+
+<p>Open <code>$J2EE_HOME/config/default.properties</code> (UNIX) or
+<code>%J2EE_HOME%\config\default.properties</code> (Win32). Set the
+<code>jdbc.drivers</code> and <code>jdbc.datasources</code> properties
+to refer to the Oracle database.</p>
+
+<p>For example, if you have a standard Oracle installation on a
+machine <code>dbhost</code> and you are using the default
+<code>ORCL</code> database, then the following lines will set those
+properties appropriately:</p>
+
+<blockquote><pre><code>jdbc.drivers=oracle.jdbc.driver.OracleDriver
+jdbc.datasources=jdbc/Cloudscape|jdbc:oracle:thin@dbhost:1521:ORCL</pre></code></blockquote>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume your database is running on a machine named
+<code>dbhost</code>. You should substitute this with the name of the
+machine on which your database is running. <hr noshade="noshade"
+size="1" />
+</td>
+</tr>
+</table>
+</center>
+</li>
+
+<li><p><b>Configure the customer EJB component to use the Oracle Data
+Access Object.</b></p>
+
+<p>Currently, the customer EJB component used by the application is
+configured to use a Cloudscape data source. In order to use this
+component with an Oracle database, you need to edit one of its
+configuration files.</p>
+
+<p>Open the file customer_ejb.xml located in
+<code>$JPS_HOME/src/components/customer/src/</code> (UNIX) or
+<code>%JPS_HOME%\src\components\customer\src\</code> (Win32). Look for
+these lines:</p>
+
+<blockquote><pre><code>&lt;env-entry&gt;
+  &lt;env-entry-name&gt;ejb/order/OrderDAOClass&lt;/env-entry-name&gt;
+  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;
+  &lt;env-entry-value&gt;com.sun.j2ee.blueprints.customer.order.dao.<b>OrderDAOCS</b>&lt;/env-entry-value&gt;
+&lt;/env-entry&gt;</code></pre></blockquote>
+
+<p>Change the value of the <code>env-entry-value</code> entry to the
+fully qualified name of the <code>OrderDAOOracle</code> class. You can
+do this by simply replacing the string <code>OrderDAOCS</code> with
+<code>OrderDAOOracle</code>. Once this change is made, <a
+href="build.html">rebuild</a> the application.<p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> The application also
+comes with a data access object for use with a Sybase database. If you
+are using a Sybase database, you would replace <code>OrderDAOCS</code>
+with <code>OrderDAOSybase</code>. <hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</li>
+
+<li><p><b>Set up permissions for the application to use the Oracle
+database.</b></p>
+
+<p>There are two ways to do this:</p>
+
+<ul>
+<li><p><b>Set each enterprise bean in the application to use an
+existing Oracle database account.</b></p>
+
+<p>Start the deployment tool and open the application. For each
+enterprise bean, select its entry in the <i>Local Applications</i>
+tree to bring up its inspector, select the <i>Resource Ref's</i>
+tabbed pane, and change the user name and password to those of an
+account that exists in your Oracle database.</p>
+</li>
+
+<li><p><b>Create a new account in the Oracle database.</b></p>
+
+<p>The application currently uses the user name
+<code>estoreuser</code> and password <code>estore</code> to access the
+database. Create an account for the Oracle database which uses exactly
+the same user name and password.</p>
+</li>
+</ul>
+</li>
+
+<li><p><b>Deploy the application, install the Oracle database tables
+and visit the Java Pet Store.</b></p>
+
+<p>Once you've deployed the application, you can use the link below to
+go to the page which lets you install the database tables that are
+required by the Java Pet Store. When you get to that page, click
+<i>Install Tables</i> in the banner, and on the subsequent page, click
+<i>Install Oracle Tables</i> to install the Java Pet Store tables for
+your Oracle database. Please note that you are taken to this page the
+first time you visit the Java Pet Store.</p>
+
+<p>To install the Java Pet Store tables for the Oracle database and
+visit the store, click the following link:</p>
+
+<p><code><a
+href="http://localhost:8000/estore/populate">http://localhost:8000/estore/populate</a></code></p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume that the application is deployed on a machine named
+<code>localhost</code> and port <code>8000</code>. You should
+substitute <code>localhost</code> and <code>8000</code> with the name
+of the machine and the port on which the application is deployed.<hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</li>
+</ol>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

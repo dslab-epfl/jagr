@@ -1,0 +1,69 @@
+
+As User
+-------
+prem@rrapp1 test]$ ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+Default: continues to write until the disk is full
+
+Changed file size to 1024
+
+[prem@rrapp1 test]$ ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) 1024
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+No Exception was thrown but the OS killed the process
+
+[prem@rrapp1 test]$ java DataToFill
+File size limit exceeded
+
+
+As Root
+------
+
+[root@rrapp1 prem]# ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+Default: continues to write until the disk is full
+
+Changed file size to 1024
+
+Same result as above for , no exception
+
+[root@rrapp1 test]# java DataToFill
+File size limit exceeded
+
+
+
+

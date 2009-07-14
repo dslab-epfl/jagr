@@ -1,0 +1,16 @@
+<!-- $Id: faultload-reboot-rubis.xml,v 1.1 2004/05/09 02:09:21 candea Exp $ -->
+
+<fault-injections>
+
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>30</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>60</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>90</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>120</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>150</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>180</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>210</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>240</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>270</time-second> </full-reboot>
+  <full-reboot> <jndi-name>rubis</jndi-name> <time-second>300</time-second> </full-reboot>
+
+</fault-injections>

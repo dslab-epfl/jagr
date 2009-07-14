@@ -1,0 +1,20 @@
+<project name="EntityBean_BMP" default="rubis_war" basedir=".">
+  <!-- EntityBean BMP Ant build file -->
+
+  <!-- set global properties for this build -->
+  <property file="../build.properties" />
+
+ <!-- some properties are build from environment variables -->
+  <property environment="myenv"/>
+<!-- -->
+
+<!-- Create a war file-->
+  <target name="rubis_war">
+    <copy file="./rubis_ejb_servlets.jar" todir="../ejb_rubis_web/WEB-INF/lib"/>
+     <war warfile="./ejb_rubis_web.war" webxml="../ejb_rubis_web/WEB-INF/web.xml" basedir="../ejb_rubis_web">
+        <fileset dir="./build"
+                 includes="*"/>
+    </war>
+  </target>
+
+</project>

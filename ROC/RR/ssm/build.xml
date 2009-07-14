@@ -1,0 +1,37 @@
+<project name="Build RR-SSM" default="all" basedir=".">
+
+  <!-- set property -->
+  <property file="build.properties" />
+
+  <property name="ssmsource"      value="./roc/rr/ssm/" />
+  <property name="ssmutilsource"  value="./roc/rr/ssmutil/" />
+  <property name="destdir"        value="./build/" />
+  
+  <property environment="myenv"/>
+  <property name="jboss.home" value="${myenv.JBOSS_HOME}" />
+
+  <target name="all" depends="compile,ssm-jar" />
+
+  <!-- compile ssm sources -->
+  <target name="compile">
+    <javac destdir="${destdir}" classpath="./lib/pinpoint.jar">  
+	<src path="${ssmsource}" />
+	<src path="${ssmutilsource}" />
+    </javac>
+  </target>
+
+  <!-- produce jar file -->
+  <target name="ssm-jar">
+    <jar jarfile="./ssm.jar">
+      <fileset dir="${destdir}"/>
+    </jar>
+    <copy file="ssm.jar" todir="${jboss.home}/server/default/deploy" />
+  </target>
+
+  <!-- clean work file -->
+  <target name="clean">
+    <delete dir="${destdir}/*" />
+    <delete file="ssm.jar" />
+  </target>
+</project>
+

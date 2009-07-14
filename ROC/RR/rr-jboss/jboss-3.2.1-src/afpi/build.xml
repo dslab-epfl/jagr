@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project [
+  <!ENTITY buildmagic SYSTEM "resource://org/jboss/tools/buildmagic/common.xml">
+]>
+
+<!-- ====================================================================== -->
+<!--                                                                        -->
+<!--  JBoss, the OpenSource J2EE webOS                                      -->
+<!--                                                                        -->
+<!--  Distributable under LGPL license.                                     -->
+<!--  See terms of license at http://www.gnu.org.                           -->
+<!--                                                                        -->
+<!-- ====================================================================== -->
+
+
+<!-- $Id: build.xml,v 1.13 2004/05/08 00:10:08 skawamo Exp $ -->
+
+<project default="main" name="ROC/RR/AFPI">
+
+  <!-- ================================================================== -->
+  <!-- Setup                                                              -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Include the common Buildmagic elements.
+     |
+     | This defines several different targets, properties and paths.
+     | It also sets up the basic extention tasks amoung other things.
+   -->
+
+  &buildmagic;
+
+
+  <!-- ================================================================== -->
+  <!-- Initialization                                                     -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Initialize the build system.  Must depend on '_buildmagic:init'.  
+     | Other targets should depend on 'init' or things will mysteriously fail.
+   -->
+
+  <target name="init" unless="init.disable" depends="_buildmagic:init">
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Configuration                                                      -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Configure the build system.  
+     |
+     | This target is invoked by the Buildmagic initialization logic and 
+     | should contain module specific configuration elements.
+   -->
+
+  <target name="configure" unless="configure.disable">
+
+    <!-- =================== -->
+    <!-- Basic Configuration -->
+    <!-- =================== -->
+
+    <!-- Module name(s) & version -->
+<!--    <property name="module.name" value="JBossMX"/>    -->
+<!--    <property name="module.Name" value="JBoss JMX"/>  -->
+<!--    <property name="module.version" value="1_1_0"/>   -->
+
+    <!-- ========= -->
+    <!-- Libraries -->
+    <!-- ========= -->
+
+    <!-- JavaCC -->
+    <property name="sun.javacc.root" value="${project.thirdparty}/sun/javacc"/>
+    <property name="sun.javacc.lib" value="${sun.javacc.root}/lib"/>
+
+    <!-- Java Management Extensions (JMX) -->
+    <property name="sun.jmx.root" value="${project.thirdparty}/sun/jmx"/>
+    <property name="sun.jmx.lib" value="${sun.jmx.root}/lib"/>
+
+    <!-- Java Naming and Directory Interface (JNDI) -->
+    <property name="sun.jndi.root" value="${project.thirdparty}/sun/jndi"/>
+    <property name="sun.jndi.lib" value="${sun.jndi.root}/lib"/>
+    <path id="sun.jndi.classpath">
+      <pathelement path="${sun.jndi.lib}/jndi.jar"/>
+    </path>
+
+    <!-- Java Authentication and Authorization Service (JAAS) -->
+    <property name="sun.jaas.root" value="${project.thirdparty}/sun/jaas"/>
+    <property name="sun.jaas.lib" value="${sun.jaas.root}/lib"/>
+    <path id="sun.jaas.classpath">
+      <pathelement path="${sun.jaas.lib}/jaas.jar"/>
+    </path>
+
+    <!-- Java Secure Socket Extension (JSSE) -->
+    <property name="sun.jsse.root" value="${project.thirdparty}/sun/jsse"/>
+    <property name="sun.jsse.lib" value="${sun.jsse.root}/lib"/>
+    <path id="sun.jsse.classpath">
+      <fileset dir="${sun.jsse.lib}">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+
+    <!-- Java Transaction Service (JTS) -->
+    <property name="sun.jts.root" value="${project.thirdparty}/sun/jts"/>
+    <property name="sun.jts.lib" value="${sun.jts.root}/lib"/>
+    <path id="sun.jts.classpath">
+      <pathelement path="${sun.jts.lib}/jts.jar"/>
+    </path>
+
+    <!-- Apache Crimson (XML/DOM) -->
+    <property name="apache.crimson.root" value="${project.thirdparty}/apache/crimson"/>
+    <property name="apache.crimson.lib" value="${apache.crimson.root}/lib"/>
+    <path id="apache.crimson.classpath">
+      <pathelement path="${apache.crimson.lib}/crimson.jar"/>
+    </path>
+
+    <!-- Apache Commons -->
+    <property name="apache.commons.root" value="${project.thirdparty}/apache/commons"/>
+    <property name="apache.commons.lib" value="${apache.commons.root}/lib"/>
+    <path id="apache.commons.classpath">
+      <pathelement path="${apache.commons.lib}/commons-collections.jar"/>
+      <pathelement path="${apache.commons.lib}/commons-logging.jar"/>
+    </path>
+
+    <!-- Log4j -->
+    <property name="apache.log4j.root" value="${project.thirdparty}/apache/log4j"/>
+    <property name="apache.log4j.lib" value="${apache.log4j.root}/lib"/>
+    <path id="apache.log4j.classpath">
+      <pathelement path="${apache.log4j.lib}/log4j.jar"/>
+    </path>
+
+    <!-- BCEL -->
+    <property name="apache.bcel.root" value="${project.thirdparty}/apache/bcel"/>
+    <property name="apache.bcel.lib" value="${apache.bcel.root}/lib"/>
+    <path id="apache.bcel.classpath">
+      <pathelement path="${apache.bcel.lib}/bcel.jar"/>
+    </path>
+
+    <!-- EDU.oswego.cs.dl.util.concurrent -->
+    <property name="oswego.concurrent.root" value="${project.thirdparty}/oswego/concurrent"/>
+    <property name="oswego.concurrent.lib" value="${oswego.concurrent.root}/lib"/>
+    <path id="oswego.concurrent.classpath">
+      <pathelement path="${oswego.concurrent.lib}/concurrent.jar"/>
+    </path>
+
+    <!-- JPL-Util -->
+    <property name="gjt.jpl-util.root" value="${project.thirdparty}/gjt/jpl-util"/>
+    <property name="gjt.jpl-util.lib" value="${gjt.jpl-util.root}/lib"/>
+    <path id="gjt.jpl-util.classpath">
+      <fileset dir="${gjt.jpl-util.lib}">
+        <include name="*.jar"/>
+      </fileset>
+    </path>
+
+    <!-- GNU Getopt -->
+    <property name="gnu.getopt.root" value="${project.thirdparty}/gnu/getopt"/>
+    <property name="gnu.getopt.lib" value="${gnu.getopt.root}/lib"/>
+    <path id="gnu.getopt.classpath">
+      <fileset dir="${gnu.getopt.lib}">
+        <include name="*.jar"/>
+      </fileset>
+    </path>
+
+    <!-- JUnit -->
+    <property name="junit.junit.root" value="${project.thirdparty}/junit/junit"/>
+    <property name="junit.junit.lib" value="${junit.junit.root}/lib"/>
+    <path id="junit.junit.classpath">
+      <pathelement path="${junit.junit.lib}/junit.jar"/>
+    </path>
+
+    <!-- JavaGroups -->
+    <property name="javagroups.javagroups.root" value="${project.thirdparty}/javagroups/javagroups"/>
+    <property name="javagroups.javagroups.lib" value="${javagroups.javagroups.root}/lib"/>
+    <path id="javagroups.javagroups.classpath">
+      <pathelement path="${javagroups.javagroups.lib}/javagroups-2.0.jar"/>
+    </path>
+
+    <!-- MySQL -->
+    <property name="mysql.mysql.root" value="${project.thirdparty}/mysql/mysql"/>
+    <property name="mysql.mysql.lib" value="${mysql.mysql.root}/lib"/>
+    <path id="mysql.mysql.classpath">
+      <pathelement path="${mysql.mysql.lib}/mysql-connector-java-3.0.0-beta-bin.jar"/>
+    </path>
+
+    <!-- Informix -->
+    <property name="informix.informix.root" value="${project.thirdparty}/informix/informix"/>
+    <property name="informix.informix.lib"  value="${informix.informix.root}/lib"/>
+    <path id="informix.informix.classpath">
+      <pathelement path="${informix.informix.lib}/ifxjdbc.jar"/>
+    </path>
+
+    <!-- The combined library classpath -->
+    <path id="library.classpath">
+      <path refid="sun.jndi.classpath"/>
+      <path refid="sun.jaas.classpath"/>
+      <path refid="sun.jsse.classpath"/>
+      <path refid="sun.jts.classpath"/>
+      <path refid="apache.crimson.classpath"/>
+      <path refid="apache.log4j.classpath"/>
+      <path refid="apache.bcel.classpath"/>
+      <path refid="apache.commons.classpath"/>
+      <path refid="gjt.jpl-util.classpath"/>
+      <path refid="gnu.getopt.classpath"/>
+      <path refid="oswego.concurrent.classpath"/>
+      <path refid="junit.junit.classpath"/>
+      <path refid="mysql.mysql.classpath"/>
+      <path refid="informix.informix.classpath"/>
+    </path>
+
+    <!-- ======= -->
+    <!-- Modules -->
+    <!-- ======= -->
+
+    <!-- J2EE -->
+    <property name="jboss.j2ee.root" value="${project.root}/j2ee/output"/>
+    <property name="jboss.j2ee.lib" value="${jboss.j2ee.root}/lib"/>
+    <path id="jboss.j2ee.classpath">
+      <pathelement path="${jboss.j2ee.lib}/jboss-j2ee.jar"/>
+    </path>
+
+    <!-- Common -->
+    <property name="jboss.common.root" value="${project.root}/common/output"/>
+    <property name="jboss.common.lib" value="${jboss.common.root}/lib"/>
+    <path id="jboss.common.classpath">
+      <pathelement path="${jboss.common.lib}/jboss-common.jar"/>
+    </path>
+
+    <!-- System -->
+    <property name="jboss.system.root" value="${project.root}/system/output"/>
+    <property name="jboss.system.lib" value="${jboss.system.root}/lib"/>
+    <path id="jboss.system.classpath">
+      <pathelement path="${jboss.system.lib}/jboss-system.jar"/>
+    </path>
+
+    <!-- Naming -->
+    <property name="jboss.naming.root" value="${project.root}/naming/output"/>
+    <property name="jboss.naming.lib" value="${jboss.naming.root}/lib"/>
+    <path id="jboss.naming.classpath">
+      <pathelement path="${jboss.naming.lib}/jnpserver.jar"/>
+    </path>
+
+    <!-- Server -->
+    <property name="jboss.server.root" value="${project.root}/server/output"/>
+    <property name="jboss.server.lib" value="${jboss.server.root}/lib"/>
+    <path id="jboss.server.classpath">
+      <pathelement path="${jboss.server.lib}/jboss.jar"/>
+    </path>
+
+    <!-- JMX -->
+    <property name="jboss.jmx.root" value="${project.root}/jmx/output"/>
+    <property name="jboss.jmx.lib" value="${jboss.jmx.root}/lib"/>
+    <path id="jboss.jmx.classpath">
+      <pathelement path="${jboss.jmx.lib}/jboss-jmx.jar"/>
+    </path>
+
+    <!-- Security -->
+    <property name="jboss.security.root" value="${project.root}/security/output"/>
+    <property name="jboss.security.lib" value="${jboss.security.root}/lib"/>
+    <path id="jboss.security.classpath">
+      <pathelement path="${jboss.security.lib}/jbosssx.jar"/>
+    </path>
+
+    <!-- The combined depedant module classpath -->
+    <path id="dependentmodule.classpath">
+      <path refid="jboss.j2ee.classpath"/>
+      <path refid="jboss.common.classpath"/>
+      <path refid="jboss.system.classpath"/>
+      <path refid="jboss.naming.classpath"/>
+      <path refid="jboss.server.classpath"/>
+      <path refid="jboss.jmx.classpath"/>
+      <path refid="jboss.security.classpath"/>
+    </path>
+
+    <!-- ===== -->
+    <!-- Tasks -->
+    <!-- ===== -->
+
+    <!-- Where source files live -->
+    <property name="source.java" value="${module.source}/main"/>
+    <property name="source.etc" value="${module.source}/etc"/>
+    <property name="source.resources" value="${module.source}/resources"/>
+    
+    <!-- Where build generated files will go -->
+    <property name="build.reports" value="${module.output}/reports"/>
+    <property name="build.classes" value="${module.output}/classes"/>
+    <property name="build.lib" value="${module.output}/lib"/>
+    <property name="build.api" value="${module.output}/api"/>
+    <property name="build.etc" value="${module.output}/etc"/>
+    <property name="build.gen-src" value="${module.output}/gen-src"/>
+    <property name="build.resources" value="${module.output}/resources"/>
+
+    <!-- Install/Release structure -->
+<!--   <property name="install.id" value="${module.name}-${module.version}"/>  -->
+<!--   <property name="release.id" value="${install.id}"/>                     -->
+<!--   <property name="install.root" value="${module.output}/${install.id}"/>  -->
+
+    <!-- The combined thirdparty classpath -->
+    <path id="thirdparty.classpath">
+      <path refid="library.classpath"/>
+      <path refid="dependentmodule.classpath"/>
+    </path>
+
+    <!-- This module is based on Java 1.3 -->
+    <property name="javac.target" value="1.3"/>
+    
+    <!-- classpath and local.classpath must have a value using with a path -->
+    <property name="classpath" value=""/>
+    <property name="local.classpath" value=""/>
+
+    <!-- The classpath required to build classes. -->
+    <path id="javac.classpath">
+      <pathelement path="${classpath}"/>
+      <pathelement path="${local.classpath}"/>
+      <path refid="thirdparty.classpath"/>
+    </path>
+
+    <!-- The classpath required to build javadocs. -->
+    <path id="javadoc.classpath">
+      <path refid="javac.classpath"/>
+    </path>
+
+    <!-- Packages to include when generating api documentation -->
+    <property name="javadoc.packages" value="javax.management.*, org.jboss.*"/>
+
+    <!-- Override JUnit defaults -->
+    <property name="junit.timeout" value="240000"/> <!-- 4 minutes -->
+    <property name="junit.batchtest.todir" value="${build.reports}"/>
+    <property name="junit.jvm.options" value="-Ddummy"/>
+
+    <!-- xdoclet -->
+    <path id="xdoclet.task.classpath">
+      <path refid="javac.classpath"/>
+      <fileset dir="${project.thirdparty}/xdoclet/xdoclet/lib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+    <property name="xdoclet.task.classpath" 
+	      refid="xdoclet.task.classpath"/>
+
+    <!-- Properties used in serialization tests -->
+    <property name="jboss.test.location.jmxri"
+              location="${project.thirdparty}/sun/jmx/lib/jmxri.jar"/>
+    <property name="jboss.test.location.jbossmx"
+              location="${build.lib}/jboss-jmx.jar"/>
+   
+    <path id="serialization.classpath">
+        <pathelement path="${build.lib}/jboss-jmx-testsuite.jar"/>
+       <path refid="thirdparty.classpath"/>
+    </path>
+
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- Compile                                                            -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Compile everything.
+     |
+     | This target should depend on other compile-* targets for each
+     | different type of compile that needs to be performed, short of
+     | documentation compiles.
+   -->
+
+  <target name="compile"
+	  description="Compile all source files."
+	  depends="compile-mbean-sources, compile-classes, compile-etc, compile-resources"/>
+
+  <!-- Compile mbeans with XDoclet -->
+  <target name="compile-mbean-sources" depends="init">
+    <taskdef name="jmxdoclet" classname="xdoclet.modules.jmx.JMXDocletTask" classpathref="xdoclet.task.classpath"/>
+
+    <mkdir dir="${build.gen-src}"/>
+    <jmxdoclet
+	     destdir="${build.gen-src}"
+	     excludedtags="@version,@author">
+      <fileset dir="${source.java}">
+        <include name="**/*.java"/>
+      </fileset>
+      <mbeaninterface mergedir="${project.tools}/etc/xdoclet/templates"/>
+    </jmxdoclet>
+  </target>
+
+  <!-- Compile all class files -->
+  <target name="compile-classes" depends="init">
+    <mkdir dir="${build.classes}"/>
+    <javac destdir="${build.classes}"
+           optimize="${javac.optimize}"
+	   target="${javac.target}"
+           debug="${javac.debug}"
+	   depend="${javac.depend}"
+	   verbose="${javac.verbose}"
+	   deprecation="${javac.deprecation}"
+	   includeAntRuntime="${javac.include.ant.runtime}"
+	   includeJavaRuntime="${javac.include.java.runtime}"
+	   failonerror="${javac.fail.onerror}">
+       <src path="${source.java}"/>
+       <src path="${build.gen-src}"/>
+       <classpath refid="javac.classpath"/>
+       <include name="${javac.includes}"/>
+       <exclude name="${javac.excludes}"/>
+    </javac>
+  </target>
+
+  <!-- Compile etc files (manifests and such) -->
+  <target name="compile-etc" depends="init">
+    <mkdir dir="${build.etc}"/>
+    <copy todir="${build.etc}" filtering="yes">
+      <fileset dir="${source.etc}">
+         <include name="**/*"/>
+      </fileset>
+    </copy>
+  </target>
+  <!-- Compile resource files (dtds) -->
+  <target name="compile-resources" depends="init">
+    <mkdir dir="${build.resources}"/>
+    <copy todir="${build.resources}" filtering="yes">
+      <fileset dir="${source.resources}">
+         <include name="metadata/*.dtd"/>
+      </fileset>
+    </copy>
+  </target>
+
+
+
+  <!-- ================================================================== -->
+  <!-- Archives                                                           -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Build all jar files.
+   -->
+  <target name="jars"
+	  description="Builds all jar files."
+	  depends="compile">
+
+    <mkdir dir="${build.lib}"/>
+    
+    <!-- Build the SAR (afpi.sar) -->
+    <jar jarfile="${build.lib}/afpi.sar">
+      <fileset dir="${build.classes}">
+        <include name="roc/rr/afpi/*.class"/>
+        <include name="roc/rr/afpi/util/*.class"/>
+      </fileset>
+      <fileset dir="${source.resources}/afpi.sar">
+        <include name="**"/>
+      </fileset>
+    </jar>
+
+    <!-- Build the JAR (afpi.jar) -->
+    <jar jarfile="${build.lib}/afpi.jar">
+      <fileset dir="${build.classes}">
+        <include name="roc/rr/afpi/EJBInterceptor.class"/>
+      </fileset>
+    </jar>
+    
+    <!-- Augment run.jar with AFPI classes -->
+
+    <property name="runjar.classes" value="${jboss.system.root}/classes"/>
+    <property name="runjar.lib" value="${jboss.system.root}/lib"/>
+    <property name="runjar.etc" value="${jboss.system.root}/etc"/>
+    <property name="runjar.resources" value="${jboss.system.root}/resources"/>
+
+    <jar jarfile="${runjar.lib}/run.jar" manifest="${runjar.etc}/run.mf">
+      <fileset dir="${runjar.classes}">
+        <include name="org/jboss/Version*.class"/>
+        <include name="org/jboss/Main*.class"/>
+        <include name="org/jboss/system/JBossRMIClassLoader.class"/>
+        <include name="org/jboss/system/server/NoAnnotationURLClassLoader.class"/>
+        <include name="org/jboss/system/server/ServerLoader*.class"/>
+        <include name="org/jboss/system/server/Server.class"/>
+        <include name="org/jboss/system/server/ServerConfig.class"/>
+        <include name="org/jboss/system/ORBSingleton.class"/>
+      </fileset>
+      <fileset dir="${runjar.resources}">
+        <include name="log4j*.properties"/>
+        <include name="org/jboss/version.properties"/>
+      </fileset>
+      <fileset dir="${build.classes}">
+        <include name="rr/Interceptor.class"/>
+        <include name="rr/MBeanInterceptor.class"/>
+        <include name="rr/DBUtil.class"/>
+        <include name="rr/Component.class"/>
+        <include name="rr/MethodSignature.class"/>
+      </fileset>
+   </jar>
+
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Documents                                                          -->
+  <!-- ================================================================== -->
+
+  <!--
+     | Create all generated documenation.
+     |
+     | This target should depend on other docs-* targets for each 
+     | different type of docuementation that is to be generated.
+   -->
+
+  <target name="docs"
+	  description="Builds all documentation."
+	  depends="docs-api"/>
+
+  <!-- Javadocs is an exception, but provide a docs-api to conform. -->
+  <target name="docs-api" 
+	  depends="docs-javadocs"/>
+
+  <!-- 
+     | Check if we need to build javadocs 
+     |
+     | Javadocs will only be generated if one or more .java source files
+     | is newer than the generated index.html.
+   -->
+
+  <target name="docs-javadocs-check" depends="init">
+    <!-- if index.html is newer than the sources we are up to date -->
+    <uptodate property="docs-javadocs.disable"
+	      targetfile="${build.api}/index.html">
+      <srcfiles dir="${source.java}" includes="**/*.java"/>
+    </uptodate>
+  </target>	      
+
+  <!-- Generate Javadoc if we are out of date -->
+  <target name="docs-javadocs"
+	  depends="docs-javadocs-check"
+	  unless="docs-javadocs.disable">
+
+    <mkdir dir="${build.api}"/>
+    <javadoc packagenames="${javadoc.packages}"
+             sourcepath="${source.java}"
+             destdir="${build.api}"
+             classpathref="javadoc.classpath"
+             windowtitle="${javadoc.windowtitle}"
+	     splitindex="${javadoc.splitindex}"
+             doctitle="${javadoc.doctitle}"
+             author="${javadoc.author}"
+             version="${javadoc.version}"
+             public="${javadoc.public}"
+             package="${javadoc.package}"
+             protected="${javadoc.protected}"
+             private="${javadoc.private}"
+             use="${javadoc.use}"
+	     verbose="${javadoc.verbose}">
+      <group title="ROC/RR" packages="roc.rr*"/>
+    </javadoc>
+  </target>
+
+  <target name="javadocs" depends="docs-javadocs"/>
+
+
+  <!-- ================================================================== -->
+  <!-- Install & Release                                                  -->
+  <!-- ================================================================== -->
+
+  <target name="install"
+	  description="Install the structure for a release."
+	  depends="all, _buildmagic:install:default"/>
+
+  <target name="release" depends="install"/>
+
+  <target name="release-zip"
+	  description="Builds a ZIP distribution."
+	  depends="release, _buildmagic:release:zip"/>
+
+  <target name="release-tar"
+	  description="Builds a TAR distribution."
+	  depends="release, _buildmagic:release:tar"/>
+
+  <target name="release-tgz"
+	  description="Builds a TAR-GZ distribution."
+	  depends="release, _buildmagic:release:tgz"/>
+
+  <target name="release-all"
+	  description="Builds a distribution for each archive type."
+	  depends="release-zip, release-tgz"/>
+
+
+  <!-- ================================================================== -->
+  <!-- Cleaning                                                           -->
+  <!-- ================================================================== -->
+
+  <!-- Clean up all build output -->
+  <target name="clean"
+	  description="Cleans up most generated files."
+	  depends="_buildmagic:clean">
+  </target>
+
+  <!-- Clean up all generated files -->
+  <target name="clobber"
+	  description="Cleans up all generated files."
+	  depends="_buildmagic:clobber, clean">
+  </target>
+
+
+  <!-- ================================================================== -->
+  <!-- Misc.                                                              -->
+  <!-- ================================================================== -->
+
+  <property name="install.root" value="../build/output/jboss-3.2.1"/>
+  <property name="install.bin" value="${install.root}/bin"/>
+  <property name="install.config" location="${install.root}/server/default"/>
+
+  <!-- Create the 'afpi' config dir from scratch, based on default -->
+  <target name="clean-install"
+	  description="Set up AFPI configuration based on default.">
+    <!-- Freshen up the config directory -->
+      <delete dir="${install.config}"/>
+      <mkdir dir="${install.config}"/>
+    <!-- Copy the files -->
+      <copy todir="${install.config}" filtering="no">
+        <fileset dir="${install.config}/../default">
+          <include name="**/*"/>
+        </fileset>
+      </copy>
+  </target>
+
+  <!-- Configuration files -->
+  <target name="copy-config-files"
+	  description="Place AFPI configuration where it's needed."
+	  depends="jars">
+    <copy todir="${install.config}/conf" filtering="no">
+      <fileset dir="${source.resources}">
+         <include name="faultload.xml"/>
+      </fileset>
+    </copy>
+    <copy todir="${install.config}/conf" filtering="no">
+      <fileset dir="${source.resources}">
+         <include name="ttl.xml"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- JAR files -->
+  <target name="copy-jar-files"
+	  description="Place jars where they are needed."
+	  depends="jars">
+    <copy todir="${install.config}/lib" filtering="no">
+      <fileset dir="${module.output}/lib">
+        <include name="afpi.jar"/>
+      </fileset>
+    </copy>
+    <copy todir="${install.bin}" filtering="no">
+      <fileset dir="${runjar.lib}">
+         <include name="run.jar"/>
+      </fileset>
+    </copy>
+    <copy todir="${install.config}/lib" filtering="no">
+      <fileset dir="${module.output}/lib">
+        <include name="afpi.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- SAR files -->
+  <target name="copy-sar-files"
+	  description="Place AFPI SARs where they are needed."
+	  depends="jars">
+    <copy todir="${install.config}/deploy" filtering="no">
+      <fileset dir="${module.output}/lib">
+         <include name="afpi.sar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="main"
+	  description="Executes the default target (most)."
+	  depends="most"/>
+
+  <target name="all"
+	  description="Builds everything."
+	  depends="clean-install, most"/>
+
+  <target name="most" 
+	  description="Builds almost everything."
+	  depends="jars, copy-config-files, copy-jar-files, copy-sar-files"/>
+
+  <target name="help"
+          description="Show this help message."
+	  depends="_buildmagic:help:standard"/>
+
+</project>

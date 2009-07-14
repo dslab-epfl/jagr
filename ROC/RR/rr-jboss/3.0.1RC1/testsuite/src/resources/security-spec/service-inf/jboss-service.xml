@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+   <!-- The custom JAAS login configuration service that installs 
+       a Configuration capable of dynamically updating the
+       config settings
+   -->
+   <mbean code="org.jboss.test.security.service.SecurityConfig"
+         name="jboss.security.tests:service=SecuritySpecLoginConfig">
+      <attribute name="AuthConfig">META-INF/spec-test-config.xml</attribute>
+      <attribute name="SecurityConfigName">jboss.security:name=SecurityConfig</attribute>
+   </mbean>
+
+</server>

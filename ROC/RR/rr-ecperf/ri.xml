@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!--  ECperf deploy actions
+
+      Edit the config/ri.env file to set up for the local
+      environment.
+
+      The targets here will invoke the ant targets in build.xml to
+      do the building.  The deploy targets consist of:
+
+        ecperf-deploy [default]
+	emulator-deploy
+        deploy-all
+ 
+  -->
+
+<project name="ECPerf-Ref-Server" default="ecperf-deploy">
+
+  <!-- Load the external properties.  
+       These will override any settings here. -->
+  <property file="config/ri.env"/>
+
+  <property name="appserver" value="ri"/>
+  
+  <property name="compile.classpath"
+            value="${JAVAX_JAR}:jars/xerces.jar"/>
+
+  <target name="emulator-build">
+    <ant antfile="build.xml"
+         target="emulator-ear"/></target>
+ 
+  <target name="loaddb">
+    <ant antfile="build.xml"
+         target="loaddb"/></target>
+
+  <target name="ecperf-build">
+    <ant antfile="build.xml"
+         target="ecperf-ear"/></target>
+
+  <target name="supplier-build">
+    <ant antfile="build.xml"
+         target="supplier"/></target>
+
+
+  <target name="deploy-all" depends="ecperf-deploy,emulator-deploy" /> 
+
+
+<!--  Targets to deploy .EAR files -->
+
+  <target name="ecperf-deploy" depends="ecperf-build">
+      <echo message="J2EE_HOME = ${J2EE_HOME} JAVAX_JAR = ${JAVAX_JAR}" />
+      <exec
+            dir="./jars"
+            executable="${J2EE_HOME}/bin/deploytool"
+            failonerror="true" >
+
+            <arg value="-deploy"/>
+            <arg value="ecperf.ear" />
+            <arg value="${ECPERF_HOST}" />
+            <arg value="ecperf-client.jar" />
+      </exec>
+  </target>
+
+
+  <target name="emulator-deploy" depends="emulator-build">    
+        <echo message="J2EE_HOME = ${J2EE_HOME} JAVAX_JAR = ${JAVAX_JAR}" />
+        <exec
+            dir="./jars"
+            executable="${J2EE_HOME}/bin/deploytool"
+            failonerror="true" >
+
+            <arg value="-deploy"/>
+            <arg value="emulator.ear" />
+            <arg value="${EMULATOR_HOST}" />
+        </exec>
+  </target>
+
+</project>

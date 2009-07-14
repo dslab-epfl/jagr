@@ -1,0 +1,8 @@
+grant {
+    permission java.net.SocketPermission "*:0-65535",
+        "connect,accept";
+    permission java.net.SocketPermission "*:80", "connect";
+    permission java.sql.SQLPermission "setLog";
+    permission java.util.PropertyPermission "*", "read";	
+};
+

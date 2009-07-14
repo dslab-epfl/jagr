@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar>
+    <enterprise-beans>
+        
+       <session>
+            <description>Nextgen test bean stateless</description>
+            <ejb-name>nextgen.StatelessSession</ejb-name>
+            <home>org.jboss.test.deadlock.interfaces.StatelessSessionHome</home>
+            <remote>org.jboss.test.deadlock.interfaces.StatelessSession</remote>
+            <ejb-class>org.jboss.test.deadlock.bean.StatelessSessionBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+            <env-entry>
+                <env-entry-name>myNameProp</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>marc</env-entry-value>
+            </env-entry>
+            <env-entry>
+                <env-entry-name>subContext/myNameProp</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>marc with subContext</env-entry-value>
+            </env-entry>
+        </session>
+        <entity>
+            <description>Nextgen test bean entity </description>
+            <ejb-name>nextgen.EnterpriseEntity</ejb-name>
+            <home>org.jboss.test.deadlock.interfaces.EnterpriseEntityHome</home>
+            <remote>org.jboss.test.deadlock.interfaces.EnterpriseEntity</remote>
+            <ejb-class>org.jboss.test.deadlock.bean.EnterpriseEntityBean</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>java.lang.String</prim-key-class>
+            <reentrant>False</reentrant>
+            <cmp-field>
+                <field-name>name</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>otherField</field-name>
+            </cmp-field>
+            <primkey-field>name</primkey-field>
+        </entity>
+    </enterprise-beans>
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>nextgen.EnterpriseEntity</ejb-name>
+                <method-name>*</method-name>
+            </method>
+            <method>
+                <ejb-name>nextgen.StatelessSession</ejb-name>
+                <method-name>callAB</method-name>
+            </method>
+            <method>
+                <ejb-name>nextgen.StatelessSession</ejb-name>
+                <method-name>callBA</method-name>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+        <container-transaction>
+            <method>
+                <ejb-name>nextgen.StatelessSession</ejb-name>
+                <method-name>requiresNewTest</method-name>
+            </method>
+            <trans-attribute>RequiresNew</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor>
+</ejb-jar>
+

@@ -1,0 +1,44 @@
+Start RMI registry
+
+> rmiregistry &
+
+Start Server 
+
+>java -Djava.security.policy=java.policy -Djava.rmi.server.hostname=localhost ComputeEngine
+
+
+Start client
+> java -Djava.security.policy=java.policy ComputePi localhost 20
+
+
+
+=========================
+Exceptions: all are subclasses to java.rmi.RemoteException
+
+
+Server in registry but doesn't exist
+
+>> ComputePi exception: java.rmi.ConnectException: Connection refused to host: localhost; nested exception is: 
+        java.net.ConnectException: Connection refused
+
+
+No registry
+
+>> ComputePi exception: java.rmi.ConnectException: Connection refused to host: localhost; nested exception is: 
+        java.net.ConnectException: Connection refused
+
+
+Server not in registry
+
+>> ComputePi exception: java.rmi.NotBoundException: Compute
+
+
+Server crashes during a call
+
+>> ComputePi exception: java.rmi.UnmarshalException: Error unmarshaling return header; nested exception is: 
+        java.io.EOFException
+
+
+Server suspended (Ctrl-z)
+
+>> client hangs forever (I killed it after 10min)

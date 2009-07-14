@@ -1,0 +1,155 @@
+<script language="JavaScript">
+// change image to name_on 
+  function img_on(name) {
+    if (document.images) 
+      document['img_'+name].src = eval('img_'+name+'_on.src');
+  }
+
+  // change image to name_off
+  function img_off(name) {
+    if (document.images)
+      document['img_'+name].src = eval('img_'+name+'_off.src');
+  }
+</script>
+
+
+<script language="JavaScript">
+
+<!--
+// load all our images here
+if (document.images) {
+
+  img_help_off = new Image();
+  img_help_off.src = '/estore/images/help.gif';
+  img_help_on = new Image();
+  img_help_on.src = '/estore/images/helpHL.gif';
+
+  img_signin_off = new Image();
+  img_signin_off.src = '/estore/images/sign-in.gif';
+  img_signin_on = new Image();
+  img_signin_on.src = '/estore/images/sign-inHL.gif';
+
+  img_signout_off = new Image();
+  img_signout_off.src = '/estore/images/sign-out.gif';
+  img_signout_on = new Image();
+  img_signout_on.src = '/estore/images/sign-outHL.gif';
+
+  img_search_off = new Image();
+  img_search_off.src = '/estore/images/search.gif';
+  img_search_on = new Image();
+  img_search_on.src = '/estore/images/searchHL.gif';
+
+  img_myaccount_off = new Image();
+  img_myaccount_off.src = '/estore/images/my_account.gif';
+  img_myaccount_on = new Image();
+  img_myaccount_on.src = '/estore/images/my_accountHL.gif';
+
+  img_cart_off = new Image();
+  img_cart_off.src = '/estore/images/cart.gif';
+  img_cart_on = new Image();
+  img_cart_on.src = '/estore/images/cartHL.gif';
+
+  img_fish_off = new Image();
+  img_fish_off.src = '/estore/images/fish.gif';
+  img_fish_on = new Image();
+  img_fish_on.src = '/estore/images/fishHL.gif';
+
+  img_dogs_off = new Image();
+  img_dogs_off.src = '/estore/images/dogs.gif';
+  img_dogs_on = new Image();
+  img_dogs_on.src = '/estore/images/dogsHL.gif';
+
+  img_reptiles_off = new Image();
+  img_reptiles_off.src = '/estore/images/reptiles.gif';
+  img_reptiles_on = new Image();
+  img_reptiles_on.src = '/estore/images/reptilesHL.gif';
+
+  img_cats_off = new Image();
+  img_cats_off.src = '/estore/images/cats.gif';
+  img_cats_on = new Image();
+  img_cats_on.src = '/estore/images/catsHL.gif';
+
+  img_birds_off = new Image();
+  img_birds_off.src = '/estore/images/birds.gif';
+  img_birds_on = new Image();
+  img_birds_on.src = '/estore/images/birdsHL.gif';
+}
+
+// -->
+</script>
+
+<table width="100%" cellspacing="0" border="0"
+  background="/estore/images/bkg-topbar.gif">
+<tr>
+<td>
+<a href="main"><image src="/estore/images/logo-topbar.gif" border="0"></a>
+</td>
+<td align="left">
+<form action="/estore/control/search">
+<font color="cyan" size="-1">What are you looking for?</font>
+<br>
+<input type="text" size="14" name="search_text">
+<input type="image" border="0"
+          src="/estore/images/search.gif"
+          name="search">
+</form>
+</td>
+<td align="right">
+<a href="/estore/control/cart" onmouseover="img_on('cart')" onmouseout="img_off('cart')"><img src="/estore/images/cart.gif" border="0" name="img_cart"></a>
+<img src="/estore/images/separator.gif" border="0">
+
+
+
+<a href="/estore/control/signout" onmouseover="img_on('signout')" onmouseout="img_off('signout')"><img src="/estore/images/sign-out.gif" border="0" name="img_signout"></a>
+<img src="/estore/images/separator.gif" border="0">
+<a href="/estore/control/editaccount" onmouseover="img_on('myaccount')" onmouseout="img_off('myaccount')"><img src="/estore/images/my_account.gif" border="0" name="img_myaccount"></a>
+
+
+<img src="/estore/images/separator.gif" border="0">
+<a href="/estore/control/help" onmouseover="img_on('help')" onmouseout="img_off('help')"><img src="/estore/images/help.gif" border="0" name="img_help"></a>
+</td>
+</tr>
+</table>
+
+<table width="100%" cellspacing="0" border="0" height="20"
+  background="white">
+<tr>
+<td align="center">
+<a href="category?category_id=FISH" onmouseover="img_on('fish')" onmouseout="img_off('fish')"><img src="/estore/images/fish.gif" border="0" name="img_fish"></a>
+<img src="/estore/images/separator.gif" border="0">
+<a href="category?category_id=DOGS" onmouseover="img_on('dogs')" onmouseout="img_off('dogs')"><img src="/estore/images/dogs.gif" border="0" name="img_dogs"></a>
+<img src="/estore/images/separator.gif" border="0">
+<a href="category?category_id=REPTILES" onmouseover="img_on('reptiles')" onmouseout="img_off('reptiles')"><img src="/estore/images/reptiles.gif" border="0" name="img_reptiles"></a>
+<img src="/estore/images/separator.gif" border="0">
+<a href="category?category_id=CATS" onmouseover="img_on('cats')" onmouseout="img_off('cats')"><img src="/estore/images/cats.gif" border="0" name="img_cats"></a>
+<img src="/estore/images/separator.gif" border="0">
+<a href="category?category_id=BIRDS" onmouseover="img_on('birds')" onmouseout="img_off('birds')"><img src="/estore/images/birds.gif" border="0" name="img_birds"></a>
+</td>
+</tr>
+</table>
+
+<table height="85%" width="100%"  cellspacing="0" border="0">
+<tr>
+<td valign="top">
+</td>
+</tr>
+<tr>
+<td valign="bottom">
+</td>
+</tr>
+<tr>
+<td valign="bottom">
+<table width="100%"  cellspacing="0" border="0"
+  ><tr>
+
+
+
+<td align="center"><img src="/estore/images/powered_by_jboss_flat_metal.gif" border="0">
+</td>
+
+</tr>
+</table>
+
+</td>
+</tr>
+</table>

@@ -1,0 +1,29 @@
+#        File should contain at least 4 rollback segments, and is used to
+#		 create/load dbbench tablespaces and load the data.
+#
+#
+#
+#
+#
+
+db_name=DBNAME
+control_files           = cntrl.dbf
+
+db_files		= 256
+#db_file_multiblock_read_count = 4
+db_file_multiblock_read_count = 256
+db_block_buffers        = 10000
+db_block_size		= 2048
+dml_locks               = 2500
+log_checkpoint_interval = 999999999
+log_buffer              = 1048576
+max_rollback_segments	= 1000
+open_cursors	= 512
+processes               = 100
+sessions                = 200
+transactions            = 200
+transactions_per_rollback_segment = 1
+rollback_segments       = (r01,r02,r03,r04,r05,r06,r07,r08,r09)
+shared_pool_size 	= 10000000
+sort_area_size	=	8388698
+parallel_max_servers = 100

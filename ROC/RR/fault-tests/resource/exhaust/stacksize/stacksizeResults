@@ -1,0 +1,33 @@
+
+As User
+------
+
+Default 
+
+[prem@rrapp1 test]$ java StackSize
+Exception in thread "main" java.lang.StackOverflowError
+
+[prem@rrapp1 test]$ ulimit -s 50
+[prem@rrapp1 test]$ java StackSize
+Java HotSpot(TM) Client VM warning: Attempt to allocate stack guard pages failed.
+Fatal: Stack size too small. Use 'java -Xss' to increase default stack size.
+[prem@rrapp1 test]$ java -Xss1024k StackSize
+Java HotSpot(TM) Client VM warning: Attempt to allocate stack guard pages failed.
+Fatal: Stack size too small. Use 'java -Xss' to increase default stack size.
+
+
+
+[prem@rrapp1 test]$ ulimit -s 1024
+[prem@rrapp1 test]$ java StackSize
+Exception in thread "main" java.lang.StackOverflowError
+
+
+As Root
+------
+
+Same as above
+
+
+
+
+

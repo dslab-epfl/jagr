@@ -1,0 +1,290 @@
+<!-- $Id: faultload.xml,v 1.4 2004/05/09 01:32:10 candea Exp $ -->
+
+<fault-injections>
+
+<!-- 1st block -->
+
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>30</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>40</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>50</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>60</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>70</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>80</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>90</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>100</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>110</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByCategory</jndi-name> <time-second>120</time-second> </microreboot>
+
+<!-- 2nd block -->
+
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>130</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>140</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>150</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>160</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>170</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>180</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>190</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>200</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>210</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBid</jndi-name> <time-second>220</time-second> </microreboot>
+
+<!-- 3rd block -->
+
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>230</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>240</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>250</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>260</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>270</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>280</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>290</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>300</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>310</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseRegions</jndi-name> <time-second>320</time-second> </microreboot>
+
+
+<!-- 4th block -->
+
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>330</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>340</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>350</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>360</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>370</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>380</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>390</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>400</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>410</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BrowseCategories</jndi-name> <time-second>420</time-second> </microreboot>
+
+
+<!-- 5th block -->
+
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>430</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>440</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>450</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>460</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>470</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>480</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>490</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>500</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>510</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterItem</jndi-name> <time-second>520</time-second> </microreboot>
+
+
+<!-- 6th block -->
+
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>530</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>540</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>550</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>560</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>570</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>580</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>590</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>600</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>610</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_Auth</jndi-name> <time-second>620</time-second> </microreboot>
+
+
+<!-- 7th block -->
+
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>630</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>640</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>650</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>660</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>670</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>680</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>690</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>700</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>710</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_AboutMe</jndi-name> <time-second>720</time-second> </microreboot>
+
+
+<!-- 8th block -->
+
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>730</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>740</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>750</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>760</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>770</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>780</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>790</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>800</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>810</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutBid</jndi-name> <time-second>820</time-second> </microreboot>
+
+<!-- 9th block -->
+
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>830</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>840</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>850</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>860</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>870</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>880</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>890</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>900</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>910</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreBuyNow</jndi-name> <time-second>920</time-second> </microreboot>
+
+<!-- 10th block -->
+
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>930</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>940</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>950</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>960</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>970</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>980</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>990</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>1000</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>1010</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_BuyNow</jndi-name> <time-second>1020</time-second> </microreboot>
+
+<!-- 11th block -->
+
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1030</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1040</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1050</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1060</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1070</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1080</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1090</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1100</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1110</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_SearchItemsByRegion</jndi-name> <time-second>1120</time-second> </microreboot>
+
+<!-- 12th block -->
+
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1130</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1140</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1150</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1160</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1170</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1180</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1190</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1200</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1210</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_PutComment</jndi-name> <time-second>1220</time-second> </microreboot>
+
+<!-- 13th block -->
+
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1230</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1240</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1250</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1260</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1270</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1280</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1290</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1300</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1310</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_RegisterUser</jndi-name> <time-second>1320</time-second> </microreboot>
+
+<!-- 14th block -->
+
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1330</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1340</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1350</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1360</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1370</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1380</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1390</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1400</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1410</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewItem</jndi-name> <time-second>1420</time-second> </microreboot>
+
+<!-- 15th block -->
+
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1430</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1440</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1450</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1460</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1470</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1480</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1490</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1500</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1510</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewBidHistory</jndi-name> <time-second>1520</time-second> </microreboot>
+
+
+<!-- 16th block -->
+
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1530</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1540</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1550</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1560</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1570</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1580</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1590</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1600</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1610</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_StoreComment</jndi-name> <time-second>1620</time-second> </microreboot>
+
+
+<!-- 17th block -->
+
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1630</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1640</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1650</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1660</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1670</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1680</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1690</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1700</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1710</time-second> </microreboot>
+  <microreboot> <jndi-name>SB_ViewUserInfo</jndi-name> <time-second>1720</time-second> </microreboot>
+
+
+<!-- 18th block -->
+
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1730</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1740</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1750</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1760</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1770</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1780</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1790</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1800</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1810</time-second> </microreboot>
+  <microreboot> <jndi-name>User-Item</jndi-name> <time-second>1820</time-second> </microreboot>
+
+
+<!-- 19th block -->
+
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1830</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1840</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1850</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1860</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1870</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1880</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1890</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1900</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1910</time-second> </microreboot>
+  <microreboot> <jndi-name>IDManager</jndi-name> <time-second>1920</time-second> </microreboot>
+
+
+<!-- 20th block -->
+
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1930</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1940</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1950</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1960</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1970</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1980</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>1990</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>2000</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>2010</time-second> </microreboot>
+  <microreboot> <jndi-name>BuyNow</jndi-name> <time-second>2020</time-second> </microreboot>
+
+<!-- 21st block -->
+
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2030</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2040</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2050</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2060</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2070</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2080</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2090</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2100</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2110</time-second> </microreboot>
+  <microreboot> <jndi-name>Comment</jndi-name> <time-second>2120</time-second> </microreboot>
+
+<!-- OldItem is not being used -->
+
+</fault-injections>

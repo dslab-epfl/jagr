@@ -1,0 +1,92 @@
+RUBiS Installation Guide:
+
+1) Install mysql db server
+	a) Follow installation directions from mysql.com
+
+2) Start mysql db server
+	shell> cd $MYSQL_INSTALLATION_DIR
+	shell> ./bin/safe_mysqld
+
+2) Setup rubis database
+
+	a) run rr-rubis/database/rubis.sql script
+
+	shell> mysql < rubis.sql
+
+	b) log in as root and enter mysql and select mysql database
+	
+	shell> mysql
+	mysql> use mysql;
+	
+	c) within mysql enter following command to set up a rubis user:
+	
+	mysql> insert into 
+db(Host,Db,User,Select_priv,Insert_priv,Update_priv,Delete_priv,Create_priv,Drop_priv,Grant_priv,References_priv,Index_priv,Alter_priv)
+		values ('localhost.localdomain', 'rubis', 'root', 'Y', 'Y', 'Y','Y', 
+'Y', 'Y', 'Y', 'Y', 'Y', 'Y');
+	
+	d) populate with additonal data
+	
+	mysql> quit;
+	root> mysql -n -T -v -D rubis -e "source $RUBIS_HOME/database/categories.sql"
+	root> mysql -n -T -v -D rubis -e "source $RUBIS_HOME/database/regions.sql"
+	root> mysql -n -T -v -D rubis -e "source $RUBIS_HOME/database/update_ids.sql"
+	
+4) Build RUBiS
+
+	Note: I used the EJB version with Bean Managed Persistence
+	
+	a) edit 2 file paths to point to the correct location: 
+	  1) public static final HTMLFilesPath = "/home/mdelgado/rubis/RUBiS/ejb_rubis_web";
+          in $RUBIS_HOME/EJB_EntityBean_id_BMP/edu/rice/rubis/beans/servlets/Config.java
+          2) public static final String HTMLFilesPath = "/home/mdelgado/rubis/RUBiS/ejb_rubis_web";
+          in $RUBIS_HOME/EJB_EntityBean_id_BMP/edu/rice/rubis/beans/servlets/ConfigJBoss.java
+
+
+        b) build ejbs
+
+	> cd $RUBIS_HOME/EJB_EntityBean_id_BMP
+	> make all
+	
+	c) build the war file
+	Note: I had problems with ant on rrapp1 so i had to modify the build.xml file in this directory
+	to only package up the servlets and html into the war file:
+	
+	> ant
+	
+	d) copy the resulting rubis.jar and ejb_rubis_web.war to your $JBOSS_HOME/server/default/deploy directory
+	
+5) Copy Config files
+	a) There are a couple of jboss related config files which need to be copied to your jboss directories
+	They are located in $RUBIS_HOME/jboss_config directory
+	
+	> cp mysql-service.xml $JBOSS_HOME/server/default/deploy
+	> cp login-config.xml $JBOSS_HOME/server/default/conf
+	> cp mm.mysql-2.0.12-bin.jar $JBOSS_HOME/server/default/lib directory
+
+
+6) Start up JBoss
+
+7) Run RUBiS
+
+	a) to access the website use:
+	http://localhost:8080/ejb_rubis_web/
+	
+	b) to run the load generator:
+	> cd $RUBIS_HOME/Client
+	
+		1) edit the rubis.properties
+		2) change the paths in the file to point to the appropriate files in your directory
+	
+	Compile:	
+	> make all
+	
+	
+	To initialize the DB with users:
+	> make initDB
+	
+	To run the client:
+	> make emulator
+
+	To edit the workload properties, edit $RUBIS_HOME/workload/transitions.txt 
+

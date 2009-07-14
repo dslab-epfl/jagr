@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Id: mysql-ds.xml,v 1.4 2004/02/28 03:27:10 candea Exp $ -->
+<!-- ==================================================================== -->
+<!--  Datasource config for RUBiS using MySQL on localhost                -->
+<!-- ==================================================================== -->
+
+<datasources>
+  <local-tx-datasource>
+    <jndi-name>rubis</jndi-name>
+    <connection-url>jdbc:mysql://localhost:3306/rubis</connection-url>
+    <driver-class>org.gjt.mm.mysql.Driver</driver-class>
+    <user-name>rubis</user-name>
+    <password>tehpassword</password>
+  </local-tx-datasource>
+
+  <!-- datasource for RUBiS Entity Bean ID BMP version -->
+  <local-tx-datasource>
+    <jndi-name>rubis_entitybean_BMP</jndi-name>
+    <connection-url>jdbc:mysql://localhost:3306/rubis_entitybean_BMP</connection-url>
+    <driver-class>org.gjt.mm.mysql.Driver</driver-class>
+    <user-name>rubis</user-name>
+    <password>tehpassword</password>
+  </local-tx-datasource>
+
+  <!-- datasource for RUBiS CMP2.0 version -->
+  <local-tx-datasource>
+    <jndi-name>rubis_local_remote_CMP2</jndi-name>
+    <connection-url>jdbc:mysql://localhost:3306/rubis_local_remote_CMP2</connection-url>
+    <driver-class>org.gjt.mm.mysql.Driver</driver-class>
+    <user-name>rubis</user-name>
+    <password>tehpassword</password>
+  </local-tx-datasource>
+
+</datasources>

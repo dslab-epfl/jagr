@@ -1,0 +1,85 @@
+
+As user
+
+Default value
+
+[prem@rrapp1 test]$ ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+Created all 100 threads
+
+Set value to 2
+
+[prem@rrapp1 test]$ java StartSimpleThread
+-bash: fork: Resource temporarily unavailable
+
+
+Set Value to 10
+
+error message -- log file created, but couldnt reproduce it.
+
+Set value to 25
+
+Create 10
+Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+        at java.lang.Thread.start(Native Method)
+        at StartSimpleThread.main(StartSimpleThread.java:12)
+Create 11
+
+
+
+As ROOT
+------
+
+Default: Creates 100 threads.
+
+
+Max no: of Process set to 10
+
+
+
+[root@rrapp1 test]# ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 10
+virtual memory        (kbytes, -v) unlimited
+
+
+Creates all 100 threads
+
+Increased the no of threads to 1000 -- also created all 1000 threads
+
+Set Max no: of process to 2
+
+Created all 1000 threads
+
+Incresed to 10000 threads.  Created about 3636 since the default is 4085.
+
+
+Create 3635
+Exception in thread "main" java.lang.OutOfMemoryError: unable to create new native thread
+        at java.lang.Thread.start(Native Method)
+        at StartSimpleThread.main(StartSimpleThread.java:12)
+Create 3636
+Command attempted to use minibuffer while in minibuffer
+minibuffer-complete: Opening directory: no such file or directory, /home/prem/ROC/
+minibuffer-complete: Opening directory: no such file or directory, /home/prem/ROC/RR/
+

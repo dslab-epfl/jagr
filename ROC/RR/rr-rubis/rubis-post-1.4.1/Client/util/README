@@ -1,0 +1,51 @@
+#for CVS
+# $Id: README,v 1.3 2004/03/27 02:54:00 fjk Exp $
+#
+
+extract_usession.pl
+	:extracts lines from file(trace-client0.html) that have 
+         "UserSession" in it. place it in the same directory.
+         usage ./extract_usession.pl file_name
+extract_usession_euser.pl
+        :extracts lines from file(trace-client0.html) that have 
+         "UserSession" in it and classifies it according to 
+         UserSession(client thread) size. Create UserSessionXXX
+         directory and place trace-client0.html file there.
+         UserSession size can be extracted from emulator config_file
+         (ex. rubis.sess_state.properties)
+	 usage ./extract_usession_euser.pl file_name config_file_name
+mktbl.pl
+	:Make transition table format from file(trace-client0.html).
+         specify emulator config_file(ex. rubis.sess_state.properties)
+         usage ./mktbl.pl file_name config_file_name
+
+extract_byminute.pl        !!STALE!! use extract_byminute2.pl
+        :Extract log message per minute. "byminute" directory will 
+         be created and log files of fine glanularity will be placed
+         there. 
+         usage ./extract_byminute.pl file_name 
+         # due to change in edu/rice/rubis/client/UserSession.java 
+         # timestamp format of Client simulator has changed
+         # from revision 1.13. So trace file generated w/later than
+         # 1.13, should be dealt w/extract_byminute2.pl
+
+extract_byminute2.pl       
+        :Extract log message per minute. "byminute" directory will 
+         be created and log files of fine glanularity will be placed
+         there. 
+         usage ./extract_byminute2.pl file_name
+         # see comment about extracted_byminute.pl above
+
+extract_error.awk
+	:Extract error info from trace file.
+	 usage ./extract_error.awk file_name
+
+extract_outline.awk 
+	:Extract only user transition outline from trace file.
+         usage ./extract_outline.awk file_name 
+
+compare_table.pl
+	:Compare original workload table and generated table by
+         mktbl.pl. row_size is originally set to 30. 
+	 notice: forget about false message in "Home" row.
+         usage ./compare_table.pl workload_file generated_file [row_size]

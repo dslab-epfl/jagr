@@ -1,0 +1,12 @@
+/// ====================================================================== ///
+//                                                                          //
+//  JBoss Security Policy                                                   //
+//                                                                          //
+/// ====================================================================== ///
+
+// $Id: server.policy,v 1.1.1.1 2002/10/03 21:06:56 candea Exp $
+
+grant {
+   // Allow everything for now
+   permission java.security.AllPermission;
+};

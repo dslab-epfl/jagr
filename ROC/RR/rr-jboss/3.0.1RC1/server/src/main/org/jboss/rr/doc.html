@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <!-- $Id: doc.html,v 1.2 2003/02/20 22:20:47 steveyz Exp $ -->
+
+  <title>Miscellaneous</title>
+     
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  
+  <meta name="author" content="George Candea">
+</head>
+<body text="#000000" bgcolor="#ffffff" link="#000099" vlink="#990099"
+ alink="#000099">
+<h4>Managing the application</h4>
+<ul>
+  <li>use the JMX console web application as an example for how to write a
+servlet that allows us to restart services (see jboss-all/varia module)</li>
+  <li>the f-map will be served as a clickable GIF file (hopefuly the IBM code
+can generate a GIF file) with the ability to restart individual components
+and have immediate visual feedback</li>
+</ul>
+<h4>Architecture</h4>
+The initial RR proposal talked about adding 3 modules/agents to the execution
+infrastructure: a monitor, an oracle, and a recoverer. &nbsp;Considering that
+we're doing the automated FI stuff, we could have 4 MBeans: RRFaultInjector,
+RRMonitor, RROracle, ServiceController. Each JBoss MBean (extends the JMX
+MBean) already provides four methods that are to be invoked by the existing
+JBoss ServiceController MBean: <font
+ face="Courier New, Courier, monospace">create()</font>, <font
+ face="Courier New, Courier, monospace">stop()</font>, <font
+ face="Courier New, Courier, monospace">stop()</font>, <font
+ face="Courier New, Courier, monospace">destroy()</font>. Therefore, <i>ServiceController</i>
+will play the role of the recoverer.<br>
+<br>
+Here is how things are expected to work:<br>
+<br>
+RRFaultInjector created by SARDeployer and started manually by the operator,
+from the JMX console (web-based)<br>
+<ol>
+  <li>Tells RROracle that this is just the test mode, so it shouldn't do anything</li>
+  <li>Scans the system to figure out what it should inject and where</li>
+  <li>For each injectable fault, it tells the service to inject that upon
+next request</li>
+  <li>Triggers the generation of load (should the load generator be an MBean
+as well?)</li>
+  <li>Needs to maintain state, in order to know what has been injected so
+far</li>
+  <li>At some point it needs to figure out that things need to be restarted
+to proceed to the next fault</li>
+  <li>Once single-point injection is done, proceeds with multi-point injection<br>
+  </li>
+</ol>
+RRMonitor created and started by SARDeployer<br>
+<ol>
+  <li>Initialized with an empty f-map (or one based on the EJB deployment
+descriptors)<br>
+  </li>
+  <li>Notices injected fault (although has no idea it is injected)</li>
+  <li>Notices subsequent failures and updates the f-map appropriately</li>
+</ol>
+RROracle created and started by SARDeployer<br>
+<ol>
+  <li>If told to do nothing, does not react to RRMonitor's notifications</li>
+  <li>If not told to do nothing, uses the f-map information to decide what
+to restart</li>
+  <li>Invokes a ServiceController method to restart appropriate service/object
+(EJBs?)</li>
+</ol>
+ServiceController created and started by SARDeployer
+<ul>
+  <li>Add a method of the form <font
+ face="Courier New, Courier, monospace">restart(</font><i>ObjectName</i><font
+ face="Courier New, Courier, monospace">)</font> which can be invoked by RROracle</li>
+</ul>
+<h4>Miscelleaneous Notes</h4>
+<ul>
+  <li>JMX agent services are objects that support standard operations on
+the MBeans registered in the MBean server. &nbsp;Agent services are often
+themselves MBeans, so they can be controlled as well. &nbsp;A standard service
+that is part of the JMX spec (but not relied upon by JBoss) is the <i>Monitor</i>
+service. &nbsp;Monitor services observe an MBean attribute's numerical or
+string value, and can notify other objects of several types of changes in
+the target. &nbsp;This seems to be a clean way to implement heart beats in
+an efficient way.</li>
+</ul>
+<h4>The Brain</h4>
+<ul>
+  <li>Takes over the roles of RRMonitor and RROracle</li>
+  <li>TheBrain will run on a seperate JVM and possibly a seperate machine over the network.</li>  
+  <li>All failure noticies (FailureReport objects) should be send directly to TheBrain using UDP from the EJB/Servlet Containers themselves.  This means that FailureMonitor.java and FMap.java will be obsolete.  </li>
+  <li>ClientContainer.java and ServletHolder.java contain examples of sending a FailureReport object to the brain.</li>
+  <li>Currently the socket address of TheBrain is hardcoded into the code that sends the message.  This will have to change soon </li>
+  <li>TheBrain will start with an empty fault map and infer the fault map as it receives the FailureReport messages.  In the current non-intelligent design, when it receives a failure message, it will also simply restart the failing component as well as any component reachable from it according to the current f-map</li>
+  <li>TheBrain will need to send a restart message to some local restart agent(s) to trigger any restarts.</li>
+</ul>
+<br>
+</body>
+</html>

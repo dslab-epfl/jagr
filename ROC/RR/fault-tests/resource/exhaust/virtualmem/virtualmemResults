@@ -1,0 +1,111 @@
+As User
+------
+
+Deafult : Completes the loop
+
+When Virtual Memory set to 1 & program executed 
+
+[prem@rrapp1 test]$ java testLinked
+Segmentation fault
+
+set to 1024 , 4096, etc
+
+same error as above
+
+when set to 16384
+
+[prem@rrapp1 test]$ ulimit -v 16384
+
+[prem@rrapp1 test]$ java testLinked
+Error occurred during initialization of VM
+Could not reserve enough space for code cache
+
+The above value doubled , same result
+
+set to 131072  same error
+
+
+set to 207872 error log created 
+
+rpp1 test]$ ulimit -v 208896
+[prem@rrapp1 test]$ java testLinked
+Fatal: Unable to create signal thread (may be due to resource limit)
+Aborted
+
+
+[prem@rrapp1 prem]$ ulimit -v 209920
+[prem@rrapp1 prem]$ java testLinked
+Exception in thread "main" java.lang.OutOfMemoryError
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:112)
+        at java.util.jar.JarFile.<init>(JarFile.java:127)
+        at java.util.jar.JarFile.<init>(JarFile.java:65)
+        at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:575)
+        at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:542)
+        at sun.misc.URLClassPath$3.run(URLClassPath.java:320)
+Exception in thread "CompilerThread0" java.lang.OutOfMemoryError: requested 32760 bytes for ChunkPool::allocate. Out of swap space?
+
+
+[prem@rrapp1 test]$ ulimit -v 210944
+[prem@rrapp1 test]$ java testLinked
+Exception in thread "main" java.lang.OutOfMemoryError
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:112)
+        at java.util.jar.JarFile.<init>(JarFile.java:127)
+        at java.util.jar.JarFile.<init>(JarFile.java:65)
+        at sun.misc.URLClassPath$JarLoader.getJarFile(URLClassPath.java:575)
+        at sun.misc.URLClassPath$JarLoader.<init>(URLClassPath.java:542)
+        at sun.misc.URLClassPath$3.run(URLClassPath.java:320)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at sun.misc.URLClassPath.getLoader(URLClassPath.java:309)
+        at sun.misc.URLClassPath.getLoader(URLClassPath.java:286)
+        at sun.misc.URLClassPath.getResource(URLClassPath.java:156)
+        at java.net.URLClassLoader$1.run(URLClassLoader.java:191)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:187)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:289)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:282)
+        at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:274)
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:235)
+        at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:302)
+
+
+
+
+set to 212992 error occured
+
+mod 40000.0
+66650112
+2031616
+339792
+
+Exception java.lang.OutOfMemoryError: requested 64000 bytes for GrET* in /export/BUILD_AREA/jdk1.4.2_01/hotspot/src/share/vm/utilities/growableArray.cpp. Out of swap space?
+
+
+set to 262144 -- completed the loop
+
+[prem@rrapp1 test]$ ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 1024
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) 262144
+
+
+mod 990000.0
+66650112
+59437056
+19741280
+
+
+As Root
+------
+
+Same as above 
+

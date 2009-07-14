@@ -1,0 +1,11 @@
+$Id: README,v 1.2 2003/08/04 03:10:14 candea Exp $
+
+The build process and the actual code is dependent on the JBoss
+release.  Each subdirectory in this directory is named after the JBoss
+release for which that subtree is known to build and do the right
+thing.
+
+Choose a subdirectory, according to your JB release, and place it
+underneath $JBOSS_TOP (i.e., where the jmx, naming, messaging,
+management, etc. directories are).
+

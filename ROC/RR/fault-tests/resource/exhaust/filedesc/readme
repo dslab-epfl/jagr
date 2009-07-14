@@ -1,0 +1,25 @@
+
+MakeFileDesc.java creates directories & files within each directory dynamically based on the size of the 'for' loop.  
+
+When the file descriptor limit was 1024(default) & MakeFileDesc executed without closing the file stream, an exception is thrown (Too many files open).
+1024 files created
+
+With the same limit when run with closing the file stream after each file is written it creates numerous files & directories & he disk space runs out. Exception thrown.
+
+
+
+When logged in as SU with default limit, same result as above.
+
+As SU changed the ulimit -n 4096.
+
+contunies to run & fails at 4095 files
+
+Changed the ulimit -n 66000
+
+continues till about 50137 files & fails (Too many open files in system)
+
+The same expirement was conducted with 3 shells executing simultaneously.  Exception was thrown at he same time when he total files created by each program added to about 50000.
+
+
+ 
+

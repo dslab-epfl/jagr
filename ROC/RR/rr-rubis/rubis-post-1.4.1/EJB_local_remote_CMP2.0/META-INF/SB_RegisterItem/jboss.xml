@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS//EN" "http://www.jboss.org/j2ee/dtd/jboss.dtd">
+
+<!-- 
+This is the JBoss 3.2.1 EJB deployment descriptor for SB_RegisterItem.
+-->
+
+<jboss>
+  <enterprise-beans>
+    <session>
+      <ejb-name>SB_RegisterItem</ejb-name>
+      <jndi-name>SB_RegisterItemHome</jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+</jboss>

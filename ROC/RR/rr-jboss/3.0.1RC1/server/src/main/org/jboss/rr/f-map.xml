@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Id: f-map.xml,v 1.3 2003/03/13 19:45:32 steveyz Exp $ -->
+
+<fmap>
+  <ejb name="EstoreDataSource">
+    <ejb-ref name="TheCatalog" />
+    <ejb-ref name="TheProfileMgr" />
+    <ejb-ref name="TheSignOn" />
+    <ejb-ref name="TheAccount" />
+  </ejb>
+  <ejb name="TheCatalog">
+    <ejb-ref name="TheCart" />
+  </ejb>
+  <ejb name="TheCart">
+    <ejb-ref name="MainServlet" />
+    <ejb-ref name="TheShoppingClientController" />
+  </ejb>
+  <ejb name="TheShoppingClientController">
+    <ejb-ref name="MainServlet" />
+    <ejb-ref name="HttpJspBase" />
+  </ejb>
+  <ejb name="TheProfileMgr">
+    <ejb-ref name="MainServlet" />
+    <ejb-ref name="TheShoppingClientController" />
+  </ejb>
+  <ejb name="TheSignOn">
+    <ejb-ref name="TheShoppingClientController" />
+  </ejb>
+  <ejb name="TheCustomer">
+    <ejb-ref name="TheShoppingClientController" />
+    <ejb-ref name="MainServlet" />
+    <ejb-ref name="HttpJspBase" />
+  </ejb>
+  <ejb name="TheInventory">
+    <ejb-ref name="TheShoppingClientController" />
+    <ejb-ref name="HttpJspBase" />
+  </ejb>
+  <ejb name="InventoryDataSource">
+    <ejb-ref name="TheInventory" />
+  </ejb>
+  <ejb name="TheAccount">
+    <ejb-ref name="TheCustomer" />
+  </ejb>
+  <ejb name="TheOrder">
+    <ejb-ref name="TheCustomer" />
+  </ejb>
+  <ejb name="MainServlet">
+    <ejb-ref name="/estore/control/validatenewaccount" />
+    <ejb-ref name="/estore/control/signout" />
+    <ejb-ref name="/estore/control/verifysignin" />
+    <ejb-ref name="/estore/control/commitorder" />
+    <ejb-ref name="/estore/control/updateaccount" />
+    <ejb-ref name="/estore/control/language" />
+  </ejb>
+</fmap>

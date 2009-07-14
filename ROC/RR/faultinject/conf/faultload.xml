@@ -1,0 +1,19 @@
+<fault-injections>
+
+  <nullmap>
+    <name>User</name>
+    <time-second>300</time-second>
+  </nullmap>
+
+  <corrupt-jndi>
+    <name>SB_RegisterUserHome</name>
+    <time-second>600</time-second>
+    <corruption-type>BOGUS</corruption-type>
+  </corrupt-jndi>
+
+  <throwable>
+     <name>SB_BrowseCategories</name>
+     <time-second>900</time-second>
+  </throwable>
+
+</fault-injections>

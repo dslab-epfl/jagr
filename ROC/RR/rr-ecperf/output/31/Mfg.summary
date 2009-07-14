@@ -1,0 +1,20 @@
+
+			Mfg Summary Report
+			Version : ECperf 1.1 Final Release
+
+Total Number of WorkOrders Processed : 123
+Number of WorkOrders as a result of LargeOrders : 30
+Total WorkOrders Production Rate : 12.30 WorkOrders/min
+LargeOrders Production Rate : 3.00 LargeOrders/min
+
+Total Widget Manufacturing Rate : 319.70 widgets/min
+LargeOrderLine Widget Rate : 215.30 widgets/min	FAILED
+PlannedLines Widget Rate : 104.40 widgets/min	FAILED
+
+RESPONSE TIMES		AVG.		MAX.		90TH%	REQD. 90TH%
+
+			63.346		256.037		25.000		5
+ECPerf Requirement for 90% Response Time FAILED
+ECPerf Requirement for Avg. Response Time FAILED
+
+

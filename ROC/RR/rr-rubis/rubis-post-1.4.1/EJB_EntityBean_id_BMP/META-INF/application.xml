@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- $Id: application.xml,v 1.1 2003/11/29 04:19:13 candea Exp $ -->
+<!-- An application descriptor to package RUBiS as microcomponents -->
+
+<application>
+  <display-name>RubisEAR</display-name>
+  <description>The RR-ified version of RUBiS.</description>
+
+  <module>
+    <ejb>rBid.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rBuyNow.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rCategory.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rComment.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rIDManager.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rItem.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rOldItem.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rOther.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rQuery.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rRegion.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rUser.jar</ejb>
+  </module>
+
+  <module>
+    <web>
+      <web-uri>ejb_rubis_web.war</web-uri>
+      <context-root>ejb_rubis_web</context-root>
+    </web>
+  </module>
+
+</application>
+

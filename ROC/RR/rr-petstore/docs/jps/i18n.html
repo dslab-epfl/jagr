@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt;
+Java[tm] Pet Store &gt; Internationalizing/localizing the
+application</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet
+Store</font></b></a> &gt; <b>Internationalizing/localizing the
+application</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Internationalizing/localizing the application</h1>
+
+<p>This release of the Java Pet Store can be localized in
+Japanese. While the Japanese localization is not complete, the
+application is internationalized, and lacks only some content
+translation. The architecture fully supports content localization.</p>
+
+<h2>Installing Japanese database tables</h2>
+
+<p>The Japanese database tables needed to operate the Japanese version
+of the Java Pet Store are installed whenever you first visit any
+version of the Java Pet Store (default, annotated, Japanese). Consult
+the <a href="install.html">installation section</a> for more
+information.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> The Japanese tables
+work with only the Cloudscape databases. They do not work with the
+Oracle or Sybase datatabases.  <hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<h2>Localizing the application</h2>
+
+<p>If you want to localize the Java Pet Store, then you need to
+provide JavaServer Pages<sup><font size="-2">TM</font></sup>
+components (JSP<sup><font size="-2">TM</font></sup> pages) and a set
+of screen definitions for the locale you plan to support.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<ol>
+
+<li><p><b>Create localized JSP pages.</b></p>
+
+<p>Place these in a subdirectory under
+<code>$JPS_HOME/src/petstore/src/docroot/</code> (UNIX) or
+<code>%JPS_HOME%\src\petstore\src\docroot\</code> (Win32).</p>
+
+<p>For example, the Japanese version of the Java Pet Store has
+localized JSP pages in the directory
+<code>$JPS_HOME/src/petstore/src/docroot/<b>ja</b>/</code>
+(UNIX) or
+<code>%JPS_HOME%\src\petstore\src\docroot\<b>ja</b>\</code>
+(Win32).</p>
+</li>
+
+<li><p><b>Create a localized screen definitions file.</b></p>
+
+<p>The screen definitions (which use your localized JSP pages, of
+course) should go into a file called
+<code>screendefinitions.xml</code>, which should be placed in a
+subdirectory under
+<code>$JPS_HOME/src/petstore/src/docroot/WEB-INF/xml/</code> (UNIX) or
+<code>%JPS_HOME%\src\petstore\src\docroot\WEB-INF\xml\</code> (Win32).
+(See the English and Japanese versions of
+<code>screendefinitions.xml</code>.)</p>
+
+<p>For example, the Japanese screen definitions are stored in
+<code>%JPS_HOME%/src/petstore/src/docroot/WEB-INF/xml/<b>ja</b>/screendefinitions.xml</code>
+(UNIX) or
+<code>%JPS_HOME%\src\petstore\src\docroot\WEB-INF\xml\<b>ja</b>\screendefinitions.xml</code>
+(Win32).</p>
+
+</li>
+
+<li><p><b>Modify the request mappings file to reflect the new locale.</b></p>
+
+<p>Open
+<code>$JPS_HOME/src/petstore/src/docroot/WEB-INF/xml/requestmappings.xml</code>
+(UNIX) or
+<code>%JPS_HOME%\src\petstore\src\docroot\WEB-INF\xml\requestmappings.xml</code>
+(Win32) and add a <code>screen-definition</code> element which maps
+the locale to the new screen definitions file. This element needs two
+attributes:</p>
+
+<ul>
+<li><p>The <code>url</code> attribute contains the path of the screen
+definitions file for the particular locale, relative to the
+<code>docroot</code> directory.</p></li>
+
+<li><p>The <code>language</code> attribute contains the two-letter
+abbreviations for the language and country of the target locale,
+separated by an underscore ("_").</p></li>
+</ul>
+
+<p>For example, the following entries define the screen definitions
+for the English and Japanese versions of the Java Pet Store,
+respectively:</p>
+
+<blockquote><code><pre>&lt;screen-definition
+    url=&quot;<b>/WEB-INF/xml/screendefinitions.xml</b>&quot;
+    language=&quot;<b>en_US</b>&quot;/&gt;</pre></code></blockquote>
+
+<blockquote><code><pre>&lt;screen-definition
+    url=&quot;<b>/WEB-INF/xml/ja/screendefinitions.xml</b>&quot;
+    language=&quot;<b>ja_JP</b>&quot;/&gt;</pre></code></blockquote>
+
+</li>
+
+<li><p><b>Modify the catalog component to reflect the new
+locale.</b></p>
+
+<p>Change the class
+<code>com.sun.j2ee.blueprints.shoppingcart.util.DatabaseNames</code>
+to point to the correct database tables in relation to the
+current locale.</p>
+
+<p>All calls to the catalog component require a locale as an
+argument. The method <code>getTableName()</code> currently handles the
+US and Japanese locales:</p>
+
+<blockquote><pre><code>public static String getTableName(String tableName, Locale locale) {
+    if (locale.equals(Locale.US)) {
+        return tableName;
+    } else if (locale.equals(Locale.JAPAN)) {
+        return tableName + "_ja";
+    }
+    return tableName;
+}</code></pre></blockquote>
+
+<p>Note that the Java Pet Store installs English and Japanese versions
+of the catalog tables. If you add another locale, you'll probably have
+to create database tables that support it.</p>
+
+</li>
+
+<li><p><b>Modify the application's JSP utilities class to reflect the
+new locale.</b></p>
+
+<p>You also need to edit the method
+<code>getLocaleFromLanguage()</code> in the class
+<code>com.sun.j2ee.blueprints.petstore.util.JSPUtil</code>. This
+method currently handles the US and Japanese locales:</p>
+
+<blockquote><pre><code>public static Locale getLocaleFromLanguage(String language) {
+    Locale locale = Locale.US;
+    if (language.equals("English")) locale = Locale.US;
+    else if (language.equals("Japanese")) locale = Locale.JAPAN;
+    return locale;
+}</code></pre></blockquote>
+
+</li>
+
+</ol>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

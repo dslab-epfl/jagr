@@ -1,0 +1,86 @@
+
+configure:
+
+init:
+
+compile-classes:
+     [mkdir]Created dir: /tmp/tst/jboss-all/tomcat41/output/classes
+     [javac]Compiling 22 source files to /tmp/tst/jboss-all/tomcat41/output/classes
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/EngineCreateAction.java:5: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]import org.xml.sax.AttributeList;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/LoggedXmlMapper.java:4: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]import org.xml.sax.AttributeList;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/LoggedXmlMapper.java:82: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]   static class ToAttributeList implements AttributeList
+     [javac]                                           ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:30: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]import javax.servlet.http.HttpSessionContext;
+     [javac]                          ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:182: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]    private static HttpSessionContext sessionContext = null;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:793: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]    public HttpSessionContext getSessionContext() {
+     [javac]           ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:30: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]import javax.servlet.http.HttpSessionContext;
+     [javac]                          ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1226: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]                                               ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/ConfigHandler.java:56: warning: setDebug(int) in org.apache.commons.digester.Digester has been deprecated
+     [javac]         mapper.setDebug(999);
+     [javac]               ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/LoggedXmlMapper.java:42: warning: log(java.lang.String) in org.apache.commons.digester.Digester has been deprecated
+     [javac]   public void log(String msg)
+     [javac]               ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:57: warning: removeValue(java.lang.String) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:57: warning: putValue(java.lang.String,java.lang.Object) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:57: warning: getValueNames() in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:57: warning: getValue(java.lang.String) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:57: warning: getSessionContext() in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1226: warning: getIds() in javax.servlet.http.HttpSessionContext has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]      ^
+     [javac]/tmp/tst/jboss-all/tomcat41/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1226: warning: getSession(java.lang.String) in javax.servlet.http.HttpSessionContext has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]      ^
+     [javac]17 warnings
+
+compile-resources:
+     [mkdir]Created dir: /tmp/tst/jboss-all/tomcat41/output/resources
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/resources
+
+compile-etc:
+     [mkdir]Created dir: /tmp/tst/jboss-all/tomcat41/output/etc/manifest
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/etc/manifest
+
+compile:
+
+jars:
+     [mkdir]Created dir: /tmp/tst/jboss-all/tomcat41/output/lib
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/deploy
+       [jar]Building jar: /tmp/tst/jboss-all/tomcat41/output/deploy/tomcat41-service.jar
+
+bundle:
+      [copy]Copying 924 files to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/tomcat-4.1.x
+      [copy]Copied 10 empty directories to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/tomcat-4.1.x
+      [copy]Copying 292 files to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/server/all/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/server/all/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/server/default/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/tomcat41/output/jboss-3.0.3/server/default/deploy
+
+BUILD SUCCESSFUL

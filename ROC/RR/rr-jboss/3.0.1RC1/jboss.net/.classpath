@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+    <classpathentry kind="lib" path="/thirdparty/sun/servlet/lib/servlet.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/xml/sax/lib/sax2.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/sun/jaxp/lib/crimson.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/apache/log4j/lib/log4j.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/sun/jmx/lib/jmxri.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/apache/axis/lib/axis.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/ibm/wsdl4j/lib/wsdl4j.jar"/>
+    <classpathentry kind="lib" path="/thirdparty/sun/jaas/lib/jaas.jar"/>
+    <classpathentry kind="lib" path="/j2ee/output/lib/jboss-j2ee.jar"/>
+    <classpathentry kind="lib" path="/common/output/lib/jboss-common.jar"/>
+    <classpathentry kind="lib" path="/system/output/lib/jboss-system.jar"/>
+    <classpathentry kind="lib" path="/server/output/lib/jboss.jar"/>
+    <classpathentry kind="lib" path="/server/output/lib/jboss-security.jar"/>
+    <classpathentry kind="lib" path="/security/output/lib/jbosssx.jar"/>
+    <classpathentry kind="src" path="src/main"/>
+    <classpathentry kind="src" path="testsuite/src/main"/>
+    <classpathentry kind="src" path="/axis"/>
+    <classpathentry kind="src" path="/server"/>
+    <classpathentry kind="src" path="/system"/>
+    <classpathentry kind="output" path="output\classes"/>
+</classpath>

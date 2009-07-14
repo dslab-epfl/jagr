@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN' 'http://java.sun.com/j2ee/dtds/web-app_2_2.dtd'>
+
+<web-app>
+  <display-name>WebClient</display-name>
+  <description>Web Client for testing ECperf</description>
+  <servlet>
+    <servlet-name>FindLargeOrderJSP</servlet-name>
+    <display-name>FindLargeOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>find_large_orders.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>CustomerStatusJSP</servlet-name>
+    <display-name>CustomerStatusJSP</display-name>
+    <description>no description</description>
+    <jsp-file>customer_status.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>CancelWorkOrderJSP</servlet-name>
+    <display-name>CancelWorkOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>cancel_work_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>CompleteWorkOrderJSP</servlet-name>
+    <display-name>CompleteWorkOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>complete_work_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>SubmitOrderJSP</servlet-name>
+    <display-name>SubmitOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>submit_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>SubmitOrder_SSBEAN_JSP</servlet-name>
+    <display-name>SubmitOrder_SSBEAN_JSP</display-name>
+    <description>no description</description>
+    <jsp-file>submit_order_ssbean.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>ChangeOrderSubmitJSP</servlet-name>
+    <display-name>ChangeOrderSubmitJSP</display-name>
+    <description>no description</description>
+    <jsp-file>change_order_submit.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>ChangeOrderJSP</servlet-name>
+    <display-name>ChangeOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>change_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>NewOrderJSP</servlet-name>
+    <display-name>NewOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>new_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>NewOrder_SSBEAN_JSP</servlet-name>
+    <display-name>NewOrder_SSBEAN_JSP</display-name>
+    <description>no description</description>
+    <jsp-file>new_order_ssbean.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderStatusJSP</servlet-name>
+    <display-name>OrderStatusJSP</display-name>
+    <description>no description</description>
+    <jsp-file>order_status.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>ScheduleWorkOrderJSP</servlet-name>
+    <display-name>ScheduleWorkOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>schedule_work_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>CancelOrderJSP</servlet-name>
+    <display-name>CancelOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>cancel_order.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateWorkOrderJSP</servlet-name>
+    <display-name>UpdateWorkOrderJSP</display-name>
+    <description>no description</description>
+    <jsp-file>update_work_order.jsp</jsp-file>
+  </servlet>
+  <session-config>
+    <session-timeout>-1</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <env-entry>
+    <env-entry-name>debuglevel</env-entry-name>
+    <env-entry-value>2</env-entry-value>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+  </env-entry>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/AssemblyEnt</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEntHome</home>
+    <remote>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEnt</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/LargeOrderSes</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSesHome</home>
+    <remote>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSes</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/OrderSes</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.sun.ecperf.orders.orderses.ejb.OrderSesHome</home>
+    <remote>com.sun.ecperf.orders.orderses.ejb.OrderSes</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/CartSes</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.sun.ecperf.orders.cartses.ejb.CartSesHome</home>
+    <remote>com.sun.ecperf.orders.cartses.ejb.CartSes</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/ItemEnt</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <home>com.sun.ecperf.orders.itement.ejb.ItemEntHome</home>
+    <remote>com.sun.ecperf.orders.itement.ejb.ItemEnt</remote>
+  </ejb-ref>
+  <ejb-ref>
+    <description>no description</description>
+    <ejb-ref-name>ejb/WorkOrderSes</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.sun.ecperf.mfg.workorderses.ejb.WorkOrderSesHome</home>
+    <remote>com.sun.ecperf.mfg.workorderses.ejb.WorkOrderSes</remote>
+  </ejb-ref>
+</web-app>
+

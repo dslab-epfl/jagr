@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt; Java[tm]
+Pet Store &gt; Configuring order confirmation e-mail</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet
+Store</font></b></a> &gt; <b>Configuring order confirmation e-mail</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Configuring order confirmation e-mail</h1>
+
+<p>The Java Pet Store can be configured to send a confirmation e-mail
+to a customer when an order is completed. This feature is turned off
+by default. E-mail order notification uses the mail services of the
+J2EE platform, and can be enabled at deployment time.</p>
+
+<p>This document describes two ways to enable order confirmation
+e-mail:</p>
+
+<ol>
+<li><p>Use the J2EE Reference Implementation deployment tool.</p></li>
+
+<li><p>Edit the deployment descriptors manually.</p></li>
+</ol>
+
+<p>
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</p>
+
+<h2>Using the J2EE Reference Implementation deployment tool</h2>
+
+<p>Start the deployment tool and follow these steps.</p>
+
+<ol>
+<li><p><b>Open the application.</b></p>
+
+<p>From the <i>File</i> menu, select <i>Open Application...</i>. In
+the subsequent file dialog, open <code>petstore.ear</code>, which can
+be found in <code>$JPS_HOME</code> (UNIX) or <code>%JPS_HOME%</code>
+(Win32).</p>
+</li>
+
+<li><p><b>Enable confirmation mail.</b></p>
+
+<p>In the <i>Local Applications</i> tree, select <i>petstore</i> &gt;
+<i>Petstore EJB Component</i> &gt;
+<i>TheShoppingClientController</i>.</p>
+
+<p>In the inspector, select the <i>Environment</i> tabbed pane. Set
+the value of the <code>ejb/mail/SendConfirmationMail</code> entry to
+<code>true</code>.</p>
+
+<p>Select <i>Save</i> from the <i>File</i> menu.</p>
+</li>
+
+<li><p><b>Configure the mail settings.</b></p>
+
+<p>Go back to the <i>Local Applications</i> tree, and select
+<i>petstore</i> &gt; <i>Mail Component</i> &gt; <i>TheMailer</i>.</p>
+
+<p>In the inspector, select the <i>Resource Ref's</i> tabbed
+pane. Select the <code>mail/MailSession</code> entry, which will
+enable the <i>Deployment Settings</i> box below.  Change the value of
+the <i>Host</i> field to the name of your local SMTP server. Change
+the value of the <i>User Name</i> field to the name you use to access
+that server.</p>
+
+<p>Select <i>Save</i> from the <i>File</i> menu.</p>
+</li>
+
+<li><p><b>Deploy the application.</b></p>
+
+<p>If the application is currently deployed, undeploy it. Select
+<i>petstore</i> from the <i>Server Applications</i> list, and click
+the <i>Undeploy</i> button.</p>
+
+<p>To deploy or redeploy the application, select <i>Deploy
+Application</i> from the <i>Tools</i> menu.  Click through the
+subsequent dialogs to complete the deployment. You shouldn't have to
+change any of the default values.</p>
+</li>
+
+<li><p><b>Test the configuration.</b></p>
+
+<p>Visit the Java Pet Store and create a new user. Make sure to set it
+up with a valid e-mail address (or, choose an existing user with a
+valid email address). Don't log in with the <code>j2ee</code> account,
+since it has a fictitious e-mail address.</p>
+
+<p>To visit the store, click the following link:</p>
+
+<code><a
+href="http://localhost:8000/estore/">http://localhost:8000/estore/</a></code>
+</li>
+</ol>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume that the application is deployed on a machine named
+<code>localhost</code> and port <code>8000</code>. You should
+substitute <code>localhost</code> and <code>8000</code> with the name
+of the machine and the port on which the application is deployed.<hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<h2>Editing the deployment descriptors manually</h2>
+
+<p>If you are tinkering with the source code, you can also enable the
+order notification e-mail by following these steps:</p>
+
+<ol>
+<li><p><b>Edit the static EJB deployment descriptor to enable
+confirmation mail.</b></p>
+
+<p>Go to the directory <code>$JPS_HOME/src/petstore/src/</code> (UNIX)
+or <code>%JPS_HOME%\src\petstore\src\</code> (Win32), and open the
+file <code>estore_ejb.xml</code>.</p>
+
+<p>Look for these lines:<p>
+
+<blockquote><code><pre>&lt;env-entry&gt;
+  &lt;env-entry-name&gt;ejb/mail/sendConfirmationMail&lt;/env-entry-name&gt;
+  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;
+  <b>&lt;env-entry-value&gt;false&lt;/env-entry-value&gt;</b>
+&lt;/env-entry&gt;</pre></code></blockquote>
+
+<p>Change the value of the <code>env-entry-value</code> entry to
+<code>true</code>.</p>
+</li>
+
+<li><p><b>Edit the runtime EJB deployment descriptor (for the J2EE
+Reference Implementation) to configure the mail settings.</b></p>
+
+<p>Go to the directory <code>$JPS_HOME/src/petstore/src/</code> (UNIX)
+or <code>%JPS_HOME%\src\petstore\src\</code> (Win32), and open the
+file <code>estore_ejbruntime.xml</code>.</p>
+
+<p>Look for these lines:</p>
+
+<blockquote><code><pre>&lt;mail-configuration&gt;
+  <b>&lt;name&gt;YourName&lt;/name&gt;</b>
+  &lt;mail-from&gt;orders@javapetstoredemo.com&lt;/mail-from&gt;
+  <b>&lt;mail-host&gt;YourMailServer&lt;/mail-host&gt;</b>
+&lt;mail-configuration&gt;</pre></code></blockquote>
+
+<p>Change the value of the <code>mail-host</code> entry to the name of
+your local SMTP server. Change the value of the <code>name</code>
+entry to the name you use to access that server.</p>
+
+<li><p><b>Build and deploy the application.</b></p>
+
+<p><a href="build.html">Build</a> the application and deploy the
+mail-enabled Java Pet Store.</p>
+</li>
+</ol>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

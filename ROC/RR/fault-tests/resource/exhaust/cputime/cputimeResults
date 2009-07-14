@@ -1,0 +1,36 @@
+
+As User
+------
+
+Default : Completes the 1000000 loop
+
+mod 990000.0
+66650112
+59437056
+19741280
+
+When CPU time set to 1 sec.
+
+Executes for a while & then is terminated no exception.
+
+mod 330000.0
+66650112
+19546112
+6253856
+Killed
+
+
+As Root
+
+Default: Completes the 1000000 loop
+
+When CPU time set to 1 sec
+
+same result as above
+
+mod 330000.0
+66650112
+19546112
+6253864
+Killed
+

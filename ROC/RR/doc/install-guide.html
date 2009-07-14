@@ -1,0 +1,174 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.75 [en] (X11; U; SunOS 5.6 sun4u) [Netscape]">
+   <title>JBoss-Petstore Installation/Setup Guide</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#52188C" alink="#FF0000">
+
+<h1>
+JBoss - Petstore Installation/Setup Guide</h1>
+
+<p><br>JBoss Version: 3.0.1 RC1
+<br>Petstore Version: 1.1.2
+<br>J2SE Version: 1.4
+<br>J2EE Version: 1.3.1
+<br>Java Pet Store Application Version: 1.1.2
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+I. Download Software</h2>
+
+<p><br>1. Download&nbsp; Java 2 Standard Edition 1.4 SDK
+<br>&nbsp;&nbsp;&nbsp; <a href="http://java.sun.com/j2se/1.4/download.html">http://java.sun.com/j2se/1.4/download.html</a>
+<p>2. Download Java 2 Enterprise Edition 1.3.1 SDK
+<br>&nbsp;&nbsp;&nbsp; <a href="http://java.sun.com/j2ee/sdk_1.3/">http://java.sun.com/j2ee/sdk_1.3/</a>
+<p>3. Download JBoss application server source code:
+<br>&nbsp;&nbsp;&nbsp; <a href="http://prdownloads.sourceforge.net/jboss/jboss-3.0.1RC1-src.tgz?download">http://prdownloads.sourceforge.net/jboss/jboss-3.0.1RC1-src.tgz?download</a>
+<p>4. Download Java Petstore Sample Application
+<br>&nbsp;&nbsp;&nbsp; <a href="http://developer.java.sun.com/developer/releases/petstore/petstore1_1_2.html">http://developer.java.sun.com/developer/releases/petstore/petstore1_1_2.html</a>
+<p>5. Download the JBoss Pet Store patch file
+<br>&nbsp;&nbsp;&nbsp; <a href="http://www.jboss.org/docs/manual/files/jps112-01.zip">http://www.jboss.org/docs/manual/files/jps112-01.zip</a>
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+II. Unpack and Install Software</h2>
+1. Install the J2SE SDK.&nbsp; Follow instructions on site:
+<br>&nbsp;&nbsp;&nbsp; <a href="http://java.sun.com/j2se/1.4/install-linux.html">http://java.sun.com/j2se/1.4/install-linux.html</a>
+<p>2. Install the J2EE SDK.&nbsp; Follow instructions on site:
+<br>&nbsp;&nbsp;&nbsp; <a href="http://java.sun.com/j2ee/sdk_1.3/install.html">http://java.sun.com/j2ee/sdk_1.3/install.html</a>
+<p>3. Unpack the JBoss software anywhere on your home directory:
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; gunzip jboss-3.0.1RC1-src.tgz</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; tar -xvf jboss-3.0.1RC1.tar</font>
+<p><font face="Courier New,Courier">&nbsp;</font>&nbsp;&nbsp; The root
+directory of the JBoss source installation will be referred to as $JBOSS_SOURCE
+<p>4. Build the JBoss application server
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cd $JBOSS_SOURCE/build</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; sh build.sh</font>
+<p>&nbsp;&nbsp;&nbsp; Application will probably compile with warnings...
+just ignore. Within the <font face="Courier New,Courier">build</font> directory,
+an
+<font face="Courier New,Courier">output</font> directory should have
+been created.&nbsp; Change directory to this output directory:
+<p><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cd output</font>
+<p>Within the <font face="Courier New,Courier">output </font>directory
+is the JBoss installation.&nbsp; From now on this directory will be referred
+to as $JBOSS_HOME
+<p>5. Unzip the Java Petstore anywhere in your home directory:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">unzip
+jps-1_1_2.zip</font>
+<p>The root directory of the Pet Store demo will be referred to below as
+$PETSTORE
+<br>&nbsp;
+<p>6. Install the JBoss Pet Store patch file: Copy <a 
+href="jps-rr-patch.tar">jps-rr-patch.tar</a> to root
+directory $PETSTORE of the the pet store installation.&nbsp; Change to
+the this directory and untar the file.&nbsp; Select replace [A]ll when
+prompted.
+<p><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cd $PETSTORE</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; tar -xvf 
+jps-rr-patch.tar</font>
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+III. Set up Environment</h2>
+This environment assumes that you are using csh as your shell.&nbsp; Make
+similar modifications for other shells such as bash.
+<p>1. Open up your .cshrc file
+<p>2. Add the following environment variables:
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">setenv
+JAVA_HOME [</font>directory where you installed j2sdk]<font face="Courier New,Courier">
+ex: "/usr/java/j2sdk1.4.0"</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; setenv J2EE_HOME
+</font>[directory
+where you installed j2sdkee]<font face="Courier New,Courier"> ex: "/usr/java/j2sdkee1.3.1"</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; setenv JBOSS_HOME
+</font>[directory
+where you jboss was compiled]<font face="Courier New,Courier"> "~/jboss-3.0.1RC1-src/build/output/jboss-3.0.1RC1"</font>
+<p>Your PATH should also include the <font face="Courier New,Courier">bin</font>
+directories of the J2EE SDK and J2SE
+<p>3. Save and close file
+<p>4. Refresh environment:
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; source .cshrc</font>
+<br>&nbsp;
+<h2>
+IV. Modify Pet Store Application</h2>
+
+<p>1. Rebuild Pet Store application:
+<p><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cd $PETSTORE/src/petstore/src</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; sh build.sh</font>
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+V. Deploy Application</h2>
+1. Copy <a href="http://www.stanford.edu/~mdelgado/jboss/cloudscape-service.xml">cloudscape-service.xml
+</a>to $JBOSS_HOME/server/default/deploy directory:
+<p>&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">cp cloudscape-service.xml
+$JBOSS_HOME/server/default/deploy</font>
+<p>2. Copy <a href="http://www.stanford.edu/~mdelgado/jboss/login-config.xml">login-config.xml</a>
+to $JBOSS_HOME/server/default/conf directory.&nbsp; Replace the current
+login.xml file.
+<p><font face="Courier New,Courier">&nbsp; cp login-config.xml $JBOSS_HOME/server/default/conf</font>
+<p>3. Change directory to $JBOSS_HOME/server/default/conf directory:
+<p><font face="Courier New,Courier">&nbsp; cd $JBOSS_HOME/server/default/conf</font>
+<p><font face="Courier New,Courier">&nbsp; </font>Edit the "jboss-minimal.xml"
+and "jboss-service.xml" files.&nbsp; Change the port number for the NamingService
+from 1099 to 1097. &nbsp;This change is needed because of port conflicts
+between cloudscape and the JBoss naming service:
+<p>Original:
+<p><font face="Courier New,Courier">&nbsp; &lt;mbean code="org.jboss.naming.NamingService"</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name="jboss:service=Naming"></font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; &lt;attribute name="Port">1099&lt;/attribute></font>
+<br><font face="Courier New,Courier">&nbsp; &lt;/mbean></font>
+<p>New:
+<p><font face="Courier New,Courier">&nbsp; &lt;mbean code="org.jboss.naming.NamingService"</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name="jboss:service=Naming"></font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; &lt;attribute name="Port">1097&lt;/attribute></font>
+<br><font face="Courier New,Courier">&nbsp; &lt;/mbean></font>
+<p>4. Add JARS to JBoss:
+<br>&nbsp;&nbsp;&nbsp; a. Copy cloudscape.jar, cloudutil.jar,&nbsp; cloudclient.jar,
+RmiJdbc.jar to $JBOSS_HOME/server/default/lib
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">cp
+$J2EE_HOME/lib/system/cloudscape.jar $JBOSS_HOME/server/default/lib</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cp $J2EE_HOME/lib/system/cloudutil.jar
+$JBOSS_HOME/server/default/lib</font>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">cp
+$J2EE_HOME/lib/cloudscape/cloudclient.jar $JBOSS_HOME/server/default/lib</font>
+<br><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cp $J2EE_HOME/lib/cloudscape/RmiJdbc.jar
+$JBOSS_HOME/server/default/lib</font>
+<br>&nbsp;
+<p>5. Copy petstore application to deploy directory:
+<p><font face="Courier New,Courier">&nbsp;&nbsp;&nbsp; cp $PETSTORE/src/petstore/build/petstore.ear
+$JBOSS_HOME/server/default/deploy</font>
+<br>&nbsp;
+<h2>
+VI. Start Cloudscape Database</h2>
+
+<p><br>1. Start up cloudscape database in a separate terminal window:
+<p>&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">$J2EE_HOME/bin/cloudscape
+-start</font>
+<h2>
+VII. Start JBoss</h2>
+1. In a separate terminal window, change directory to $JBOSS_HOME/bin
+<p>&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">cd $JBOSS_HOME/bin</font>
+<p>2. Start JBoss
+<p>&nbsp;&nbsp;&nbsp; <font face="Courier New,Courier">sh run.sh</font>
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+VIII. Run the Pet Store Application</h2>
+
+<p><br>1. Point your browser to <font face="Courier New,Courier"><a href="http://localhost:8080/estore ">http://localhost:8080/estore</a></font>
+to start the pet store.
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><hr><p><br>
+
+<center>$Id: install-guide.html,v 1.1 2002/10/26 05:25:12 candea Exp $</center>
+
+</body>
+</html>

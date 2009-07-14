@@ -1,0 +1,28 @@
+
+			ECPerf Summary Report
+			Version : ECperf 1.1 Final Release
+
+
+Run Parameters : 
+runOrderEntry = 1
+runMfg = 1
+txRate = 3
+rampUp (in seconds) = 480
+rampDown (in seconds) = 180
+stdyState (in seconds) = 600
+triggerTime (in seconds) = 40
+numOrdersAgents = 1, numMfgAgents = 1
+dumpStats = 0
+Benchmark Started At : Wed Apr 23 00:05:34 PDT 2003
+
+
+Orders Summary report is in : Orders.summary
+Orders Detailed report is in : Orders.detail
+Orders Transaction Rate : 72.20 Transactions/min
+
+Manufacturing Summary report is in : Mfg.summary
+Manufacturing Detail report is in : Mfg.detail
+Manufaturing Rate : 12.30 WorkOrders/min
+
+ECperf Metric : 84.50 BBops/min
+

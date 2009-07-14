@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- $Id: application.xml,v 1.2 2004/03/16 00:17:24 skawamo Exp $ -->
+<!-- An application descriptor to package RUBiS as microcomponents -->
+
+<application>
+  <display-name>RubisEAR</display-name>
+  <description>The RR-ified version of RUBiS.</description>
+
+
+  <module>
+    <ejb>SB_AboutMe.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_Auth.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_BrowseCategories.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_BrowseRegions.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_BuyNow.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_PutBid.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_PutComment.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_RegisterItem.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_RegisterUser.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_SearchItemsByCategory.jar</ejb>
+  </module>
+
+
+  <module>
+    <ejb>SB_SearchItemsByRegion.jar</ejb>
+  </module>
+
+
+  <module>
+    <ejb>SB_StoreBid.jar</ejb>
+  </module>
+
+
+  <module>
+    <ejb>SB_StoreBuyNow.jar</ejb>
+  </module>
+
+
+  <module>
+    <ejb>SB_StoreComment.jar</ejb>
+  </module>
+
+
+  <module>
+    <ejb>SB_ViewBidHistory.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_ViewItem.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>SB_ViewUserInfo.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>OldItem.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>BuyNow.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>Comment.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>IDManager.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>User-Item.jar</ejb>
+  </module>
+
+  <module>
+    <ejb>rubis_lib.jar</ejb>
+  </module>
+
+  <module>
+    <web>
+      <web-uri>ejb_rubis_web.war</web-uri>
+      <context-root>ejb_rubis_web</context-root>
+    </web>
+  </module>
+
+</application>
+

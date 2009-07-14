@@ -1,0 +1,97 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+rrapp1
+
+
+
+
+SU
+
+ulimit -n 4096
+
+[root@rrapp1 test]# ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 4096
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+FileNotFoundException Occurred in MakeFileDesc
+java.io.FileNotFoundException: dir4000/file4093 (Too many open files)
+        at java.io.FileOutputStream.open(Native Method)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+        at MakeFileDesc.main(MakeFileDesc.java:28)
+
+
+
+
+ulimit -n 66000
+
+[root@rrapp1 test2]# ulimit -a
+core file size        (blocks, -c) 0
+data seg size         (kbytes, -d) unlimited
+file size             (blocks, -f) unlimited
+max locked memory     (kbytes, -l) unlimited
+max memory size       (kbytes, -m) unlimited
+open files                    (-n) 66000
+pipe size          (512 bytes, -p) 8
+stack size            (kbytes, -s) 8192
+cpu time             (seconds, -t) unlimited
+max user processes            (-u) 4085
+virtual memory        (kbytes, -v) unlimited
+
+
+java.io.FileNotFoundException: dir50100/file50137 (Too many open files in system)
+        at java.io.FileOutputStream.open(Native Method)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+        at MakeFileDesc.main(MakeFileDesc.java:28)
+
+
+
+
+When 3 directories were created & executed the same file with ulimit -n 66000
+
+dir - test
+
+java.io.FileNotFoundException: dir17300/file17366 (Too many open files in system)
+        at java.io.FileOutputStream.open(Native Method)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+        at MakeFileDesc.main(MakeFileDesc.java:28)
+
+
+dir -test2
+
+
+
+FileNotFoundException Occurred in MakeFileDesc
+java.io.FileNotFoundException: dir19900/file19931 (Too many open files in system)
+        at java.io.FileOutputStream.open(Native Method)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+        at MakeFileDesc.main(MakeFileDesc.java:28)
+
+
+dir -test3
+
+java.io.FileNotFoundException: dir12600/file12661 (Too many open files in system)
+        at java.io.FileOutputStream.open(Native Method)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+        at MakeFileDesc.main(MakeFileDesc.java:28)
+
+
+
+--------  Total : 49958 files

@@ -1,0 +1,32 @@
+SSM RUBiS based on  EJB_local_remote_CMP2.0  
+
+              Mar/29/2004 S.Kawamoto
+
+Modification from Http Session RUBiS.
+ - SSM RUBiS stores session states into SSM whenever they changed.
+   Session states are also placed in the memory as http session RUBiS does.
+   Session States are always fetched from the memory except the case they have
+   gone because of rebooting web tier. 
+ 
+ - This version of SSM RUBiS still uses http session object and returns
+   http cookie "JSESSIONID" and ssm cookie "SESSIONSTATE" to clients.
+
+ - Most of the modifications are in Session class and newly added 
+   SessionState class.
+
+Configuration:
+ - It is possible to configure to switch off the fanctionality of 
+   using SSM. This is controlled by the flag useSSM in Session class.
+   Default value of the flag useSSM is true. 
+
+Install:
+ 0. Check ssm.jar is installed collectly.
+    Ssm.jar is expected to be in JBoss's deploy directory.
+ 1. Edit build.properties.
+    Don't foget to specify JBoss deploy directory.
+ 2. In this directory execute the following command. 
+     % ant rubis_ear 
+    This command produces rubis.ear and place it in JBoss 
+    deployment directory ($JBOSS_HOME/server/default/deploy) 
+ 3. Clean all the temporal files 
+     % ant clean 

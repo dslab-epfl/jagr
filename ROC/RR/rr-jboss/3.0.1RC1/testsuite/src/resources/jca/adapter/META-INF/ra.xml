@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE connector PUBLIC 
+          "-//Sun Microsystems, Inc.//DTD Connector 1.0//EN" 
+          "http://java.sun.com/dtd/connector_1_0.dtd">
+<!-- $Id: ra.xml,v 1.1.1.1 2002/10/03 21:06:56 candea Exp $ -->
+
+<connector>
+   <display-name>JBoss Test Adapter</display-name>
+   <description>JBoss adapter for testing jca framework</description>
+   <vendor-name>JBoss.org</vendor-name>
+   <spec-version>1.0</spec-version>
+   <eis-type>Test XA drivers</eis-type>
+   <version>1.0</version>
+   <license>
+      <license-required>false</license-required>
+   </license>
+   <resourceadapter>
+      <managedconnectionfactory-class>org.jboss.test.jca.adapter.TestManagedConnectionFactory</managedconnectionfactory-class>
+      <connectionfactory-interface>javax.resource.cci.ConnectionFactory</connectionfactory-interface>
+      <connectionfactory-impl-class>org.jboss.test.jca.adapter.TestConnectionFactory</connectionfactory-impl-class>
+      <connection-interface>javax.resource.cci.Connection</connection-interface>
+      <!--
+         | specifying an interface here is wrong, but we don't know what it 
+         | will be.  Lets see if there are problems.
+        -->
+      <connection-impl-class>org.jboss.test.jca.adapter.TestConnection</connection-impl-class>
+      <transaction-support>XATransaction</transaction-support>
+      <authentication-mechanism>
+	 <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+	 <credential-interface>javax.resource.security.PasswordCredential</credential-interface>
+      </authentication-mechanism>
+      <reauthentication-support>false</reauthentication-support>
+   </resourceadapter>
+</connector>

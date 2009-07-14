@@ -1,0 +1,15 @@
+WebTest
+This sample web application test the SSM from servlet. 
+Mar/16/2004 S.Kawamoto
+
+How to install this application
+1 Execute build.sh. 
+  It creates ./webtest.war.
+2 Copy ./webtest.war to $JBOSS_HOME/server/default/deploy
+3 Copy ../../ssm.jar to $JBOSS_HOME/server/default/deploy
+
+How to execute webtest
+1 Access http://targetmachine:8080/webtest/demo 
+  from your local web browser.
+2 Follow the instruction indicated in your web browser.
+

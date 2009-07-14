@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE jbosscmp-jdbc PUBLIC "-//JBoss//DTD JBOSSCMP-JDBC 3.2//EN" "http://jboss.org/j2ee/dtd/jbosscmp-jdbc_3_2.dtd">
+
+<!-- IDManager Entity Bean -->
+
+<jbosscmp-jdbc>
+  <defaults>
+    <datasource>java:/rubis_local_remote_CMP2</datasource>
+    <datasource-mapping>mySQL</datasource-mapping>
+    <create-table>true</create-table>
+    <remove-table>false</remove-table>
+  </defaults>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>IDManager</ejb-name>
+      <table-name>ids</table-name>
+      <cmp-field>
+        <field-name>id</field-name>
+        <column-name>id</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>categoryCount</field-name>
+        <column-name>category</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>regionCount</field-name>
+        <column-name>region</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>userCount</field-name>
+        <column-name>users</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>itemCount</field-name>
+        <column-name>item</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>commentCount</field-name>
+        <column-name>comment</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>bidCount</field-name>
+        <column-name>bid</column-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>buyNowCount</field-name>
+        <column-name>buyNow</column-name>
+      </cmp-field>
+    </entity>
+  </enterprise-beans>
+</jbosscmp-jdbc>

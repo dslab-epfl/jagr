@@ -1,0 +1,13 @@
+$Id: README,v 1.1.1.1 2003/03/19 02:45:51 candea Exp $
+
+This is jargs v. 0.4
+
+JArgs command-line argument parsing library
+===========================================
+
+Package contents:
+
+  src/            -- Java source code
+  lib/            -- JAR files
+  doc/            -- API and other documentation
+  tests/          -- JUnit test code

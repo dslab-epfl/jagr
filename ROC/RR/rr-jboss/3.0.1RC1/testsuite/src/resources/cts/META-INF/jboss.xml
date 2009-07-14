@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jboss>
+   <container-configurations>
+      <container-configuration extends="Standard Stateful SessionBean">
+         <!-- Override the cache policy to allow a max of one bean -->
+         <container-name>MaxOne Stateful Session</container-name>
+         <container-cache-conf>
+            <cache-policy>org.jboss.ejb.plugins.LRUStatefulContextCachePolicy</cache-policy>
+            <cache-policy-conf>
+               <min-capacity>1</min-capacity>
+               <max-capacity>1</max-capacity>
+               <!-- Times are in seconds -->
+               <!-- How often to check for beans with an expired max-bean-life -->
+               <remover-period>20</remover-period>
+               <!-- How often to check for beans with an expired max-bean-age -->
+               <overager-period>15</overager-period>
+               <!-- How long before a bean is a candidate for passivation -->
+               <max-bean-age>15</max-bean-age>
+               <!-- How long before a passivated bean is a candidate for removal -->
+               <max-bean-life>45</max-bean-life>
+            </cache-policy-conf>
+         </container-cache-conf>
+      </container-configuration>
+
+   </container-configurations>
+
+   <enterprise-beans>
+      <session>
+         <ejb-name>StatefulSessionBean</ejb-name>
+         <jndi-name>ejbcts/StatefulSessionBean</jndi-name>
+         <configuration-name>MaxOne Stateful Session</configuration-name>
+      </session>
+      <session>
+         <ejb-name>StatelessSessionBean</ejb-name>
+         <jndi-name>ejbcts/StatelessSessionBean</jndi-name>
+      </session>
+      <entity>
+         <ejb-name>BMPBean</ejb-name>
+         <jndi-name>ejbcts/BMPBean</jndi-name>
+         <resource-ref>
+            <res-ref-name>datasource</res-ref-name>
+            <resource-name>datasource</resource-name>
+         </resource-ref>
+      </entity>
+      <entity>
+         <ejb-name>BMPCallbackBean</ejb-name>
+         <jndi-name>ejbcts/BMPCallbackBean</jndi-name>
+         <resource-ref>
+            <res-ref-name>datasource</res-ref-name>
+            <resource-name>datasource</resource-name>
+         </resource-ref>
+      </entity>
+      <entity>
+         <ejb-name>CMPBean</ejb-name>
+         <jndi-name>ejbcts/CMPBean</jndi-name>
+      </entity>
+   </enterprise-beans>
+</jboss>

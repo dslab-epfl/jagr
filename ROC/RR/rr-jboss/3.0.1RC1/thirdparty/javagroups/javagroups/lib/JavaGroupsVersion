@@ -1,0 +1,4 @@
+Current version: 2.0.3 (HEAD from 23.09.2002)
+
+SL: Compile with modern compiler *no* log4j support (delegates integration to JBoss)
+

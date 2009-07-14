@@ -1,0 +1,54 @@
+RUBiS Transition Table	Mixed workload for session-state RUBiS							Last modified 3/7/2004 by Greg Friedman 																							
+																															
+"To >>>
+From vvvv  "	Home	Reg.	Reg. User	Browse	Br. Cat.	Search Items Cat.	Br. Reg.	Br. Cat. Reg.	Search Items Reg.	View Item	View User Info	View Bid Hist.	Buy Now Auth	Buy Now	Store Buy Now	Put Bid Auth	Put Bid 	Store Bid	Put Com. Auth	Put Comment	Store Comment	Sell	Cat. Sell Item	Sell Item Form	Reg. Item	About Me (auth)	About Me	Login	Login User	Logout	Transition Waiting Time
+Home	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.05	0	1	0
+Register	0.07	0	0	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0	0	0	0
+RegisterUser	0	0.99	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Browse	0	0.0063	0	0	0.0063	0.0063	0.0063	0.0063	0.0063	0.0063	0.0063	0.0063	0.0063	0.0063	0.63	0.0063	0.0063	0.63	0.0063	0.0063	0.63	0.0063	0.0063	0.0063	0.63	0.0063	0.126	0	0.7	0	0
+BrowseCategories	0	0	0	0.7	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+SearchItemsInCategory	0	0	0	0	0.99	0.4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+BrowseRegions	0	0	0	0.29	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+BrowseCategoriesInRegion	0	0	0	0	0	0	0.99	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+SearchItemsInRegion	0	0	0	0	0	0	0	0.99	0.4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+ViewItem	0	0	0	0	0	0.5	0	0	0.5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.65	0	0	0	0
+ViewUserInfo	0	0	0	0	0	0	0	0	0	0.1	0.19	0.19	0	0	0	0.05	0	0	0	0	0	0	0	0	0	0	0.05	0	0	0	0
+ViewBidHistory	0	0	0	0	0	0	0	0	0	0.05	0	0	0	0	0	0.15	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+BuyNowAuth	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+BuyNow	0	0	0	0	0	0	0	0	0	0.1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+StoreBuyNow	0	0	0	0	0	0	0	0	0	0	0	0	0.99	0.99	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+PutBidAuth	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+PutBid	0	0	0	0	0	0.09	0	0	0.09	0.32	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.1	0	0	0	0
+StoreBid	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.74	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+PutCommentAuth	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+PutComment	0	0	0	0	0	0	0	0	0	0.02	0	0	0	0	0	0.05	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+StoreComment	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.99	0	0	0	0	0	0	0	0	0	0	0	0
+Sell	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+SelectCategorySellItem	0	0.0015	0	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.0015	0.15	0.0015	0.0015	0.15	0.0015	0.0015	0.15	0.0015	0.0015	0.0015	0.15	0.0015	0.03	0	0.15	0	0
+SellItemForm	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.99	0.99	0	0	0	0	0	0	0	0
+RegisterItem	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.99	0	0	0	0	0	0	0
+AboutMe (auth form)	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+AboutMe	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.99	0	0	0.1	0	0
+Login	0.85	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+Login User	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0.95	0	0	0
+Logout	0.08	0.0001	1	0.007	0.0001	0.0001	0.0001	0.0001	0.0001	0.0001	0.0001	0.0001	0.0001	0.0001	0.01	0.0001	0.0001	0.01	0.0001	0.0001	0.01	0.0001	0.0001	0.0001	0.01	0.0001	0.002	0.05	0.05	0	0
+Back probability	0	0	0	0	0	0	0	0	0	0.5	0.8	0.8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+End of Session	0	0	0	0	0	0.2	0	0	0.2	0.2	0.2	0	0	0	0.2	0	0	0.2	0	0	0.2	0	0	0	0.2	0	0.2	0	0	0	0
+Header probability	0	0.01	1	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	0.01	1	0.01	0.01	1	0.01	0.01	1	0.01	0.01	0.01	1	0.01	0.2	0	0	0	0
+
+																															
+Probabilities for header																															
+LogoutProb	0.01			0	Value that is automatically computed										"Notes: This table was derived from ""geo_mixed_workload.xls"".The Login, Login User, and Logout states  were added, and the probabilities of related states adjusted.   Additionally, the ""BuyNowAuth"", ""PutBidAuth, ""PutCommentAuth, and ""Sell"" states are now skipped; in vanilla RUBiS, these states ask the user for a login which is good just for the operation, but in session-state RUBiS we have an explicit login with session duration. Any transitions to ""home"" are now transitions to ""logout"", and logout transitions to home with probability 1.  A few other changes were made as well."																
+RegisterProb	0.01			0	Value that has to be set manually																										
+BrowseProb	0.63			0	State where we can potentially go back (value must be set to 0)																										
+SellProb	0.15																														
+AboutMeProb	0																														
+EndOfSessionProb	0.2																														
+Total	1																														
+																															
+Probabilities for home page				Probabilities for login user page																											
+RegisterProb	0.07			BrowseProb				0.7
+LoginProb	0.85			SellProb				0.15
+LogoutProb	0.08			AboutMeProb				0.1
+AboutMeProb	0			LogoutProb				0.05
+Total	1			Total				1

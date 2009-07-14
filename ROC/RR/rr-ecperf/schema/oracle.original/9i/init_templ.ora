@@ -1,0 +1,28 @@
+# tuning parameters
+######################################
+#sql_trace = TRUE
+
+db_name=DBNAME
+control_files           = cntrl.dbf
+
+compatible=9.0.0.0.0
+cursor_space_for_time = TRUE
+db_block_buffers = 10000
+db_file_multiblock_read_count = 128                                     
+db_files = 256
+dml_locks = 600                                                      
+enqueue_resources = 1235
+log_buffer = 2097152
+log_checkpoint_interval = 2147483647
+processes = 500                                                        
+open_cursors = 500                                                        
+#max_rollback_segments = 1000
+shared_pool_size = 100000000 
+sessions = 510
+transactions = 500
+transactions_per_rollback_segment = 8
+parallel_max_servers = 100
+undo_management               = AUTO
+undo_retention                = 5
+undo_suppress_errors          = TRUE
+#undo_tablespace               = roll_space

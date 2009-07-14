@@ -1,0 +1,6 @@
+
+Each time ulimit needs to be modified for when logged in as user, would have to log out in & log in again to be able to change.
+
+When logged in as su, chages will take effect without logging out.
+
+

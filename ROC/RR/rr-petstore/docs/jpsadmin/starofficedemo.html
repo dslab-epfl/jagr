@@ -1,0 +1,234 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt; Java[tm]
+Pet Store Administrator &gt; Running the StarOffice demo</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet Store
+Administrator</font></b></a> &gt; <b>Running the StarOffice
+demo</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Running the StarOffice demo</h1>
+
+<p>The StarOffice demo illustrates how to import data from the Java
+Pet Store Administrator&#151;using XML over HTTP&#151;into a
+StarOffice spreadsheet. This document describes how to set up the
+demo.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</p>
+
+<h2>Before you begin</h2>
+
+<p>Before running this demo, make sure the following items are
+installed on your system:</p>
+
+<ul>
+<li><p><b>StarOffice</b>: <a
+href="http://www.sun.com/software/star/staroffice/5.2/get.html">v5.2
+download</a></p>
+
+<p>When you install StarOffice, make sure to enable it to use the Java
+Runtime Environment.</p></li>
+
+<li><p><b>StarOffice SDK</b>: <a
+href="http://soldc.sun.com/staroffice/#kit">v1.0 download</a></p></li>
+
+<li><p><b>Java API for XML Processing (JAXP)</b>: <a
+href="http://java.sun.com/xml/download.html">v1.1
+download</a></p></li>
+</ul>
+
+<p>The following table lists the shorthand forms used to denote the
+root installation directories of the first two items:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<th>&nbsp;</th>
+<th>UNIX</th>
+<th>Win32</th>
+</tr>
+<tr>
+<th align="left">StarOffice</th>
+<td>$STAROFFICE_HOME</td>
+<td>%STAROFFICE_HOME%</td>
+</tr>
+<tr>
+<th align="left">StarOffice SDK</th>
+<td>$STAROFFICE_SDK_HOME</td>
+<td>%STAROFFICE_SDK_HOME%</td>
+</tr>
+</table>
+
+<h2>Configuring StarOffice</h2>
+
+<ol>
+<li><p>Replace the file <code>sandbox.jar</code> that comes with
+StarOffice with the one that comes with the StarOffice SDK.</p>
+
+<ul>
+<li><p><b>UNIX</b>: Replace
+<code>$SOFFICE_HOME/program/classes/sandbox.jar</code> with
+<code>$SOFFICE_SDK_HOME/addon/java/samples/sandbox.jar</code>.</p></li>
+
+<li><p><b>Win32</b>: Replace
+<code>%SOFFICE_HOME%\program\classes\sandbox.jar</code> with
+<code>%SOFFICE_SDK_HOME%\addon\java\samples\sandbox.jar</code>.</p></li>
+</ul>
+</li>
+
+<li><p>Add the following line to the <code>[Common]</code> section of
+<code>$SOFFICE_HOME/user/sofficerc</code> (UNIX) or
+<code>%SOFFICE_HOME%\user\soffice.ini</code> (Win32):</p>
+
+<blockquote><pre><code>Connection=socket,host=localhost,port=8100;iiop;</code></pre></blockquote>
+</li>
+
+<li><p>Open the file <code>$SOFFICE_HOME/user/config/javarc</code> (UNIX)
+or <code>%SOFFICE_HOME%\user\config\java.ini</code> (Win32).</p>
+
+<p>Make sure that the <code>SystemClassPath</code> entry in the
+<code>[Java]</code> section of the file includes the full paths to the
+JAR files <code>sandbox.jar</code>, <code>jurt.jar</code> and
+<code>unoil.jar</code>:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>&nbsp;</td>
+<th>Full paths of JARs</th>
+</tr>
+<tr>
+<th align="left">UNIX</th>
+<td><code>$SOFFICE_HOME/program/classes/sandbox.jar</code><br />
+<code>$SOFFICE_HOME/program/classes/jurt.jar</code><br />
+<code>$SOFFICE_HOME/program/classes/unoil.jar</code></td>
+</tr>
+<tr>
+<th align="left">Win32</th>
+<td><code>%SOFFICE_HOME%\program\classes\sandbox.jar</code><br />
+<code>%SOFFICE_HOME%\program\classes\jurt.jar</code><br />
+<code>%SOFFICE_HOME%\program\classes\unoil.jar</code></td>
+</tr>
+</table>
+
+<p>Also make sure that the <code>UserClassPath</code> entry in the
+<code>[Java]</code> section of the file includes
+<code>$JPS_HOME</code> (UNIX) or <code>%JPS_HOME%</code> (Win32), or
+create this entry if it doesn't exist. For example, if
+<code>%JPS_HOME%</code> is <code>c:\jps1.1.2</code>, then you would
+add this line:</p>
+
+<blockquote><pre><code>UserClassPath=c:\jps1.1.2</code></pre></blockquote>
+</li>
+</ol>
+
+<h2>Compiling the demo</h2>
+
+<ol>
+<li><p>Add the full paths to the JAR files <code>sandbox.jar</code>,
+<code>jurt.jar</code> and <code>unoil.jar</code> to your
+<code>CLASSPATH</code> environment variable. These are listed in the
+following table:</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td>&nbsp;</td>
+<th>Full paths of JARs</th>
+</tr>
+<tr>
+<th align="left">UNIX</th>
+<td><code>$SOFFICE_HOME/program/classes/sandbox.jar</code><br />
+<code>$SOFFICE_HOME/program/classes/jurt.jar</code><br />
+<code>$SOFFICE_HOME/program/classes/unoil.jar</code></td>
+</tr>
+<tr>
+<th align="left">Win32</th>
+<td><code>%SOFFICE_HOME%\program\classes\sandbox.jar</code><br />
+<code>%SOFFICE_HOME%\program\classes\jurt.jar</code><br />
+<code>%SOFFICE_HOME%\program\classes\unoil.jar</code></td>
+</tr>
+</table>
+
+<p>Also make sure that the current working directory, denoted by a dot
+("."), is part of your <code>CLASSPATH</code>.</p>
+</li>
+
+<li><p>Bring up a shell or command prompt, change the current
+directory to <code>$JPS_HOME/src/petstoreadmin/staroffice/</code>
+(UNIX) or <code>%JPS_HOME%\src\petstoreadmin\staroffice\</code>
+(Win32) and execute the following command to compile the demo:</p></li>
+
+<p><code>javac PendingOrders.java</code></p>
+</li>
+</ol>
+
+<h2>Running the demo</h2>
+
+<ol>
+<li><p>Deploy the Java Pet Store and use it to order some
+pets.</p></li>
+
+<li><p>Deploy the Java Pet Store Administrator.</p></li>
+
+<li><p>Bring up a command or shell prompt, change the current
+directory to <code>$STAROFFICE_HOME/program/</code> (UNIX) or
+<code>%STAROFFICE_HOME%\program\</code> (Win32), and execute the
+following command to start StarOffice:</p>
+
+<p><code>soffice</code></p>
+</li>
+
+<li><p>Bring up a shell or command prompt, change the current
+directory to <code>$JPS_HOME/src/petstoreadmin/staroffice/</code>
+(UNIX) or <code>%JPS_HOME%\src\petstoreadmin\staroffice\</code>
+(Win32) and execute the following command to start the demo:</p>
+
+<p><code>java PendingOrders localhost 8000</code></p>
+
+<p>The program will get the pending orders for the Java Pet Store and
+display their details in a StarOffice spreadsheet.<p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume that the Java Pet Store and Java Pet Store Administrator are
+deployed on a machine named <code>localhost</code> and port
+<code>8000</code>. You should substitute <code>localhost</code> and
+<code>8000</code> with the name of the machine and the port on which
+these applications are deployed.<hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</li>
+</ol>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

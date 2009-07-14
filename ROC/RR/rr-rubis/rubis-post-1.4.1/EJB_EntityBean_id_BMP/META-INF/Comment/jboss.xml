@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!-- 
+This is the JBoss EJB deployment descriptor for the Comment EJB.
+-->
+
+<jboss>
+
+  <enterprise-beans>
+
+    <entity>
+      <ejb-name>Comment</ejb-name>
+      <jndi-name>CommentHome</jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+
+  </enterprise-beans>
+
+
+  <resource-managers>
+
+    <resource-manager>
+      <res-name>rubis</res-name>
+      <res-jndi-name>java:/rubis_entitybean_BMP</res-jndi-name>
+    </resource-manager>
+
+  </resource-managers>
+
+</jboss>
+

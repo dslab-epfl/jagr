@@ -1,0 +1,30 @@
+The EJB_EntityBean_id_BMP version works without deadlocks in our
+environment.
+
+Steps to take when building:
+
+1. Change the HTMLFilesPath constant in
+   EJB_EntityBean_id_BMP/edu/rice/rubis/beans/servlets/ConfigJBoss.java
+   to point to ejb_rubis_web (use absolute path name to it)
+
+2. Ensure the 'j2ee' constant in build.properties points to the
+   location of your J2EE installation (see value of $J2EE_HOME)
+
+3. Set the JBOSS_DIST environment variable to point to wherever your
+   JBOSS_HOME is:
+
+      setenv JBOSS_DIST ${JBOSS_HOME}
+
+3. Build the "Entity EJBs with BMP" version of RUBiS by doing
+   "ant eb_bmp" in this directory.
+
+4. To deploy RUBiS, 
+
+      cd EJB_EntityBean_id_BMP
+      cp rubis.jar ejb_rubis_web.war $JBOSS_HOME/server/default/deploy
+
+5. To use the applicatoin , point your browser at
+
+      http://localhost:8080/ejb_rubis_web
+        
+

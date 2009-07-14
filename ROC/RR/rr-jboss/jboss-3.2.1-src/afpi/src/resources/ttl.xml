@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- ===================================================================== -->
+<!--  AFPI Rolling Microrejuvenation Configurations                        -->
+<!-- ===================================================================== -->
+<!-- $Id: ttl.xml,v 1.1 2004/05/08 00:10:08 skawamo Exp $                                                                  -->
+
+<EJBTTLs>
+  <EJBTTL>
+    <jar>SB_AboutMe.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_Auth.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_BrowseCategories.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_BrowseRegions.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_BuyNow.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_PutBid.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_PutComment.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_RegisterItem.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_RegisterUser.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_SearchItemsByCategory.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_SearchItemsByRegion.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_StoreBid.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_StoreBuyNow.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_StoreComment.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_ViewBidHistory.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_ViewItem.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>SB_ViewUserInfo.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+
+  <EJBTTL>
+    <jar>BuyNow.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>Comment.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>IDManager.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>OldItem.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+  <EJBTTL>
+    <jar>User-Item.jar</jar>
+    <TTL-second>3600</TTL-second>
+  </EJBTTL>
+</EJBTTLs>

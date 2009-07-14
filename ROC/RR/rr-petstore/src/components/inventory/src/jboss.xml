@@ -1,0 +1,19 @@
+<jboss>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>TheInventory</ejb-name>
+      <resource-ref>
+        <res-ref-name>jdbc/InventoryDataSource</res-ref-name>
+        <resource-name>InventoryDB</resource-name>
+      </resource-ref>
+    </entity>
+
+  </enterprise-beans>
+
+  <resource-managers>
+    <resource-manager res-class="javax.sql.DataSource">
+      <res-name>InventoryDB</res-name>
+      <res-jndi-name>java:/InventoryDB</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

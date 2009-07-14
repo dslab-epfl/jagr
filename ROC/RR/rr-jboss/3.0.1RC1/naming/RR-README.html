@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Separating JNDI from JBoss</title>
+  <meta name="author" content="George Candea">
+</head>
+<body>
+
+<center><h1>Separating JNDI from JBoss</h1></center>
+
+<h3>1. Overview</h3>
+
+<p>J2EE applications are assembled out of components (servlets, JSPs,
+EJBs); the way components are configured and connected to each other
+is specified at deployment time, with much of this information being
+stored in a JNDI namespace.  Each component finds other components
+dynamically, through JNDI lookups, not via static linking.  J2EE
+applications allow for deployment-time binding, while maintaining type
+and link safety by having each component export a list of external
+components and resources it needs.
+
+<p>JNDI constitutes the glue that holds together the components of a
+J2EE application and is therefore fundamental to the operation of a
+J2EE system. Its criticality makes it a prime candidate for
+isolation. JBoss includes a JNDI provider (JNP) that can run as
+a standalone service in a separate JVM or the same JVM as the
+application(s) using it. The JNP provides a lightweight
+network-accessible JNDI service, that uses solely an in-memory
+database to store objects (thus, the namespace's contents does not
+persist across restarts).
+
+<p>If you squint, then you'll realize that JNDI is nothing more than a
+dedicated state store. Having J2EE apps use JNDI is an expression of
+the separation of persistent state from application logic, as
+advocated in our crash-only software paper.
+
+<h3>2. Naming in Vanilla JBoss</h3>
+
+The JNDI provider (JNP) for JBoss is a Java socket/RMI implementation
+of the JNDI interface. It can be accessed remotely; the JNP is also
+optimized for intra-JVM access, such that it is accessed through an
+object reference, rather than over RMI. In JBoss, it is the
+NamingService MBean that provides JNDI services. Of its configuration
+parameters, the following are the more important ones:
+
+<blockquote>
+  <ul>
+    <li><i>Port</i>: The jnp:// protocol listening port; if left unspecified,
+the default is 1099 (i.e., the default RMI registry port)</li>
+    <li><i>RmiPort</i>: The RMI port on which the RMI Naming implementation
+is exported; if not specified, defaults to zero (any available port)</li>
+    <li><i>BindAddress</i>: Specific address on which NamingService listens;
+useful for multi-homed hosts, defaults to localhost<br>
+    </li>
+  </ul>
+</blockquote>
+
+<p>The JBoss JNP started out as a stand-alone JNP, implemented in
+org.jnp.server.Main.  It was later wrapped into the NamingService
+MBean to provide the intra-JVM optimization mentioned above. When
+NamingService is started, it starts the JNP's Main; it also exposes
+its Naming interface ops through JMX, thus enabling any JMX adaptors
+to access the JNP (see http-invoker.sar for an example of how this is
+done with HTTP).
+
+<h3>3. Running a standalone JNDI service</h3>
+
+<i><u>Note</u></i>: Everything contained in this section is done
+automatically by the newly created $JBOSS_TOP/naming/run.sh script.
+
+<p>Make sure the following directories are in your CLASSPATH
+($JBOSS_TOP is your top-level rr-jboss directory, e.g.,
+~/ROC/RR/rr-jboss):
+
+<p><center>
+<table border=1 cellpadding=5>
+  <tr align=center>
+     <th>Path</th>
+     <th>Needed for...</th>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/naming/output/classes</td>
+     <td align=center>org.jnp.server.Main</td>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/naming/output/classes/org/jnp/server</td>
+     <td align=center>Main</td>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/naming/output/etc/conf</td>
+     <td align=center>log4j.properties</td>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/system/output/classes</td>
+     <td align=center>log4j</td>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/common/output/classes</td>
+     <td align=center>org.jboss.logging.Logger</td>
+  </tr>
+
+  <tr>
+     <td>$JBOSS_TOP/messaging/output/classes</td>
+     <td align=center>org.jboss.mq.referenceable.ObjectRefAddr</td>
+  </tr>
+
+</table>
+</center>
+
+<br>
+
+<p>Cut & paste from below, if using tcsh:
+
+<blockquote>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/naming/output/classes<br>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/naming/output/classes/org/jnp/server<br>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/naming/output/etc/conf<br>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/system/output/classes<br>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/common/output/classes<br>
+  setenv CLASSPATH ${CLASSPATH}:$JBOSS_TOP/messaging/output/classes
+</blockquote>
+
+<p>Then do the following:
+
+<blockquote>
+  cd $JBOSS_TOP/naming/output/classes<br>
+  java org/jnp/server/Main
+</blockquote>
+
+<h3>4. Configuring JBoss</h3>
+
+<i><u>Note</u></i>: Everything contained in this section has already
+been applied to the source tree.
+
+<ol>
+  <li>Modify $JBOSS_HOME/server/default/conf/jndi.properties to look like this:
+
+      <blockquote><tt>
+         java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory<br>
+         java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces<br>
+         java.naming.provider.url=localhost:1099</tt>
+      </blockquote>
+
+      It is important to set <tt>provider.url</tt>, because otherwise JBoss
+      will try to use the in-JVM version of JNDI, to avoid the cost of
+      RMI.</li>
+
+  <li><p>In $JBOSS_HOME/server/default/conf/jboss-service.xml, modify
+      the entry for JNDI (naming) to look like this:
+
+      <blockquote><tt>
+        &lt;mbean code="org.jboss.naming.NamingService" name="jboss:service=Naming"&gt;<br>
+        &nbsp;&nbsp;&lt;attribute name="Port"&gt;-1&lt;/attribute&gt;<br>
+        &lt;/mbean&gt;</tt>
+      </blockquote></li>
+
+  <li><p>In $JBOSS_TOP/server/src/main/org/jboss/naming/NamingServer.java,
+      comment out the invocation of naming.start(), to prevent JBoss from
+      starting a naming server inside itself.</li>
+
+</ol>
+
+<p>These configurations apply to the <i>default</i> JBoss mode; for
+<i>minimal</i> or <i>all</i>, modify the equivalent files in the
+<tt>minimal</tt> or <tt>all</tt> directories, respectively.  If you
+want to make these changes permanent, make sure to update the files in
+<tt>$JBOSS_TOP/server/src/etc/conf/default</tt>.
+
+<p>At this point you can start up JBoss.
+
+<br>
+<br>
+<hr width="100%" size="2">
+<div align="center">$Id: RR-README.html,v 1.4 2003/03/19 11:58:08 candea Exp $<br>
+</div>
+<hr width="100%" size="2"><br>
+<br>
+</body>
+</html>

@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# runclient: run the client emulator
+#
+# usage: runclient [config_filename]
+#
+
+if [ x$1 != x ] 
+  then ant emulator -Dconfig_file=$1
+else
+  ant emulator
+fi

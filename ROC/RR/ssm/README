@@ -1,0 +1,56 @@
+SSM (Session State Manager)
+
+This package includes Ben's original ssm source files 
+and user friendly wrapper class of original ssm classes.
+
+                                  Mar/16/2004 S.Kawamoto
+
+
+How to build and install SSM
+1. Execute ant at current directory. 
+   It produces ./ssm.jar.
+2. Copy ./ssm.jar to $JBOSS_HOME/server/default/deploy. 
+
+
+How to execute bricks
+1. cd ./bin
+2. Execute the script manualsb.sh with an argument brick id.
+   Brick id must be a positive integer.
+   Another script brick.sh is available now. This script
+   is the same as manualsb.sh except recording its outputs
+   to the log file "brickX-log". Where X is the Brick id.  
+
+  Note: You must start several bricks before initializing Stub.
+  Note: You can also use ./autobrick.sh command to run several
+        bricks at once. 
+        usage: ./autobrick.sh {smallest id of bricks} {number of bricks}
+3. When you want to kill bricks, use killsb.sh. It kills all
+   bricks on this server.
+
+----------------------------------------------------------------
+
+How to use Stub methods 
+
+1. get Stub instance
+	Stub st = new Stub(int stub id, 
+			   int Number of Write succeed, 
+	                   int Number of Write request, 
+	                   int Number of read request,
+			   int Time out of hearbeat)
+2. write to SSM 
+	st.Write(int key, Object obj, int expiration);
+        return : Vector cookie
+3. read from SSM
+	st.read(Vector cookie)
+	return : Object 
+
+
+This package includes user friendly version of SSM accessing
+methods. ( roc.rr.ssmutil.GlobalSSM )
+
+ initialize stub: GlobalSSM.initialize();
+ write to SSM:    GlobalSSM.write(data);
+ read from SSM:   GlobalSSM.read(cookie);
+
+See roc/rr/ssmutil/GlobalSSM.java for the details 
+Example programs exist in the test directory. 

@@ -1,0 +1,45 @@
+<!-- $Id: sample.xml,v 1.1 2004/08/27 06:44:01 skawamo Exp $ -->
+
+<fault-injections>
+
+  <throwable>
+     <name>SB_BrowseCategories</name>
+     <time-second>20</time-second>
+  </throwable>
+
+  <memory-leak>
+    <name>SB_PutBid</name>
+    <time-second>25</time-second>
+    <amount>1000000</amount>
+  </memory-leak>
+
+  <nullmap>
+    <name>SB_AboutMe</name>
+    <time-second>30</time-second>
+  </nullmap>
+
+  <deadlock>
+    <name>User</name>
+    <time-second>35</time-second>
+  </deadlock>
+
+  <infinite-loop>
+    <name>Item</name>
+    <time-second>45</time-second>
+    <num-of-iloop>2</num-of-iloop>
+  </infinite-loop>
+
+  <corrupt-jndi>
+    <name>SB_ViewItem</name>
+    <time-second>50</time-second>
+    <corruption-type>BOGUS</corruption-type>
+  </corrupt-jndi>
+
+  <corrupt-data>
+    <name>SessionState</name>
+    <time-second>55</time-second>
+    <corruption-type>INCREMENT</corruption-type>
+    <corruption-time>20</corruption-time>
+  </corrupt-data>
+
+</fault-injections>

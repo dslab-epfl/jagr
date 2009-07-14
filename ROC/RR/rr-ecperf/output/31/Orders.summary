@@ -1,0 +1,52 @@
+
+			Orders Summary Report
+			Version : ECperf 1.1 Final Release
+
+Orders Transaction Rate : 72.20 Transactions/min
+
+TRANSACTION MIX
+
+Total number of transactions = 722
+TYPE		TX. COUNT	MIX		REQD. MIX.(5% Deviation Allowed)
+----		---------	---		----------
+NewOrder:	00357		49.45%		50%	PASSED
+ChangeOrder:	00152		21.05%		20%	FAILED
+OrderStatus:	00144		19.94%		20%	PASSED
+CustStatus:	00069		 9.56%		10%	PASSED
+ECPerf Requirement FAILED
+
+RESPONSE TIMES		AVG.		MAX.		90TH%	REQD. 90TH%
+
+NewOrder		9.999		97.349		10.000		2
+ChgOrder		12.389		90.796		10.000		2
+OrderStatus		4.866		80.476		6.500		2
+CustStatus		5.716		84.435		8.200		2
+ECPerf Requirement for 90% Response Time FAILED
+ECPerf Requirement for Avg. Response Time FAILED
+
+
+CYCLE TIMES	TARGETED AVG.	ACTUAL AVG.	MIN.	MAX.
+
+NewOrder	 5.281		11.481		0.000		97.349		FAILED
+ChgOrder	 4.671		14.960		0.000		90.796		FAILED
+OrderStatus	 4.026		 7.266		0.000		80.476		FAILED
+CustStatus	 5.237		 9.194		0.000		84.435		FAILED
+
+MISC. STATISTICS
+
+Average items per order			26.454
+Widget Ordering Rate			944.400/min	FAILED
+Percent orders that are Large Orders	9.24	FAILED
+Average items per Large order		147.515	PASSED
+Largeorder Widget Ordering Rate		486.800/min	FAILED
+Average items per Regular order		14.123	FAILED
+Regular Widget Ordering Rate		457.600/min	FAILED
+Percent orders submitted from Cart	47.06	FAILED
+Percent ChgOrders that were delete	9.21	PASSED
+
+
+LITTLE'S LAW VERIFICATION
+
+
+Number of users = 15
+Sum of Avg. RT * TPS for all Tx. Types = 13.422002

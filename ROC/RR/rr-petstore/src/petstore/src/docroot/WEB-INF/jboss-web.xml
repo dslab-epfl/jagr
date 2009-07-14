@@ -1,0 +1,31 @@
+<jboss-web>
+  <resource-ref>
+    <res-ref-name>jdbc/EstoreDataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <jndi-name>java:/EstoreDB</jndi-name>
+  </resource-ref>
+    <ejb-ref>
+    <ejb-ref-name>ejb/catalog/Catalog</ejb-ref-name>
+    <jndi-name>TheCatalog</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/cart/Cart</ejb-ref-name>
+    <jndi-name>TheCart</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/customer/Customer</ejb-ref-name>
+    <jndi-name>TheCustomer</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/profilemgr/ProfileMgr</ejb-ref-name>
+    <jndi-name>TheProfileMgr</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/scc/Scc</ejb-ref-name>
+    <jndi-name>TheShoppingClientController</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/inventory/Inventory</ejb-ref-name>
+    <jndi-name>TheInventory</jndi-name>
+  </ejb-ref>
+</jboss-web>

@@ -1,0 +1,49 @@
+$Id: Generating_the_Database.txt,v 1.3 2004/03/26 00:47:47 skawamo Exp $
+
+In MySQL do the following:
+
+%%%% The following command sequences may be for old version of MySQL %%%%
+
+ mysql> SOURCE rubis.sql;
+ mysql> ALTER TABLE users AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE regions AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE categories AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE items AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE bids AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE comments AUTO_INCREMENT = 1;
+ mysql> ALTER TABLE buy_now AUTO_INCREMENT = 1;
+ mysql> SOURCE categories.sql;
+ mysql> SOURCE regions.sql;
+ mysql> SOURCE update_ids.sql;
+
+%%%% You should use below instead of above %%%%
+
+ALTER TABLE users change id id int AUTO_INCREMENT;
+ALTER TABLE regions change id id int AUTO_INCREMENT;
+ALTER TABLE categories change id id int AUTO_INCREMENT;
+ALTER TABLE items change id id int AUTO_INCREMENT;
+ALTER TABLE bids change id id int AUTO_INCREMENT;
+ALTER TABLE comments change id id int AUTO_INCREMENT;
+ALTER TABLE buy_now change id id int AUTO_INCREMENT;
+SOURCE categories.sql;
+SOURCE regions.sql;
+SOURCE update_ids.sql;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Edit Client/rubis.properties to reflect the parameters you want to use
+in creating the DB
+
+Then, from the top-level RUBiS directory, do:
+
+ % make initDB PARAM="all" > /tmp/initDB_output.html
+
+Notes:
+
+1. JBoss must be up-and-running and able to talk to the DB
+
+2. Make sure that database_item_description_length and
+   database_comment_max_length in the rubis.properties file are not
+   too long (200 seems to work well)
+

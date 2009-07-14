@@ -1,0 +1,94 @@
+$Id: README,v 1.8 2004/05/18 23:27:46 skawamo Exp $
+
+This directory includes a set of tools for analyzing execution behavior.
+                                              Mar/24/2004 S.Kawamoto
+                                  modified    Mar/30/2004 S.Kawamoto
+ 	                          modified    Apr/08/2004 S.Kawamoto
+ 	                          modified    Apr/23/2004 S.Kawamoto
+ 	                          modified    Apr/27/2004 S.Kawamoto
+ 	                          modified    May/06/2004 S.Kawamoto
+
+How to install:
+
+ Run Configure at this directory. 
+
+
+How to use:
+
+1. time-average.awk
+  It calculates the average execution time of each servlets. 
+  It requires a trace file of the client simulator as its argument.
+
+    usage:  time-average.awk  trace_client0.html
+
+2. plotservlet.sh
+  It produces a graph of the execution time of a servlet and 
+  saves it as the postscript file. It requires two arguments. 
+  One is a trace file of the client simulator. The other is a 
+  name of a servlet. The name of output postscript file is the 
+  name of the servlet with the suffix ps.  	
+
+    usage: plotservlet.sh  trace_client0.html  BrowseCategories
+
+3. plotservlets.sh
+  This script produces the graphis of execution time of all servlets.
+  Output files are placed in the servlets directory.
+  It requires trace file of the client emulator as its argument.
+
+    usage: plotservlets.sh trace_client0.html
+
+4. plotgc.sh
+  It produces two graphs and saves them as the png files,
+  "gc.png", "cummulativegc.png" respectively. Gc.png is 
+  the graph of the behavior of garbage collection (GC). 
+  Cummulativegc.png is the graph of the cummulative gc time.
+  It requres a client emulator's log file, jboss log file and 
+  gc log file. In order to produce the log, run java with 
+  -verboase:gc -Xloggc:logfilename option.
+
+    usage: plotgc.sh  trace_client0.html jboss-log gc-log
+
+5. plotmemory.sh 
+  This script produces a graph which indicates the used and total
+  memory of the system. Output is a png file named memory.png.
+  It requires two file names as its arguments. First argument is the
+  name of the trace file and second one is the name of the name of 
+  jboss log.
+
+   usage: plotmemory.sh  trace_client0.html  server.log
+
+6. plotsession.sh
+  This script produces a graph which indicates the lifetime of each 
+  user session. Output is a postscript file named session.ps.
+  It requires a file name of trace file as its argument. 
+
+   usage: plotsession.sh  trace_client0.html
+
+7. ssm.awk
+  This script produces each execution time of SSM write operation.
+  It requires jboss log file as its argument. 
+
+   usage: ssm.awk  jboss-log 
+
+8. plotresponsetime.sh
+  This script produces a graph of the response time of each requests.
+  It requires log file of client emulator as its argument.
+
+   usage: plotresponsetime.sh  trace_client0.html
+
+9. statistic.sh
+  This script calculate minimum, maximum, average and standard deviation 
+  of given set of values. The set of values is extracted from the 
+  given file. Only the values that are wrapped by prefix pattern and 
+  suffix pattern are extracted. This script print its result to 
+  standard output. 
+ 
+   usage: statistic.sh prefix_pattern suffix_pattern filename
+
+10. plotresponsetime2.sh
+  This script produces a graph of the response time of each requests 
+  from user operations record "user_ops.dat". This is much accurate 
+  than plotresponsetime.sh. It requires the file "user_ops.dat" as 
+  its argumetn.
+
+   usage: plotresponsetime2.sh  user_ops.dat

@@ -1,0 +1,18 @@
+<jboss>
+  <enterprise-beans>
+    <session>
+      <ejb-name>TheAdminClientController</ejb-name>
+      <resource-ref>
+        <res-ref-name>jdbc/EstoreDataSource</res-ref-name>
+        <resource-name>EstoreDB</resource-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+
+  <resource-managers>
+    <resource-manager res-class="javax.sql.DataSource">
+      <res-name>EstoreDB</res-name>
+      <res-jndi-name>java:/EstoreDB</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

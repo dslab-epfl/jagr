@@ -1,0 +1,48 @@
+Ramp up with 1 run (so the JSPs get compiled)
+DB is refilled and server restarted after each 2 runs
+1.5GB RAM, Daul PIII-1GMz, gigabite ethernet, 2 machines
+
+RR-JBOSS
+30 30 31 32 32 30
+
+
+UNMODIFIED JBOSS
+31 29 29 29 31 29
+
+
+
+
+RR-JBOSS
+
+TestAgent Started at Fri Nov 15 20:46:34 PST 2002
+TestAgent Stopped at Fri Nov 15 20:47:04 PST 2002
+TestAgent Started at Fri Nov 15 20:47:12 PST 2002
+TestAgent Stopped at Fri Nov 15 20:47:42 PST 2002
+
+TestAgent Started at Fri Nov 15 20:52:17 PST 2002
+TestAgent Stopped at Fri Nov 15 20:52:48 PST 2002
+TestAgent Started at Fri Nov 15 20:52:52 PST 2002
+TestAgent Stopped at Fri Nov 15 20:53:24 PST 2002
+
+TestAgent Started at Fri Nov 15 20:59:14 PST 2002
+TestAgent Stopped at Fri Nov 15 20:59:46 PST 2002
+TestAgent Started at Fri Nov 15 20:59:47 PST 2002
+TestAgent Stopped at Fri Nov 15 21:00:17 PST 2002
+
+
+UNMODIFIED JBOSS
+
+TestAgent Started at Fri Nov 15 21:05:13 PST 2002
+TestAgent Stopped at Fri Nov 15 21:05:44 PST 2002
+TestAgent Started at Fri Nov 15 21:05:46 PST 2002
+TestAgent Stopped at Fri Nov 15 21:06:15 PST 2002
+
+TestAgent Started at Fri Nov 15 21:09:13 PST 2002
+TestAgent Stopped at Fri Nov 15 21:09:42 PST 2002
+TestAgent Started at Fri Nov 15 21:09:43 PST 2002
+TestAgent Stopped at Fri Nov 15 21:10:12 PST 2002
+
+TestAgent Started at Fri Nov 15 21:13:54 PST 2002
+TestAgent Stopped at Fri Nov 15 21:14:25 PST 2002
+TestAgent Started at Fri Nov 15 21:14:26 PST 2002
+TestAgent Stopped at Fri Nov 15 21:14:55 PST 2002

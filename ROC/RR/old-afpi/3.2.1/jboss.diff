@@ -1,0 +1,228 @@
+diff --recursive --ignore-space-change --minimal --unified=5 --exclude=build --exclude=output --exclude='*.log' --exclude=afpi --exclude=module.version original.jboss-3.2.1-src/jmx/build.xml jboss-3.2.1-src/jmx/build.xml
+--- original.jboss-3.2.1-src/jmx/build.xml	Sat Apr  5 20:45:23 2003
++++ jboss-3.2.1-src/jmx/build.xml	Sat Aug 30 14:00:04 2003
+@@ -156,13 +156,21 @@
+     <property name="jboss.common.lib" value="${jboss.common.root}/lib"/>
+     <path id="jboss.common.classpath">
+       <pathelement path="${jboss.common.lib}/jboss-common.jar"/>
+     </path>
+ 
++    <!-- AFPI classpath -->
++    <property name="afpi.root" value="${project.root}/afpi/output"/>
++    <property name="afpi.lib" value="${afpi.root}/lib"/>
++    <path id="afpi.classpath">
++      <pathelement path="${afpi.lib}/afpi.jar"/>
++    </path>
++
+     <!-- The combined dependent module classpath -->
+     <path id="dependentmodule.classpath">
+       <path refid="jboss.common.classpath"/>
++      <path refid="afpi.classpath"/>
+     </path>
+ 
+     <!-- ===== -->
+     <!-- Tasks -->
+     <!-- ===== -->
+diff --recursive --ignore-space-change --minimal --unified=5 --exclude=build --exclude=output --exclude='*.log' --exclude=afpi --exclude=module.version original.jboss-3.2.1-src/jmx/src/main/org/jboss/mx/server/MBeanServerImpl.java jboss-3.2.1-src/jmx/src/main/org/jboss/mx/server/MBeanServerImpl.java
+--- original.jboss-3.2.1-src/jmx/src/main/org/jboss/mx/server/MBeanServerImpl.java	Sat Mar 22 09:57:07 2003
++++ jboss-3.2.1-src/jmx/src/main/org/jboss/mx/server/MBeanServerImpl.java	Wed Sep  3 21:39:59 2003
+@@ -141,10 +141,15 @@
+     * to another map of listeners to another map of handback objects to
+     * proxies. Phew!
+     */
+    private Map listenerProxies = Collections.synchronizedMap(new HashMap());
+ 
++    /**
++     * AFPI interceptor (candea@stanford.edu)
++     */
++   private rr.MBeanInterceptor interceptor = new rr.MBeanInterceptor();
++
+    // Static --------------------------------------------------------
+ 
+    /**
+     * The logger
+     */
+@@ -346,10 +351,15 @@
+          invoke(new ObjectName(MBEAN_REGISTRY),
+                 "unregisterMBean",
+                 new Object[] { name },
+                 new String[] { ObjectName.class.getName() }
+          );
++
++	 //
++	 // Notify AFPI that the MBean is gone (candea@stanford.edu)
++	 //
++	 interceptor.removeComponent( name.getCanonicalName() );
+       }
+       catch (Exception e)
+       {
+          Exception result = handleInvocationException(e);
+          if (result instanceof InstanceNotFoundException)
+@@ -544,19 +554,67 @@
+       try
+       {
+          if (newTCL != oldTCL && newTCL != null)
+             thread.setContextClassLoader(newTCL);
+ 
+-         return mbean.invoke(operationName, params, signature);
++	 /* candea@stanford.edu: the MBean registry associated an
++            invoker with each MBean.  In the case of a dynamic MBean,
++            this invoker is the MBean itself.  In the case of a
++            standard MBean, this invoker is a "dispatcher" (see
++            DispatcherFactory.java), which is basically a dynamic
++            MBean that routes the invocations.  Essentially, all MBean
++            invocations go through a dynamic MBean at some point, so
++            this is a good place for AFPI to intercept. */
++	 
++	 String mbeanName = entry.getObjectName().getCanonicalName();
++	 try {
++	     return doInvoke( mbeanName, mbean, operationName, params, signature );
++	 }
++	 catch ( Throwable t ) 
++	 {
++	     log.debug("Encountered a Throwable... reporting to AFPI");
++	     interceptor.reportFault(mbeanName, operationName, t);
++
++	     if (t instanceof InstanceNotFoundException) {
++		 throw (InstanceNotFoundException) t;
++	     }
++	     else if (t instanceof MBeanException) {
++		 throw (MBeanException) t;
++	     }
++	     else if (t instanceof ReflectionException) {
++		 throw (ReflectionException) t;
++	     }
++	     else if (t instanceof Exception) {
++		 throw new RuntimeException(t);
++	     }
++	     else {
++		 throw (Error) t;
++	     }
++	 }
+       }
+       finally
+       {
+          if (newTCL != oldTCL && newTCL != null)
+             thread.setContextClassLoader(oldTCL);
+       }
+    }
+ 
++   /**
++    * Gives AFPI an opportunity to inject a scheduled fault.  If none
++    * is scheduled, then the invocation proceeds normally.
++    *
++    **/
++   private Object doInvoke (String mbeanName, DynamicMBean mbean, String operationName, Object[] params, String[] signature)
++      throws Throwable
++   {
++       log.debug("Calling preInvoke.  MBean=" + mbeanName + ", opName=" + operationName);
++       interceptor.preInvoke( mbeanName, operationName );
++	    
++       return mbean.invoke( operationName, params, signature ); 
++   }
++    
++
+    public MBeanInfo getMBeanInfo(ObjectName name) throws InstanceNotFoundException, IntrospectionException, ReflectionException
+    {
+       MBeanEntry entry = registry.get(name);
+       ClassLoader newTCL = entry.getClassLoader();
+       DynamicMBean mbean = entry.getMBean();
+@@ -800,12 +858,11 @@
+     * @param signature the signature of the constructor
+     * @exception ReflectionException wraps a ClassCastException or
+     *            any Exception trying to invoke the constructor
+     * @expeption MBeanException wraps any exception thrown by the constructor
+     * @exception RuntimeOperationsException Wraps an IllegalArgument for a
+-    *            null className
+-    */
++    *            null className */
+    protected Object instantiate(String className, ClassLoader cl, Object[] params, String[] signature) throws ReflectionException, MBeanException
+    {
+       if (className == null)
+          throw new RuntimeOperationsException(new IllegalArgumentException(
+                    "Null className"));
+@@ -989,17 +1046,26 @@
+       //{
+          
+       
+       try
+       {
+-         return (ObjectInstance) invoke(
++	 ObjectInstance ret =
++	     (ObjectInstance) invoke(
+                  new ObjectName(MBEAN_REGISTRY), "registerMBean",
+                  new Object[] { object, name, valueMap },
+                  new String[] { Object.class.getName(),
+                                 ObjectName.class.getName(),
+                                 Map.class.getName() }
+          );
++
++	 //
++	 // Notify AFPI that a new MBean has been registered (candea@stanford.edu)
++	 // (this might be highly inefficient, but OK for now)
++	 //
++	 addMBeanInfo(ret.getObjectName());
++
++	 return ret;
+       }
+       catch (Exception e)
+       {
+          Exception result = handleInvocationException(/*registryName,*/ e);
+          if (result instanceof InstanceAlreadyExistsException)
+@@ -1451,7 +1517,35 @@
+          descMBean
+       );
+ 
+       return info;      
+    }      
++
++
++   /**
++    * Send to AFPI the registration info for a newly-registered MBean.
++    *
++    * @param mbName  an ObjectName describing the MBean
++    *
++    **/
++    private void addMBeanInfo( ObjectName mbName )
++	throws InstanceNotFoundException, IntrospectionException, ReflectionException
++    {
++	java.util.LinkedList methods = new java.util.LinkedList();
++	javax.management.MBeanOperationInfo[] mbOps = getMBeanInfo(mbName).getOperations();
++
++	for (int i=0 ; i < mbOps.length ; i++)	{
++	    methods.add( (Object)mbOps[i].getName() );
++	}
++
++	/* FIXME: use MBeanInfo.getReturnType() for future data
++	   corruption.  Instead of throwing an exception on the
++	   invoke(), we could simply return a bad object. */
++	
++	/* FIXME: use MBeanInfo.getImpact() for information on
++	   what the op does. */
++
++	/* Pass the MBean name and operation descriptions to the AFPI interceptor */
++	interceptor.addComponent(mbName.getCanonicalName(), methods, "MBean");
++    }
+ }
+ 
+diff --recursive --ignore-space-change --minimal --unified=5 --exclude=build --exclude=output --exclude='*.log' --exclude=afpi --exclude=module.version original.jboss-3.2.1-src/system/build.xml jboss-3.2.1-src/system/build.xml
+--- original.jboss-3.2.1-src/system/build.xml	Mon Mar 31 09:05:39 2003
++++ jboss-3.2.1-src/system/build.xml	Wed Sep  3 20:59:35 2003
+@@ -416,10 +416,17 @@
+       </fileset>
+       <fileset dir="${build.resources}">
+         <include name="log4j*.properties"/>
+         <include name="org/jboss/version.properties"/>
+       </fileset>
++      <fileset dir="../afpi/output/classes">
++        <include name="rr/Interceptor.class"/>
++        <include name="rr/MBeanInterceptor.class"/>
++        <include name="rr/DBUtil.class"/>
++        <include name="rr/Component.class"/>
++        <include name="rr/MethodSignature.class"/>
++      </fileset>
+ 
+       <!-- Include getopt -->
+       <fileset dir="${build.gen}/getopt">
+         <include name="**"/>
+       </fileset>

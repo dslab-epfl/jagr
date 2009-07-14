@@ -1,0 +1,765 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 10">
+<link rel=File-List href="EJB-reference-and-relation_files/filelist.xml">
+<link rel=Edit-Time-Data href="EJB-reference-and-relation_files/editdata.mso">
+<link rel=OLE-Object-Data href="EJB-reference-and-relation_files/oledata.mso">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Shinichi Kawamoto</o:Author>
+  <o:LastAuthor>Kawamoto</o:LastAuthor>
+  <o:Created>2004-03-05T21:27:24Z</o:Created>
+  <o:LastSaved>2004-03-19T02:13:02Z</o:LastSaved>
+  <o:Version>10.3311</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:DownloadComponents/>
+  <o:LocationOfComponents HRef="file:///D:\"/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:1.0in .75in 1.0in .75in;
+	mso-header-margin:.51in;
+	mso-footer-margin:.51in;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	color:windowtext;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"ＭＳ Ｐゴシック", monospace;
+	mso-font-charset:128;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"ＭＳ Ｐゴシック", monospace;
+	mso-font-charset:128;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl24
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:2.0pt double windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl25
+	{mso-style-parent:style0;
+	border-top:.5pt solid windowtext;
+	border-right:2.0pt double windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl26
+	{mso-style-parent:style0;
+	border-top:1.5pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.5pt solid windowtext;}
+.xl27
+	{mso-style-parent:style0;
+	border-top:.5pt solid windowtext;
+	border-right:2.0pt double windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl28
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:2.0pt double windowtext;
+	border-bottom:2.0pt double windowtext;
+	border-left:none;}
+.xl29
+	{mso-style-parent:style0;
+	border-top:1.5pt solid windowtext;
+	border-right:2.0pt double windowtext;
+	border-bottom:none;
+	border-left:none;}
+.xl30
+	{mso-style-parent:style0;
+	border-top:none;
+	border-right:none;
+	border-bottom:2.0pt double windowtext;
+	border-left:1.5pt solid windowtext;}
+.xl31
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:2.0pt double windowtext;
+	border-left:none;}
+.xl32
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:2.0pt double windowtext;
+	border-left:.5pt solid windowtext;}
+.xl33
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:2.0pt double windowtext;
+	border-left:.5pt solid windowtext;}
+.xl34
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl35
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl36
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:none;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl37
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl38
+	{mso-style-parent:style0;
+	text-align:center;
+	border:.5pt solid windowtext;}
+.xl39
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:none;}
+.xl40
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl41
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl42
+	{mso-style-parent:style0;
+	text-align:center;}
+.xl43
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:1.5pt solid windowtext;}
+.xl44
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:1.5pt solid windowtext;}
+.xl45
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:1.5pt solid windowtext;}
+.xl46
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl47
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl48
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl49
+	{mso-style-parent:style0;
+	font-size:14.0pt;
+	font-weight:700;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.5pt solid windowtext;
+	border-left:none;}
+ruby
+	{ruby-align:left;}
+rt
+	{color:windowtext;
+	font-size:6.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"ＭＳ Ｐゴシック", monospace;
+	mso-font-charset:128;
+	mso-char-type:katakana;
+	display:none;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Vanila RUBiS local_remote_CMP2</x:Name>
+    <x:WorksheetOptions>
+     <x:DefaultRowHeight>264</x:DefaultRowHeight>
+     <x:Print>
+      <x:ValidPrinterInfo/>
+      <x:PaperSizeIndex>9</x:PaperSizeIndex>
+      <x:HorizontalResolution>-3</x:HorizontalResolution>
+      <x:VerticalResolution>600</x:VerticalResolution>
+     </x:Print>
+     <x:Selected/>
+     <x:Panes>
+      <x:Pane>
+       <x:Number>3</x:Number>
+       <x:RangeSelection>$A$1:$M$1</x:RangeSelection>
+      </x:Pane>
+     </x:Panes>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>9228</x:WindowHeight>
+  <x:WindowWidth>14940</x:WindowWidth>
+  <x:WindowTopX>240</x:WindowTopX>
+  <x:WindowTopY>120</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+ <x:ExcelName>
+  <x:Name>Print_Area</x:Name>
+  <x:SheetIndex>1</x:SheetIndex>
+  <x:Formula>='Vanila RUBiS local_remote_CMP2'!$A$1:$M$29</x:Formula>
+ </x:ExcelName>
+</xml><![endif]-->
+</head>
+
+<body link=blue vlink=purple>
+
+<table x:str border=0 cellpadding=0 cellspacing=0 width=1247 style='border-collapse:
+ collapse;table-layout:fixed;width:932pt'>
+ <col width=64 style='width:48pt'>
+ <col width=182 style='mso-width-source:userset;mso-width-alt:6456;width:136pt'>
+ <col class=xl42 width=91 span=11 style='mso-width-source:userset;mso-width-alt:
+ 3242;width:68pt'>
+ <col width=91 span=14 style='mso-width-source:userset;mso-width-alt:3242;
+ width:68pt'>
+ <tr height=46 style='mso-height-source:userset;height:34.5pt'>
+  <td colspan=13 height=46 class=xl49 width=1247 style='height:34.5pt;
+  width:932pt'><a name="Print_Area">Reference and Relation between EJBs in
+  Vanila RUBiS local_remote_CMP2.0</a></td>
+ </tr>
+ <tr height=18 style='height:13.8pt'>
+  <td height=18 class=xl26 style='height:13.8pt;border-top:none'>　</td>
+  <td class=xl29 style='border-top:none'>　</td>
+  <td colspan=11 class=xl46 style='border-right:1.5pt solid black'>to</td>
+ </tr>
+ <tr height=18 style='height:13.8pt'>
+  <td height=18 class=xl30 style='height:13.8pt'>　</td>
+  <td class=xl28>　</td>
+  <td class=xl31 style='border-top:none'>SB_ViewItem</td>
+  <td class=xl32 style='border-top:none;border-left:none'>SB_Auth</td>
+  <td class=xl32 style='border-top:none;border-left:none'>Category</td>
+  <td class=xl32 style='border-top:none;border-left:none'>Region</td>
+  <td class=xl32 style='border-top:none;border-left:none'>User</td>
+  <td class=xl32 style='border-top:none;border-left:none'>Item</td>
+  <td class=xl32 style='border-top:none;border-left:none'>OldItem</td>
+  <td class=xl32 style='border-top:none;border-left:none'>Bid</td>
+  <td class=xl32 style='border-top:none;border-left:none'>BuyNow</td>
+  <td class=xl32 style='border-top:none;border-left:none'>Comment</td>
+  <td class=xl33 style='border-top:none;border-left:none'>IDManager</td>
+ </tr>
+ <tr height=18 style='height:13.8pt'>
+  <td rowspan=26 height=468 class=xl43 style='border-bottom:1.5pt solid black;
+  height:344.4pt'>from</td>
+  <td class=xl24 style='border-left:none'>SB_AboutMe</td>
+  <td class=xl34>-</td>
+  <td class=xl35 style='border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>ref</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_PutBid</td>
+  <td class=xl37 style='border-top:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_StoreBid</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_BuyNow</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_StoreBuyNow</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_PutComment</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_StoreComment</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_RegisterUser</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_RegisterItem</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_ViewUserInfo</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_ViewItem</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_ViewBidHistory</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_SearchItemsByRegion</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_SearchItemsByCategory</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_BrowseRegions</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_BrowseCategories</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>SB_Auth</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>ref</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>Category</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>rel (one-many)</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>Region</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>rel (one-many)</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>User</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>rel (one-many)</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>rel (one-many)</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>Item</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>rel (one-many)</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>OldItem</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>Bid</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>BuyNow</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.2pt'>
+  <td height=18 class=xl25 style='height:13.2pt;border-top:none;border-left:
+  none'>Comment</td>
+  <td class=xl37 style='border-top:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl35 style='border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl38 style='border-top:none;border-left:none'>-</td>
+  <td class=xl36 style='border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.8pt'>
+  <td height=18 class=xl27 style='height:13.8pt;border-top:none;border-left:
+  none'>IDManager</td>
+  <td class=xl39 style='border-top:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl40 style='border-top:none;border-left:none'>-</td>
+  <td class=xl41 style='border-top:none;border-left:none'>-</td>
+ </tr>
+ <tr height=18 style='height:13.8pt'>
+  <td height=18 colspan=2 style='height:13.8pt;mso-ignore:colspan'></td>
+  <td colspan=11 class=xl42 style='mso-ignore:colspan'></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=64 style='width:48pt'></td>
+  <td width=182 style='width:136pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+  <td width=91 style='width:68pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

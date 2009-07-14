@@ -1,0 +1,9 @@
+<!-- Create a war file-->
+  <target name="rubis_war">
+    <copy file="./rubis_ejb_servlets.jar" todir="../ejb_rubis_web/WEB-INF/lib"/>
+     <war destfile="./ejb_rubis_web.war" webxml="../ejb_rubis_web/WEB-INF/web.xml" basedir="../ejb_rubis_web">
+        <fileset dir="./build"
+                 includes="*"/>
+    </war>
+  </target>
+

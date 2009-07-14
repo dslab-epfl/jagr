@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt; Java[tm]
+Pet Store Administrator &gt; Installation</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet
+Store Administrator </font></b></a> &gt; <b>Installation</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Installation</h1>
+
+<p>This document describes how to install and configure the Java Pet
+Store Administrator application on UNIX and Win32 machines.</p>
+
+<p>This application is intended to be used on top of the <a
+href="../jps/index.html">Java Pet Store</a>, which you must <a
+href="../jps/install.html">install</a> before installing the Java Pet
+Store Administrator.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<h2>Creating the administrator account</h2>
+
+<p>The application requires an administrator account with the user
+name <code>jps_admin</code> (and password <code>admin</code>) in the
+J2EE Reference Implementation server.</p>
+
+<p>To create this account:</p>
+
+<ul>
+<li><p><b>UNIX</b>: Bring up a shell prompt, change your current
+directory to <code>$JPS_HOME</code> and run
+<code>createadminuser.sh</code>.</p></li>
+
+<li><p><b>Win32</b>: Bring up a command prompt, change your current
+directory to <code>%JPS_HOME%</code> and run
+<code>createadminuser.bat</code>.</p></li>
+</ul>
+
+<h2>Deploying the application</h2>
+
+<p>Start the Cloudscape database server and J2EE Reference
+Implementation server. Then, start the J2EE Reference Implementation
+deployment tool.</p>
+
+<p>From the <i>File</i> menu, select <i>Open Application...</i>. In
+the subsequent file dialog, open <code>petstoreadmin.ear</code>, which
+can be found in <code>$JPS_HOME</code> (UNIX) or
+<code>%JPS_HOME%</code> (Win32).</p>
+
+<p>Then, from the <i>Tools</i> menu, select <i>Deploy Application</i>.
+Click through the subsequent dialogs to complete the deployment. You
+shouldn't have to change any of the default values.</p>
+</li>
+
+<h2>Testing the application</h2>
+
+<p>Deploy the Java Pet Store if it is not already deployed. Use it to
+order some pets.</p>
+
+<p>Then, with the Java Pet Store Administrator deployed, follow these
+steps:</p>
+
+<ol>
+<li><p>Visit the Java Pet Store Administrator using the link given
+at the end of these instructions. Click the link on the welcome page
+to load the administrator login page.</p></li>
+
+<li><p>Log in using the administrator account (user name
+<code>jps_admin</code>, password <code>admin</code>). On the
+subsequent page, click the <i>Update Order Status</i> button to
+display the table of all the pending Java Pet Store orders.</p></li>
+
+<li><p>Use the drop-down boxes in the <i>Order Status</i> column to
+change the status of each order to Approved ("A") or Denied
+("D"). Check the boxes in the <i>Update</i> column to mark which
+orders you would actually like to update. Click the <i>Submit</i>
+button to update the status of all marked orders.</p></li>
+</ol>
+
+<p>To use the administrator module, click the following link:</p>
+
+<p><a
+href="http://localhost:8000/admin/"><code>http://localhost:8000/admin/</code></a></p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume that the application is deployed on a machine named
+<code>localhost</code> and port <code>8000</code>. You should
+substitute <code>localhost</code> and <code>8000</code> with the name
+of the machine and the port on which the application is deployed.<hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

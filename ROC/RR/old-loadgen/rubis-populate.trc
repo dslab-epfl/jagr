@@ -1,0 +1,901 @@
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great5&lastname=User5&nickname=user5&email=Great5.User5%40rubis.com&password=password5&region=CA--San+Diego HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great6&lastname=User6&nickname=user6&email=Great6.User6%40rubis.com&password=password6&region=CA--San+Francisco HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great8&lastname=User8&nickname=user8&email=Great8.User8%40rubis.com&password=password8&region=CO--Denver HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great9&lastname=User9&nickname=user9&email=Great9.User9%40rubis.com&password=password9&region=CT--Hartford HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great10&lastname=User10&nickname=user10&email=Great10.User10%40rubis.com&password=password10&region=DC--Washington HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%231&description=This+incredible+item+is+exactly+what+you+need+%21%3Cbr%3EIt+has+a+lot+of+very+nice+features+including+a+&initialPrice=2026.0&reservePrice=2473.0&buyNow=4890.0&duration=-1&quantity=1&userId=1&categoryId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=2026.0&maxQty=1&bid=2031.0&maxBid=2036.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=1&minBid=2031.0&maxQty=1&bid=2041.0&maxBid=2051.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=2041.0&maxQty=1&bid=2046.0&maxBid=2051.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=2&minBid=2046.0&maxQty=1&bid=2049.0&maxBid=2052.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=2049.0&maxQty=1&bid=2058.0&maxBid=2067.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=4&minBid=2058.0&maxQty=1&bid=2068.0&maxBid=2078.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=4&minBid=2068.0&maxQty=1&bid=2072.0&maxBid=2076.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreComment?itemId=1&to=1&from=3&rating=3&comment=This+is+a+comment+above+average.+You+can+trust+this+seller+even+if+it+is+not+th HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%232&description=This+incredible+item+is+exactly+what+you&initialPrice=1254.0&reservePrice=1310.0&buyNow=0.0&duration=-6&quantity=1&userId=9&categoryId=2 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=4&minBid=1254.0&maxQty=1&bid=1261.0&maxBid=1268.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=9&minBid=1261.0&maxQty=1&bid=1270.0&maxBid=1279.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=7&minBid=1270.0&maxQty=1&bid=1272.0&maxBid=1274.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=1&minBid=1272.0&maxQty=1&bid=1273.0&maxBid=1274.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=9&minBid=1273.0&maxQty=1&bid=1278.0&maxBid=1283.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=5&minBid=1278.0&maxQty=1&bid=1282.0&maxBid=1286.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=2&userId=7&minBid=1282.0&maxQty=1&bid=1288.0&maxBid=1294.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreComment?itemId=2&to=9&from=9&rating=-3&comment=This+is+a+comment+below+average. HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%233&description=This+incredible+item+is+exactly+what+you+need+%21%3Cbr%3EIt+has+a+lot+of&initialPrice=452.0&reservePrice=601.0&buyNow=0.0&duration=-2&quantity=1&userId=1&categoryId=3 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=3&userId=7&minBid=452.0&maxQty=1&bid=454.0&maxBid=456.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=3&userId=6&minBid=454.0&maxQty=1&bid=458.0&maxBid=462.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=3&userId=7&minBid=458.0&maxQty=1&bid=463.0&maxBid=468.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great5&lastname=User5&nickname=user5&email=Great5.User5%40rubis.com&password=password5&region=CA--San+Diego HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great5&lastname=User5&nickname=user5&email=Great5.User5%40rubis.com&password=password5&region=CA--San+Diego HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great6&lastname=User6&nickname=user6&email=Great6.User6%40rubis.com&password=password6&region=CA--San+Francisco HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great8&lastname=User8&nickname=user8&email=Great8.User8%40rubis.com&password=password8&region=CO--Denver HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great8&lastname=User8&nickname=user8&email=Great8.User8%40rubis.com&password=password8&region=CO--Denver HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great8&lastname=User8&nickname=user8&email=Great8.User8%40rubis.com&password=password8&region=CO--Denver HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great9&lastname=User9&nickname=user9&email=Great9.User9%40rubis.com&password=password9&region=CT--Hartford HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great10&lastname=User10&nickname=user10&email=Great10.User10%40rubis.com&password=password10&region=DC--Washington HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great10&lastname=User10&nickname=user10&email=Great10.User10%40rubis.com&password=password10&region=DC--Washington HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great10&lastname=User10&nickname=user10&email=Great10.User10%40rubis.com&password=password10&region=DC--Washington HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%231&description=This+incredible+item+is+exactly+what+you+need+%21%3Cbr%3EIt+has+a+lot+of+very+nice+features&initialPrice=1157.0&reservePrice=1198.0&buyNow=2768.0&duration=-1&quantity=1&userId=1&categoryId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%231&description=This+incredible+item+is+exactly+what+you+need+%21%3Cbr%3EIt+has+a+lot+of+very+nice+features&initialPrice=1157.0&reservePrice=1198.0&buyNow=2768.0&duration=-1&quantity=1&userId=1&categoryId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%231&description=This+incredible+item+is+exactly+what+you+need+%21%3Cbr%3EIt+has+a+lot+of+very+nice+features&initialPrice=1157.0&reservePrice=1198.0&buyNow=2768.0&duration=-1&quantity=1&userId=1&categoryId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=8&minBid=1157.0&maxQty=1&bid=1167.0&maxBid=1177.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1167.0&maxQty=1&bid=1168.0&maxBid=1169.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=6&minBid=1168.0&maxQty=1&bid=1173.0&maxBid=1178.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=6&minBid=1168.0&maxQty=1&bid=1173.0&maxBid=1178.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=1173.0&maxQty=1&bid=1177.0&maxBid=1181.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=1173.0&maxQty=1&bid=1177.0&maxBid=1181.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=1173.0&maxQty=1&bid=1177.0&maxBid=1181.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=7&minBid=1177.0&maxQty=1&bid=1186.0&maxBid=1195.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=10&minBid=1186.0&maxQty=1&bid=1190.0&maxBid=1194.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=9&minBid=1190.0&maxQty=1&bid=1196.0&maxBid=1202.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=9&minBid=1190.0&maxQty=1&bid=1196.0&maxBid=1202.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.StoreBid?itemId=1&userId=9&minBid=1190.0&maxQty=1&bid=1196.0&maxBid=1202.0&qty=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great5&lastname=User5&nickname=user5&email=Great5.User5%40rubis.com&password=password5&region=CA--San+Diego HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great6&lastname=User6&nickname=user6&email=Great6.User6%40rubis.com&password=password6&region=CA--San+Francisco HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great1&lastname=User1&nickname=user1&email=Great1.User1%40rubis.com&password=password1&region=AZ--Phoenix HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great2&lastname=User2&nickname=user2&email=Great2.User2%40rubis.com&password=password2&region=CA--Los+Angeles HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great3&lastname=User3&nickname=user3&email=Great3.User3%40rubis.com&password=password3&region=CA--Oakland HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great4&lastname=User4&nickname=user4&email=Great4.User4%40rubis.com&password=password4&region=CA--Sacramento HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great5&lastname=User5&nickname=user5&email=Great5.User5%40rubis.com&password=password5&region=CA--San+Diego HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great6&lastname=User6&nickname=user6&email=Great6.User6%40rubis.com&password=password6&region=CA--San+Francisco HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great7&lastname=User7&nickname=user7&email=Great7.User7%40rubis.com&password=password7&region=CA--San+Jose HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great8&lastname=User8&nickname=user8&email=Great8.User8%40rubis.com&password=password8&region=CO--Denver HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great9&lastname=User9&nickname=user9&email=Great9.User9%40rubis.com&password=password9&region=CT--Hartford HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterUser?firstname=Great10&lastname=User10&nickname=user10&email=Great10.User10%40rubis.com&password=password10&region=DC--Washington HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.RegisterItem?name=RUBiS+automatically+generated+item+%231&description=This+incredible+item+is+exactly+what+you+nee&initialPrice=4837.0&reservePrice=5347.0&buyNow=10773.0&duration=-7&quantity=1&userId=8&categoryId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive

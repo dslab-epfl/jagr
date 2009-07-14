@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt; Java[tm]
+Pet Store Administrator &gt; Configuring HTTPS</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet Store
+Administrator</font></b></a> &gt; <b>Configuring HTTPS</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Configuring HTTPS</h1>
+
+<p>The Java Pet Store Administrator uses the HTTP protocol by default.
+This document describes how to enable a secure communication channel
+with this application by enabling HTTPS.</p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<ol>
+<li><p><b>Generate a security key using the J2EE Reference
+Implementation key-generation tool.</b></p>
+
+<p>To create a private key for use in secure transactions, open up a
+shell or command prompt, change your current directory to
+<code>$J2EE_HOME/bin</code> (UNIX) or <code>%J2EE_HOME%\bin</code>
+(Win32), and execute the following command:</p>
+
+<p><code>keytool -genkey -keyalg RSA -alias jpsCert</code></p>
+
+<p>The tool will prompt for a password. Enter the following password:
+
+<p><code>changeit</code></p>
+
+<p>The tool will then ask you a series of questions. Your answers to
+these questions will be used to generate a new key, which will
+take a few minutes.</p>
+
+<p>Once it has finished generating the key, the tool will ask you to
+supply a password for <code>&lt;jpsCert&gt;</code>. Just hit the
+<i>Return</i> (or <i>Enter</i>) key to use the keystore password.</p>
+
+<p>
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> To use a certificate
+signed by a certificate authority, please refer to the section <a
+href="http://java.sun.com/j2ee/j2sdkee/techdocs/guides/ejb/html/Security7.html">"Setting
+Up a Server Certificate"</a> in Chapter 8 of the <i>J2EE Developer's
+Guide</i>.<hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</p>
+
+</li>
+
+<li><p><b>Configure the application to use secure
+communication.</b></p>
+
+<p>Go to the the directory
+<code>$JPS_HOME/src/petstoreadmin/src/docroot/WEB-INF/</code> (UNIX)
+or <code>%JPS_HOME%\src\petstoreadmin\src\docroot\WEB-INF\</code>
+(Win32) and open the file <code>web.xml</code>.</p>
+</li>
+
+<p>Look for the following line:</p>
+
+<blockquote><pre><code>&lt;transport-guarantee&gt;NONE&lt;/transport-guarantee&gt;</code></pre></blockquote>
+
+<p>Change the value of the <code>transport-guarantee</code> entry to
+<code>CONFIDENTIAL</code>.</p>
+</li>
+
+<li><p><b>Build and deploy the application.</b></p>
+
+<p><a href="build.html">Build</a> and deploy the HTTPS-enabled Java
+Pet Store administrator.</p>
+
+<li><p><b>Test the configuration.</b></p>
+
+<p>Visit the Java Pet Store Administrator using the link given at the
+end of these instructions. Click the link on the welcome page to load
+the login page.</p>
+
+<p>The browser will now attempt to connect to the server over a secure
+channel. The browser will display several warnings, because the new
+security key you created is not signed by a well-known certificate
+authority.</p>
+
+<p>Click through the warning dialogs in order to accept the
+certificate. Once you accept the certificate, the login process and
+all subsequent interaction with the application will occur over
+HTTPS.</p></li>
+
+<p>To use the HTTP-enabled administrator module, click the following
+link:</p>
+
+<p><a
+href="http://localhost:8000/admin/"><code>http://localhost:8000/admin/</code></a></p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions
+assume that the application is deployed on a machine named
+<code>localhost</code> and port <code>8000</code>. You should
+substitute <code>localhost</code> and <code>8000</code> with the name
+of the machine and the port on which the application is deployed.<hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+</li>
+</ol>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>

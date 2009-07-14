@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN' 'http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd'>
+
+<ejb-jar>
+  <description>Supplier Domain</description>
+  <display-name>Supplier</display-name>
+  <small-icon></small-icon>
+  <large-icon></large-icon>
+  <enterprise-beans>
+    <session>
+      <description>Buyer Session Bean</description>
+      <display-name>BuyerSes</display-name>
+      <ejb-name>BuyerSes</ejb-name>
+      <home>com.sun.ecperf.supplier.buyerses.ejb.BuyerSesHome</home>
+      <remote>com.sun.ecperf.supplier.buyerses.ejb.BuyerSes</remote>
+      <ejb-class>com.sun.ecperf.supplier.buyerses.ejb.BuyerSesEJB</ejb-class>
+      <session-type>Stateful</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <env-entry>
+	<description>
+		The path to the emulator servlet
+	</description>
+	<env-entry-name>servlet</env-entry-name>
+	<env-entry-type>java.lang.String</env-entry-type>
+	<env-entry-value>_EMULATOR_PREFIX_Emulator/EmulatorServlet</env-entry-value>
+      </env-entry>
+      <env-entry>
+	<description>
+		Name of the host that is hosting the Emulator
+	</description>
+	<env-entry-name>servletHost</env-entry-name>
+	<env-entry-type>java.lang.String</env-entry-type>
+	<env-entry-value>EMULATOR_HOST</env-entry-value>
+      </env-entry>
+      <env-entry>
+	<description>
+		Port that the Emulator is on
+	</description>
+	<env-entry-name>servletPort</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>EMULATOR_PORT</env-entry-value>
+      </env-entry>
+      <env-entry>
+	<description>
+		Are we using secure HTTP? Currently only false supported
+	</description>
+	<env-entry-name>secureHTTP</env-entry-name>
+	<env-entry-type>java.lang.Boolean</env-entry-type>
+	<env-entry-value>false</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>Component Entity Bean</description>
+	<ejb-ref-name>ejb/SComponent</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEntHome</home>
+	<remote>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEnt</remote>
+        <ejb-link>SComponentEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>Supplier Entity Bean</description>
+	<ejb-ref-name>ejb/Supplier</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.supplier.supplierent.ejb.SupplierEntHome</home>
+	<remote>com.sun.ecperf.supplier.supplierent.ejb.SupplierEnt</remote>
+        <ejb-link>SupplierEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>Purchase Order Entity Bean</description>
+        <ejb-ref-name>ejb/POEnt</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <home>com.sun.ecperf.supplier.poent.ejb.POEntHome</home>
+        <remote>com.sun.ecperf.supplier.poent.ejb.POEnt</remote>
+        <ejb-link>POEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>SupplierDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </session>
+    <session>
+      <description>Receiver Session Bean</description>
+      <display-name>ReceiverSes</display-name>
+      <ejb-name>ReceiverSes</ejb-name>
+      <home>com.sun.ecperf.supplier.receiverses.ejb.ReceiverSesHome</home>
+      <remote>com.sun.ecperf.supplier.receiverses.ejb.ReceiverSes</remote>
+      <ejb-class>com.sun.ecperf.supplier.receiverses.ejb.ReceiverSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>Component Entity Bean</description>
+	<ejb-ref-name>ejb/SComponent</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEntHome</home>
+	<remote>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEnt</remote>
+        <ejb-link>SComponentEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>Purchase Order Entity Bean</description>
+        <ejb-ref-name>ejb/POEnt</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <home>com.sun.ecperf.supplier.poent.ejb.POEntHome</home>
+        <remote>com.sun.ecperf.supplier.poent.ejb.POEnt</remote>
+        <ejb-link>POEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+        <description>Mfg Receive Session Bean</description>
+        <ejb-ref-name>ejb/ReceiveSes</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.sun.ecperf.mfg.receiveses.ejb.ReceiveSesHome</home>
+        <remote>com.sun.ecperf.mfg.receiveses.ejb.ReceiveSes</remote>
+      </ejb-ref>
+    </session>
+    <entity>
+      <description>Supplier Entity Bean</description>
+      <display-name>SupplierEnt</display-name>
+      <small-icon />
+      <large-icon />
+      <ejb-name>SupplierEnt</ejb-name>
+      <home>com.sun.ecperf.supplier.supplierent.ejb.SupplierEntHome</home>
+      <remote>com.sun.ecperf.supplier.supplierent.ejb.SupplierEnt</remote>
+      <ejb-class>com.sun.ecperf.supplier.supplierent.ejb.SupplierBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SupplierCompEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.supplier.suppliercompent.ejb.SupplierCompEntHome</home>
+	<remote>com.sun.ecperf.supplier.suppliercompent.ejb.SupplierCompEnt</remote>
+	<ejb-link>SupplierCompEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>SupplierDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>SupplierComponent Entity Bean</description>
+      <display-name>SupplierCompEnt</display-name>
+      <small-icon />
+      <large-icon />
+      <ejb-name>SupplierCompEnt</ejb-name>
+      <home>com.sun.ecperf.supplier.suppliercompent.ejb.SupplierCompEntHome</home>
+      <remote>com.sun.ecperf.supplier.suppliercompent.ejb.SupplierCompEnt</remote>
+      <ejb-class>com.sun.ecperf.supplier.suppliercompent.ejb.SupplierCompBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>com.sun.ecperf.supplier.suppliercompent.ejb.SuppCompEntPK</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Supplier DB dataSource</description>
+	<res-ref-name>SupplierDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Component Entity Bean</description>
+      <display-name>SComponentEnt</display-name>
+      <small-icon />
+      <large-icon />
+      <ejb-name>SComponentEnt</ejb-name> 
+      <home>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEntHome</home>
+      <remote>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEnt</remote>
+      <ejb-class>com.sun.ecperf.supplier.scomponentent.ejb.SComponentBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+        <description>Supplier DB dataSource</description>
+        <res-ref-name>SupplierDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref> 	
+    </entity>
+    <entity>
+      <description>PurchaseOrder Entity bean</description>
+      <display-name>POEnt</display-name>
+      <ejb-name>POEnt</ejb-name>
+      <home>com.sun.ecperf.supplier.poent.ejb.POEntHome</home>
+      <remote>com.sun.ecperf.supplier.poent.ejb.POEnt</remote>
+      <ejb-class>com.sun.ecperf.supplier.poent.ejb.POBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <env-entry>
+	<description>location of po.dtd file</description>
+	<env-entry-name>poDTD</env-entry-name>
+	<env-entry-type>java.lang.String</env-entry-type>
+	<env-entry-value>http://ECPERF_HOST:ECPERF_PORT_ECPERF_PREFIX_Supplier/dtd/po.dtd</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<ejb-ref-type>Session</ejb-ref-type>
+	<home>com.sun.ecperf.util.sequenceses.ejb.SequenceSesHome</home>
+	<remote>com.sun.ecperf.util.sequenceses.ejb.SequenceSes</remote>
+	<ejb-link>SequenceSes</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/POLineEnt</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <home>com.sun.ecperf.supplier.polineent.ejb.POLineEntHome</home>
+        <remote>com.sun.ecperf.supplier.polineent.ejb.POLineEnt</remote>
+        <ejb-link>POLineEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>Supplier DB dataSource</description>
+	<res-ref-name>SupplierDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>PurchaseOrderLine Entity Bean</description>
+      <display-name>POLineEnt</display-name>
+      <small-icon />
+      <large-icon />
+      <ejb-name>POLineEnt</ejb-name>
+      <home>com.sun.ecperf.supplier.polineent.ejb.POLineEntHome</home>
+      <remote>com.sun.ecperf.supplier.polineent.ejb.POLineEnt</remote>
+      <ejb-class>com.sun.ecperf.supplier.polineent.ejb.POLineBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>com.sun.ecperf.supplier.polineent.ejb.POLineEntPK</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+        <description>Component Entity Bean</description>
+        <ejb-ref-name>ejb/SComponent</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <home>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEntHome</home>
+        <remote>com.sun.ecperf.supplier.scomponentent.ejb.SComponentEnt</remote>
+        <ejb-link>SComponentEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+        <description>Supplier DB dataSource</description>
+        <res-ref-name>SupplierDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Supplier Auditing Session Bean</description>
+      <display-name>SupplierAuditSes</display-name>
+      <ejb-name>SupplierAuditSes</ejb-name>
+      <home>com.sun.ecperf.supplier.supplierauditses.ejb.SupplierAuditSesHome</home>
+      <remote>com.sun.ecperf.supplier.supplierauditses.ejb.SupplierAuditSes</remote>
+      <ejb-class>com.sun.ecperf.supplier.supplierauditses.ejb.SupplierAuditSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <description>
+                host that is hosting Delivery servlet
+        </description>
+        <env-entry-name>deliveryServlet</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>http://ECPERF_HOST:ECPERF_PORT_ECPERF_PREFIX_Supplier/DeliveryServlet?cmd=getcount</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <description>
+                host that is hosting the Emulator
+        </description>
+        <env-entry-name>emulatorServlet</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>http://EMULATOR_HOST:EMULATOR_PORT_EMULATOR_PREFIX_Emulator/EmulatorServlet?cmd=getcount</env-entry-value>
+      </env-entry>
+      <resource-ref>
+        <description>Supplier DB dataSource</description>
+        <res-ref-name>SupplierDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>BuyerSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>ReceiverSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>SupplierEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>SupplierCompEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+        <description></description>
+        <ejb-name>POEnt</ejb-name>
+        <method-name>findByPrimaryKey</method-name>
+      </method>
+      <method>
+        <description></description>
+        <ejb-name>POEnt</ejb-name>
+        <method-name>generateXml</method-name>
+      </method>
+      <method>
+        <description></description>
+        <ejb-name>POEnt</ejb-name>
+        <method-name>poLineDelivered</method-name>
+      </method>
+      <method>
+        <description/>
+        <ejb-name>POEnt</ejb-name>
+        <method-name>remove</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+        <description></description>
+        <ejb-name>POEnt</ejb-name>
+        <method-name>create</method-name>
+      </method>    
+      <trans-attribute>RequiresNew</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>POLineEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description></description>
+      <method>
+	<description></description>
+	<ejb-name>SComponentEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>SupplierAuditSes</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+  <ejb-client-jar></ejb-client-jar>
+</ejb-jar>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS//EN" "http://www.jboss.org/j2ee/dtd/jboss.dtd">
+
+<!-- 
+This is the JBoss 3.2.1 EJB deployment descriptor for Category, Region,
+ User Item, Bid
+-->
+
+<jboss>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>Region</ejb-name>
+      <jndi-name>RegionHome</jndi-name>
+      <configuration-name>Instance Per Transaction CMP 2.x EntityBean</configuration-name>
+      <local-jndi-name>RegionLocalHome</local-jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>Category</ejb-name>
+      <jndi-name>CategoryHome</jndi-name>
+      <configuration-name>Instance Per Transaction CMP 2.x EntityBean</configuration-name>
+      <local-jndi-name>CategoryLocalHome</local-jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>User</ejb-name>
+      <jndi-name>UserHome</jndi-name>
+      <configuration-name>Instance Per Transaction CMP 2.x EntityBean</configuration-name>
+      <local-jndi-name>UserLocalHome</local-jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>Item</ejb-name>
+      <jndi-name>ItemHome</jndi-name>
+      <configuration-name>Instance Per Transaction CMP 2.x EntityBean</configuration-name>
+      <local-jndi-name>ItemLocalHome</local-jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>Bid</ejb-name>
+      <jndi-name>BidHome</jndi-name>
+      <configuration-name>Instance Per Transaction CMP 2.x EntityBean</configuration-name>
+      <local-jndi-name>BidLocalHome</local-jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/rubis</res-ref-name>
+        <resource-name>rubis</resource-name>
+      </resource-ref>
+    </entity>
+  </enterprise-beans>
+</jboss>

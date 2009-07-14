@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<!-- Comment Entity Bean -->
+
+<ejb-jar>
+    <enterprise-beans> 
+        <entity>
+            <description>Comment Bean deployment descriptor</description>
+            <display-name>Comment</display-name>
+            <ejb-name>Comment</ejb-name>
+            <local-home>edu.rice.rubis.beans.CommentLocalHome</local-home>
+            <local>edu.rice.rubis.beans.CommentLocal</local>
+            <ejb-class>edu.rice.rubis.beans.CommentBean</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>edu.rice.rubis.beans.CommentPK</prim-key-class>
+            <reentrant>False</reentrant>
+            <cmp-version>2.x</cmp-version>
+            <abstract-schema-name>CommentBean</abstract-schema-name>
+	    <ejb-local-ref>
+                <description>This is the reference to the id manager</description>
+                <ejb-ref-name>ejb/IDManager</ejb-ref-name>
+		<ejb-ref-type>Entity</ejb-ref-type>
+		<ejb-link>IDManager</ejb-link>
+		<local-home>edu.rice.rubis.beans.IDManagerLocalHome</local-home>
+		<local>edu.rice.rubis.beans.IDManagerLocal</local>
+            </ejb-local-ref>
+            <cmp-field>
+                <field-name>id</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>fromUserId</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>toUserId</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>itemId</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>rating</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>date</field-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>comment</field-name>
+            </cmp-field>
+            <query>
+                <query-method>
+                    <method-name>findByItem</method-name>
+                    <method-params>
+                       <method-param>java.lang.Integer</method-param>
+                    </method-params>
+               </query-method>
+                <ejb-ql><![CDATA[
+                    SELECT OBJECT(c)
+                    FROM CommentBean c
+                    WHERE c.itemId = ?1
+               ]]></ejb-ql>
+            </query>
+            <query>
+                <query-method>
+                    <method-name>findByFromUser</method-name>
+                    <method-params>
+                       <method-param>java.lang.Integer</method-param>
+                    </method-params>
+               </query-method>
+                <ejb-ql><![CDATA[
+                    SELECT OBJECT(c)
+                    FROM CommentBean c
+                    WHERE c.fromUserId = ?1
+               ]]></ejb-ql>
+            </query>
+            <query>
+                <query-method>
+                    <method-name>findByToUser</method-name>
+                    <method-params>
+                       <method-param>java.lang.Integer</method-param>
+                    </method-params>
+               </query-method>
+                <ejb-ql><![CDATA[
+                    SELECT OBJECT(c)
+                    FROM CommentBean c
+                    WHERE c.toUserId = ?1
+               ]]></ejb-ql>
+            </query>
+            <query>
+                <query-method>
+                    <method-name>findAllComments</method-name>
+                    <method-params/>
+               </query-method>
+                <ejb-ql><![CDATA[
+                    SELECT OBJECT(c)
+                    FROM CommentBean c
+               ]]></ejb-ql>
+            </query>
+            <resource-ref>
+                <res-ref-name>jdbc/rubis</res-ref-name>
+                <res-type>javax.sql.DataSource</res-type>
+                <res-auth>Container</res-auth>
+            </resource-ref>
+        </entity>
+    </enterprise-beans>
+
+    <assembly-descriptor>
+        <container-transaction>
+            <method>
+                <ejb-name>Comment</ejb-name>
+		<method-name>*</method-name>
+            </method>
+            <trans-attribute>Required</trans-attribute>
+        </container-transaction>
+    </assembly-descriptor>
+</ejb-jar>

@@ -1,0 +1,975 @@
+<html>
+<head>
+<title>User's Guide (Layer 1)</title>
+<meta name="Author"   content="Christian Lenz Cesar">
+<meta name="abstract" content="User's Guide">
+<meta name="keywords" content="Java graph graph-theory graph-drawing graph-layout">
+<meta name="owner"    content="cesar@us.ibm.com">
+<meta name="review"   content="19990101">
+<meta name="security" content="public">
+</head>
+<body text="#000000" link="#0000ff" vlink="#551a8b" alink="#ff0000" bgcolor="#c0c0c0">
+<h1 align="center">User's Guide (Layer 1)</h1>
+
+<p align="center"><hr size="11">
+<address>Christian Lenz Cesar<br>
+cesar@us.ibm.com<br>
+<br>
+<i>THIS IS WORK-IN-PROGRESS</i><br>
+<br>
+Bug reports and suggestions welcome!<br>
+</address>
+
+<p><hr size="11">
+
+<h2>Introduction</h2>
+The software consists of
+
+<ul>
+  <li>Graph Foundation Classes (GFC): a class library for graphs.</li>
+  <li>A layered framework for graph drawing and layout.</li>
+</ul>
+
+<p>This document is concerned solely with the first, simplest, layer of the drawing/layout
+framework.   Most applications will find that layer sufficient. Further layers are described in
+other documents.
+
+<p>The software is 100% Pure Java and 100% Pure IBM.
+
+<p><hr size="11">
+<h2>Graph Foundation Classes: the <strong>com.ibm.graph package</strong></h2>
+The Graph Foundation Classes (GFC) is a class library for creating and manipulating graph
+structures. It is a graph theoretical library. It is packaged as <strong>com.ibm.graph</strong>.
+<h3>Class hierarchy</h3>
+The base class hierarchy for the GFC is shown in foil "GFC Class Hierarchy" 
+(see <a href="http://w3.watson.ibm.com/~cesar/java/jgraph/irjc97/foils97.ps">IRJC 97 foils</a>).
+At the root is the abstract class  <a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.GraphObject.html">GraphObject</a>. The classes  <a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Vertex.html">Vertex</a> and  <a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Edge.html">Edge</a>. are self-evident.
+The hierarchically related classes  
+<a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Net.html">Net</a>, 
+<a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Relation.html">Relation</a>, 
+<a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Graph.html">Graph</a>, 
+and  
+<a href="http://moca.watson.ibm.com/cesar/java/jgraph/api/com.ibm.graph.Tree.html">Tree</a> 
+refer to four kinds of graphs, from the most general to  more restrictive. 
+The classes <strong>Vertex</strong>, <strong>Edge</strong>, <strong>Net</strong> and its descendants
+constitute the primary concrete classes the  programmer will instantiate.
+
+<p>In this document, the term "graph" is used in two ways: (a) to refer to any king of graph, that is,
+any instance of <strong>Net</strong>, <strong>Relation</strong>, Graph or Tree; (b) to refer to an instance of the class Graph
+specifically. The difference should be clear from context, the default being the first of the two
+meanings.
+
+<p>The ancillary hierarchically related classes <strong>Walk</strong>, <strong>Trail</strong> and <strong>Path</strong> implement structures that can be
+surperimposed on graphs.
+<h3>GFC objects</h3>
+Every <strong>GraphObject</strong> instance contains two public instance fields: 
+<strong>systemdict</strong> and <strong>userdict</strong>. 
+They provide an unlimited repository for data without reliance on class extension. By convention, the
+systemdict is for the software and classes outside the software that extend the framework. 
+The userdict is for application data.
+
+<p>Every <strong>Vertex</strong> instance contains two private fields: a set of graphs and a set of edges. 
+A vertex can belong to more than one graph. Accordingly, the first set includes all graphs to which
+the vertex belongs. The second set includes all edges that are incident to the vertex,
+independently of the direction of those edges. The set of edges includes all incident edges over
+all graphs in the set of graphs. Being sets, there are no multiple copies of the same object. For
+example, if vertex <i>v</i> belongs to graphs <i>g1</i> and <i>g2</i>, 
+edge <i>e1</i> is incident to <i>v</i>, and <i>e1</i> appears in both <i>g1</i> and <i>g2</i>, 
+there is only one copy of <i>e1</i> in the set of edges for <i>v</i>.
+
+<p>Many applications will have a single graph to deal with. In that common case, a <strong>Vertex</strong> instance
+has effectively two private fields: a reference to the graph and a set of edges incident to the
+vertex that are all in that graph.
+
+<p>Every <strong>Edge</strong> instance contains four private fields: a set of graphs, a "from" vertex, a "to" vertex
+and a direction. An edge can belong to more than one graph. Accordingly, the set
+includes all graphs to which the edge belongs. The edge links the "from" and "to" vertices. The
+direction can be "undirected" or "directed". For the former, the differenciation between "from"
+and "to" does not matter; for the latter, it does.
+
+<p>Many applications will have a single graph to deal with. In that common case, an <strong>Edge</strong> instance
+has effectively four private fields: a reference to the graph, "from" and "two" vertices, and the
+direction.
+
+<p>Every <strong>Net</strong>, <strong>Relation</strong>, Graph or Tree instance contains two private fields: a set-of-vertices and a
+set-of-edges. Those sets contain all vertices and edges, respectively, that make up the graph. The
+graph may have any number of connected components. For example, an instance of a Tree can be
+a forest.
+
+<p>The following invariants are preserved:
+
+<ul>
+  <li>If the set-of-vertices of a graph <i>g</i> contains a vertex <i>v</i>, the set-of-graphs of <i>v</i> contains <i>g</i>.</li>
+  <li>If the set-of-edges of a graph <i>g</i> contains an edge <i>e</i>, the set-of-graphs of <i>e</i> contains <i>g</i>.</li>
+  <li>If the set-of-edges of a vertex <i>v</i> contains an edge <i>e</i>, <i>v</i> is either the "from" or the "to" vertex of <i>e</i>.</li>
+  <li>If an edge belongs to a graph <i>g</i>, the end-vertices also belong to <i>g</i>. (The converse is not necessarily true.)</li>
+</ul>
+
+<p>Every <strong>Walk</strong>, <strong>Trail</strong> or <strong>Path</strong> instance contains a private doubly-linked list of alternating vertices
+and edges. Such as (v1 e12 v2 e23 v3). Up to version 1.1.0, it is the responsibility of the
+application to keep walks consistent with the graph to which they are superimposed.
+
+<h3>The <strong>com.ibm.graph.GraphObject</strong> class</h3>
+The abstract class <strong>GraphObject</strong> is the super class for all graph-objects. 
+Its primary contribution is two dictionaries allocated for every graph-object: 
+<strong>systemdict</strong> and <strong>userdict</strong>. 
+By convention, only the software and user classes that extend and implement 
+classes and interfaces of the GFC and drawing/layout framework 
+should store objects in <strong>systemdict</strong>. 
+Application objects should be stored in <strong>userdict</strong>.
+
+<p>The class also provides a couple of public methods for  querying properties of the software:
+
+<dl>
+  <dt><em>version()</em> </dt>
+    <dd>Returns the current version, e.g., 1.1.0.</dd>
+  <dt><em>languageLevel()</em> </dt>
+    <dd>Returns the level of the JDK on which this version depends, e.g., JDK1.1. 
+Parts of the software may compile and work with older levels of the Java JDK, 
+but there is not guarantee.</dd>
+  <dt><a name="setName(String)"><em>setName(String)</em></a> and <em>getName()</em> </dt>
+    <dd>Graph-objects can be assigned names.   Those are useful when debugging as they are
+used when converting graph-objects to strings.</dd>
+</dl>
+<h4>Using <strong>systemdict</strong> and <strong>userdict</strong></h4>
+Both the <strong>systemdict</strong> and <strong>userdict</strong> belonging to a graph-object  are instances of 
+<a href="#com.ibm.research.util.Dict"><strong>com.ibm.research.util.Dict</strong></a>. 
+That class is an extension of <strong>java.util.Hashtable</strong>. The extension
+adds a number of convenience methods that are described in a later  
+<a href="#com.ibm.research.util.Dict">section</a>.
+
+<p>Example:
+<pre>
+  import com.ibm.graph.Vertex;
+  import com.ibm.graph.Edge;
+  import com.ibm.research.util.Dict;
+  import com.ibm.research.util.KeyMissingException;
+ 
+  Vertex v1  = new Vertex();
+  Vertex v2  = new Vertex();
+  Edge   e12 = new Edge( v1 , v2 );
+  v1 .systemdict.def( "x"        , 100 );
+  v1 .systemdict.def( "y"        , 200 );
+  v2 .systemdict.def( "x"        , 150 );
+  v2 .systemdict.def( "y"        , 300 );
+  e12.systemdict.def( "visible"  , true );
+  e12.userdict  .def( "distance" , 20 );
+  e12.userdict  .def( "label"    , "Link" );
+  try { 
+    int x1 = v1.systemdict.getInteger( "x" ); 
+    int x2 = v2.systemdict.getInteger( "x" );
+    if ( e12.systemdict.getBoolean( "visible" ) ) {
+      System.out.println( e12.userdict.getString( "label" ) );
+    }
+  } catch ( KeyMissingException e ) { /* ... */ }
+</pre>
+
+<h3>The <strong>com.ibm.graph.Vertex</strong> class</h3>
+<p>
+An instance of class <strong>Vertex</strong> is a graph-object and as such has two public fields: 
+<strong>systemdict</strong> and <strong>userdict</strong>. 
+The dictionaries of an instance <em>v</em> are accessed as 
+<em>v</em>.systemdict and <em>v</em>.userdict.
+
+<p>The two most important private fields are:
+
+<ul>
+  <li>set-of-graphs </li>
+  <li>set-of-edges</li>
+</ul>
+
+<p>The set-of-graphs contains references to all graphs to which the vertex belongs. The set-of-edges
+contains references to all edges that are incident to the vertex over all graphs in set-of-graphs. If
+an incident edge belongs to two or more graphs, only one reference to that edge is kept in
+set-of-edges.
+
+<p>Public instance methods fall into three categories:
+
+<ul>
+  <li>Methods that are independent of set-of-graphs.  </li>
+  <li>Methods that are appropriate when set-of-graphs contains a single graph, though those
+methods often work in the presence of multiple graphs.  </li>
+  <li>Methods that are appropriate when set-of-graphs may contain more than one graph.</li>
+</ul>
+
+<p>Applications that deal with single graphs or multiple independent graphs, 
+should use the first two categories since the third often is less efficient. 
+Methods in the third category typically have a signature that begins  
+with a <strong>Net</strong> argument.
+
+<p>Public instance methods of class <strong>Vertex</strong> that do not involve set-of-graphs include:
+
+<dl>
+  <dt>toString()  </dt>
+    <dd>The string representation of the vertex, normally based on its name. See  <a href="#setName(String)">GraphObject's
+<em>setName(String)</em> and <em>getName(String)</em> </a>.</dd>
+</dl>
+
+<p>Public instance methods of class <strong>Vertex</strong> that involve set-of-graphs (size=1) include:
+
+<ul>
+  <li>Enumerate the contents of set-of-edges under various filters:  </li>
+  <ul>
+    <li><em>enumerateEdges()</em> </li>
+    <ul>
+      <li>All (undirected and directed) edges in set-of-edges.    </li>
+    </ul>
+    <li><em>enumerateUndirectedEdges()</em> </li>
+    <ul>
+      <li>All undirected edges in set-of-edges.    </li>
+    </ul>
+    <li><em>enumerateDirectedEdges()</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges.    </li>
+    </ul>
+    <li><em>enumerateDirectedIncomingEdges()</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges such that the edge's "to" end-vertex is this
+vertex.    </li>
+    </ul>
+    <li><em>enumerateDirectedOutgoingEdges()</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges such that the edge's "from" end-vertex is this
+vertex.  </li>
+    </ul>
+  </ul>
+  <li>Check whether a specified edge is in set-of-edges.  </li>
+  <ul>
+    <li><em>contains(Edge)</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if the edge argument is a member of set-of-edges; <strong>false</strong>, otherwise.  </li>
+    </ul>
+  </ul>
+  <li>Calculate the degree, that is, the size of set-of-edges:  </li>
+  <ul>
+    <li><em>degree()</em> </li>
+    <ul>
+      <li>Return the degree, that is, the size of set-of-edges.  </li>
+    </ul>
+  </ul>
+  <li>Check whether a specified vertex is adjacent to this one:  </li>
+  <ul>
+    <li><em>isAdjacent(Vertex)</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if any of the edges in set-of-edges has the vertex argument as an
+end-vertex;  <strong>false</strong>, otherwise.  </li>
+    </ul>
+  </ul>
+</ul>
+
+<p>Public instance methods of class <strong>Vertex</strong> that involve set-of-graphs (size&gt;1) include:
+
+<ul>
+  <li>Enumerate the contents of set-of-edges under various filters:  </li>
+  <ul>
+    <li><em>enumerateEdges(Net)</em> </li>
+    <ul>
+      <li>All (undirected and directed) edges in set-of-edges  such that the graph argument
+is a member of the edge's set-of-graphs.    </li>
+    </ul>
+    <li><em>enumerateUndirectedEdges(Net)</em> </li>
+    <ul>
+      <li>All undirected edges in set-of-edges such that the graph argument is a member
+of the edge's set-of-graphs.    </li>
+    </ul>
+    <li><em>enumerateDirectedEdges(Net)</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges such that the graph argument is a member of
+the edge's set-of-graphs.    </li>
+    </ul>
+    <li><em>enumerateDirectedIncomingEdges(Net)</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges  such that the graph argument is a member of
+the edge's set-of-graphs and such that the edge's "to" end-vertex is this vertex.    </li>
+    </ul>
+    <li><em>enumerateDirectedOutgoingEdges(Net)</em> </li>
+    <ul>
+      <li>All directed edges in set-of-edges  such that the graph argument is a member of
+the edge's set-of-graphs and such that the edge's "from" end-vertex is this vertex. 
+</li>
+    </ul>
+  </ul>
+  <li>Check whether a specified edge is in set-of-edges and belong to a specified graph:  </li>
+  <ul>
+    <li><em>contains(Net,Edge)</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if the edge argument is a member of set-of-edges and  the graph
+argument is a member of that edge's set-of-graphs; <strong>false</strong>, otherwise.  </li>
+    </ul>
+  </ul>
+  <li>Calculate the degree for the vertex in a specified graph,  that is, the size of set-of-edges
+considering only the edges that belong the specified graph:  </li>
+  <ul>
+    <li><em>degree(Net)</em> </li>
+    <ul>
+      <li>Return the size of set-of-edges minus the number of edges in set-of-edges for
+which the graph argument is not in their set-of-graphs.  </li>
+    </ul>
+  </ul>
+  <li>Check whether a specified vertex is adjacent to this one in a specified graph:  </li>
+  <ul>
+    <li><em>isAdjacent(Net,Vertex)</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if any of the edges in set-of-edges  has the graph argument as a
+member of its set-of-graphs and has the vertex argument as an end-vertex;  <strong>false</strong>,
+otherwise.  </li>
+    </ul>
+  </ul>
+</ul>
+
+<h3>The <strong>com.ibm.graph.Edge</strong> class</h3>
+
+<p>
+An instance of class <strong>Edge</strong> is a graph-object and as such has two public fields: 
+<strong>systemdict</strong> and <strong>userdict</strong>. 
+The dictionaries of an instance <em>e</em> are accessed as <em>e</em>.systemdict and <em>e</em>.userdict.
+
+<p>The four most important private fields are:
+
+<ul>
+  <li>set-of-graphs  </li>
+  <li>direction  </li>
+  <li>from-vertex  </li>
+  <li>to-vertex</li>
+</ul>
+
+<p>The set-of-graphs contains references to all graphs to which the edge belongs. 
+The direction states whether the edge is <em>undirected</em> or <em>directed</em>. 
+The from-vertex is a reference to the vertex where the edge initiates. 
+The to-vertex is a reference to the vertex where the edge terminates.
+
+<p>If a graph <em>g</em> is a member of set-of-graphs, then <em>g</em> is a member of set-of-graphs of both
+from-vertex and to-vertex.
+
+<p>Public instance methods fall into three categories:
+
+<ul>
+  <li>Methods that are independent of set-of-graphs.  </li>
+  <li>Methods that are appropriate when set-of-graphs contains a single graph, though those
+methods often work in the presence of multiple graphs.  </li>
+  <li>Methods that are appropriate when set-of-graphs may contain more than one graph.</li>
+</ul>
+
+<p>Applications that deal with single graphs or multiple independent graphs, should use the first two
+categories since the third often is less efficient. Methods in the third category typically have a
+signature that begins  with a <strong>Net</strong> argument.
+
+<p>Public instance methods of class <strong>Edge</strong> that do not involve set-of-graphs include:
+
+<ul>
+  <li>Change and query direction:  </li>
+  <ul>
+    <li><em>directed()</em> </li>
+    <ul>
+      <li>Make edge directed.    </li>
+    </ul>
+    <li><em>undirected()</em> </li>
+    <ul>
+      <li>Make edge undirected.    </li>
+    </ul>
+    <li><em>isDirected()</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> is directed; <strong>false</strong> otherwise.    </li>
+    </ul>
+    <li><em>isUndirected()</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> is undirected; <strong>false</strong> otherwise.  </li>
+    </ul>
+  </ul>
+  <li>Access from-vertex and to-vertex:  </li>
+  <ul>
+    <li><em>getFromVertex()</em> </li>
+    <ul>
+      <li>Return the from-vertex.    </li>
+    </ul>
+    <li><em>getToVertex()</em> </li>
+    <ul>
+      <li>Return the to-vertex.    </li>
+    </ul>
+    <li><em>getOtherVertex(Vertex)</em> </li>
+    <ul>
+      <li>If the vertex argument is the from-vertex, return the to-vertex.        If the vertex
+argument is the to-vertex, return the from-vertex. Throws a
+VertexMissingException otherwise.    </li>
+    </ul>
+    <li><em>flipDirection()</em> </li>
+    <ul>
+      <li>Swap the from-vertex and the to-vertex.  </li>
+    </ul>
+  </ul>
+  <li>Query graph-theoretical properties:  </li>
+  <ul>
+    <li><em>isLoop()</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if the from-vertex and to-vertex are the same; <strong>false</strong> otherwise.    </li>
+    </ul>
+    <li><em>isLink()</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if the from-vertex and to-vertex are different; <strong>true</strong> otherwise.    </li>
+    </ul>
+    <li><em>isBridge(Net)</em> </li>
+    <ul>
+      <li>Return <strong>true</strong> if the graph argument is a member of set-of-graphs,  the graph is a
+single connected component, and removing this edge from the graph would split
+it into two components.  </li>
+    </ul>
+  </ul>
+  <li>Miscellaneous:  </li>
+  <ul>
+    <li>toString()      </li>
+    <ul>
+      <li>The string representation of the edge, normally based on its name.    See    
+<a href="#setName(String)">GraphObject's <em>setName(String)</em> and <em>getName(String)</em> </a>.  </li>
+    </ul>
+  </ul>
+</ul>
+
+<p>Public instance methods of class <strong>Edge</strong> that involve set-of-graphs (size=1) include:
+
+<ul>
+  <li>(None at present.)</li>
+</ul>
+
+<p>Public instance methods of class <strong>Edge</strong> that involve set-of-graphs (size&gt;1) include:
+
+<ul>
+  <li>(None at present.)</li>
+</ul>
+
+
+<p><hr size="11">
+<h2>Drawing Framework: the <strong>com.ibm.graph.draw package</strong></h2>
+<p>
+Drawing of graphs, vertices and edges is based on the notion of plug-ins. 
+To draw a graph, vertex or edge, that graph-object must be assigned a plug-in 
+that carries a program for executing the drawing. 
+For a plug-in to work it must implement the  <strong>com.ibm.graph.Drawable</strong> interface.
+
+<h3>The com.ibm.graph.Drawable interface</h3>
+The <strong>Drawable</strong> interface defines four methods for implementation:
+
+<dl>
+  <dt><em>draw(GraphObject,Graphics)</em> </dt>
+    <dd>Draws the specified <strong>GraphObject</strong> in the specified Graphics.  </dd>
+  <dt><em>getSize(GraphObject)</em> </dt>
+    <dd>Returns the dimension of the <strong>GraphObject</strong>.      In general, it is recommended that the
+size be determined in accordance     to the bounding rectangle implicitly defined by the
+draw method,     otherwise layout algorithms may produce unsatisfactorily looking
+layouts.  </dd>
+  <dt><em>getBounds(GraphObject)</em> </dt>
+    <dd>Returns the bounding box of the <strong>GraphObject</strong>.     In general, it is recommented that the
+size of the bounding box and the dimension of     the graph-object be the same,
+otherwise layout algorithms     may produce unsatisfactorily looking layouts.  </dd>
+  <dt><em>contains(GraphObject,int,int)</em> </dt>
+    <dd>Determines whether a (x,y) coordinate is inside the specified <strong>GraphObject</strong>.      
+Returns <strong>true</strong> if the coordinate is inside, <strong>false</strong> otherwise.      
+In general, it is recommended that "insideness" be determined by the      
+boundary implicitly defined by the draw method, otherwise user interfaces      
+won't work as users expect.</dd>
+</dl>
+
+<p>We call a plug-in that implements those methods, and therefore implements interface <strong>Drawable</strong>,
+a <em>drawable</em>.
+
+<h3>The com.ibm.graph.NotDrawableException class</h3>
+<p>
+In addition to assigning a drawable to a graph-object, it is necessary to assign some minimal
+amount of graphical information to that graph-object for it to be drawn.  For a vertex the least
+that needs to be known is its location. For an edge, it is customary to anchor it to two end vertices
+that define its location. Therefore the minimal work that must be performed  is to assign
+locations to all vertices of a graph. That is performed directly by the application or through the
+use of a layout algorithm. For the time being, we assume the former.
+
+<p>What happens when a vertex has not been assigned a location? 
+In the case of method <em>draw(Graphics)</em>, 
+it simply returns with no side effect. 
+Method <em>contains(int,int)</em> returns <strong>false</strong>.
+Method <em>getSize()</em> should return a valid dimension as it should normally be independent of
+location. Method <em>getBounds()</em> raises a com.ibm.graph.NotDrawableException because it is
+unable to position the bounding box.
+
+<p>It is possible to have a drawable that raises a <strong>NotDrawableException</strong> even if locations are known.
+For example, a drawable may require either external or internal parameters that are not set by
+default for calculating the size of an object. If those parameters are not available at the time a
+<em>getSize()</em> is called, it should raise a <strong>NotDrawableException</strong>.
+
+<p>In short, missing data necessary for drawing is handled in two ways: 
+either nothing happens and an optional warning message is printed out to stdout 
+or a <strong>NotDrawableException</strong> is raised.
+The classes included by the software in general provide enough default data and behavior that  
+the latter exception should not be a common occurrence.
+
+<h3>The com.ibm.graph.GraphDraw abstract class</h3>
+<p>
+The above four methods supported by every drawable are normally not called directly by an
+application, but indirectly via methods in a class that is responsible for enforcing the <strong>Drawable</strong>
+interface. Enforcement of the <strong>Drawable</strong> interface is done by the <strong>com.ibm.graph.GraphDraw</strong>
+abstract class. That class is interposed between the top level <strong>GraphObject</strong> class and the classes
+<strong>Vertex</strong>, <strong>Edge</strong> and <strong>Net</strong>. 
+<strong>GraphDraw</strong> is transparent to the graph theoretical aspect of the GFC, that
+is, if one is interested in using the software only for its graph data structure support without drawing
+and layout, that class could be emptied without adverse effect to the GFC. 
+
+<p>Class <strong>GraphDraw</strong> includes four methods that call through to the above methods in any class that
+implements the <strong>Drawable</strong> interface. Those methods in <strong>GraphDraw</strong> are:
+
+<dl>
+  <dt><em>draw(Graphics)</em> </dt>
+    <dd>Draws the graph-object.  </dd>
+  <dt><em>getSize()</em> </dt>
+    <dd>Return the dimension of the graph-object.  </dd>
+  <dt><em>getBounds()</em> </dt>
+    <dd>Return the bounding box of the graph-object.  </dd>
+  <dt><em>contains(int,int)</em> </dt>
+    <dd>Return <strong>true</strong> if the specified (x,y) coordinate is inside the object;      <strong>false</strong> otherwise.</dd>
+</dl>
+
+<p>The four work in a similar manner:
+
+<ol>
+  <li>The drawable assigned to a graph-object is retrieved.      
+If a drawable is not assigned to that graph-object,       
+the software attempts to assign a default drawable.      
+If that fails (which should not happen), an exception is raised.  </li>
+  <li>A call-through to the corresponding method in the drawable is made      
+with <strong>this</strong> as the first parameter.      
+Therefore:      </li>
+  <ol>
+    <li><em>draw(Graphics)</em> calls through to <em>draw(this,Graphics)</em> </li>
+    <li><em>getSize()</em> calls through to <em>getSize(this)</em> </li>
+    <li><em>getBounds()</em> calls through to <em>getBounds(this)</em> </li>
+    <li><em>contains(int,int)</em> calls through to <em>contains(this,int,int)</em> </li>
+  </ol>
+</ol>
+
+<p>Any exception raised by the methods in the drawable is returned through to the original caller.
+
+<p>Class <strong>GraphDraw</strong> contains accessor methods to assign drawables to graph-objects:
+
+<dl>
+  <dt><em>setDrawable(Drawable)</em> </dt>
+    <dd>Set the drawable to be used when drawing the graph-object.  </dd>
+  <dt><em>getDrawable()</em> </dt>
+    <dd>Return the current drawable assigned to the graph-object.</dd>
+</dl>
+
+<p>The drawable is stored in the <strong>systemdict</strong> of the graph-object as a value associated with the key
+"draw".  However, do not depend on that key being that exact string; always use accessor
+methods. When debugging, if the contents of a graph-object's systemdict are printed out, that
+key-value pair will show up if a drawable is currently assigned.  When a graph-object is
+instantiated that key is not defined, which means that the graph-object  can not drawn at that
+time.  If the key exists but its value is <strong>null</strong>, that also means that the graph-object is not drawable.
+Only if an appropriate drawable is assigned to the key, can the graph-object be drawn.
+
+<p>An example of how graph-objects become drawable follows:
+<pre>
+  import com.ibm.graph.Graph;
+  import com.ibm.graph.Vertex;
+  import com.ibm.graph.Edge;
+  import com.ibm.graph.draw.DrawNetEdgesThenVertices;
+  import com.ibm.graph.draw.DrawVertexRectangle;
+  import com.ibm.graph.draw.DrawEdgeLine;
+
+  // Create the graph:
+
+  Graph graph = new Graph();
+  Vertex v1 = new Vertex();
+  Vertex v2 = new Vertex();
+  Edge e12  = new Edge( v1 , v2 );
+  graph.add( v1 );
+  graph.add( v2 );
+  graph.add( e12 );
+
+  // Prepare graph for drawing:
+
+  DrawNetEdgesThenVertices dn = new DrawNetEdgesThenVertices();
+  DrawVertexRectangle      dv = new DrawVertexRectangle();
+  DrawEdgeLine             de = new DrawEdgeLine();
+  graph.setDrawable( dn );
+  v1   .setDrawable( dv );
+  v2   .setDrawable( dv );
+  e12  .setDrawable( de );
+
+  // Set the locations:
+
+  v1.setLocation( 100 , 100 );
+  v2.setLocation( 150 , 200 );
+
+  // Then we can draw the graph in some pre-defined graphics:
+
+  graph.draw(graphics);
+</pre>
+<h3>Drawables for graph-objects that are instances of <strong>Net</strong>, <strong>Relation</strong>,
+<strong>Graph</strong> or <strong>Tree</strong></h3>
+<p>
+Drawables for graph-objects of type <strong>Net</strong> or its derivatives (<strong>Relation</strong>, <strong>Graph</strong> and <strong>Tree</strong>) do not
+normally render anything themselves. Instead they schedule the drawing of vertices and edges of
+the graph. The most basic of those schedules is to first draw all the edges in any order and second
+to draw all the vertices in any order. A drawable that implements that schedule is an instance of
+the class  <strong>com.ibm.graph.draw.DrawNetEdgesThenVertices</strong>. It is the default. If an application
+does not assign any drawable to a graph, that default drawable is assigned the moment a
+<em>draw(Graphics</em> is called against the graph. Therefore the previous example could have been more
+simply written as:
+<pre>
+  import com.ibm.graph.Graph;
+  import com.ibm.graph.Vertex;
+  import com.ibm.graph.Edge;
+  import com.ibm.graph.draw.DrawVertexRectangle;
+  import com.ibm.graph.draw.DrawEdgeLine;
+
+  // Create the graph:
+
+  Graph graph = new Graph();
+  Vertex v1 = new Vertex();
+  Vertex v2 = new Vertex();
+  Edge e12  = new Edge( v1 , v2 );
+  graph.add( v1 );
+  graph.add( v2 );
+  graph.add( e12 );
+
+  // Prepare graph for drawing:
+  // (Let JGraph take care of assigning the default net-drawable)
+
+  DrawVertexRectangle      dv = new DrawVertexRectangle();
+  DrawEdgeLine             de = new DrawEdgeLine();
+  v1   .setDrawable( dv );
+  v2   .setDrawable( dv );
+  e12  .setDrawable( de );
+
+  // Set the locations:
+
+  v1.setLocation( 100 , 100 );
+  v2.setLocation( 150 , 200 );
+
+  // Then we can draw the graph in some pre-defined graphics:
+
+  graph.draw(graphics);
+</pre>
+
+<p>The draw schedule for a DrawNetEdgesThenVertices drawable follows the following logic (this
+is close to what the actual code does):
+<pre>
+  void draw( GraphObject go , Graphics g )
+  {
+    Net net; 
+
+    // Check parameter:
+    if ( go == null ) return;
+    try { net = (Net)go;} catch ( java.lang.ClassCastException e ) { return;}
+
+    // Draw edges:
+    for ( Enumeration edges = net.enumerateEdges() ; edges.hasMoreElements() ; )
+      ((Edge)edges.nextElement()).draw( g );
+
+    // Draw vertices:
+    for ( Enumeration vertices = net.enumerateVertices() ; vertices.hasMoreElements() ; )
+      ((Vertex)vertices.nextElement()).draw( g );
+  }
+</pre>
+
+<p>The other methods defined in the <strong>DrawNetEdgesThenVertices</strong> have the following semantics:
+
+<ul>
+  <li>The bounding box of a graph is the minimal bounding box that encloses the bounding boxes
+of all vertices and edges.  If any vertex or edge throws a <strong>NotDrawableException</strong>, it is
+excluded from the bounding box computation. Only if all vertices and edges throw
+<strong>NotDrawableException</strong>, will <em>getBounds()</em> throw a <strong>NotDrawableException</strong>.</li>
+  <li>The size of a graph is the dimension of the graph's bounding box. Therefore <em>getSize()</em> will
+throw a <strong>NotDrawableException</strong> only if <em>getBounds()</em> does. </li>
+  <li>A (x,y) coordinate is inside the graph, if its bounding box contains that coordinate.</li>
+</ul>
+
+<p>The class <strong>DrawNetEdgesThenVertices</strong> is adequate for many  graph drawing applications.
+However there are reasons why one may want to write a different net-drawable class.
+
+<p>For one, there may be graph drawings that require vertices and/or edges to be painted more than
+once. For instance, painting a graph over a shadow of itself: we first paint the shadow using
+grayed out fore and backgrounds, then temporarily translate the whole graph a short distance, and
+finally repaint the graph using its normal colors. This instance could be performed using
+<strong>DrawNetEdgesThenVertices</strong> a couple of times though it is more user-friendly to encapsulate the
+entire operation in a single class.
+
+<p>For another, the drawing may be performed with a spacial deformation, such as a perspective
+projection, a hyperbolical surface, or a zooming transformation. In such cases, it is appropriate
+for the net-drawable to perform the proper transformation of locations and to prepare the graphics
+environment into which each vertex and edge will draw itself.
+<h3>Drawables for vertices</h3>
+Drawables for vertices contain code that render them. Rendering is normally relative to the
+location of each vertex. Accordingly it is part of the <em>draw(GraphObject,Graphics)</em> method
+boilerplate for it to call <em>getLocation()</em> on the vertex to establish its location. Drawing methods are
+performed relative to that location.
+
+<p>The same is true for the <em>getBounds(GraphObject)</em> and <em>contains(GraphObject,int,int)</em> methods.
+They also require the location of the vertex and call <em>getLocation()</em> on that graph-object. Only
+<em>getSize(GraphObject)</em> does not normally require a location.
+
+<h4>Drawing properties</h4>
+<p>
+There is an infinitity of possible shapes and drawing properties that one may choose to render a
+vertex. The drawing framework does not define <a>a priori</a> any default shape and properties. 
+What the framework provides is an initial collection of vertex-drawables that should satisfy 
+simple requirements. Included in the collection are such shapes as ellipses and
+rectangles, and datatypes as text and images. 
+That collection is open-ended. As the framework matures that
+collection should grow providing greater choices.
+
+<p>First check the existing collection of vertex-drawables in <strong>com.ibm.graph.draw</strong>. 
+They are recognized by names that begin with <strong>DrawVertex</strong>, 
+<strong>Draw2Vertex</strong> and <strong>Draw3Vertex</strong>. 
+The numbers have to do with the level of the framework being used. 
+This user's guide limits itself to level 1, the simplest. 
+For level 1, any of the above prefixes can be used, 
+though in general faster performance should be gotten 
+with vertex-drawable classes that begin with <strong>DrawVertex</strong>.
+Those are typically leaner as they do not require to cope with peculiarities of level 2 or 3. 
+On the other hand, if on the longer term you plan to upgrade an application to the capabilities 
+of level 2 or 3, it may make sense to use the vertex-drawables containing the "3" prefix. 
+
+<p>If you do not find a vertex-drawable that fits the need of your application, a new vertex-drawable
+must be written. It can be done from scratch, that is, ignoring the collection in the
+com.ibm.graph.draw package, or by extending or aggregating classes of that package. In either
+case, that new class does not have to be a  member of the com.ibm.graph.draw package.
+
+<p>A simple example of from-scratch vertex-drawable follows:
+<pre>
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import com.ibm.graph.GraphObject;
+import com.ibm.graph.Vertex;
+import com.ibm.graph.NotDrawableException;
+
+public class DrawVertexMyRectangle implements com.ibm.graph.Drawable
+{
+  private Dimension _dimSize = new Dimension( 10 , 20 );
+
+  public void draw( GraphObject go , Graphics g ) 
+  {
+    Vertex vertex;
+    try { vertex = (Vertex)go; } catch ( ClassCastException e ) { return;}
+
+    Point ptLocation;
+    try { ptLocation = vertex.getLocation( );} catch ( NotDrawableException e ) { return;}
+
+    g.drawRectangle( ptLocation.x , ptLocation.y , _dimSize.width , _dimSize.height );
+  }
+
+  public Rectangle getBounds( GraphObject go ) throws NotDrawableException
+  {
+    Vertex vertex;
+    try { vertex = (Vertex)go; } catch ( ClassCastException e ) { return;}
+
+    Point ptLocation = vertex.getLocation( );
+    return new Rectangle( vertex.getLocation() , _dimSize );
+  }
+
+  public Dimension getSize( GraphObject go ) 
+  {
+    return _dimSize;
+  }
+
+  public boolean contains( GraphObject go , int x , int y )
+  {
+    try { return getBounds( go , x , y );} catch ( NotDrawableException e ) { return false;}
+  }
+}
+</pre>
+
+<h3>Drawables for edges</h3>
+<p>
+Drawables for edges contain code that render them.
+Rendering is normally dependent on the location of the end vertices.
+Accordingly it is part of the <em>draw(GraphObject,Graphics)</em> method
+boilerplate for it to call <em>getLocation()</em> on the end vertices
+to establish the position of the edge.
+Drawing methods are performed based on those two locations.
+<p>
+The same is true for the <em>getBounds(GraphObject)</em> and 
+<em>contains(GraphObject,int,int)</em> methods.
+They also require the location of the end vertices and
+call <em>getLocation()</em> on those graph-objects.
+The <em>getSize(GraphObject)</em> method normally
+also needs the end location because the size is
+typically defined as the smallest bounding box  
+enclosing those end locations.
+<p>
+The <em>contains(GraphObject,int,int)</em> method is
+normally more complicated for edges than vertices.
+The latter are typically defined by closed shapes.
+The former are typically defined by polylines or curves.
+Line thickness and how close the target
+point has to be to the edge's line or curve 
+is often an issue that should be dealt by the method.
+
+<h4>Drawing properties</h4>
+<p>
+There is an infinity of possible geometries and drawing properties that one may choose to render an edge.
+The drawing framework does not define <i>a priori</i> any default geometry and properties.
+What the framework provides is an initial collection of edge-drawables that should satisfy
+simple requirements.  Included in the collection are such geometries as straight lines
+and orthogonal lines.
+That collection is open-ended.
+As the framework matures that collection should grow,
+providing greater choices.
+
+<p>
+First, check the existing collection of edge-drawables in 
+<strong>com.ibm.graph.draw</strong>.
+They are recognized by names that begin with <em>DrawEdge</em>.
+Those are for level 1 of the framework.
+
+<p>
+If you do not find an edge-drawable that fits the need of your application,
+a new edge-drawable must be written.  It can be done from scratch, that is,
+ignoring the collection in <strong>com.ibm.graph.draw</strong>,
+or by extending or aggregating classes from that package.
+In either case, that new class does not have to be a 
+member of the <strong>com.ibm.graph.draw</strong> package.
+
+<p>
+A simple example of from-scratch edge-drawable follows:
+
+<pre>
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import com.ibm.graph.GraphObject;
+import com.ibm.graph.Edge;
+import com.ibm.graph.NotDrawableException;
+
+import com.ibm.research.geometry.Line;
+
+public abstract class DrawEdgeFromTo implements com.ibm.graph.Drawable 
+{
+  protected double 	dContainment;
+
+  public DrawEdgeFromTo( )
+  {
+    this.dContainment	= 4.0;
+  }
+
+  public void draw( GraphObject goEdge , Graphics g )
+  {
+    Edge  edge     ; try { edge      = (Edge)goEdge;} 
+                     catch ( ClassCastException   e ) { return;}
+                     
+    Point pointFrom; try { pointFrom = edge.getFromVertex().getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+                     
+    Point pointTo  ; try { pointTo   = edge.getToVertex()  .getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+                     
+    g.drawLine( pointFrom.x , pointFrom.y , pointTo.x , pointTo.y );
+  }
+
+  public boolean contains( GraphObject goEdge , int x , int y )
+  {
+    Edge  edge     ; try { edge      = (Edge)goEdge;} 
+                     catch ( ClassCastException   e ) { return;}
+                     
+    Point pointFrom; try { pointFrom = edge.getFromVertex().getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+                     
+    Point pointTo  ; try { pointTo   = edge.getToVertex()  .getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+    try 
+    {
+      if ( ! getBounds(edge).contains( x , y ) ) return false;
+      if ( Line.getDistance( pointFrom , pointTo , new Point( x , y ) ) < dContainment ) return true;
+      return false;
+    }
+    catch ( NotDrawableException e ) { return false;}
+  }
+
+  public Rectangle getBounds( GraphObject goEdge ) throws NotDrawableException
+  {
+    Edge  edge     ; try { edge      = (Edge)goEdge;} 
+                     catch ( ClassCastException   e ) { return;}
+                     
+    Point pointFrom; try { pointFrom = edge.getFromVertex().getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+                     
+    Point pointTo  ; try { pointTo   = edge.getToVertex()  .getLocation();} 
+                     catch ( NotDrawableException e ) { return;}
+                     
+    Rectangle bounds = new Rectangle ( pointFrom );
+    bounds.add		             ( pointTo   );
+    return bounds;
+  }
+
+  public Dimension getSize( GraphObject /* Edge */ goEdge ) throws NotDrawableException
+  {
+    Edge  edge     ; try { edge      = (Edge)goEdge;} 
+                     catch ( ClassCastException e ) { return;}
+                     
+    Rectangle bounds = getBounds( edge );
+    return new Dimension( bounds.width , bounds.height );
+  }
+}
+</pre>
+
+<!================================================================================>
+<p><hr size="11">
+<h2>AWT Support: the <strong>com.ibm.graph.awt package</strong></h2>
+<p>
+The class used to display graphs is com.ibm.graph.awt.GraphCanvas.
+It inherits from java.awt.Canvas and therefore is compatible JDK1.0.
+To use a GraphCanvas with Swing the following can be done:
+<pre>
+  Graph graph = new Graph();
+  GraphCanvas graphcanvas = new GraphCanvas( graph );
+  ScrollPane scrollpane = new ScrollPane();
+  scrollpane.add( graphcanvas );
+  JPanel jpanel = new JPanel();
+  jpanel.setBorderLayout( new BorderLayout() );
+  jpanel.add( scrollpane , "Center" );
+</pre>
+<p>
+A GraphCanvas can report on various kinds of mouse events.
+One can register listeners to any number of those.
+Those listeners must implement the com.ibm.graph.awt.event.GraphCanvasListener interface.
+To listen to, say, released-mouse events the following code frame suffices:
+<pre>
+    graphCanvas.addGraphCanvasEventMouseReleasedListener
+      (
+        new GraphCanvasEventListener()
+        {
+          public void graphobjectSelected( GraphCanvasEvent gcevent )
+          {
+            //...
+          }
+        }
+      );
+</pre>
+<!================================================================================>
+<hr size="11">
+
+<h2>Ancillary class libraries</h2>
+<p>
+The software depends on a few ancillary classes that are not strictly part of it.
+
+<h3><a name="com.ibm.research.util.Dict">com.ibm.research.util.Dict</a></h3>
+<p>
+The class <strong>com.ibm.research.util.Dict</strong> extends <strong>java.util.Hashtable</strong>. 
+Convenience methods have been added to make store and retrieval operations simpler. 
+Hashtable's <em>put(Object,Object)</em> is the generic way to store objects. 
+Class Dict adds a number of <em>def(Object,primitive_type)</em> methods
+that instantiate a corresponding object for the primitive value argument  and store that instance
+with <em>put</em>. Correspondingly, there are a number of <em>getPrimitiveType(Object)</em> methods that convert
+the object returned by <em>put</em> to the corresponding primitive type and return the converted value to
+the caller. Since returning <strong>null</strong> from those <em>get</em> methods is not appropriate, a
+<strong>com.ibm.research.util.KeyMissingException</strong> is thrown if the key is not found in the dictionary.
+
+<p>Programs that access the <strong>systemdict</strong> and <strong>userdict</strong> of graph-objects must
+
+<ul>
+  <li>import com.ibm.research.util.Dict  </li>
+  <li>import com.ibm.research.util.KeyMissingException</li>
+</ul>
+
+</body>
+</html>

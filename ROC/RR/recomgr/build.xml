@@ -1,0 +1,73 @@
+<project name="Recovery Manager" default="dist" basedir=".">
+    <description>
+        recovery mgr for RR
+    </description>
+  <!-- set global properties for this build -->
+  <property name="project.name" value="recomgr"/>
+
+  <!-- source files -->
+  <property name="src" location="src"/>
+
+  <!-- generated/output locations -->
+  <property name="gen-src" location="gen-src"/>
+  <property name="build" location="output"/>
+  <property name="dist"  location="dist"/>
+
+  <path id="thirdparty.classpath">
+    <fileset dir="${basedir}/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- The classpath -->
+  <path id="javac.classpath">
+    <path refid="thirdparty.classpath"/>
+  </path>
+
+  <!-- xdoclet -->
+  <path id="xdoclet.task.classpath">
+    <path refid="javac.classpath"/>
+    <pathelement location="${roc.common.tools}/lib/xdoclet.jar"/>
+    <pathelement location="${roc.common.tools}/lib/xjavadoc.jar"/>
+    <pathelement location="${roc.common.tools}/lib/ant.jar"/>
+    <pathelement location="${roc.common.tools}/lib/log4j-core.jar"/>
+  </path>
+  <property name="xdoclet.task.classpath" 
+	    refid="xdoclet.task.classpath"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile-classes" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac destdir="${build}"
+           debug="true"
+	   source="1.4">
+      <classpath refid="javac.classpath"/>
+      <src path="${src}"/>
+    </javac>
+  </target>
+
+  <target name="compile" depends="compile-classes"/>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/${project.name}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>	
+    <delete dir="${dist}"/>
+  </target>
+</project>

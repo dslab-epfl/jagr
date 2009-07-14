@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Separating JBoss into Multiple VMs</title>
+</head>
+
+<body>
+
+<h1>Separating JBoss into Multiple VMs</h1>
+<h2>1. Web Server</h2>
+<h2>&nbsp;</h2>
+<h2>2. JNDI Service</h2>
+<h3>2.1 Start JNDI server</h3>
+<p>We use the JNDI provided (JNP) that comes with the JBoss distribution. Check out ROC/RR/jndi from
+CVS or download the <a href="http://www.cs.berkeley.edu/~mikechen/pub/jndi.zip">zip
+file</a> and unpack it.</p>
+<blockquote>
+  <p>add the following to your CLASSPATH: jndi/jboss-common.jar, jndi/jnpserver.jar, 
+  jndi/log4j.jar, and jndi ( the directory containing&nbsp; log4j.properties)<br>
+  java JnpServer 1097
+  </p>
+</blockquote>
+<h3>2.2 Modifiy JBoss configuration</h3>
+<p>The org.jboss.naming.NamingService is essential to JBoss so it can not be disabled. 
+Instead, we make it start on an anonymous port to avoid port conflict with the 
+external JNDI server (if you want to run both on the same machine).</p>
+<blockquote>
+  <p>edit $JBOSS_HOME/server/default/conf/jboss-services.xml<br>
+  by changing &lt;attribute name="Port">1099&lt;/attribute><br> 
+  to    &lt;attribute name="Port">-1&lt;/attribute></p> 
+</blockquote>
+<p>Change the JNDI URL to point to the external JNDI server. It could be local
+or remote.</p>
+<blockquote>
+  <p>edit $JBOSS_HOME/server/default/conf/jndi.properties so that<br>
+  java.naming.provider.url=localhost:10977</p>
+</blockquote>
+<p>Start JBoss</p>
+
+<p>&nbsp;</p>
+<h2>Related Information</h2>
+<p>Separate Web Server - Apache + Tomcat + JBoss</p>
+<p><a href="http://www.zois.co.uk/tn/tn-2001-10-15.html">http://www.zois.co.uk/tn/tn-2001-10-15.html</a></p>
+<p>Standalone JNDI</p>
+<p><a href="http://www.javaworld.com/javaworld/jw-04-2002/jw-0419-jndi-p2.html">http://www.javaworld.com/javaworld/jw-04-2002/jw-0419-jndi-p2.html</a></p>
+<h3>&#12288;</h3>
+
+</body>
+
+</html>

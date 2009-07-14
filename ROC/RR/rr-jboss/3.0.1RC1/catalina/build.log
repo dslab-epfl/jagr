@@ -1,0 +1,79 @@
+
+configure:
+
+init:
+
+compile-classes:
+     [mkdir]Created dir: /tmp/tst/jboss-all/catalina/output/classes
+     [javac]Compiling 28 source files to /tmp/tst/jboss-all/catalina/output/classes
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/EngineCreateAction.java:5: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]import org.xml.sax.AttributeList;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/LoggedXmlMapper.java:4: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]import org.xml.sax.AttributeList;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/LoggedXmlMapper.java:77: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]   static class ToAttributeList implements AttributeList
+     [javac]                                           ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:31: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]import javax.servlet.http.HttpSessionContext;
+     [javac]                          ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:183: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]    private static HttpSessionContext sessionContext = null;
+     [javac]                   ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:818: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]    public HttpSessionContext getSessionContext() {
+     [javac]           ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:31: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]import javax.servlet.http.HttpSessionContext;
+     [javac]                          ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1258: warning: javax.servlet.http.HttpSessionContext in javax.servlet.http has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]                                               ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/EngineCreateAction.java:63: warning: org.xml.sax.AttributeList in org.xml.sax has been deprecated
+     [javac]         AttributeList attributes = ctx.getAttributeList( top );
+     [javac]         ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:58: warning: removeValue(java.lang.String) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:58: warning: putValue(java.lang.String,java.lang.Object) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:58: warning: getValueNames() in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:58: warning: getValue(java.lang.String) in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:58: warning: getSessionContext() in javax.servlet.http.HttpSession has been deprecated
+     [javac]class ClusteredSession
+     [javac]^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1258: warning: getIds() in javax.servlet.http.HttpSessionContext has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]      ^
+     [javac]/tmp/tst/jboss-all/catalina/src/main/org/jboss/web/catalina/session/ClusteredSession.java:1258: warning: getSession(java.lang.String) in javax.servlet.http.HttpSessionContext has been deprecated
+     [javac]final class ClusteredSessionContext implements HttpSessionContext {
+     [javac]      ^
+     [javac]16 warnings
+
+compile-resources:
+
+compile-etc:
+
+compile:
+
+jars:
+     [mkdir]Created dir: /tmp/tst/jboss-all/catalina/output/lib
+      [copy]Copying 1 file to /tmp/tst/jboss-all/catalina/output/deploy
+       [jar]Building jar: /tmp/tst/jboss-all/catalina/output/deploy/tomcat4-service.jar
+
+bundle:
+      [copy]Copying 581 files to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/catalina
+      [copy]Copied 7 empty directories to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/catalina
+      [copy]Copying 292 files to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3
+      [copy]Copying 1 file to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/server/all/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/server/all/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/server/default/deploy
+      [copy]Copying 1 file to /tmp/tst/jboss-all/catalina/output/jboss-3.0.3/server/default/deploy
+
+BUILD SUCCESSFUL

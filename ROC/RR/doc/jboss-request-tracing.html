@@ -1,0 +1,505 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Request Tracing in JBoss</title>
+</head>
+
+<body>
+
+<h1>Request Tracing in JBoss</h1>
+
+<p>Mike Chen <a href="mailto:(mikechen@cs.berkeley.edu">(mikechen@cs.berkeley.edu</a>)</p>
+
+<h2>Intro</h2>
+
+<p>We modified org.jboss.ejb.plugins.LogInterceptor (in $JBOSS_SRC_HOME/server/src/main/org/jboss/ejb/plugins/LogInterceptor.java)
+to track calls and exceptions between EJBs.&nbsp;</p>
+
+<p>org/jboss/proxy/ClientContainer.java</p>
+
+<p>Issues in getting causality in failure propagation: callee does not have the full stack trace if it's on another VM. Caller does not have a reference to its container once it initiates the EJB call.
+
+
+
+<h2>Turn on Request Tracing</h2>
+<p>$JBOSS_HOME/server/default/conf/standardjboss.xml</p>
+<p>change all of &lt;call-logging>false&lt;/call-logging> to &lt;call-logging&gt;true&lt;/call-logging></p>
+<h2>Sample Request Trace: Sign-in to PetStore</h2>
+<p>14:37:43,375 INFO  [LogInterceptor] Invoke: [id=1036620495984], container=org.jboss.ejb.StatefulSessionContainer@1ce15f6, TheShoppingClientController.handleEvent(SigninEvent: userName=j2ee, password=j2ee)<br>
+14:37:43,378 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@6798eb, TheSignOn.findByPrimaryKey(j2ee)<br>
+14:37:43,379 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@6798eb, TheSignOn.getDetails()<br>
+14:37:43,476 INFO  [LogInterceptor] Invoke: [id=1036620495984], container=org.jboss.ejb.StatefulSessionContainer@1ce15f6, TheShoppingClientController.getCustomer()<br>
+14:37:43,478 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@8990e4, TheCustomer.create()<br>
+14:37:43,479 INFO  [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@8990e4, TheCustomer.getAccountDetails(j2ee)<br>
+14:37:43,480 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@4298e, TheAccount.findByPrimaryKey(j2ee)<br>
+14:37:43,627 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@4298e, TheAccount.getDetails()<br>
+14:37:43,767 INFO  [LogInterceptor] Invoke: [id=1036620495984], container=org.jboss.ejb.StatefulSessionContainer@1ce15f6, TheShoppingClientController.getProfileMgr()<br>
+14:37:43,769 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@ffeef1, TheProfileMgr.findByPrimaryKey(j2ee)<br>
+14:37:43,881 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@ffeef1, TheProfileMgr.getDetails()<br>
+14:37:43,983 INFO  [LogInterceptor] Invoke: [id=1036620495984], container=org.jboss.ejb.StatefulSessionContainer@1ce15f6, TheShoppingClientController.getShoppingCart()<br>
+14:37:43,985 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatefulSessionContainer@c12474, TheCart.create()<br>
+14:37:43,988 INFO  [LogInterceptor] Invoke: [id=1036620495985], container=org.jboss.ejb.StatefulSessionContainer@c12474, TheCart.getDetails(en_US)<br>
+14:37:43,990 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@7e5130, TheCatalog.create()<br>
+</p>
+<h2>Sample Exception Trace: Failed Sign-in to PetStore</h2>
+<p>14:36:00,672 ERROR [LogInterceptor] handleException: container=org.jboss.ejb.StatefulSessionContainer@1ce15f6,
+<b>TheShoppingClientController.handleEvent</b>(SigninEvent: userName=j2ee, password=jee), Exception is com.sun.j2ee.blueprints.petstore.control.exceptions.SigninFailedException: password is wrong<br>
+14:36:00,678 INFO  [LogInterceptor] Application Exception<br>
+com.sun.j2ee.blueprints.petstore.control.exceptions.SigninFailedException: password is wrong<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.SigninHandler.perform(SigninHandler.java:61)<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.StateMachine.handleEvent(StateMachine.java:82)<br>
+</p>
+<hr>
+<h2>Mike's Notes
+</h2>
+<p>Tag and Trace
+</p>
+<p>Tagging:&nbsp;
+</p>
+<ol>
+  <li> can be achieved by inserting a new HTTP header into the HTTP request
+at the frontend, so that the header will be carried throughout the request
+process.</li>
+  <li>use ThreadLocal for in-process calls on thread-based implementations. an
+    REQ_ID can be inserted in the&nbsp;</li>
+</ol>
+<p>Tracing: first identify the location in the code where the UID stop being
+passed, then only modify these locations to minimize code changes.
+</p>
+<ol>
+  <li>The entry point for Jetty is jetty/src/main/org/mortbay/http/HttpConnection.java.
+    We insert a REQUEST_ID into HttpRequest and HttpResponse, and print out the
+    URL.</li>
+  <li>We also print out the servlets called in jetty/src/main/org/mortbay/jetty/servlet/ServletHolder. We filter out requests for static
+    content.</li>
+  <li>jetty/src/main/org/apache/jasper/servlet/JspServlet for JSPs</li>
+</ol>
+<p>Update jetty/build.xml</p>
+<blockquote>
+  <p>    &lt;!-- Path Tracing --><br>
+    &lt;property name="roc.tracing.root" value="/home/cs/mikechen/ROC"/><br>
+    &lt;path id="roc.tracing.classpath"><br>
+      &lt;pathelement path="${roc.tracing.root}"/><br>
+    &lt;/path><br>
+  </p>
+  <p>    &lt;!-- The combined library classpath --><br>
+    &lt;path id="library.classpath"><br>
+      &lt;path refid="sun.jaxp.classpath"/><br>
+      &lt;path refid="sun.jaas.classpath"/><br>
+      &lt;path refid="sun.jsse.classpath"/><br>
+      &lt;path refid="apache.log4j.classpath"/><br>
+      &lt;path refid="junit.junit.classpath"/><br>
+      &lt;path refid="javagroups.javagroups.classpath"/><br>
+      &lt;path refid="apache.ant.classpath"/><br>
+      &lt;path refid="javac.jar.classpath"/><br>
+      &lt;path refid="roc.tracing.classpath"/><br>
+    &lt;/path><br>
+  </p>
+  <p>    &lt;!-- Build ${tracing.jar} --><br>
+    &lt;jar jarfile="${build.lib}/tracing.jar"><br>
+      &lt;fileset dir="/home/cs/mikechen/ROC"><br>
+       &lt;include name="tracing/**"/><br>
+      &lt;/fileset><br>
+    &lt;/jar><br>
+  </p>
+  <p>&lt;jar jarfile="${build.lib}/${module.name}.sar" manifest="${build.etc}/default.mf"><br>
+      &lt;!-- Jetty plugin classes --><br>
+  <br>
+  &lt;!--<br>
+      &lt;fileset dir="${build.etc}"><br>
+        &lt;include name="webdefault.xml"/><br>
+      &lt;/fileset><br>
+ --><br>
+  <br>
+      &lt;!-- jboss-service.xml for jetty plugin --><br>
+      &lt;fileset dir="${build.resources}/jetty-plugin"><br>
+        &lt;include name="**/*"/><br>
+      &lt;/fileset><br>
+      &lt;!--include jars in sar--><br>
+      &lt;fileset dir="${build.lib}"><br>
+        &lt;!-- For some reason jasper doesn't work if servlet and jasper are in the sar --><br>
+        &lt;!--include name="${servlet.jar}"/--><br>
+        &lt;include name="${jasper.jar}"/><br>
+        &lt;include name="${jetty.jar}"/><br>
+        &lt;include name="${jmx.jar}"/><br>
+        &lt;include name="${j2ee.jar}"/><br>
+        &lt;include name="tracing.jar"/><br>
+        &lt;!--<br>
+        &lt;include name="${jetty.ejb.jar}"/><br>
+          --><br>
+        &lt;include name="${jboss.jetty.jar}"/><br>
+      &lt;/fileset><br>
+    &lt;/jar&gt;</p>
+</blockquote>
+<h3>Tracing JDBC and RMI Calls
+</h3>
+<p>connector/src/main/org/jboss/resource/adapter/jdbc
+</p>
+<p>server/src/main/org/jboss/invocation/jrmp/interfaces/JRMPInvokerProxy.java<br>
+server/src/main/org/jboss/invocation/jrmp/server/JRMPInvoker.java<br>
+</p>
+<h3>Current Request Trace for Sign-out
+</h3>
+<pre><font size="1">03:59:54,077 INFO [STDOUT] HttpConnection: REQUEST_ID = 1036670394075, /estore/control/verifysignin
+03:59:54,080 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, com.sun.j2ee.blueprints.petstore.control.web.MainServlet
+03:59:54,081 INFO [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.handleEvent(SigninEvent: userName=j2ee, password=j2ee)
+03:59:54,084 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.findByPrimaryKey(j2ee)
+03:59:54,086 INFO [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.getDetails()
+03:59:54,130 INFO [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getCustomer()
+03:59:54,132 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@18782a7, TheCustomer.create()
+03:59:54,133 INFO [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@18782a7, TheCustomer.getAccountDetails(j2ee)
+03:59:54,134 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@1443800, TheAccount.findByPrimaryKey(j2ee)
+03:59:54,242 INFO [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@1443800, TheAccount.getDetails()
+03:59:54,340 INFO [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getProfileMgr()
+03:59:54,342 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@a010ba, TheProfileMgr.findByPrimaryKey(j2ee)
+03:59:54,424 INFO [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@a010ba, TheProfileMgr.getDetails()
+03:59:54,515 INFO [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getShoppingCart()
+03:59:54,517 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatefulSessionContainer@58cca9, TheCart.create()
+03:59:54,522 INFO [LogInterceptor] Invoke: [id=1036669082280], container=org.jboss.ejb.StatefulSessionContainer@58cca9, TheCart.getDetails(en_US)
+03:59:54,524 INFO [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@381d92, TheCatalog.create()
+03:59:54,525 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet
+03:59:54,525 INFO [STDOUT] JspServlet: REQUEST_ID = 1036670394075, /template.jsp
+03:59:54,528 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet
+03:59:54,528 INFO [STDOUT] JspServlet: REQUEST_ID = 1036670394075, /banner.jsp
+03:59:54,531 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet
+03:59:54,531 INFO [STDOUT] JspServlet: REQUEST_ID = 1036670394075, /topindex.jsp
+03:59:54,534 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet
+03:59:54,534 INFO [STDOUT] JspServlet: REQUEST_ID = 1036670394075, /signinsuccess.jsp
+03:59:54,536 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet
+03:59:54,536 INFO [STDOUT] JspServlet: REQUEST_ID = 1036670394075, /footer.jsp
+03:59:54,632 INFO [STDOUT] HttpConnection: REQUEST_ID = 1036670394541, /estore/control/white
+03:59:54,633 INFO [STDOUT] ServletHolder: REQUEST_ID = 1036670394541, com.sun.j2ee.blueprints.petstore.control.web.MainServlet</font><font size="2">
+</font>
+
+</pre>
+<h3>Sample Exception Stack Trace</h3>
+<p>Successful Login</p>
+<p>21:47:58,047 INFO  [LogInterceptor] Invoke: [id=1036647946637], container=org.jboss.ejb.StatefulSessionContainer@3deff3, TheShoppingClientController.handleEvent(SigninEvent: userName=j2ee, password=j2ee)<br>
+21:47:58,061 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@4600c0, TheSignOn.findByPrimaryKey(j2ee)<br>
+21:47:59,147 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@4600c0, TheSignOn.getDetails()<br>
+21:47:59,391 INFO  [LogInterceptor] Invoke: [id=1036647946637], container=org.jboss.ejb.StatefulSessionContainer@3deff3, TheShoppingClientController.getCustomer()<br>
+21:47:59,394 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@11df164, TheCustomer.create()<br>
+21:47:59,396 INFO  [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@11df164, TheCustomer.getAccountDetails(j2ee)<br>
+21:47:59,404 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@27cd63, TheAccount.findByPrimaryKey(j2ee)<br>
+21:47:59,614 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@27cd63, TheAccount.getDetails()<br>
+21:47:59,898 INFO  [LogInterceptor] Invoke: [id=1036647946637], container=org.jboss.ejb.StatefulSessionContainer@3deff3, TheShoppingClientController.getProfileMgr()<br>
+21:47:59,901 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@7f3b8a, TheProfileMgr.findByPrimaryKey(j2ee)<br>
+21:48:00,089 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@7f3b8a, TheProfileMgr.getDetails()<br>
+21:48:00,184 INFO  [LogInterceptor] Invoke: [id=1036647946638], container=org.jboss.ejb.StatefulSessionContainer@93c4f1, TheCart.getDetails(en_US)<br>
+</p>
+
+<p>
+13:30:37,621 INFO  [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@6ef7ba, TheCatalog.getItem(EST-1,en_US)
+13:30:37,742 INFO  [StatelessSessionContainer] Method: public abstract com.sun.j2ee.blueprints.shoppingcart.catalog.model.Product com.sun.j2ee.blueprints.shoppingcart.catalog.ejb.Catalog.getProduct(java.lang.String,java.util.Locale) throws java.rmi.RemoteException for bean com.sun.j2ee.blueprints.shoppingcart.catalog.ejb.CatalogEJB
+13:30:37,743 ERROR [STDERR] java.lang.Exception
+13:30:37,744 ERROR [STDERR] 	at org.jboss.ejb.plugins.LogInterceptor.invoke(LogInterceptor.java:205)
+13:30:37,744 ERROR [STDERR] 	at org.jboss.ejb.StatelessSessionContainer.invoke(StatelessSessionContainer.java:314)
+13:30:37,745 ERROR [STDERR] 	at org.jboss.ejb.Container.invoke(Container.java:841)
+13:30:37,745 ERROR [STDERR] 	at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:517)
+13:30:37,745 ERROR [STDERR] 	at org.jboss.invocation.local.LocalInvoker.invoke(LocalInvoker.java:98)
+13:30:37,745 ERROR [STDERR] 	at org.jboss.invocation.InvokerInterceptor.invoke(InvokerInterceptor.java:102)
+13:30:37,745 ERROR [STDERR] 	at org.jboss.proxy.TransactionInterceptor.invoke(TransactionInterceptor.java:77)
+13:30:37,746 ERROR [STDERR] 	at org.jboss.proxy.SecurityInterceptor.invoke(SecurityInterceptor.java:80)
+13:30:37,746 ERROR [STDERR] 	at org.jboss.proxy.ejb.StatelessSessionInterceptor.invoke(StatelessSessionInterceptor.java:111)
+13:30:37,746 ERROR [STDERR] 	at org.jboss.proxy.ClientContainer.invoke(ClientContainer.java:101)
+13:30:37,746 ERROR [STDERR] 	at $Proxy60.getProduct(Unknown Source)
+13:30:37,746 ERROR [STDERR] 	at com.sun.j2ee.blueprints.shoppingcart.cart.ejb.ShoppingCartEJB.getDetails(ShoppingCartEJB.java:62)
+13:30:37,747 ERROR [STDERR] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+13:30:37,747 ERROR [STDERR] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+13:30:37,747 ERROR [STDERR] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+13:30:37,747 ERROR [STDERR] 	at java.lang.reflect.Method.invoke(Method.java:324)
+13:30:37,747 ERROR [STDERR] 	at org.jboss.ejb.StatefulSessionContainer$ContainerInterceptor.invoke(StatefulSessionContainer.java:822)
+13:30:37,748 ERROR [STDERR] 	at org.jboss.ejb.plugins.SecurityInterceptor.invoke(SecurityInterceptor.java:130)
+13:30:37,748 ERROR [STDERR] 	at org.jboss.resource.connectionmanager.CachedConnectionInterceptor.invoke(CachedConnectionInterceptor.java:186)
+13:30:37,748 ERROR [STDERR] 	at org.jboss.ejb.plugins.StatefulSessionInstanceInterceptor.invoke(StatefulSessionInstanceInterceptor.java:266)
+13:30:37,748 ERROR [STDERR] 	at org.jboss.ejb.plugins.AbstractTxInterceptor.invokeNext(AbstractTxInterceptor.java:107)
+13:30:37,748 ERROR [STDERR] 	at org.jboss.ejb.plugins.TxInterceptorCMT.runWithTransactions(TxInterceptorCMT.java:178)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.ejb.plugins.TxInterceptorCMT.invoke(TxInterceptorCMT.java:60)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.ejb.plugins.LogInterceptor.invoke(LogInterceptor.java:240)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.ejb.StatefulSessionContainer.invoke(StatefulSessionContainer.java:383)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.ejb.Container.invoke(Container.java:841)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:517)
+13:30:37,749 ERROR [STDERR] 	at org.jboss.invocation.local.LocalInvoker.invoke(LocalInvoker.java:98)
+13:30:37,750 ERROR [STDERR] 	at org.jboss.invocation.InvokerInterceptor.invoke(InvokerInterceptor.java:102)
+13:30:37,750 ERROR [STDERR] 	at org.jboss.proxy.TransactionInterceptor.invoke(TransactionInterceptor.java:77)
+13:30:37,750 ERROR [STDERR] 	at org.jboss.proxy.SecurityInterceptor.invoke(SecurityInterceptor.java:80)
+13:30:37,750 ERROR [STDERR] 	at org.jboss.proxy.ejb.StatefulSessionInterceptor.invoke(StatefulSessionInterceptor.java:117)
+13:30:37,750 ERROR [STDERR] 	at org.jboss.proxy.ClientContainer.invoke(ClientContainer.java:101)
+13:30:37,751 ERROR [STDERR] 	at $Proxy72.getDetails(Unknown Source)
+13:30:37,751 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.ShoppingCartWebImpl.performUpdate(ShoppingCartWebImpl.java:62)
+13:30:37,751 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.ModelUpdateNotifier.notifyListeners(ModelUpdateNotifier.java:40)
+13:30:37,751 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.RequestProcessor.processRequest(RequestProcessor.java:85)
+13:30:37,751 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doProcess(MainServlet.java:111)
+13:30:37,752 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:98)
+13:30:37,752 ERROR [STDERR] 	at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doPost(MainServlet.java:65)
+13:30:37,752 ERROR [STDERR] 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:760)
+13:30:37,752 ERROR [STDERR] 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+13:30:37,752 ERROR [STDERR] 	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)
+13:30:37,752 ERROR [STDERR] 	at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)
+13:30:37,753 ERROR [STDERR] 	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)
+13:30:37,753 ERROR [STDERR] 	at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)
+13:30:37,753 ERROR [STDERR] 	at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)
+13:30:37,753 ERROR [STDERR] 	at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)
+13:30:37,753 ERROR [STDERR] 	at org.mortbay.http.HttpServer.service(HttpServer.java:875)
+13:30:37,754 ERROR [STDERR] 	at org.jboss.jetty.Jetty.service(Jetty.java:541)
+13:30:37,754 ERROR [STDERR] 	at org.mortbay.http.HttpConnection.service(HttpConnection.java:785)
+13:30:37,754 ERROR [STDERR] 	at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:935)
+13:30:37,754 ERROR [STDERR] 	at org.mortbay.http.HttpConnection.handle(HttpConnection.java:802)
+13:30:37,754 ERROR [STDERR] 	at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)
+13:30:37,754 ERROR [STDERR] 	at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)
+13:30:37,755 ERROR [STDERR] 	at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)
+13:30:37,755 ERROR [STDERR] 	at java.lang.Thread.run(Thread.java:536)
+13:30:37,755 INFO  [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@6ef7ba, TheCatalog.getProduct(FI-SW-01,en_US)
+</p>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">&nbsp;</td>
+    <td width="50%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><font size="2">03:58:22,697 INFO  [STDOUT] HttpConnection: REQUEST_ID = 1036670296691, /estore/control/verifysignin<br>
+      03:58:22,698 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, com.sun.j2ee.blueprints.petstore.control.web.MainServlet<br>
+      03:58:22,699 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.create()<br>
+      03:58:22,703 INFO  [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.han<br>
+      dleEvent(SigninEvent: userName=j2ee, password=j2)<br>
+      03:58:22,705 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.findByPrimaryKey(j2ee)<br>
+      03:58:22,926 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.getDetails()<br>
+      03:58:23,001 ERROR [LogInterceptor] handleException: container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.handleEvent(Si<br>
+      gninEvent: userName=j2ee, password=j2), Exception is com.sun.j2ee.blueprints.petstore.control.exceptions.SigninFailedException: password is wrong<br>
+      03:58:23,006 INFO  [LogInterceptor] Application Exception<br>
+      com.sun.j2ee.blueprints.petstore.control.exceptions.SigninFailedException: password is wrong<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.SigninHandler.perform(SigninHandler.java:61)<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.StateMachine.handleEvent(StateMachine.java:82)<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.ShoppingClientControllerEJB.handleEvent(ShoppingClientControllerEJB.java:133)<br>
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>
+        at java.lang.reflect.Method.invoke(Method.java:324)<br>
+        at org.jboss.ejb.StatefulSessionContainer$ContainerInterceptor.invoke(StatefulSessionContainer.java:817)<br>
+        at org.jboss.ejb.plugins.SecurityInterceptor.invoke(SecurityInterceptor.java:130)<br>
+        at org.jboss.resource.connectionmanager.CachedConnectionInterceptor.invoke(CachedConnectionInterceptor.java:186)<br>
+        at org.jboss.ejb.plugins.StatefulSessionInstanceInterceptor.invoke(StatefulSessionInstanceInterceptor.java:266)<br>
+        at org.jboss.ejb.plugins.AbstractTxInterceptor.invokeNext(AbstractTxInterceptor.java:107)<br>
+        at org.jboss.ejb.plugins.TxInterceptorCMT.runWithTransactions(TxInterceptorCMT.java:178)<br>
+        at org.jboss.ejb.plugins.TxInterceptorCMT.invoke(TxInterceptorCMT.java:60)<br>
+        at org.jboss.ejb.plugins.LogInterceptor.invoke(LogInterceptor.java:227)<br>
+        at org.jboss.ejb.StatefulSessionContainer.invoke(StatefulSessionContainer.java:380)<br>
+        at org.jboss.ejb.Container.invoke(Container.java:712)<br>
+        at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:517)<br>
+        at org.jboss.invocation.local.LocalInvoker.invoke(LocalInvoker.java:98)<br>
+        at org.jboss.invocation.InvokerInterceptor.invoke(InvokerInterceptor.java:102)<br>
+        at org.jboss.proxy.TransactionInterceptor.invoke(TransactionInterceptor.java:77)<br>
+        at org.jboss.proxy.SecurityInterceptor.invoke(SecurityInterceptor.java:80)<br>
+        at org.jboss.proxy.ejb.StatefulSessionInterceptor.invoke(StatefulSessionInterceptor.java:117)<br>
+        at org.jboss.proxy.ClientContainer.invoke(ClientContainer.java:76)<br>
+        at $Proxy52.handleEvent(Unknown Source)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.ShoppingClientControllerWebImpl.handleEvent(ShoppingClientControllerWebImpl.java:140)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.RequestProcessor.processRequest(RequestProcessor.java:84)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doProcess(MainServlet.java:111)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:98)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doPost(MainServlet.java:65)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:760)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:389)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)<br>
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)<br>
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)<br>
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)<br>
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:786)<br>
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:947)<br>
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:803)<br>
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)<br>
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)<br>
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)<br>
+        at java.lang.Thread.run(Thread.java:536)<br>
+      03:58:23,014 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, org.apache.jasper.servlet.JspServlet<br>
+      03:58:23,015 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670296691, /template.jsp<br>
+      03:58:23,018 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, org.apache.jasper.servlet.JspServlet<br>
+      03:58:23,018 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670296691, /banner.jsp<br>
+      03:58:23,034 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, org.apache.jasper.servlet.JspServlet<br>
+      03:58:23,034 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670296691, /topindex.jsp<br>
+      03:58:23,037 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, org.apache.jasper.servlet.JspServlet<br>
+      03:58:23,037 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670296691, /error.jsp<br>
+      03:58:23,128 INFO  [STDOUT] HttpConnection: REQUEST_ID = 1036670303126, /estore/control/white<br>
+      03:58:23,129 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670303126, com.sun.j2ee.blueprints.petstore.control.web.MainServlet<br>
+      03:58:24,337 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670296691, org.apache.jasper.servlet.JspServlet<br>
+      03:58:24,337 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670296691, /footer.jsp<br>
+      </font></td>
+    <td width="50%" valign="top"><font size="2">03:59:54,077 INFO  [STDOUT] HttpConnection: REQUEST_ID = 1036670394075, /estore/control/verifysignin<br>
+      03:59:54,080 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, com.sun.j2ee.blueprints.petstore.control.web.MainServlet<br>
+      03:59:54,081 INFO  [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.handleEvent(SigninEvent: userName=j2ee, password=j2ee)<br>
+      03:59:54,084 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.findByPrimaryKey(j2ee)<br>
+      03:59:54,086 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@168989e, TheSignOn.getDetails()<br>
+      03:59:54,130 INFO  [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getCustomer()<br>
+      03:59:54,132 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@18782a7, TheCustomer.create()<br>
+      03:59:54,133 INFO  [LogInterceptor] Invoke: container=org.jboss.ejb.StatelessSessionContainer@18782a7, TheCustomer.getAccountDetails(j2ee)<br>
+      03:59:54,134 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@1443800, TheAccount.findByPrimaryKey(j2ee)<br>
+      03:59:54,242 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@1443800, TheAccount.getDetails()<br>
+      03:59:54,340 INFO  [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getProfileMgr()<br>
+      03:59:54,342 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.EntityContainer@a010ba, TheProfileMgr.findByPrimaryKey(j2ee)<br>
+      03:59:54,424 INFO  [LogInterceptor] Invoke: [id=j2ee], container=org.jboss.ejb.EntityContainer@a010ba, TheProfileMgr.getDetails()<br>
+      03:59:54,515 INFO  [LogInterceptor] Invoke: [id=1036669082279], container=org.jboss.ejb.StatefulSessionContainer@103fcaa, TheShoppingClientController.getShoppingCart()<br>
+      03:59:54,517 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatefulSessionContainer@58cca9, TheCart.create()<br>
+      03:59:54,522 INFO  [LogInterceptor] Invoke: [id=1036669082280], container=org.jboss.ejb.StatefulSessionContainer@58cca9, TheCart.getDetails(en_US)<br>
+      03:59:54,524 INFO  [LogInterceptor] InvokeHome: container=org.jboss.ejb.StatelessSessionContainer@381d92, TheCatalog.create()<br>
+      03:59:54,525 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet<br>
+      03:59:54,525 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670394075, /template.jsp<br>
+      03:59:54,528 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet<br>
+      03:59:54,528 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670394075, /banner.jsp<br>
+      03:59:54,531 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet<br>
+      03:59:54,531 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670394075, /topindex.jsp<br>
+      03:59:54,534 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet<br>
+      03:59:54,534 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670394075, /signinsuccess.jsp<br>
+      03:59:54,536 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394075, org.apache.jasper.servlet.JspServlet<br>
+      03:59:54,536 INFO  [STDOUT] JspServlet:     REQUEST_ID = 1036670394075, /footer.jsp<br>
+      03:59:54,632 INFO  [STDOUT] HttpConnection: REQUEST_ID = 1036670394541, /estore/control/white<br>
+      03:59:54,633 INFO  [STDOUT] ServletHolder:  REQUEST_ID = 1036670394541, com.sun.j2ee.blueprints.petstore.control.web.MainServlet<br>
+      </font></td>
+  </tr>
+</table>
+<p>Unsuccessful Login</p>
+<p>00:26:56,212 INFO  [LogInterceptor] Application Exception<br>
+com.sun.j2ee.blueprints.petstore.control.exceptions.SigninFailedException: Unable to find the password details for user j2e<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.SigninHandler.perform(SigninHandler.java:48)<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.StateMachine.handleEvent(StateMachine.java:82)<br>
+        at com.sun.j2ee.blueprints.petstore.control.ejb.ShoppingClientControllerEJB.handleEvent(ShoppingClientControllerEJB.java:133)<br>
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br>
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)<br>
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)<br>
+        at java.lang.reflect.Method.invoke(Method.java:324)<br>
+        at org.jboss.ejb.StatefulSessionContainer$ContainerInterceptor.invoke(StatefulSessionContainer.java:817)<br>
+        at org.jboss.ejb.plugins.SecurityInterceptor.invoke(SecurityInterceptor.java:130)<br>
+        at org.jboss.resource.connectionmanager.CachedConnectionInterceptor.invoke(CachedConnectionInterceptor.java:186)<br>
+        at org.jboss.ejb.plugins.StatefulSessionInstanceInterceptor.invoke(StatefulSessionInstanceInterceptor.java:266)<br>
+        at org.jboss.ejb.plugins.AbstractTxInterceptor.invokeNext(AbstractTxInterceptor.java:107)<br>
+        at org.jboss.ejb.plugins.TxInterceptorCMT.runWithTransactions(TxInterceptorCMT.java:178)<br>
+        at org.jboss.ejb.plugins.TxInterceptorCMT.invoke(TxInterceptorCMT.java:60)<br>
+        at org.jboss.ejb.plugins.LogInterceptor.invoke(LogInterceptor.java:221)<br>
+        at org.jboss.ejb.StatefulSessionContainer.invoke(StatefulSessionContainer.java:380)<br>
+        at org.jboss.ejb.Container.invoke(Container.java:712)<br>
+        at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:517)<br>
+        at org.jboss.invocation.local.LocalInvoker.invoke(LocalInvoker.java:98)<br>
+        at org.jboss.invocation.InvokerInterceptor.invoke(InvokerInterceptor.java:102)<br>
+        at org.jboss.proxy.TransactionInterceptor.invoke(TransactionInterceptor.java:77)<br>
+        at org.jboss.proxy.SecurityInterceptor.invoke(SecurityInterceptor.java:80)<br>
+        at org.jboss.proxy.ejb.StatefulSessionInterceptor.invoke(StatefulSessionInterceptor.java:117)<br>
+        at org.jboss.proxy.ClientContainer.invoke(ClientContainer.java:76)<br>
+        at $Proxy52.handleEvent(Unknown Source)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.ShoppingClientControllerWebImpl.handleEvent(ShoppingClientControllerWebImpl.java:140)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.RequestProcessor.processRequest(RequestProcessor.java:84)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doProcess(MainServlet.java:111)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:98)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doPost(MainServlet.java:65)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:760)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)<br>
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)<br>
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)<br>
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)<br>
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:785)<br>
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:935)<br>
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:802)<br>
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)<br>
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)<br>
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)<br>
+        at java.lang.Thread.run(Thread.java:536)<br>
+</p>
+
+<h3>Servlet Exception (LocalInvoker turned off)
+</h3>
+
+<p>javax.servlet.ServletException: MainServlet: unknown exception: java.lang.NullPointerException<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doProcess(MainServlet.java:124)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:98)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:740)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)<br>
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)<br>
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)<br>
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)<br>
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:785)<br>
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:935)<br>
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:802)<br>
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)<br>
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)<br>
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)<br>
+        at java.lang.Thread.run(Thread.java:536)<br>
+</p>
+<p>DB Not Available</p>
+<p>21:56:32,914 ERROR [LocalTxConnectionManager$LocalConnectionEventListener] ResourceException while closing connection handle!<br>
+javax.resource.ResourceException: Could not cleanup: java.sql.SQLException: Connection refused to host: 169.229.50.211; nested<br>
+ exception is:&nbsp;<br>
+        java.net.ConnectException: Connection refused<br>
+        at org.jboss.resource.adapter.jdbc.local.LocalManagedConnection.cleanup(LocalManagedConnection.java:198)<br>
+        at org.jboss.resource.connectionmanager.BaseConnectionManager2.unregisterAssociation(BaseConnectionManager2.java:666)<br>
+        at org.jboss.resource.connectionmanager.LocalTxConnectionManager$LocalConnectionEventListener.connectionClosed(LocalTx<br>
+ConnectionManager.java:381)<br>
+        at org.jboss.resource.adapter.jdbc.local.LocalManagedConnection.closeHandle(LocalManagedConnection.java:339)<br>
+        at org.jboss.resource.adapter.jdbc.local.LocalConnection.close(LocalConnection.java:97)<br>
+        at com.sun.j2ee.blueprints.personalization.profilemgr.dao.ProfileMgrDAOImpl.closeConnection(ProfileMgrDAOImpl.java:409<br>
+)<br>
+        at com.sun.j2ee.blueprints.personalization.profilemgr.dao.ProfileMgrDAOImpl.getBanner(ProfileMgrDAOImpl.java:186)<br>
+        at com.sun.j2ee.blueprints.personalization.profilemgr.model.ProfileMgrModel.getBanner(ProfileMgrModel.java:67)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.ProfileMgrWebImpl.getBanner(ProfileMgrWebImpl.java:56)<br>
+        at org.apache.jsp.petfooter$jsp._jspService(petfooter$jsp.java:143)<br>
+        at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:107)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.apache.jasper.servlet.JspServlet$JspServletWrapper.service(JspServlet.java:201)<br>
+        at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:381)<br>
+        at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:473)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.Dispatcher.dispatch(Dispatcher.java:216)<br>
+        at org.mortbay.jetty.servlet.Dispatcher.include(Dispatcher.java:143)<br>
+        at com.sun.j2ee.blueprints.petstore.taglib.InsertTag.doEndTag(InsertTag.java:67)<br>
+        at org.apache.jsp.template$jsp._jspService(template$jsp.java:175)<br>
+        at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:107)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.apache.jasper.servlet.JspServlet$JspServletWrapper.service(JspServlet.java:201)<br>
+        at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:381)<br>
+        at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:473)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.Dispatcher.dispatch(Dispatcher.java:216)<br>
+        at org.mortbay.jetty.servlet.Dispatcher.forward(Dispatcher.java:151)<br>
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:105)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:740)<br>
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)<br>
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:366)<br>
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)<br>
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)<br>
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)<br>
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)<br>
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)<br>
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)<br>
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:785)<br>
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:935)<br>
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:802)<br>
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)<br>
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)<br>
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)<br>
+        at java.lang.Thread.run(Thread.java:536)<br>
+<br>
+</p>
+
+</body>
+
+</html>

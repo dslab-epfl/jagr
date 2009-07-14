@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- =====================================================================
+
+     JBoss Container configuration for the Administration Server
+     bootstrap.
+     
+     Author:  Juha Lindfors
+     CVS: $Id: AdminServerBootstrap-jboss.xml,v 1.1.1.1 2002/10/03 21:06:52 candea Exp $
+     
+     ===================================================================== -->
+     
+<jboss>
+
+  <!-- Enforce strict EJB programming restrictions -->
+  <!-- <secure>false</secure> -->
+
+  <!--
+        Set the security domain for the admin server bootstrap.
+        Configured to our very own 'admin' domain.
+  -->
+  <security-domain>java:/jaas/other</security-domain>
+  
+  
+  <enterprise-beans>
+    <container-configurations>
+      <container-name>Standard Stateful SessionBean</container-name>
+      
+      <!-- Call logging disabled -->
+      <!-- <call-logging>false</call-logging> -->
+      <role-mapping-manager>java:/jaas/admin</role-mapping-manager>
+
+<!--
+      <authentication-module>java:/jaas/admin</authentication-module>
+-->
+      </container-configurations>    
+  </enterprise-beans>
+  
+</jboss>
+

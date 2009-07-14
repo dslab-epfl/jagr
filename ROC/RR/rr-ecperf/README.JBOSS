@@ -1,0 +1,41 @@
+README for rr-ecperf
+
+set up ecperf:
+
+1. Edit config/jboss.env to point to the right directories and JDBC paths and correct hostnames.
+	-make sure that J2EE_HOME points to your jboss installation
+	-make sure that the MYSQL JDBC properties are set correctly
+	-I had to change the second to last line JAVA=... to add the naming factory and naming url so that the driver knows 
+	how to create an initial context.   make sure url is correct.  notice the port number... 1100. this will have to be 
+	changed in jboss-service.xml later on.        
+2. Edit bin/driver.sh to contain the correct paths and hostnames          
+3. Edit $JBOSS_HOME/server/default/conf/jboss-service.xml so that JNDI runs under port 1100.
+4. Edit config/run.properties to set correct directories and to set Transaction Rate (txRate).  i had to set the transaction
+   rate low so that the appserver wouldn't die from so many db connections it has to set up.
+   -you can also set the amount of time for each run in the stdyState variable.  
+5. Edit build.xml to set SCALE to match txRate.           
+   -you can also decide whether to use container managed persistence (CMP) or bean managed persistence (BMP).  search for 
+   "ejbjarsuffix" and "jbosssuffix" and change their values to either both CMP or both BMP.  i used BMP for my run.
+6. If you use CMP you will have to modify $JBOSS_HOME/server/default/conf/standardjboss.xml
+   search for "Instance Per Transaction 2.x CMP EntityBean" and change to "Instance Per Transaction CMP EntityBean" 
+7. Edit src/deploy/jboss/ecperfdb-ds.xml to reflect any modifications to user, url or password for db connection
+
+set up mysql:
+
+1. create a new database called ecperf
+2. add a user called "root" with blank password.  give full permissions to use ecperf.  look at mysql database running on 
+rrapp1 for more guidance.  
+
+Run:
+
+1. cd $ECPERF_DIR
+2. >ant
+7. >ant deploy 
+8. >ant create-schema (there is a drop-schema if needed)
+9. >ant loaddb 
+10. startup jboss in another window
+11. cd bin       
+12. sh driver.sh           
+13. View results at output/{OUTPUT_DIR}                    
+
+you may have to run ant drop-schema, create-schema, and loaddb after each run depending on how big the tables get.

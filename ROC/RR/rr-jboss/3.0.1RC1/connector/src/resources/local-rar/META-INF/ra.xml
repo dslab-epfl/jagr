@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE connector PUBLIC "-//Sun Microsystems, Inc.//DTD Connector 1.0//EN" "http://java.sun.com/dtd/connector_1_0.dtd">
+
+
+<connector>
+  <display-name>JBoss LocalTransaction JDBC Wrapper</display-name>
+  <vendor-name>JBoss</vendor-name>
+  <spec-version>1.0</spec-version>
+  <eis-type>Relational Database</eis-type>
+  <version>1.0</version>
+  <resourceadapter>
+    <managedconnectionfactory-class>org.jboss.resource.adapter.jdbc.local.LocalManagedConnectionFactory</managedconnectionfactory-class>
+    <connectionfactory-interface>javax.sql.DataSource</connectionfactory-interface>
+    <connectionfactory-impl-class>org.jboss.resource.adapter.jdbc.local.LocalDataSource</connectionfactory-impl-class>
+    <connection-interface>java.sql.Connection</connection-interface>
+    <connection-impl-class>org.jboss.resource.adapter.jdbc.local.LocalConnection</connection-impl-class>
+    <transaction-support>LocalTransaction</transaction-support>
+    <config-property>
+      <config-property-name>ConnectionURL</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <config-property>
+      <config-property-name>TransactionIsolation</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <!--config-property>
+      <config-property-name>UserName</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property>
+    <config-property>
+      <config-property-name>Password</config-property-name>
+      <config-property-type>java.lang.String</config-property-type>
+      <config-property-value></config-property-value>
+    </config-property-->
+    <authentication-mechanism>
+      <authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+      <credential-interface>javax.resource.security.PasswordCredential</credential-interface>
+    </authentication-mechanism>
+    <reauthentication-support>false</reauthentication-support>
+  </resourceadapter>
+</connector>

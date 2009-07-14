@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE jbosscmp-jdbc PUBLIC "-//JBoss//DTD JBOSSCMP-JDBC 3.2//EN" "http://jboss.org/j2ee/dtd/jbosscmp-jdbc_3_2.dtd">
+
+<!-- Comment Entity Bean -->
+
+<jbosscmp-jdbc>
+    <defaults>
+        <datasource>java:/rubis_local_remote_CMP2</datasource>
+        <datasource-mapping>mySQL</datasource-mapping>
+        <create-table>true</create-table>
+        <remove-table>false</remove-table>
+    </defaults>
+    <enterprise-beans> 
+        <entity>
+            <ejb-name>Comment</ejb-name>
+            <table-name>comments</table-name>
+            <cmp-field>
+                <field-name>id</field-name>
+                <column-name>id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>fromUserId</field-name>
+                <column-name>from_user_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>toUserId</field-name>
+                <column-name>to_user_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>itemId</field-name>
+                <column-name>item_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>rating</field-name>
+                <column-name>rating</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>date</field-name>
+                <column-name>date</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>comment</field-name>
+                <column-name>comment</column-name>
+            </cmp-field>
+        </entity>
+    </enterprise-beans>
+</jbosscmp-jdbc>

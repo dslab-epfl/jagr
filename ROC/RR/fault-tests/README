@@ -1,0 +1,15 @@
+This directory contains a bunch of simple java tests that looks at Java exceptions thrown under "real" faults.
+
+
+Port in use:
+
+Exception in thread "main" java.net.BindException: Address already in use
+        at java.net.PlainSocketImpl.socketBind(Native Method)
+        at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:321)
+        at java.net.ServerSocket.bind(ServerSocket.java:308)
+        at java.net.ServerSocket.bind(ServerSocket.java:266)
+        at java.net.ServerSocket.<init>(ServerSocket.java:182)
+        at java.net.ServerSocket.<init>(ServerSocket.java:94)
+        at BindServerPort.main(BindServerPort.java:42)
+
+

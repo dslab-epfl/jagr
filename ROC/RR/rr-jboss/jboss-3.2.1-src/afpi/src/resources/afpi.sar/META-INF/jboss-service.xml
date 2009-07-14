@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+
+  <mbean code="roc.rr.afpi.FaultInjectionService"
+         name="RR:service=FaultInjection">         
+     <!-- In LeakXTarget memory leaking ejb must be specified -->
+     <!-- In LeakXByte amount of leaking memory must be specified in bytes --> 
+     <attribute name="Leak1Target"></attribute>
+     <attribute name="Leak1Byte">0</attribute>
+     <attribute name="Leak2Target"></attribute>
+     <attribute name="Leak2Byte">0</attribute>
+     <attribute name="Leak3Target"></attribute>
+     <attribute name="Leak3Byte">0</attribute>
+     <attribute name="Leak4Target"></attribute>
+     <attribute name="Leak4Byte">0</attribute>
+     <attribute name="Leak5Target"></attribute>
+     <attribute name="Leak5Byte">0</attribute> 
+     <attribute name="DeadlockTarget"></attribute>
+     <attribute name="DeadlockCounterThreashold">1</attribute>
+     <attribute name="LockProbability">1.0</attribute>
+     <attribute name="SleepTime">500</attribute>
+     <!--<attribute name="faultloadFile">faultload.xml</attribute> -->
+  </mbean> 
+
+  <mbean code="roc.rr.afpi.RecoveryService"
+         name="RR:service=RecoveryControl">         
+     <attribute name="rebootDelaySeconds">30</attribute>
+     <attribute name="recoMgrFullThreshold">-1</attribute>
+     <attribute name="recoMgrMicroThreshold">-1</attribute>
+     <!-- <attribute name="clientHostName">rr8</attribute> -->
+  </mbean>
+
+  <mbean code="roc.rr.afpi.InformationService"
+         name="RR:service=Information">         
+     <!-- interval in seconds for logging available memory -->
+     <attribute name="Interval">20</attribute>
+  </mbean>
+
+  <mbean code="roc.rr.afpi.RejuvenationService"
+         name="RR:service=RejuvenationControl">         
+     <!-- percentage of total memory for starting microreboot -->
+     <attribute name="StartThreshold">30</attribute>
+     <!-- percentage of total memory for stopping microreboot -->
+     <attribute name="StopThreshold">70</attribute>
+     <!-- interval in secondes for watching available memory -->
+     <attribute name="WatchInterval">30</attribute>
+     <!-- interval in secondes for microrebooting ejbs -->
+     <attribute name="MicroRebootInterval">20</attribute>
+  </mbean>
+
+</server>

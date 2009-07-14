@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<jboss>
+   <enterprise-beans>
+       <message-driven>
+         <ejb-name>ObjectMessageBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>queue/testObjectMessage</destination-jndi-name>
+       </message-driven>
+       <message-driven>
+         <ejb-name>BMTTXTimeOutBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>queue/A</destination-jndi-name>
+       </message-driven>
+       <message-driven>
+         <ejb-name>CMTTXTimeOutBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>queue/B</destination-jndi-name>
+       </message-driven>
+       <message-driven>
+         <ejb-name>QueueBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>queue/testQueue</destination-jndi-name>
+       </message-driven>
+       <message-driven>
+         <ejb-name>TopicBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>topic/testTopic</destination-jndi-name>
+       </message-driven>
+       <message-driven>
+         <ejb-name>DurableTopicBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>topic/testDurableTopic</destination-jndi-name>
+         <mdb-user>john</mdb-user>
+         <mdb-passwd>needle</mdb-passwd>
+         <mdb-subscription-id>DurableSubscriberExample</mdb-subscription-id>
+       </message-driven>
+       <message-driven>
+         <ejb-name>ExQueueBean</ejb-name>
+		 <configuration-name>Standard Message Driven Bean</configuration-name>
+         <destination-jndi-name>queue/ex</destination-jndi-name>
+       </message-driven>
+       <secure>false</secure>
+   </enterprise-beans>
+</jboss>

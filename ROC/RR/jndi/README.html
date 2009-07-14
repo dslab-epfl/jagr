@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>JNDI separation (JNP Server)</title>
+           
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+     
+  <meta name="author" content="George Candea">
+</head>
+<body>
+<b>Overview</b><br>
+<br>
+J2EE applications are assembled out of components (servlets, JSPs, EJBs);
+the way components are configured and connected to each other is specified
+at deployment time, with much of this information being stored in a JNDI
+namespace. Each component finds other components dynamically, through JNDI
+lookups,  not via static linking.  &nbsp;J2EE applications allow for deployment-time
+binding, while maintaining type and link safety by having each component
+export a list of external components and resources it needs.<br>
+<br>
+JNDI constitutes the glue that holds together the components of a J2EE application
+and is therefore fundamental to the operation of a J2EE system. &nbsp;Its
+criticality makes it a prime candidate for isolation. &nbsp;JBoss includes
+a JNDI provider (JNP) that can run as a standalone service in a separate
+JVM or the same JVM as the application(s) using it. &nbsp;The JNP provides
+a lightweight network-accessible JNDI service, that uses solely an in-memory
+database to store objects (thus, the namespace's contents does not persist
+across restarts).<br>
+<br>
+If you squint, then you'll realize that JNDI is nothing more than a dedicated
+state store. &nbsp;Having J2EE apps use JNDI is an expression of the separation
+of persistent state from application logic, as advocated in our crash-only
+software paper.<br>
+<br>
+<br>
+<b>Naming in JBoss</b><br>
+<br>
+The JNDI provider (JNP) for JBoss is a Java socket/RMI implementation of the
+JNDI interface. &nbsp;It can be accessed remotely; the JNP is also optimized
+for intra-JVM access, such that it is accessed through an object reference,
+rather than over RMI. &nbsp;In JBoss, it is the NamingService MBean that provides
+JNDI services. &nbsp;Of its configuration parameters, the following are the
+more important ones:<br>
+<blockquote>  
+  <ul>
+    <li><i>Port</i>: The jnp:// protocol listening port; if left unspecified,
+the default is 1099 (i.e., the default RMI registry port)</li>
+    <li><i>RmiPort</i>: The RMI port on which the RMI NamingService implementation
+is exported; if not specified, defaults to zero, meaning any available port</li>
+    <li><i>BindAddress</i>: Specific address on which NamingService listens;
+useful for multi-homed hosts, defaults to localhost<br>
+    </li>
+  
+  </ul>
+</blockquote>
+The JBoss JNP started out as a stand-alone JNP, implemented in org.jnp.server.Main.
+&nbsp;It was later wrapped into the NamingService MBean to provide the intra-JVM
+optimization mentioned above. When NamingService is started, it starts the
+JNP's Main; it also exposes its Naming interface ops through JMX, thus enabling
+any JMX adaptors to access the JNP (see http-invoker.sar for an example of
+how this is done with HTTP).<br>
+<br>
+<br>
+<b>Running a standalone JNDI service</b><br>
+<br>
+Let <i>$JBOSS_TOP</i> be your top-level rr-jboss directory (e.g., ~/ROC/RR/rr-jboss).<br>
+<br>
+Make sure you have the following directories in your CLASSPATH:<br>
+<br>
+&nbsp;&nbsp;&nbsp; $JBOSS_TOP/system/output/classes &nbsp;(<i>needed for
+</i>org/apache/log4j)<br>
+&nbsp;&nbsp;&nbsp; $JBOSS_TOP/common/output/classes &nbsp;(<i>needed for
+</i>org/jboss/logging)<br>
+&nbsp;&nbsp;&nbsp; $JBOSS_TOP/naming/output/classes &nbsp;(<i>needed for
+</i>org/jnp/server/Main)<br>
+&nbsp;&nbsp;&nbsp; $JBOSS_TOP/naming/output/etc/conf &nbsp;(<i>needed for
+</i>log4j.properties)<br>
+<br>
+Build the JNP. Prior to this, make sure the classes in $JBOSS_TOP/system/output/classes
+and $JBOSS_TOP/common/output/classes are current; a top-level build of RR-JBoss
+would take care of that.<br>
+<br>
+Start the standalone server:<br>
+<br>
+&nbsp;&nbsp;&nbsp; % java org/jnp/server/Main<br>
+<br>
+If all goes well, you should get output that looks like this (this is a function
+of what you have in log4j.properties):<br>
+<br>
+&nbsp; &nbsp; &nbsp;&nbsp; 0 &nbsp; [main] INFO&nbsp; org.jboss.naming.Naming&nbsp;
+- Starting jnp server<br>
+&nbsp; &nbsp; 427&nbsp; [main] DEBUG org.jboss.naming.Naming&nbsp; - NamingServer
+stub: org.jnp.server...<br>
+&nbsp; &nbsp; 559&nbsp; [main] INFO&nbsp; org.jboss.naming.Naming&nbsp; -
+Started jnpPort=1099, rmiPort=0, ...<br>
+<br>
+<br>
+<b>Configuring JBoss to use the external JNDI provider</b><br>
+<br>
+Modify ???/jndi.properties to look something like this:<br>
+&nbsp; &nbsp;<i>java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory</i><br>
+&nbsp; &nbsp;<i>java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces</i><br>
+&nbsp; &nbsp;<i>java.naming.provider.url=jnp://localhost:1099</i><br>
+It is important to provide the URL, because otherwise JBoss will try to use
+the in-JVM version of JNDI. &nbsp;The "jnp://" prefix indicates that the JNDI
+server should be accessed over JNP (??). &nbsp;It can also be accessed over
+HTTP<br>
+  <br>
+Versions<br>
+<br>
+log4j.jar 1.2.7<br>
+jnpserver.jar and jboss-common.jar from JBoss 3.0.4 distribution<br>
+<br>
+<br>
+<b>Bibliography</b><br>
+<br>
+Brian Goetz, <a
+ href="http://www.javaworld.com/javaworld/jw-04-2002/jw-0419-jndi_p.html"><i>J2EE
+or J2SE? JNDI works with both</i></a>, JavaWorld, April 2002<br>
+<blockquote>Describes how to configure the JNP as a standalone server, as
+well as how to deploy JBoss running the JNDI service only.<br>
+</blockquote>
+George Candea and Armando Fox, <i>Crash-Only Software</i>, submitted to HotOS-2003.<br>
+<br>
+<hr width="100%" size="2">
+<div align="center">$Id: README.html,v 1.4 2003/05/27 23:20:14 candea Exp $<br>
+</div>
+<hr width="100%" size="2"><br>
+<br>
+<br>
+</body>
+</html>

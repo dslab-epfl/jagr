@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo TestAgent Started at $(date) >> invocation.log
+
+java -cp . LoadGen 1 localhost 8080
+
+echo TestAgent Stopped at $(date) >> invocation.log

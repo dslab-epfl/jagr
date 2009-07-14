@@ -1,0 +1,912 @@
+$RESETCOOKIES
+GET /estore/control/main HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-17
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/category?category_id=DOGS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/main
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=DOGS
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/product?product_id=K9-CW-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=DOGS
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/productdetails?item_id=EST-27 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=K9-CW-01
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/dog4.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/cart?action=purchaseItem&itemId=EST-27 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/button_remove.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/button_checkout.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/cart-update.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/cart?action=updateCart&itemQuantity_EST-27=2&update.x=26&update.y=11 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-27
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/cart?action=updateCart&itemQuantity_EST-27=1&update.x=25&update.y=11 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=updateCart&itemQuantity_EST-27=2&update.x=26&update.y=11
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/checkout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=updateCart&itemQuantity_EST-27=1&update.x=25&update.y=11
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/button_cont.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/checkout
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/placeorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/checkout
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/button_submit.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/createnewaccount HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/createnewaccount
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/validatenewaccount?action=createAccount&user_name=$NEWUSER&password=$NEWPASSWORD&user_email=foobar%40baz.com&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&language=English&favorite_category=birds&myList_on=on&banners_on=on&Submit.x=51&Submit.y=6 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/createnewaccount
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatenewaccount?action=createAccount&user_name=$USER&password=$PASSWORD&user_email=foobar%40baz.com&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&language=English&favorite_category=birds&myList_on=on&banners_on=on&Submit.x=51&Submit.y=6
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/cart HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatenewaccount?action=createAccount&user_name=$USER&password=$PASSWORD&user_email=foobar%40baz.com&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&language=English&favorite_category=birds&myList_on=on&banners_on=on&Submit.x=51&Submit.y=6
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/checkout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/placeorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/checkout
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=99&y=14 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=99&y=14
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/commitorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=99&y=14
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/category?category_id=REPTILES HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/commitorder
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/cart HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=REPTILES
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/main HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/images/banner_birds.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/main
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+
+GET /estore/control/editaccount HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/main
+Cookie: JSESSIONID=1onjq7mxb69hc
+
+
+GET /estore/control/updateaccount?action=updateAccount&user_name=$USER&user_email=foobar%40baz.com&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&language=English&favorite_category=Birds&myList_on=on&Submit.x=69&Submit.y=9 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/verifysignin
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/category?category_id=FISH HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/updateaccount?action=updateAccount&user_name=$USER&user_email=foobar%40baz.com&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&language=English&favorite_category=Birds&myList_on=on&Submit.x=69&Submit.y=9
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/product?product_id=FI-SW-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=FISH
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/productdetails?item_id=EST-2 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=FI-SW-01
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/cart?action=purchaseItem&itemId=EST-2 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-2
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/cart?action=removeItem&itemId=EST-2 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-2
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/category?category_id=FISH HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=removeItem&itemId=EST-2
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/product?product_id=FI-FW-02 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=FISH
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/productdetails?item_id=EST-21 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=FI-FW-02
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-21
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/cart?action=purchaseItem&itemId=EST-21 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-21
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/checkout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-21
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/placeorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/checkout
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=103&y=3 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/signout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=103&y=3
+Cookie: JSESSIONID=bi4ek7o8n2s8q
+
+
+
+GET /estore/control/search?search_text=koi&search.x=12&search.y=10 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/signout
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=koi&search.x=12&search.y=10
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/images/fish3.gif HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=koi&search.x=12&search.y=10
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/product?product_id=FI-FW-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/search?search_text=koi&search.x=12&search.y=10
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/productdetails?item_id=EST-4 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=FI-FW-01
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/cart?action=purchaseItem&itemId=EST-4 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-4
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/checkout HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/cart?action=purchaseItem&itemId=EST-4
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/placeorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/checkout
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+POST /estore/control/verifysignin HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/placeorder
+Cookie: JSESSIONID=fd5aqdd6799oh
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 80
+
+target_screen=null&j_username=$USER&j_password=$PASSWORD&submit.x=55&submit.y=2
+
+GET /estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=86&y=4 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/verifysignin
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/commitorder HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/validatebillinginformation?credit_card_type=Visa&credit_card_number=9999+9999+9999+9999&expiration_month=01&expiration_year=2001&given_name=alkjf&family_name=alkdjfa&address_1=rew11&address_2=&city=bakjierlkj&state_or_province=California&postal_code=11111&country=USA&telephone_number=123123&ship_to_billing_address=on&x=86&y=4
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/category?category_id=DOGS HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/commitorder
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/product?product_id=K9-BD-01 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/category?category_id=DOGS
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/productdetails?item_id=EST-7 HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/product?product_id=K9-BD-01
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+
+GET /estore/control/white HTTP/1.1
+Host: x30.millennium.berkeley.edu:16000
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3b) Gecko/20030211
+Accept: video/x-mng,image/png,image/jpeg,image/gif;q=0.2,*/*;q=0.1
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate,compress;q=0.9
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://x30.millennium.berkeley.edu:16000/estore/control/productdetails?item_id=EST-7
+Cookie: JSESSIONID=fd5aqdd6799oh
+
+
+

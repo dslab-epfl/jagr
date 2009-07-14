@@ -1,0 +1,15 @@
+#!/bin/bash -f
+
+INSTALLDIR=`pwd | sed -e 's/\//\\\\\\//g'`
+echo configuring to `pwd`
+
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotservlet.sh > plotservlet.sh
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotservlets.sh > plotservlets.sh
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotgc.sh > plotgc.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotmemory.sh > plotmemory.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotsession.sh > plotsession.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotresponsetime.sh > plotresponsetime.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotresponsetime2.sh > plotresponsetime2.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/statistic.sh > statistic.sh 
+sed -e 's/installdir/'"${INSTALLDIR}"'/' base/plotthroughput.sh > plotthroughput.sh 
+chmod +x plotgc.sh plotservlet.sh plotservlets.sh plotmemory.sh plotsession.sh plotresponsetime.sh statistic.sh plotresponsetime2.sh plotthroughput.sh

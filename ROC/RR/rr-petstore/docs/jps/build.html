@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Java[tm] 2 Platform, Enterprise Edition Blueprints &gt; Java[tm]
+Pet Store &gt; Building the application and Javadocs</title>
+</head>
+<body>
+
+<table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td width="100%" bgcolor="#000033">
+<font color="#FFFFFF"><a href="../index.html"><b><font
+color="#9999FF">J2EE[tm] Blueprints</font></b></a> &gt; <a
+href="index.html"><b><font color="#9999FF">Java[tm] Pet
+Store</font></b></a> &gt; <b>Building the application and
+Javadocs</b></font>
+</td>
+</tr>
+</table>
+
+<h1>Building the application and Javadocs</h1>
+
+<p>We use <a href="http://jakarta.apache.org/ant/index.html">Ant</a>
+to build the source code. Ant is a Java-based build tool like
+<i>make</i>, which has been developed under the auspices of the <a
+href="http://www.apache.org/">Apache Software Foundation</a>. A
+working version of Ant is provided as part of the J2EE Blueprints
+bundle.<p>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> The J2EE Blueprints
+bundle comes with a pre-built version of the Java Pet Store. To deploy
+that version and avoid building the application, consult the <a
+href="install.html">installation instructions</a>.<hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> The Java Pet Store
+Javadocs are also <a
+href="http://java.sun.com/j2ee/blueprints/jps11/api/index.html">available
+on the Web</a>. Look at these if you don't want to rebuild the
+Javadocs.<hr noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<center>
+<table width="90%">
+<tr>
+<td>
+<hr noshade="noshade" size="1" /> <b>Note:</b> These instructions use
+<code>$JPS_HOME</code> (UNIX) and <code>%JPS_HOME%</code> (Win32) to
+denote the root directory of the J2EE Blueprints bundle. <hr
+noshade="noshade" size="1" />
+</td>
+</tr>
+</table>
+</center>
+
+<p>The source code is located in the
+<code>$JPS_HOME/src/petstore/src/</code> (UNIX) or
+<code>%JPS_HOME%\src\petstore\src\</code> (Win32).</p>
+
+<h2>Building the application</h2>
+
+<p>To build the source using Ant, bring up a shell or command
+prompt. Then:</p>
+
+<ul>
+<li><p><b>UNIX</b>: Change the current directory to
+<code>$JPS_HOME/src/petstore/src/</code> and run
+<code>build.sh</code>. If the compilation succeeds,
+<code>petstore.ear</code> will be created in the directory
+<code>$JPS_HOME/src/petstore/build/</code>.</p></li>
+
+<li><p><b>Win32</b>: Change the current directory to
+<code>%JPS_HOME%\src\petstore\src\</code> and run
+<code>build.bat</code>. If the compilation succeeds,
+<code>petstore.ear</code> will be created in the directory
+<code>%JPS_HOME%\src\petstore\build\</code>.</p></li>
+</ul>
+
+<p>When deploying the built application, use the file
+<code>petstore.ear</code> created by the build (as opposed to
+pre-built one located in the root directory of the J2EE Blueprints
+bundle).</p>
+
+<h2>Building the Javadocs</h2>
+
+<p>To build the application Javadocs using Ant, bring up a shell or
+command prompt. Then:</p>
+
+<ul>
+<li><p><b>UNIX</b>: Change the current directory to
+<code>$JPS_HOME/src/petstore/src/</code> and run <code>build.sh
+javadocs</code>. If the build succeeds, a folder <code>docs</code>
+containing the Javadocs will be created in the directory
+<code>$JPS_HOME/src/petstore/build/</code>.</p></li>
+
+<li><p><b>Win32</b>: Change the current directory to
+<code>%JPS_HOME%\src\petstore\src\</code> and run <code>build.bat
+javadocs</code>. If the build succeeds, a folder <code>docs</code>
+containing the Javadocs will be created in the directory
+<code>%JPS_HOME%\src\petstore\build\</code>.</p></li>
+</ul>
+
+<p>To build a component's Javadocs using Ant, go to its
+<code>src</code> subfolder and execute the Javadoc build target for
+that component. For example, if you want to build the Javadocs for the
+customer component, then:</p>
+
+<ul>
+<li><p><b>UNIX</b>: Change the current directory to
+<code>$JPS_HOME/src/components/customer/src/</code> and run
+<code>build.sh javadocs</code>. If the build succeeds, a folder
+<code>docs</code> containing the Javadocs will be created in the
+directory
+<code>$JPS_HOME/src/components/customer/build/</code>.</p></li>
+
+<li><p><b>Win32</b>: Change the current directory to
+<code>%JPS_HOME%\src\components\customer\src\</code> and run
+<code>build.bat javadocs</code>. If the build succeeds, a folder
+<code>docs</code> containing the Javadocs will be created in the
+directory
+<code>%JPS_HOME%\src\components\customer\build\</code>.</p></li>
+</ul>
+
+<hr noshade="noshade" />
+
+<font size="-1"><i><a href="../copyright.html">Copyright &copy; 2001 Sun
+Microsystems, Inc. All Rights Reserved.</a></i></font>
+
+</body>
+</html>
+

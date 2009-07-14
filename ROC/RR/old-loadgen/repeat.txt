@@ -1,0 +1,349 @@
+GET /estore/control/language?language=English HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/msword, application/vnd.ms-powerpoint, application/vnd.ms-excel, */*
+Referer: http://localhost:8000/estore/
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/help.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=136
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/helpHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=139
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/sign-in.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=262
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/search.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=329
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/fishHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=282
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/catsHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=302
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/birdsHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=267
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/nav-dogs.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=473
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/my_account.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=466
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/my_accountHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=471
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/cart.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=98
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/fish.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=277
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/cartHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=102
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/reptiles.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=404
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/dogsHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=320
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/dogs.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=310
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/reptilesHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=419
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/cats.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=291
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/birds.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:32 GMT; length=254
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/bkg-topbar.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=962
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/logo-topbar.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=3912
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/sign-inHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=272
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/separator.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=48
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/bkg-sidebar.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=105
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/nav-fish.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=450
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/searchHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=339
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/nav-reptiles.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=676
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/nav-cats.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=416
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/nav-birds.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=485
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/splash.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At
+
+GET /estore/images/sign-outHL.gif HTTP/1.1
+Accept: */*
+Referer: http://localhost:8000/estore/control/language?language=English
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+If-Modified-Since: Mon, 03 Dec 2001 23:27:31 GMT; length=307
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Q312461)
+Host: localhost:8000
+Connection: Keep-Alive
+Cookie: JSESSIONID=To1010mC6524612797157385At

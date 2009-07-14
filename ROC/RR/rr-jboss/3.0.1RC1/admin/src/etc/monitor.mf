@@ -1,0 +1,2 @@
+Main-Class: org.jboss.admin.monitor.Main
+Class-Path:  .. jboss-j2ee.jar jta-spec1_0_1.jar jnp-client.jar jbossmq-client.jar jpl-util-0_6b.jar jboss-util.jar

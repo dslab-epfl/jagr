@@ -1,0 +1,11 @@
+<jboss-web>
+  <resource-ref>
+    <res-ref-name>jdbc/EstoreDataSource</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <jndi-name>java:/EstoreDB</jndi-name>
+  </resource-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/acc/Acc</ejb-ref-name>
+    <jndi-name>TheAdminClientController</jndi-name>
+  </ejb-ref>
+</jboss-web>

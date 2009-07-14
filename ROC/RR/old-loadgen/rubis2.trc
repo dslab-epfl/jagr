@@ -1,0 +1,7512 @@
+GET /ejb_rubis_web/index.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseRegions HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories?region=WI--Milwaukee HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=13&category=8&categoryName=Dolls+%26+Bears&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=42&category=19&categoryName=Everything+Else&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=42&category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=52&category=13&categoryName=Photo&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/index.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=9&categoryName=Home+%26+Garden&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=229 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=13&categoryName=Photo&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=313 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewBidHistory?itemId=313 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=1 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewBidHistory?itemId=313 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=313 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=1&categoryName=Books&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=441 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewBidHistory?itemId=441 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=441 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=11&categoryName=Movies+%26+Television&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=6&categoryName=Computers&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=486 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewBidHistory?itemId=486 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=486 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=5 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=486 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=0&categoryName=Antiques+%26+Art&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=0&categoryName=Antiques+%26+Art&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=4&categoryName=Coins&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=16&categoryName=Stamps&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=576 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=13&categoryName=Photo&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=313 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=8&categoryName=Dolls+%26+Bears&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=8&categoryName=Dolls+%26+Bears&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=11&categoryName=Movies+%26+Television&page=2&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=1031 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=3&categoryName=Clothing+%26+Accessories&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=343 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=7&categoryName=Consumer+Electronics&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=247 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=3 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=9 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=2 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=10 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=5 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=247 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=10&categoryName=Jewelry%2C+Gems+%26+Watches&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=330 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=17&categoryName=Tickets+%26+Travel&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=737 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=6 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=737 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=2&categoryName=Business%2C+Office+%26+Industrial&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=142 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=18&categoryName=Toys+%26+Hobbies&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=58 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=14&categoryName=Pottery+%26+Glass&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=694 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=10&categoryName=Jewelry%2C+Gems+%26+Watches&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=330 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=9&categoryName=Home+%26+Garden&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=149 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=13&categoryName=Photo&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=113 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseRegions HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories?region=IN--Indianapolis HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=16&category=17&categoryName=Tickets+%26+Travel&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByRegion?region=17&category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/index.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=11&categoryName=Movies+%26+Television&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=271 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewBidHistory?itemId=271 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=271 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=15&categoryName=Sports&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=3&categoryName=Clothing+%26+Accessories&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=8&categoryName=Dolls+%26+Bears&page=2&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=1228 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=18&categoryName=Toys+%26+Hobbies&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=8&categoryName=Dolls+%26+Bears&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=548 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=18&categoryName=Toys+%26+Hobbies&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=17&categoryName=Tickets+%26+Travel&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=2&categoryName=Business%2C+Office+%26+Industrial&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=142 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=17&categoryName=Tickets+%26+Travel&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=17&categoryName=Tickets+%26+Travel&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=617 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=3&categoryName=Clothing+%26+Accessories&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=0&categoryName=Antiques+%26+Art&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=7&categoryName=Consumer+Electronics&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=147 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewUserInfo?userId=7 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=147 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=0&categoryName=Antiques+%26+Art&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=1&categoryName=Books&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=13&categoryName=Photo&page=1&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.ViewItem?itemId=833 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=0&categoryName=Antiques+%26+Art&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/index.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/browse.html HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/RUBiS_logo.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.BrowseCategories HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/servlet/edu.rice.rubis.beans.servlets.SearchItemsByCategory?category=10&categoryName=Jewelry%2C+Gems+%26+Watches&page=0&nbOfItems=20 HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
+GET /ejb_rubis_web/bid_now.jpg HTTP/1.1
+User-Agent: Java1.4.0
+Host: localhost:6969
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+
