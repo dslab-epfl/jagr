@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN' 'http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd'>
+
+<ejb-jar>
+  <description>Manufacturing Domain</description>
+  <display-name>Mfg</display-name>
+  <enterprise-beans>
+    <entity>
+      <description>Assembly Entity Bean</description>
+      <display-name>AssemblyEnt</display-name>
+      <ejb-name>AssemblyEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEntHome</home>
+      <remote>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/BomEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.boment.ejb.BomEntHome</home>
+	<remote>com.sun.ecperf.mfg.boment.ejb.BomEnt</remote>
+	<ejb-link>BomEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/InventoryEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEntHome</home>
+	<remote>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEnt</remote>
+	<ejb-link>InventoryEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Bom Entity bean</description>
+      <display-name>BomEnt</display-name>
+      <ejb-name>BomEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.boment.ejb.BomEntHome</home>
+      <remote>com.sun.ecperf.mfg.boment.ejb.BomEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.boment.ejb.BomBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>com.sun.ecperf.mfg.boment.ejb.BomEntPK</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Mfg DB dataSource</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Component Entity Bean</description>
+      <display-name>ComponentEnt</display-name>
+      <ejb-name>ComponentEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.componentent.ejb.ComponentEntHome</home>
+      <remote>com.sun.ecperf.mfg.componentent.ejb.ComponentEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.componentent.ejb.ComponentBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/InventoryEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEntHome</home>
+	<remote>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEnt</remote>
+	<ejb-link>InventoryEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Part Entity Bean</description>
+      <display-name>PartEnt</display-name>
+      <ejb-name>PartEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.partent.ejb.PartEntHome</home>
+      <remote>com.sun.ecperf.mfg.partent.ejb.PartEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.partent.ejb.PartBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Large Order Session Bean</description>
+      <display-name>LargeOrderSes</display-name>
+      <ejb-name>LargeOrderSes</ejb-name>
+      <home>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSesHome</home>
+      <remote>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSes</remote>
+      <ejb-class>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>the Large Order Entity Bean</description>
+	<ejb-ref-name>ejb/LargeOrderEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEntHome</home>
+	<remote>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEnt</remote>
+	<ejb-link>LargeOrderEnt</ejb-link>
+      </ejb-ref>
+    </session>
+    <entity>
+      <description>Work Order Entity Bean</description>
+      <display-name>WorkOrderEnt</display-name>
+      <ejb-name>WorkOrderEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.workorderent.ejb.WorkOrderEntHome</home>
+      <remote>com.sun.ecperf.mfg.workorderent.ejb.WorkOrderEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.workorderent.ejb.WorkOrderBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<ejb-ref-type>Session</ejb-ref-type>
+	<home>com.sun.ecperf.util.sequenceses.ejb.SequenceSesHome</home>
+	<remote>com.sun.ecperf.util.sequenceses.ejb.SequenceSes</remote>
+	<ejb-link>SequenceSes</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>the LargeOrder Entity Bean</description>
+	<ejb-ref-name>ejb/LargeOrderEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEntHome</home>
+	<remote>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEnt</remote>
+	<ejb-link>LargeOrderEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>the Component Entity Bean</description>
+	<ejb-ref-name>ejb/ComponentEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.componentent.ejb.ComponentEntHome</home>
+	<remote>com.sun.ecperf.mfg.componentent.ejb.ComponentEnt</remote>
+	<ejb-link>ComponentEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>the Assembly Entity Bean</description>
+	<ejb-ref-name>ejb/AssemblyEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEntHome</home>
+	<remote>com.sun.ecperf.mfg.assemblyent.ejb.AssemblyEnt</remote>
+	<ejb-link>AssemblyEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>Buyer Session Bean</description>
+	<ejb-ref-name>ejb/BuyerSes</ejb-ref-name>
+	<ejb-ref-type>Session</ejb-ref-type>
+	<home>com.sun.ecperf.supplier.buyerses.ejb.BuyerSesHome</home>
+	<remote>com.sun.ecperf.supplier.buyerses.ejb.BuyerSes</remote>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Receivables Session Bean</description>
+      <display-name>ReceiveSes</display-name>
+      <ejb-name>ReceiveSes</ejb-name>
+      <home>com.sun.ecperf.mfg.receiveses.ejb.ReceiveSesHome</home>
+      <remote>com.sun.ecperf.mfg.receiveses.ejb.ReceiveSes</remote>
+      <ejb-class>com.sun.ecperf.mfg.receiveses.ejb.ReceiveSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>the Component Entity Bean</description>
+	<ejb-ref-name>ejb/ComponentEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.componentent.ejb.ComponentEntHome</home>
+	<remote>com.sun.ecperf.mfg.componentent.ejb.ComponentEnt</remote>
+	<ejb-link>ComponentEnt</ejb-link>
+      </ejb-ref>
+    </session>
+    <entity>
+      <description>Large Order Entity bean</description>
+      <display-name>LargeOrderEnt</display-name>
+      <ejb-name>LargeOrderEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEntHome</home>
+      <remote>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.largeorderent.ejb.LargeOrderBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<ejb-ref-type>Session</ejb-ref-type>
+	<home>com.sun.ecperf.util.sequenceses.ejb.SequenceSesHome</home>
+	<remote>com.sun.ecperf.util.sequenceses.ejb.SequenceSes</remote>
+	<ejb-link>SequenceSes</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>Mfg DB dataSource</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Inventory Entity bean</description>
+      <display-name>InventoryEnt</display-name>
+      <ejb-name>InventoryEnt</ejb-name>
+      <home>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEntHome</home>
+      <remote>com.sun.ecperf.mfg.inventoryent.ejb.InventoryEnt</remote>
+      <ejb-class>com.sun.ecperf.mfg.inventoryent.ejb.InventoryBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Mfg DB dataSource</description>
+	<res-ref-name>MfgDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Work Order Session Bean</description>
+      <display-name>WorkOrderSes</display-name>
+      <ejb-name>WorkOrderSes</ejb-name>
+      <home>com.sun.ecperf.mfg.workorderses.ejb.WorkOrderSesHome</home>
+      <remote>com.sun.ecperf.mfg.workorderses.ejb.WorkOrderSes</remote>
+      <ejb-class>com.sun.ecperf.mfg.workorderses.ejb.WorkOrderSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>Work Order Entity Bean</description>
+	<ejb-ref-name>ejb/WorkOrderEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.workorderent.ejb.WorkOrderEntHome</home>
+	<remote>com.sun.ecperf.mfg.workorderent.ejb.WorkOrderEnt</remote>
+	<ejb-link>WorkOrderEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description> The Component Entity Bean</description>
+	<ejb-ref-name>ejb/ComponentEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.componentent.ejb.ComponentEntHome</home>
+	<remote>com.sun.ecperf.mfg.componentent.ejb.ComponentEnt</remote>
+	<ejb-link>ComponentEnt</ejb-link>
+      </ejb-ref>
+    </session>
+    <session>
+      <description>Mfg Auditing Session Bean</description>
+      <display-name>MfgAuditSes</display-name>
+      <ejb-name>MfgAuditSes</ejb-name>
+      <home>com.sun.ecperf.mfg.mfgauditses.ejb.MfgAuditSesHome</home>
+      <remote>com.sun.ecperf.mfg.mfgauditses.ejb.MfgAuditSes</remote>
+      <ejb-class>com.sun.ecperf.mfg.mfgauditses.ejb.MfgAuditSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+        <description>Mfg DB dataSource</description>
+        <res-ref-name>MfgDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <container-transaction>
+      <method>
+	<ejb-name>AssemblyEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>BomEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ComponentEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>LargeOrderSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <description>no description</description>
+      <method>
+        <ejb-name>WorkOrderEnt</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ReceiveSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>LargeOrderEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>InventoryEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>WorkOrderSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>MfgAuditSes</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+

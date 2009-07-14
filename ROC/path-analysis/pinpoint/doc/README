@@ -1,0 +1,113 @@
+1. Building Pinpoint
+
+1.1 set the environment variables to match local environment
+
+  shell> cd $PATHANALYSIS_HOME/pinpoint/scripts
+  edit config.env
+    PATHANALYSIS_ROOT
+    J2EE_HOME
+    JAVA_HOME
+    JBOSS_VER
+
+1.2. build Pinpoint from source
+
+  shell> build-pinpoint.sh
+
+
+
+2. Building JBoss
+
+  shell> cd $PATHANALYSIS_HOME/pinpoint/scripts
+  shell> build-jboss.sh
+
+
+
+3. Running JBoss
+
+
+
+
+
+TODO:
+
+
+---------------------------
+
+found the GetDetails null pointer
+
+00:39:59,165 WARN  [jbossweb] WARNING: Exception for /estore/control/language?language=English
+javax.servlet.ServletException: MainServlet: unknown exception: java.lang.NullPointerException
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doProcess(MainServlet.java:124)
+        at com.sun.j2ee.blueprints.petstore.control.web.MainServlet.doGet(MainServlet.java:98)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:740)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:853)
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:428)
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:826)
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:1042)
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:843)
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)
+        at java.lang.Thread.run(Thread.java:536)
+
+
+---------------------------
+
+
+17:54:33,030 ERROR [STDERR] java.lang.NullPointerException
+17:54:33,031 ERROR [STDERR]     at roc.pinpoint.tracing.jboss.JMSObservationPublisher.send(JMSObservationPublisher.java:144)
+17:54:33,032 ERROR [STDERR]     at roc.pinpoint.tracing.jboss.JMSObservationPublisher.GlobalSend(JMSObservationPublisher.java:204)
+17:54:33,032 ERROR [STDERR]     at roc.pinpoint.tracing.java.EnvironmentDetails.ReportEnvironmentDetails(EnvironmentDetails.java:88)
+17:54:33,032 ERROR [STDERR]     at roc.pinpoint.tracing.java.EnvironmentDetails.GetDetails(EnvironmentDetails.java:95)
+17:54:33,032 ERROR [STDERR]     at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:931)
+17:54:33,033 ERROR [STDERR]     at org.mortbay.http.HttpConnection.handle(HttpConnection.java:841)
+17:54:33,039 ERROR [STDERR]     at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)
+17:54:33,040 ERROR [STDERR]     at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)
+17:54:33,041 ERROR [STDERR]     at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)
+17:54:33,041 ERROR [STDERR]     at java.lang.Thread.run(Thread.java:536)
+17:54:33,083 WARN  [jbossweb] WARNING: Exception for /estore/
+java.lang.NullPointerException
+        at roc.pinpoint.tracing.jboss.JMSObservationPublisher.send(JMSObservationPublisher.java:144)
+        at roc.pinpoint.tracing.jboss.JMSObservationPublisher.GlobalSend(JMSObservationPublisher.java:204)
+        at roc.pinpoint.tracing.java.EnvironmentDetails.ReportEnvironmentDetails(EnvironmentDetails.java:88)
+        at roc.pinpoint.tracing.java.EnvironmentDetails.GetDetails(EnvironmentDetails.java:95)
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:365)
+        at org.mortbay.jetty.servlet.WebApplicationHandler.dispatch(WebApplicationHandler.java:284)
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:577)
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1674)
+        at org.mortbay.jetty.servlet.WebApplicationContext.handle(WebApplicationContext.java:544)
+        at org.mortbay.http.HttpContext.handle(HttpContext.java:1624)
+        at org.mortbay.http.HttpServer.service(HttpServer.java:875)
+        at org.jboss.jetty.Jetty.service(Jetty.java:541)
+        at org.mortbay.http.HttpConnection.service(HttpConnection.java:824)
+        at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:1029)
+        at org.mortbay.http.HttpConnection.handle(HttpConnection.java:841)
+        at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)
+        at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)
+        at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)
+        at java.lang.Thread.run(Thread.java:536)
+
+17:54:33,086 ERROR [STDERR] java.lang.NullPointerException
+17:54:33,088 ERROR [STDERR]     at roc.pinpoint.tracing.jboss.JMSObservationPublisher.send(JMSObservationPublisher.java:144)
+17:54:33,088 ERROR [STDERR]     at roc.pinpoint.tracing.jboss.JMSObservationPublisher.GlobalSend(JMSObservationPublisher.java:204)
+17:54:33,088 ERROR [STDERR]     at org.mortbay.http.HttpConnection.handleNext(HttpConnection.java:1148)
+17:54:33,089 ERROR [STDERR]     at org.mortbay.http.HttpConnection.handle(HttpConnection.java:841)
+17:54:33,089 ERROR [STDERR]     at org.mortbay.http.SocketListener.handleConnection(SocketListener.java:200)
+17:54:33,089 ERROR [STDERR]     at org.mortbay.util.ThreadedServer.handle(ThreadedServer.java:294)
+17:54:33,103 ERROR [STDERR]     at org.mortbay.util.ThreadPool$JobRunner.run(ThreadPool.java:743)
+17:54:33,104 ERROR [STDERR]     at java.lang.Thread.run(Thread.java:536)
+
+
+FIXED
+
+13:42:33,522 ERROR [STDERR] java.lang.NoClassDefFoundError: roc/pinpoint/tracing/RequestInfo
+fix:   several build.xml to include **/pinpoint/** in jars
+
+

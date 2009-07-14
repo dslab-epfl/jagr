@@ -1,0 +1,17 @@
+<faults>
+
+  <name>Test Fault Config</name>
+
+  <faultTrigger>
+<!--    <faulttype>expected exception</faulttype>-->
+    <faulttype>runtime exception</faulttype>
+    <component>
+<!--      <attr key="name">TheInventory</attr>-->
+<!--      <attr key="name">TheProfileMgr</attr>
+-->
+     <attr key="name">TheShoppingClientController</attr>
+     
+    </component>
+  </faultTrigger>
+
+</faults>

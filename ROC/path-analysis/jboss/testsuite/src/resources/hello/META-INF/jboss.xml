@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jboss>
+   <!-- A custom container configuration for RMI/HTTP -->
+	<container-configurations>
+      <container-configuration extends="Standard Stateless SessionBean">
+			<container-name>HTTP Stateless SessionBean</container-name>
+         <home-invoker>jboss:service=invoker,type=http</home-invoker>
+         <bean-invoker>jboss:service=invoker,type=http</bean-invoker>
+		</container-configuration>
+
+      <!-- A custom container configuration for HA-RMI/HTTP -->
+      <container-configuration extends="Clustered Stateless SessionBean">
+         <container-name>HA HTTP Stateless SessionBean</container-name>
+         <home-invoker>jboss:service=invoker,type=httpHA</home-invoker>
+         <bean-invoker>jboss:service=invoker,type=httpHA</bean-invoker>
+      </container-configuration>
+	</container-configurations>
+
+  <enterprise-beans>
+    <session>
+      <ejb-name>HelloWorld</ejb-name>
+      <jndi-name>helloworld/Hello</jndi-name>
+    </session>
+    <session>
+      <ejb-name>HelloWorldViaHTTP</ejb-name>
+      <configuration-name>HTTP Stateless SessionBean</configuration-name>
+      <jndi-name>helloworld/HelloHTTP</jndi-name>
+    </session>
+    <session>
+      <ejb-name>HelloWorldViaClusteredHTTP</ejb-name>
+      <configuration-name>HA HTTP Stateless SessionBean</configuration-name>
+      <jndi-name>helloworld/HelloHA-HTTP</jndi-name>
+    </session>
+  </enterprise-beans>
+</jboss>

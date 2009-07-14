@@ -1,0 +1,701 @@
+
+configure:
+      [echo]groups:  default
+      [echo]modules: jmx,common,system,j2ee,naming,management,server,security,messaging,connector,cluster,jetty,varia,jboss.net,iiop,catalina
+
+init:
+
+_buildmagic:modules:most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'jmx'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-mbean-sources:
+
+compile-classes:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'jmx'.
+    ======================================================================
+    
+
+_module-jmx-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'common'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'common'.
+    ======================================================================
+    
+
+_module-common-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'system'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-mbean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <mbeanInterface/>
+
+compile-classes:
+
+compile-resources:
+
+compile-etc:
+
+compile-bin:
+
+compile:
+
+jars:
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/thirdparty/apache/log4j/lib/log4j.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/system/output/classes
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/thirdparty/gnu/getopt/lib/getopt.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/system/output/gen/getopt
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'system'.
+    ======================================================================
+    
+
+_module-system-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'j2ee'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-etc:
+
+compile-classes:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'j2ee'.
+    ======================================================================
+    
+
+_module-j2ee-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'naming'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'naming'.
+    ======================================================================
+    
+
+_module-naming-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'management'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <mbeanInterface/>
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <remoteInterface/>
+   [xdoclet]Running <session/>
+   [xdoclet]Running <deploymentDescriptor/>
+   [xdoclet]Running <jboss/>
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'management'.
+    ======================================================================
+    
+
+_module-management-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'server'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+generate-parsers:
+Target is already built - skipping (/home/emrek/Projects/swig/ROC/path-analysis/jboss/server/src/main/org/jboss/ejb/plugins/cmp/ejbql/JBossQLParser.jjt)
+Target is already built - skipping (/home/emrek/Projects/swig/ROC/path-analysis/jboss/server/src/main/org/jboss/ejb/plugins/cmp/ejbql/EJBQLParser.jjt)
+
+compile-bean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <homeInterface/>
+   [xdoclet]Running <remoteInterface/>
+   [xdoclet]Running <session/>
+   [xdoclet]Running <deploymentDescriptor/>
+   [xdoclet]Running <jboss/>
+
+compile-mbean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <mbeanInterface/>
+
+compile-classes:
+     [javac]Compiling 3 source files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/classes
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+      [copy]Copying 25 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/etc
+
+compile-resources:
+
+compile-bin:
+
+compile:
+
+jars:
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jboss.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/verifier.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-ejb-adaptor.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-ejb-connector-client.jar
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/thirdparty/sun/jmx/lib/jmxtools.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/classes
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-rmi-adaptor.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-connector-client-factory.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/testsuite-support.jar
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'server'.
+    ======================================================================
+    
+
+_module-server-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+      [copy]Copying 2 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client
+      [copy]Copying 3 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-rmi-adaptor.sar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/jmx-rmi-adaptor.sar
+      [copy]Copying 10 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/conf
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'security'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes-jdk13:
+
+compile-classes-jdk14:
+      [echo]Compiling for JDK1.4+
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+do-compile:
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jboss-security.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/security/output/classes
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'security'.
+    ======================================================================
+    
+
+_module-security-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'messaging'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-mbean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <mbeanInterface/>
+
+compile-parsers:
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-resources:
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'messaging'.
+    ======================================================================
+    
+
+_module-messaging-most:
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'connector'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-mbean-classes:
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+ [jmxdoclet]Running <mbeanInterface/>
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.BaseConnectionManager2' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.CachedConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.JBossManagedConnectionPool' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.LocalTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.NoTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.RARDeployment' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.XATxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/mbean.j'.
+ [jmxdoclet]Running <jbossxmbean/>
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.BaseConnectionManager2' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.CachedConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.JBossManagedConnectionPool' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.LocalTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.NoTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.RARDeployment' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.XATxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jbossmx-xml-descriptor.j'.
+ [jmxdoclet]Running <jbossXmlServiceTemplate/>
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.BaseConnectionManager2' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.CachedConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.JBossManagedConnectionPool' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.LocalTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.NoTxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.RARDeployment' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+ [jmxdoclet]  Generating output for 'org.jboss.resource.connectionmanager.XATxConnectionManager' using template file 'jar:file:/home/emrek/Projects/swig/ROC/path-analysis/jboss/tools/lib/xdoclet.jar!/xdoclet/jmx/vendor/jboss-service-template.j'.
+
+compile-source-jdbc2:
+
+compile-source-jdbc3:
+      [echo]jdbc3
+
+compile-source-jdbc-version:
+
+compile-classes:
+     [javac]Compiling 7 source files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/connector/output/classes
+
+compile-resources:
+
+compile-etc:
+
+compile:
+
+jars:
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/connector/output/lib/jboss-jca.jar
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'connector'.
+    ======================================================================
+    
+
+_module-connector-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'cluster'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile:
+
+jars:
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/cluster/output/lib/ClusteredHttpSessionEB.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/cluster/output/lib/jbossha-httpsession.sar
+    [delete]Deleting: /home/emrek/Projects/swig/ROC/path-analysis/jboss/cluster/output/lib/ClusteredHttpSessionEB.jar
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'cluster'.
+    ======================================================================
+    
+
+_module-cluster-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'jetty'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-bean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <homeInterface/>
+   [xdoclet]Running <localHomeInterface/>
+   [xdoclet]Running <remoteInterface/>
+   [xdoclet]Running <localInterface/>
+   [xdoclet]Running <entitypk/>
+   [xdoclet]Running <entitycmp/>
+   [xdoclet]Running <deploymentDescriptor/>
+   [xdoclet]Running <jboss/>
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <homeInterface/>
+   [xdoclet]Running <localHomeInterface/>
+   [xdoclet]Running <remoteInterface/>
+   [xdoclet]Running <localInterface/>
+   [xdoclet]Running <entitypk/>
+   [xdoclet]Running <entitycmp/>
+
+compile-classes:
+     [javac]Compiling 4 source files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/classes
+/home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/src/main/org/mortbay/jetty/servlet/ServletHolder.java:321: warning: UnavailableException(javax.servlet.Servlet,java.lang.String) in javax.servlet.UnavailableException has been deprecated
+            throw new UnavailableException(_servlet,e.toString());
+                  ^
+1 warning
+
+compile-etc:
+
+compile-resources:
+
+compile:
+
+jars:
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/org.mortbay.jetty.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/org.mortbay.jmx.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/org.mortbay.j2ee.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/org.apache.jasper.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/org.mortbay.j2ee.session.ejb.jar
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/jetty-plugin.sar
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'jetty'.
+    ======================================================================
+    
+
+_module-jetty-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/jetty/output/lib/jetty-plugin.sar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/jbossweb.sar
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'varia'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-mbean-sources:
+sourcepath is deprecated. the preferred way to design sources is via nested <fileset>
+Running xdoclet.XDocletMain loaded by sun.misc.Launcher$AppClassLoader. Forked:true
+   [xdoclet]Running <mbeanInterface/>
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+
+compile-etc:
+
+compile-resources:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'varia'.
+    ======================================================================
+    
+
+_module-varia-most:
+      [copy]Copying 8 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+      [copy]Copying 5 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/varia/output/lib/htmladaptor.war into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/jmx-console.war
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/varia/output/lib/http-invoker.sar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/http-invoker.sar
+      [move]Moving 1 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/http-invoker.sar
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/http-invoker.sar/tmp.war into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/http-invoker.sar/invoker.war
+    [delete]Deleting: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/http-invoker.sar/tmp.war
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'jboss.net'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-etc:
+
+compile-resources:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'jboss.net'.
+    ======================================================================
+    
+
+_module-jboss.net-most:
+      [copy]Copying 4 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'iiop'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-rmi:
+      [rmic]Verify has been turned on.
+      [rmic]RMI Compiling 1 class to /home/emrek/Projects/swig/ROC/path-analysis/jboss/iiop/output/classes
+      [rmic]IIOP has been turned on.
+      [rmic]Verify has been turned on.
+      [rmic]RMI Compiling 1 class to /home/emrek/Projects/swig/ROC/path-analysis/jboss/iiop/output/classes
+      [rmic]IIOP has been turned on.
+
+compile-etc:
+
+compile-resources:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'iiop'.
+    ======================================================================
+    
+
+_module-iiop-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+[execmodules]
+    ====================================================================== 
+    ==  Executing 'most' in module 'catalina'...
+    ==
+
+_buildmagic:init:
+
+configure:
+
+init:
+
+compile-classes:
+
+compile-resources:
+
+compile-etc:
+
+compile:
+
+jars:
+
+most:
+[execmodules]
+    ==
+    ==  Finished with 'most' in module 'catalina'.
+    ======================================================================
+    
+
+_module-server-most:
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/lib
+      [copy]Copying 2 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client
+      [copy]Copying 3 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/server/output/lib/jmx-rmi-adaptor.sar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/deploy/jmx-rmi-adaptor.sar
+      [copy]Copying 10 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/conf
+
+_module-catalina-most:
+
+modules-most:
+
+partition-build:
+      [move]Moving 43 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/all/lib
+      [copy]Copying 68 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/default
+    [delete]Deleting 8 files from /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/default/lib
+    [delete]Deleting 5 files from /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/default/deploy
+    [delete]Deleting 2 files from /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/default/conf
+      [copy]Copying 3 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/minimal/conf
+      [move]Moving 1 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/minimal/conf
+      [copy]Copying 4 files to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/minimal/lib
+      [copy]Copying 1 file to /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/server/minimal/deploy
+     [mkdir]Created dir: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-common-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jbossha-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-iiop-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jbossmq-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-net-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jbosssx-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-system-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jmx-ejb-connector-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jmx-rmi-connector-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jnp-client.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jboss-j2ee.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jmx-connector-client-factory.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jbossmqha.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+     [unjar]Expanding: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/concurrent.jar into /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+       [jar]Building jar: /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/output/jboss-3.0.4/client/jbossall-client.jar
+    [delete]Deleting directory /home/emrek/Projects/swig/ROC/path-analysis/jboss/build/build
+
+install:
+
+most:
+
+main:
+
+BUILD SUCCESSFUL

@@ -1,0 +1,123 @@
+                     ECperf Kit Release Notes
+              Version 1.0 Update 2, Dated 1/11/02
+
+Installation Instructions
+
+1. We recommend that you create a new user account (say 'ecperf')
+   whose home directory is where you will install the kit.
+2. Untar the kit and read the file README.html in the top-level
+   directory and follow its directions closely.
+
+Enhancements made in this release :
+
+1. ECperf can now be run for 48 hours continously instead of the earlier
+   two hours.
+
+2. The BMP xmls in the src/deploy/reference directory have been renamed
+   as <domain>.xml.BMP. For example, corp.xml becomes corp.xml.BMP.
+   The build scripts have been modified to refer to the new filenames.
+
+
+The bugs fixed in this release are listed below. Each bug lists the
+following information : 
+    BugId       - identifier for the bug 
+    Synopsis    - brief summary of the bug 
+    Description - a more detailed account of the bug
+    Fix         - the actual fix made
+
+1. Bugid         4506242
+Synopsis      Race condition leads to Controller Not Bound Exception
+Description   In the Driver, there is the following code:
+
+              rmiReg.bgExec();
+              controller.bgExec();
+      
+              If the rmiregistry does not complete its initialization 
+              by the time the controller attempts to bind to it, the 
+              controller will not get bound and the driver will later 
+              get a Contoller NotBoundExecption.
+Evaluation    The actual problem is in ControllerImpl.java. It prints out the
+              line that it's binding the controller and then calls Naming.bind().
+              The thread that's waiting for the message can therefore get the
+              message before the bind() call completes. Moved the
+              println of the binding message after the bind() call:
+
+                s = "//" + host  + "/" + "Controller";
+                Naming.bind(s , c);        
+                System.out.println("Binding controller to " + s); 
+
+2. Bugid        4508143
+Synopsis     JNDI lookup should not be done in CartSes.buy
+Description  A JNDI lookup of OrderSes is being done in the
+             CartSes.buy method. This should rather be done in
+             setSessionContext and cached.
+Evaluation   Moved the OrderSes home lookup to setSessionContest and
+             this is cached. To create orderses in buy() this
+             cached ref is being used.
+
+Bugid        4515310
+Synopsis     Errors in response time data in orders.detail
+Description  The response time histogram data is listed as
+             0.1, 0.2 .. 0.9, 0.0. Similarly for response times of
+             1.1, 1,2... 1.9 is followed by 1.0 instead of 2.0. There
+             seems to be some kind of rounding/truncation going on.
+Evaluation   driver.Format.java has been updated to the latest version 
+
+Bugid        4525411
+Synopsis     InitialContext handling is not compliant with JNDI spec
+Description  There is one naming intial context which is being passed
+             to different instances of OrderEntry (line 84) class.
+             These instances use the naming naming context without
+             any synchronization.
+             This is contrary to the Reentrancy requirement (Section 2.2)
+             of JNDI 1.2 Naming SPI documentation. Shouldnt each
+             instance of OrderEntry have its own naming context or
+             have the neccessary synchronization of the naming
+             context before doing the lookup?
+Evaluation   Modified Agent and Client code so that the creation of
+             instances of InitialContext is done by each client
+             thread constructor. The agents will not pass it as an arg.
+
+Bugid        4530482
+Synopsis     homePrefix logic uses the file.separator for name lookup
+Description  In the Driver code that deals with the homePrefix the logic
+             uses the System property file.separator in constructing
+             the lookup name ex. lohome = prefix + System.getProperty
+             ("file.separator") + "LargeOrderSes";
+             This causes problems on Windows boxes bec. the file.separator
+             resolves to "\". Unless a context factory changes all
+             "\" to "/" there's going to be problems.
+Evaluation   Removed the file.separator from the construction of the
+             lookup name and just require a trailing "/" in
+             run.properties for the homePrefix.
+             Will add a comment in run.properties to make sure the user
+             understands the syntax to be used to specify homePrefix.
+
+Bugid        4530488
+Synopsis     Misspelling of "exception" in various message strings
+Description  Misspelling of "exception" in various message strings.
+             Found 31 occurrences, all in:
+             com/sun/ecperf/orders/cartses/ejb/CartSesEJB.java
+             com/sun/ecperf/webbeans/AssemblyEntBean.java
+             com/sun/ecperf/webbeans/CartBean.java
+             com/sun/ecperf/webbeans/LargeOrderSesBean.java
+             com/sun/ecperf/webbeans/OrderSesBean.java
+             com/sun/ecperf/webbeans/WorkOrderSesBean.java
+
+Bugid        4622120
+Synopsis     Synchronize access to txCounter variable in Emulator and
+             SupplierDomain Servlet 
+Description  The operation txCounter++ in both servlets is not inside a 
+             synchronized block and will cause errors if there are multiple 
+             servlet threads updating this. This needs to be synchronized using              a static object like debug as the txCounter is also a static one.
+Evaluation   Updated EmulatorServlet.java and SupplierDomainServlet.java to 
+             synchronize access to the txCounter int variable.
+
+Bugid        4622127
+Synopsis     LoadMfg and LoadOrds should use java.sql.Timestamp instead of
+             java.sql.Date.
+Description  LoadMfg and LoadOrds should use java.sql.Timestamp as the value
+             passed to the JDBC driver instead of java.sql.Date.  
+             The JDBC spec does not require a JDBC driver to provide conversion 
+             and some DBMSs don't provide it (like DB2 on OS/390).
+Evaluation   Fixed as described.

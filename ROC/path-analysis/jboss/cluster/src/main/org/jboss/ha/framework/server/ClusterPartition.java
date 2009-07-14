@@ -1,0 +1,228 @@
+/*
+ * JBoss, the OpenSource J2EE webOS
+ *
+ * Distributable under LGPL license.
+ * See terms of license at gnu.org.
+ */
+
+package org.jboss.ha.framework.server;
+
+
+import java.util.Collection;
+import java.util.Iterator;
+
+import javax.management.ObjectName;
+import javax.management.MBeanServer;
+import javax.management.MalformedObjectNameException;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+import org.javagroups.Channel;
+import org.javagroups.log.Trace;
+
+import org.jboss.logging.util.LoggerWriter;
+import org.jboss.system.ServiceMBeanSupport;
+
+/** 
+ *   Management Bean for Cluster HAPartitions.  It will start a JavaGroups
+ *   channel and initialize the ReplicantManager and DistributedStateService.
+ *
+ *   @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>.
+ *   @author <a href="mailto:sacha.labourey@cogito-info.ch">Sacha Labourey</a>.
+ *   @version $Revision: 1.1.1.1 $
+ *
+ * <p><b>Revisions:</b><br>
+ */
+
+public class ClusterPartition
+   extends ServiceMBeanSupport 
+   implements ClusterPartitionMBean
+{
+   // Constants -----------------------------------------------------
+   
+   // Attributes ----------------------------------------------------
+   
+   protected String partitionName = org.jboss.metadata.ClusterConfigMetaData.DEFAULT_PARTITION;
+   protected String jgProps = /*
+       "UDP(mcast_addr=228.1.2.3;mcast_port=45566):" +
+       "PING:" +
+       "FD(timeout=5000):" +
+       "VERIFY_SUSPECT(timeout=1500):" +
+       "MERGE:" + 
+       "NAKACK:" +
+       "UNICAST(timeout=5000;min_wait_time=2000):" +
+       "FRAG:" +
+       "FLUSH:" +
+       "GMS:" +
+       "STATE_TRANSFER:" +
+       "QUEUE";*/
+      "UDP(mcast_addr=228.1.2.3;mcast_port=45566;ip_ttl=64;" +
+      "mcast_send_buf_size=150000;mcast_recv_buf_size=80000):" +
+      "PING(timeout=2000;num_initial_members=3):" +
+      "MERGE2(min_interval=5000;max_interval=10000):" +
+      "FD:" +
+      "VERIFY_SUSPECT(timeout=1500):" +
+      "pbcast.STABLE(desired_avg_gossip=20000):" +
+      "pbcast.NAKACK(gc_lag=50;retransmit_timeout=300,600,1200,2400,4800):" +
+      "UNICAST(timeout=5000):" +
+      "FRAG(down_thread=false;up_thread=false):" +
+      // "CAUSAL:" +
+      "pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;" +
+      "shun=false;print_local_addr=true):" +
+      "pbcast.STATE_TRANSFER";
+   /*
+   protected String jgProps = 
+       "UDP:" +
+       "PING:" +
+       "FD(trace=true;timeout=5000):" +
+       "VERIFY_SUSPECT(trace=false;timeout=1500):" +
+       "MERGE:" + 
+       "NAKACK(trace=true):" +
+       "UNICAST(timeout=5000;min_wait_time=2000):" +
+       "FRAG:" +
+       "FLUSH:" +
+       "GMS:" +
+       "STATE_TRANSFER(trace=true):" +
+       "QUEUE";
+   */
+   protected HAPartitionImpl partition;
+   protected boolean deadlock_detection = false;
+   protected org.javagroups.JChannel channel;
+
+   // Static --------------------------------------------------------
+   
+   // Constructors --------------------------------------------------
+   
+   // Public --------------------------------------------------------
+   
+   // ClusterPartitionMBean implementation ----------------------------------------------
+   
+   public String getPartitionName()
+   {
+      return partitionName;
+   }
+
+   public void setPartitionName(String newName)
+   {
+      partitionName = newName;
+   }
+
+   public String getPartitionProperties()
+   {
+      return jgProps;
+   }
+
+   public void setPartitionProperties(String newProps)
+   {
+      jgProps = newProps;
+   }
+
+   public boolean getDeadlockDetection()
+   {
+      return deadlock_detection;
+   }
+
+   public void setDeadlockDetection(boolean doit)
+   {
+      deadlock_detection = doit;
+   }
+
+   protected ObjectName getObjectName(MBeanServer server, ObjectName name)
+      throws MalformedObjectNameException
+   {
+      return name == null ? OBJECT_NAME : name;
+   }
+   
+   public org.jboss.ha.framework.interfaces.HAPartition getHAPartition ()
+   {
+      return this.partition;      
+   }
+      
+   // ServiceMBeanSupport overrides ---------------------------------------------------
+   
+   public String getName()
+   {
+      return partitionName;
+   }
+
+
+   protected void createService()
+      throws Exception
+   {
+      boolean debug = log.isDebugEnabled();
+
+      if (debug) {
+         log.debug("Creating JavaGroups JChannel");
+      }
+      
+      this.channel = new org.javagroups.JChannel(jgProps);
+      channel.setOpt(Channel.LOCAL, new Boolean(false));
+      channel.setOpt(Channel.GET_STATE_EVENTS, new Boolean(true));	    
+      channel.setOpt(Channel.AUTO_RECONNECT, new Boolean(true));
+      channel.setOpt(Channel.AUTO_GETSTATE, new Boolean(true));
+
+      // Force JavaGroups to use log4j
+      Logger category = Logger.getLogger("org.javagroups."+partitionName);
+      Level priority = category.getEffectiveLevel();
+      // Set the JavaGroups Trace level based on the log4j Level
+      int traceLevel = Trace.INFO;
+      if( priority.toInt() < Level.DEBUG.toInt() )
+         traceLevel = Trace.DEBUG;
+      else if ( priority == Level.DEBUG )
+         traceLevel = Trace.TEST;
+      else if ( priority == Level.INFO )
+         traceLevel = Trace.INFO;
+      else if ( priority == Level.ERROR )
+         traceLevel = Trace.ERROR;
+      else if ( priority == Level.WARN )
+         traceLevel = Trace.WARN;
+      else if ( priority == Level.FATAL )
+         traceLevel = Trace.FATAL;
+      LoggerWriter log4jWriter = new LoggerWriter(category, priority);
+      Trace.setDefaultOutput(traceLevel, log4jWriter);
+      log.info("Set the JavaGroups logging to log4j with category:"+category
+         +", priority: "+priority+", JavaGroupsLevel: "+traceLevel);
+      if (debug) {
+         log.debug("Creating HAPartition");
+      }
+
+      partition = new HAPartitionImpl(partitionName, channel, deadlock_detection, getServer());
+
+      if (debug) {
+         log.debug("Initing HAPartition: " + partition);
+      }
+      
+      partition.init();
+      
+      if (debug) {
+         log.debug("HAPartition initialized");
+      }
+   }
+
+   protected void startService() 
+      throws Exception
+   {
+      boolean debug = log.isDebugEnabled();
+
+      if (debug) {
+         log.debug("Starting ClusterPartition: " + partitionName);
+      }
+      
+      log.info("Connecting to channel");
+      channel.connect(partitionName);
+      
+      log.info("Starting channel");
+      partition.startPartition();
+
+      log.info("Started ClusterPartition: " + partitionName);
+   }
+   
+   protected void stopService() throws Exception
+   {
+      if (log.isDebugEnabled()) {
+         log.debug("Stopping HAPartition: " + partitionName);
+      }
+      partition.closePartition();
+   }
+}

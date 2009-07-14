@@ -1,0 +1,96 @@
+                     ECperf Kit Release Notes
+              Version 1.0, Final Release, Dated 5/29/01
+
+Installation Instructions
+
+1. Download the Kit from the web site. Use gunzip (GNU unzip) to
+   unzip the file.
+2. We recommend that you create a new user account (say 'ecperf')
+   whose home directory is where you will install the kit.
+3. Untar the kit and read the file README.html in the top-level
+   directory and follow its directions closely.
+
+Changes since Proposed Final Draft :
+
+1. The welcome-list in the src/deploy/reference/web.xml directory
+   was in an incorrect location. This has been fixed.
+
+2. The Sybase schema for the C_rule table in file 
+   schema/sybase/sql/schema_C.sql has been changed. The field 
+   r_text changed from 'long varchar' to 'text' as Sybase does 
+   not support long varchar.
+
+3. ejb-links have been added for all intra-domain bean calls in
+   the various xmls in the reference directory. Many of these
+   already exist.
+
+4. The *db.properties files in the config directory now have
+   entries for other DBMS as well. Uncomment the specific lines
+   for your database.
+
+5. Some of the datatypes in the Oracle schema scripts 
+   (schema/oracle/sql/*) have been changed to be more consistent
+   with the generic SQL types in schema/sql. These types are
+   equivalent to the previous version, so there is no need to
+   re-build the database.
+
+
+
+                     ECperf Kit Release Notes
+              Version 1.0, Proposed Final Draft, Dated 5/10/01
+
+
+Enhancements made in this release :
+
+1. A new build, deploy mechanism using ant has been added. This 
+   provides a more portable method of compilation and deployment. 
+   The Makefiles still exist, if you want to use them.
+
+2. A new 'deploy/reference' directory has been created that has 
+   the 'reference' xmls. These xmls should be used without any 
+   modifications. Two versions, one for BMP and one for CMP are 
+   provided. You can mix-and-match BMP/CMP deployments for various 
+   beans.
+
+3. Driver scripts for NT have been included.
+
+4. Source code for the Driver is now included.
+
+5. The Driver will now optionally perform run validation
+   checks if the property doAudit is set to 1 in
+   run.properties. This must be set to 1 for final
+   benchmark results. Please make sure you upgrade any old
+   run.properties files to the latest format, as otherwise
+   you will get a NullPointerException.
+
+6. Code for Atomicity Tests have been added by using the Debug
+   interface. See README.html for details.
+
+8. The Driver no longer logs InsufficientCreditExceptions to the
+   ords.err log. Only true exceptions will now appear in the .err
+   files.
+
+9. The schema for the C_rule table has been changed to allow the
+   RuleEnt entity bean to be deployed in CMP mode. You must
+   re-create your database and re-load data using this Kit.
+
+
+Bugs Fixed :
+
+1. % Largeorders was computed incorrectly by OrdersReport.
+
+2. The Driver was not checking for the 5% variability of certain
+   requirements correctly. This has now been fixed.
+
+3. Changed check for bad credit to 10%. The spec will also be 
+   changed to reflect this as it incorrectly states 5% in Table 5.
+
+4. Changed checking for largeorders in the orders bean 
+   (OrderCmpEJB) to mark it as a largeorder if the qty is > 20,
+   instead of 50.  This bug was causing an incorrect number of 
+   largeorder entities to be generated.
+
+5. Deadlock problems in BMP code were fixed.
+
+6. The Driver was computing the widgets per regular order 
+   incorrectly. This has been fixed.

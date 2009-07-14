@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+
+<project name="ECPerf" basedir=".." default="all">
+
+  <!-- This property determines where env and config files will
+       be loaded from.  The default is "ri" which means that
+       config/ri.env will be loaded and the EJB descriptors will
+       be found in src/deploy/ri.  -->
+
+  <property name="appserver" value="JBoss"/>
+
+  <!-- This is the classpath used for compilation.
+       If you don't have the j2ee.jar file handy, you
+       can substitute it with the individual ext jar
+       files if you have them instead.  -->
+
+
+  <!-- Load the external properties.
+       These will override any settings here. -->
+  <property file="config/${appserver}.env"/>
+
+  <property name="dist.dir" value="dist/${appserver}" />
+
+   <property name="compile.classpath"
+            value="${JAVAX_JAR}:${J2EE_HOME}/server/ecperf/lib/xerces.jar" />
+
+  <!-- This uses the JDK1.3 compiler if available.  You may need to set JAVA_HOME. -->
+  <property name="build.compiler" value="modern"/>
+
+  <property name="descriptor-dir" location="src/deploy/${appserver}/tmp"/>
+
+  <path id="base.classpath">
+    <pathelement location="jars/j2ee.jar"/>
+    <pathelement location="classes"/>
+  </path>
+  <property name="classpath" refid="base.classpath"/>
+
+  <target name="all" depends="ecperf-ear,emulator-ear,load-jar, client-jar"/>
+
+  <!-- Delete all the targets -->
+  <target name="clean">
+    <delete>
+      <fileset dir=".">
+        <include name="classes/**/*.class" />
+        <exclude name="classes/**/driver/*.class" />
+        <include name="dist/ecperf-client.jar" />
+        <include name="${dist.dir}/**/*.*" />
+        <include name="src/deploy/JBoss/tmp/**/*" />
+      </fileset>
+    </delete>
+ </target>
+
+  <!-- Compile everything -->
+  <target name="compile">
+    <echo message="J2EE Home is ${J2EE_HOME}" />
+
+    <echo message="The classpath for compilation is ${compile.classpath}" />
+    <mkdir dir="classes" />
+    <mkdir dir="${dist.dir}" />
+    <javac srcdir="src"
+      deprecation="on"
+      debug="on"
+      destdir="classes"
+      includes="**/*.java"
+      excludes="**/charts*/*"
+      target="1.3"
+      classpath="${compile.classpath}"
+    />
+    <filter filtersfile="config/${appserver}.env" />
+    <copy todir="${descriptor-dir}" filtering="true">
+      <fileset dir="src/deploy/${appserver}">
+        <include name="**/*.xml" />
+        <exclude name="tmp/**" />
+      </fileset>
+    </copy>
+  </target>
+
+
+    <!-- DRIVER clean and REBUILD Targets
+    It is not expected that the driver will need to be deleted or rebuilt
+         but the next 2 targets provide for this should the user explicitly want
+   to do it. So be aware that the "clean" target will not effect the
+   driver classes or jar, you must use "ant clean-driver" to remove driver files
+   and then "ant driver" to build the new driver
+
+   The driver target also rebuilds the launcher.jar file which contains the
+   logic to initiate the driver in a portable fashion.
+    -->
+
+  <target name="clean-driver" >
+    <delete>
+      <fileset dir=".">
+        <include name="**/driver/*.class" />
+        <include name="**/jars/driver.jar" />
+        <include name="**/jars/launcher.jar" />
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="driver" depends="compile">
+    <rmic base="./classes">
+      <include name="**/driver/*Impl.class" />
+      <include name="**/driver/*Agent.class" />
+      <exclude name="**/driver/Agent.class" />
+    </rmic>
+    <jar jarfile="jars/driver.jar">
+      <fileset dir="classes" includes="**/driver/*.class"/>
+    </jar>
+    <jar jarfile="jars/launcher.jar">
+      <fileset dir="classes" includes="**/launcher/*.class"/>
+    </jar>
+    <filter filtersfile="config/${appserver}.env" />
+    <copy file="bin/driver_template.bat" tofile="bin/${appserver}_driver.bat" filtering="true" overwrite="on"/>
+  </target>
+
+  <target name="client-jar" depends="driver">
+    <jar jarfile="jars/ecperf-client.jar">
+      <fileset dir="classes">
+        <include name="**/common/*.class"/>
+        <include name="**/helper/*.class"/>
+        <include name="**/ejb/*.class"/>
+        <exclude name="**/ejb/*EJB.class"/>
+        <exclude name="**/ejb/*DAO.class"/>
+        <exclude name="**/ejb/*Helper.class"/>
+      </fileset>
+    </jar>
+  </target>
+
+  <!-- EJB Jar Packaging  -->
+
+  <target name="allejbs" depends="util,corp,orders,mfg,supplier-ejb"/>
+
+  <target name="util" depends="compile">
+    <ejbjar basenameterminator="." descriptordir="${descriptor-dir}" flatdestdir="true" srcdir="classes">
+      <include name="**/util.ejb-jar.xml"/>
+      <jboss destdir="${dist.dir}"/>
+      <support dir="classes">
+        <include name="**/common/**"/>
+        <include name="**/util/**"/>
+      </support>
+      <classpath refid="base.classpath" />
+      <dtd publicId="${ejbDtdPublicId}" location="${ejbDtdLocation}" />
+      <dtd publicId="${vendorEjbDtdPublicId}" location="${vendorEjbDtdLocation}" />
+    </ejbjar>
+  </target>
+
+  <target name="corp" depends="compile">
+    <ejbjar basenameterminator="." descriptordir="${descriptor-dir}" flatdestdir="true" srcdir="classes">
+      <include name="**/corp.ejb-jar.xml"/>
+      <jboss destdir="${dist.dir}"/>
+      <support dir="classes">
+        <include name="**/common/**"/>
+        <include name="**/corp/**"/>
+        <include name="**/ruleengine/**"/>
+      </support>
+      <classpath refid="base.classpath" />
+      <dtd publicId="${ejbDtdPublicId}" location="${ejbDtdLocation}" />
+    </ejbjar>
+  </target>
+
+  <target name="orders" depends="compile">
+    <ejbjar basenameterminator="." descriptordir="${descriptor-dir}" flatdestdir="true" srcdir="classes">
+      <include name="**/orders.ejb-jar.xml"/>
+      <jboss destdir="${dist.dir}"/>
+      <support dir="classes">
+        <include name="**/common/**"/>
+        <include name="**/orders/**"/>
+      </support>
+      <classpath refid="base.classpath" />
+      <dtd publicId="${ejbDtdPublicId}" location="${ejbDtdLocation}" />
+    </ejbjar>
+  </target>
+
+  <target name="mfg" depends="compile">
+    <ejbjar basenameterminator="." descriptordir="${descriptor-dir}" flatdestdir="true" srcdir="classes">
+      <include name="**/mfg.ejb-jar.xml"/>
+      <jboss destdir="${dist.dir}"/>
+      <support dir="classes">
+        <include name="**/common/**"/>
+        <include name="**/mfg/**"/>
+      </support>
+      <classpath refid="base.classpath" />
+      <dtd publicId="${ejbDtdPublicId}" location="${ejbDtdLocation}" />
+    </ejbjar>
+  </target>
+
+  <target name="supplier-ejb" depends="compile">
+    <ejbjar basenameterminator="." descriptordir="${descriptor-dir}" flatdestdir="true" srcdir="classes">
+      <include name="**/supplier.ejb-jar.xml"/>
+      <jboss destdir="${dist.dir}"/>
+      <support dir="classes">
+        <include name="**/common/**"/>
+        <include name="**/supplier/**"/>
+      </support>
+      <classpath refid="base.classpath" />
+      <dtd publicId="${ejbDtdPublicId}" location="${ejbDtdLocation}" />
+    </ejbjar>
+  </target>
+
+  <!-- Web application archive packaging.
+       The web applications consist of the targets:
+
+   supplier-war
+   ecperf-war
+   emulator-war       -->
+
+  <target name="supplier-war" depends="compile">
+    <war
+      warfile="${dist.dir}/supplier.war"
+      webxml="${descriptor-dir}/supplier/web.xml"
+    >
+      <classes dir="classes">
+        <include name="**/common/**/*.class" />
+        <include name="**/supplier/web/**" />
+      </classes>
+      <webinf dir="${descriptor-dir}/supplier">
+        <include name="jboss-web.xml" />
+      </webinf>
+    </war>
+  </target>
+
+  <target name="ecperf-war" depends="compile">
+    <war
+      warfile="${dist.dir}/web.war"
+      webxml="${descriptor-dir}/server/web.xml"
+      basedir="src/docroot"
+    >
+      <classes dir="classes">
+        <include name="**/common/**/*.class" />
+        <include name="**/webbeans/**" />
+      </classes>
+      <webinf dir="${descriptor-dir}/server">
+        <include name="jboss-web.xml" />
+      </webinf>
+    </war>
+  </target>
+
+  <target name="emulator-war" depends="compile">
+    <war
+      warfile="${dist.dir}/emulator.war"
+      webxml="${descriptor-dir}/emulator/web.xml"
+    >
+      <fileset dir="src/docroot">
+        <include name="dtd/**/*" />
+      </fileset>
+      <classes dir="classes">
+        <include name="**/common/**/*.class" />
+        <include name="**/supplier/emulator/**" />
+        <include name="**/supplier/helper/**" />
+      </classes>
+      <webinf dir="${descriptor-dir}/emulator">
+        <include name="jboss-web.xml" />
+      </webinf>
+    </war>
+  </target>
+
+  <!-- Convenience target for building the entire supplier -->
+  <target name="supplier" depends="supplier-ejb,supplier-war"/>
+
+  <!-- EAR Files -->
+  <target name="ecperf-ear" depends="util,supplier,ecperf-war,corp,orders,mfg">
+    <jar jarfile="${dist.dir}/ecperf.ear">
+       <fileset dir="${dist.dir}">
+         <include name="*.jar" />
+         <include name="web.war" />
+         <include name="supplier.war" />
+       </fileset>
+       <zipfileset dir="${descriptor-dir}/server" prefix="META-INF" includes="application.xml" />
+     </jar>
+  </target>
+
+  <target name="emulator-ear" depends="emulator-war">
+    <jar jarfile="${dist.dir}/emulator.ear">
+       <fileset dir="${dist.dir}">
+         <include name="emulator.war" />
+       </fileset>
+       <zipfileset dir="${descriptor-dir}/emulator" prefix="META-INF" includes="application.xml" />
+     </jar>
+  </target>
+
+  <!-- DB Load -->
+
+  <!-- Default scale value.  Should be overridden on the command line. -->
+  <property name="SCALE" value="${SCALE}"/>
+
+  <property name="ECPERF_HOME" location="."/>
+
+  <target name="loaddb"
+          depends="load-corp,load-supp,load-mfg,load-ords,load-rules"/>
+  <target name="load-corp">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Corp"/></antcall></target>
+
+  <target name="load-supp">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Supp"/></antcall></target>
+
+  <target name="load-mfg">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Mfg"/></antcall></target>
+
+  <target name="load-ords">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Ords"/></antcall></target>
+
+  <target name="load-rules">
+    <property name="LoadPkg" value="com.sun.ecperf.load"/>
+    <java classname="${LoadPkg}.LoadRules"
+          fork="true">
+      <classpath>
+        <pathelement path="${JDBC_CLASSPATH}"/>
+        <pathelement path="${CLASSPATH}"/>
+  <pathelement location="jars/load.jar"/></classpath>
+      <jvmarg value="-Decperf.home=${ECPERF_HOME}"/>
+      <arg value="discount"/>
+      <arg value="${ECPERF_HOME}/schema/discount.rules"/></java></target>
+
+  <!-- Generic Ant target for loading a table.  Should
+        be invoked using antcall action seting the Domain argument. -->
+
+  <target name="_loaddb" depends="load-jar">
+    <property name="LoadPkg" value="com.sun.ecperf.load"/>
+    <property name="Domain" value="Ords"/>
+    <java classname="${LoadPkg}.Load${Domain}" fork="true">
+      <jvmarg value="-Decperf.home=${ECPERF_HOME}"/>
+      <arg value="${SCALE}"/>
+      <classpath>
+        <pathelement path="${JDBC_CLASSPATH}"/>
+        <pathelement path="${CLASSPATH}"/>
+  <pathelement location="jars/load.jar"/></classpath></java></target>
+
+  <target name="load-jar" depends="compile">
+    <jar jarfile="jars/load.jar"
+         basedir="classes"
+         includes="com/sun/ecperf/load/**/*.class"/></target>
+
+  <!-- Compile charts -->
+  <target name="compile-charts">
+    <echo message="The classpath for compilation is ${compile.classpath}:jars/jcchart450K.jar" />
+    <javac srcdir="src"
+           deprecation="on"
+     debug="on"
+     destdir="classes"
+     includes="**/charts*/*"
+     target="1.2"
+     classpath="${compile.classpath}:jars/jcchart450K.jar"/>
+  </target>
+
+  <target name="charts" depends="compile-charts">
+    <jar jarfile="jars/charts.jar"
+         basedir="classes"
+         includes="com/sun/ecperf/charts/*.class"/>
+  </target>
+
+</project>

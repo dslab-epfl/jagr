@@ -1,0 +1,9 @@
+
+Use JNDIContext if you want an abstraction around getInitialContext in your
+code...
+
+e..g, our clustered petstore uses this helper class to get an initial
+context for the clustered lookup server instead of jsut the local one.
+switching back to the local lookup server is easy --- just replace the
+definition of getInitialContext in one class, instead of everywhere that
+new InitialContext() is created.

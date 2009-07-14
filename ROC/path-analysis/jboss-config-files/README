@@ -1,0 +1,6 @@
+copy this directories to JBoss's server directory, then run
+jboss using the command:
+
+  jboss/bin/run.sh --configuration=CONFIGDIR
+
+where CONFIGDIR is ecperf, ecperf-emulator, petstore-cluster, etc.

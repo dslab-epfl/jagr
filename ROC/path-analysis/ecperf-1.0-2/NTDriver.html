@@ -1,0 +1,44 @@
+<!-- Sample HTML file -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Page Designer V3.5 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>
+Put Your Title Here
+</TITLE>
+<LINK href="file:///C:/J2EE Doc/theme/Master.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+<P><B>Driving an ECPerf Workload from an NT environment</B><BR>
+</P>
+<P>To drive ECPerf on a System Under Test (SUT) a batch file is provided that
+will allow a Windows NT system as the driver. The batch file is called
+<B>Driver.bat</B>. Several environment variables that pertain the to both the driving system
+and the SUT.<BR>
+<BR>
+To use this batch file edit it and modify the various entries for environment
+variables. These variables define the location of various files, classes
+and driving configuration. For each of the variables a brief explanation
+of the variable is provided along with a recommended setting if appropriate.<BR>
+<BR>
+Once the updates are completed the batch file can be invoked to start a
+run. There are four stages to a run. Each stage is separted from the other
+with a simple Pause in the batch file. Once the stage is complete press
+enter and the next stage will begin.<BR>
+<BR>
+1. First the RMI registry is started.<BR>
+<BR>
+2. Start the controller. <BR>
+<BR>
+3. Start the various domain daemons. They include the Orders, Manufacturing
+and Large Order Line. <BR>
+<BR>
+4. Finally the driver itself is started. <BR>
+<BR>
+For more general run instructions please refer to the driver instructions
+provided with the kit.<BR>
+</P>
+</BODY>
+</HTML>

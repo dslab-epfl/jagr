@@ -1,0 +1,1 @@
+java -classpath .:../lib/jboss-j2ee.jar:../lib/jboss-client.jar:../lib/jbosssx-client.jar:../lib/jnp-client.jar:../classes:../lib/jaas.jar -Djava.security.auth.login.config=auth.conf org.jboss.admin.AdminLogin

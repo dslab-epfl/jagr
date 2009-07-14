@@ -1,0 +1,58 @@
+<!-- WSDD Configuration of the jboss.net/axis server-side engine -->
+
+<deployment name="JBoss.net" 
+	targetNamespace="http://net.jboss.org/server"
+	xmlns="http://xml.apache.org/axis/wsdd/"
+        xmlns:jbnet="http://net.jboss.org/server"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <documentation>
+	The default server configuration of the JBoss.net/Axis engine.
+  </documentation>
+
+  <!-- url-to-service mapping should be enabled for every incoming http traffic -->
+  <transport name="http">
+
+        <!-- handlers invoked immediately after an incoming http request -->
+	<requestFlow>
+		<!-- in case that a SOAPAction header is used by the request -->
+                <handler type="java:org.apache.axis.handlers.http.HTTPActionHandler"/>
+
+                <!-- maps url-suffixes to service names -->
+		<handler type="java:org.apache.axis.handlers.http.URLMapper"/>
+
+		<!-- http basic authentication is mapped to the axis message context -->
+                <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+
+		<!-- move to the right apartment inside the jboss container -->
+		<handler type="java:org.jboss.net.axis.SetClassLoaderHandler"/>
+
+                <!-- authenticates the user agains the jaas:/other security domain -->
+		<handler type="java:org.jboss.net.axis.server.JBossAuthenticationHandler">
+		  <parameter name="securityDomain" value="java:/jaas/other"/>
+                </handler>
+
+	</requestFlow>
+
+        <!-- handlers invoked after successful execution of the service -->
+        <responseFlow>
+                <!-- reset the classloader association -->
+		<handler type="java:org.jboss.net.axis.ResetClassLoaderHandler"/>
+        </responseFlow>
+  </transport>
+
+  <!-- The exposed admin service is protected with a jboss-specific role -->
+  <service name="Administration" provider="java:MSG">
+   <parameter name="className" value="org.apache.axis.utils.Admin"/>
+   <parameter name="isStatic" value="true"/>
+   <parameter name="methodName" value="AdminService"/>
+   <parameter name="allowedMethods" value="AdminService"/>
+   <parameter name="enableRemoteAdmin" value="false"/>
+   <!-- authorization runs agains the jaas:/other domain -->
+   <handler type="java:org.jboss.net.axis.server.JBossAuthorizationHandler">
+        <parameter name="securityDomain" value="java:/jaas/other"/>
+	<parameter name="allowedRoles" value="org.jboss.net.Administrator"/>
+   </handler>
+  </service>
+
+</deployment>

@@ -1,0 +1,34 @@
+# The following are the PetStore 1.1.2 files needed to deploy on JBoss 3.0
+# Modify the JBOSS_HOME and PETSTORE_HOME to suit your local environment.
+# This script starts jboss after copying the files.
+
+# set the JBoss home env var
+setenv JBOSS_HOME /home/cs/mikechen/ROC/path-analysis/jboss/build/output/jboss-3.0.4
+setenv PETSTORE_HOME /home/cs/mikechen/ROC/path-analysis/petstore
+
+unalias cp
+
+# copy the config files
+cp $PETSTORE_HOME/login-config.xml $JBOSS_HOME/server/default/conf
+# JNDI port changed to 1097 to avoid conflict with cloudscape
+cp $PETSTORE_HOME/jboss-service.xml $JBOSS_HOME/server/default/conf
+
+
+# copy the cloudscape jar files
+cp $J2EE_HOME/lib/system/cloudscape.jar $JBOSS_HOME/server/default/lib 
+cp $J2EE_HOME/lib/system/cloudutil.jar $JBOSS_HOME/server/default/lib 
+cp $J2EE_HOME/lib/cloudscape/cloudclient.jar $JBOSS_HOME/server/default/lib 
+cp $J2EE_HOME/lib/cloudscape/RmiJdbc.jar $JBOSS_HOME/server/default/lib 
+
+# copy the cloudscape deployment files for PetStore
+cp $PETSTORE_HOME/petstore.ear $JBOSS_HOME/server/default/deploy 
+cp $PETSTORE_HOME/cloudscape-service.xml $JBOSS_HOME/server/default/deploy 
+
+alias cp 'cp -i'
+
+# start JBoss
+$JBOSS_HOME/bin/run.sh
+unsetenv JBOSS_HOME
+unsetenv PETSTORE_HOME
+
+

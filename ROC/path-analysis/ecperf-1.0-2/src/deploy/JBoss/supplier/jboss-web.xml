@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<jboss-web>
+  <ejb-ref>
+    <ejb-ref-name>ejb/ReceiverSes</ejb-ref-name>
+    <jndi-name>ReceiverSes</jndi-name>
+  </ejb-ref>
+</jboss-web>
+

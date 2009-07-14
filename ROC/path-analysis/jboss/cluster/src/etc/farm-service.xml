@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Sample Farming Service Configuration                                   -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<server>
+   
+   <classpath codebase="lib" archives="jbossha.jar"/>
+   
+   <!-- ==================================================================== -->
+   <!-- Cluster Partition: defines cluster                                   -->
+   <!-- ==================================================================== -->
+   
+   <!--
+   -->
+   <mbean code="org.jboss.ha.framework.server.FarmMemberService"
+      name="jboss:service=FarmMember,partition=DefaultPartition" >   
+      <depends>jboss:service=DefaultPartition</depends>
+   	<attribute name="PartitionName">DefaultPartition</attribute>
+   	<attribute name="URLs">./farm</attribute>
+      <depends optional-attribute-name="Deployer">jboss.system:service=MainDeployer</depends>
+   </mbean>
+   
+</server>

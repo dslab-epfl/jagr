@@ -1,0 +1,30 @@
+<!-- Example EJB Web Service Descriptor -->
+
+<deployment name="Hello" 
+	targetNamespace="http://net.jboss.org/hello"
+	xmlns:hello="http://net.jboss.org/hello"
+	xmlns="http://xml.apache.org/axis/wsdd/"
+        xmlns:jbnet="http://net.jboss.org/server"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- this is an extension to the Axis deployment descriptor which allows to
+       specify the naming environment for the deployed ws logic -->
+  <ejb-ref>
+	<ejb-ref-name>ejb/Hello</ejb-ref-name>
+	<ejb-link>HelloWorld</ejb-link>
+  </ejb-ref>
+	
+  <service name="Hello" provider="Handler">
+   <parameter name="handlerClass" value="org.jboss.net.axis.server.EJBProvider"/>
+   <!-- the final jndi name that this provider sits upon -->
+   <parameter name="beanJndiName" value="java:comp/env/ejb/Hello"/>
+   <parameter name="allowedMethods" value="*"/>
+  </service>
+
+  <typeMapping qname="hello:HelloData" 
+        type="java:org.jboss.test.hello.interfaces.HelloData"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+
+</deployment>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Version: @implementation.version@
+Specification-Title: @specification.title@
+Specification-Version: @specification.version@
+Implementation-URL: @implementation.url@
+Implementation-Title: @implementation.title@
+Created-By: 1.4.0-b92 (Sun Microsystems Inc.)
+Implementation-Vendor-Id: @implementation.vendor.id@
+Implementation-Vendor: @implementation.vendor@
+Specification-Vendor: @specification.vendor@
+

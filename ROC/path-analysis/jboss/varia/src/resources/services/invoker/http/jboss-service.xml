@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+<!-- $Id: jboss-service.xml,v 1.1.1.1 2002/11/16 03:16:42 mikechen Exp $ -->
+
+<server>
+
+  <!-- The HTTP invoker service configration
+  -->
+  <mbean code="org.jboss.invocation.http.server.HttpInvoker"
+    name="jboss:service=invoker,type=http">
+    <!-- Set the to URL for the InvokerServlet mapping
+    -->
+    <attribute name="InvokerURL">${invokerServletPath}</attribute>
+  </mbean>
+
+  <mbean code="org.jboss.invocation.http.server.HttpInvokerHA"
+    name="jboss:service=invoker,type=httpHA">
+    <!-- Set the to URL for the InvokerServlet mapping. This default
+      is not usable by remote clients and must be changed to the
+      public interface through which the JMXInvokerHAServlet is
+      accessible on this node in the cluster.
+    -->
+    <attribute name="InvokerURL">http://localhost:8080/invoker/JMXInvokerHAServlet</attribute>
+  </mbean>
+</server>

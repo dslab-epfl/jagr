@@ -1,0 +1,63 @@
+/* Copyright  (c) 2002 The Board of Trustees of The Leland Stanford Junior
+ * University. All Rights Reserved.
+ *
+ * See the file LICENSE for information on redistributing this software.
+ */
+
+package swig.util;
+
+/**
+ * used by ArgParser
+ *
+ * $Id: ArgOption.java,v 1.2 2002/12/28 12:27:30 emrek Exp $
+ *
+ * $Log: ArgOption.java,v $
+ * Revision 1.2  2002/12/28 12:27:30  emrek
+ * no functional changes, just formatting and general cleanup. also did some javadoc'ing of roc.pinpoint.** classes.
+ *
+ * Revision 1.1  2002/12/17 15:27:43  emrek
+ * first commit of new pinpoint tracing and analysis framework
+ *
+ * Revision 1.3  2002/08/19 06:49:43  emrek
+ * Added copyright information to source files
+ *
+ * Revision 1.2  2002/08/15 22:08:07  emrek
+ * formatting changes (only) because of new editor
+ *
+ * Revision 1.1.1.1  2002/07/17 09:07:47  emrek
+ *
+ *
+ * Revision 1.1.1.1  2001/10/17 00:53:42  emrek
+ * initial checkin of code that needs a better name than 'u'
+ *
+ * Revision 1.1  2001/02/27 09:46:50  emrek
+ * new helper class for parsing arguments to programs
+ *
+ *
+ */
+public class ArgOption {
+    public ArgOption(
+        String longname,
+        String shortname,
+        String description,
+        boolean optionalArg,
+        boolean requiredArg,
+        String defaultvalue,
+        boolean isInt) {
+        this.longname = longname;
+        this.shortname = shortname;
+        this.description = description;
+        this.optionalArg = optionalArg;
+        this.requiredArg = requiredArg;
+        this.defaultvalue = defaultvalue;
+        this.isInt = isInt;
+    }
+
+    public String longname;
+    public String shortname;
+    public String description;
+    public boolean optionalArg; // true iff option has an optional argument
+    public boolean requiredArg; // true iff option has a required argument
+    public String defaultvalue;
+    public boolean isInt;
+}

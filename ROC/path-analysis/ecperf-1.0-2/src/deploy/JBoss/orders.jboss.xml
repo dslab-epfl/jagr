@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 2.4//EN" "http://www.jboss.org/j2ee/dtd/jboss_2_4.dtd">
+
+<jboss>
+  <enforce-ejb-restrictions>true</enforce-ejb-restrictions>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>OrderLineEnt</ejb-name>
+      <resource-ref>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <jndi-name>@OrdersDataSource@</jndi-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>OrderCustomerEnt</ejb-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+        <jndi-name>SequenceSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+        <jndi-name>CustomerEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <jndi-name>@OrdersDataSource@</jndi-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>ItemEnt</ejb-name>
+      <resource-ref>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <jndi-name>@OrdersDataSource@</jndi-name>
+      </resource-ref>
+    </entity>
+    <entity>
+      <ejb-name>OrderEnt</ejb-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+        <jndi-name>SequenceSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/LargeOrderSes</ejb-ref-name>
+        <jndi-name>LargeOrderSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+        <jndi-name>CustomerEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <jndi-name>@OrdersDataSource@</jndi-name>
+      </resource-ref>
+    </entity>
+    <session>
+      <ejb-name>OrderAuditSes</ejb-name>
+      <resource-ref>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <jndi-name>@OrdersDataSource@</jndi-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <container-configurations>
+    <container-configuration>
+      <container-name>Standard BMP EntityBean</container-name>
+      <commit-option>B</commit-option> 
+      <container-invoker-conf>
+        <Optimized>false</Optimized>
+      </container-invoker-conf>
+    </container-configuration>
+    <container-configuration>
+      <container-name>Standard Stateless SessionBean</container-name>
+      <container-invoker-conf>
+        <Optimized>false</Optimized>
+      </container-invoker-conf>
+    </container-configuration>
+    <container-configuration>
+      <container-name>Standard Stateful SessionBean</container-name>
+      <container-invoker-conf>
+        <Optimized>false</Optimized>
+      </container-invoker-conf>
+    </container-configuration>
+  </container-configurations>
+</jboss>

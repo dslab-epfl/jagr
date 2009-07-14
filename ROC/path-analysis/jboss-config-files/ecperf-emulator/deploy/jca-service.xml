@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss JCA Configuration                                              -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: jca-service.xml,v 1.1.1.1 2002/11/17 12:11:57 emrek Exp $ -->
+
+<!-- 
+   |  This contains configuration for the RARDeployer and the 
+   |  three ConnectionManagerFactories supplied with jboss.  You
+   |  should not need to alter this configuration.  Configure your 
+   |  ConnectionFactoryLoaders in separate *-service.xml or .sar files.
+   |  Consult the hypersonic-default.sar for an example.
+ -->
+
+<server>
+
+  <!--jbosspool.jar is included as "jar in sar" -->
+
+  <!-- ==================================================================== -->
+  <!-- JBossCX setup, for J2EE connector architecture support               -->
+  <!-- The RARDeployer is needed only until xslt based deployment is written.-->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.resource.RARDeployer" 
+	 name="jboss.jca:service=RARDeployer">
+  </mbean>
+
+</server>

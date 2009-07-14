@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Sealed: true
+Package-Version: 1.0.0
+Package-Title: org.mortbay.http
+Specification-Version: RELEASE_MAJOR
+Implementation-Version: RELEASE_MAJOR_MINOR
+Specification-Vendor: Mort Bay Consulting, Pty. Ltd.
+Implementation-Vendor: Mort Bay Consulting, Pty. Ltd.
+Implementation-URL: http://jetty.mortbay.org
+Main-Class: org.mortbay.http.HttpServer
+
+Name: org/mortbay/http/
+Specification-Title: HTTP Server
+Specification-Version: 1.1
+Implementation-Title: Mort Bay HTTP Server
+
+Name: org/mortbay/util/
+Specification-Title:  Mort Bay Misc. Utilities
+Implementation-Title: Mort Bay Misc. Utilities

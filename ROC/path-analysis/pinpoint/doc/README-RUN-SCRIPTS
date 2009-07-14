@@ -1,0 +1,157 @@
+contact: Emre Kiciman, emrek@cs.stanford.edu
+
+This readme file describes how to use the various run-*.sh scripts in 
+pinpoint/scripts/.
+
+   I. Overview of main scripts
+  II. To run single-node petstore
+ III. To run clustered petstore
+  IV. Running automatic fault experiments
+
+---------------------------------------------------------
+
+--------------------------------
+- I. Overview of main scripts
+--------------------------------
+
+build-pinpoint.sh
+    build's pinpoint code.
+
+prepare-petstore.sh
+    cleans out jboss configuration and redeploys petstore.  Will create
+    one config directory per backend and front-end node.  !!Be sure to
+    run this after if any changes are made to config.env, or if jboss
+    is recompiled.
+
+run-pinpoint.sh [configfile] [configfile options]
+    run pinpoint analysis engine, loading the plugins specified in
+    'configfile', and passing the 'configfile options'.  The
+    'configfile options' are specific to the configuration file.  Read
+    details in the .conf file.
+
+run-petstore.sh
+    run clustered petstore, based on the specifications in the config.env 
+    environment variables.  see below for details.
+
+kill-petstore.sh
+    kills all petstore/jboss and java programs running on the DB_MACHINE
+    the OBSERVATION_MACHINE, FRONTEND_MACHINES, and BACKEND_MACHINES
+
+run-fault-experiments.sh [fault files ...]
+    iteratively run the petstore with a fault config file; record its
+    traces with pinpoint; run load against it; then kill it and go to the 
+    next fault configuration.
+    notes: 1) the OUTPUTDIR for the logs is specified in the beginning of
+              the run-fault-experiments.sh script
+           2) the load generator is only setup to run against a single
+              node petstore, so you must make sure that your config.env
+              is set up for a *single-node* petstore as well.
+
+helper scripts (don't run these directly)
+--------------
+
+run-jboss.sh [server config directory]
+    starts a jboss instance with a the config directory given.  used by
+    the run-petstore.sh file.
+
+run-petstore-loadgen.sh
+    runs the LoadGen against *single-node* petstores.  this script is used 
+    by the run-fault-experiments.sh script.
+
+
+
+-----------------------------------------------
+- II. To run single-node petstore
+-----------------------------------------------
+
+1. edit pinpoint/scripts/config.env and set the following env variables:
+
+	# the observation machine is where JMS trace messages
+	#   will be sent.  it also runs as a petstore-backend node
+	OBSERVATION_MACHINE=localhost
+	DB_MACHINE=localhost
+
+	# num backends includes the observation machine
+	NUM_BACKENDS=1
+	BACKEND_MACHINES=""
+	NUM_FRONTENDS=0
+	FRONTEND_MACHINES=""
+
+2.      run "prepare-petstore.sh"
+
+3.	run "run-petstore.sh"
+
+4.	record observations with:
+
+	run-pinpoint.sh config/save-observations.conf filename=MYLOGFILE
+
+-----------------------------------------------
+- III. To run clustered petstore
+-----------------------------------------------
+
+1. edit pinpoint/scripts/config.env and set the following env variables:
+
+	# observation machine collects JMS messages, and is also
+	#    a petstore backend node.
+	OBSERVATION_MACHINE=x10
+	DB_MACHINE=x11
+
+	# num backends counts observation_machine
+	NUM_BACKENDS=3
+	BACKEND_MACHINES="x12 x13"
+	NUM_FRONTENDS=3
+	FRONTEND_MACHINES="x14 x15 x16"
+
+2. to inject faults, set the TRIGGERFILE environmnet variable.e.g.,
+
+	TRIGGERFILE=mytriggerfile
+
+3. In the same config.env file, make sure all the paths are correctly
+   set.
+
+	export OBSERVATION_COLLECTOR=$OVSERVATION_MACHINE:1097
+	export PATHANALYSIS_ROOT=/home/emrek/Projects/swig/ROC/path-analysis
+	export J2EE_HOME=/home/emrek/Projects/j2sdkee1.3.1
+	export JAVA_HOME=/usr/java/j2sdk1.4.1
+	#export GEXEC_HOME=
+	export JBOSS_VER=jboss-3.0.4
+	export LOADGEN_HOME=/home/emrek/Projects/swig/ROC/RR/loadgen
+
+4. run pinpoint/scripts/prepare-petstore.sh to set up the deployment
+   configurations
+
+4. run pinpoint/scripts/run-petstore.sh  .  This script should spawn
+   the database, the observation machine, the rest of the backend nodes
+   and the front end nodes.
+
+5. run the pinpoint analysis engine to save the records to disk:
+   run-pinpoint.sh config/save-observations.conf filename=MYOUTPUFILE
+
+6. run the workload generator or browse the petstore by hand.  point
+   it at the frontend node
+
+
+
+--------------------------------------
+- IV. Running automatic fault experiments
+--------------------------------------
+
+1. follow instructions 1-2 for setting up single-node petstore.
+
+   ** if you want to automatically run a multiple node fault
+      experiment, you'll have to fix the run-petstore-loadgen.sh to
+      spawn multiple LoadGen clients (on different machines?) and
+      point them individually at different frontends.
+   ** also, you'll have to make sure that the TRIGGERFILE environment
+      variable gets propogated to remote hosts when a petstore node
+      is started via gexec.
+
+2. run run-fault-experiments.sh [fault files ...]
+   e.g., "run-fault-experiments.sh faults/petstore/faultconfig*-null_call"
+
+   this script will spawn the petstore, the pinpoint analysis engine
+   for recording the observations, and the loadgenerator.   After the
+   loadgenerator has stopped, it will kill the petstore, reset the
+   cloudscape database, and repeat.  This will continue until all the
+   fault files have been used.
+

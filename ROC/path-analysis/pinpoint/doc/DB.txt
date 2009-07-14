@@ -1,0 +1,204 @@
+table: requests 
+
+Request_ID*	HTTP request  
+Request_Type	
+Session_ID	HTTP session (identified by cookie)
+Connection_ID	HTTP connection
+Start_Time	start time (localtime in ms)	
+Stop_Time	stop time (localtime in ms)
+? Duration	Stop_Time - Start_Time
+
+
+table: paths
+
+Request_ID	
+Obs_ID*
+Obs_Type	e.g. Start_EJB on the caller side, and Start_EJB_local on the callee side
+Component	component name (either the current component, or the component being called)
+Target		
+Location 
+Time
+
+
+
+
+1. starting 
+
+bin/safe_mysqld --user=mysql --set-variable max_connections=800 --tmpdir=/tmp/mysql&
+
+
+1. create database
+
+mysql> SHOW DATABASES;
+mysql> CREATE DATABASE pinpoint;   
+
+login as root
+mysql> GRATN ALL ON pinpoint.* TO mikechen; 
+
+
+mysql> USE pinpoint; 
+mysql> SHOW TABLES;
+
+
+2. create tables
+
+mysql> CREATE TABLE requests (request_id VARCHAR(32) not null, request_type VARCHAR(255), session_id VARCHAR(32), connection_id VARCHAR(32), start_time VARCHAR(32), stop_time VARCHAR(32), primary key (request_id));
+
+mysql> CREATE TABLE paths (request_id VARCHAR(32) not null, obs_id VARCHAR(32) not null, obs_type VARCHAR(32), component VARCHAR(255), target VARCHAR(255), location VARCHAR(32), time VARCHAR(32),  primary key (request_id, obs_id));
+
+mysql> CREATE TABLE pathlengths (request_type VARCHAR(255) not null, length int);
+
+mysql> CREATE TABLE requestlatenciesbytype (request_type VARCHAR(255) not null, latency int);
+
+mysql> CREATE TABLE requestlatenciesbystage (stage VARCHAR(255) not null, latency int);
+
+
+
+3. load data into database
+
+load data from a data file (data in the same order as the table spec, one row per line with each entry seperate by columns)
+> use pinpoint
+> LOAD DATA LOCAL INFILE ".txt" INTO TABLE table_name;
+
+
+4. clearing up
+
+deteting rows from a table
+> delete from paths;
+
+deleting a table
+> drop table paths;
+
+
+mysql> select distinct request_type from requests;
++--------------------------------------------+
+| request_type                               |
++--------------------------------------------+
+| /estore/control/main                       |
+| /estore/control/category                   |
+| /estore/control/white                      |
+| /estore/control/product                    |
+| /estore/control/cart                       |
+| /estore/control/checkout                   |
+| /estore/control/placeorder                 |
+| /estore/control/verifysignin               |
+| /estore/control/validatebillinginformation |
+| /estore/control/commitorder                |
+| /estore/control/editaccount                |
+| /estore/control/signout                    |
+| /estore/control/help                       |
++--------------------------------------------+
+
+
+mysql> select request_type, count(*) from requests group by request_type;
++--------------------------------------------+----------+
+| request_type                               | count(*) |
++--------------------------------------------+----------+
+| /estore/control/cart                       |        4 |
+| /estore/control/category                   |        1 |
+| /estore/control/checkout                   |        1 |
+| /estore/control/commitorder                |        1 |
+| /estore/control/editaccount                |        1 |
+| /estore/control/help                       |        1 |
+| /estore/control/main                       |        1 |
+| /estore/control/placeorder                 |        1 |
+| /estore/control/product                    |        2 |
+| /estore/control/signout                    |        1 |
+| /estore/control/validatebillinginformation |        1 |
+| /estore/control/verifysignin               |        1 |
+| /estore/control/white                      |       15 |
++--------------------------------------------+----------+
+
+
+find components that aren't DB updates
+mysql> select distinct target from paths where target not like '%update%' and target not like '%select%' and target not like '%insert%';
+or
+mysql> select distinct target from paths where obs_type = 'begin_component_use';
+
+
+
+mysql> select request_type, count(*) from paths p, requests r where p.request_id = r.request_id group by p.request_id;
++--------------------------------------------+----------+
+| request_type                               | count(*) |
++--------------------------------------------+----------+
+| /estore/control/main                       |       26 |
+| /estore/control/category                   |       26 |
+| /estore/control/white                      |        4 |
+| /estore/control/product                    |       39 |
+| /estore/control/white                      |        4 |
+| /estore/control/cart                       |       54 |
+| /estore/control/white                      |        4 |
+| /estore/control/checkout                   |       29 |
+| /estore/control/white                      |        4 |
+| /estore/control/placeorder                 |       24 |
+| /estore/control/white                      |        4 |
+| /estore/control/verifysignin               |       66 |
+| /estore/control/white                      |        4 |
+| /estore/control/validatebillinginformation |       24 |
+| /estore/control/white                      |        4 |
+| /estore/control/commitorder                |       81 |
+| /estore/control/white                      |        4 |
+| /estore/control/editaccount                |       24 |
+| /estore/control/white                      |        4 |
+| /estore/control/cart                       |       31 |
+| /estore/control/white                      |        4 |
+| /estore/control/product                    |       39 |
+| /estore/control/white                      |        4 |
+| /estore/control/cart                       |       51 |
+| /estore/control/white                      |        4 |
+| /estore/control/cart                       |       48 |
+| /estore/control/white                      |        4 |
+| /estore/control/signout                    |       30 |
+| /estore/control/white                      |        4 |
+| /estore/control/help                       |       26 |
+| /estore/control/white                      |        4 |
++--------------------------------------------+----------+
+
+
+mysql> select request_type, count(*) from paths p, requests r where p.request_id = r.request_id group by p.request_id order by request_type;
+
+mysql> INSERT INTO pathlengths (request_type, length) select request_type, count(*) from paths p, requests r where p.request_id = r.request_id group by p.request_id;
+
+mysql> select request_type, avg(length) avg from pathlengths group by request_type order by avg;
+
+mysql> select request_type, avg(length) avg from pathlengths group by request_type order by avg INTO OUTFILE "/tmp/request-lengths.tsv";
+
+
+mysql> select request_id from requests where request_type = "/estore/control/cart";
+
+mysql> select distinct target, request_type from requests r, paths p where r.request_id = p.request_id;
+
+
+latency by request type
+
+mysql> select request_type, (p2.time - p1.time) latency from requests r, paths p1, paths p2 where r.request_id = p1.request_id and p1.request_id = p2.request_id and p1.obs_type = "begin_component_use" and p2.obs_type = "end_component_use" and p1.component = "org.mortbay.http.HttpConnection" and p2.component = "org.mortbay.http.HttpConnection" order by request_type, latency;
+
+latency by request type saved to a table
+
+mysql> INSERT INTO requestlatenciesbytype (request_type, latency) select request_type, (p2.time - p1.time) latency from requests r, paths p1, paths p2 where r.request_id = p1.request_id and p1.request_id = p2.request_id and p1.obs_type = "begin_component_use" and p2.obs_type = "end_component_use" and p1.component = "org.mortbay.http.HttpConnection" and p2.component = "org.mortbay.http.HttpConnection" order by request_type, latency;
+
+average latency by reqyest
+mysql> select request_type, avg(latency) avg_latency from requestlatenciesbytype group by request_type order by avg_latency;
+
+mysql> select request_type, avg(latency) avg_latency from requestlatenciesbytype group by request_type order by avg_latency INTO OUTFILE "/tmp/request-latency-by-request-type.tsv";
+
+
+
+
+latency by stage
+
+mysql>  select paths.* from paths, requests where request_type like "%main" and requests.request_id = paths.request_id;
+
+1046763963872_1926003074 
+
+mysql> select p1.target, (p2.time-p1.time) from paths p1, paths p2 where p1.request_id = "1046763963872_1926003074" and p1.obs_id + 1 = p2.obs_id and p1.request_id = p2.request_id;
+
+
+mysql> insert into requestlatenciesbystage (stage, latency) select p1.target, (p2.time-p1.time) from paths p1, paths p2 where p1.request_id = "1046763963872_1926003074" and p1.obs_id + 1 = p2.obs_id and p1.request_id = p2.request_id;
+Q
+
+
+mysql> select stage, sum(latency) sum_latency from requestlatenciesbystage group by stage order by sum_latency;
+
+mysql> select stage, sum(latency) sum_latency from requestlatenciesbystage group by stage order by sum_latency INTO OUTFILE "/tmp/stage-latency.tsv";
+

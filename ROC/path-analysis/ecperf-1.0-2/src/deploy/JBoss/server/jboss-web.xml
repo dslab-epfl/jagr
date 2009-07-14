@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<jboss-web>
+  <ejb-ref>
+    <ejb-ref-name>ejb/AssemblyEnt</ejb-ref-name>
+    <jndi-name>AssemblyEnt</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/LargeOrderSes</ejb-ref-name>
+    <jndi-name>LargeOrderSes</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/OrderSes</ejb-ref-name>
+    <jndi-name>OrderSes</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/ItemEnt</ejb-ref-name>
+    <jndi-name>ItemEnt</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/CartSes</ejb-ref-name>
+    <jndi-name>CartSes</jndi-name>
+  </ejb-ref>
+  <ejb-ref>
+    <ejb-ref-name>ejb/WorkOrderSes</ejb-ref-name>
+    <jndi-name>WorkOrderSes</jndi-name>
+  </ejb-ref>
+</jboss-web>
+

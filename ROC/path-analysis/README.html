@@ -1,0 +1,108 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Dynamic Path Analysis</title>
+</head>
+
+<body>
+
+<h1>Dynamic Path Analysis</h1>
+<p><a href="http://www.cs.berkeley.edu/~mikechen/">Mike Chen</a> (mikechen@cs.berkeley.edu)</p>
+<ul>
+  <li>jboss/ a modified version of JBoss source code </li>
+  <li>tracing/ tagging and tracing classes </li>
+  <li>petstore/ a Java J2EE app </li>
+  <li>doc/ documentation</li>
+</ul>
+<p>Since we will be tracking JBoss releases, please read CVS instructions for <a href="http://www.loria.fr/~molli/cvs/doc/cvs_13.html">Tracking
+Third-party Sources</a>.</p>
+
+<ul>
+  <li><font face="Courier New">cvs import -I ! -m "Import of JBoss v3.0.3&quot;
+    ROC/path-analysis/jboss JBOSS JBOSS_3_0_3</font></li>
+</ul>
+<p>ROC/RR is a closely related project. See those files for more information.</p>
+
+<hr>
+<h2>Files Modified</h2>
+<p>JDBC</p>
+<ul>
+  <li>connector/build.xml</li>
+  <li>connector/output/gen-src/org/jboss/resource/adapter/jdbc/local/LocalConnection.java
+    <ul>
+      <li>track the mapping between SQL queries and PreparedStatement</li>
+    </ul>
+  </li>
+  <li>connector/src/main/org/jboss/resource/adapter/jdbc/local/LocalStatement.java</li>
+  <li>connector/src/main/org/jboss/resource/adapter/jdbc/local/LocalPreparedStatement.java
+    <ul>
+      <li>report usage. currently don't support CallableStatment (stored
+        procedures)&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+<p>Jetty Http/Jsp/Servlet</p>
+<ul>
+  <li>jetty/src/main/org/apache/jasper/servlet/JspServlet.java </li>
+  <li>jetty/src/main/org/mortbay/http/HttpConnection.java</li>
+  <li>jetty/src/main/org/mortbay/jetty/servlet/ServletHolder.java</li>
+  <li>jetty/build.xml</li>
+  <li>&nbsp;</li>
+</ul>
+
+JBoss EJB
+<ul>
+  <li>server/build.xml</li>
+  <li>callee container: org.jboss.ejb.Container.invoke(Container.java:712) or org.jboss.ejb.plugins.LogInterceptor.invoke(LogInterceptor.java:203)</li>
+  <li>caller container: org.jboss.proxy.ClientContainer.invoke(ClientContainer.java:76)<br>
+  </li>
+</ul>
+<p>Direct JDBC calls from apps</p>
+<ul>
+  <li>need to modify the JDBC drivers</li>
+</ul>
+<hr>
+<h2>3rd Party Source Code</h2>
+<p>SQL parser in <a href="http://ebxmlrr.sourceforge.net/">ebXML</a> and <a href="http://sourceforge.net/projects/xmlvoc">Amic
+Utils</a></p>
+
+<hr>
+<h2>JMS</h2>
+<a href="http://www.precisejava.com/javaperf/j2ee/JMS.htm">http://www.precisejava.com/javaperf/j2ee/JMS.htm</a><br>
+JMS performance tips (Page last updated November 2001, Added 2001-12-26, Authors
+Ravi Kalidindi and Rohini Datla, Publisher PreciseJava). Tips:
+<ul>
+  <li>Start the consumer before you start the producer so that the initial
+    messages do not need to queue.
+  <li>Use a ConnectionConsumer to process messages concurrently with a
+    ServerSessionPool.
+  <li>Close resources (e.g. connections, session objects, producers, consumers)
+    when finished with them.
+  <li>DUPS_OK_ACKNOWLEDGE and AUTO_ACKNOWLEDGE perform better than
+    CLIENT_ACKNOWLEDGE.
+  <li>Use separate transactional sessions and non-transactional sessions for
+    transactional and non-transactional messages.
+  <li>Tune the Destination parameters: a smaller capacity increases message
+    throughput; a higher redelivery delay and lower redelivery limit reduces the
+    overhead.
+  <li>Choose non-durable (NON_PERSISTENT) messages wherever appropriate to avoid
+    the persistency overhead.
+  <li>Set the TimeToLive value as low as feasible (default is for messages to
+    never expire).
+  <li>Receive messages asynchronously with a MessageListener implementation.
+  <li>Choose the message type that minimizes memory overheads.
+  <li>Use 'transient' variables to reduce serialization overheads.</li>
+</ul>
+<hr>
+<h2>Application Complexity</h2>
+<p>PetStore: 233 Java, 88 JSP, line count for Java code: 10744 lines</p>
+<p>ECperf: 197 Java, 17 JSP,&nbsp; for Server, 51 for driver/load, 21KLOC for
+server, 7KLOC for driver/load</p>
+<p>Java line count: at least one &quot;;&quot; or &quot;{&quot; or &quot;}&quot;</p>
+
+</body>
+
+</html>

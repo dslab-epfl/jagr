@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Not currently used in any tests.  Lazyness prevents removal ;-)	-->
+
+<server>
+
+  <mbean code="org.jboss.test.jmx.mbeane.TestDeployerE"
+	 name="test:name=TestDeployerE"/>
+
+</server>

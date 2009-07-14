@@ -1,0 +1,21 @@
+To run the JMS subscriber
+
+1. make sure tracing/jndi.properties points to the right JNDI port of JBoss
+
+2. add the following to your classpath
+     .:concurrent.jar:jboss-client.jar:jbossmq-client.jar:log4j.jar:jnp-client.jar:jboss-common-client.jar:${path-analysis}:${path-analysis}/lib/GLF1.1.2.zip:${path-analysis}/lib/GDF1.1.2.zip:${path-analysis}/lib/GFC1.1.2.zip
+
+3. cd ${path-analysis}/tracing
+
+4. compile the classes:  javac *.java
+
+5. start the listener:   java tracing.ObservationListener
+   the listener dumps graphs in XML format to the current dir with timestamps (e.g. paths-1038209143571.xml)
+
+6. visualize the paths:  java FMap <xml file name>
+   e.g. java FMap paths-1038209143571.xml
+
+
+
+
+

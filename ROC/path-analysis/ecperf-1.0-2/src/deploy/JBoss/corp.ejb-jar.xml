@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN' 'http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd'>
+
+<ejb-jar>
+  <description>Corp Domain</description>
+  <display-name>Corp</display-name>
+  <enterprise-beans>
+    <entity>
+      <description>Rule Entity bean</description>
+      <display-name>RuleEnt</display-name>
+      <ejb-name>RuleEnt</ejb-name>
+      <home>com.sun.ecperf.corp.ruleent.ejb.RuleEntHome</home>
+      <remote>com.sun.ecperf.corp.ruleent.ejb.RuleEnt</remote>
+      <ejb-class>com.sun.ecperf.corp.ruleent.ejb.RuleBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Corp DB dataSource</description>
+	<res-ref-name>CorpDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Discount Entity bean</description>
+      <display-name>DiscountEnt</display-name>
+      <ejb-name>DiscountEnt</ejb-name>
+      <home>com.sun.ecperf.corp.discountent.ejb.DiscountEntHome</home>
+      <remote>com.sun.ecperf.corp.discountent.ejb.DiscountEnt</remote>
+      <ejb-class>com.sun.ecperf.corp.discountent.ejb.DiscountBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	</description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Corp DB dataSource</description>
+	<res-ref-name>CorpDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Customer Entity Bean</description>
+      <display-name>CustomerEnt</display-name>
+      <ejb-name>CustomerEnt</ejb-name>
+      <home>com.sun.ecperf.corp.customerent.ejb.CustomerEntHome</home>
+      <remote>com.sun.ecperf.corp.customerent.ejb.CustomerEnt</remote>
+      <ejb-class>com.sun.ecperf.corp.customerent.ejb.CustomerBmpEJB</ejb-class>
+      <persistence-type>Bean</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<ejb-ref-name>ejb/RuleEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.corp.ruleent.ejb.RuleEntHome</home>
+	<remote>com.sun.ecperf.corp.ruleent.ejb.RuleEnt</remote>
+	<ejb-link>RuleEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/DiscountEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.corp.discountent.ejb.DiscountEntHome</home>
+	<remote>com.sun.ecperf.corp.discountent.ejb.DiscountEnt</remote>
+	<ejb-link>DiscountEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>Corp DB dataSource</description>
+	<res-ref-name>CorpDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Corp Auditing Session Bean</description>
+      <display-name>CorpAuditSes</display-name>
+      <ejb-name>CorpAuditSes</ejb-name>
+      <home>com.sun.ecperf.corp.corpauditses.ejb.CorpAuditSesHome</home>
+      <remote>com.sun.ecperf.corp.corpauditses.ejb.CorpAuditSes</remote>
+      <ejb-class>com.sun.ecperf.corp.corpauditses.ejb.CorpAuditSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+        <description>Corp DB dataSource</description>
+        <res-ref-name>CorpDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <container-transaction>
+      <method>
+	<ejb-name>RuleEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>DiscountEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>CustomerEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CorpAuditSes</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+
