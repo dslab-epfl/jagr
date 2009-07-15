@@ -1,0 +1,23 @@
+<analysisengine>
+
+<!--
+      This configuration simply loads records from a disk,
+      without performing any more manipulation
+
+      cmd-line options:
+
+      inputfile=records to load from disk
+
+-->
+
+<collection name="records"/>
+
+<subanalysis name="loadRecords" file="../embed/general/LoadFromDisk.econf">
+  <arg key="input">$inputfile</arg>
+  <bindrecord key="output">records</bindrecord>
+</subanalysis>
+
+<!-- standard subconfig contains HTTP frontend, etc -->
+<subconfig file="../embed/general/Standard.conf"/>
+
+</analysisengine>

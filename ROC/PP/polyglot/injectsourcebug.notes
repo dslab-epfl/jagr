@@ -1,0 +1,67 @@
+
+NOT YET DONE:
+
+delete random instruction:  "for( i=0;i<10;i++,j++)" -> "for(i=0;i<10;i++)"
+  ==> not clear what to do...
+      1) remove one of the "iters" expressions in a for loop
+      2) replace a Unary operator with just the value
+
+-------------------------------------
+DONE:
+
+interface error: "results =strcmp(str1,str2)" -> "results = strcmp(str1,str3)"
+  ==> this is handled by rewriting variable references in expressions
+
+initialization error:  e.g., "int i=0;" -> "int i;"
+  ==> rewrite LocalDecl AST and reset LocalDecl.init(null)
+
+delete branch:  "while(flag)" -> "while(!flag)";
+  ==> 1) delete Branch node (but this is only a break or continue;)
+      2) look into Loop nodes, and modify cond() expression with "!"
+
+off-by-one: "for(i=0;i<size;i++)" -> "for(i=0;i<=size;i++)"
+  ==> look at cond() expr in Loop, and replace Binary operators... change
+        {EQ,GE,GT,LE,LT} with a random other... ?? or just exchange GE/GT and LE/LT
+
+synchronization: "getWriteLock; write(); freeWriteLock" -> "write()";
+  ==> 1) change Method node's Flags(); unset "SYNCHRONIZED" flag.
+   and also 2) look for Synchronized node, and remove it, replacing it with
+      the contents of Synchronized.body()
+
+destination reg:   "numFreePages = count(fptr)" -> "numPages = count(fptr)"
+  ==> change Assign.left()... look for other variables in scope by iterating
+      up and down tree looking for VarDecl's of the same type...
+      
+
+source reg: "numPages = pms/pagesize" -> "numPages = vms/pagesize";
+  ==> change Variable()... look for other variables in scope by iterating
+      up and down tree looking for VarDecl's of the same type...
+      
+
+---------------------------------------------------------------------
+NOT GOING TO DO:
+
+pointer: "ptr = ptr->next->next;" -> "ptr = ptr->next;"
+  ==> don't do this one...
+
+
+allocation: "ptr=malloc(N);use ptr; use ptr; free(ptr)" -> 
+            "ptr=malloc(N); use ptr: free(ptr); use ptr again";
+  ==> don't do this one...
+            
+            
+copy overrun: "for(i=0;i<sizeUsed;i++) {a[i]=...}" -> "for(i=0;i<sizeTotal;i++) {a[i]..}
+  ==> seems like this would be handled with the source reg change...
+
+
+memory leak: (remove a free(ptr))
+  ==> don't do this one...
+
+  
+  
+
+
+
+
+
+

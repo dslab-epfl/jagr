@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss JCA Configuration                                              -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: jca-service.xml,v 1.1.1.1 2003/03/07 08:26:10 emrek Exp $ -->
+
+<!-- 
+   |  This contains configuration for the RARDeployer and the 
+   |  three ConnectionManagerFactories supplied with jboss.  You
+   |  should not need to alter this configuration.  Configure your 
+   |  ConnectionFactoryLoaders in separate *-service.xml or .sar files.
+   |  Consult the hypersonic-default.sar for an example.
+ -->
+
+<server>
+
+  <!--jbosspool.jar is included as "jar in sar" -->
+
+  <!-- ==================================================================== -->
+  <!-- JBossCX setup, for J2EE connector architecture support               -->
+  <!-- The RARDeployer and three Connection Manager Factories are parts of  -->
+  <!-- JBoss and do not need further configuration.                         -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.resource.RARDeployer" 
+	 name="jboss.jca:service=RARDeployer">
+  </mbean>
+
+  <!-- 
+     | Minerva no transaction connection manager factory.
+     |
+     | Use this for resource adapters that don't support transactions.
+   -->
+  <mbean code="org.jboss.resource.ConnectionManagerFactoryLoader"
+         name="jboss.jca:service=ConnectionManagerFactoryLoader,name=MinervaNoTransCMFactory">
+    <attribute name="FactoryName">MinervaNoTransCMFactory</attribute>
+    <attribute name="FactoryClass">
+      org.jboss.resource.connectionmanager.jboss.MinervaNoTransCMFactory
+    </attribute>
+    <attribute name="Properties"></attribute>
+  </mbean>
+
+  <!-- 
+     | Minerva local transaction connection manager factory.
+     |
+     | Use this for resource adapters that support "local" transactions.
+   -->
+  <mbean code="org.jboss.resource.ConnectionManagerFactoryLoader"
+         name="jboss.jca:service=ConnectionManagerFactoryLoader,name=MinervaSharedLocalCMFactory">
+    <attribute name="FactoryName">MinervaSharedLocalCMFactory</attribute>
+    <attribute name="FactoryClass">
+      org.jboss.resource.connectionmanager.jboss.MinervaSharedLocalCMFactory
+    </attribute>
+    <attribute name="Properties"></attribute>
+  </mbean>
+
+  <!-- 
+     | Minerva XA transaction connection manager factory
+     |
+     | Use this for resource adapters that support "xa" transactions.
+   -->
+  <mbean code="org.jboss.resource.ConnectionManagerFactoryLoader"
+         name="jboss.jca:service=ConnectionManagerFactoryLoader,name=MinervaXACMFactory">
+    <attribute name="FactoryName">MinervaXACMFactory</attribute>
+    <attribute name="FactoryClass">
+      org.jboss.resource.connectionmanager.jboss.MinervaXACMFactory
+    </attribute>
+    <attribute name="Properties"></attribute>
+  </mbean>
+
+</server>

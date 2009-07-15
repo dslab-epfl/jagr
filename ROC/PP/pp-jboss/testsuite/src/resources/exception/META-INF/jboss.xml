@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jboss>
+   <enterprise-beans>
+      <session>
+         <ejb-name>EJBTestRunnerEJB</ejb-name>
+         <jndi-name>ejb/EJBTestRunner</jndi-name>
+      </session>
+
+      <entity>
+         <ejb-name>ExceptionTesterEJB</ejb-name>
+         <jndi-name>exception/ExceptionTester</jndi-name>
+         <local-jndi-name>exception/ExceptionTesterLocal</local-jndi-name>
+      </entity>
+   </enterprise-beans>
+</jboss>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                        
+<meta http-equiv="Content-Type"
+ content="text/html; charset=euc-jp">
+                        
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+<title>Java[TM] Pet Store Demo 1.3.1_02 &gt; Java PetStore Demo アプリケーションの Web サービスの有効化</title>
+</head>
+  <body>
+      &nbsp;      
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+      <tbody>
+         <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"><a
+ href="index.html">Java&#153; Pet Store Demo 1.3.1_02</a></font></b> <font
+ color="#ffffff">&gt; <b>Web サービスを有効化するための変更</b></font></td>
+       <td bgcolor="#000033">                                    
+<div align="right"><b><font color="#ccccff"><a
+ href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+      </td>
+      </tr>
+                     
+  </tbody>     
+</table>
+            
+<h1> <font color="#000000">Java Pet Store Demo アプリケーションで Web サービスを有効化するために加えられた変更</font></h1>
+<font color="#000000">ここでは、J2EE プラットフォームでの Web サービステクノロジの利用を例示するために Java  Pet Store Demo アプリケーションに加えられた変更内容を紹介します。</font>      
+<p><font color="#000000">Pet Store サンプルアプリケーションは、</font><font
+ color="#000000">次の 4 つの部分で構成されています。<br></font></p>
+         
+<ol>
+<li><font color="#000000"><tt>PetStore Website</tt> アプリケーション。ユーザとの対話を実装し、ユーザの注文を送信する</font></li>
+<li><font color="#000000"><tt>Order Processing Center (OPC)</tt> アプリケーション。注文の処理に関係するワークフローを実装する</font></li>
+<li><font color="#000000"><tt>Supplier</tt> アプリケーション。OPC からの承認された注文に商品を充当し、OPC に納品書を返信する</font></li>
+<li><font color="#000000"><tt>Admin</tt> アプリケーション。OPC と対話する。Admin アプリケーションは、管理者が使用するための JavaWebStart 対応の Swing クライアントを提供する</font></li>
+         
+</ol>
+<font color="#000000">Web サービスを利用しない場合は、PetStore-OPC 間の通信と OPC-Supplier 間の通信はどちらも、<tt>Java Messaging Service (JMS)</tt> テクノロジを使って行われます。JMS テクノロジは、非同期通信を行う移植性のある手段を提供します。</font>詳細については、『Java2 Platform, Enterprise Edition アプリケーション設計ガイド　第 2 版』の「<a
+ href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html">サンプルアプリケーションのアーキテクチャ</a>」の章および「<a href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/sample-app/sample-app1.3.1.html">Sample Application Design and Implementation</a>」を参照してください。<br> この非同期通信が、Web サービスを利用するように変更されています。<br>
+         
+<h2><font color="#000000">ドキュメント指向の対話のための Web サービス</font></h2>
+     
+<p><font color="#000000">ドキュメント指向の対話スタイルは、疎結合の Web サービスを容易にします。この場合、Web サービスアプリケーションは、XML ドキュメントを交換することによって相互に対話します。このシナリオを説明するために、OPC-Supplier 間の通信を、XML ドキュメントを受け渡しする Java API for XML based RPC (JAXRPC) を使用するように変更しました。このアプリケーション設計はさらに、既存の J2EE アプリケーションを拡張して Web サービスを利用するように変更する方法も示しています。<br></font></p>
+     
+<p><font color="#000000">OPC と Supplier の間で発生する通信は、次のとおりです。</font> </p>
+         
+<ul>
+                     
+  <ul>
+<li> <font color="#000000">OPC が、承認された注文書を Supplier に送信する</font></li>
+<li> <font color="#000000">Supplier が、出荷した品目について</font><font color="#000000">納品書を OPC に</font><font
+ color="#000000">返信する</font></li>
+                     
+  </ul>
+           
+</ul>
+<font color="#000000">Web サービス固有の変更をはっきり区別するために、その種の変更はすべて、<tt>&lt;petstore.home&gt;/src</tt> ディレクトリの下の <tt>webservices</tt> という別個のソースツリーに格納されています。このディレクトリに含まれている変更内容は、以下のとおりです。</font>
+<ul>
+<li> <font color="#000000">Supplier を変更して、OPC からの注文書を処理する Web サービスを提供するようにした </font> </li>
+<li> <font color="#000000">OPC を変更して、Supplier からの納品書を処理する Web サービスを提供するようにした</font> </li>
+<li> <font color="#000000">Supplier と OPC がそれぞれ提供する注文書処理 Web サービスと納品書処理 Web サービスはどちらも、<a href="http://java.sun.com/blueprints/guidelines">BluePrints for Web-services</a> ドキュメントで説明されている <tt>Asynchronous Service</tt> モデルに従っている。これは、どちらの Web サービスも処理に時間がかかり、サービスの要求側はサービスが完了するまで待たされないようにするためである</font></li>
+<li> <font color="#000000">どちらの Web サービスも、XML ドキュメント (つまり、注文書または納品書) を受け取り、それらのドキュメントを検証し、検証済みの XML ドキュメントを処理するために適切な JMS キューに置き、 回答を要求側に返す</font></li>
+<li> <font color="#000000">OPC が提供する Web サービスのインタフェースと実装は、</font><font
+ color="#000000"><tt>&lt;petstore.home&gt;src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/OPC*.java</tt> ファイルに実装されている </font></li>
+<font color="#000000">        <li> <font color="#000000">Supplier が提供する Web サービスのインタフェースと実装は、</font><tt>&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/Supplier*.java</tt> ファイルに実装されている <font color="#000000"> </font></li>
+<li> <font color="#000000">OPC が JAXRPC を介して Supplier と通信したり、その逆の通信を行うため、2 つの新しい Transition Delegate (1 つは OPC-Supplier 間の通信用、もう 1 つは逆方向の通信用) を実装した。それらのファイルは、<tt>&lt;petstore.home&gt;/src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/transitions/OrderApprovalTD.java</tt> および <tt>&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/transitions/SupplierOrderTD.java</tt> である</font>
+   </li>
+<li> <font color="#000000">この実装では、<tt>Java Web Services Developer Pack (JWSDP)</tt> を使用して Web サービスを実装している。それに応じて、JWSDP が必要とする構成を、<tt>  &lt;petstore.home&gt;/src/webservices/apps/opc/src/xrpcc-config.xml</tt> および <tt> &lt;petstore.home&gt;/src/webservices/apps/supplier/src/xrpcc-config.xml</tt> の各ファイルに実装した</font></li>
+<li>すべての ejb-jar.xml、Supplier および OPC の両方に対する web.xml を変更して、Web サービスがサーブレットエンドポイントによって実装されたこと、および JWSDP のインストールによって操作のポートが 8000 から 8080 に変更されたことが反映されている</li>
+    </font> 
+</ul>
+  <font color="#000000">  </font> 
+<h2><font color="#000000">メソッド指向の対話のための Web サービス</font></h2>
+  <font color="#000000">  </font> 
+<p><font color="#000000"><font color="#000000">Pet Store の JavaWebStart 対応の管理アプリケーションは、アプリケーションに豊富なユーザインタフェースを提供する方法を説明するものです。この Swing アプリケーションは、サーバ上のいくつかの明確に定義された操作を呼び出します。たとえば、売上情報を取得したり、保留されている注文を承認したりします。Web サービスを利用しないバージョンのこのアプリケーションでは、独自の XML 形式を使用して HTTP POST 経由でこれらのコマンドをサーバに送信します。それには、これらのコマンドを作成し、解析し、送信するために、またその結果を処理するために、大量のコードが必要になります。しかし、その代わりとなる管理用の Web サービス <tt>AdminWebService</tt> が提供されると、メソッド指向の JAXRPC インタフェースが提供されることにより、この複雑さが大幅に削減されます。加えた変更は次のとおりです。<br></font></font></p>
+  <font color="#000000">  </font> 
+<ul>
+<font color="#000000">   <li>新しい Web サービス <tt>AdminWebService</tt> を作成した。これは、JAXRPC インタフェース <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/com/sun/j2ee/blueprints/admin/webservice/AdminService.java</tt> によって実装される</li>
+<li>Swing クライアントは、サーバと通信するために Web サービスに固有のプロキシクラス <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/WebServicePetStoreProxy.java</tt><i></i> を使用する。このクライアントを実行するには、<tt>&lt;petstore.home&gt;/webservices</tt> (または、ソースコードを再ビルドした場合には <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/build </tt>) に直接移動して、<tt>adminwsclient.bat</tt> ファイル (Windows の場合) または <tt>adminwsclient.sh</tt> ファイル (UNIX の場合) を実行する</li>
+<li>JavaWebStart 対応のクライアントは、依然としてサーバとの通信に HTTP POST を使用することに注意する。このクライアントは、サーバと通信するために HTTP POST 固有のプロキシクラス <tt>&lt;petstore.home&gt;/src/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/HttpPostPetStoreProxy.java</tt> を使用する</li>
+    </font> 
+</ul>
+  <font color="#000000">         </font> 
+<hr noshade="" =""><font color="#000000"><a href="copyright.html">Copyright &copy; 2002 Sun Microsystems, Inc. All Rights Reserved.</a>  <br> <br> <br></font> <br>
+</body>
+</html>

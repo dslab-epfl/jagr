@@ -1,0 +1,52 @@
+<analysisengine>
+  <!--
+      This embedded configuration loads observations from disk, does
+      SQL parsing, and detail merging; verifies that the traces
+      are complete and sends Paths to the output record collection
+
+      Takes one argument:
+         input=filename
+         instanceAttributes=comma separated list
+            defining attributes of instances components
+         logicalAttributes=comma separated list
+            defining attributes of logical components
+         online=true/false
+            whether these plugins should operate in online or offline
+            mode.
+
+      Pass in a record collections: 
+
+         * 'output (for paths)
+
+   -->
+
+  <collection name="obs">
+    <attribute key="transient">true</attribute>
+  </collection>
+  <collection name="verifiedtraces">
+    <attribute key="transient">true</attribute>
+  </collection>
+
+  <subanalysis name="loadObs" file="../general/LoadFromDisk.econf">
+    <arg key="input">$input</arg>
+    <arg key="online">$online</arg>
+    <bindrecord key="output">obs</bindrecord>
+  </subanalysis>
+
+  <subanalysis name="verifyPaths" file="VerifyRequestTraces.econf">
+    <arg key="definingAttributes">$instanceAttributes</arg>
+    <arg key="online">$online</arg>
+    <bindrecord key="input">obs</bindrecord>
+    <bindrecord key="output">verifiedtraces</bindrecord>
+  </subanalysis>
+
+  <plugin name="GeneratePaths">
+    <classname>roc.pinpoint.analysis.plugins2.paths.GeneratePaths</classname>
+    <arg key="online">$online</arg>
+    <arg key="inputCollection">verifiedtraces</arg>
+    <arg key="outputCollection">output</arg>
+    <arg key="definingAttributes">$logicalAttributes</arg>
+  </plugin>
+
+
+</analysisengine>

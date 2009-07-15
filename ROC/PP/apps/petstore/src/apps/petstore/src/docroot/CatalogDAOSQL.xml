@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE DAOConfiguration [
+
+	<!ELEMENT DAOConfiguration (DAOStatements+)>
+
+	<!ELEMENT DAOStatements (SQLStatement+)>
+	<!ATTLIST DAOStatements
+        database CDATA #REQUIRED
+    >
+ 
+	<!ELEMENT SQLStatement (SQLFragment+)>
+	<!ATTLIST SQLStatement
+        method (GET_CATEGORY|GET_CATEGORIES|GET_PRODUCT|GET_PRODUCTS|GET_ITEM|GET_ITEMS|SEARCH_ITEMS) #REQUIRED
+    >
+
+	<!ELEMENT SQLFragment (#PCDATA)>
+	<!ATTLIST SQLFragment
+        parameterNb CDATA "0"
+        occurrence (ONCE|VARIABLE) "ONCE"
+    >
+]>
+
+<DAOConfiguration>
+    <DAOStatements database="cloudscape">
+        <SQLStatement method="GET_CATEGORY">
+            <SQLFragment parameterNb="2">
+                select name, descn
+                    from (category a join category_details b on a.catid=b.catid)
+                    where locale = ? and a.catid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_CATEGORIES">
+            <SQLFragment parameterNb="1">
+                select a.catid, name, descn
+                    from (category a join category_details b on a.catid=b.catid) 
+                    where locale = ?  order by name
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_PRODUCT">
+            <SQLFragment parameterNb="2">
+                select name, descn
+                    from (product a join product_details b on a.productid=b.productid)
+                    where locale = ? and a.productid = ? 
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_PRODUCTS">
+            <SQLFragment parameterNb="2">
+                select a.productid, name, descn
+                    from (product a join product_details b on a.productid=b.productid)
+                    where locale = ? and a.catid = ? order by name
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_ITEM">
+            <SQLFragment parameterNb="2">
+                select catid, a.productid, name, b.image, b.descn, attr1, attr2, attr3,
+                        attr4, attr5, listprice, unitcost
+                    from (((item a join item_details b on a.itemid=b.itemid)
+                        join product_details c on a.productid=c.productid)
+                        join product d on d.productid=c.productid and b.locale = c.locale)
+                    where b.locale = ? and a.itemid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_ITEMS">
+            <SQLFragment parameterNb="2">
+                select catid, name, a.itemid, b.image, b.descn, attr1, attr2, attr3,
+                        attr4, attr5, listprice, unitcost
+                    from (((item a join item_details b on a.itemid=b.itemid)
+                        join product_details c on a.productid=c.productid)
+                        join product d on d.productid=c.productid and b.locale = c.locale)
+                    where b.locale = ? and a.productid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="SEARCH_ITEMS">
+            <SQLFragment parameterNb="4">
+                select catid, a.productid, name, a.itemid, b.image, b.descn, attr1, 
+                        attr2, attr3, attr4, attr5, listprice, unitcost 
+                    from (((item a join item_details b on a.itemid=b.itemid)
+                        join product_details c on a.productid=c.productid)
+                        join product d on d.productid=c.productid and b.locale = c.locale)
+                    where b.locale = ? and ((lower(name) like ? or lower(catid) like ? or lower(b.descn) like ?)
+            </SQLFragment>
+            <SQLFragment parameterNb="3" occurrence="VARIABLE">
+                or (lower(name) like ? or lower(catid) like ? or lower(b.descn) like ?)  
+            </SQLFragment>
+            <SQLFragment parameterNb="0">
+                )
+            </SQLFragment>
+        </SQLStatement>
+    </DAOStatements>
+    <DAOStatements database="oracle">
+        <SQLStatement method="GET_CATEGORY">
+            <SQLFragment parameterNb="2">
+                select name, descn
+                    from category a, category_details b
+                    where a.catid = b.catid and locale = ? and a.catid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_CATEGORIES">
+            <SQLFragment parameterNb="1">
+                select a.catid, name, descn
+                    from category a, category_details b
+                    where a.catid = b.catid and locale = ? order by name
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_PRODUCT">
+            <SQLFragment parameterNb="2">
+                select name, descn
+                    from product a, product_details b
+                    where a.productid = b.productid and locale = ? and a.productid = ? 
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_PRODUCTS">
+            <SQLFragment parameterNb="2">
+                select a.productid, name, descn
+                    from product a, product_details b
+                    where a.productid = b.productid and locale = ? and a.catid = ? order by name
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_ITEM">
+            <SQLFragment parameterNb="2">
+                select catid, a.productid, name, b.image, b.descn, attr1, attr2, attr3,
+                        attr4, attr5, listprice, unitcost
+                    from item a, item_details b, product_details c, product d
+                    where a.itemid = b.itemid and a.productid = c.productid 
+                        and d.productid = c.productid and b.locale = c.locale
+                        and b.locale = ? and a.itemid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="GET_ITEMS">
+            <SQLFragment parameterNb="2">
+                select catid, name, a.itemid, b.image, b.descn, attr1, attr2, attr3,
+                        attr4, attr5, listprice, unitcost
+                    from item a, item_details b, product_details c, product d
+                    where a.itemid = b.itemid and a.productid = c.productid 
+                        and d.productid = c.productid and b.locale = c.locale
+                        and b.locale = ? and a.productid = ?
+            </SQLFragment>
+        </SQLStatement>
+        <SQLStatement method="SEARCH_ITEMS">
+            <SQLFragment parameterNb="4">
+                select catid, a.productid, name, a.itemid, b.image, b.descn, attr1, 
+                        attr2, attr3, attr4, attr5, listprice, unitcost 
+                    from item a, item_details b, product_details c, product d
+                    where a.itemid = b.itemid and a.productid = c.productid 
+                        and d.productid = c.productid and b.locale = c.locale
+                        and b.locale = ? and ((lower(name) like ? or lower(catid) like ? or lower(b.descn) like ?)
+            </SQLFragment>
+            <SQLFragment parameterNb="3" occurrence="VARIABLE">
+                or (lower(name) like ? or lower(catid) like ? or lower(b.descn) like ?)  
+            </SQLFragment>
+            <SQLFragment parameterNb="0">
+                )
+            </SQLFragment>
+        </SQLStatement>
+    </DAOStatements>
+</DAOConfiguration>

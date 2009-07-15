@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar>
+   <description>jBoss CTS application</description>
+   <display-name>jBoss CTS</display-name>
+   <enterprise-beans>
+      <session>
+         <display-name>Stateless Session</display-name>
+         <ejb-name>StatelessSessionBean</ejb-name>
+         <home>org.jboss.test.cts.interfaces.StatelessSessionHome</home>
+         <remote>org.jboss.test.cts.interfaces.StatelessSession</remote>
+         <ejb-class>org.jboss.test.cts.ejb.StatelessSessionBean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+      </session>
+      <session>
+         <display-name>Stateful Session</display-name>
+         <ejb-name>StatefulSessionBean</ejb-name>
+         <home>org.jboss.test.cts.interfaces.StatefulSessionHome</home>
+         <remote>org.jboss.test.cts.interfaces.StatefulSession</remote>
+         <ejb-class>org.jboss.test.cts.ejb.StatefulSessionBean</ejb-class>
+         <session-type>Stateful</session-type>
+         <transaction-type>Container</transaction-type>
+         <ejb-ref>
+            <ejb-ref-name>ejb/StatelessSessionHome</ejb-ref-name>
+            <ejb-ref-type>Session</ejb-ref-type>
+            <home>org.jboss.test.cts.interfaces.StatelessSessionHome</home>
+            <remote>org.jboss.test.cts.interfaces.StatelessSession</remote>
+            <ejb-link>StatelessSessionBean</ejb-link>
+         </ejb-ref>
+         <ejb-local-ref>
+            <ejb-ref-name>ejb/CMPBeanLocalHome</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>org.jboss.test.cts.interfaces.CtsCmpLocalHome</local-home>
+            <local>org.jboss.test.cts.interfaces.CtsCmpLocal</local>
+            <ejb-link>CMPBean</ejb-link>
+         </ejb-local-ref>
+      </session>
+
+      <entity>
+         <description>Test for BEAN managed persistence</description>
+         <ejb-name>BMPBean</ejb-name>
+         <home>org.jboss.test.cts.interfaces.CtsBmpHome</home>
+         <remote>org.jboss.test.cts.interfaces.CtsBmp</remote>
+         <ejb-class>org.jboss.test.cts.ejb.CtsBmpBean</ejb-class>
+         <persistence-type>Bean</persistence-type>
+         <prim-key-class>org.jboss.test.cts.keys.AccountPK</prim-key-class>
+         <reentrant>True</reentrant>
+         <resource-ref>
+            <res-ref-name>datasource</res-ref-name>
+            <res-type>javax.sql.DataSource</res-type>
+            <res-auth>Container</res-auth>
+         </resource-ref>
+      </entity>
+      <entity>
+         <description>Test for BEAN managed persistence (Callbacks)</description>
+         <ejb-name>BMPCallbackBean</ejb-name>
+         <home>org.jboss.test.cts.interfaces.BmpCallbackHome</home>
+         <remote>org.jboss.test.cts.interfaces.BmpCallback</remote>
+         <ejb-class>org.jboss.test.cts.ejb.BmpCallbackBean</ejb-class>
+         <persistence-type>Bean</persistence-type>
+         <prim-key-class>org.jboss.test.cts.keys.AccountPK</prim-key-class>
+         <reentrant>True</reentrant>
+         <resource-ref>
+            <res-ref-name>datasource</res-ref-name>
+            <res-type>javax.sql.DataSource</res-type>
+            <res-auth>Container</res-auth>
+         </resource-ref>
+      </entity>
+      <entity>
+         <description>Test for CONTAINER managed persistence </description>
+         <ejb-name>CMPBean</ejb-name>
+         <home>org.jboss.test.cts.interfaces.CtsCmpHome</home>
+         <remote>org.jboss.test.cts.interfaces.CtsCmp</remote>
+         <local-home>org.jboss.test.cts.interfaces.CtsCmpLocalHome</local-home>
+         <local>org.jboss.test.cts.interfaces.CtsCmpLocal</local>
+         <ejb-class>org.jboss.test.cts.ejb.CtsCmpBean</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>org.jboss.test.cts.keys.AccountPK</prim-key-class>
+         <reentrant>True</reentrant>
+         <cmp-field><field-name>pk</field-name></cmp-field>
+         <cmp-field><field-name>personsName</field-name></cmp-field>
+         <primkey-field>pk</primkey-field>
+      </entity>
+   </enterprise-beans>
+</ejb-jar>

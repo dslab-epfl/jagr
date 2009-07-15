@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2003 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: setup.xml,v 1.1 2004/02/04 10:06:17 emrek Exp $             -->
+<!-- =================================================================== -->
+
+<project name="petstore" default="core" basedir=".">
+
+  <target name="core" depends="init, help, create_jms_queues, create_users, create_petstore_db, create_supplier_db, create_opc_db">
+    <echo message="The J2EE SDK is now successfully configured to run the petstore application. Please restart cloudscape and the j2ee servers, and deploy all the ear files. You can do this by issuing the following commands:  "/>
+    <echo message="change directory to j2sdkee1.3/bin; start RI and Cloudscape in separate windows"/>
+    <echo message="cloudscape -start"/>
+    <echo message="j2ee -verbose"/>
+    <echo message="change directory to petstore1.3.2 to deploy the EAR files"/>
+    <echo message="setup.bat deploy (or on Unix, setup.sh deploy)"/>
+  </target>
+  
+  <target name="all" depends="core, docs"/>
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="src/build.properties"/>
+
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/system/cloudscape.jar:${j2ee.home}/lib/system/tools.jar:${j2ee.home}/lib/cloudscape/RmiJdbc.jar:${j2ee.home}/lib/cloudscape/cloudclient.jar:${j2ee.home}/lib/classes:${j2ee.home}/classes:${j2ee.home}/lib/locale:${j2ee.home}/lib/jhall.jar"/>
+  </target>
+
+  <target name="help" depends="init">
+  </target>
+  
+  <target name="create_jms_queues" depends="init">
+    <echo message="Creating JMS Queues ...."/>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/MailOrderApprovalQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/MailCompletedOrderQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/MailQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/OrderApprovalQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/OrderQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/opc/InvoiceTopic topic"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsDestination jms/supplier/PurchaseOrderQueue queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/opc/QueueConnectionFactory queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/supplier/QueueConnectionFactory queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/opc/TopicConnectionFactory topic"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/supplier/TopicConnectionFactory topic"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/petstore/QueueConnectionFactory queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJmsFactory jms/admin/QueueConnectionFactory queue"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-listJmsDestination"/>
+    </java>
+  </target>
+
+  <target name="create_users" depends="init">  
+    <echo message="Creating users ...."/>
+    <java classname="com.sun.enterprise.tools.admin.RealmTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addGroup default"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.RealmTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-add jps_admin admin default"/>
+    </java>
+    <java classname="com.sun.enterprise.tools.admin.RealmTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-add supplier supplier default"/>
+    </java>
+  </target>  
+  
+  <target name="create_petstore_db" depends="init">
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJdbcXADatasource jdbc/petstore/PetStoreDB COM.cloudscape.core.RemoteXaDataSource -props createDatabase=create databaseName=PetStoreDB remoteDataSourceProtocol=rmi"/>
+    </java>
+  </target>
+
+  <target name="create_supplier_db" depends="init">
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJdbcXADatasource jdbc/supplier/SupplierDB COM.cloudscape.core.RemoteXaDataSource -props createDatabase=create databaseName=SupplierDB remoteDataSourceProtocol=rmi"/>
+    </java>
+  </target>
+
+  <target name="create_opc_db" depends="init">
+    <java classname="com.sun.enterprise.tools.admin.AdminTool" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="javax.net.ssl.trustStore" value="${j2ee.home}/lib/security/cacerts.jks"/>
+      <sysproperty key="java.security.auth.policy" value="${j2ee.home}/lib/security/jaas.policy"/>            
+      <arg line="-addJdbcXADatasource jdbc/opc/OPCDB COM.cloudscape.core.RemoteXaDataSource -props createDatabase=create databaseName=OPCDB remoteDataSourceProtocol=rmi"/>
+    </java>
+  </target>
+  
+  <target name="deploy" depends="init">
+    <echo message="Deploying ears ...."/>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL petstore.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy petstore.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL opc.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy opc.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL supplier.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy supplier.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL petstoreadmin.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy petstoreadmin.ear ${j2ee.server.name}" />
+    </exec>
+    <echo message="The petstore application is now installed."/>
+    <echo message="Please restart your cloudscape database and the J2EE server, and then point your browser to http://${j2ee.server.name}:${j2ee.server.port}/petstore to access petstore."/>
+  </target>
+  
+  <target name="build" depends="init">
+    <ant dir="src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init">
+    <property name="petstore.javadocs.dir" value="docs/api"/>
+    <ant dir="src" target="docs"/>
+  </target>
+</project>

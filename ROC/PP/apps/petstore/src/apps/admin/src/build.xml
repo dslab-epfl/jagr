@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.3 2003/03/14 09:58:59 emrek Exp $           -->
+<!-- =================================================================== -->
+
+<project name="petstoreadmin" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <property name="admin.application.name" value="AdminEAR"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="admin.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="admin.build" value="${admin.home}/build"/>
+    <property name="admin.buildjardir" value="${admin.build}/ejbjar"/>
+    <property name="admin.src" value="${admin.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="admin.classbindir" value="${admin.build}/classes"/>
+
+    <!-- OPC Component -->
+    <property name="admin.opc.home" value="../../opc"/>
+    <property name="admin.opc.ejbjar" value="${admin.opc.home}/build/opc-ejb.jar"/>
+    <property name="admin.opc.ejbjar.client" value="${admin.opc.home}/build/opc-ejb-client.jar"/>
+
+    <!-- Async Sender Component -->
+    <property name="admin.async.home" value="../../../components/asyncsender"/>
+    <property name="admin.async.ejbjar" value="${admin.async.home}/build/asyncsender-admin-ejb.jar"/>
+    <property name="admin.async.ejbjar.client" value="${admin.async.home}/build/asyncsender-ejb-client.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="admin.servicelocator.home" value="../../../components/servicelocator"/>
+    <property name="admin.servicelocator.client" value="${admin.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="admin.xmldocuments.home" value="../../../components/xmldocuments"/>
+    <property name="admin.xmldocuments.client" value="${admin.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- Rich Client Component -->
+    <property name="client.src" value="${admin.src}/client"/>
+    <property name="client.classbindir" value="${admin.build}/client"/>
+    <property name="client.jar" value="docroot/AdminApp.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${jboss.home}/client/jbossall-client.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${jboss.home}/server/default/lib/javax.servlet.jar"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="admin.classpath" value="${admin.classbindir}:${admin.opc.ejbjar.client}:${admin.async.ejbjar.client}:${admin.servicelocator.client}:${admin.xmldocuments.client}:${j2ee.classpath}"/>
+    <property name="admin.war" value="${admin.build}/petstoreadmin.war"/>
+    <property name="admin.ear" value="${admin.build}/petstoreadmin.ear"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${admin.classbindir}"/>
+    <mkdir dir="${client.classbindir}"/>
+    <javac srcdir="${admin.src}"
+           debug="${javac.debug}"
+           destdir="${admin.classbindir}"
+           classpath="${admin.classpath}"
+           includes="admin/com/**"/>
+    <javac srcdir="${client.src}"
+           debug="${javac.debug}"
+           destdir="${client.classbindir}"
+	   includes="**"/>
+    <mkdir dir="${client.classbindir}/resources"/>
+    <copy todir="${client.classbindir}/resources">
+          <fileset dir="${client.src}/resources" excludes="cvs"/>
+    </copy>
+  </target> 
+
+  <target name="war" depends="init">
+    <jar jarfile="${client.jar}" basedir="${client.classbindir}" excludes="cvs,META-INF" />
+    <copy file="${client.src}/jaxp.jar" todir="docroot" />
+    <copy file="${client.src}/crimson.jar" todir="docroot" />
+    <copy todir="docroot/WEB-INF/classes">
+          <fileset dir="${admin.classbindir}" excludes="cvs"/>
+    </copy>
+    <copy file="${admin.opc.ejbjar.client}" todir="docroot/WEB-INF/lib" />
+    <copy file="${admin.async.ejbjar.client}" todir="docroot/WEB-INF/lib" />
+    <copy file="${admin.xmldocuments.client}" todir="docroot/WEB-INF/lib" />
+    <copy file="${admin.servicelocator.client}" todir="docroot/WEB-INF/lib" />
+    <delete file="${admin.war}" quiet="true"/>
+    <jar jarfile="${admin.war}" basedir="docroot" excludes="cvs" />
+    <delete dir="docroot/WEB-INF/classes"/>
+    <delete dir="docroot/WEB-INF/lib"/>
+    <delete file="${client.jar}"/>
+    <delete file="docroot/jaxp.jar"/>
+    <delete file="docroot/crimson.jar"/>
+  </target>
+
+  <target name="ear" depends="init">
+      <mkdir dir="${admin.buildjardir}"/>
+      <mkdir dir="${admin.buildjardir}/META-INF"/>
+      <copy file="${admin.src}/application.xml" todir="${admin.buildjardir}/META-INF" />
+      <copy file="${admin.src}/sun-j2ee-ri.xml" todir="${admin.buildjardir}/META-INF" />
+      <copy file="${admin.war}" todir="${admin.buildjardir}" />
+      <copy file="${admin.opc.ejbjar}" todir="${admin.buildjardir}" />
+      <copy file="${admin.async.ejbjar}" todir="${admin.buildjardir}" />
+      <copy file="${admin.opc.ejbjar.client}" todir="${admin.buildjardir}" />
+      <copy file="${admin.async.ejbjar.client}" todir="${admin.buildjardir}" />
+      <copy file="${admin.xmldocuments.client}" todir="${admin.buildjardir}" />
+      <copy file="${admin.servicelocator.client}" todir="${admin.buildjardir}" />
+      <delete file="${admin.ear}" quiet="true"/>
+      <jar jarfile="${admin.ear}" basedir="${admin.buildjardir}" />
+      <delete dir="${admin.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${admin.build}"/>
+    <delete dir="${admin.dstdocdir}"/>
+    <ant dir="${admin.opc.home}/src" target="clean" />
+    <ant dir="${admin.async.home}/src" target="clean"/>
+    <ant dir="${admin.xmldocuments.home}/src" target="clean"/>
+    <ant dir="${admin.servicelocator.home}/src" target="clean"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${admin.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${admin.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${admin.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${admin.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${admin.opc.home}/src" target="core"/>
+      <ant dir="${admin.async.home}/src" target="core"/>
+      <ant dir="${admin.xmldocuments.home}/src" target="core"/>
+      <ant dir="${admin.servicelocator.home}/src" target="core"/>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building PetstoreAdmin Application +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, war, ear" />
+  <target name="all" depends="core" />
+</project>
+

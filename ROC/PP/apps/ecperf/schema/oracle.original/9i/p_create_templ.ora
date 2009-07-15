@@ -1,0 +1,14 @@
+#    oracle parameter file for creating database
+db_name = DBNAME
+control_files	= cntrl.dbf
+compatible		= 9.0.0.0.0
+db_files		= 256
+db_block_buffers        = 2000
+db_block_size           = 2048 
+dml_locks               = 500
+log_checkpoint_interval = 999999999
+log_buffer              = 32768
+sessions                = 70
+processes               = 50
+transactions            = 50
+undo_management		= AUTO

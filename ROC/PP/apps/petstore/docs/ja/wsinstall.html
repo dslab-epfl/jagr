@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                                
+<meta http-equiv="Content-Type"
+ content="text/html; charset=euc-jp">
+                                
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+<title>Java[TM] Pet Store Demo 1.3.1_02 &gt; デモの Web サービスの有効化</title>
+</head>
+  <body>
+        &nbsp;        
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+        <tbody>
+           <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"><a
+ href="index.html">Java&#153; Pet Store Demo 1.3.1_02</a></font></b> <font
+ color="#ffffff">&gt; <b>デモの Web サービスの有効化</b></font></td>
+         <td bgcolor="#000033">                                         
+       
+<div align="right"><b><font color="#ccccff"><a
+ href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+        </td>
+        </tr>
+                             
+  </tbody>       
+</table>
+                
+<h1>デモの Web サービスの有効化</h1>
+ここでは、Java Pet Store Demo の Web サービス機能を有効にする方法について説明します。デモの Web サービス機能を有効にするには、Java 2 SDK, Enterprise Edition (J2EE<sup><font size="-2">TM</font></sup> SDK), v1.3.1 が必要です。Web サービスを Java 2 SDK, Enterprise Edition (J2EE<sup><font size="-2">TM</font></sup> SDK), v1.4 に配備する場合は、<a href="http://java.sun.com/j2ee/blueprints/">BluePrints</a> の Web サイトを参照してください。また、「<a href="installing.html">デモのインストール</a>」の説明に従って、まずデモの基本バージョンをインストールしておく必要もあります。
+  
+<h2> システム要件</h2>
+次の付加的なソフトウェアをダウンロードしてインストールする必要があります。
+         
+<ul>
+                        
+<p><b>1. Java Web Services Developer Pack, v1.0_01</b>: <a
+ href="http://java.sun.com/webservices/downloads/webservicespack.html">ダウンロード</a></p>
+             
+</ul>
+                
+<h2> 必要な環境変数</h2>
+次の付加的な環境変数を設定する必要があります。
+<ul>
+                        
+<p><tt>JWSDP_HOME</tt> 変数に、Java Web Services Developer Pack (JWSDP) のインストール先のルートディレクトリへのパスを指定する必要があります。たとえば、JWSDP を <tt>/usr/local/java/jwsdp-1_0_01</tt> にインストールした場合は、そのパスを <tt>JWSDP_HOME</tt> の値として設定する必要があります。このドキュメントの以降の部分では、このパスを &lt;jwsdp.home&gt; と表記します。</p>
+             
+</ul>
+             
+<h2> デモのインストール</h2>
+Web サービスを有効にしてデモをインストールするには、次の手順に従ってください。
+<ol>
+              
+</ol>
+         
+<blockquote>               
+<p><tt><b>Web サービステクノロジを J2EE に統合するスクリプトを実行します。</b></tt></p>
+         </blockquote>
+               
+<blockquote>                       
+<p>UNIX を使用している場合は、シェルプロンプトを開いて次のコマンドを入力します。<br>
+           </p>
+                             
+<pre>cd &lt;jwsdp.home&gt;/bin</pre>
+                             
+<pre>sh jwsdponj2ee.sh $J2EE_HOME</pre>
+                             
+<p>Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。</p>
+                             
+<pre>cd &lt;jwsdp.home&gt;\bin</pre>
+                                              
+<pre>jwsdponj2ee.bat %J2EE_HOME%</pre>
+                            </blockquote>
+                 
+<ol>
+                   
+</ol>
+           
+<blockquote>                  
+<p> <b>Cloudscape データベースを起動します。</b> </p>
+                       
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。</p>
+                       
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+                              
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+<b>J2EE サーバを起動します。</b>                  
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。</p>
+                       
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+                              
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+      </blockquote>
+           
+<ol>
+             
+</ol>
+         
+<ol>
+<b>Web サービスを有効にした Pet Store のディレクトリに移動します。</b>    
+                                   
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。</p>
+                       
+<pre><tt>cd &lt;petstore.home&gt;/webservices</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+                              
+<pre><tt>cd &lt;petstore.home&gt;\webservices</tt></pre>
+<b>設定スクリプトを実行して、アプリケーションを配備します。</b>         
+                              
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。</p>
+                       
+<pre><tt>sh setup.sh deploy</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+                              
+<pre><tt>setup.bat deploy</tt></pre>
+                                 
+</ol>
+デモをインストールした後は、Pet Store の<a href="using.html">使用</a>を開始できます。
+<p>Web サービスを有効にした Java Pet Store Demo アプリケーションに加えられた変更についての詳細は、<a href="wschanges.html">このページ</a>を参照してください。</p>
+                   
+<p> </p>
+                   
+<hr noshade="" =""><a href="copyright.html">Copyright &copy; 2002 Sun Microsystems, Inc. All Rights Reserved.</a>        <br> <br> <br> <br> <br> <br>
+</body>
+</html>

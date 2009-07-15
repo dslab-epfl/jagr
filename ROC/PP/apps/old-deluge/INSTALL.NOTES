@@ -1,0 +1,19 @@
+Emre Kiciman, emrek@cs.stanford.edu
+
+To install Deluge on RedHat 8.0, I needed to install:
+
+perl-CPAN
+perl-Crypt-SSLeay
+perl-libwww-perl
+perl-URI 
+perl-HTML-Parser
+perl-HTML-Tagset
+perl-Time-HiRes
+perl-PDL
+
+also, I needed to manually install the ParallelUserAgent library for perl, 
+using a version not in CPAN (2.54_21).
+This was available in http://www.inf.ethz.ch/~langhein/ParallelUA/  and
+might be available in CPAN by the time you read this.
+
+

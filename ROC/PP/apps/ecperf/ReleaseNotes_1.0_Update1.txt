@@ -1,0 +1,350 @@
+                     ECperf Kit Release Notes
+              Version 1.0 Update 1, Dated 9/21/01
+
+Installation Instructions
+
+1. Download the Kit from the web site. Use gunzip (GNU unzip) to
+   unzip the file.
+2. We recommend that you create a new user account (say 'ecperf')
+   whose home directory is where you will install the kit.
+3. Untar the kit and read the file README.html in the top-level
+   directory and follow its directions closely.
+
+Enhancements made in this release :
+
+1. The load programs no longer use hard-coded names /tmp/*pipe
+   to write/read information to/from temporary files. An optional 
+   property 'pipeDir' has been added to config/*db.properties. The
+   default is /tmp. 
+
+2. The Driver no longer assumes that rmiregistry resides in
+   $JAVA_HOME/bin. An optional property 'rmiCommand' has been added
+   to config/run.properties. The default is $JAVA_HOME/bin/rmiregistry.
+
+3. Two new variables ECPERF_PREFIX and EMULATOR_PREFIX are allowed
+   in vendor-specific env files. The build.xml and tomcat.xml scripts
+   have been modified to recognize these variables. This allows more 
+   flexibility in accessing the EmulatorServlet and DeliveryServlet for 
+   appservers that need a prefix.
+
+4. A new optional property called 'msBetweenThreadStart' has been added
+   to config/run.properties. This allows one to specify a delay time in 
+   ms between multiple client threads that are started. This is useful
+   at higher rates when the simultaneous start of a large number of 
+   threads can be problematic.
+
+5. Most of the database datatypes that were defined as 'varchar'
+   have been changed to 'char' as fixed character fields have a lower
+   overhead. 
+
+6. Removed packaging xerces.jar along with supplier and emulator. 
+   Latest version of the jar is included in the distribution which should
+   be added to the classpath of both app server and the web server 
+   hosting emulator servlet.
+
+
+The bugs fixed in this release are listed below. Each bug lists the
+following information : 
+    BugId       - identifier for the bug 
+    Synopsis    - brief summary of the bug 
+    Description - a more detailed account of the bug
+    Fix         - the actual fix made
+
+1. BugId      4470567
+Synopsis      minor problems in PartEnt/OrderCustomerSes entries in xml
+Description   <container_transaction> tag for PartEnt missing in 
+              mfg.xml. <ejb-link> for OrderCustomerSes in orders.xml
+              should be OrderCustomerEnt instead of OrderCustomerSes.
+Fix    The typo is fixed. <container_transaction> is 
+              not added to PartEnt as it is an optional section according 
+              to the spec. Note that PartEnt is never actually used
+              but is part of the xml as other entities inherit from it.
+
+2. BugId      4470571       
+Synopsis      welcome file list incorrect in war xml
+Description   The welcomefilelist tags are in the wrong place in the 
+              war file descriptors. I am testing this with WAS 4.0 
+              and it is validating those files against the DTD which 
+              requires the tags to be in the correct position relative 
+              to the other tags in the xml file. Your RI 1.0 implementation 
+              doesn't seem to do this and hence it works 'fine'.
+Fix    Removed <welcome-file-list> tag from servlet.xml 
+              and emulator-web.xml in reference directory. Also,
+              moved the tag in web.xml.
+
+
+BugId         4470574       
+Synopsis      incorrect ejb-link tags in supplier.xml
+Description   The ejb-link tags for SupplierEnt and SComponentEnt beans are 
+              incorrect. Currently these links are set to Supplier and 
+              Scomponent. However, these should be set to the ejb-names. 
+              Without this fix, I get ClassCastExceptions in the BuyerSes 
+              bean when attempting to lookup the home interface of 
+              SComponent using the JNDI name java:comp/env/ejb/SComponent. 
+              The affected beans are BuyerSes and ReceiverSes in suppl
+Fix    The errors are fixed in the supplier.xml
+
+
+BugId         4472839
+Synopsis      ECperf causes POLine not found during delivery
+Description   POs have been sent to the emulator with line items 
+              not in the database so these line items when delivered 
+              back to the SUT could not find the right match. This 
+              problem is caused by failure to clear the POLine 
+              references at ejbCreate. POLines were still coming from
+              previous PO entities utilizing the same bean instance. 
+              Initialization of the references (List) were only done 
+              when the list was not initialized.
+Fix    class com.sun.ecperf.supplier.poent.ejb.POCmpEJB, 
+              method ejbCreate file 
+              src/com/sun/ecperf/supplier/poent/ejb/POCmpEJB.java
+              poLineCache is not cleared in ejbCreate under 
+              certain circumstances. Enforcing reinitialization
+              of poLineCache in ejbCreate fixes the problem.
+
+
+BugId         4480737
+Synopsis      Deadlocks occur in item while running ECperf
+Description   Deadlocks arise on reading items in an order in the 
+              changeorder or orderstatus transactions when run in 
+              CMP mode. This is because the items in an order are 
+              not sorted. Transaction x can have items a and b and
+              another transaction y can have items b and a causing
+              a deadlock.  See 9.1.11 of the EJB 1.1 spec that 
+              talks about potential deadlocks and how to avoid them.
+Fix    Made fixes so that the items in an orderline will 
+              always be in sorted order.
+              Fixed load/LoadOrds.java version 1.11
+              Fixed driver/OrderEntry.java version 1.16
+
+
+BugId         4480749
+Synopsis      In schema/sql/schema_S.sql, there's a typo that 
+              omits a comma
+Description   In schema_S.sql, there's a typo that omits a comma 
+              which prevents one of the tables from being loaded.
+Fix    added a comma to the field
+
+
+BugId         4480756
+Synopsis:     BuyerSes bean not being removed in WorkOrderEnt
+Description   WorkOrderEnt uses BuyerSes stateful session bean to 
+              indicate which components it needs. However, after 
+              issuing the 'buy' call, this bean is not being 
+              removed. Since BuyerSes is stateful, this could 
+              have a performance impact.
+Fix   The buyerses.remove() call in WorkOrderEnt cannot be
+             used as it will cause a RemoveException being thrown 
+             by the container as this bean is in a Transaction. 
+             By using a short idle-timeout this bean can be 
+             removed (using the built-in container optimization) 
+             and may enhance performance as these are Stateful 
+             session beans and should be removed after they have 
+             completed the transaction.
+
+             Also modified other code to explicitly call remove 
+             of all session beans. Affected files :
+             WorkOrderCmpEJB.java, CartSesEJB.java, 
+             ReceiveSesEJB.java, SupplierDomainServlet.java
+
+
+BugId         4480765
+Synopsis      schema_U.sql uses varchar2 which is not supported 
+              by all DBs
+Description   $ECPERF/schema/schema_U.sql file there is a 
+              reference to a datatype of varchar2, but cloudscape 
+              only supports varchar.  If you're not too savvy on 
+              SQL, suffice it to say that varchar2 is an extended 
+              form of varchar that allows more characters to be 
+              stored in that field.
+Fix    the datatype was changed to varchar
+
+
+BugId         4481922
+Synopsis      There's a broken HTML link in 
+              ecperf/src/docroot/manufacturing.html
+Description   There's a broken HTML link in the 
+              ecperf/src/docroot/manufacturing.html. Line 20 of the 
+              HTML points to internal_index.html which does not exist.
+Fix    The new link will fix the broken link. Affected file:
+              manufacturing.html New version 1.9
+
+
+BugId         4482440
+Synopsis      Some of the Misc. stats in Orders.summary are 
+              difficult to meet
+Description   It is difficult to meet the criteria for the 
+              following misc. stats :
+              . %orders that are largeorders
+              . %chgorders that are delete
+              . largeorder widget rate
+              . %orders that fail credit check
+
+              Even on 30 min runs on 2-4 cpu systems, these 
+              stats seldom pass the criteria.
+Fix    After more analysis, it has been determined that the only 
+              stats that consistently fail are the the largeorder widget rate 
+              (both in orders and mfg) and the %orders that fail credit check.
+              For the former, one of the reasons for the failure is that 10% 
+              of orders are rollbacked due to bad credit and thus cannot result 
+              in largeorders. However, the mfg report is not taking this into 
+              consideration. 
+              Changed the check for largeorderwidgetcnt in driver/MfgReport.java 
+              to be 364.5*Ir - 445.5*Ir (10% less).
+
+              The %orders that fail credit check is because of the non-uniform
+              distirbution being used to select customers for neworders which
+              result in variance in the %customers that have bad credit being
+              selected. Consequently, this criteria has been dropped.
+
+
+BugId         4483169
+Synopsis      should use j2ee command tools rather than directly 
+              java calls
+Description   When building ecperf, it makes direct Java calls 
+              to j2ee classes to perform packaging or deployment.
+              These are non-supported internal APIs and might not
+              work in future versions of the RI. Please use the 
+              commands provided by J2EE RI. This would also avoid 
+              the "localstring not found" messages.
+Fix    By using the standard deploytool the warning 
+              "localstring not found" messages have been 
+              eliminated. Modified file : ri.xml version 1.7
+
+
+BugId         4485444
+Synopsis      The dtd's referenced in the web.xml files are no 
+              longer valid
+Description   The dtd's referenced in the ECperf web.xml files are 
+              no longer valid. They used to be: 
+              http://java.sun.com/j2ee/dtds/web-app_2.2.dtd
+              Sun moved the document to: 
+              http://java.sun.com/j2ee/dtds/web-app_2_2.dtd
+              Replace the "2.2" with "2_2".
+Fix    the web.xmls with 2_2 is accepted by the 1.3 RI 
+              verifier. Also http://java.sun.com/j2ee/dtds/ 
+              contains all the dtds including web-app_2_2.dtd 
+              Affected files web.xml, servlet.xml and 
+              emulator-web.xml version 1.18
+
+
+BugId         4489833
+Synopsis      Ant re-builds for J2EE RI adds unwanted jar files in
+              ear file
+Description   Ant re-builds for J2EE RI adds unwanted jar files 
+              in ear file which causes the verifier to reject the 
+              ear file when deployment. The ear contains 
+              ecperf-client.jar and emulator.war etc which are 
+              unwanted.
+Fix    By explicitely including the jar/war files in the 
+              build.xml the issue is solved.
+              build.xml... version 1.9
+
+
+Bugid         4494620
+Synopsis      Problem in exception handling in EmulatorServlet
+Description   There is a problem with exception handling in the 
+              EmulatorServlet.java doPost method, which can cause 
+              a NullPtrException. If an exception occurs while parsing
+              the XML document (parser.parse), or while creating 
+              the PO (new PurchaseOrder), you will later get a 
+              NullPtrException in doPost on po.processPO().
+Fix    By setting and checking a okflag the error condition is avoided.
+
+
+Bugid         4494624
+Synopsis      Change README to reflect that DBMS-specific scripts are only examples
+Description   The way the README currently reads, one is lead to 
+              thinking that the schema scripts in the various 
+              vendor-specific directories are mandatory.
+              In fact, the only requirement is that the scripts 
+              in schema/sql should be used. The vendor-specific 
+              directories are only provided for convenience and 
+              making this apparent can relieve some support 
+              questions as the shell scripts cannot be easily 
+              run on Windows.
+Fix    README.html modified.
+
+
+Bugid         4496229
+Synopsis      xerces.jar packages should not be included in 
+              supplier.jar and emulator.war
+Description   xerces.jar should not be included in the 
+              supplier.jar and emulator.war files as a different 
+              version of the DOMParser class may be used by app 
+              servers.
+Fix    Modified Ant and gmake scripts to remove the unjarring of 
+              xerces.jar. The jar file should be in the app server classpath 
+              if it is not a part of the app server. J2EE_CLASSPATH and in 
+              case of Tomcat copy the jar to lib directory.
+
+
+Bugid         4497372
+Synopsis      Race condition causes "PUrchase Order Not Found"
+Description   When the ReceiverSes bean creates a PO, it sends it to the 
+              emulator to be processed. Sometime after 5 seconds, the emulator
+              will call the SupplierServlet with information from that PO.
+              If, for some reason, the ReceiverSes bean has not committed its 
+              transaction, the SupplierServlet will not find the new purchase 
+              order. Although the call to the emulator is made immediately 
+              before the ReceiverSes bean finishes its business method (hence 
+              triggering the commit), it's possible the session bean thread 
+              may be inactive for the 5 seconds between sending the PO and 
+              committing the transaction (particularly if there's heavy 
+              contention in the database for the purchase order table, 
+              requiring the commit to wait).If the transaction is not 
+              committed in time, the SupplierDomainServlet generates an 
+              ObjectNotFoundException with the string PUrchase Order Not Found.
+Fix    The transaction attribute for POEnt.create() call is made RequiresNew 
+              so that the PO is committed to the database without waiting for 
+              scheduleWorkOrder transaction to complete.
+
+
+Bugid         4497377
+Synopsis      PO lines don't handle leadTime correctly
+Description   The leadTime variable in the POLine beans is a private integer 
+              that is set when the line is created. If the POLine is passivated 
+              between its creation and the call to generateXML, then the 
+              leadTime will have an aribitrary value.
+
+              If the leadTime happens to have a value of 0, this will prevent 
+              the emulator from sleeping and likely lead to the 
+              SupplierDomainServlet getting a PUrchase Order Not Found 
+              exception (see bugid 4497372). If the leadTime has a really 
+              large value, this will skew the results of the benchmark 
+              unfavorably. 
+Fix    After activation - ejbActivate() - set the leadTime to an 
+              invalid value (e.g. negative).
+              After syncing from DB - ejbLoad() in CMP code - check whether 
+              bean has just been activated by checking the invalid leadTime 
+              value. If so, re-lookup the correct leadTime from SComponentEnt. 
+              Doing so will avoid lookups on other ejbLoad calls not occuring 
+              right after activation.
+              Note that this fix requires a reference from POLineEnt to 
+              SComponent to be added to supplier.xml and as such vendors need 
+              to take note of this.
+
+
+Bugid         4501025
+Synopsis      Emulator holds off scheduleWorkOrder transaction 
+              if keepalive is on
+Description   If the emulator runs in a servlet container supporting 
+              keepalive, closure of the response object will not 
+              close the connection. The requestor will still be 
+              waiting causing long running transaction and delivery 
+              failures as orders have not been committed.
+Fix           Add a line in supplier.helper.NonSecureXMLCommand for 
+              the urlconnection before you send anything (line before 
+              conn.setDoOutput(true);), add
+
+              conn.setRequestProperty("Connection","Close");
+      
+              This will enforce the keepalive of the request to 
+              false. It should work with most web containers and
+              is defined in the API docs and RFE (but not clearly 
+              written out).
+              Also, mention in the README that keepalive should
+              be turned OFF for the emulator web container in
+              case the container does not recognize the above
+              property.
+

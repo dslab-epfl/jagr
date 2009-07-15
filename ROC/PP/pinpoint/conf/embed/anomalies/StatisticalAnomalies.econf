@@ -1,0 +1,29 @@
+<analysisengine>
+  <!--
+      This embedded configuration collects observations, does
+      SQL parsing, and detail merging; and sends only verified, complete
+      requests to output.
+
+      Takes one argument:
+         definingAttributes=comma separated list
+            defining attributes of components
+
+      Pass in two record collections: 
+
+         * 'input' (with the current behaviors) and
+		 * 'reference' (with the believed good behaviors)
+         * 'output (anomalies)
+
+   -->
+
+  <plugin name="HistoricalAnomaliesInComponents">
+    <classname>roc.pinpoint.analysis.plugins2.anomalies.HistoricalAnomalies</classname>
+    <arg key="inputCollection">input</arg>
+    <arg key="historicalCollection">reference</arg>
+    <arg key="outputCollection">output</arg>
+    <arg key="definingAttributes">$definingAttributes</arg>
+  </plugin>
+
+   
+</analysisengine>
+   

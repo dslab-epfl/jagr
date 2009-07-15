@@ -1,0 +1,20 @@
+<jboss>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>SupplierOrderEJB</ejb-name>
+      <local-jndi-name>ejb/supplier/supplierpo/SupplierOrder</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>AddressEJB</ejb-name>
+      <local-jndi-name>ejb/supplier/supplierpo/Address</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>ContactInfoEJB</ejb-name>
+      <local-jndi-name>ejb/supplier/supplierpo/ContactInfo</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>LineItemEJB</ejb-name>
+      <local-jndi-name>ejb/supplier/supplierpo/LineItem</local-jndi-name>
+    </entity>
+  </enterprise-beans>
+</jboss>

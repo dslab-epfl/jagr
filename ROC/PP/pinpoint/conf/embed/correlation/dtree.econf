@@ -1,0 +1,18 @@
+<analysisengine>
+
+<!--
+      pass in record collections:
+          input:   the paths, marked with probabilities to be analyzed
+         output:   diagnosis
+-->
+
+<plugin name="dtree">
+  <classname>roc.pinpoint.analysis.plugins2.correlation.DTreeCorrelation</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="outputCollection">output</arg>
+  <arg key="diagnosePeriod">60000</arg>
+  <arg key="threshold">0.0</arg>
+  <arg key="online">$online</arg>
+</plugin>
+
+</analysisengine>

@@ -1,0 +1,7 @@
+<!-- The SAR META-INF/jboss-service.xml descriptor -->
+
+<server>
+  <mbean code="roc.jboss.faultinjector.FaultInjectionController"
+         name="jboss:type=FaultInjectionController" >
+  </mbean>
+</server>

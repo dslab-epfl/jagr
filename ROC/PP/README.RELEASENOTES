@@ -1,0 +1,31 @@
+
+This directory contains:
+
+---------------------------------------------------------
+pinpoint/
+		source code and scripts for pinpoint analysis engine, 
+		tracing libraries, and analysis plugins.
+
+---------------------------------------------------------
+expts/
+		raw logs and analyzed results for pinpoint experiments
+
+---------------------------------------------------------
+pp-jboss/
+		JBoss v3.0.6, modified with Pinpoint tracing
+
+---------------------------------------------------------
+apps/
+		Testbed applications
+
+apps/petstore	Sun's Petstore v1.3.1_02, modified for JBoss & clustering
+                according to http://www.jboss.org/forums/thread.jsp?forum=141&thread=25696
+apps/ecperf	ECPerf v1.0, from jboss's sourceforge CVS (modified for 
+		JBoss & clustering)
+apps/RUBiS	Rice/ObjectWeb's RUBiS, v1.3, comes ready for JBoss
+
+### not added to CVS, but maybe later...
+#apps/trade-2	
+#apps/adventure  Sun's J2EE 1.4 blueprint application
+
+

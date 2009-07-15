@@ -1,0 +1,21 @@
+<analysisengine>
+
+<!--
+
+      pass in record collections:
+	    input    : the paths to be analyzed
+            reference: the reference PCFG (normal behavior)
+            output   : paths, marked with their probabilities.
+
+  -->
+
+<plugin name="pcfgdetector">
+  <classname>roc.pinpoint.analysis.plugins2.anomalies.PCFGDetector</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="pcfgCollection">reference</arg>
+  <arg key="outputCollection">output</arg>
+  <arg key="sensitivity">0.03</arg>
+  <arg key="online">$online</arg>
+</plugin>   
+
+</analysisengine>

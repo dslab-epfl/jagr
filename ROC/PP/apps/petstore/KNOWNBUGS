@@ -1,0 +1,62 @@
+
+Petstore known bugs
+-------------------
+
+Verified
+--------
+
+(from google cache of IBM's Websphere 5.0 release notes)
+
+ 2. Creating new account causes duplicate key exceptions.
+    New accounts can be created several ways in Pet Store.
+    If "Account" is selected from a Pet Store screen, before a 
+    user has signed in, they are presented with the option
+    of signing in or creating a new account. If a new account 
+    is created in this flow, it will fail with duplicate 
+    key exceptions. To create a new account select "Sign in"
+    from a Pet Store screen, new accounts in this scenario 
+    can be created.
+
+My debugging notes (before I found these relnotes and gave up)
+    It seems that in com.sun.j2ee.blueprints.waf.controller.web.MainServlet
+    both lines 104 and 116 *eventually* cause an EJBCreate to be
+    called for the given customer.  force a stack trace at CustomerEJB.EJBCreate()
+    to see both calls.
+    -> opinion: bug in either c.s.j.b.waf.controller.web.flow.ScreenFlowManager
+       in the function surrounding line 157, or a bug in the screen flow
+       definition.
+
+
+
+
+
+
+Unverified
+----------
+
+(from google cache of IBM's Websphere 5.0 release notes)
+
+ 3. Passwords are not compared when creating a new account.
+    When creating a new account, a password must be provided.
+    The first "Password" field is not compared for a match
+    with the second "Password (Repeat)" field.
+ 4. Account information is displayed incorrectly. Your
+    account information is displayed when "Account" is
+    selected or during the check out process. First and Last
+    name are switched, the Credit Card Name shows the
+    expiration date, and Expiration Date shows the wrong date.
+ 5. The Pet Store Item screen shows a picture of the product
+    to be purchased a long with a "List Price" and "Your
+    Price". The list price is greater than your price. Items
+    added to the shopping cart are added with the more 
+    expensive "List Price".
+ 6. When an item is added to the shopping cart it is added
+    with an initial quantity of one. That quantity can be
+    adjusted to a higher number in the shopping cart. If that
+    same item is re-added to the shopping cart, the adjusted 
+    quantity is reset to one.
+ 7. The option to forcefully repopulate the Pet Store database
+    fails with an internal server error (HTTP 500 - The page
+    cannot be displayed). Refrain from using this option.
+
+

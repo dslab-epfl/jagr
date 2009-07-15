@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                            
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                            
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=iso-8859-1">
+                            
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+                            
+  <meta name="CREATED" content="20011213;15124500">
+                            
+  <meta name="CHANGEDBY" content="Thierry Violleau">
+                            
+  <meta name="CHANGED" content="20011213;15144600">
+  <title>Java[tm] Pet Store Demo 1.3.1_02 &gt; Building the Demo</title>
+</head>
+ <body>
+       &nbsp;       
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="">
+       <tbody>
+          <tr>
+       <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">
+Java&trade; Pet Store Demo 1.3.1_02</a></font></b> <font color="#ffffff">
+&gt; <b>Building the Demo</b></font></td>
+        <td bgcolor="#000033">                                          
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+ Java BluePrints</a></font></b></div>
+       </td>
+       </tr>
+                         
+  </tbody>      
+</table>
+              
+<h1> Building the Demo</h1>
+       We use <a href="http://jakarta.apache.org/ant/index.html">Ant</a>
+version   1.4.1 to build  the source code. Ant is a Java-based build tool
+like <i>make</i>,   which has been developed under the auspices of the <a href="http://www.apache.org/">
+ Apache Software Foundation</a>. A working   version of Ant is provided as
+part of the Java Pet Store Demo bundle. <br>
+      &nbsp;       
+<center>      
+<table cellspacing="2" cellpadding="2" width="88%">
+       <tbody>
+          <tr>
+       <td>                                           
+      <hr size="1" noshade="">                                          
+ 
+      <p style="margin-bottom: 0cm; "><b>Note:</b> The Java Pet Store Demo
+   bundle comes with pre-built binaries. To deploy these binaries and avoid
+  building the application, consult the <a href="installing.html">installation
+  instructions</a>.       <br>
+       </p>
+                                               
+      <hr size="1" noshade=""></td>
+       </tr>
+                         
+  </tbody>      
+</table>
+      </center>
+              
+<h2> 1.0 Building Pet Store Demo without Web-services</h2>
+       This section explains how to build the application binaries for the
+ petstore   application which uses JMS for communication between the Order
+ Processing   Center and the Supplier. Building all the application binaries
+ and performing   other tasks with Ant involves running the top-level build
+ script in the root directory of the demo installation.<br>
+     <br>
+     Before building the application, you need to configure the &lt;petstore.home&gt;/src/build.properties 
+  file to match your enviroment. You need to set the following properties: 
+ <br>
+         
+<table cellpadding="5" cellspacing="0" border="1" width="525" align="Center">
+       <tbody>
+         <tr>
+           <td valign="Top" align="Center" width="19%"><b>Property Name</b><br>
+           </td>
+           <td valign="Top" align="Center" width="39%"><b>Description</b><br>
+           </td>
+           <td valign="Top" align="Center" width="39%"><b>Examples</b><br>
+           </td>
+         </tr>
+         <tr align="Left">
+           <td valign="Top" width="19%">j2ee.server.name<br>
+           </td>
+           <td valign="Top" width="39%">Host name of the server where the 
+J2EE   SDK is installed<br>
+           </td>
+           <td valign="Top" width="39%">localhost<br>
+           </td>
+         </tr>
+         <tr align="Left">
+           <td valign="Top" width="19%">j2ee.server.port<br>
+           </td>
+           <td valign="Top" width="39%">HTTP port where the J2EE SDK can
+be  accessed<br>
+           </td>
+           <td valign="Top" width="39%">8000 or 8080 (after applying JWSDP
+ to  J2EE SDK)<br>
+           </td>
+         </tr>
+         <tr align="Left">
+           <td valign="Top">j2ee.home<br>
+           </td>
+           <td valign="Top">The absolute path to the directory where J2EE 
+SDK   is installed<br>
+           </td>
+           <td valign="Top">c:\j2sdkee1.3.1 (on Windows) or ~/j2sdkee1.3.1
+ (on  Unix)<br>
+           </td>
+         </tr>
+         <tr align="Left">
+           <td valign="Top">j2ee-script-suffix<br>
+           </td>
+           <td valign="Top">The suffix of the J2EE scripts<br>
+           </td>
+           <td valign="Top">.bat (on Windows) or no suffix  (on  Unix)<br>
+           </td>
+         </tr>
+         <tr align="Left">
+           <td valign="Top">jwsdp-script-suffix<br>
+           </td>
+           <td valign="Top">The suffix of the JWSDP scripts<br>
+           </td>
+           <td valign="Top">.bat (on Windows) or .sh  (on  Unix)<br>
+           </td>
+         </tr>
+                                   
+  </tbody>     
+</table>
+     <b>Note: On Windows, while writing the paths in the properties files,
+ you need to escape the "\" properly by using "\\" instead. So, for example,
+ c:\j2sdkee1.3.1 will become c:\\j2sdkee1.3.1</b>.<br>
+         
+<p>To build the application binaries on Unix, open a shell prompt   and enter
+ these commands: </p>
+         <pre>cd &lt;petstore.home&gt;/src<br>build.sh [argument]</pre>
+       To build the application binaries on Windows, open a shell prompt
+and   enter  these commands:      <pre>cd &lt;petstore.home&gt;\src<br>build.bat [argument]</pre>
+       When the build script, <tt>build.bat</tt> (Windows) or <tt>build.sh</tt>
+     (Unix), is invoked without any arguments, all the application   binaries
+ are built. The binaries are placed in the following folders:      <pre>&lt;petstore.home&gt;/src/apps/admin/build/petstoreadmin.ear<br>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear<br>&lt;petstore.home&gt;/src/apps/petstore/build/petstore.ear<br>&lt;petstore.home&gt;/src/apps/supplier/build/supplier.ear</pre>
+       The following table lists possible arguments for the top-level build 
+ script:        
+<p></p>
+           
+<center>       
+<p>Arguments for <tt>ant</tt>&nbsp;</p>
+     </center>
+         
+<center>     
+<table border="1" cellspacing="0" cellpadding="5" width="386">
+       <caption><br>
+                         
+  <center></center>
+        </caption><col width="81"><col width="283">   <tbody>
+          <tr>
+       <th width="81">Option</th>
+        <th width="283">Purpose</th>
+       </tr>
+        <tr>
+       <td width="81"><tt>core</tt></td>
+        <td width="283">Builds everything. (This is the default build target.)</td>
+       </tr>
+        <tr>
+       <td width="81"><tt>clean</tt></td>
+        <td width="283">Cleans out the build output directories.</td>
+       </tr>
+        <tr>
+       <td width="81"><tt>deploy</tt></td>
+        <td width="283">Deploys the application binaries.</td>
+       </tr>
+        <tr>
+       <td width="81"><tt>undeploy</tt></td>
+        <td width="283">Undeploys the application binaries.</td>
+       </tr>
+        <tr>
+       <td width="81"><tt>verify</tt></td>
+        <td width="283">Runs the J2EE verifier tool to catch errors in the
+ application  packaging.</td>
+       </tr>
+        <tr>
+       <td width="81"><tt>docs</tt></td>
+        <td width="283">Builds the application Javadocs.</td>
+       </tr>
+                         
+  </tbody>      
+</table>
+      </center>
+              
+<h4> 1.1 Building a Single Application</h4>
+       To build a single application, run the build script (<tt>build.bat</tt>
+   or <tt>build.sh</tt>) in to <tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/src</tt>
+    , where <tt>&lt;app&gt;</tt> is one of the following:       
+<ul>
+                         
+  <div style="margin-bottom: 0cm; "><tt>petstore</tt>, which contains the
+code for the storefront.</div>
+                           
+  <p style="margin-bottom: 0cm; "><tt>opc</tt>, which contains the code for 
+   the order processing center.  </p>
+                       
+  <p style="margin-bottom: 0cm; "><tt>supplier</tt>, which contains the code 
+   for the supplier. </p>
+                       
+  <p><tt>admin</tt>, which contains the code for the administrative front-end.</p>
+           
+</ul>
+       The application binary (an EAR file) is placed in <tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/build</tt>
+    . You can deploy this EAR file by running the build script again, but
+this    time using the <tt>deploy</tt> argument. Alternatively, you can use
+the  J2EE SDK deployment tool.       
+<h4> 1.2 Building with the Forte[tm] for Java IDE</h4>
+       The Forte for Java IDE supports Ant build files. Just double click 
+on  the <tt>build.xml</tt> file in various directories to start a build.&nbsp; 
+         
+<h2> 2.0 Building Pet Store Demo with Web-services</h2>
+     All the web-services specific code has been separated in the <tt>&lt;petstore.home&gt;/src/webservices 
+  </tt>directory. Building these application binaries is the same as that 
+for the  Pet Store demo without Web-services (described above in section 1.0)
+with the only change being that the root directory (from which you will start
+the top-level build) is <tt>&lt;petstore.home&gt;/src/webservices </tt>instead 
+ of<tt> &lt;petstore.home&gt;/src</tt>. You will also need to update the <tt>
+&lt;petstore.home&gt;/src/build.properties</tt> file to add the following 
+property: <br>
+ 
+<table cellpadding="5" cellspacing="0" border="1" width="525" align="Center">
+       <tbody>
+         <tr>
+           <td valign="Top" align="Center" width="19%"><b>Property Name</b><br>
+           </td>
+           <td valign="Top" align="Center" width="39%"><b>Description</b><br>
+           </td>
+           <td valign="Top" align="Center" width="39%"><b>Examples</b><br>
+           </td>
+         </tr>
+                                 <tr align="Left">
+           <td valign="Top" width="19%">jwsdp.home<br>
+           </td>
+           <td valign="Top" width="39%">The absolute path to the directory
+ where  JWSDP is installed<br>
+           </td>
+           <td valign="Top" width="39%">c:\jwsdp-1_0_01 (on Windows) or ~/jwsdp-1_0_01 
+  (on Unix)<br>
+           </td>
+         </tr>
+                           
+  </tbody>     
+</table>
+ <b>Note: On Windows, while writing the paths in the properties files, you 
+need to escape the "\" properly by using "\\" instead. So, for example, c:\jwsdp-1_0_01 
+will become c:\\jwsdp-1_0_01</b>.<br>
+        <br>
+             
+<hr size="3" noshade="">       
+<p><a href="copyright.html">Copyright &copy; 2002 Sun Microsystems, Inc. All
+Rights Reserved.</a> </p>
+      <br>
+     <br>
+    <br>
+   <br>
+  <br>
+ 
+</body>
+</html>

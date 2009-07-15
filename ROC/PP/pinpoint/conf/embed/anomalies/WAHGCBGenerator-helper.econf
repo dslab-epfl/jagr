@@ -1,0 +1,34 @@
+<analysisengine>
+
+<!--
+	pass in record collections:
+
+	input:  the paths to be used as the base for the hgcb
+	output: the output hgcb
+
+-->
+
+<collection name="componentBehaviors"/>
+<collection name="hgcb"/>
+
+<plugin name="CollectComponentBehavior">
+  <classname>roc.pinpoint.analysis.plugins2.components.CollectComponentBehaviorFromPaths</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="outputCollection">componentBehaviors</arg>
+  <arg key="definingAttributes">ipaddress,name</arg>
+</plugin>
+
+<plugin name="CollectGrossComponentBehavior">
+  <classname>roc.pinpoint.analysis.plugins2.components.CollectGrossComponentBehavior</classname>
+  <arg key="inputCollection">componentBehaviors</arg>
+  <arg key="outputCollection">hgcb</arg>
+  <arg key="definingAttributes">name</arg>
+</plugin>
+
+<plugin name="CollectRecords">
+  <classname>roc.pinpoint.analysis.plugins2.records.CollectionToMap</classname>
+  <arg key="input">hgcb</arg>
+  <arg key="output">output</arg>
+</plugin>
+
+</analysisengine>

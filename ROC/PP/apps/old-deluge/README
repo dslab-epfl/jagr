@@ -1,0 +1,30 @@
+
+    You'll note that there is no Makefile or other mechanism for the
+installation of Deluge.  That's because I've been doing the install
+manually on all my attack machines so far.  The instructions should
+explain enough for you to make this happen until I (or some other kind
+soul) get an automated install written.
+
+    IMPORTANT: Always check the project home page:
+http://deluge.sourceforge.net.  There are pointers there to other
+documentation, mailing lists, code updates, and so forth.
+
+    In the tradition of README files being meta-documentation, here's
+where to find information you may need:
+
+    INSTALL : how to install Deluge.
+
+    example.dcf : Deluge Config File.  this one has all available
+                  controls listed with some explanation.
+
+    docs/script_hacks : After you've run the proxy and generated a
+                        playback script, you may want to modify it
+                        before running it.  here's some pointers.
+
+    *.pm : When in doubt, read at the code.
+
+    You also might take a look at the docs/todo file, if you're feeling
+especially adventurous/altruistic.
+
+	For the basics of running Deluge, try ./deluge --help
+

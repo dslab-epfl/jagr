@@ -1,0 +1,22 @@
+include "../../jl/parse/java12.cup"
+
+package polyglot.ext.ib.parse;
+
+import polyglot.types.TypeSystem;
+import polyglot.ext.ib.ast.InjectBugNodeFactory_c;
+import polyglot.ext.jl.parse.Name;
+
+parser Grm extends polyglot.ext.jl.parse.Grm {:
+    public final TypeSystem ts;
+    public final InjectBugNodeFactory_c nf;
+
+    public Grm(Lexer l, TypeSystem t, NodeFactory n, ErrorQueue q) {
+        super(l, t, n, q);
+        ts = t;
+        nf = (InjectBugNodeFactory_c) n;
+    }
+:};
+
+start with goal;
+
+// TODO: modify the default Java grammar using PPG operations

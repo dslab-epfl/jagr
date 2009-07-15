@@ -1,0 +1,28 @@
+<analysisengine>
+
+<!--
+	This configurations is for offline detection of failures,
+	using historical analysis of component behavior
+
+	For this config, cmd-line options that should be passed
+	to the analysis are:
+
+	definingAttributes - comma-seperated list of attributes that
+	   define the id's of components.
+	   
+	Pass in two record collections: 
+
+         * 'input' (with raw observations) and
+         * 'output (for verified traces)
+	
+-->
+
+  <plugin name="CollectGrossComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.components.CollectGrossComponentBehavior</classname>
+    <arg key="inputCollection">input</arg>
+    <arg key="definingAttributes">$definingAttributes</arg>
+    <arg key="outputCollection">output</arg>
+  </plugin>
+  
+  
+</analysisengine>

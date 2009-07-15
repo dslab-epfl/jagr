@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE j2ee-ri-specific-information PUBLIC '-//Sun Microsystems Inc.//DTD J2EE Reference Implementation 1.3//EN' 'http://localhost:8080/sun-j2ee-ri_1_3.dtd'>
+
+<j2ee-ri-specific-information>
+  <server-name></server-name>
+    <rolemapping>
+    <role name="administrator">
+      <principals>
+        <principal>
+          <name>supplier</name>
+        </principal>
+      </principals>
+      <groups>
+        <group name="administrator_group" />
+      </groups>
+    </role>
+  </rolemapping>
+  <web>
+    <module-name>supplier.war</module-name>
+    <context-root>supplier</context-root>
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>jms/supplier/QueueConnectionFactory</jndi-name>
+      <default-resource-principal>
+        <name>j2ee</name>
+        <password>j2ee</password>
+      </default-resource-principal>
+    </resource-ref>
+    <resource-ref>
+      <res-ref-name>jms/TopicConnectionFactory</res-ref-name>
+      <jndi-name>jms/supplier/TopicConnectionFactory</jndi-name>
+      <default-resource-principal>
+        <name>j2ee</name>
+        <password>j2ee</password>
+      </default-resource-principal>
+    </resource-ref>
+     <resource-ref>
+      <res-ref-name>url/OPCWebServiceEndPointURL</res-ref-name>
+      <jndi-name>http://localhost:8080/opc/webservice/OPCService</jndi-name>
+     </resource-ref>
+     <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <jndi-name>http://localhost:8080/opc/EntityCatalog.jsp</jndi-name>
+     </resource-ref>
+    <resource-env-ref>
+      <resource-env-ref-name>jms/PurchaseOrderQueue</resource-env-ref-name>
+      <jndi-name>jms/supplier/PurchaseOrderQueue</jndi-name>
+    </resource-env-ref>
+    <resource-env-ref>
+      <resource-env-ref-name>jms/InvoiceTopic</resource-env-ref-name>
+      <jndi-name>jms/opc/InvoiceTopic</jndi-name>
+    </resource-env-ref>
+  </web>
+  <enterprise-beans>
+    <module-name>supplierpo-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>LineItemEJB</ejb-name>
+      <jndi-name>ejb/supplier/supplierpo/LineItemEJB<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "LineItemEJBTable" SET "categoryId" = ?  , "itemId" = ?  , "lineNumber" = ?  , "productId" = ?  , "quantity" = ?  , "quantityShipped" = ?  , "unitPrice" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "categoryId" , "itemId" , "lineNumber" , "productId" , "quantity" , "quantityShipped" , "unitPrice" FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "LineItemEJBTable" ( "__PMPrimaryKey" , "categoryId" , "itemId" , "lineNumber" , "productId" , "quantity" , "quantityShipped" , "unitPrice" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "LineItemEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "LineItemEJBTable" ("__PMPrimaryKey" LONGINT , "categoryId" VARCHAR(255) , "itemId" VARCHAR(255) , "lineNumber" VARCHAR(255) , "productId" VARCHAR(255) , "quantity" INTEGER NOT NULL , "quantityShipped" INTEGER NOT NULL , "unitPrice" REAL NOT NULL, CONSTRAINT "pk_LineItemEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>AddressEJB</ejb-name>
+      <jndi-name>ejb/supplier/supplierpo/AddressEJB<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "AddressEJBTable" SET "__reverse_address___PMPrimaryKey" = ?  , "city" = ?  , "country" = ?  , "state" = ?  , "streetName1" = ?  , "streetName2" = ?  , "zipCode" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "AddressEJBTable" ( "__PMPrimaryKey" , "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "AddressEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "AddressEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_address___PMPrimaryKey" LONGINT , "city" VARCHAR(255) , "country" VARCHAR(255) , "state" VARCHAR(255) , "streetName1" VARCHAR(255) , "streetName2" VARCHAR(255) , "zipCode" VARCHAR(255), CONSTRAINT "pk_AddressEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>SupplierOrderEJB</ejb-name>
+      <jndi-name>ejb/supplier/supplierpo/SupplierOrder<!--N/A--></jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/ContactInfo<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/LineItem<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "SupplierOrderEJBTable" SET "_contactInfo___PMPrimaryKey" = ?  , "poDate" = ?  , "poStatus" = ?  WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "_contactInfo___PMPrimaryKey" , "poDate" , "poStatus" FROM "SupplierOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "SupplierOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "SupplierOrderEJBTable" ( "_contactInfo___PMPrimaryKey" , "poDate" , "poId" , "poStatus" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "SupplierOrderEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "poId" FROM "SupplierOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "SupplierOrderEJBTable" ("_contactInfo___PMPrimaryKey" LONGINT , "poDate" LONGINT NOT NULL , "poId" VARCHAR(255) , "poStatus" VARCHAR(255), CONSTRAINT "pk_SupplierOrderEJBTabl" PRIMARY KEY ("poId") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>SupplierOrderEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findOrdersByStatus</method-name>
+            <method-params>
+              <method-param>java.lang.String</method-param>
+            </method-params>
+          </method>
+          <sql>SELECT DISTINCT "a"."poId" FROM "SupplierOrderEJBTable" "a" WHERE ("a"."poStatus"  = ? )</sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>ContactInfoEJB</ejb-name>
+      <jndi-name>ejb/supplier/supplierpo/ContactInfo<!--N/A--></jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/Address<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "ContactInfoEJBTable" SET "__reverse_contactInfo_poId" = ?  , "_address___PMPrimaryKey" = ?  , "email" = ?  , "familyName" = ?  , "givenName" = ?  , "telephone" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_contactInfo_poId" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "ContactInfoEJBTable" ( "__PMPrimaryKey" , "__reverse_contactInfo_poId" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "ContactInfoEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "ContactInfoEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_contactInfo_poId" VARCHAR(255) , "_address___PMPrimaryKey" LONGINT , "email" VARCHAR(255) , "familyName" VARCHAR(255) , "givenName" VARCHAR(255) , "telephone" VARCHAR(255), CONSTRAINT "pk_ContactInfoEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <join-object>
+      <name>com.sun.j2ee.blueprints.supplierpo.ejb.SupplierOrderEJB_lineItems_LineItemEJB_</name>
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "SupplierOrderEJB_lineItems_LineItemEJB_Table" SET "_SupplierOrderEJB_poId" = ?  WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findBySourceKey</operation>
+          <sql>SELECT "_LineItemEJB___PMPrimaryKey" FROM "SupplierOrderEJB_lineItems_LineItemEJB_Table" WHERE "_SupplierOrderEJB_poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "SupplierOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "_SupplierOrderEJB_poId" FROM "SupplierOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "_LineItemEJB___PMPrimaryKey" FROM "SupplierOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "SupplierOrderEJB_lineItems_LineItemEJB_Table" ( "_LineItemEJB___PMPrimaryKey" , "_SupplierOrderEJB_poId" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "SupplierOrderEJB_lineItems_LineItemEJB_Table"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "SupplierOrderEJB_lineItems_LineItemEJB_Table" ("_LineItemEJB___PMPrimaryKey" LONGINT , "_SupplierOrderEJB_poId" VARCHAR(255), CONSTRAINT "pk_SupplierOrderEJB_lineItems_LineItemEJB_Tabl" PRIMARY KEY ("_LineItemEJB___PMPrimaryKey") )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findBySinkKey</operation>
+          <sql>SELECT "_SupplierOrderEJB_poId" FROM "SupplierOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+      <source>
+        <name>SupplierOrderEJB</name>
+        <field>lineItems</field>
+      </source>
+      <sink>
+        <name>LineItemEJB</name>
+        <field></field>
+      </sink>
+    </join-object>
+    <cmpresource>
+      <ds-jndi-name>jdbc/supplier/SupplierDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>supplier-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>SupplierOrderMDB</ejb-name>
+      <jndi-name>jms/supplier/PurchaseOrderQueue</jndi-name>
+
+      <resource-env-ref>
+        <resource-env-ref-name>jms/opc/InvoiceTopic</resource-env-ref-name>
+        <jndi-name>jms/opc/InvoiceTopic</jndi-name>
+      </resource-env-ref>
+
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/supplier/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+
+      <resource-ref>
+        <res-ref-name>jms/TopicConnectionFactory</res-ref-name>
+        <jndi-name>jms/supplier/TopicConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+
+      <resource-ref>
+        <res-ref-name>url/OPCWebServiceEndPointURL</res-ref-name>
+        <jndi-name>http://localhost:8080/opc/webservice/OPCService</jndi-name>
+      </resource-ref>
+
+      <ejb-ref>
+        <ejb-ref-name>ejb/OrderFulfillmentFacade</ejb-ref-name>
+	<jndi-name>ejb/supplier/OrderFulfillment/OrderFulfillmentFacade</jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+
+    <ejb>
+      <ejb-name>OrderFulfillmentFacadeEJB</ejb-name>
+      <jndi-name>ejb/supplier/OrderFulfillment/OrderFulfillmentFacade</jndi-name>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <jndi-name>http://localhost:8080/opc/EntityCatalog.jsp</jndi-name>
+      </resource-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/SupplierOrder</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/SupplierOrder<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/Address<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplierpo/LineItem<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Inventory</ejb-ref-name>
+        <jndi-name>ejb/supplier/supplier/Inventory<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+
+    <ejb>
+      <ejb-name>InventoryEJB</ejb-name>
+      <jndi-name>ejb/supplier/supplier/Inventory<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "InventoryEJBTable" SET "quantity" = ?  WHERE "itemId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "quantity" FROM "InventoryEJBTable" WHERE "itemId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "InventoryEJBTable" WHERE "itemId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "InventoryEJBTable" ( "itemId" , "quantity" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "InventoryEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "itemId" FROM "InventoryEJBTable" WHERE "itemId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "InventoryEJBTable" ("itemId" VARCHAR(255) , "quantity" INTEGER NOT NULL, CONSTRAINT "pk_InventoryEJBTabl" PRIMARY KEY ("itemId") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>InventoryEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findAllInventoryItems</method-name>
+            <method-params />
+          </method>
+          <sql>SELECT "a"."itemId" FROM "InventoryEJBTable" "a" </sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <cmpresource>
+      <ds-jndi-name>jdbc/supplier/SupplierDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+</j2ee-ri-specific-information>
+
+

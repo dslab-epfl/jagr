@@ -1,0 +1,43 @@
+
+To create the clustered petstore, follow the following steps.
+
+1. modify petstore
+     -> make sure initialcontext() is set to look at HA-JNDI on port 1100 for all
+        EJB lookup queries, but not the datasource/DAO/JDBC lookups.
+        (use emkutil.JNDIContext.getInitialContext()
+     -> for all *.*.*.util.JNDIName classes, (in both the src/petstore/src and the
+             src/component/src directories, change all the "java:comp..." JNDI names
+             for EJB names to be of the form "TheOrder", "TheAccount", "TheBean", etc...
+
+2. build petstore
+
+3.a unjar petstore.ear
+3.b rm *Ejb.jar
+    and edit META-INF/application.xml to remove references to old Ejb.jar's just removed.
+3.c rejar files as as petstore-web.ear
+
+
+4.a. copy emk-util.jar to $JBOSS_HOME/server/$CONFIG_NAME/lib
+4.b. deploy petstore.ear onto N nodes in the cluster
+       -> make sure you have a separate configuration directory for each
+          node in the cluster, otherwise log files and tmp/ directory
+          for each node will conflict on shared file system.
+4.c. deploy petstore-web.ear onto another node in the cluster.
+4.d. follow the steps for configuring jboss for petstore included in
+     mauricio's  (e.g., copying cloud*.jar ...)
+
+   
+5. point your web browser to petstore-web.ear's node, and see if it works!
+
+----
+
+speed up step 4 with a shell script!
+  -> prepare-petstore-cluster.sh [numnodes]
+     (this script makes numnodes number of backend nodes, and one frontend node)
+  -> important note: this script copies cloudscape-service.xml from 
+     $PETSTORE_HOME/clustering/cloudscape-service.xml, which assumes that
+     the cloudscape DB is running on x32.millennium.berkeley.edu.  If that's
+     NOT the case, be sure to change the two places in this config file which
+     refer to the URL of the database.
+
+

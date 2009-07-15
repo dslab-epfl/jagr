@@ -1,0 +1,1106 @@
+############################################################################
+#
+# deluge-tutorial.pod: a POD tutorial for Deluge
+#
+# Copyright (C) 2001 Michael Blakeley <mike@blakeley.com>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+#############################################################################
+
+=pod
+
+=head1 Deluge Tutorial
+
+=head2 Introduction
+
+Deluge is an open-source web site stress-test tool. Let's take that statement 
+apart, and see what it means.
+
+=over
+
+=item open-source
+
+Deluge is written and distributed in Perl. If you want to know exactly how some
+portion of Deluge works, you can look at the source code and see. 
+If you want to change Deluge's behavior in any way, you can do that too. 
+See the LICENSE for details, though: since Deluge is distributed under the 
+GPL, you might be required to offer your changes back to the Deluge 
+development team.
+
+=item web site
+
+Deluge focuses on HTTP, the underlying protocol used by clients and servers
+on the World Wide Web. If you want to test a mail server or an instant 
+messaging server, Deluge probably isn't for you.
+
+=item stress-test
+
+As its primary function, Deluge simulates users of a web server. If you 
+simulate lots of users at once, you'll find out how well a particular server 
+stands up to heavy user loads. This is also known as stress-testing. 
+By stress-testing your server before you deploy it, you avoid personal stress.
+
+=back
+
+So Deluge may be useful to people who are developing a new web service, 
+or investigating performance problems with an existing server. 
+But there are lots of web site stress-test tools: why pick Deluge?
+
+=over
+
+=item cost
+
+Deluge doesn't cost anything. That's a big advantage over commercial load 
+testing tools, which can cost thousands or tens of thousands of dollars.
+
+=item recording proxy
+
+Deluge includes a recording proxy server. This makes it easier for you to 
+create user scenarios: just tell your web client to use the proxy, and then 
+perform the scenario once. The proxy will record every request that your 
+browser makes, and you can replay that recording as if it were hundreds or 
+thousands of users.
+
+=item full-featured client
+
+Deluge uses Perl's LWP::UserAgent class, so it supports a wide range of HTTP
+functionality: GET and POST methods, cookies, SSL, and much more. Since the
+authors of Deluge didn't waste time re-inventing an HTTP client, you don't
+have to worry about what HTTP features Deluge supports.
+
+=back
+
+There's also at least one reason why you wouldn't want to use Deluge: raw speed.
+If your web server application requires you to measure hit rates in excess of
+about 100 per second, Deluge won't be able to cope. But stress tests are usually
+run on servers that perform complex actions (several database queries, for example).
+As a result, a single server often can't exceed a few tens of hits per second
+(for its complex pages). So Deluge is fine for these purposes, but to benchmark
+a high-speed static server, something like 'ab' would do a better job.
+
+=head2 Setting up Deluge
+
+The first thing Deluge needs is a working Perl installation, version 5.6 or 
+better. Deluge might work on Windows systems with ActiveState Perl, but to
+date we've only done development and testing on Linux. Unix variants should
+also be compatible.
+
+If you need help with Perl, start at C<E<lt>http://www.perl.com/E<gt>>.
+
+Once you have Perl working, you'll need some extra modules. The easiest way
+to install them is with CPAN:
+
+=over
+
+=item 
+perl -MCPAN -e 'install qw/MD5 MIME::Base64 URI HTML::Parser Time::HiRes \
+    Bundle::libnet LWP::UserAgent LWP::Parallel Crypt::SSLeay/'
+
+=back
+
+You can also run CPAN interactively with C<perl -MCPAN -e shell>. For more
+information, see C<perldoc CPAN>.
+
+That's it. You should now be able to run C<./deluge --help> and see Deluge's
+usage message.
+
+=head2 Installation Troubleshooting
+
+=over
+
+=item CPAN Problems
+
+Start with C<perldoc CPAN>. If you can't use CPAN for some reason, you'll have
+to install the above modules by hand, and resolve any dependencies yourself. 
+In this case, the best place to start is C<E<lt>http://search.cpan.org/E<gt>>.
+
+=item C<./deluge: No such file or directory>
+
+Your Perl binary isn't F</usr/bin/perl>. If possible, link your Perl binary to 
+F</usr/bin/perl> (this will make your life easier). One way is
+C<ln -s `which perl` /usr/bin/perl>.
+
+Alternatively, edit the deluge script and change the first line to match 
+the location of your Perl binary. For example:
+
+C<$ which perl
+/usr/local/bin/perl>
+
+In this case, you'd change the first line of deluge to read:
+
+C<#!/usr/local/bin/perl>
+
+=back
+
+=head2 Working with Deluge
+
+Deluge supports several operations. Here's an overview.
+
+=over
+
+=item attack
+
+Deluge will simulate user load against a server.
+
+=item proxy
+
+Deluge will act as a proxy server for HTTP, HTTPS, and FTP 
+requests, while recording each request to a script file.
+
+=item eval
+
+Deluge will report the results of an attack.
+
+=back
+
+Each time you run Deluge, you'll specify an operation and a configuration file:
+
+C<./deluge -a myconfig.dcf>
+
+The configuration file tells Deluge how to run, where to find data that it needs,
+and where to store results. If you don't specify an operation, Deluge will
+run an attack and then show you the results.
+
+Don't let the term I<attack> fool you: this isn't a security test tool. We're
+only attacking the server in the sense that we're hitting it with a simulated
+user load.
+
+I<Attacks> can take several different forms, governed by the configuration
+file's C<attack_type> variable.
+
+=over
+
+=item breadth, depth, wander, and bounce
+
+In all of these attack types, the simulated user starts from a home page
+and follows links on that page. Breadth indicates that the user will click on
+each top-level link, while depth indicates a user drilling down through
+a web site. Wander indicates a user who clicks on links at random, and
+bounce indicates a user who goes directly to random pages.
+
+=item playback
+
+Playback is probably the most useful attack type.
+Each simulated user will perform a sequence of user actions from
+a script file.  These user actions can include page views, form
+submissions, and other activities.  The script can be recorded by Deluge,
+or hand-edited, or a mix of both.
+
+Playback mode allows the simulation of complex user scenarios, and supports
+the substitution of user-specific variables into GET and POST requests.
+For example, you could use a playback script to have 100 different simulated
+users, each logging into a server with their own username and password.
+
+=back
+
+Most readers will probably want to use playback attacks, so the rest of this
+tutorial will document the process of setting up a simple playback attack.
+
+Let's get started. First, we'll need a playback script.
+
+=head2 How to record a playback script
+
+To record a playback script, we start by running 
+C<S<./deluge -p myconfig.dcf myuser>>
+(so we need a Deluge configuration file). The I<myuser> portion is
+the name of the user definition: you can have multiple user definitions
+in a Deluge configuration file, so we have to tell Deluge which one
+we're recording.
+
+C<B<tutorial.dcf>>
+
+	# you can use comments in a dcf
+	proxy_http_port = 8020
+	owner_email = mike@blakeley.com
+	log_filename = tutorial.log
+	timeout = 10
+	threads_per_proc = 5
+	user_def = tutorial
+		attack_type = playback
+		script_dir = tutorial
+		script_file = _playback_
+	END
+
+The proxy_http_port means that Deluge will listen for HTTP requests on
+port 8020. So if you set up a web browser to use your Deluge hostname as
+a proxy server on port 8020, Deluge will record whatever that browser does
+into the tutorial/_playback_ script file.
+
+To start the proxy, run C<S<./deluge -p tutorial.dcf tutorial>>. You should see
+
+	Proxy server running on host cscstage3 on port 8020
+
+Go ahead and hit a few pages through your web browser.
+To stop the proxy, simple press C<control-c>.
+
+=head2 How to edit a scenario
+
+Once you've recorded a script, you might want to make some changes.
+Let's take a look at a simple playback script.
+
+	DLG-URL: http://sut/
+	DLG-Method: GET
+	DLG-User-Agent-Code: Nokia7110 (DeckIt/1.2.1)
+	Accept: text/html, text/vnd.wap.wml, image/gif, image/jpeg, image/vnd.wap.wbmp
+	Accept-Language: en
+	Host: sut
+	User-Agent: Nokia7110 (DeckIt/1.2.1)
+	DLG-Delete-Cookies 1
+	DLG-Code: 200
+	DLG-Message: OK
+	DLG-Response-Length: 1553
+
+	DLG-URL: http://sut/main
+	DLG-Method: POST
+	DLG-User-Agent-Code: Nokia7110 (DeckIt/1.2.1)
+	Accept: text/html, text/vnd.wap.wml, image/gif, image/jpeg, image/vnd.wap.wbmp
+	Accept-Language: en
+	Host: sut
+	User-Agent: Nokia7110 (DeckIt/1.2.1)
+	Content-Length: 49
+	Content-Type: application/x-www-form-urlencoded
+	DLG-Request-Content: id=user1&passwd=password
+	DLG-Code: 200
+	DLG-Message: OK
+	DLG-Response-Length: 2824
+
+Each user request starts with a C<DLG-URL> line. After than, Deluge has recorded
+the literal HTTP headers (anything that doesn't start with C<DLG->) and its
+own metainformation (the lines starting with C<DLG->).
+
+Notice that the hostname is embedded in the C<DLG-URL> and in the HTTP C<Host>
+header. If you want to test a different host, you'll have to edit the script
+to change that hostname.
+
+Also, notice that the second request is a POST, and includes a user id and
+password. This represents a user logging in via an HTML form. But if we want
+to test 100 users, we don't want them all to log in as user1, right?
+
+This is where B<request variables> come in. Deluge can substitute certain
+values for arbitrary test strings in the DLG-URL or DLG-Request-Content lines.
+For example, let's say that we want to change C<user1> to be any one of the
+hundred logins user0, user1, user2, ... user99.
+
+First, we edit the playback script so that the DLG-Request-Content line reads:
+
+	DLG-Request-Content: id=USERID&passwd=password
+
+Next, we add a C<request_vars> section within our user definition.
+
+C<B<tutorial.dcf>>
+
+	# you can use comments in a dcf
+	proxy_http_port = 8020
+	owner_email = mike@blakeley.com
+	log_filename = tutorial.log
+	timeout = 10
+	threads_per_proc = 5
+	user_def = tutorial
+		attack_type = playback
+		script_dir = tutorial
+		script_file = _playback_
+		request_vars
+			USERID = user__ID
+		END
+	END
+
+The request variable C<__ID> is a sequential number assigned to each
+simulated user. So now if you ask Deluge to simulate 100 users, the string
+USERID in the playback script's request content 
+will be replaced by user0, user1, etc.
+
+Here are some other request variables
+
+	__HOST the hostname of the client machine.
+	__PID the process id number of the master deluge process.
+	__ID an integer number representing the instance id.
+	__ITER the number of iterations made by this client instance.
+
+=head2 How to benchmark 
+
+Before we run the test, let's talk about benchmarking in general.
+First, never run a benchmark test against a server that isn't yours. You
+could slow the system down for other users, and the administrators
+might even think that you're trying to break their system.
+
+Systems for a benchmark test should be isolated from
+the rest of your network. This prevents other traffic from slowing down
+the benchmark system, and also prevents the benchmark traffic from
+interfering with the rest of your network.
+
+It's a good idea to start small and work up. If you simulate one user,
+and something's wrong with the configuration, it's easier to debug
+and less painfull that 1000 users hitting the wrong URL.
+
+=head2 Running a test
+
+Our C<tutorial.dcf> is good enough to record the playback script, but it
+needs some additional information before we can run an attack.
+
+C<B<tutorial.dcf>>
+
+	# you can use comments in a dcf
+	proxy_http_port = 8020
+	owner_email = mike@blakeley.com
+	log_filename = tutorial.log
+	timeout = 10
+	threads_per_proc = 5
+	queue_max_delay = 0
+	# seconds to run the test (300 seconds = 5 minutes)
+	attack_time_length = 300
+	allow_secure = 1
+	user_def = tutorial
+		instances = 25
+		processes = 4
+		attack_type = playback
+		script_dir = tutorial
+		script_file = _playback_
+		request_vars
+			USERID = user__ID
+		END
+		playback_errors = 0
+		delay_time = 0
+		delay_spread = 0
+		limit_hits_per_url = 0
+		limit_pages_traversed = 0
+		limit_attack_time = 1
+		restartable = 1
+		restart_time = 0
+		restart_spread = 0
+		get_images = 1
+		accept_cookies = 1
+		compare_content = 0
+	END
+
+Each of these parameters affects how Deluge will simulate the user load.
+
+=over
+
+=item instances
+
+The number of simulated users to run, per user process.
+
+=item processes
+
+The number of user processes to create: each will run its own pool of
+instances, so if you run 4 processes and 25 instances, you'll have
+a total of 100 simulated users.
+
+=item playback_errors
+
+If non-zero, errors recorded in the playback script will also be simulated.
+Otherwise, scripted requests with a DLG-Code of 400 or greater will be
+ignored.
+
+=item delay_time
+
+Deluge will delay this many seconds between requests.
+
+=item delay_spread
+
+If there is a delay time, it can be randomly varied to provide more
+realistic user load.
+
+=item limit_hits_per_url
+
+This parameter limits the number of times that each virtual user can
+access a given URL.
+
+=item limit_pages_traversed
+
+This parameter limits the total number of pages that can be viewed
+by each virtual user.
+
+=item limit_attack_time
+
+This parameter limits the total time to simulate this user, in seconds.
+
+=item restartable
+
+If this is non-zero, Deluge will repeat the playback script when it finishes.
+
+=item restart_time
+
+If this user definition is restartable, Deluge will delay this many seconds
+before restarting it.
+
+=item restart_spread
+
+If this user definition is restartable, Deluge can randomly vary the 
+restart time by this many seconds.
+
+=item get_images
+
+If non-zero, Deluge will request all the images on each page.
+
+=item accept_cookies
+
+If non-zero, Deluge will accept cookies from the test server.
+
+=item compare_content
+
+If non-zero, Deluge will compare the contents of each request result with
+the results recorded by the proxy.
+
+=back
+
+Make whatever changes to the above you need: is the hostname correct for your
+test server? Is your email correct, so that people can reach you if you're
+bogging down their server?
+
+To start the test, just run C<deluge tutorial.dcf>. When you run Deluge
+without any flags, it starts an attack and then shows you the results.
+
+=head2 Interpreting test results
+
+If you ran the test above, you should have seen results at the end. If you
+want to see them again, just run C<deluge -e tutorial.dcf>.
+
+    Sample Results
+
+    EVENT                             COUNT
+    ^^^^^                             ^^^^^
+    HTTP 200                              2
+
+    METRIC (UNITS)                  AVERAGE       90%
+    ^^^^^^^^^^^^^^                  ^^^^^^^       ^^^
+    Response Time (ms)                  126       168
+    Throughput (http ops/s)               1.84
+    Throughput (kb/s)                    13
+
+
+These results are minimal: normal benchmarks will result in many more
+C<HTTP 200> counts, and may produce some C<403> or C<404> errors too:
+the latter usually mean that your server is timing out or that your scripts
+have some problems.
+
+The C<Response Time> line informs you of the average and 90th-percentile
+response times, in milliseconds. Generally speaking, users will start
+complaining if the average response time exceeds 250 ms, and you'll receive
+some complaints if the 90th percentile response time exceeds 250 ms.
+
+The throughput indicates how many HTTP operations per second the server
+can maintain under the test workload. If you know how many images are on
+your pages, you can multiply to arrive at an average number of page views
+per second.
+
+Finally, the throughput is also displayed in kbits per second. This can be
+especially useful if you're on a WAN line: knowing the maximum throughput
+of the WAN line, you can demonstrate whether or not the server can saturate
+the available bandwidth.
+
+=head2 Annotated Configuration File
+
+This configuration file has comments for each of the Deluge configuration
+variables.
+
+	########################################################################
+	###                    Deluge example config file                    ###
+	########################################################################
+
+	### -------------
+	### General setup
+	### -------------
+
+	## owner_email
+	## 
+	## The email address that gets sent with all HTTP requests.  The owner of
+	## the website you're attacking needs to know who you are.
+	## 
+	## Value: {string}
+
+	owner_email = your-address@attack-from-this-site.com
+
+
+	## hostname
+	##
+	## Override the system's assumption of what the hostname should be.  This
+	## is useful for the proxy, which requires that the browser and and proxy
+	## server are using the same string to define the hostname.  Also useful
+	## in variable replacement in playback attacks.
+	##
+	## Value: {string}
+
+	hostname = frobozz
+
+
+	## proxy_http_port
+	##
+	## Ports for proxy server used to record user action.
+	##
+	## Value: {positive integer (preferrably between 15000 and 20000)}
+
+	proxy_http_port = 16008
+
+
+	## timeout
+	##
+	## Maximum timeout in seconds to wait for HTTP request to come
+	## back.  Anything longer generates an error.
+	##
+	## Value: {positive integer}
+	##
+	## Note: Within a process, a single user makes requests in
+	## parallel, but the collection of users operates in series.  If
+	## this number is set too high, it will block the other users in
+	## the process.
+
+	timeout = 10
+
+
+	## log_filename
+	## 
+	## Filename to log all info to.  This is the name of the final log file;
+	## individual processes will have their own interim log files for the
+	## duration of the attack.  Deluge will merge these logs back together
+	## when the attacks have completed.
+	##
+	## Value: filename
+
+	log_filename = example.log
+
+
+	## threads_per_proc
+	##
+	## Number of threads allowed per process.
+	##
+	## Value: {positive integer}
+
+	threads_per_proc = 5
+
+
+	## queue_max_delay
+	## 
+	## Maximum time (in seconds) the queue can be non-empty before it's sent
+	## to the server.
+	##
+	## Value: {0 or positive float}
+
+	queue_max_delay = 0.3
+
+
+	## attack_time_length
+	##
+	## Time in seconds for full attack to run.  All users and processes will
+	## be terminated when this time limit is reached.
+	##
+	## Value: {0 or positive float (0 means no time-based limit)}
+	##
+	## Note: This value must be larger than user_ramp_time, if this value is
+	## not zero.
+	##
+	## Note: If any of your users has the restartable flag set, this value
+	## must be non-zero.
+
+	attack_time_length = 300
+
+
+	## user_ramp_time
+	##
+	## Time in seconds to ramp up to full user count.  Users will start in
+	## a (somewhat) smooth fashion over this time.
+	##
+	## Value: {0 or positive float (0 means no ramp)}
+	##
+	## Note: This value must be less than limit_attack_time, if
+	## limit_attack_time is not zero.
+
+	user_ramp_time = 60
+
+
+	## dbg_level
+	##
+	## The level of debug information to print out.  Higher numbers mean more
+	## crap streaming by.  (Ew, crap stream.)
+	##
+	## Value: {0 - 5}
+
+	debug_level = 0
+
+
+	## dump_responses
+	##
+	## For each request/response pair, write out a pair of files with all the
+	## transaction information.  Good for debugging, really bad during an
+	## attack.  Use with caution.
+	##
+	## Value: {0 | 1}
+
+	dump_responses = 0
+
+
+	## verbose_logs
+	##
+	## For speed, logs spit out the minimum information necessary.  Turn this
+	## on to get all kinds of extra info (for example, a list of all links on
+	## each page, so you can generate a site map).
+	##
+	## Value: {0 | 1}
+
+	verbose_logs = 1
+
+
+	## allow_secure
+	##
+	## Normally, HTTP, HTTPS, and FTP requests are allowed.  If this switch
+	## is turned off, HTTPS requests are not allowed.  
+	##
+	## Note: This WILL affect users running in playback mode.
+	##
+	## Value: {0 | 1}
+
+	allow_secure = 1
+
+
+	## eval_per_url
+	##
+	## To save time and memory, dlg_eval by default doesn't do the per-URL
+	## stats (for instance, error counts per URL).  Change this behavior
+	## here.
+	##
+	## Value: {0 | 1}
+
+	eval_per_url = 0
+
+
+	## eval_hist_value_buckets
+	## eval_hist_time_buckets
+	##
+	## The number of buckets in the histogram for two different histogram
+	## types.  eval_hist_value_buckets affects sections of the log like "Load
+	## time per URL", while eval_hist_time_buckets controls things like
+	## "Average load time per URL over time".
+	##
+	## Value: {positive integer}
+
+	eval_hist_value_buckets = 15
+	eval_hist_time_buckets = 15
+
+
+
+	### -------------------------
+	### Global attack limitations
+	### -------------------------
+
+	## domain_match
+	##
+	## Level of domain match required in traversal URL compared to top URLs.
+	## Strip off all but the last domain_match elements of both site names.
+	## If they match, traverse.  If not, don't.
+	##
+	## Example:  
+	##        top URL:              http://www.redhat.com
+	##        URL to be traversed:  http://www.microsoft.com
+	##
+	##                      traversal becomes     top becomes     will traverse
+	## domain_match value
+	##         0                   ""                 ""              yes
+	##         1                  .com               .com             yes
+	##         2              microsoft.com       redhat.com          no
+	##         3            www.microsoft.com   www.redhat.com        no
+	##
+	## Value: {0 or positive integer}
+	##
+	## Note: For many .coms, a value of 2 will keep you from wandering
+	## offsite, but still allow you to effectively test your site.
+	##
+	## Note: Ignored by users running playback attacks.
+
+	domain_match = 2
+
+
+	## require_url_regexps
+	##
+	## If a new URL doesn't match one of these regexps, skip it.
+	##
+	## Values: {regexp [...]}
+	##
+	## Note: whitespace separated
+	##
+	## Note: Ignored by users running playback attacks.
+	##
+	## Note: No regexps in the list turns off this check, allowing all URLs
+	## except those denied by other limits, like ignore_url_regeps.
+
+	require_url_regexps
+	END
+
+
+	## ignore_url_regexps
+	##
+	## If a new URL matches one of these regexps, skip it.
+	##
+	## Values: {regexp [...]}
+	##
+	## Note: whitespace separated
+	##
+	## Note: Ignored by users running playback attacks.
+
+	ignore_url_regexps
+			\.bz$   \.bz2$
+			\.gz$
+			\.mov$
+			\.mp3$
+			\.mpg$
+			\.ps$
+			\.qt$
+			\.ram$   \.rm$
+			\.tar$
+			\.tgz$
+	END
+
+
+
+	### ---------------------
+	### Global error checking
+	### ---------------------
+
+	## If the URL being attacked matches the URL regexp, the visible text in
+	## the page is searched for the visible text regexp.  If it is NOT
+	## found, an error is logged for that URL.
+	##
+	## Values: {{URL regexp} {visible text regexp} [...] }
+	##
+	## Note: whitespace separated on a single line 
+
+	pos_vis_regexps
+			# There's usually a "Copyright" line at the bottom of the page.
+			# If we can't find it, the page was truncated.  Flag an error.
+			\.html          Copyright
+			\.asp           Copyright
+			\.cgi           Copyright
+			\.pl            Copyright
+	END
+
+
+	## If the URL being attacked matches the URL regexp, the visible text in
+	## the page is searched for the visible text regexp.  If it IS found an
+	## error is logged for that URL.
+	##
+	## Values: {{URL regexp} {visible text regexp} [...] }
+	##
+	## Note: whitespace separated on a single line 
+
+	neg_vis_regexps
+			# If the word "Error" shows up on the page, flag an error.
+			\.html          [Ee][Rr][Rr][Oo][Rr]
+			\.asp           [Ee][Rr][Rr][Oo][Rr]
+			\.cgi           [Ee][Rr][Rr][Oo][Rr]
+			\.pl            [Ee][Rr][Rr][Oo][Rr]
+	END
+
+
+	## If the URL being attacked matches the URL regexp, the invisible text
+	## in the page is searched for the invisible text regexp.  If it is NOT
+	## found, an error is logged for that URL.
+	##
+	## Values: {{URL regexp} {invisible text regexp} [...] }
+	##
+	## Note: whitespace separated on a single line 
+
+	pos_invis_regexps
+			# There should be a </html> tag at the end of the page.  If
+			# it's missing, flag an error.
+			\.html            \/[Hh][Tt][Mm][Ll]
+	END
+
+
+	## If the URL being attacked matches the URL regexp, the visible text in
+	## the page is searched for the visible text regexp.  If it IS found an
+	## error is logged for that URL.
+	##
+	## Values: {{URL regexp} {visible text regexp} [...] }
+	##
+	## Note: whitespace separated on a single line 
+
+	neg_invis_regexps
+	END
+
+
+
+	### ---------------
+	### User definition
+	### ---------------
+
+	## For each user type, a user_def block is necessary.
+	## 
+	## Value: {string - name of the user definition}
+
+	user_def = NAME
+
+			 ## attack_type
+			 ##
+			 ## The type of attack this user is to run.
+			 ##
+			 ## Values: {depth | breadth | wander | bounce | playback}
+
+			 attack_type = playback
+
+
+			 ## script_dir
+			 ##
+			 ## Directory containing playback information.
+			 ##
+			 ## Value: {string}
+			 ##
+			 ## Note: Ignored if user is running a non-playback attack.
+
+			 script_dir = scripts/example
+
+
+			 ## script_file
+			 ##
+			 ## File in script_dir to hold playback.  This is useful so that
+			 ## if you're hacking the playback file, you can have a few
+			 ## different versions in the same script_dir, thereby sharing
+			 ## the content comparison files.
+			 ##
+			 ## Value: {string}
+			 ##
+			 ## Note: Ignored if user is running a non-playback attack.
+
+			 script_file = _playback_
+
+
+			 ## instances
+			 ##
+			 ## The number of users that will use this definition.
+			 ##
+			 ## Value: {0 or positive integer}
+
+			 instances = 100
+
+
+			 ## top_url
+			 ##
+			 ## The url used as the starting point for non-playback attacks.
+			 ##
+			 ## Value: {string}
+
+			 top_url = http://www.attack-this-site.com
+
+
+					 ## playback_errors
+					 ##
+					 ## In a playback attack, decide whether to playback events that
+					 ## had errors in the original record.  An error is defined as
+					 ## a response code of 400 or greater.
+					 ##
+					 ## Value: {0 | 1}
+
+					 playback_errors = 0
+
+
+			 ## delay_time
+			 ##
+			 ## The average time in seconds that the user will spend reading
+			 ## the page (ie: idleing) before requesting another.
+			 ##
+			 ## Value: {0 or positive float}
+
+			 delay_time = 45
+
+
+			 ## delay_spread
+			 ##
+			 ## Deviation in seconds around delay_time that the idle can
+			 ## vary.
+			 ##
+			 ## Value: {0 or positive float}
+
+			 delay_spread = 10
+
+
+			 ## limit_depth
+			 ##
+			 ## Limit how deep a traversal can go from a top URL.
+			 ##
+			 ## Values: {0 or positive integer (0 means no limit)}
+			 ##
+			 ## Note: Ignored by users running playback attacks.
+
+			 limit_depth = 0
+
+
+			 ## limit_hits_per_url
+			 ##
+			 ## Limit how many times a single URL can get retreived.
+			 ##
+			 ## Values: {0 or positive integer (0 means no limit)}
+			 ##
+			 ## Note: Ignored by users running playback attacks.
+
+			 limit_hits_per_url = 1
+
+
+			 ## limit_pages_traversed
+			 ##
+			 ## Limit how many pages will be retreived.
+			 ##
+			 ## Values: {0 or positive integer (0 means no limit)}
+			 ##
+			 ## Note: Ignored by users running playback attacks.
+
+			 limit_pages_traversed = 5
+
+
+			 ## limit_attack_time
+			 ##
+			 ## Limit how long an attack will run in wall-clock time in seconds.
+			 ## 
+			 ## Values: 0 or positive float (0 means no limit)
+
+			 limit_attack_time = 0
+
+
+			 ## restartable
+			 ##
+			 ## If set, a user will restart its attack after it finishes.
+			 ## (It's finished when any one of the above limit_* conditions
+			 ## is met.)
+			 ## 
+			 ## Values: {0 | 1}
+			 ##
+			 ## Note:  If any user has this flag set, attack_time_length
+			 ## must be non-zero.
+
+			 restartable = 1
+
+
+			 ## restart_time
+			 ##
+			 ## The average time in seconds that the user will sleep before
+			 ## restarting, if 'restartable' is true.
+			 ##
+			 ## Value: {0 or positive float}
+
+			 restart_time = 45
+
+
+			 ## restart_spread
+			 ##
+			 ## Deviation in seconds around restart_time that the sleep can
+			 ## vary.
+			 ##
+			 ## Value: {0 or positive float}
+
+			 restart_spread = 10
+
+			 ## get_images
+			 ##
+			 ## Retreive images, either in "img" tags or any files with
+			 ## extensions listed in the @C_IMAGE_FILE_TYPES array in the
+			 ## code.
+			 ##
+			 ## Values: {0 | 1}
+			 ##
+			 ## Note: Ignored by users running playback attacks.
+
+			 get_images = 1
+
+			 ## accept_cookies
+			 ## 
+			 ## Accept and send requested cookies.
+			 ##
+			 ## Values: {0 | 1}
+
+			 accept_cookies = 1
+
+			 ## compare_content
+			 ## 
+			 ## Compare the content of server responses in a playback attack
+			 ## to the responses during the recording session.  Only the
+			 ## content of non-images is compared.
+			 ##
+			 ## Value: {0 | 1}
+			 ##
+			 ## Note: This has the potential for significantly slowing down
+			 ##       attacks.
+
+			 compare_content = 1
+
+
+					 ## request_vars
+					 ##
+					 ## Local variable replacement inside requests sent to server.
+					 ## For information, read the _script_hacks_ file.
+					 ##
+					 ## Value: {{search for string} {replace with string} [...] }
+					 ##
+					 ## Note: Ignored by users running non-playback attacks.
+
+					 request_vars
+									__FIRSTNAME = Johnny
+									__LASTNAME = Deluge
+					 END
+
+
+					 ## translator
+					 ##
+					 ## This is used for URL rewriting, when the URLs are dynamically
+					 ## modified each time a page is loaded.  Playback attacks need
+					 ## to adjust themselves based on state embedded in URLs.
+					 ## Translators are used to modify the destination and referring
+					 ## URLs in a request.
+					 ##
+					 ## You may define as many translators as are necessary.
+					 ## Translators will be run in the order they were defined.
+
+					 translator
+
+									## header
+									##
+									## A regular expression to identify the beginning of
+									## a dynamic tag embedded in a URL.
+									##
+									## Value: {regular expression}
+
+									header = \;\$sessionid\$
+
+
+									## regexp
+									##
+									## A regular expression to identify the embedded data.
+									##
+									## Value: {regular expression}
+
+									regexp = [A-Z0-9]+
+
+
+									## footer
+									## 
+									## A regular expression to identify the end of the
+									## embedded tag.
+									##
+									## Value: {regular expression}
+
+									footer = \?
+
+
+									## update_per_page
+									##
+									## If the tag is one that's constant across a session,
+									## this should be zero.  If the tag has the potential
+									## to change more frequently, set this flag.
+									##
+									## Value: {0 | 1}
+
+									update_per_page = 0
+					 END
+	END
+
+
+=cut

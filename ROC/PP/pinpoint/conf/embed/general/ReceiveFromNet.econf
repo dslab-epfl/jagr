@@ -1,0 +1,21 @@
+<analysisengine>
+  <!-- 
+    This embedded configuration is for reading records from network
+
+    The arguments for this configuration are:
+
+	port=tcp
+          tcp port from which to receive records.
+
+    Also, be sure to pass in a record collection named 'output'
+
+    -->
+
+
+  <plugin name="recvfromnet">
+    <classname>roc.pinpoint.analysis.plugins2.records.ReceiveRecords</classname>
+    <arg key="outputCollection">output</arg>
+    <arg key="port">$port</arg>
+  </plugin>
+
+</analysisengine>

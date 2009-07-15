@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:24 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="components" default="core" basedir=".">
+
+  <target name="all" depends="core"/>
+
+  <target name="core">
+    <ant dir="pkgen/src" target="core"/>
+    <ant dir="xmldocuments/src" target="core"/>
+    <ant dir="servicelocator/src" target="core"/>
+    <ant dir="util/tracer/src" target="core"/>
+    <ant dir="creditcard/src" target="core"/>
+    <ant dir="address/src" target="core"/>
+    <ant dir="contactinfo/src" target="core"/>
+    <ant dir="customer/src" target="core"/>
+    <ant dir="encodingfilter/src" target="core"/>
+    <ant dir="lineitem/src" target="core"/>
+    <ant dir="asyncsender/src" target="core"/>
+    <ant dir="mailer/src" target="core"/>
+    <ant dir="cart/src" target="core"/>
+    <ant dir="catalog/src" target="core"/>
+    <ant dir="signon/src" target="core"/>
+    <ant dir="purchaseorder/src" target="core"/>
+    <ant dir="uidgen/src" target="core"/>
+    <ant dir="supplierpo/src" target="core"/>
+  </target>
+
+  <target name="clean">
+    <ant dir="pkgen/src" target="clean"/>
+    <ant dir="util/tracer/src" target="clean"/>
+    <ant dir="creditcard/src" target="clean"/>
+    <ant dir="address/src" target="clean"/>
+    <ant dir="contactinfo/src" target="clean"/>
+    <ant dir="customer/src" target="clean"/>
+    <ant dir="encodingfilter/src" target="clean"/>
+    <ant dir="asyncsender/src" target="clean"/>
+    <ant dir="mailer/src" target="clean"/>
+    <ant dir="cart/src" target="clean"/>
+    <ant dir="catalog/src" target="clean"/>
+    <ant dir="signon/src" target="clean"/>
+    <ant dir="xmldocuments/src" target="clean"/>
+    <ant dir="servicelocator/src" target="clean"/>
+    <ant dir="purchaseorder/src" target="clean"/>
+    <ant dir="uidgen/src" target="clean"/>
+    <ant dir="supplierpo/src" target="clean"/>
+  </target>
+
+</project>

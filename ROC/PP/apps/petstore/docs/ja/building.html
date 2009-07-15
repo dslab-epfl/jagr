@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                        
+<meta http-equiv="Content-Type"
+ content="text/html; charset=euc-jp">
+                        
+<meta http-equiv="CONTENT-TYPE"
+ content="text/html; charset=euc-jp">
+                        
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+                        
+  <meta name="CREATED" content="20011213;15124500">
+                        
+<meta name="CHANGEDBY" content="Thierry Violleau">
+                        
+  <meta name="CHANGED" content="20011213;15144600">
+<title>Java[TM] Pet Store Demo 1.3.1_02 &gt; デモのビルド</title>
+</head>
+  <body>
+      &nbsp;      
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="">
+      <tbody>
+         <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"><a  href="index.html">Java&#153; Pet Store Demo 1.3.1_02</a></font></b> <font  color="#ffffff">&gt; <b>デモのビルド</b></font> </td>
+       <td bgcolor="#000033">                                    
+<div align="right"><b><font color="#ccccff"><a
+ href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+      </td>
+      </tr>
+                     
+  </tbody>     
+</table>
+            
+<h1>デモのビルド</h1>
+ソースコードをビルドするには、<a href="http://jakarta.apache.org/ant/index.html">Ant</a> バージョン 1.4.1 を使用します。Ant は、<i>make</i> のような、Java ベースのビルドツールで、<a
+ href="http://www.apache.org/">Apache Software Foundation</a> の支援のもとに開発されました。Ant の現在のバージョンは、Java Pet Store Demo バンドルに含まれています。<br> &nbsp;      
+<center>     
+<table cellspacing="2" cellpadding="2" width="89%">
+      <tbody>
+         <tr>
+      <td>                                    
+      <hr size="1" noshade="">                                     
+<p style="margin-bottom: 0cm;"><b>注: </b> Java Pet Store Demo バンドルには、事前にビルドされたバイナリが同梱されています。これらのバイナリを配備し、アプリケーションのビルド作業を省略する場合は、<a href="installing.html">インストールの指示</a>を参照してください。<br>
+      </p>
+                                       
+      <hr size="1" noshade=""></td>
+      </tr>
+                     
+  </tbody>     
+</table>
+     </center>
+            
+<h2> 1.0 Web サービスなしの Pet Store Demo のビルド</h2>
+ここでは、Pet Store アプリケーションのアプリケーションバイナリをビルドする方法を説明します。このアプリケーションでは、Order Processing Center と Supplier の間の通信に JMS を使用します。Ant を使用してすべてのアプリケーションバイナリをビルドし、その他のタスクを実行するには、デモのインストール先のルートディレクトリにある最上位レベルのビルドスクリプトを実行します。<br><br> アプリケーションをビルドする前に、&lt;petstore.home&gt;/src/build.properties ファイルを、使用中の環境に合わせて構成する必要があります。設定する必要のあるプロパティは、次のとおりです。<br>
+       
+<table cellpadding="5" cellspacing="0" border="1" width="525"
+ align="center">
+      <tbody>
+        <tr>
+<td valign="top" align="center" width="20%"><b>プロパティ名</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>説明</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>例</b><br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top" width="20%">j2ee.server.name<br>
+          </td>
+<td valign="top" width="40%">J2EE SDK がインストールされているサーバのホスト名<br>
+          </td>
+<td valign="top" width="40%">localhost<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top" width="20%">j2ee.server.port<br>
+          </td>
+<td valign="top" width="40%">J2EE SDK にアクセスできる HTTP ポート<br>
+          </td>
+<td valign="top" width="40%">8000 または 8080 (JWSDP を J2EE SDK に適用した場合)<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">j2ee.home<br>
+          </td>
+<td valign="top">J2EE SDK がインストールされているディレクトリの絶対パス<br>
+          </td>
+<td valign="top">c:\j2sdkee1.3.1 (Windows の場合) または ~/j2sdkee1.3.1 (UNIX の場合)<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">j2ee-script-suffix<br>
+          </td>
+<td valign="top">J2EE スクリプトの接尾辞<br>
+          </td>
+<td valign="top">.bat (Windows の場合) または接尾辞なし (UNIX の場合)<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">j2ee-script-suffix<br>
+          </td>
+<td valign="top">JWSDP スクリプトの接尾辞<br>
+          </td>
+<td valign="top">.bat (Windows の場合) または .sh (UNIX の場合)<br>
+          </td>
+        </tr>
+                               
+  </tbody>    
+</table>
+<b>注:  Windows では、プロパティファイルにパスを書き込むときに、「\」の代わりにエスケープされた文字として「\\」を入力する必要があります。したがって、たとえば「c:\j2sdkee1.3.1」の場合は、「c:\\j2sdkee1.3.1」と入力します。</b><br>
+       
+<p>UNIX でアプリケーションバイナリをビルドするには、シェルプロンプトを開き、次のコマンドを入力します。</p>
+       
+<pre>cd &lt;petstore.home&gt;/src<br>build.sh [argument]</pre>
+Windows でアプリケーションバイナリをビルドするには、コマンドプロンプトを開き、次のコマンドを入力します。
+<pre>cd &lt;petstore.home&gt;\src<br>build.bat [argument]</pre>
+ビルドスクリプト <tt>build.bat</tt> (Windows) または <tt>build.sh</tt> (UNIX) を引数なしで呼び出すと、すべてのアプリケーションバイナリがビルドされます。バイナリは、次のフォルダに配置されます。
+<pre>&lt;petstore.home&gt;/src/apps/admin/build/petstoreadmin.ear<br>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear<br>&lt;petstore.home&gt;/src/apps/petstore/build/petstore.ear<br>&lt;petstore.home&gt;/src/apps/supplier/build/supplier.ear</pre>
+次の表に、最上位レベルのビルドスクリプトに指定できる引数を掲載します。
+<p></p>
+         
+<center>      
+<p><tt>ant</tt> の引数</p>
+    </center>
+       
+<center>    
+<table border="1" cellspacing="0" cellpadding="5" width="386">
+      <caption><br>
+                     
+  <center></center>
+       </caption><col width="81"><col width="283">   <tbody>
+         <tr>
+<th width="81">オプション</th>
+<th width="283">目的</th>
+      </tr>
+       <tr>
+<td width="81"><tt>core</tt></td>
+<td width="283">すべてをビルドする (デフォルトのビルド対象)</td>
+      </tr>
+       <tr>
+<td width="81"><tt>clean</tt></td>
+<td width="283">ビルドの出力ディレクトリを空にする</td>
+      </tr>
+       <tr>
+<td width="81"><tt>deploy</tt></td>
+<td width="283">アプリケーションバイナリを配備する</td>
+      </tr>
+       <tr>
+<td width="81"><tt>undeploy</tt></td>
+<td width="283">アプリケーションバイナリを配備解除する</td>
+      </tr>
+       <tr>
+<td width="81"><tt>verify</tt></td>
+<td width="283">J2EE 検証ツールを実行して、アプリケーションパッケージにあるエラーを見つける</td>
+      </tr>
+       <tr>
+<td width="81"><tt>docs</tt></td>
+<td width="283">アプリケーションの Javadoc をビルドする</td>
+      </tr>
+                     
+  </tbody>     
+</table>
+     </center>
+            
+<h4> 1.1 単一のアプリケーションのビルド</h4>
+単一のアプリケーションをビルドするには、ビルドスクリプト (<tt>build.bat</tt> または <tt>build.sh</tt>) を <tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/src</tt> に対して実行します。ここで、<tt>&lt;app&gt;</tt> は、次のいずれか 1 つです。
+<ul>
+                     
+<div style="margin-bottom: 0cm;"><tt>petstore</tt> (Storefront のコードが含まれる)</div>
+                       
+<p style="margin-bottom: 0cm;"><tt>opc</tt> (Order Processing Center (OPC) のコードが含まれる)  </p>
+                   
+<p style="margin-bottom: 0cm;"><tt>supplier</tt> (Supplier のコードが含まれる) </p>
+                   
+<p><tt>admin</tt> (管理フロントエンドのコードが含まれる)</p>
+         
+</ul>
+アプリケーションバイナリ (EAR ファイル) は、<tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/build</tt> に配置されます。この EAR ファイルを配備するには、ビルドスクリプトをもう一度実行します。ただし、今度は <tt>deploy</tt> 引数を使用します。別の方法として、J2EE SDK の配備ツールを使用することもできます。
+<h4> 1.2 Forte[TM] for Java IDE によるビルド</h4>
+Forte for Java IDE は、Ant のビルドファイルをサポートしています。各種ディレクトリ内の <tt>build.xml</tt> ファイルをダブルクリックするだけで、ビルドが開始されます。
+        
+<h2> 2.0 Web サービス付きの Pet Store Demo のビルド</h2>
+Web サービスに特有のコードはすべて、<tt>&lt;petstore.home&gt;/src/webservices</tt> ディレクトリに分離されています。これらのアプリケーションバイナリをビルドする方法は、Web サービスなしの Pet Store Demo をビルドする方法 (セクション 1.0 で前述) と同様ですが、最上位レベルのビルドを開始するルートディレクトリを <tt>&lt;petstore.home&gt;/src</tt> ではなく <tt>&lt;petstore.home&gt;/src/webservices</tt> に設定する点だけが異なります。さらに、<tt>&lt;petstore.home&gt;/src/build.properties</tt> ファイルに次のプロパティを追加する必要もあります。<br>
+<table cellpadding="5" cellspacing="0" border="1" width="525"
+ align="center">
+      <tbody>
+        <tr>
+<td valign="top" align="center" width="20%"><b>プロパティ名</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>説明</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>例</b><br>
+          </td>
+        </tr>
+                                <tr align="left">
+<td valign="top" width="20%">jwsdp.home<br>
+          </td>
+<td valign="top" width="40%">JWSDP がインストールされているディレクトリの絶対パス<br>
+          </td>
+<td valign="top" width="40%">c:\jwsdp-1_0_01 (Windows の場合) または ~/jwsdp-1_0_01 (UNIX の場合)<br>
+          </td>
+        </tr>
+                       
+  </tbody>    
+</table>
+<b>注:  Windows では、プロパティファイルにパスを書き込むときに、「\」の代わりにエスケープされた文字として「\\」を入力する必要があります。したがって、たとえば「c:\jwsdp-1_0_01」の場合は、「c:\\jwsdp-1_0_01」と入力します。</b><br> <br>
+           
+<hr size="3" noshade="">      
+<p><a href="copyright.html">Copyright &copy; 2002 Sun Microsystems, Inc. All Rights Reserved.</a> </p>
+     <br> <br> <br> <br> <br>
+</body>
+</html>

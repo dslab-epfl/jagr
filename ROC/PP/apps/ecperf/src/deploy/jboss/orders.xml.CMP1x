@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- An EJB 2.0 descriptor that uses the 1.x CMP model -->
+<!DOCTYPE ejb-jar PUBLIC
+   "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN"
+   "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+  <description>Orders Domain</description>
+  <display-name>Orders</display-name>
+  <enterprise-beans>
+    <entity>
+      <description>OrderLine Entity Bean</description>
+      <display-name>OrderLineEnt</display-name>
+      <ejb-name>OrderLineEnt</ejb-name>
+      <home>com.sun.ecperf.orders.orderlineent.ejb.OrderLineEntHome</home>
+      <remote>com.sun.ecperf.orders.orderlineent.ejb.OrderLineEnt</remote>
+      <ejb-class>com.sun.ecperf.orders.orderlineent.ejb.OrderLineCmpEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>com.sun.ecperf.orders.orderlineent.ejb.OrderLineEntPK</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>1.x</cmp-version>
+      <cmp-field>
+        <description />
+        <field-name>shipDate</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>quantity</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>itemId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>orderId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>id</field-name>
+      </cmp-field>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Orders DB dataSource</description>
+	<res-ref-name>OrdersDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Order Session Bean</description>
+      <display-name>OrderSes</display-name>
+      <ejb-name>OrderSes</ejb-name>
+      <home>com.sun.ecperf.orders.orderses.ejb.OrderSesHome</home>
+      <remote>com.sun.ecperf.orders.orderses.ejb.OrderSes</remote>
+      <ejb-class>com.sun.ecperf.orders.orderses.ejb.OrderSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>the Order Entity Bean</description>
+	<ejb-ref-name>ejb/OrderEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.orders.orderent.ejb.OrderEntHome</home>
+	<remote>com.sun.ecperf.orders.orderent.ejb.OrderEnt</remote>
+	<ejb-link>OrderEnt</ejb-link>
+      </ejb-ref>
+    </session>
+    <session>
+      <description>Cart Session Bean</description>
+      <display-name>CartSes</display-name>
+      <ejb-name>CartSes</ejb-name>
+      <home>com.sun.ecperf.orders.cartses.ejb.CartSesHome</home>
+      <remote>com.sun.ecperf.orders.cartses.ejb.CartSes</remote>
+      <ejb-class>com.sun.ecperf.orders.cartses.ejb.CartSesEJB</ejb-class>
+      <session-type>Stateful</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+        <description>Order Session Bean</description>
+        <ejb-ref-name>ejb/OrderSes</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.sun.ecperf.orders.orderses.ejb.OrderSesHome</home>
+        <remote>com.sun.ecperf.orders.orderses.ejb.OrderSes</remote>
+        <ejb-link>OrderSes</ejb-link>
+      </ejb-ref>
+    </session>
+    <session>
+      <description>OrderCustomer Session Bean</description>
+      <display-name>OrderCustomerSes</display-name>
+      <ejb-name>OrderCustomerSes</ejb-name>
+      <home>com.sun.ecperf.orders.ordercustomerses.ejb.OrderCustomerSesHome</home>
+      <remote>com.sun.ecperf.orders.ordercustomerses.ejb.OrderCustomerSes</remote>
+      <ejb-class>com.sun.ecperf.orders.ordercustomerses.ejb.OrderCustomerSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+	<description>OrderCustomer Entity Bean</description>
+	<ejb-ref-name>ejb/OrderCustomerEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.orders.ordercustomerent.ejb.OrderCustomerEntHome</home>
+	<remote>com.sun.ecperf.orders.ordercustomerent.ejb.OrderCustomerEnt</remote>
+      <ejb-link>OrderCustomerEnt</ejb-link>
+      </ejb-ref>
+    </session>
+    <entity>
+      <description>OrderCustomer Entity Bean</description>
+      <display-name>OrderCustomerEnt</display-name>
+      <ejb-name>OrderCustomerEnt</ejb-name>
+      <home>com.sun.ecperf.orders.ordercustomerent.ejb.OrderCustomerEntHome</home>
+      <remote>com.sun.ecperf.orders.ordercustomerent.ejb.OrderCustomerEnt</remote>
+      <ejb-class>com.sun.ecperf.orders.ordercustomerent.ejb.OrderCustomerCmpEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>1.x</cmp-version>
+      <cmp-field>
+        <description></description>
+        <field-name>customerSince</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>street1</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>street2</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>city</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>state</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>country</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>zip</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>phone</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>contact</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>lastName</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>firstName</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description></description>
+        <field-name>customerId</field-name>
+      </cmp-field>
+      <primkey-field>customerId</primkey-field>
+      <env-entry>
+	<description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	<env-entry-name>debuglevel</env-entry-name>
+	<env-entry-type>java.lang.Integer</env-entry-type>
+	<env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+        <description>the Sequence Session Bean</description>
+        <ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.sun.ecperf.util.sequenceses.ejb.SequenceSesHome</home>
+        <remote>com.sun.ecperf.util.sequenceses.ejb.SequenceSes</remote>
+        <ejb-link>SequenceSes</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<description>Customer Entity Bean</description>
+	<ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.corp.customerent.ejb.CustomerEntHome</home>
+	<remote>com.sun.ecperf.corp.customerent.ejb.CustomerEnt</remote>
+      </ejb-ref>
+      <resource-ref>
+	<description>Orders DB dataSource</description>
+	<res-ref-name>OrdersDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Item Entity bean</description>
+      <display-name>ItemEnt</display-name>
+      <ejb-name>ItemEnt</ejb-name>
+      <home>com.sun.ecperf.orders.itement.ejb.ItemEntHome</home>
+      <remote>com.sun.ecperf.orders.itement.ejb.ItemEnt</remote>
+      <ejb-class>com.sun.ecperf.orders.itement.ejb.ItemCmpEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>1.x</cmp-version>
+      <cmp-field>
+        <description />
+        <field-name>discount</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>description</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>name</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>price</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>id</field-name>
+      </cmp-field>
+      <primkey-field>id</primkey-field>
+      <env-entry>
+	    <description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	    <env-entry-name>debuglevel</env-entry-name>
+	    <env-entry-type>java.lang.Integer</env-entry-type>
+	    <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+	<description>Orders DB dataSource</description>
+	<res-ref-name>OrdersDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <entity>
+      <description>Order Entity Bean</description>
+      <display-name>OrderEnt</display-name>
+      <ejb-name>OrderEnt</ejb-name>
+      <home>com.sun.ecperf.orders.orderent.ejb.OrderEntHome</home>
+      <remote>com.sun.ecperf.orders.orderent.ejb.OrderEnt</remote>
+      <ejb-class>com.sun.ecperf.orders.orderent.ejb.OrderCmpEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>1.x</cmp-version>
+      <cmp-field>
+        <description />
+        <field-name>orderStatus</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>shipDate</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>entryDate</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>total</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>discount</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>orderLineCount</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>customerId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description />
+        <field-name>id</field-name>
+      </cmp-field>
+      <primkey-field>id</primkey-field>
+      <env-entry>
+	    <description>
+		The debug level of the bean - higher
+		value means more information.
+	    </description>
+	    <env-entry-name>debuglevel</env-entry-name>
+	    <env-entry-type>java.lang.Integer</env-entry-type>
+	    <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <ejb-ref>
+        <description>the Sequence Session Bean</description>
+        <ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <home>com.sun.ecperf.util.sequenceses.ejb.SequenceSesHome</home>
+        <remote>com.sun.ecperf.util.sequenceses.ejb.SequenceSes</remote>
+        <ejb-link>SequenceSes</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.corp.customerent.ejb.CustomerEntHome</home>
+	<remote>com.sun.ecperf.corp.customerent.ejb.CustomerEnt</remote>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/LargeOrderSes</ejb-ref-name>
+	<ejb-ref-type>Session</ejb-ref-type>
+	<home>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSesHome</home>
+	<remote>com.sun.ecperf.mfg.largeorderses.ejb.LargeOrderSes</remote>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/ItemEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.orders.itement.ejb.ItemEntHome</home>
+	<remote>com.sun.ecperf.orders.itement.ejb.ItemEnt</remote>
+	<ejb-link>ItemEnt</ejb-link>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/OrderLineEnt</ejb-ref-name>
+	<ejb-ref-type>Entity</ejb-ref-type>
+	<home>com.sun.ecperf.orders.orderlineent.ejb.OrderLineEntHome</home>
+	<remote>com.sun.ecperf.orders.orderlineent.ejb.OrderLineEnt</remote>
+	<ejb-link>OrderLineEnt</ejb-link>
+      </ejb-ref>
+      <resource-ref>
+	<description>A description for</description>
+	<res-ref-name>OrdersDataSource</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+      </resource-ref>
+    </entity>
+    <session>
+      <description>Orders Auditing Session Bean</description>
+      <display-name>OrderAuditSes</display-name>
+      <ejb-name>OrderAuditSes</ejb-name>
+      <home>com.sun.ecperf.orders.orderauditses.ejb.OrderAuditSesHome</home>
+      <remote>com.sun.ecperf.orders.orderauditses.ejb.OrderAuditSes</remote>
+      <ejb-class>com.sun.ecperf.orders.orderauditses.ejb.OrderAuditSesEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <description>
+                The debug level of the bean - higher
+                value means more information.
+            </description>
+        <env-entry-name>debuglevel</env-entry-name>
+        <env-entry-type>java.lang.Integer</env-entry-type>
+        <env-entry-value>2</env-entry-value>
+      </env-entry>
+      <resource-ref>
+        <description>Order DB dataSource</description>
+        <res-ref-name>OrdersDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <container-transaction>
+      <method>
+	<ejb-name>OrderLineEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>OrderSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CartSes</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>OrderCustomerSes</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>OrderCustomerEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ItemEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>OrderEnt</ejb-name>
+	<method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>OrderAuditSes</ejb-name>
+        <method-name>*</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+

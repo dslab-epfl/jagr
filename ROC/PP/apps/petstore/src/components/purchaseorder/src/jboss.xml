@@ -1,0 +1,21 @@
+<jboss>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>AddressEJB</ejb-name>
+      <local-jndi-name>ejb/opc/po/Address</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>ContactInfoEJB</ejb-name>
+      <local-jndi-name>ejb/opc/po/ContactInfo</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>LineItemEJB</ejb-name>
+      <local-jndi-name>ejb/opc/po/LineItem</local-jndi-name>
+    </entity>
+    <entity>
+      <ejb-name>CreditCardEJB</ejb-name>
+      <local-jndi-name>ejb/opc/po/CreditCard</local-jndi-name>
+    </entity>
+  </enterprise-beans>
+</jboss>
+

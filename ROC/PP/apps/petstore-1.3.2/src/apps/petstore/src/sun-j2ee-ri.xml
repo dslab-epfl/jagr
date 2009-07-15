@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE j2ee-ri-specific-information PUBLIC '-//Sun Microsystems Inc.//DTD J2EE Reference Implementation 1.3//EN' 'http://localhost:8000/sun-j2ee-ri_1_3.dtd'>
+
+<j2ee-ri-specific-information>
+  <server-name></server-name>
+  <rolemapping />
+  <web>
+    <module-name>petstore.war</module-name>
+    <context-root>petstore</context-root>
+    <resource-ref>
+      <res-ref-name>jdbc/CatalogDB</res-ref-name>
+      <jndi-name>jdbc/petstore/PetStoreDB</jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/CatalogDAOSQLURL</res-ref-name>
+        <jndi-name>http://localhost:8000/petstore/CatalogDAOSQL.xml</jndi-name>
+    </resource-ref>
+  </web>
+  <enterprise-beans>
+    <module-name>customer-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>CreditCardEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/CreditCard</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "CreditCardEJBTable" SET "__reverse_creditCard___PMPrimaryKey" = ?  , "cardNumber" = ?  , "cardType" = ?  , "expiryDate" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_creditCard___PMPrimaryKey" , "cardNumber" , "cardType" , "expiryDate" FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "CreditCardEJBTable" ( "__PMPrimaryKey" , "__reverse_creditCard___PMPrimaryKey" , "cardNumber" , "cardType" , "expiryDate" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "CreditCardEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "CreditCardEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_creditCard___PMPrimaryKey" LONGINT , "cardNumber" VARCHAR(255) , "cardType" VARCHAR(255) , "expiryDate" VARCHAR(255), CONSTRAINT "pk_CreditCardEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>AddressEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/Address</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "AddressEJBTable" SET "__reverse_address___PMPrimaryKey" = ?  , "city" = ?  , "country" = ?  , "state" = ?  , "streetName1" = ?  , "streetName2" = ?  , "zipCode" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "AddressEJBTable" ( "__PMPrimaryKey" , "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "AddressEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "AddressEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_address___PMPrimaryKey" LONGINT , "city" VARCHAR(255) , "country" VARCHAR(255) , "state" VARCHAR(255) , "streetName1" VARCHAR(255) , "streetName2" VARCHAR(255) , "zipCode" VARCHAR(255), CONSTRAINT "pk_AddressEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>ContactInfoEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/ContactInfo</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <jndi-name>ejb/petstore/customer/Address<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "ContactInfoEJBTable" SET "__reverse_contactInfo___PMPrimaryKey" = ?  , "_address___PMPrimaryKey" = ?  , "email" = ?  , "familyName" = ?  , "givenName" = ?  , "telephone" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_contactInfo___PMPrimaryKey" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "ContactInfoEJBTable" ( "__PMPrimaryKey" , "__reverse_contactInfo___PMPrimaryKey" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "ContactInfoEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "ContactInfoEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_contactInfo___PMPrimaryKey" LONGINT , "_address___PMPrimaryKey" LONGINT , "email" VARCHAR(255) , "familyName" VARCHAR(255) , "givenName" VARCHAR(255) , "telephone" VARCHAR(255), CONSTRAINT "pk_ContactInfoEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>AccountEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/Account</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+        <jndi-name>ejb/petstore/customer/CreditCard<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+        <jndi-name>ejb/petstore/customer/ContactInfo<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "AccountEJBTable" SET "__reverse_account_userId" = ?  , "_contactInfo___PMPrimaryKey" = ?  , "_creditCard___PMPrimaryKey" = ?  , "status" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_account_userId" , "_contactInfo___PMPrimaryKey" , "_creditCard___PMPrimaryKey" , "status" FROM "AccountEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "AccountEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "AccountEJBTable" ( "__PMPrimaryKey" , "__reverse_account_userId" , "_contactInfo___PMPrimaryKey" , "_creditCard___PMPrimaryKey" , "status" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "AccountEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "AccountEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "AccountEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_account_userId" VARCHAR(255) , "_contactInfo___PMPrimaryKey" LONGINT , "_creditCard___PMPrimaryKey" LONGINT , "status" VARCHAR(255), CONSTRAINT "pk_AccountEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>CustomerEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/Customer</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Account</ejb-ref-name>
+        <jndi-name>ejb/petstore/customer/Account<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "CustomerEJBTable" SET "_account___PMPrimaryKey" = ?  , "_profile___PMPrimaryKey" = ?  WHERE "userId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "_account___PMPrimaryKey" , "_profile___PMPrimaryKey" FROM "CustomerEJBTable" WHERE "userId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "CustomerEJBTable" WHERE "userId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "CustomerEJBTable" ( "_account___PMPrimaryKey" , "_profile___PMPrimaryKey" , "userId" ) VALUES (  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "CustomerEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "userId" FROM "CustomerEJBTable" WHERE "userId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "CustomerEJBTable" ("_account___PMPrimaryKey" LONGINT , "_profile___PMPrimaryKey" LONGINT , "userId" VARCHAR(255), CONSTRAINT "pk_CustomerEJBTabl" PRIMARY KEY ("userId") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>CustomerEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findAllCustomers</method-name>
+            <method-params />
+          </method>
+          <sql>SELECT "a"."userId" FROM "CustomerEJBTable" "a" </sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>ProfileEJB</ejb-name>
+      <jndi-name>ejb/petstore/customer/Profile</jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "ProfileEJBTable" SET "__reverse_profile_userId" = ?  , "bannerPreference" = ?  , "favoriteCategory" = ?  , "myListPreference" = ?  , "preferredLanguage" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_profile_userId" , "bannerPreference" , "favoriteCategory" , "myListPreference" , "preferredLanguage" FROM "ProfileEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "ProfileEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "ProfileEJBTable" ( "__PMPrimaryKey" , "__reverse_profile_userId" , "bannerPreference" , "favoriteCategory" , "myListPreference" , "preferredLanguage" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "ProfileEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "ProfileEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "ProfileEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_profile_userId" VARCHAR(255) , "bannerPreference" BOOLEAN NOT NULL , "favoriteCategory" VARCHAR(255) , "myListPreference" BOOLEAN NOT NULL , "preferredLanguage" VARCHAR(255), CONSTRAINT "pk_ProfileEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <cmpresource>
+      <ds-jndi-name>jdbc/petstore/PetStoreDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>signon-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>UserEJB</ejb-name>
+      <jndi-name>ejb/petstore/signon/User</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "UserEJBTable" SET "password" = ?  WHERE "userName" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "password" FROM "UserEJBTable" WHERE "userName" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "UserEJBTable" WHERE "userName" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "UserEJBTable" ( "password" , "userName" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "UserEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "userName" FROM "UserEJBTable" WHERE "userName" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "UserEJBTable" ("password" VARCHAR(255) , "userName" VARCHAR(255), CONSTRAINT "pk_UserEJBTabl" PRIMARY KEY ("userName") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>UserEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findAllUsers</method-name>
+            <method-params />
+          </method>
+          <sql>SELECT "a"."userName" FROM "UserEJBTable" "a" </sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>SignOnEJB</ejb-name>
+      <jndi-name>ejb/petstore/signon/SignOn</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <ejb-ref>
+        <ejb-ref-name>ejb/User</ejb-ref-name>
+        <jndi-name>ejb/petstore/signon/User<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+    <cmpresource>
+      <ds-jndi-name>jdbc/petstore/PetStoreDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>asyncsender-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>AsyncSenderEJB</ejb-name>
+      <jndi-name>ejb/petstore/asyncsender/AsyncSender</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>none</auth-method>
+          <realm>default</realm>
+          <required>false</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>none</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/petstore/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/AsyncSenderQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/OrderQueue</jndi-name>
+      </resource-env-ref>
+      <gen-classes />
+    </ejb>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>catalog-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>CatalogEJB</ejb-name>
+      <jndi-name>ejb/petstore/catalog/Catalog</jndi-name>
+      <resource-ref>
+        <res-ref-name>jdbc/CatalogDB</res-ref-name>
+        <jndi-name>jdbc/petstore/PetStoreDB</jndi-name>
+        <default-resource-principal>
+          <name>estoreuser</name>
+          <password>estore</password>
+        </default-resource-principal>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/CatalogDAOSQLURL</res-ref-name>
+        <jndi-name>http://localhost:8000/petstore/CatalogDAOSQL.xml</jndi-name>
+      </resource-ref>
+      <gen-classes />
+    </ejb>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>petstore-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>ShoppingControllerEJB</ejb-name>
+      <jndi-name>ejb/petstore/petstore/ShoppingController</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Catalog</ejb-ref-name>
+        <jndi-name>ejb/petstore/catalog/Catalog<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ShoppingCart</ejb-ref-name>
+        <jndi-name>ejb/petstore/petstore/ShoppingCart<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ShoppingClientFacade</ejb-ref-name>
+        <jndi-name>ejb/petstore/petstore/ShoppingClientFacade<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/SignOn</ejb-ref-name>
+        <jndi-name>ejb/petstore/signon/SignOn<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/AsyncSender</ejb-ref-name>
+        <jndi-name>ejb/petstore/asyncsender/AsyncSender<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+    <ejb>
+      <ejb-name>ShoppingClientFacadeEJB</ejb-name>
+      <jndi-name>ejb/petstore/petstore/ShoppingClientFacade</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Customer</ejb-ref-name>
+        <jndi-name>ejb/petstore/customer/Customer<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ShoppingCart</ejb-ref-name>
+        <jndi-name>ejb/petstore/petstore/ShoppingCart<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>cart-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>ShoppingCartEJB</ejb-name>
+      <jndi-name>ejb/petstore/petstore/ShoppingCart</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Catalog</ejb-ref-name>
+        <jndi-name>ejb/petstore/catalog/Catalog<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+  </enterprise-beans>
+  <enterprise-beans>
+    <module-name>uidgen-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>CounterEJB</ejb-name>
+      <jndi-name>ejb/petstore/uidgen/Counter</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "CounterEJBTable" SET "counter" = ?  WHERE "name" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "counter" FROM "CounterEJBTable" WHERE "name" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "CounterEJBTable" WHERE "name" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "CounterEJBTable" ( "counter" , "name" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "CounterEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "name" FROM "CounterEJBTable" WHERE "name" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "CounterEJBTable" ("counter" INTEGER NOT NULL , "name" VARCHAR(255), CONSTRAINT "pk_CounterEJBTabl" PRIMARY KEY ("name") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>UniqueIdGeneratorEJB</ejb-name>
+      <jndi-name>ejb/petstore/uidgen/UniqueIdGenerator</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Counter</ejb-ref-name>
+        <jndi-name></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+    <cmpresource>
+      <ds-jndi-name>jdbc/petstore/PetStoreDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+</j2ee-ri-specific-information>
+
+

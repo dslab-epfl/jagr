@@ -1,0 +1,19 @@
+<!-- Descriptor for the JMX Adaptor Web Service -->
+
+<deployment 
+	name="JMX.net.test"
+	targetNameSpace="http://net.jboss.org/jmx/test"
+	xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:jmx="http://net.jboss.org/jmx/test"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <documentation>An test JMX-based Web Service</documentation>
+  
+  <!-- this service hits a connector web service that re-exposes the complete MBeanServer API -->
+  <service name="JMXTest" provider="Handler">
+        <parameter name="handlerClass" value="org.jboss.net.jmx.server.MBeanProvider"/>
+	<parameter name="ObjectName" value="jboss.net:service=JMXTestMBean"/>
+
+  </service> 
+
+</deployment>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                                    
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                                    
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <title>Java[tm] Pet Store Demo 1.3.1_02 &gt; Enabling Web-services in the
+Demo</title>
+</head>
+ <body>
+         &nbsp;         
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+         <tbody>
+            <tr>
+         <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">
+Java&trade; Pet Store Demo 1.3.1_02</a></font></b> <font color="#ffffff">
+&gt; <b>Enabling Web-services in the Demo</b></font></td>
+          <td bgcolor="#000033">                                        
+               
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+ Java BluePrints</a></font></b></div>
+         </td>
+         </tr>
+                                 
+  </tbody>        
+</table>
+                  
+<h1>Enabling Web-services in the Demo</h1>
+         This section describes how to enable the Web-services feature of 
+the   Java Pet Store Demo. To enable the Web-services features of the demo
+, you must have  Java 2 SDK, Enterprise Edition (J2EE<sup><font size="-2">
+TM</font></sup>    SDK), v1.3.1 . If you want to deploy Web Services on Java
+2 SDK, Enterprise Edition (J2EE<sup><font size="-2">TM</font></sup>    SDK),
+v1.4, please refer to the <a href="http://java.sun.com/j2ee/blueprints/">
+BluePrints</a> web site .You must also have first installed the basic version 
+of the  demo as described<a href="installing.html"> here</a>.&nbsp;      
+  
+<h2> System Requirements</h2>
+      You need to download and install the following additional software:&nbsp;
+           
+<ul>
+                            
+  <p><b>1. Java Web Services Developer Pack, v1.0_01</b>: <a href="http://java.sun.com/webservices/downloads/webservicespack.html">
+download  here</a></p>
+               
+</ul>
+                  
+<h2> Required Environment Variables</h2>
+      You need to set an additional environment variable:&nbsp;         
+<ul>
+                            
+  <p><tt>JWSDP_HOME</tt> must point to the root directory of your Java Web 
+    Services Developer Pack (JWSDP) installation. For example, if you installed 
+    the JWSDP in <tt>/usr/local/java/jwsdp-1_0_01</tt>, then that path should 
+be   the value of <tt>JWSDP_HOME</tt>. We will refer to this path as &lt;jwsdp.home&gt;
+   in the rest of the document.&nbsp;</p>
+               
+</ul>
+               
+<h2> Installing the Demo</h2>
+         To install the demo with the webservices features enabled, follow
+ these   steps:        
+<ol>
+                
+</ol>
+           
+<blockquote>                  
+  <p><tt><b>Run the script to integrate webservice technologies into J2EE</b></tt></p>
+          </blockquote>
+                 
+  <blockquote>                          
+    <p>If you are using Unix, open a shell prompt and enter these     commands:<br>
+            </p>
+                                 <pre>cd &lt;jwsdp.home&gt;/bin</pre>
+                                 <pre>sh jwsdponj2ee.sh $J2EE_HOME</pre>
+                                 <pre>If you are using Windows, open a command prompt and enter these commands:</pre>
+                                 <pre>cd &lt;jwsdp.home&gt;\bin</pre>
+                                                  <pre>jwsdponj2ee.bat %J2EE_HOME%</pre>
+                             </blockquote>
+                   
+    <ol>
+                     
+    </ol>
+             
+    <blockquote>                     
+      <p> <b>Start the Cloudscape database.</b> </p>
+                           
+      <p>If you are using Unix, open a shell prompt and enter these    commands:
+      </p>
+                           <pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+         If you are using Windows, open a command prompt and enter these
+commands:                                  <pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+         <b>Start the J2EE server.</b>                     
+      <p>If you are using Unix, open a shell prompt and enter these    commands:
+      </p>
+                           <pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+         If you are using Windows, open a command prompt and enter these
+commands:                                  <pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+       </blockquote>
+             
+      <ol>
+               
+      </ol>
+           
+      <ol>
+        <b>Change directory to the Web-services enabled petstore.</b>   
+                                       
+        <p>If you are using Unix, open a shell prompt and enter these   
+commands: </p>
+                           <pre><tt>cd &lt;petstore.home&gt;/webservices</tt></pre>
+         If you are using Windows, open a command prompt and enter these
+commands:                                  <pre><tt>cd &lt;petstore.home&gt;\webservices</tt></pre>
+         <b>Run the setup script to deploy the applications.</b>        
+                                  
+        <p>If you are using Unix, open a shell prompt and enter these   
+commands: </p>
+                           <pre><tt>sh setup.sh deploy</tt></pre>
+         If you are using Windows, open a command prompt and enter these
+commands:                                  <pre><tt>setup.bat deploy</tt></pre>
+                                   
+      </ol>
+         After installing the demo, you can start <a href="using.html">using
+  it</a>   .               
+      <p>For information on what changes were made to WebService-enable the
+Java    PetStore Demo application, <a href="wschanges.html">click here</a>
+. </p>
+                     
+      <p> </p>
+                     
+      <hr noshade="" =""><a href="copyright.html">Copyright &copy; 2002 Sun
+Microsystems,    Inc. All Rights Reserved.</a>        <br>
+       <br>
+      <br>
+      <br>
+   <br>
+  <br>
+ 
+      </body>
+      </html>

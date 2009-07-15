@@ -1,0 +1,185 @@
+/**
+    Copyright (C) 2004 Emre Kiciman and Stanford University
+
+    This file is part of Pinpoint
+
+    Pinpoint is free software; you can distribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation; either version 2.1 of the License, or
+    (at your option) any later version.
+
+    Pinpoint is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Pinpoint; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+**/
+package roc.pinpoint.analysis.plugins2.correlation;
+
+import java.util.*;
+
+import roc.pinpoint.analysis.*;
+import roc.pinpoint.analysis.structure.*;
+
+/**
+ * rank components by their distance from the target component
+ * @author emrek@cs.stanford.edu
+ *
+ */
+public class RankNearestComponents implements Plugin {
+
+
+    public static final String INPUT_COLLECTION_ARG = "inputCollection";
+    public static final String OUTPUT_COLLECTION_ARG = "outputCollection";
+    public static final String TARGET_ID_ARG = "targetId";
+    public static final String RANK_PERIOD_ARG = "rankPeriod";
+    public static final String SENSITIVITY_ARG = "sensitivity";
+    public static final String ONLINE_ARG = "online";
+
+
+    PluginArg[] args = {
+	new PluginArg( INPUT_COLLECTION_ARG,
+		       "input collection.  this plugin will look for observations in the record collection specified by this argument",
+		       PluginArg.ARG_RECORDCOLLECTION,
+		       true,
+		       null ),
+	new PluginArg( OUTPUT_COLLECTION_ARG,
+		       "output collection. this plugin will place requests in this record collection",
+		       PluginArg.ARG_RECORDCOLLECTION,
+		       true,
+		       null ),
+	new PluginArg( TARGET_ID_ARG,
+		       "comma-separated key-value pairs, identifying target component",
+		       PluginArg.ARG_MAP,
+		       true,
+		       null ),
+	new PluginArg( RANK_PERIOD_ARG,
+		       "ranking period.  this plugin will run the ranking algorithm once every period...  unit is milliseconds.",
+		       PluginArg.ARG_INTEGER,
+		       false,
+		       "30000" ),
+	new PluginArg( SENSITIVITY_ARG,
+		       "sensitivity threshold (when to stop ranking)",
+		       PluginArg.ARG_DOUBLE,
+		       false,
+		       "0.5" ),
+	new PluginArg( ONLINE_ARG,
+		       "set to 'true' to work online",
+		       PluginArg.ARG_BOOLEAN,
+		       false,
+		       "false" )
+    };
+
+    private RecordCollection inputCollection;
+    private RecordCollection outputCollection;
+
+    private String clusterAttribute;
+    private Map targetId;
+    private long rankPeriod;
+
+    private double sensitivity;
+
+    private Timer timer;
+    private boolean online;
+    
+    private AnalysisEngine engine;
+
+    public PluginArg[] getPluginArguments() {
+	return args;
+    }
+
+    /**
+     * 
+     * @see roc.pinpoint.analysis.Plugin#start(String, Map, AnalysisEngine)
+     */
+    public void start(String id, Map args, AnalysisEngine engine) {
+	inputCollection = (RecordCollection) args.get(INPUT_COLLECTION_ARG);
+        outputCollection = (RecordCollection) args.get(OUTPUT_COLLECTION_ARG);
+        targetId = (Map)args.get( TARGET_ID_ARG );
+	rankPeriod = ((Integer)args.get(RANK_PERIOD_ARG)).intValue();
+	sensitivity = ((Double)args.get(SENSITIVITY_ARG)).doubleValue();
+	online = ((Boolean)args.get( ONLINE_ARG )).booleanValue();
+
+	this.engine = engine;
+        timer = new Timer();
+        timer.schedule(new MyRankingTask(), 0, rankPeriod);
+    }
+
+    /**
+     * @see roc.pinpoint.analysis.Plugin#stop()
+     */
+    public void stop() {
+        timer.cancel();
+    }
+    
+
+    class MyRankingTask extends TimerTask {
+
+	public void run() {
+	    System.err.println( "Rank Nearest Component Plugin pass..." );
+
+
+	    SortedSet results = new TreeSet();
+		
+	    synchronized( inputCollection ) {
+		Map records = inputCollection.getAllRecords();
+		int size = records.size();
+
+		Distanceable target = null;
+
+		// step 1. find target!
+
+		Iterator iter = records.keySet().iterator();
+		while( iter.hasNext() ) {
+		    Object key = iter.next();
+		    
+		    Record rec = (Record)records.get( key );
+		    Identifiable i = (Identifiable)rec.getValue();
+		    if( i.matchesId( targetId )) {
+			target = (Distanceable)i;
+			break;
+		    }
+		}
+
+		if( target == null ) {
+		    System.err.println( "Rank Nearest Component ABORTING! Target not found: " + targetId.toString() );
+		    return;
+		}
+
+		// step 2. rank all objects based on their distance from target
+		iter = records.keySet().iterator();
+		while( iter.hasNext() ) {
+		    Object key = iter.next();
+		
+		    Record rec = (Record)records.get( key );
+		    Distanceable other = (Distanceable)rec.getValue();
+		    double distance = target.getDistance( other );
+		
+		    RankedObject ro = new RankedObject( distance, other );
+		    results.add( ro );
+		}
+
+		// the sorted elements are in 'results'. output this to
+		// the record collection.
+	    
+	    }// end synchronized
+
+	    outputCollection.clearAllRecords();
+	    Record r = new Record( results );
+	    outputCollection.setRecord( "distanceResults", r );
+
+
+            String inIsReady = (String)inputCollection.getAttribute( "isReady" );
+            if( !online && (inIsReady != null) && (inIsReady.equals( "true" ))) {
+                timer.cancel();
+            }
+
+	}
+
+    }
+
+
+}

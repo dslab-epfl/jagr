@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<j2ee-ri-specific-information>
+  <server-name></server-name>
+  <rolemapping>
+    <role name="gold_customer">
+      <groups>
+        <group name="gold" />
+      </groups>
+    </role>
+    <role name="customer">
+      <principals>
+        <principal>
+          <name>j2ee</name>
+        </principal>
+      </principals>
+      <groups>
+        <group name="cust" />
+      </groups>
+    </role>
+  </rolemapping>
+  <web>
+    <display-name>EmulatorWAR</display-name>
+    <context-root>Emulator</context-root>
+  </web>
+</j2ee-ri-specific-information>
+

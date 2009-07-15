@@ -1,0 +1,25 @@
+README
+ 
+             Java(TM) 2 SDK, Enterprise Edition 
+
+Version:      1.3.1 FCS
+Release Date: January 2002
+
+If you're new to the Java 2 SDK, Enterprise Edition (J2EE(TM)), 
+then you'll find the following documentation helpful:
+
+The main page for the documentation is titled, "Java 2
+SDK, Enterprise Edition Documentation."  It's in the
+doc/index.html file. 
+
+The Release Notes list software requirements, supported platforms,
+and current limitations.  The Release Notes are in the
+doc/release/ReleaseNotes.html file.
+
+For code examples and instructions on how to use the J2EE SDK, 
+please see the J2EE Tutorial at:
+
+              http://java.sun.com/j2ee/tutorial 
+
+
+Copyright; 2002 Sun Microsystems, Inc.  All rights reserved.

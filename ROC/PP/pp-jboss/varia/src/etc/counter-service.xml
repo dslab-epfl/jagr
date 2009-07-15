@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+<!-- $Id: counter-service.xml,v 1.1.1.1 2003/03/07 08:26:18 emrek Exp $ -->
+
+<server>
+
+  <classpath codebase="lib" 
+	     archives="counter-plugin.jar"/>
+
+  <!-- ==================================================================== -->
+  <!-- Counter Service                                                      -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.varia.counter.CounterService" 
+	 name=":service=Counter">
+  </mbean>
+
+</server>

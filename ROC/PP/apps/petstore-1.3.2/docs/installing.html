@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                                
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                                
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <title>Java[tm] Pet Store Demo 1.3.2&trade; &gt; Installing the Demo Without
+WebServices</title>
+</head>
+ <body>
+        &nbsp;        
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+        <tbody>
+           <tr>
+        <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">
+  Java&trade; &nbsp;&nbsp; Pet Store Demo 1.3.2</a></font></b> <font color="#ffffff">
+  &gt; <b>Installing &nbsp;&nbsp; the Demo</b></font></td>
+         <td bgcolor="#000033">                                         
+       
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+   Java BluePrints</a></font></b></div>
+        </td>
+        </tr>
+                             
+  </tbody>       
+</table>
+                
+<h1> Installing the Demo </h1>
+        This section describes how to install the Java Pet Store Demo.&nbsp;
+         
+<h2> System Requirements</h2>
+     Before installing the demo, you need to install the following softwares:&nbsp; 
+         
+<ul>
+  <b> </b><b>1. Java 2 SDK, Standard Edition (J2SE<sup><font size="-2">TM</font></sup>
+ SDK), v1.4.1 or higher :</b> <a href="http://java.sun.com/j2se/downloads.html">
+download here</a> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <p><b>2. Java 2 SDK, Enterprise Edition (J2EE<sup><font size="-2">TM</font></sup>
+      SDK), v1.3.1</b>: <a href="http://java.sun.com/j2ee/sdk_1.3/">download 
+  here</a><br>
+     </p>
+     
+</ul>
+     
+<ul>
+     
+  <p></p>
+ 
+</ul>
+ 
+<h2>Required Environment Variables</h2>
+     You must also set the environment variables <tt>JAVA_HOME</tt> and <tt>
+  J2EE_HOME  </tt>as follows:        
+<ul>
+         <tt>JAVA_HOME</tt> must point to the root directory of your J2SE 
+SDK   installation.  For example, if you installed the J2SE SDK in <tt>c:\j2sdk1.4.1
+   </tt>,  then that path should be the value of <tt>JAVA_HOME</tt>.    
+                 
+  <p><tt>J2EE_HOME</tt> must point to the root directory of your J2EE SDK
+    installation. For example, if you installed the J2EE SDK in <tt>/usr/local/java/j2sdkee1.3.1</tt>
+     , then that path should be the value of <tt>J2EE_HOME</tt>.</p>
+             
+</ul>
+        Also, your <tt>PATH</tt> <b>must</b> include the directory <tt>%JAVA_HOME%\bin</tt>
+      (Windows) or <tt>$JAVA_HOME/bin</tt> (Unix). Otherwise, some   of the 
+ build tasks will not work.        
+<h2> Installing the Demo</h2>
+       
+<ol>
+   <pre></pre>
+                                    
+  <p></p>
+                       
+</ol>
+                
+<h3> </h3>
+                  
+<ol>
+ &nbsp; <b>Unzip the distribution bundle (petstore-1_3_2.zip) into any directory.</b>
+  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    
+  <p>A directory called <tt>petstore1.3.2</tt> will be created. The rest&nbsp; 
+of this documentation will refer to this directory as <tt> &lt;petstore.home&gt;</tt>
+  &nbsp; . </p>
+                         
+</ol>
+                          
+<ol>
+                                 
+  <p><b>Run the setup script to install and configure message services and 
+   database resources.</b> </p>
+                                     
+  <p>If you are using Unix, open a shell prompt and enter these   commands: 
+  </p>
+                 <pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh</tt></pre>
+        If you are using Windows, open a command prompt and enter these commands:
+                  <pre><tt>cd &lt;petstore.home&gt;<br>setup.bat</tt></pre>
+                        
+</ol>
+               
+<blockquote>                            
+  <p><b>Start Cloudscape.</b></p>
+                                 
+  <p>If you are using Unix, open a shell prompt and enter these   commands: 
+  </p>
+                 <pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+        If you are using Windows, open a command prompt and enter these commands:
+                  <pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+        <b>Start the J2EE server.</b>                            
+  <p>If you are using Unix, open a shell prompt and enter these   commands: 
+  </p>
+                 <pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+        If you are using Windows, open a command prompt and enter these commands:
+                  <pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+      </blockquote>
+                             
+  <ol>
+        <b>Run the setup script to deploy the applications.</b>         
+                       
+    <p></p>
+                                         
+    <p>If you are using Unix, open a shell prompt and enter these   commands: 
+  </p>
+                 <pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh deploy</tt></pre>
+        If you are using Windows, open a command prompt and enter these commands:
+                  <pre><tt>cd &lt;petstore.home&gt;<br>setup.bat deploy</tt></pre>
+                                        
+    <p></p>
+                           
+  </ol>
+     <br>
+   After installing the demo, you can start <a href="using.html">using it</a>
+     .                      
+  <p> </p>
+                           
+  <hr noshade="" =""><a href="copyright.html">Copyright &copy; 2003 Sun Microsystems, 
+&nbsp; Inc. All Rights Reserved.</a>&nbsp; <br>
+      <br>
+     <br>
+    <br>
+                   
+  </body>
+  </html>

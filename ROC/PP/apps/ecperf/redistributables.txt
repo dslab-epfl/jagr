@@ -1,0 +1,19 @@
+
+The following list of files only are Redistributable under the License agreement.
+
+	NTDriver.html
+	README.html
+	ReleaseNotes*.txt
+	build.xml
+	ri.xml
+	tomcat.xml
+All files in the following directories and their sub directories
+	bin
+	config
+	src/deploy
+	schema
+	classes
+
+The following jar files in the jars directory
+	load.jar, driver.jar, launcher.jar, charts.jar
+

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: po-ejb-client.jar
+  mailer-ejb-client.jar
+  processmanager-ejb-client.jar
+  servicelocator.jar
+  xmldocuments.jar
+ 

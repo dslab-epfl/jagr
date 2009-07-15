@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:29 emrek Exp $           -->
+<!-- =================================================================== -->
+
+<project name="processmanager" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The processmanageroot directory of the workspace -->
+    <property name="processmanager.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="processmanager.build" value="${processmanager.home}/build"/>
+    <property name="processmanager.buildjardir" value="${processmanager.build}/ejbjar"/>
+
+    <property name="processmanager.src" value="${processmanager.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="processmanager.classbindir" value="${processmanager.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="processmanager.javadocs.dir" value="${processmanager.build}/docs/api"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="processmanager.classpath" value="${processmanager.classbindir}:${j2ee.classpath}"/>
+
+    <property name="processmanager.ejbjar" value="${processmanager.build}/processmanager-ejb.jar"/>
+
+    <property name="processmanager.client.ejbjar" value="${processmanager.build}/processmanager-ejb-client.jar"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${processmanager.classbindir}"/>
+    <javac srcdir="${processmanager.src}"
+           debug="${javac.debug}"
+           destdir="${processmanager.classbindir}"
+	   classpath="${processmanager.classpath}"
+	   includes="com/**"/>
+  </target>
+
+  <target name="ejbjar" depends="compile">
+    <mkdir dir="${processmanager.buildjardir}/META-INF"/>
+    <copy todir="${processmanager.buildjardir}">
+      <fileset dir="${processmanager.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${processmanager.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="jaws.xml" tofile="${processmanager.buildjardir}/META-INF/jaws.xml"/>
+    <delete file="${processmanager.ejbjar}" quiet="true"/>
+    <jar jarfile="${processmanager.ejbjar}" basedir="${processmanager.buildjardir}"/>
+    <delete dir="${processmanager.buildjardir}"/>
+  </target>
+
+  <target name="ejbclientjar" depends="init">
+    <mkdir dir="${processmanager.buildjardir}"/>
+    <copy todir="${processmanager.buildjardir}">
+      <fileset dir="${processmanager.classbindir}"/>
+    </copy>
+    <!-- Get rid of the EJB Impl Class -->
+    <delete file="${processmanager.buildjardir}/com/sun/j2ee/blueprints/processmanager/ejb/ProcessManagerEJB.class"/>
+    <delete file="${processmanager.client.ejbjar}" quiet="true"/>
+    <jar jarfile="${processmanager.client.ejbjar}" basedir="${processmanager.buildjardir}"/>
+    <delete dir="${processmanager.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${processmanager.build}"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${processmanager.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${processmanager.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="ProcessManager Component API"
+             doctitle="ProcessManager Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${processmanager.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${processmanager.src}"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building ProcessManager Component  +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+
+</project>
+

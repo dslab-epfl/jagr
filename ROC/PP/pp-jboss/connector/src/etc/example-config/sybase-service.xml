@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss Server Configuration                                           -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<server>
+
+  <!-- ======================================================================-->
+  <!-- New ConnectionManager setup for Sybase ASE/ASA jConnect driver        -->
+  <!-- Thanks to Marc Zampetti <zampetti@aol.net>                            -->
+  <!-- Build jmx-api (build/build.sh all) and view for config documentation  -->
+  <!-- ===================================================================== -->
+
+  <mbean code="org.jboss.resource.connectionmanager.LocalTxConnectionManager" 
+	 name="jboss.jca:service=LocalTxCM,name=SybaseDB">
+
+    <!--uncomment out this line if you are using the SybaseDSRealm above 
+    <attribute name="SecurityDomainJndiName">SybaseDbRealm</attribute>
+    -->
+
+    <depends optional-attribute-name="ManagedConnectionFactoryName">
+      <!--embedded mbean-->
+      <mbean code="org.jboss.resource.connectionmanager.RARDeployment" 
+	     name="jboss.jca:service=LocalTxDS,name=SybaseDB">
+
+        <attribute name="JndiName">jdbc/SybaseDB</attribute>
+
+        <attribute name="ManagedConnectionFactoryProperties">
+          <properties>
+            <!-- Sybase jConnect URL for the database. 
+            NOTE: The hostname and port of made up values. The optional
+                  database name is provided, as well as some additinal Driver
+                  parameters.
+            -->
+            <config-property name="ConnectionURL" type="java.lang.String">
+              jdbc:sybase:Tds:host.at.some.domain:5000/db_name?JCONNECT_VERSION=6
+            </config-property>
+            <config-property name="DriverClass" type="java.lang.String">
+              com.sybase.jdbc2.jdbc.SybDataSource
+            </config-property>
+            <config-property name="UserName" type="java.lang.String">
+              username
+            </config-property>
+            <config-property name="Password" type="java.lang.String">
+              password
+            </config-property>
+          </properties>
+        </attribute>
+
+<!--Below here are advanced properties -->
+        <!--hack-->
+        <depends optional-attribute-name="OldRarDeployment">
+	        jboss.jca:service=RARDeployment,name=JBoss LocalTransaction JDBC Wrapper
+	      </depends>
+      </mbean>
+    </depends>
+
+    <depends optional-attribute-name="ManagedConnectionPool">
+      <!--embedded mbean-->
+      <mbean 
+	      code="org.jboss.resource.connectionmanager.JBossManagedConnectionPool" 
+	      name="jboss.jca:service=LocalTxPool,name=SybaseDB">
+
+        <attribute name="MinSize">0</attribute>
+        <attribute name="MaxSize">10</attribute>
+        <attribute name="BlockingTimeoutMillis">5000</attribute>
+        <attribute name="IdleTimeoutMinutes">15</attribute>
+        <attribute name="Criteria">ByContainer</attribute>
+      </mbean>
+
+    </depends>
+    <depends optional-attribute-name="CachedConnectionManager">
+      jboss.jca:service=CachedConnectionManager
+    </depends>
+
+    <depends optional-attribute-name="JaasSecurityManagerService">
+      jboss.security:service=JaasSecurityManager
+    </depends>
+
+    <attribute name="TransactionManager">java:/TransactionManager</attribute>
+
+    <!--make the rar deploy! hack till better deployment-->
+    <depends>jboss.jca:service=RARDeployer</depends>
+
+  </mbean>
+
+</server>

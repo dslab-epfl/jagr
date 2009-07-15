@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<jboss>
+
+
+<container-configurations>
+<container-configuration extends="Standard BMP EntityBean">
+   <container-name>ECPerf BMP</container-name>
+   <commit-option>B</commit-option>
+</container-configuration>
+</container-configurations>
+
+<enterprise-beans>
+    <entity>
+      <ejb-name>RuleEnt</ejb-name>
+      <configuration-name>Instance Per Transaction BMP EntityBean</configuration-name>
+      <resource-ref>
+         <res-ref-name>CorpDataSource</res-ref-name>
+         <resource-name>CorpDataSource</resource-name>
+      </resource-ref>
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+    </entity>
+    <entity>
+      <ejb-name>DiscountEnt</ejb-name>
+      <configuration-name>Instance Per Transaction BMP EntityBean</configuration-name>
+      <resource-ref>
+         <res-ref-name>CorpDataSource</res-ref-name>
+         <resource-name>CorpDataSource</resource-name>
+      </resource-ref>
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+    </entity>
+    <entity>
+      <ejb-name>CustomerEnt</ejb-name>
+      <configuration-name>ECPerf BMP</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/RuleEnt</ejb-ref-name>
+	<jndi-name>RuleEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/DiscountEnt</ejb-ref-name>
+	<jndi-name>DiscountEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>CorpDataSource</res-ref-name>
+         <resource-name>CorpDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+         <method>
+            <method-name>has*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>
+      -->
+    </entity>
+    <session>
+      <ejb-name>CorpAuditSes</ejb-name>
+      <resource-ref>
+         <res-ref-name>CorpDataSource</res-ref-name>
+         <resource-name>CorpDataSource</resource-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <resource-managers>
+    <resource-manager>
+        <res-name>CorpDataSource</res-name>
+        <res-jndi-name>java:/ECPerfDS</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

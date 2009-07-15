@@ -1,0 +1,17 @@
+<jboss>
+  <enterprise-beans>
+
+  <message-driven>
+    <ejb-name>MailerMDB</ejb-name>
+    <!-- <jndi-name>jms/opc/MailQueue</jndi-name>-->
+    <destination-jndi-name>queue/mailQueue</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>mail/MailSession</res-ref-name>
+      <jndi-name>java:/Mail</jndi-name>
+    </resource-ref>  
+  </message-driven>
+
+  </enterprise-beans>
+</jboss>
+

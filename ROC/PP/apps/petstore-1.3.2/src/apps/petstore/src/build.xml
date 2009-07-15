@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:19 emrek Exp $              -->
+<!-- =================================================================== -->
+
+<project name="petstore" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <!-- JSTL -->
+    <property name="jstl.lib" value="../../../lib/jstl"/>
+
+    <property name="petstore.application.name" value="PetStoreEAR"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="petstore.home" value=".."/>
+
+    <!-- The destination directory for the builds -->
+    <property name="petstore.build" value="${petstore.home}/build"/>
+    <property name="petstore.buildjardir" value="${petstore.home}/build/ejbjar"/>
+    <property name="petstore.build.war" value="${petstore.home}/build/war"/>
+
+    <property name="petstore.src" value="${petstore.home}/src"/>
+    <property name="petstore.lib" value="${petstore.home}/src/lib"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="petstore.classbindir" value="${petstore.build}/classes"/>
+
+    <!-- The root directory of all the components. -->
+    <property name="petstore.components.basedir" value="../../../components"/>
+
+    <property name="petstore.docroot" value="${petstore.src}/docroot"/>
+    <property name="petstore.war.lib" value="${petstore.build.war}/WEB-INF/lib"/>
+    <property name="petstore.war.classes" value="${petstore.build.war}/WEB-INF/classes"/>
+
+    <property name="petstore.pkgen.home" value="${petstore.components.basedir}/pkgen"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="petstore.javadocs.dir" value="${petstore.build}/docs/api"/>
+
+    <!-- WAF  -->
+    <property name="petstore.waf.home" value="../../../waf/"/>
+    <property name="petstore.waf.classbindir" value="${petstore.waf.home}/build/classes"/>
+    <property name="petstore.waf.docroot" value="${petstore.waf.home}/src/docroot"/>
+    <property name="petstore.waf.lib" value="${petstore.waf.home}/src/lib"/>
+    <property name="petstore.waf.web.jar" value="${petstore.waf.home}/build/waf-web.jar"/>
+    <property name="petstore.waf.ejbjar" value="${petstore.waf.home}/build/waf-ejb.jar"/>
+    <property name="petstore.waf.ejbjar.client" value="${petstore.waf.home}/build/waf-ejb-client.jar"/>
+
+    <!-- Tracer Component -->
+    <property name="petstore.tracer.home" value="${petstore.components.basedir}/util/tracer"/>
+    <property name="petstore.tracer.client" value="${petstore.tracer.home}/build/tracer.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="petstore.servicelocator.home" value="${petstore.components.basedir}/servicelocator"/>
+    <property name="petstore.servicelocator.client" value="${petstore.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="petstore.xmldocuments.home" value="${petstore.components.basedir}/xmldocuments"/>
+    <property name="petstore.xmldocuments.client" value="${petstore.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- SignOn Component -->
+    <property name="petstore.signon.home" value="${petstore.components.basedir}/signon"/>
+    <property name="petstore.signon.classbindir" value="${petstore.signon.home}/build/classes"/>
+    <property name="petstore.signon.ejbjar" value="${petstore.signon.home}/build/signon-ejb.jar"/>
+    <property name="petstore.signon.ejbjar.client" value="${petstore.signon.home}/build/signon-ejb-client.jar"/>
+
+    <!-- Encoding Filter Component -->
+    <property name="petstore.encodingfilter.home" value="${petstore.components.basedir}/encodingfilter"/>
+    <property name="petstore.encodingfilter.classbindir" value="${petstore.encodingfilter.home}/build/classes"/>
+    
+    <!-- UniqueIdGenerator Component -->
+    <property name="petstore.uidgen.home" value="${petstore.components.basedir}/uidgen"/>
+    <property name="petstore.uidgen.ejbjar" value="${petstore.uidgen.home}/build/uidgen-ejb.jar"/>
+    <property name="petstore.uidgen.ejbjar.client" value="${petstore.uidgen.home}/build/uidgen-ejb-client.jar"/>
+
+
+    <!-- Async Component -->
+    <property name="petstore.asyncsender.home" value="${petstore.components.basedir}/asyncsender"/>
+    <property name="petstore.asyncsender.ejbjar" value="${petstore.asyncsender.home}/build/asyncsender-ejb.jar"/>
+    <property name="petstore.asyncsender.ejbjar.client" value="${petstore.asyncsender.home}/build/asyncsender-ejb-client.jar"/>
+
+    <!-- Catalog Component -->
+    <property name="petstore.catalog.home" value="${petstore.components.basedir}/catalog"/>
+    <property name="petstore.catalog.ejbjar" value="${petstore.catalog.home}/build/catalog-ejb.jar"/>
+    <property name="petstore.catalog.ejbjar.client" value="${petstore.catalog.home}/build/catalog-ejb-client.jar"/>
+
+    <!-- Cart Component -->
+    <property name="petstore.cart.home" value="${petstore.components.basedir}/cart"/>
+    <property name="petstore.cart.ejbjar" value="${petstore.cart.home}/build/cart-ejb.jar"/>
+    <property name="petstore.cart.ejbjar.client" value="${petstore.cart.home}/build/cart-ejb-client.jar"/>
+
+    <!-- Customer Component -->
+    <property name="petstore.customer.home" value="${petstore.components.basedir}/customer"/>
+    <property name="petstore.customer.ejbjar" value="${petstore.customer.home}/build/customer-ejb.jar"/>
+    <property name="petstore.customer.ejbjar.client" value="${petstore.customer.home}/build/customer-ejb-client.jar"/>
+
+    <!-- Petstore Components -->
+    <property name="petstore.war" value="petstore.war"/>
+    <property name="petstore.ear" value="petstore.ear"/>
+    <property name="petstore.ejbjar" value="petstore-ejb.jar"/>
+
+    <!-- Purchase Order Components -->
+    <property name="petstore.po.home" value="${petstore.components.basedir}/purchaseorder"/>
+    <property name="petstore.po.ejbjar.client" value="${petstore.po.home}/build/po-ejb-client.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${jboss.home}/client/jbossall-client.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${jboss.home}/server/default/lib/javax.servlet.jar"/>
+
+    <!-- Classpaths -->
+    <property name="petstore.classpath" value="${petstore.signon.classbindir}:${petstore.uidgen.ejbjar.client}:${petstore.asyncsender.ejbjar.client}:${petstore.xmldocuments.client}:${petstore.customer.ejbjar.client}:${petstore.cart.ejbjar.client}:${petstore.catalog.ejbjar.client}:${petstore.tracer.client}:${petstore.waf.classbindir}:${petstore.po.ejbjar.client}:${petstore.servicelocator.client}:${petstore.classbindir}:${j2ee.classpath}"/>
+
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${petstore.classbindir}"/>
+    <!-- Petstore Classes -->
+    <javac srcdir="${petstore.src}"
+           destdir="${petstore.classbindir}"
+           classpath="${petstore.classpath}"
+           includes="com/**"/>
+  </target>
+
+ 
+  <target name="war" depends="init">
+    <!-- Combine the waf and the petstore docroots -->
+    <mkdir dir="${petstore.build.war}"/>
+    <copy todir="${petstore.build.war}" >
+     <fileset dir="${petstore.waf.docroot}">
+      <exclude name="**.jsp"/>
+      <exclude name="**/WEB-INF/*.xml"/>
+     </fileset>
+     <fileset dir="${petstore.docroot}"/>
+    </copy>
+    <!--combine the waf and petstore classes -->
+    <mkdir dir="${petstore.war.lib}"/>
+    <mkdir dir="${petstore.war.classes}"/>
+    <copy file="${petstore.waf.web.jar}" todir="${petstore.war.lib}" />
+    <copy todir="${petstore.war.classes}">
+     <fileset dir= "${petstore.classbindir}">
+      <exclude name="**/ejb/ShoppingClientControllerEJB.class"/>
+      <exclude name="**/ejb/ShoppingClientFacadeLocalEJB.class"/>
+      <exclude name="**/ejb/StateMachine.class"/>
+      <exclude name="**/ejb/actions/**"/>
+     </fileset>
+    </copy>
+
+    <!--Add In the JSTL Libraries and Classes -->
+    <copy file="${jstl.lib}/standard.jar" todir="${petstore.war.lib}" />
+    <copy file="${jstl.lib}/jstl.jar" todir="${petstore.war.lib}" />
+    <copy file="${jstl.lib}/c.tld" todir="${petstore.build.war}/WEB-INF" />
+    <copy file="${jstl.lib}/fmt.tld" todir="${petstore.build.war}/WEB-INF" />
+    <!--Add the encoding fitler to petstore classes -->
+    <copy todir="${petstore.war.classes}">
+     <fileset dir= "${petstore.encodingfilter.classbindir}"/>
+    </copy>
+    <!--add the signon to the petstore classes -->
+    <copy todir="${petstore.war.classes}">
+     <fileset dir= "${petstore.signon.classbindir}">
+      <!--exclude CreateUserServlet because we use an Action -->
+      <exclude name="**/CreateUserServlet.class"/>
+      <exclude name="**/ejb/**"/>
+     </fileset>
+    </copy>
+    <!-- combination complete -->
+    <!-- copy in the ejb client jars -->
+    <copy file="${petstore.tracer.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.servicelocator.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.customer.ejbjar.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.waf.ejbjar.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.cart.ejbjar.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.signon.ejbjar.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.catalog.ejbjar.client}" todir="${petstore.war.lib}" />
+    <copy file="${petstore.po.ejbjar.client}" todir="${petstore.war.lib}" />
+    <delete file="${petstore.build}/${petstore.war}" quiet="true"/>
+    <jar jarfile="${petstore.build}/${petstore.war}" basedir="${petstore.build.war}" excludes="cvs" />
+    <delete dir="${petstore.build}/${petstore.build.war}"/>
+ </target>
+
+ <target name="ejbjar" depends="init">
+    <delete dir="${petstore.buildjardir}" quiet="true"/>
+    <mkdir dir="${petstore.buildjardir}"/>
+    <!-- copy in the petstore ejb action classes -->
+    <copy todir="${petstore.buildjardir}" >
+     <fileset dir= "${petstore.classbindir}">
+      <include name="**/ejb/**"/>
+      <include name="**/exceptions/**"/>
+      <include name="**/events/**"/>
+      <exclude name="**/web/**"/>
+      <exclude name="**/view/**"/>
+      <exclude name="**/test/**"/>
+      <exclude name="**/util/tracer/**"/>
+     </fileset>
+    </copy>
+    <unjar src="${petstore.waf.ejbjar}" dest="${petstore.buildjardir}" />
+    <delete dir="${petstore.buildjardir}/META-INF" quiet="true"/>
+    <delete dir="${petstore.buildjardir}/com/sun/j2ee/blueprints/util/tracer"/>
+    <mkdir dir="${petstore.buildjardir}/META-INF"/>
+    <copy file="ejb-jar.xml" tofile="${petstore.buildjardir}/META-INF/ejb-jar.xml" />
+    <jar jarfile="${petstore.build}/${petstore.ejbjar}" basedir="${petstore.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${petstore.buildjardir}"/>
+ </target>
+
+ <target name="ear" depends="init">
+    <mkdir dir="${petstore.buildjardir}"/>
+    <mkdir dir="${petstore.buildjardir}/META-INF"/>
+    <copy file="${petstore.src}/application.xml" todir="${petstore.buildjardir}/META-INF/" />
+    <copy file="${petstore.src}/sun-j2ee-ri.xml" todir="${petstore.buildjardir}/META-INF/" />
+    <!-- Copy in the EJB jars --> 
+    <copy file="${petstore.customer.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.build}/${petstore.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.signon.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.asyncsender.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.uidgen.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.build}/${petstore.war}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.catalog.ejbjar}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.cart.ejbjar}" todir="${petstore.buildjardir}" />
+    <!-- Copy in the client jars -->
+    <copy file="${petstore.servicelocator.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.customer.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.signon.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.uidgen.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.catalog.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.asyncsender.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.po.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.cart.ejbjar.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.tracer.client}" todir="${petstore.buildjardir}" />
+    <copy file="${petstore.xmldocuments.client}" todir="${petstore.buildjardir}" />
+    <!-- Delete the old Jar and rebuild -->
+    <delete file="${petstore.build}/${petstore.ear}" quiet="true"/>
+    <jar jarfile="${petstore.build}/${petstore.ear}" basedir="${petstore.buildjardir}" />
+    <delete dir="${petstore.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${petstore.build}"/>
+    <delete dir="${petstore.javadocs.dir}"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${petstore.build}/${petstore.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${petstore.build}/${petstore.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${petstore.build}/${petstore.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${petstore.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+   <target name="clean_all" depends="init,clean">
+      <ant dir="${petstore.pkgen.home}/src" target="clean"/>
+      <ant dir="${petstore.waf.home}/src" target="clean"/>
+      <ant dir="${petstore.servicelocator.home}/src" target="clean"/>
+      <ant dir="${petstore.tracer.home}/src" target="clean"/>
+      <ant dir="${petstore.xmldocuments.home}/src" target="clean"/>
+      <ant dir="${petstore.asyncsender.home}/src" target="clean"/>
+      <ant dir="${petstore.customer.home}/src" target="clean"/>
+      <ant dir="${petstore.catalog.home}/src" target="clean"/>
+      <ant dir="${petstore.cart.home}/src" target="clean"/>
+      <ant dir="${petstore.signon.home}/src" target="clean"/>
+      <ant dir="${petstore.po.home}/src" target="clean"/>
+      <ant dir="${petstore.encodingfilter.home}/src" target="clean"/>
+      </target>
+
+  <target name="components" depends="init">
+      <ant dir="${petstore.pkgen.home}/src" target="core"/>
+      <ant dir="${petstore.servicelocator.home}/src" target="core"/>
+      <ant dir="${petstore.tracer.home}/src" target="core"/>
+      <ant dir="${petstore.xmldocuments.home}/src" target="core"/>
+      <ant dir="${petstore.waf.home}/src" target="core"/>
+      <ant dir="${petstore.asyncsender.home}/src" target="core"/>
+      <ant dir="${petstore.customer.home}/src" target="core"/>
+      <ant dir="${petstore.catalog.home}/src" target="core"/>
+      <ant dir="${petstore.cart.home}/src" target="core"/>
+      <ant dir="${petstore.signon.home}/src" target="core"/>
+      <ant dir="${petstore.uidgen.home}/src" target="core"/>
+      <ant dir="${petstore.po.home}/src" target="core"/>
+     <ant dir="${petstore.encodingfilter.home}/src" target="core"/>
+   </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${petstore.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${petstore.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Application API"
+             doctitle="Java Pet Store Application"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${petstore.waf.home}/build/classes"/>
+        <pathelement path="${petstore.servicelocator.home}/build/classes"/>
+        <pathelement path="${petstore.tracer.home}/build/classes"/>
+        <pathelement path="${petstore.xmldocuments.home}/build/classes"/>
+        <pathelement path="${petstore.asyncsender.home}/build/classes"/>
+        <pathelement path="${petstore.customer.home}/build/classes"/>
+        <pathelement path="${petstore.catalog.home}/build/classes"/>
+        <pathelement path="${petstore.cart.home}/build/classes"/>
+        <pathelement path="${petstore.signon.home}/build/classes"/>
+        <pathelement path="${petstore.uidgen.home}/build/classes"/>
+        <pathelement path="${petstore.po.home}/build/classes"/>
+        <pathelement path="${petstore.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${petstore.waf.home}/src"/>
+        <pathelement path="${petstore.tracer.home}/src"/>
+        <pathelement path="${petstore.xmldocuments.home}/src"/>
+        <pathelement path="${petstore.asyncsender.home}/src"/>
+        <pathelement path="${petstore.customer.home}/src"/>
+        <pathelement path="${petstore.catalog.home}/src"/>
+        <pathelement path="${petstore.cart.home}/src"/>
+        <pathelement path="${petstore.signon.home}/src"/>
+        <pathelement path="${petstore.uidgen.home}/src"/>
+        <pathelement path="${petstore.po.home}/src"/>
+        <pathelement path="${petstore.encodingfilter.home}/src"/>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Petstore Application      +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+  <target name="small" depends="compile, ejbjar, war, ear" />
+  <target name="core" depends="components, banner, compile, ejbjar, war, ear" />
+  <target name="all" depends="components, core, docs" />
+</project>
+

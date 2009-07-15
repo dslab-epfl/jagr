@@ -1,0 +1,6 @@
+
+		These are hacked versions of LWP::Parallel::UserAgent and
+LWP::Parallel::Protocol.  Among other things. the hacks allow each
+registered request to have its own cookie jar, as well as its own agent
+id string.  This is required for Deluge to run.
+

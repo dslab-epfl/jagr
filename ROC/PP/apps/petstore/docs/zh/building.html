@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+  
+<meta http-equiv="Content-Type"
+ content="text/html; charset=gb2312">
+
+  
+<meta http-equiv="CONTENT-TYPE"
+ content="text/html; charset=gb2312">
+
+  
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+
+  <meta name="CREATED" content="20011213;15124500">
+
+  <meta name="CHANGEDBY" content="Thierry Violleau">
+
+  <meta name="CHANGED" content="20011213;15144600">
+<title>Java[tm] Pet Store Demo 1.3.1_02 &gt; 编译演示版</title>
+</head>
+  <body>  
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="">
+      <tbody>
+         <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"> <a  href="index.html">Java(tm) Pet Store Demo 1.3.1_02</a></font></b>  <font  color="#ffffff">&gt; <b>编译演示版</b></font></td>       <td bgcolor="#000033"> <div align="right"><b><font color="#ccccff"> <a  href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+      </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<h1> 编译演示版</h1> 使用 <a href="http://jakarta.apache.org/ant/index.html">Ant</a> 1.4.1 版来编译源代码。Ant 是一个基于 Java 技术的编译工具，类似于 <i>make</i>。在<a  href="http://www.apache.org/"> Apache Software Foundation（Apache 软件基金）</a>的赞助下开发完成。Java Pet Store Demo 软件包中包含了 Ant 的一个工作版本。<br>  
+<center>
+<table cellspacing="2" cellpadding="2" width="89%">
+      <tbody>
+         <tr>
+      <td>
+      <hr size="1" noshade="">
+<p style="margin-bottom: 0cm;"><b>注：</b>Java Pet Store Demo 包随附预先编译过的二进制代码。要部署这些二进制代码并避免编译该应用程序，请参考<a href="installing.html">安装指导</a>。       <br>
+      </p>
+
+      <hr size="1" noshade=""></td>
+      </tr>
+
+  </tbody>
+</table>
+     </center>
+
+<h2> 1.0 编译不具有 Web 服务的 Pet Store Demo</h2> 这部分内容解释如何编译 petstore 应用程序的二进制代码。petstore 应用程序使用 JMS 实现订单处理中心 (OPC) 与供应商之间的通信。要使用 Ant 编译所有的应用程序二进制文件和执行其它任务，需要运行演示版安装根目录下的定级编译脚本。<br><br>在编译应用程序前，需要配置&lt;petstore.home&gt;/src/build.properties 文件以匹配您机器的具体环境。需要设置如下属性： <br>
+
+<table cellpadding="5" cellspacing="0" border="1" width="525"
+ align="center">
+      <tbody>
+        <tr>
+<td valign="top" align="center" width="20%"><b>属性名称</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>描述</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>示例</b><br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top" width="20%">j2ee.server.name<br>
+          </td>
+<td valign="top" width="40%">安装 J2EE SDK 的服务器的主机名称<br>
+          </td>
+<td valign="top" width="40%">localhost<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top" width="20%">j2ee.server.port<br>
+          </td>
+<td valign="top" width="40%">可访问 J2EE SDK 的 HTTP 端口<br>
+          </td>
+<td valign="top" width="40%">8000 或 8080（在将 JWSDP 应用到 J2EE SDK 后）<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">j2ee.home<br>
+          </td>
+<td valign="top">安装 J2EE SDK 的目录的绝对路径<br>
+          </td>
+<td valign="top">c:\j2sdkee1.3.1（在 Windows 操作系统下）或 ~/j2sdkee1.3.1（在 Unix 操作系统下）<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">j2ee-script-suffix<br>
+          </td>
+<td valign="top">J2EE 脚本的后缀<br>
+          </td>
+<td valign="top">.bat（在 Window 操作系统下）或无后缀（在 Unix 操作系统下）<br>
+          </td>
+        </tr>
+        <tr align="left">
+<td valign="top">jwsdp-script-suffix<br>
+          </td>
+<td valign="top">JWSDP 脚本的后缀<br>
+          </td>
+<td valign="top">.bat（在 Window 操作系统下）或 .sh（在 Unix 操作系统下）<br>
+          </td>
+        </tr>
+
+  </tbody>
+</table> <b>注：在 Windows 操作系统下，当在属性文件中写入路径时，不应该使用 "\" 而应该使用 "\\"。例如，c:\j2sdkee1.3.1 应该写成 c:\\j2sdkee1.3.1</b>.<br>
+
+<p>
+要在 Unix 系统下编译应用程序的二进制文件，打开 shell 提示符，并输入如下命令：
+ </p>
+
+<pre>cd &lt;petstore.home&gt;/src<br>build.sh [argument]</pre>
+要在 Windows 系统下编译应用程序的二进制文件，打开命令行提示符，并输入如下命令：<pre>cd &lt;petstore.home&gt;\src<br>build.bat [argument]</pre> 
+如果不带参数调用编译脚本 <tt>build.bat</tt>（在 Windows 系统下）或 <tt>build.sh</tt>（在 Unix 系统下），将编译所有的应用程序二进制文件。二进制文件放在如下文件夹中：<pre>&lt;petstore.home&gt;/src/apps/admin/build/petstoreadmin.ear<br>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear<br>&lt;petstore.home&gt;/src/apps/petstore/build/petstore.ear<br>&lt;petstore.home&gt;/src/apps/supplier/build/supplier.ear</pre>
+下表列出了顶级脚本可能使用到的参数：
+<p></p>
+
+<center>
+<p><tt>ant</tt> 使用的参数  </p>
+    </center>
+
+<center>
+<table border="1" cellspacing="0" cellpadding="5" width="386">
+      <caption><br>
+
+  <center></center>
+       </caption><col width="81"><col width="283">   <tbody>
+         <tr>
+<th width="81">选项</th>
+<th width="283">用途</th>
+      </tr>
+       <tr>
+<td width="81"><tt>core</tt></td>
+<td width="283">编译所有文件。（这是缺省的编译目标）</td>
+      </tr>
+       <tr>
+<td width="81"><tt>clean</tt></td>
+<td width="283">清除编译输出目录。</td>
+      </tr>
+       <tr>
+<td width="81"><tt>deploy</tt></td>
+<td width="283">部署应用程序二进制文件。</td>
+      </tr>
+       <tr>
+<td width="81"><tt>undeploy</tt></td>
+<td width="283">不部署应用程序二进制文件。</td>
+      </tr>
+       <tr>
+<td width="81"><tt>verify</tt></td>
+<td width="283">运行 J2EE 校验工具捕捉应用程序包中的错误。</td>
+      </tr>
+       <tr>
+<td width="81"><tt>docs</tt></td>
+<td width="283">编译应用程序的 Javadocs。</td>
+      </tr>
+
+  </tbody>
+</table>
+     </center>
+
+<h4> 1.1 编译单个应用程序</h4> 要编译单个应用程序，对 <tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/src</tt> 运行编译脚本（<tt>build.bat</tt> 或 <tt>build.sh</tt>），其中 <tt>&lt;app&gt;</tt> 是下列之一：
+<ul>
+
+<div style="margin-bottom: 0cm;"><tt>petstore</tt>，其中包含了用于 storefront 的代码。</div>
+
+<p style="margin-bottom: 0cm;"><tt>opc</tt>，其中包含了用于订单处理中心的代码。  </p>
+
+<p style="margin-bottom: 0cm;"><tt>supplier</tt>，其中包含了用于供应商的代码。 </p>
+
+<p><tt>admin</tt>，其中包含了用于管理前端的代码。</p>
+
+</ul> 应用程序二进制文件（一个 EAR 文件）放在<tt>&lt;petstore.home&gt;/src/apps/&lt;app&gt;/build</tt> 下。可以通过再次运行编译脚本部署该 EAR 文件，但这次要使用 <tt>deploy</tt> 参数。另一种方法是使用 J2EE SDK 部署工具。
+<h4> 1.2 使用用于 Java IDE 的 Forte[tm] 进行编译</h4> 用于 Java IDE 的 Forte[tm] 支持 Ant 编译文件。双击各个目录下的<tt>build.xml</tt>文件来开始编译。
+
+<h2> 2.0 编译具有 Web 服务的 Pet Store Demo</h2> 所有专用于 Web 服务的代码已经单独放在<tt>&lt;petstore.home&gt;/src/webservices </tt>目录下。编译这些应用程序二进制文件与编译不具有 Web 服务的 Pet Store Demo（如上面的 1.0 部分所述）的过程完全类似，唯一的变化是根目录（运行顶级编译的位置）应为<tt>&lt;petstore.home&gt;/src/webservices </tt>，而不是<tt> &lt;petstore.home&gt;/src</tt>。需要更新 <tt>&lt;petstore.home&gt;/src/build.properties</tt> 文件以便添加下列属性： <br>
+<table cellpadding="5" cellspacing="0" border="1" width="525"
+ align="center">
+      <tbody>
+        <tr>
+<td valign="top" align="center" width="20%"><b>属性名称</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>描述</b><br>
+          </td>
+<td valign="top" align="center" width="40%"><b>示例</b><br>
+          </td>
+        </tr>
+                                <tr align="left">
+<td valign="top" width="20%">jwsdp.home<br>
+          </td>
+<td valign="top" width="40%">安装 JWSDP 的目录的绝对路径<br>
+          </td>
+<td valign="top" width="40%">c:\jwsdp-1_0_01（在 Windows 操作系统下）或 ~/jwsdp-1_0_01（在 Unix 操作系统下）<br>
+          </td>
+        </tr>
+
+  </tbody>
+</table> 注：在 Windows 操作系统下，在属性文件中写入路径名时，不应该使用 "\" 而应该使用 "\\"。例如，应该使用 c:\\jwsdp-1_0_01 而不是 c:\jwsdp-1_0_01</b>。<br> <br>
+
+<hr size="3" noshade="">
+<p><a href="copyright.html">版权所有 &copy; 2002 Sun Microsystems，Inc. 保留所有权利。</a> </p> <br> <br> <br> <br> <br></body>
+</html>

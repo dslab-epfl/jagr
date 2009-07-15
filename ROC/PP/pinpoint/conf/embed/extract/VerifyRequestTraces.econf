@@ -1,0 +1,52 @@
+<analysisengine>
+  <!--
+      This embedded configuration collects observations, does
+       detail merging; and sends only verified, complete
+      requests to output.
+
+      Takes two arguments:
+         definingAttributes=comma separated list
+            defining attributes of components
+         online=true/false
+            whether these plugins should operate in online or offline
+            mode.
+
+      Pass in two record collections: 
+
+         * 'input' (with raw observations) and
+         * 'output (for verified traces)
+
+   -->
+
+  <collection name="observations3">
+    <attribute key="transient">true</attribute>
+<!--    <attribute key="evictionPolicy">AgeThreshold</attribute> -->
+  </collection>
+  <collection name="requestTraces">
+    <attribute key="evictionPolicy">AgeThreshold</attribute>
+  </collection>
+
+
+  <plugin name="MergeDetails">
+    <classname>roc.pinpoint.analysis.plugins2.observations.MergeDetails</classname>
+    <arg key="inputCollection">input</arg>
+    <arg key="outputCollection">observations3</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+  <plugin name="SortObservationsByRequestId">
+    <classname>roc.pinpoint.analysis.plugins2.observations.SortObservations</classname>
+    <arg key="inputCollection">observations3</arg>
+    <arg key="outputCollection">requestTraces</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+  <plugin name="VerifyTraces">
+    <classname>roc.pinpoint.analysis.plugins2.paths.RequestTraceVerifier</classname>
+    <arg key="inputCollection">requestTraces</arg>
+    <arg key="outputCollection">output</arg>
+    <arg key="definingAttributes">$definingAttributes</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+</analysisengine>

@@ -1,0 +1,92 @@
+<jbosscmp-jdbc>
+
+  <relationships>
+    <ejb-relation>
+      <ejb-relation-name>RelAccountEJBContactInfoEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>AccountEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>ContactInfoEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field>
+            <field-name>id</field-name>
+          </key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+
+    <ejb-relation>
+      <ejb-relation-name>RelCustomerEJBAccountEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>CustomerEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>AccountEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>  
+
+
+    <ejb-relation>
+      <ejb-relation-name>RelContactInfoEJBAddressEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>ContactInfoEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>AddressEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+
+    <ejb-relation>
+      <ejb-relation-name>RelCustomerEJBProfileEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>CustomerEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>ProfileEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+    <ejb-relation>
+      <ejb-relation-name>RelAccountEJBCreditCardEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>AccountEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>CreditCardEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+
+    </ejb-relation>
+
+
+  </relationships>
+</jbosscmp-jdbc>

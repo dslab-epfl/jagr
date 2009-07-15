@@ -1,0 +1,37 @@
+<analysisengine>
+
+  <collection name="componentBehaviors"/>
+  <collection name="historicalbehaviors"/>
+
+  <plugin name="CollectComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.components.CollectComponentBehaviorFromPaths</classname>
+    <arg key="inputCollection">paths</arg>
+    <arg key="outputCollection">componentBehaviors</arg>
+    <arg key="definingAttributes">ipaddress,name</arg>
+    <arg key="online">$online</arg>
+    <!--methodName-->
+  </plugin>
+
+  <plugin name="CollectGrossComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.components.CollectGrossComponentBehavior</classname>
+    <arg key="inputCollection">componentBehaviors</arg>
+    <arg key="definingAttributes">name</arg>
+    <arg key="online">$online</arg>
+    <!--methodName-->
+    <arg key="outputCollection">historicalbehaviors</arg>
+  </plugin>
+
+
+  <plugin name="SaveGrossComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.records.SaveRecordsToDiskWhenReady</classname>
+    <arg key="directory">$outputdir</arg>
+    <arg key="filename">hgcb-</arg>
+    <arg key="id">$id</arg>
+    <arg key="inputCollection">historicalbehaviors</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+
+
+
+</analysisengine>

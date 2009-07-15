@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:27 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="customer" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The customeroot directory of the workspace -->
+    <property name="customer.home" value=".."/>
+    <property name="component.contactinfo.home" value="../../contactinfo"/>
+    <property name="component.creditcard.home" value="../../creditcard"/>
+
+    <!-- The destination directory for the build -->
+    <property name="customer.build" value="${customer.home}/build"/>
+    <property name="customer.buildjardir" value="${customer.build}/ejbjar"/>
+
+    <property name="customer.src" value="${customer.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="customer.classbindir" value="${customer.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="customer.javadocs.dir" value="${customer.build}/docs/api"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="customer.classpath" value="${customer.classbindir}:${j2ee.classpath}"/>
+
+    <property name="customer.ejbjar" value="${customer.build}/customer-ejb.jar"/>
+
+    <property name="customer.client.ejbjar" value="${customer.build}/customer-ejb-client.jar"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${customer.classbindir}"/>
+    <copy todir="${customer.classbindir}">
+      <fileset dir="${component.contactinfo.home}/build/classes"/>
+    </copy>
+    <copy todir="${customer.classbindir}">
+      <fileset dir="${component.creditcard.home}/build/classes"/>
+    </copy>
+    <javac srcdir="${customer.src}"
+           debug="${javac.debug}"
+           destdir="${customer.classbindir}"
+	   classpath="${customer.classpath}"
+	   includes="com/**"/>
+  </target>
+
+  <target name="components" depends="init">
+    <ant dir="${component.contactinfo.home}/src" target="core"/>
+    <ant dir="${component.creditcard.home}/src" target="core"/>
+  </target>
+
+  <target name="ejbjar" depends="compile">
+    <mkdir dir="${customer.buildjardir}/META-INF"/>
+    <copy todir="${customer.buildjardir}">
+      <fileset dir="${customer.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${customer.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="jbosscmp-jdbc.xml" tofile="${customer.buildjardir}/META-INF/jbosscmp-jdbc.xml"/>
+    <copy file="jaws.xml" tofile="${customer.buildjardir}/META-INF/jaws.xml"/>
+    <delete file="${customer.ejbjar}" quiet="true"/>
+    <jar jarfile="${customer.ejbjar}" basedir="${customer.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${customer.buildjardir}"/>
+  </target>
+
+  <target name="ejbclientjar" depends="init">
+    <mkdir dir="${customer.buildjardir}"/>
+    <copy todir="${customer.buildjardir}">
+      <fileset dir="${customer.classbindir}"/>
+    </copy>
+    <!-- Get rid of the EJB Impl Class -->
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/customer/ejb/CustomerEJB.class"/>
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/customer/account/ejb/AccountEJB.class"/>
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/customer/profile/ejb/ProfileEJB.class"/>
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/address/ejb/AddressEJB.class"/>
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/creditcard/ejb/CreditCardEJB.class"/>
+    <delete file="${customer.buildjardir}/com/sun/j2ee/blueprints/contactinfo/ejb/ContactInfoEJB.class"/>
+    <delete file="${customer.client.ejbjar}" quiet="true"/>
+    <jar jarfile="${customer.client.ejbjar}" basedir="${customer.buildjardir}"/>
+    <delete dir="${customer.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${customer.build}"/>
+    <ant dir="${component.contactinfo.home}/src" target="clean"/>
+    <ant dir="${component.creditcard.home}/src" target="clean"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${customer.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${customer.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Customer Component API"
+             doctitle="Customer Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${component.contactinfo.home}/build/classes"/>
+        <pathelement path="${component.creditcard.home}/build/classes"/>
+        <pathelement path="${customer.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${component.contactinfo.home}/src"/>
+        <pathelement path="${component.creditcard.home}/src"/>
+        <pathelement path="${customer.src}"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Customer Component        +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+
+</project>
+

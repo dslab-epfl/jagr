@@ -1,0 +1,12 @@
+<jboss-web>
+    <resource-ref>
+      <res-ref-name>jms/TopicConnectionFactory</res-ref-name>
+      <!--jndi-name>jms/supplier/TopicConnectionFactory</jndi-name-->
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+    <resource-env-ref>
+      <resource-env-ref-name>jms/opc/InvoiceTopic</resource-env-ref-name>
+      <!--jndi-name>jms/opc/InvoiceTopic</jndi-name-->
+      <jndi-name>topic/invoiceTopic</jndi-name>
+    </resource-env-ref>
+</jboss-web>

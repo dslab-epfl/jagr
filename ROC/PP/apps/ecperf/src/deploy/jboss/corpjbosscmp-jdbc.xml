@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Standard Jaws Configuration                                 -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: corpjbosscmp-jdbc.xml,v 1.2 2003/03/22 04:55:02 emrek Exp $ -->
+
+<jaws>
+   <datasource>ECPerfDS</datasource>
+   <type-mapping>Oracle8</type-mapping>
+   <enterprise-beans>
+      <entity>
+         <ejb-name>CustomerEnt</ejb-name>
+            <table-name>c_customer</table-name>
+            <create-table>false</create-table>
+            <cmp-field>
+                <field-name>customerId</field-name>
+                <column-name>c_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>since</field-name>
+                <column-name>c_since</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>balance</field-name>
+                <column-name>c_balance</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>credit</field-name>
+                <column-name>c_credit</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>creditLimit</field-name>
+                <column-name>c_credit_limit</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>ytdPayment</field-name>
+                <column-name>c_ytd_payment</column-name>
+            </cmp-field>
+        </entity>
+      <entity>
+            <ejb-name>DiscountEnt</ejb-name>
+            <table-name>c_discount</table-name>
+            <create-table>false</create-table>
+            <cmp-field>
+                <field-name>id</field-name>
+                <column-name>d_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>percent</field-name>
+                <column-name>d_percent</column-name>
+            </cmp-field>
+        </entity>
+      <entity>
+            <ejb-name>RuleEnt</ejb-name>
+            <table-name>c_rule</table-name>
+            <create-table>false</create-table>
+            <cmp-field>
+                <field-name>id</field-name>
+                <column-name>r_id</column-name>
+            </cmp-field>
+            <cmp-field>
+                <field-name>ruleBuffer</field-name>
+                <column-name>r_text</column-name>
+            </cmp-field>
+        </entity>
+   </enterprise-beans>
+</jaws>

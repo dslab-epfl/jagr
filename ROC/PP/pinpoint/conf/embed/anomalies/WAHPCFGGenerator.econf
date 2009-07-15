@@ -1,0 +1,30 @@
+<analysisengine>
+
+<!--
+	pass in record collections:
+		input: the paths to be analyzed
+		output: the output WA-HPCFG
+
+-->
+
+<plugin name="pathsplitter">
+  <classname>roc.pinpoint.analysis.plugins2.paths.SortPathsByRequestType</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="nsOutputCollection">output</arg>
+  <arg key="prependName"></arg>
+  <arg key="inputCollectionNSName">input</arg>
+  <arg key="outputCollectionNSName">output</arg>
+  <arg key="collectionAttrs">transient=true</arg>
+  <arg key="namespaceConfig">WAHPCFGGenerator-helper.econf</arg>
+ <arg key="nsArgs">online=$online</arg>
+  <arg key="online">$online</arg>
+
+</plugin>
+
+<plugin name="checkoutputready">
+  <classname>roc.pinpoint.analysis.plugins2.records.CheckIsReady</classname>
+  <arg key="monitor">output</arg>
+  <arg key="online">$online</arg>
+</plugin>
+
+</analysisengine>

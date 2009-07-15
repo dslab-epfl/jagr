@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://blueprints.j2ee.sun.com/TPAInvoice"
+        xmlns="http://blueprints.j2ee.sun.com/TPAInvoice"
+	xmlns:tpali="http://blueprints.j2ee.sun.com/TPALineItem"
+	elementFormDefault="qualified">
+
+	<xsd:import namespace="http://blueprints.j2ee.sun.com/TPALineItem" schemaLocation="TPALineItem.xsd" />
+
+	<xsd:element name="Invoice">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="OrderId" type="xsd:string" />
+				<xsd:element name="UserId" type="xsd:string" />
+				<xsd:element name="OrderDate" type="xsd:date" />
+				<xsd:element name="ShippingDate" type="xsd:date" />
+				<xsd:element name="LineItems">
+					<xsd:complexType>
+						<xsd:sequence>
+					   		<xsd:element ref="tpali:LineItem" minOccurs="1" maxOccurs="unbounded" />
+						</xsd:sequence>
+					</xsd:complexType>
+                    <xsd:unique name="itemIdUniqueness">
+                        <xsd:selector xpath="tpali:LineItem"/>
+                        <xsd:field xpath="@itemId"/>
+                    </xsd:unique>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

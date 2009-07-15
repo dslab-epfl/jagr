@@ -1,0 +1,37 @@
+/*
+ * Input Rules to determine discount for CustomerBean
+ * Format:
+ *   community: (expression;)* logical_expression
+ *   community: (expression;)* logical_expression
+ *   ....
+ * Where community is any String value representing the community
+ * mapped in the COMMUNITY_DISCOUNT table and logical expression is
+ * any valid Java expression that returns a boolean value.
+ *
+ * The rules are parsed from top to bottom and the community of the
+ * first rule that is true will be applied. The parsing stops at that
+ * point. Any errors, even syntax errors after this line is not
+ * evaluated and not reported. No exception is thrown for errors in
+ * the rule after the parsing ends.
+ *
+ * So the rule provider should allow for a last default community. If the
+ * conditions do not meet any single community, the default one should be
+ * taken. When the expression parts are omitted, the defined community
+ * in that rule will get selected when it is parsed. So a null expression
+ * is always true.
+ *
+ * If no default community is provided, there is a probability that no
+ * community is matched causing errors in the business logic.
+ *
+ * The following is an example set of rules to be evaluated by CustomerBean
+ * in the corp domain.
+ */
+import java.util.*; 
+PlatinumCustomer: ytdPayment > 300000
+GoldCustomer	: ytdPayment > 200000
+SilverCustomer	: ytdPayment > 100000
+LongTimeCustomer: Calendar c = Calendar.getInstance();
+		  c.roll(Calendar.YEAR, -5);
+		  since.compareTo(c.getTime()) < 0
+FirstTimeCustomer: credit == null && balance == 0
+JustACustomer	:

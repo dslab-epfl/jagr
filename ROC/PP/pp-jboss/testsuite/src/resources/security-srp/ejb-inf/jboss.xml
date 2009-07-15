@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<!-- The jboss.xml descriptor for the security-srp.jar ejb unit.
+-->
+<jboss>
+   <security-domain>java:/jaas/srp-test</security-domain>
+
+   <!--
+   <container-configurations>
+      <container-configuration extends="Standard Stateless SessionBean">
+         <container-name>Encrypted Stateless SessionBean</container-name>
+         <container-interceptors>
+            <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+            <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+            <interceptor>org.jboss.test.security.interceptors.ServerEncryptionInterceptor</interceptor>
+            <interceptor>org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+            <interceptor>org.jboss.ejb.plugins.StatelessSessionInstanceInterceptor</interceptor>
+         </container-interceptors>
+         <client-interceptors>
+            <bean>
+               <interceptor>org.jboss.proxy.ejb.EntityInterceptor</interceptor>
+               <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+               <interceptor>org.jboss.test.security.interceptors.ClientEncryptionInterceptor</interceptor>
+               <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+               <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+            </bean>
+         </client-interceptors>
+      </container-configuration>
+   </container-configurations>
+   -->
+
+   <enterprise-beans>
+      <session>
+         <ejb-name>StatelessSession</ejb-name>
+         <jndi-name>srp.StatelessSession</jndi-name>
+      </session>
+      <session>
+         <ejb-name>EncryptedSession</ejb-name>
+         <jndi-name>srp.EncryptedSession</jndi-name>
+         <!--
+         <configuration-name>Encrypted Stateless SessionBean</configuration-name>
+         -->
+      </session>
+   </enterprise-beans>
+
+</jboss>

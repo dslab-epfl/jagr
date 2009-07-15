@@ -1,0 +1,88 @@
+<!-- $Id: common.xml,v 1.1.1.1 2003/03/07 08:26:17 emrek Exp $ -->
+
+<!-- ================================================================== -->
+<!-- Java Docs                                                          -->
+<!-- ================================================================== -->
+
+<target name="_common:docs-api-check" depends="init">
+  <!-- if index.html is newer than the sources we are up to date -->
+  <uptodate property="docs-api.disable"
+            targetfile="${build.api}/index.html">
+    <srcfiles dir="${source.java}" includes="**/*.java"/>
+  </uptodate>
+</target>	      
+
+<!-- Generate Javadoc if we are out of date -->
+<target name="_common:docs-api" 
+        depends="_common:docs-api-check" 
+        unless="docs-api.disable">
+
+  <property name="build.api" value="${module.output}/api"/>
+
+  <mkdir dir="${build.api}"/>
+  <javadoc packagenames="${javadoc.packages}"
+           sourcepath="${source.java}"
+           destdir="${build.api}"
+           windowtitle="${javadoc.windowtitle}"
+           splitindex="${javadoc.splitindex}"
+           author="${javadoc.author}"
+           version="${javadoc.version}"
+           public="${javadoc.public}"
+           package="${javadoc.package}"
+           protected="${javadoc.protected}"
+           private="${javadoc.private}"
+           use="${javadoc.use}"
+           verbose="${javadoc.verbose}"> 
+    <classpath>
+      <path refid="javac.classpath"/>
+    </classpath>
+
+    <doctitle><![CDATA[<h1>${module.title} API Documentation</h1>]]></doctitle>
+    <bottom><![CDATA[<i><div align="center"><font size="-1">Copyright &#169; 2002 JBoss Group, LLC. All Rights Reserved.</font></div></i>]]></bottom>
+    <!--
+    <link href="http://java.sun.com/j2se/1.3/docs/api/"/>
+    -->
+  </javadoc>
+</target>
+
+<!-- ================================================================== -->
+<!-- TODO Docs                                                          -->
+<!-- ================================================================== -->
+
+<target name="_common:docs-todo-check" depends="init">
+  <!-- if index.html is newer than the sources we are up to date -->
+  <uptodate property="docs-todo.disable"
+            targetfile="${build.todo}/index.html">
+    <srcfiles dir="${source.java}" includes="**/*.java"/>
+  </uptodate>
+</target>
+
+<!-- Generate TODO list from @todo tags -->
+<target name="_common:docs-todo" 
+        depends="_common:docs-todo-check" 
+        unless="docs-todo.disable">
+
+  <taskdef name="todo" classname="xdoclet.doc.DocumentDocletTask"/>
+
+  <property name="build.todo" value="${module.output}/todo"/>
+
+  <mkdir dir="${build.todo}"/>
+
+  <todo destdir="${build.todo}">
+    <sourcepath>
+      <pathelement location="${source.java}"/>
+    </sourcepath>
+
+    <classpath>
+      <path refid="javac.classpath"/>
+      <pathelement location="${project.tools}/lib/xdoclet.jar"/>
+      <pathelement location="${project.tools}/lib/ant.jar"/>
+    </classpath>
+
+    <fileset dir="${source.java}">
+      <include name="**/*.java"/>
+    </fileset>
+
+    <info/>
+  </todo>
+</target>

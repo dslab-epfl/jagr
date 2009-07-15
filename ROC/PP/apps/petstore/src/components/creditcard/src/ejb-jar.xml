@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+<ejb-jar>
+  <display-name>CreditCardJAR</display-name>
+  <enterprise-beans>
+    <entity>
+      <display-name>CreditCardEB</display-name>
+      <ejb-name>CreditCardEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>2.x</cmp-version>
+      <abstract-schema-name>CreditCard</abstract-schema-name>
+      <cmp-field>
+        <description>CreditCard primary key</description>
+	<field-name>id</field-name>
+      </cmp-field>
+      <primkey-field>id</primkey-field>
+      <cmp-field>
+        <description>no description</description>
+        <field-name>expiryDate</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description>no description</description>
+        <field-name>cardType</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description>no description</description>
+        <field-name>cardNumber</field-name>
+      </cmp-field>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+    </entity>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>remove</method-name>
+        <method-params>
+          <method-param>java.lang.Object</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getExpiryDate</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getExpiryMonth</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getExpiryYear</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setExpiryDate</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findByPrimaryKey</method-name>
+        <method-params>
+          <method-param>java.lang.Object</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>com.sun.j2ee.blueprints.creditcard.ejb.CreditCard</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setCardType</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>remove</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getCardNumber</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setCardNumber</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getCardType</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>CreditCardEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getData</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+
+

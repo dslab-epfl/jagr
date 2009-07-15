@@ -1,0 +1,17 @@
+This directory contains the reference xmls that must be used without change.
+The various files are explained below :
+application.xml  - DD to create the ECperf application to be run on the SUT
+corp.xml         - BMP version of DD for Corp domain
+corp.xml.CMP     - CMP version of DD for Corp domain
+emulator-app.xml - DD for emulator application to be run on Emulator system
+emulator-web.xml - web DD for emulator
+mfg.xml          - BMP version of DD for Mfg domain
+mfg.xml.CMP      - CMP version of DD for Mfg domain
+orders.xml       - BMP version of DD for Customer domain
+orders.xml.CMP   - CMP version of DD for Customer domain   
+servlet.xml      - Supplier Domain servlet DD to be run on SUT
+supplier.xml     - BMP version of DD for Supplier domain
+supplier.xml.CMP - CMP version of DD for Supplier domain
+util.xml         - BMP version of Sequence beans used to generate keys - can be run in each domain
+util.xml.CMP     - CMP version of sequence beans
+web.xml          - DD for webclient used for testing. Runs on SUT

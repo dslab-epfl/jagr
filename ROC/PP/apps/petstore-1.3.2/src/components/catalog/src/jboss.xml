@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+
+<jboss>
+  <enterprise-beans>
+   <session>
+    <ejb-name>CatalogEJB</ejb-name>
+    <resource-ref>
+      <res-ref-name>jdbc/CatalogDB</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <jndi-name>java:/EstoreDB</jndi-name>
+    </resource-ref>
+    <resource-ref>
+      <res-ref-name>url/CatalogDAOSQLURL</res-ref-name>
+      <res-type>java.net.URL</res-type>
+      <res-url>http://localhost:8080/petstore/CatalogDAOSQL.xml</res-url>
+    </resource-ref>
+   </session>
+  </enterprise-beans>
+</jboss>
+

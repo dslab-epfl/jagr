@@ -1,0 +1,47 @@
+<analysisengine>
+  <!--
+      This embedded configuration receives observations from the net, does
+      detail merging; verifies that the traces
+      are complete and sends Paths to the output record collection
+
+      Takes one argument:
+         instanceAttributes=comma separated list
+            defining attributes of instances components
+         logicalAttributes=comma separated list
+            defining attributes of logical components
+
+      Pass in one record collection: 
+
+         * 'output (for paths)
+
+   -->
+
+  <collection name="obs">
+    <attribute key="transient">true</attribute>
+  </collection>
+  <collection name="verifiedtraces">
+    <attribute key="transient">true</attribute>
+  </collection>
+
+  <plugin name="observationCollector">
+    <classname>roc.pinpoint.analysis.plugins2.observations.ObservationCollector</classname>
+    <arg key="collectionName">obs</arg>
+    <arg key="subscriberClassName">roc.pinpoint.tracing.java.TCPObservationSubscriber</arg>
+  </plugin>
+
+
+  <subanalysis name="verifyPaths" file="VerifyRequestTraces.econf">
+    <arg key="definingAttributes">$instanceAttributes</arg>
+    <bindrecord key="input">obs</bindrecord>
+    <bindrecord key="output">verifiedtraces</bindrecord>
+  </subanalysis>
+
+  <plugin name="GeneratePaths">
+    <classname>roc.pinpoint.analysis.plugins2.paths.GeneratePaths</classname>
+    <arg key="inputCollection">verifiedtraces</arg>
+    <arg key="outputCollection">output</arg>
+    <arg key="definingAttributes">$logicalAttributes</arg>
+  </plugin>
+
+
+</analysisengine>

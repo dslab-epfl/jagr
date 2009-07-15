@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                            
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                            
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <title>Java[tm] Pet Store Demo 1.3.1_02 &gt; WebService enabling of the
+Java PetStore Demo application</title>
+</head>
+ <body>
+       &nbsp;       
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+       <tbody>
+          <tr>
+       <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">
+Java&trade; Pet Store Demo 1.3.1_02</a></font></b> <font color="#ffffff">
+&gt; <b>Changes made to enable Web-services </b></font></td>
+        <td bgcolor="#000033">                                          
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+ Java BluePrints</a></font></b></div>
+       </td>
+       </tr>
+                         
+  </tbody>      
+</table>
+              
+<h1> <font color="#000000">Changes made to enable Web-services in the Java
+  PetStore Demo application</font></h1>
+       <font color="#000000">Listed below are the changes that went into
+the   Java  PetStore Demo sample application to showcase use of Web-services
+technologies   in the J2EE platform.</font>       
+<p><font color="#000000">The pet store sample application has four </font><font color="#000000">
+distinct parts:<br>
+      </font></p>
+           
+<ol>
+        
+  <li><font color="#000000">The <tt>PetStore Website</tt> application  that
+implements the  interaction with the user and submits the user's order</font></li>
+        
+  <li><font color="#000000">The <tt>Order Processing Center (OPC)</tt>  
+  application that implements the workflow involved in processing the orders</font></li>
+        
+  <li><font color="#000000">The <tt>Supplier</tt> application that satisfies
+  the  approved orders from OPC and sends back the invoice to the OPC</font></li>
+        
+  <li><font color="#000000">The <tt>Admin </tt>application that interacts
+  with the OPC. The Admin application provides a JavaWebStart enabled Swing
+  client for use by the administrator</font></li>
+           
+</ol>
+      <font color="#000000">In the non Web-services case, both the PetStore-OPC
+  communication and the OPC-Supplier communication are done using the the
+<tt>Java  Messaging Service (JMS)</tt> technology which provided a portable
+way of doing asynchronous communication.</font>  For more information on
+this refer to the<a href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html">
+    Architecture of the Sample Application</a> and <a href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/sample-app/sample-app1.3.1.html">
+    Design and Implementation of Sample Application</a> chapters of the <i>
+Designing   Enterprise Applications with the J2EE Platform, Second Edition.</i>
+ <br>
+    We changed this communication to use Web-services. <br>
+           
+<h2><font color="#000000">Web-services for Document-Oriented Interactions</font></h2>
+       
+<p><font color="#000000">The document-oriented interaction style facilitates
+  loosely-coupled Web-services. In this case, the Web-service applications
+ interact with each-other by exchanging XML documents. To demonstrate this
+ scenario, we changed the OPC-Supplier communication to use the Java API
+for  XML based RPC (JAXRPC) for passsing XML documents. The application design
+ also illustrate how to extend your existing J2EE applications to use Web-services.&nbsp;<br>
+    </font></p>
+       
+<p><font color="#000000">The communications that happen between the OPC&nbsp;and 
+   the Supplier are</font> </p>
+           
+<ul>
+                         
+  <ul>
+            
+    <li> <font color="#000000">The OPC submits the approved purchase   order
+to the Supplier</font></li>
+             
+    <li> <font color="#000000">The Supplier returns back the invoice    
+    </font><font color="#000000">  back to the OPC</font><font color="#000000">
+ for the Items that have been shipped</font></li>
+                         
+  </ul>
+             
+</ul>
+       <font color="#000000">To clearly demarcate the Web-services specific 
+ changes, we placed all such modifications in a separate source tree, named 
+ <tt> webservices</tt>, under the <tt>&lt;petstore.home&gt;/src</tt> directory. 
+ Here are the changes contained in this directory:&nbsp;</font>       
+<ul>
+          
+  <li> <font color="#000000">The Supplier has been changed to provide   a
+Web-service  that processes purchase orders from the OPC. </font> </li>
+           
+  <li> <font color="#000000">The OPC has been changed to provide a  Web-service
+  that processes invoices from the Supplier.</font> </li>
+           
+  <li> <font color="#000000">Both the purchase order and invoice processing
+  Web-services, offered by the Supplier and OPC respectively, follow the
+    <tt>  Asynchronous Service</tt> model as described in the     <a href="http://java.sun.com/blueprints/guidelines">
+ BluePrints for Web-services</a>   document. This is because both Web-services
+can take some time for processing   and the service requestor should not
+be made to wait until the service is   completed.</font></li>
+           
+  <li> <font color="#000000">Both the Web-services receive an XML  document
+  (namely purchase order or invoice), validate them, place the validated
+  XML document on an appropriate JMS queue for processing and return the
+answer    to the requestor.</font></li>
+           
+  <li> <font color="#000000">The interface and implementation of the   WebServices
+ provided by the OPC have been implemented in files </font><font color="#000000">
+/font&gt;<tt>&lt;petstore.home&gt;src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/OPC*.java</tt>
+    . </font></li>
+   <font color="#000000">        </font>
+  <li><font color="#000000"> <font color="#000000">The interface and implementation
+of the  WebServices  provided by the Supplier have been implemented in files&nbsp;</font><tt>
+&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/Supplier*.java</tt>
+.      <font color="#000000"> </font></font></li>
+           
+  <li><font color="#000000"> <font color="#000000">To make the OPC communicate
+with the  Supplier   through JAXRPC and vice versa, two new Transition Delegates
+have  been implemented   (one for OPC-Supplier communication and the other
+for communication in the  opposite direction). These files are </font><tt>
+&lt;petstore.home&gt;/src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/transitions/OrderApprovalTD.java</tt>
+     and <tt>&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/transitions/SupplierOrderTD.java</tt>
+.    </font></li>
+           
+  <li><font color="#000000"> <font color="#000000">This implementation uses
+the <tt>Java  Web  Services  Developer Pack (JWSDP)</tt> for implementing
+the Web-services.   Accordingly,  the configuration required by the JWSDP
+has been implemented   in files <tt>  &lt;petstore.home&gt;/src/webservices/apps/opc/src/xrpcc-config.xml</tt>
+   and <tt> &lt;petstore.home&gt;/src/webservices/apps/supplier/src/xrpcc-config.xml</tt>
+.</font></font></li>
+        
+  <li><font color="#000000">All the ejb-jar.xml, web.xml for both the Supplier
+as well as the   OPC were changed to reflect the fact that the Web-services
+are implemented   with a servlet endpoint and that the installation of the
+JWSDP changes the   port of operation to 8080 from 8000.</font></li>
+       
+</ul>
+   <font color="#000000">  </font>  
+<h2><font color="#000000">Web-services for Method-Oriented Interactions</font></h2>
+   <font color="#000000">  </font>  
+<p><font color="#000000"><font color="#000000">The JavaWebStart-enabled admin
+ application in the  PetStore demonstrates how to provide rich user interfaces
+ for your applications.  This Swing application invokes several well-defined
+ operations on the server,  for example, to get sales statistics, to approve
+ pending orders and so on.  The non-Web-services version of this application
+ uses a proprietary XML format  to send these commands to the server over 
+HTTP POST.&nbsp; This required a lot of code to create, parse, and send these
+ commands and process their results. We now provide an alternate Web-service,
+ <tt>AdminWebService, </tt>for administration that reduces this complexity
+ significantly by providing a method-oriented JAXRPC interface. Here are
+the  changes that we made: <br>
+    </font></font></p>
+   <font color="#000000">  </font>  
+<ul>
+   <font color="#000000">   </font>
+  <li><font color="#000000">We create a new Web-service, <tt>AdminWebService</tt>
+,  that is implemented  by the JAXRPC interface <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/com/sun/j2ee/blueprints/admin/webservice/AdminService.java</tt></font></li>
+      
+  <li><font color="#000000">The Swing client uses a Web-services specific
+proxy class to communicate   to the server <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/WebServicePetStoreProxy.java</tt><i>
+.       </i>You can run this client by going to <tt>&lt;petstore.home&gt;/webservices
+  </tt>(or <tt>&lt;petstore.home&gt;/src/webservices/apps/admin/build </tt>
+if  you have rebuilt the source code) directory and running <tt>adminwsclient.bat
+         </tt>(on Windows) or <tt>adminwsclient.sh </tt>(on Unix) file.&nbsp;</font></li>
+      
+  <li><font color="#000000">Note that the JavaWebStart enabled client still
+uses the HTTP POST   for communicating to the server. This client uses the
+HTTP POST specific  proxy class to communicate to the server <tt>&lt;petstore.home&gt;/src/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/HttpPostPetStoreProxy.java</tt></font></li>
+       
+</ul>
+   <font color="#000000">         </font>  
+<hr noshade="" =""><font color="#000000"><a href="copyright.html">Copyright
+ &copy; 2002 Sun Microsystems,   Inc. All Rights Reserved.</a>  <br>
+     <br>
+    <br>
+   </font> <br>
+ 
+</body>
+</html>

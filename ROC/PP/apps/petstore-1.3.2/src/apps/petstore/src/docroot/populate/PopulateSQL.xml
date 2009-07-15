@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE PopulateSQL SYSTEM "dtds/PopulateSQL.dtd">
+
+
+<PopulateSQL>
+  <DatabaseStatements database="cloudscape">
+    <TableStatements table="category">
+      <CheckStatement>
+        select * from category
+      </CheckStatement>
+      <CreateStatement>
+        create table category (catid char(10) not null,
+          constraint pk_category primary key (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into category values (?)
+      </InsertStatement>
+      <DropStatement>
+        drop table category
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="category_details">
+      <CheckStatement>
+        select * from category_details
+      </CheckStatement>
+      <CreateStatement>
+        create table category_details (catid char(10) not null,
+          name varchar(80) not null, image varchar(255) null,
+          descn varchar(255) null, locale char(10) not null,
+          constraint pk_category_details primary key (catid, locale),
+            constraint fk_category_details_1 foreign key (catid)
+            references category (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into category_details values (?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table category_details
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="product">
+      <CheckStatement>
+        select * from product
+      </CheckStatement>
+      <CreateStatement>
+        create table product (
+          productid char(10) not null,
+          catid char(10) not null,
+          constraint pk_product primary key (productid),
+            constraint fk_product_1 foreign key (catid)
+            references category (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into product values (?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table product
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="product_details">
+      <CheckStatement>
+        select * from product_details
+      </CheckStatement>
+      <CreateStatement>
+        create table product_details (
+          productid char(10) not null,
+          locale char(10) not null,
+          name varchar(80) not null,
+          image varchar(255) null,
+          descn varchar(255) null,
+          constraint pk_product_details primary key (productid, locale),
+            constraint fk_product_details_1 foreign key (productid)
+            references product (productid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into product_details values (?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table product_details
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="item">
+      <CheckStatement>
+        select * from item
+      </CheckStatement>
+      <CreateStatement>
+        create table item (
+          itemid char(10) not null,
+          productid char(10) not null,
+          constraint pk_item primary key (itemid),
+            constraint fk_item_1 foreign key (productid)
+            references product (productid)
+        )
+      </CreateStatement>
+      <InsertStatement>
+        insert into item (itemid, productid) values (? , ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table item
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="item_details">
+      <CheckStatement>
+        select * from item_details
+      </CheckStatement>
+      <CreateStatement>
+        create table item_details (
+          itemid char(10) not null,
+          listprice decimal(10,2) not null,
+          unitcost decimal(10,2) not null,
+          locale char(10) not null,
+          image char(255) not null,
+          descn varchar(255) not null,
+          attr1 varchar(80) null,
+          attr2 varchar(80) null,
+          attr3 varchar(80) null,
+          attr4 varchar(80) null,
+          attr5 varchar(80) null,
+          constraint pk_item_details primary key (itemid, locale),
+              constraint fk_item_details_1 foreign key (itemid)
+              references item (itemid)
+        )
+      </CreateStatement>
+      <InsertStatement>
+        insert into item_details 
+          (itemid, listprice, unitcost, locale, attr1, attr2, attr3, attr4, attr5, image, descn) 
+          values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table item_details
+      </DropStatement>
+    </TableStatements>
+  </DatabaseStatements>
+  <DatabaseStatements database="oracle">
+    <TableStatements table="category">
+      <CheckStatement>
+        select * from category
+      </CheckStatement>
+      <CreateStatement>
+        create table category (catid varchar(10) not null,
+          constraint pk_category primary key (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into category values (?)
+      </InsertStatement>
+      <DropStatement>
+        drop table category
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="category_details">
+      <CheckStatement>
+        select * from category_details
+      </CheckStatement>
+      <CreateStatement>
+        create table category_details (catid varchar(10) not null,
+          name varchar(80) not null, image varchar(255) null,
+          descn varchar(255) null, locale varchar(10) not null,
+          constraint pk_category_details primary key (catid, locale),
+            constraint fk_category_details_1 foreign key (catid)
+            references category (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into category_details values (?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table category_details
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="product">
+      <CheckStatement>
+        select * from product
+      </CheckStatement>
+      <CreateStatement>
+        create table product (
+          productid varchar(10) not null,
+          catid varchar(10) not null,
+          constraint pk_product primary key (productid),
+            constraint fk_product_1 foreign key (catid)
+            references category (catid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into product values (?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table product
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="product_details">
+      <CheckStatement>
+        select * from product_details
+      </CheckStatement>
+      <CreateStatement>
+        create table product_details (
+          productid varchar(10) not null,
+          locale varchar(10) not null,
+          name varchar(80) not null,
+          image varchar(255) null,
+          descn varchar(255) null,
+          constraint pk_product_details primary key (productid, locale),
+            constraint fk_product_details_1 foreign key (productid)
+            references product (productid))
+      </CreateStatement>
+      <InsertStatement>
+        insert into product_details values (?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table product_details
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="item">
+      <CheckStatement>
+        select * from item
+      </CheckStatement>
+      <CreateStatement>
+        create table item (
+          itemid varchar(10) not null,
+          productid varchar(10) not null,
+          constraint pk_item primary key (itemid),
+            constraint fk_item_1 foreign key (productid)
+            references product (productid)
+        )
+      </CreateStatement>
+      <InsertStatement>
+        insert into item (itemid, productid) values (? , ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table item
+      </DropStatement>
+    </TableStatements>
+    <TableStatements table="item_details">
+      <CheckStatement>
+        select * from item_details
+      </CheckStatement>
+      <CreateStatement>
+        create table item_details (
+          itemid varchar(10) not null,
+          listprice decimal(10,2) not null,
+          unitcost decimal(10,2) not null,
+          locale varchar(10) not null,
+          image varchar(255) not null,
+          descn varchar(255) not null,
+          attr1 varchar(80) null,
+          attr2 varchar(80) null,
+          attr3 varchar(80) null,
+          attr4 varchar(80) null,
+          attr5 varchar(80) null,
+          constraint pk_item_details primary key (itemid, locale),
+              constraint fk_item_details_1 foreign key (itemid)
+              references item (itemid)
+        )
+      </CreateStatement>
+      <InsertStatement>
+        insert into item_details 
+          (itemid, listprice, unitcost, locale, attr1, attr2, attr3, attr4, attr5, image, descn) 
+          values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      </InsertStatement>
+      <DropStatement>
+        drop table item_details
+      </DropStatement>
+    </TableStatements>
+  </DatabaseStatements>
+</PopulateSQL>

@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+   	    
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=euc-jp">
+  <title>Java[TM] Pet Store Demo 1.3.2 &gt; デモの使用</title>
+</head>
+ <body>
+     
+<table width="100%" border="0" cellpadding="5" cellspacing="0" style="0page-break-before: always; ">
+   	<tbody>
+      <tr>
+   		<td bgcolor="#000033"> 			        
+      <p><a href="index.html"><b><font color="#ccccff">Java&trade; Pet Store
+Demo 1.3.2</font></b></a> <font color="#ffffff">&gt; <b>デモの使用</b></font>
+&nbsp;&nbsp; &nbsp; </p>
+   		</td>
+   		<td bgcolor="#000033"> 			        
+      <p align="Right"><a href="http://java.sun.com/blueprints/"><b><font color="#ccccff">
+Java  			BluePrints</font></b></a></p>
+   		</td>
+   	</tr>
+         
+  </tbody>  
+</table>
+     
+<h1>デモの使用</h1>
+     
+<p>ここでは、Java Pet Store Demo を使用する方法について説明します。まず始めにデモの主要なコンポーネントを紹介し、次に各種ユーザインタフェースでデモを使用する方法を説明します。</p>
+     
+<ul>
+   	
+  <li>      
+    <p style="margin-bottom: 0cm; "><a href="#ataglance">デモの概要</a>   	</p>
+   	</li>
+    
+  <li>      
+    <p style="margin-bottom: 0cm; "><a href="#storefront">Storefront の使用</a>
+   	</p>
+   	          
+    <ul>
+   		
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#visit_storefront">Storefront
+の表示</a>  		</p>
+   		</li>
+        
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#create_new_user">新規ユーザの作成</a>
+  		</p>
+   		</li>
+        
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#place_order">注文する</a> 
+		</p>
+   	</li>
+           
+    </ul>
+   	</li>
+    
+  <li>      
+    <p style="margin-bottom: 0cm; "><a href="#admin">管理クライアントの使用</a>  	</p>
+   	          
+    <ul>
+   		
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#open_admin">管理クライアントを開く</a>
+  		</p>
+   		</li>
+        
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#view_non_pending_orders">
+保留以外の注文の表示</a>  		</p>
+   		</li>
+        
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#approve_deny_orders">注文の承認/否認</a>
+  		</p>
+   	</li>
+           
+    </ul>
+   	</li>
+    
+  <li>      
+    <p style="margin-bottom: 0cm; "><a href="#supplier">Supplier の管理</a>
+  	</p>
+   	          
+    <ul>
+   		
+      <li>          
+        <p style="margin-bottom: 0cm; "><a href="#open_supplier">Supplier
+クライアントを開く</a>  		</p>
+   		</li>
+        
+      <li>          
+        <p><a href="#view_edit_inventory">在庫の表示と編集</a>  				</p>
+   	</li>
+           
+    </ul>
+   </li>
+   
+</ul>
+     
+<h2><a name="ataglance"></a>デモの概要</h2>
+     
+<p>Java Pet Store Demo は、次の主要なコンポーネントで構成されています。</p>
+     
+<ul>
+   	
+  <li>      
+    <p>Storefront: Storefront は、Web フロントエンドでの主要なユーザインタフェースです。顧客は、Storefront
+を使用してペットを注文します。</p>
+   	</li>
+    
+  <li>      
+    <p>OPC (Order Processing Center): OPC は、Storefront からの注文を受け取ります。</p>
+   	</li>
+    
+  <li>      
+    <p>Supplier: Supplier は、OPC からの注文を在庫から充当し、OPC に納品書を送付します。</p>
+   	</li>
+    
+  <li>      
+    <p>Admin: Admin は、JFC/Swing フロントエンドの管理者インタフェースです。管理者は、Admin を使用して保留になっている注文を調査し、それを承認または否認できます。</p>
+   </li>
+   
+</ul>
+     
+<h2><a name="storefront"></a>Storefront の使用</h2>
+     
+<h3><a name="visit_storefront"></a>Storefront の表示</h3>
+     
+<p>ブラウザを使用して、次の URL を表示してください。</p>
+     
+<p><code><a href="http://localhost:8000/petstore/">http://localhost:8000/petstore<br>
+</a></code></p>
+   
+<p><code><a href="http://localhost:8080/petstore/"><br>
+</a></code></p>
+      
+<h3><a name="create_new_user"></a>新規ユーザの作成</h3>
+     
+<p>初めてお店を訪れた場合には、商品を購入する前に新規ユーザを作成します。</p>
+     
+<ol>
+   	
+  <li>      
+    <p>ホームページの「ログイン」をクリックします。</p>
+   	</li>
+    
+  <li>      
+    <p>「新規にユーザ登録する場合はこちらに必要事項を入力してください。」というフォームに必要事項を入力して、「新規ユーザ登録」をクリックします。</p>
+   	</li>
+    
+  <li>      
+    <p>アカウント情報を入力して、「送信」をクリックします。</p>
+   </li>
+   
+</ol>
+     
+<h3><a name="place_order"></a>注文する</h3>
+     
+<p>たとえば、ブルドッグを購入するには、次の手順に従います。</p>
+     
+<ol>
+   	
+  <li>      
+    <p>ホームページで、「犬」を選択します。</p>
+   	</li>
+    
+  <li>      
+    <p>「ブルドッグ」をクリックします。</p>
+   	</li>
+    
+  <li>      
+    <p>「雄 おとな ブルドッグ」の行の「カートに追加」をクリックします。</p>
+   	</li>
+    
+  <li>      
+    <p>「チェックアウトへ」をクリックします。</p>
+   	      
+    <p>請求と出荷に関する情報のフォームが表示されます。ユーザの便宜のために、すでに情報が入力されています。</p>
+   	</li>
+    
+  <li>      
+    <p>「送信」をクリックします。</p>
+   </li>
+   
+</ol>
+     
+<p>ユーザが注文を完了すると、その注文は Storefront によって非同期的に OPC に送信されます。注文金額が $500 未満であれば、OPC
+はその注文を自動的に承認します。</p>
+     
+<h2><a name="admin"></a>管理クライアントの使用</h2>
+     
+<h3><a name="open_admin"></a>管理クライアントを開く</h3>
+     
+<p>注文を調べたり修正したりするには、Java 管理クライアントを使用します。</p>
+     
+<p>ブラウザを使用して、次の URL を表示してください。</p>
+     
+<p><code><a href="http://localhost:8000/admin/">http://localhost:8000/admin/<br>
+</a></code></p>
+   
+<p><code><a href="http://localhost:8080/admin"><br>
+</a></code></p>
+     
+<p>管理者のリッチクライアントインタフェースを起動するには、ホーム画面の「Launch Rich Client」をクリックします。クライアントは、Java
+Web Start を使って起動されます。</p>
+     
+<p>クライアントが表示されると、保留中の注文とそれ以外の注文を表示するための 2 つのパネルがあります。先ほどのブルドッグの注文は、金額が $500
+未満なので、承認済みの注文になります。$500 未満の注文はすべて自動的に承認されます。<br>
+  </p>
+   
+<p></p>
+<blockquote>                            </blockquote>
+                                      
+  <h3><a name="view_non_pending_orders"></a>保留以外の注文の表示</h3>
+     
+  <p>「View Non-Pending Orders」パネルには、保留中以外の注文が表示されます。このパネルに表示される注文は、承認、否認、または確定されたものです。注文を読み込むには、「Refresh
+Data」ボタンをクリックします。</p>
+     
+  <p>Supplier に対して在庫を作成または編集するには、「<a href="#supplier">Supplier の管理</a>」を参照してください。</p>
+     
+  <h3><a name="approve_deny_orders"></a>注文の承認/否認</h3>
+     
+  <p>保留中の注文を承認または否認するには、「Process Pending Orders」パネルを使用します。注文が保留された状態で表示されるのは、合計金額が
+$500 を超える場合です。</p>
+     
+  <p>注文を承認または否認するには、次の手順を行います。</p>
+     
+  <ol>
+   	
+    <li>      
+      <p><b>「Process Pending Orders」タブをクリックします。</b></p>
+   	</li>
+    
+    <li>      
+      <p><b>該当する注文の行をクリックします。</b></p>
+   	</li>
+    
+    <li>      
+      <p><b>その行の「Status」セルをクリックします。</b></p>
+   	</li>
+    
+    <li>      
+      <p><b>新しいステータスを選択します。</b></p>
+   </li>
+   
+  </ol>
+     
+  <p>任意の数の注文について承認または否認を実行できます。変更を保存するには、「Commit」をクリックします。変更を確認するには、「Refresh
+Data」ボタンをクリックします。</p>
+     
+  <h2><a name="supplier"></a>Supplier の管理</h2>
+     
+  <h3><a name="open_supplier"></a>Supplier クライアントを開く</h3>
+     
+  <p>Supplier とその在庫は、簡単な Web インタフェースを使って管理します。Supplier を使用するには、その前に必ず管理クライアントからログアウトしてください。</p>
+     
+  <p>ブラウザを使用して、次の URL を表示してください。</p>
+     
+  <p><code><a href="http://localhost:8000/supplier/">http://localhost:8000/supplier/<br>
+  </a></code></p>
+   
+  <p><code><a href="http://localhost:8080/supplier/"><br>
+  </a></code></p>
+     
+  <h3><a name="view_edit_inventory"></a>在庫の表示と編集</h3>
+     
+  <p>在庫を表示および編集するには、ホーム画面の「Display Inventory」をクリックします。</p>
+     
+  <p>各品目の在庫の数量が表形式で表示されます。品目の数量を編集するには、その品目エントリの「New Quantity」セルを編集して、「Update」ボックスをチェックします。すべての変更を入力した後、「Submit」をクリックして、編集内容をデータベースにコミットします。</p>
+     
+  <p>データベースが更新されるたびに、Supplier は在庫の変更を OPC に通知します。OPC は、その変更内容を確認し、以前には充当できなかった注文に対して商品を充当できるかどうかを調べます。もし注文に商品を充当できる場合は、その注文を完了済みとしてマークします。</p>
+     
+  <hr size="3" noshade="">   
+  <p><a href="copyright.html">Copyright &copy; 2003 Sun Microsystems, Inc.
+All Rights Reserved.</a></p>
+   <br>
+ <br>
+ 
+  </body>
+  </html>

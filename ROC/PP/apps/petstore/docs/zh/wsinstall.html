@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+  
+<meta http-equiv="Content-Type"
+ content="text/html; charset=gb2312">
+
+  
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+<title>Java[tm] Pet Store Demo 1.3.1_02 &gt; 在演示版中启用 Web 服务</title>
+</head>
+  <body>  
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+        <tbody>
+           <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"> <a  href="index.html">Java(tm) Pet Store Demo 1.3.1_02</a></font></b>  <font  color="#ffffff">&gt; <b> 在演示版中启用 Web 服务</b></font></td>
+         <td bgcolor="#000033">
+
+<div align="right"><b><font color="#ccccff"> <a  href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+        </td>
+        </tr>
+
+  </tbody>
+</table>
+
+<h1>在演示版中启用 Web 服务</h1> 这部分内容介绍如何在 Java Pet Store Demo 中启用 Web 服务功能。要在演示版中启用 Web 服务功能，需具备 Java 2 SDK 企业版 (J2EE<sup><font size="-2">TM</font></sup> SDK)，v1.3.1。如果想在 Java 2 SDK 企业版 (J2EE<sup><font size="-2">TM</font></sup> SDK) v1.4 上部署 Web 服务，请参考 <a href="http://java.sun.com/j2ee/blueprints/">BluePrints</a> 网站。必须首先安装<a href="installing.html">此处</a>说明的演示版的基本版本。
+
+<h2> 系统要求：</h2> 需要下载和安装如下的其它软件：
+
+<ul>
+
+<p><b>1. Java Web Services Developer Pack，v1.0_01</b>：<a  href="http://java.sun.com/webservices/downloads/webservicespack.html">单击此处下载</a></p>
+
+</ul>
+
+<h2> 必需的环境变量：</h2> 需要设置一个额外的环境变量：
+<ul>
+
+<p><tt>JWSDP_HOME</tt> 必须指向 Java Web Services Developer Pack (JWSDP) 安装位置的根目录。例如，如果将 JWSDP 安装在<tt>/usr/local/java/jwsdp-1_0_01</tt> 路径下面，那么这个路径就是<tt>JWSDP_HOME</tt> 的值。在文档的其余部分我们将用 &lt;jwsdp.home&gt; 指代这个路径。</p>
+
+</ul>
+
+<h2> 安装演示版</h2> 要安装具有 Web 服务功能的演示版，按如下步骤操作：
+<ol>
+
+</ol>
+
+<blockquote>
+<p><tt><b>运行脚本将 Web 服务技术集成到 J2EE 平台</b></tt></p>
+         </blockquote>
+
+<blockquote>
+<p>如果使用的是 Unix 操作系统，打开 shell 命令提示符并输入下述命令：<br>
+           </p>
+
+<pre>cd &lt;jwsdp.home&gt;/bin</pre>
+
+<pre>sh jwsdponj2ee.sh $J2EE_HOME</pre>
+
+<pre>如果使用的是 Windows 操作系统，打开命令行提示符并输入下述命令：</pre>
+
+<pre>cd &lt;jwsdp.home&gt;\bin</pre>
+
+<pre>jwsdponj2ee.bat %J2EE_HOME%</pre>
+                            </blockquote>
+
+<ol>
+
+</ol>
+
+<blockquote>
+<p> <b>启动 Cloudscape 数据库。</b> </p>
+
+<p>如果使用的是 Unix 操作系统，打开 shell 命令提示符并输入下述命令： </p>
+
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre> 
+如果使用的是 Windows 操作系统，打开命令行提示符并输入下述命令：
+
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre> <b>
+启动 J2EE 服务器。</b>
+<p>如果使用的是 Unix 操作系统，打开 shell 命令提示符并输入下述命令： </p>
+
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+如果使用的是 Windows 操作系统，打开命令行提示符并输入下述命令：
+
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+      </blockquote>
+
+<ol>
+
+</ol>
+
+<ol> <b>转到启用 Web 服务的 petstore 目录下。</b>
+
+<p>如果使用的是 Unix 操作系统，打开 shell 命令提示符并输入下述命令： </p>
+
+<pre><tt>cd &lt;petstore.home&gt;/webservices</tt></pre>如果使用的是 Windows 操作系统，打开命令行提示符并输入下述命令：
+
+<pre><tt>cd &lt;petstore.home&gt;\webservices</tt></pre> 
+运行安装脚本来部署应用程序。</b>
+
+<p>如果使用的是 Unix 操作系统，打开 shell 命令提示符并输入下述命令： </p>
+
+<pre><tt>sh setup.sh deploy</tt></pre> 
+如果使用的是 Windows 操作系统，打开命令行提示符并输入下述命令：
+
+<pre><tt>setup.bat deploy</tt></pre>
+
+</ol> 安装演示版后，就可以开始<a href="using.html">使用</a>了。
+<p>有关在启用了 Web 服务的 Java PetStore Demo 应用程序中做了哪些改动的信息，请单击<a href="wschanges.html">此处</a>。 </p>
+
+<p> </p>
+
+<hr noshade="" =""><a href="copyright.html">版权所有 &copy; 2002 Sun Microsystems，Inc. 保留所有权利。</a>        <br> <br> <br> <br> <br> <br>
+</body>
+</html>

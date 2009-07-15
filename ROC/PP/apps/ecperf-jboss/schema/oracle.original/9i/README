@@ -1,0 +1,46 @@
+The files in this directory will create the various Oracle 9i databases
+for ecperf. Several 9i features such as Oracle managed undo tablespaces are
+now used to simplify the DB creation and management.  If you are using Oracle 
+releases prior to 9i please use the supplied Oracle 8i scripts
+vxmake.sh - Use to create veritas devices (optional)
+
+createdb.sh - Script to create the database. Pass it the database
+               name and the directory where the database should reside.
+	       To create 4 databases, this script must be called 4 times,
+	       once for each database. 
+               E.g: createdb.sh corp $ORACLE_HOME/dbs/ecperf_db
+
+schema_U.sh - Utilities, needs to be run once against each database.
+
+schema_?.sh - Each schema script will create the tables for that db.
+              Edit the section marked ######  datafiles #####
+	      to set the pathnames of the Oracle devices appropriately.
+	      The default values will work for a filesytem based database.
+
+After all schema scripts are run, the databases should be populated
+by running 'bin/loaddb.sh' from the top-level directory.
+
+After you have created and loaded the database, re-start Oracle using 
+the $ORACLE_HOME/dbs/initecperf.ora startup file.
+
+stripTbsp.sh - Creates alternate sql schema files not defining the
+	       tablespace to populate. This will create the directory
+	       sql.noTbsp. The files in this directory are useful for
+	       creating the ECperf schema on an existing database
+	       and does not need dba or root priviledges. The files
+	       in this directory can be run using sqlplus.
+
+Sizes
+
+You will require 54MB of shared memory for each database during creation.
+Each database will require 160MB of disk space for initial creation (thus
+640MB total).
+However, if you use a single database, you will only need 46MB of shared
+memory and 160MB disk space total.
+For a scale 1 database, the additional disk space required for loading
+the databases are as follows. Note that the space allocation is generous
+and will potentially support a much larger scaled database :
+corp :  17 MB
+ords :  50 MB
+mfg  :  22 MB
+supp :  38 MB

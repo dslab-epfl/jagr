@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:23 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="supplier" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <property name="supplier.application.name" value="SupplierEAR"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="supplier.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="supplier.build" value="${supplier.home}/build"/>
+    <property name="supplier.buildjardir" value="${supplier.build}/ejbjar"/>
+    <property name="supplier.buildwardir" value="${supplier.build}/war"/>
+
+    <property name="supplier.src" value="${supplier.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="supplier.classbindir" value="${supplier.build}/classes"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="supplier.javadocs.dir" value="${supplier.build}/docs/api"/>
+
+   <!-- The root directory of all the components. -->
+    <property name="supplier.components.basedir" value="../../../components"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="supplier.dstdocdir" value="${supplier.build}/docs/api"/>
+
+    <!-- Supplier Order Components -->
+    <property name="supplier.po.home" value="../../../components/supplierpo"/>
+    <property name="supplier.po.ejbjar" value="${supplier.po.home}/build/supplierpo-ejb.jar"/>
+    <property name="supplier.po.ejbjar.client" value="${supplier.po.home}/build/supplierpo-ejb-client.jar"/>
+
+    <!--XML Docs Components -->
+    <property name="supplier.xmldocs.home" value="../../../components/xmldocuments"/>
+    <property name="supplier.xmldocs.client" value="${supplier.xmldocs.home}/build/xmldocuments.jar"/>
+
+    <!-- ServiceLocator Component  -->
+    <property name="supplier.servicelocator.home" value="${supplier.components.basedir}/servicelocator"/>
+    <property name="supplier.servicelocator.client" value="${supplier.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- ProcessManager Component -->
+    <property name="supplier.processmanager.home" value="${supplier.components.basedir}/processmanager"/>
+    <property name="supplier.processmanager.ejbjar" value="${supplier.processmanager.home}/build/processmanager-ejb.jar"/>
+    <property name="supplier.processmanager.ejbjar.client" value="${supplier.processmanager.home}/build/processmanager-ejb-client.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${jboss.home}/client/jbossall-client.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${jboss.home}/server/default/lib/javax.servlet.jar"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="supplier.classpath" value="${supplier.classbindir}:${supplier.po.ejbjar.client}:${supplier.xmldocs.client}:${supplier.servicelocator.client}:${supplier.processmanager.ejbjar.client}:${j2ee.classpath}"/>
+
+    <property name="supplier.ejbjar" value="${supplier.build}/supplier-ejb.jar"/>
+    <property name="supplier.war" value="${supplier.build}/supplier.war"/>
+    <property name="supplier.ear" value="${supplier.build}/supplier.ear"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${supplier.classbindir}"/>
+    <javac srcdir="${supplier.src}"
+           destdir="${supplier.classbindir}"
+	   classpath="${supplier.classpath}"
+	   includes="com/**"/>
+    <copy todir="${supplier.classbindir}" >
+     <fileset dir="${supplier.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target> 
+
+  <target name="ejbjar" depends="init,compile">
+    <mkdir dir="${supplier.buildjardir}"/>
+    <mkdir dir="${supplier.buildjardir}/META-INF"/>
+    <copy todir="${supplier.buildjardir}">
+      <fileset dir="${supplier.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${supplier.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="jboss.xml" tofile="${supplier.buildjardir}/META-INF/jboss.xml"/>
+    <copy file="jaws.xml" tofile="${supplier.buildjardir}/META-INF/jaws.xml"/>
+    <jar jarfile="${supplier.ejbjar}" basedir="${supplier.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${supplier.buildjardir}"/>
+  </target>
+
+  <target name="war" depends="init,compile">
+    <delete dir="${supplier.buildwardir}" quiet="true"/>
+    <mkdir dir="${supplier.buildwardir}"/>
+    <copy todir="${supplier.buildwardir}">
+          <fileset dir="${supplier.src}/docroot" excludes="cvs"/>
+    </copy>
+    <copy todir="${supplier.buildwardir}/WEB-INF/classes">
+          <fileset dir="${supplier.classbindir}" />
+    </copy>
+    <delete file="${supplier.buildwardir}/WEB-INF/web.xml"/>
+    <copy file="${supplier.src}/docroot/WEB-INF/web.xml" todir="${supplier.buildwardir}/WEB-INF"/>
+    <copy file="${supplier.po.ejbjar.client}" todir="${supplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${supplier.servicelocator.client}" todir="${supplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${supplier.processmanager.ejbjar.client}" todir="${supplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${supplier.xmldocs.client}" todir="${supplier.buildwardir}/WEB-INF/lib" />
+    <jar jarfile="${supplier.war}" basedir="${supplier.buildwardir}" excludes="cvs" />
+  </target>
+
+  <target name="ear" depends="init,compile,ejbjar,war">
+      <mkdir dir="${supplier.buildjardir}"/>
+      <mkdir dir="${supplier.buildjardir}/META-INF"/>
+      <copy file="${supplier.src}/application.xml" todir="${supplier.buildjardir}/META-INF" />
+      <copy file="${supplier.src}/sun-j2ee-ri.xml" todir="${supplier.buildjardir}/META-INF" />
+      <copy file="${supplier.ejbjar}" todir="${supplier.buildjardir}" />
+      <copy file="${supplier.po.ejbjar}" todir="${supplier.buildjardir}" />
+      <copy file="${supplier.processmanager.ejbjar}" todir="${supplier.buildjardir}" />
+
+
+      <copy file="${supplier.xmldocs.client}" todir="${supplier.buildjardir}" />
+      <copy file="${supplier.servicelocator.client}" todir="${supplier.buildjardir}" />
+      <copy file="${supplier.po.ejbjar.client}" todir="${supplier.buildjardir}" />
+      <copy file="${supplier.processmanager.ejbjar.client}" todir="${supplier.buildjardir}" />
+
+      <copy file="${supplier.war}" todir="${supplier.buildjardir}" />
+      <delete file="${supplier.ear}" quiet="true"/>
+      <jar jarfile="${supplier.ear}" basedir="${supplier.buildjardir}" />
+      <delete dir="${supplier.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${supplier.build}"/>
+    <delete dir="${supplier.dstdocdir}"/>
+    <ant dir="${supplier.po.home}/src" target="clean" />
+    <ant dir="${supplier.processmanager.home}/src" target="clean"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${supplier.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${supplier.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${supplier.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${supplier.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${supplier.xmldocs.home}/src" target="core"/>
+      <ant dir="${supplier.servicelocator.home}/src" target="core"/>
+      <ant dir="${supplier.po.home}/src" target="core"/>
+      <ant dir="${supplier.processmanager.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${supplier.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${supplier.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Supplier Application API"
+             doctitle="Java Pet Store Supplier Application"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${supplier.xmldocs.home}/build/classes"/>
+        <pathelement path="${supplier.servicelocator.home}/build/classes"/>
+        <pathelement path="${supplier.po.home}/build/classes"/>
+        <pathelement path="${supplier.classbindir}"/>
+        <pathelement path="${supplier.processmanager.home}/build/classes"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${supplier.xmldocs.home}/src"/>
+        <pathelement path="${supplier.servicelocator.home}/src"/>
+        <pathelement path="${supplier.po.home}/src"/>
+        <pathelement path="${supplier.processmanager.home}/src"/>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Supplier Application      +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, war, ear" />
+  <target name="all" depends="core, docs" />
+
+</project>
+

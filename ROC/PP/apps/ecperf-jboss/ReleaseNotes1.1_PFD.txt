@@ -1,0 +1,115 @@
+                     ECperf Kit Release Notes
+              Version 1.1 Proposed Final Draft, Dated 4/01/02
+
+Installation Instructions
+
+1. We recommend that you create a new user account (say 'ecperf')
+   whose home directory is where you will install the kit.
+2. Untar the kit and read the file README.html in the top-level
+   directory and follow its directions closely.
+
+Enhancements made in this release :
+
+1. The BMP code now provides transaction consistency (see Clause
+   4.11.6 of the ECperf 1.1 specification) by using optimistic 
+   concurrency control techniques.
+
+2. The design of the supplier emulator has been changed to create
+   a thread to handle the response to the supplier. The emulator
+   has also been made more robust by re-trying responses in case
+   of failure.
+
+
+The bugs fixed in this release are listed below. Each bug lists the
+following information : 
+    BugId       - identifier for the bug 
+    Synopsis    - brief summary of the bug 
+    Description - a more detailed account of the bug
+    Fix         - the actual fix made
+
+1. Bugid         4642747
+Synopsis      In the SupplierCompEnt.java ejbCreate method returns null
+Description    In the SupplierCompEnt.java ejbCreate method is returning 
+               null instead of returning new 
+               SuppCompEntPK(suppCompID, suppCompSuppID);
+
+Evaluation    The code has been fixed as described.
+
+
+2. Bugid         4643455
+Synopsis      2 errors in creating ECperf database on Sybase ASE
+Description   These 2 errors in the code are causing errors when
+              creating ECperf database on Sybase ASE. Both
+              ECperf 1.0 and 1.1 codes have these errors. I've
+              check the bug report and seemed like they were
+              not reported.
+ 
+              1. Error on ECPerf code
+               src/com/sun/ecperf/load/LoadOrds.java line 409
+                    C_Customer should be C_customer
+               This is the table name which all other places are
+               using C_customer
+ 
+              2. Example for Sybase db properties should ends 
+              with "/ecperfdb" instead of "/ecperf", since the 
+              createdb script creates the database with name "ecperfdb".
+              This is the correct URL to use for using 
+              com.sybase.jdbc2.jdbc.SybDriver:
+                  jdbc:sybase:Tds:host:port/ecperfdb
+
+Evaluation    The JDBC URL string for Sybase and LoadOrds code 
+              have been fixed
+
+
+Bugid         4649216
+Synopsis      detail file has data for 48 hrs even though the run is short
+Description   The driver dumps out 48 hrs of data in Orders.detail file even
+              though the run is for only couple of minutes
+
+Evaluation    The Mfg and Orders Report code were modified to stop writing to
+              detail file if the value is 0.
+
+
+Bugid         4651057
+Synopsis      Increase the block sizes to 10000 for all the u_sequence entries
+Description   Increase the block sizes to 10000 for all the 
+              u_sequence entries, the change is being done as a 
+              precautionary measure to avoid SequenceEnt from 
+              becoming a bottleneck.
+
+Evaluation   The code has been fixed as described.
+
+
+Bugid        4651036
+Synopsis     EntityContext.setRollbackOnly() should be called before 
+             throwing DataIntegrityException
+Description  for code throwing the DataIntegrityException ensure 
+             EntityContext.setRollbackOnly() is called before throwing 
+             the exception to make sure the Transaction is rolled back
+
+Evaluation   The code has been fixed as described.
+
+Bugid        4652502
+Synopsis     Calling findByPrimaryKey is not allowed within the
+             setEntityContext method
+Description  We are trying to get ECPerf running for our AppServer 
+             and came across something we feel is non-compliant with 
+             the EJB specificatition (ie it causes problems for our 
+             container)
+
+             The problem is with the use of findByPrimaryKey from 
+             inside setEntityContext - For example see 
+             CustomerCmpEJB.java where it does
+
+             rule = ruleHome.findByPrimaryKey("discount");
+
+             This seems in violation of the EJB Specification
+             EJB spec 1.1 final release 9.1.6 Operations allowed in 
+             methods of the entity bean class p111.Table 4. 
+             Specifically, this table does *not* allow for 
+             "Enterprise Bean Access" from within the 
+             setEntityContext method.
+
+Evaluation   The code which calls findByPrimaryKey was moved out of
+             setEntityContext method
+

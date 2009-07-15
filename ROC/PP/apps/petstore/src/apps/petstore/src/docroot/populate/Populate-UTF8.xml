@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE Populate [
+
+	<!ELEMENT Populate (Users, Customers, Catalog)>
+ 
+	<!ELEMENT Catalog (Categories, Products, Items)>
+
+	<!ELEMENT Users (User+)>
+	<!ENTITY % User SYSTEM "dtds/User.dtd">
+	%User;
+
+	<!ELEMENT Customers (Customer+)>
+	<!ENTITY % Customer SYSTEM "dtds/Customer.dtd">
+	%Customer;
+
+	<!ELEMENT Categories (Category+)>
+	<!ENTITY % Category SYSTEM "dtds/Category.dtd">
+	%Category;
+
+	<!ELEMENT Products (Product+)>
+	<!ENTITY % Product SYSTEM "dtds/Product.dtd">
+	%Product;
+
+	<!ELEMENT Items (Item+)>
+	<!ENTITY % Item SYSTEM "dtds/Item.dtd">
+	%Item;
+
+    <!ENTITY % CommonElements SYSTEM "dtds/CommonElements.dtd">
+    %CommonElements;
+]>
+
+<Populate>
+  <Users>
+    <User id="j2ee">
+      <Password>j2ee</Password>
+    </User>
+    <User id="j2ee-ja">
+      <Password>j2ee</Password>
+    </User>  
+  <User id="shopper">
+      <Password>j2ee</Password>
+    </User>
+    <User id="j2ee-zh">
+      <Password>j2ee</Password>
+    </User>
+  </Users>
+  <Customers>
+    <Customer id="shopper">
+      <Account>
+	<ContactInfo>
+	  <FamilyName>ABC</FamilyName>
+	  <GivenName>XYZ</GivenName>
+	  <Address>
+	    <StreetName>1234 Anywhere Street</StreetName>
+	    <StreetName>Unit 555</StreetName>
+	    <City>Palo Alto</City>
+	    <State>CA</State>
+	    <ZipCode>94303</ZipCode>
+	    <Country>USA</Country>
+	  </Address>
+	  <Email>aaa@bbb.ccc</Email>
+	  <Phone>555-555-5555</Phone>
+	</ContactInfo>
+	<CreditCard>
+	  <CardNumber>123456789</CardNumber>
+	  <CardType>Meow Card</CardType>
+	  <ExpiryDate>04/04</ExpiryDate>
+	</CreditCard>
+      </Account>
+      <Profile>
+       <PreferredLanguage>en_US</PreferredLanguage>
+       <FavoriteCategory>REPTILES</FavoriteCategory>
+       <MyListPreference>true</MyListPreference>
+       <BannerPreference>false</BannerPreference>
+      </Profile>
+    </Customer>
+    <Customer id="j2ee">
+      <Account>
+	<ContactInfo>
+	  <FamilyName>ABC</FamilyName>
+	  <GivenName>XYZ</GivenName>
+	  <Address>
+	    <StreetName>1234 Anywhere Street</StreetName>
+	    <StreetName>Unit 555</StreetName>
+	    <City>Palo Alto</City>
+	    <State>CA</State>
+	    <ZipCode>94303</ZipCode>
+	    <Country>USA</Country>
+	  </Address>
+	  <Email>aaa@bbb.ccc</Email>
+	  <Phone>555-555-5555</Phone>
+	</ContactInfo>
+	<CreditCard>
+	  <CardNumber>123456789</CardNumber>
+	  <CardType>Meow Card</CardType>
+	  <ExpiryDate>04/04</ExpiryDate>
+	</CreditCard>
+      </Account>
+      <Profile>
+       <PreferredLanguage>en_US</PreferredLanguage>
+       <FavoriteCategory>REPTILES</FavoriteCategory>
+       <MyListPreference>true</MyListPreference>
+       <BannerPreference>false</BannerPreference>
+      </Profile>
+    </Customer>
+    <Customer id="j2ee-ja">
+      <Account>
+	<ContactInfo>
+	  <FamilyName>富士</FamilyName>
+	  <GivenName>政憲</GivenName>
+	  <Address>
+	    <StreetName>歌舞伎町1-3-5</StreetName>
+	    <StreetName>ジャバビル２３</StreetName>
+	    <City>東京都</City>
+	    <State>東京</State>
+	    <ZipCode>511</ZipCode>
+	    <Country>日本</Country>
+	  </Address>
+	  <Email>yourname@yourdomain.com</Email>
+	  <Phone>555-555-5555</Phone>
+	</ContactInfo>
+	<CreditCard>
+	  <CardNumber>123456789</CardNumber>
+	  <CardType>VISA</CardType>
+	  <ExpiryDate>04/04</ExpiryDate>
+	</CreditCard>
+      </Account>
+      <Profile>
+       <PreferredLanguage>ja_JP</PreferredLanguage>
+       <FavoriteCategory>REPTILES</FavoriteCategory>
+       <MyListPreference>true</MyListPreference>
+       <BannerPreference>false</BannerPreference>
+      </Profile>
+    </Customer>
+    <Customer id="j2ee-zh">
+      <Account>
+	<ContactInfo>
+	  <FamilyName>万</FamilyName>
+	  <GivenName>长城</GivenName>
+	  <Address>
+	    <StreetName>长安街1-3-5</StreetName>
+	    <StreetName>老胡同２３</StreetName>
+	    <City>北京市</City>
+	    <State>北京</State>
+	    <ZipCode>100001</ZipCode>
+	    <Country>中国</Country>
+	  </Address>
+	  <Email>yourname@yourdomain.com</Email>
+	  <Phone>086-555-5555</Phone>
+	</ContactInfo>
+	<CreditCard>
+	  <CardNumber>123456789</CardNumber>
+	  <CardType>VISA</CardType>
+	  <ExpiryDate>04/04</ExpiryDate>
+	</CreditCard>
+      </Account>
+      <Profile>
+       <PreferredLanguage>zh_CN</PreferredLanguage>
+       <FavoriteCategory>REPTILES</FavoriteCategory>
+       <MyListPreference>true</MyListPreference>
+       <BannerPreference>false</BannerPreference>
+      </Profile>
+    </Customer>
+  </Customers>
+  <Catalog>
+    <Categories>
+    	<Category id="FISH">
+	  <CategoryDetails xml:lang="en-US">
+	    <Name>Fish</Name>
+	    <Image>fish_icon.gif</Image>
+	  </CategoryDetails>
+       	  <CategoryDetails xml:lang="ja-JP">
+	    <Name>魚</Name>
+	    <Image>fish_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="zh-CN">
+	    <Name>鱼</Name>
+	    <Image>fish_icon.gif</Image>
+	  </CategoryDetails>
+	</Category>
+	<Category id="DOGS">
+	  <CategoryDetails xml:lang="en-US">
+	    <Name>Dogs</Name>
+	    <Image>dogs_icon.gif</Image>
+	  </CategoryDetails>
+          <CategoryDetails xml:lang="ja-JP">
+	    <Name>犬</Name>
+	    <Image>dogs_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="zh-CN">
+	    <Name>狗</Name>
+	    <Image>dogs_icon.gif</Image>
+	  </CategoryDetails>
+	</Category>
+	<Category id="REPTILES">
+	  <CategoryDetails xml:lang="en-US">
+	    <Name>Reptiles</Name>
+	    <Image>reptiles_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="ja-JP">
+	    <Name>爬虫類</Name>
+	    <Image>reptiles_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="zh-CN">
+	    <Name>爬虫类</Name>
+	    <Image>reptiles_icon.gif</Image>
+	  </CategoryDetails>
+	</Category>
+	<Category id="CATS">
+	  <CategoryDetails xml:lang="en-US">
+	    <Name>Cats</Name>
+	    <Image>cats_icon.gif</Image>
+	  </CategoryDetails>
+       	  <CategoryDetails xml:lang="ja-JP">
+	    <Name>猫</Name>
+	    <Image>cats_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="zh-CN">
+	    <Name>猫</Name>
+	    <Image>cats_icon.gif</Image>
+	  </CategoryDetails>
+	</Category>
+        <Category id="BIRDS">
+	  <CategoryDetails xml:lang="en-US">
+	    <Name>Birds</Name>
+	    <Image>birds_icon.gif</Image>
+	  </CategoryDetails>
+          <CategoryDetails xml:lang="ja-JP">
+	    <Name>鳥</Name>
+	    <Image>birds_icon.gif</Image>
+	  </CategoryDetails>
+	  <CategoryDetails xml:lang="zh-CN">
+	    <Name>鸟</Name>
+	    <Image>birds_icon.gif</Image>
+	  </CategoryDetails>
+	</Category>
+      </Categories>
+    <Products>
+	<Product id="FI-SW-01" category="FISH">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Angelfish</Name>
+	    <Image>fish1.jpg</Image>
+	    <Description>Salt Water fish from Australia</Description>
+	  </ProductDetails>	    
+	  <ProductDetails xml:lang="ja-JP">
+	    <Name>エンゼルフィッシュ</Name>
+	    <Image>fish1.jpg</Image>
+	    <Description>オーストラリア産の海水魚</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>天使鱼</Name>
+	    <Image>fish1.jpg</Image>
+	    <Description>澳大利亚产的海水鱼</Description>
+	  </ProductDetails>
+          </Product>
+	<Product id="FI-SW-02" category="FISH">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Tiger Shark</Name>
+	    <Image>fish4.gif</Image>
+	    <Description>Salt Water fish from Australia</Description>
+	  </ProductDetails>
+         <ProductDetails xml:lang="ja-JP">
+	    <Name>イタチザメ</Name>
+	    <Image>fish4.gif</Image>
+	    <Description>オーストラリア産の海水魚</Description>
+	  </ProductDetails>
+	 <ProductDetails xml:lang="zh-CN">
+	    <Name>鼬鲨</Name>
+	    <Image>fish4.gif</Image>
+	    <Description>澳大利亚产的海水鱼</Description>
+	  </ProductDetails> 	
+	</Product>
+	<Product id="FI-FW-01" category="FISH">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Koi</Name>
+	    <Image>fish3.gif</Image>
+	    <Description>Fresh Water fish from Japan</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>鯉</Name>
+	    <Image>fish3.gif</Image>
+	    <Description>日本産の淡水魚</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>鲤鱼</Name>
+	    <Image>fish3.gif</Image>
+	    <Description>日本产的淡水鱼</Description>
+	  </ProductDetails>	
+	</Product>
+	<Product id="FI-FW-02" category="FISH">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Goldfish</Name>
+	    <Image>fish2.gif</Image>
+	    <Description>Fresh Water fish from China</Description>
+	  </ProductDetails>
+          <ProductDetails xml:lang="ja-JP">
+	    <Name>金魚</Name>
+	    <Image>fish2.gif</Image>
+	    <Description>中国産の淡水魚</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>金鱼</Name>
+	    <Image>fish2.gif</Image>
+	    <Description>中国产的淡水鱼</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-BD-01" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Bulldog</Name>
+	    <Image>dog2.gif</Image>
+	    <Description>Friendly dog from England</Description>
+	  </ProductDetails>
+          <ProductDetails xml:lang="ja-JP">
+	    <Name>ブルドッグ</Name>
+	    <Image>dog2.gif</Image>
+	    <Description>人なつっこい性質、イギリス産</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>牛头狗</Name>
+	    <Image>dog2.gif</Image>
+	    <Description>一种来自英国的性格温和的狗</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-PO-02" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Poodle</Name>
+	    <Image>dog6.gif</Image>
+	    <Description>Cute dog from France</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>プードル</Name>
+	    <Image>dog6.gif</Image>
+	    <Description>キュートなフランス産の犬</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>狮子狗</Name>
+	    <Image>dog6.gif</Image>
+	    <Description>一种来自法国的机灵的小狗</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-DL-01" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Dalmation</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>Great dog for a Fire Station</Description>
+	  </ProductDetails>
+          <ProductDetails xml:lang="ja-JP">
+	    <Name>ダルマシアン</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>消防署で大活躍</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>达尔马希亚狗</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>经常在消防部门出现</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-RT-01" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Golden Retriever</Name>
+	    <Image>dog1.gif</Image>
+	    <Description>Great family dog</Description>
+	  </ProductDetails>
+         <ProductDetails xml:lang="ja-JP">
+	    <Name>ゴールデン=レトリーバ</Name>
+	    <Image>dog1.gif</Image>
+	    <Description>飼い犬に最適</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>金毛猎狗</Name>
+	    <Image>dog1.gif</Image>
+	    <Description>最适合伺养的狗</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-RT-02" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Labrador Retriever</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>Great hunting dog</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>ラブラドル=レトリーバ</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>猟犬に最適</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>拉布拉多猎狗</Name>
+	    <Image>dog5.gif</Image>
+	    <Description>最好的猎狗</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="K9-CW-01" category="DOGS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Chihuahua</Name>
+	    <Image>dog4.gif</Image>
+	    <Description>Great companion dog</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>チワワ</Name>
+	    <Image>dog4.gif</Image>
+	    <Description>とても人なつこい</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>吉娃娃狗</Name>
+	    <Image>dog4.gif</Image>
+	    <Description>最容易相处的狗</Description>
+	  </ProductDetails>	
+	</Product>
+	<Product id="RP-SN-01" category="REPTILES">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Rattlesnake</Name>
+	    <Image>lizard3.gif</Image>
+	    <Description>Doubles as a watch dog</Description>
+	  </ProductDetails>
+          <ProductDetails xml:lang="ja-JP">
+	    <Name>ガラガラ蛇</Name>
+	    <Image>lizard3.gif</Image>
+	    <Description>番犬代わりにどうぞ</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>响尾蛇</Name>
+	    <Image>lizard3.gif</Image>
+	    <Description>顶两只看家狗</Description>
+	  </ProductDetails> 
+	</Product>
+	<Product id="RP-LI-02" category="REPTILES">
+       	  <ProductDetails xml:lang="en-US">
+	    <Name>Iguana</Name>
+	    <Image>lizard2.gif</Image>
+	    <Description>Friendly green friend</Description>
+	  </ProductDetails>	
+	  <ProductDetails xml:lang="ja-JP">
+	    <Name>イグアナ</Name>
+	    <Image>lizard2.gif</Image>
+	    <Description>人なつこい緑色のお友達</Description>
+	  </ProductDetails> 
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>大蜥蜴</Name>
+	    <Image>lizard2.gif</Image>
+	    <Description>人类的绿色朋友</Description>
+	  </ProductDetails> 
+	</Product>
+	<Product id="FL-DSH-01" category="CATS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Manx</Name>
+	    <Image>cat3.gif</Image>
+	    <Description>Great for reducing mouse populations</Description>
+	  </ProductDetails>
+         <ProductDetails xml:lang="ja-JP">
+	    <Name>マンクスネコ</Name>
+	    <Image>cat3.gif</Image>
+	    <Description>ねずみ退治に最適</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>曼岛猫</Name>
+	    <Image>cat3.gif</Image>
+	    <Description>捕鼠能手</Description>
+	  </ProductDetails>	
+	</Product>
+	<Product id="FL-DLH-02" category="CATS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Persian</Name>
+	    <Image>cat1.gif</Image>
+	    <Description>Friendly house cat, doubles as a princess</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>ペルシアネコ</Name>
+	    <Image>cat1.gif</Image>
+	    <Description>優しい家ネコ</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>波斯猫</Name>
+	    <Image>cat1.gif</Image>
+	    <Description>友善的家猫</Description>
+	  </ProductDetails>	   
+	</Product>
+	<Product id="AV-CB-01" category="BIRDS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Amazon Parrot</Name>
+	    <Image>bird4.gif</Image>
+	    <Description>Great companion for up to 75 years</Description>
+	  </ProductDetails>
+       	  <ProductDetails xml:lang="ja-JP">
+	    <Name>ボウシインコ</Name>
+	    <Image>bird4.gif</Image>
+	    <Description>最高で 75 年も長生き</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>亚马逊鹦鹉</Name>
+	    <Image>bird4.gif</Image>
+	    <Description>最长可以活75年</Description>
+	  </ProductDetails>
+	</Product>
+	<Product id="AV-SB-02" category="BIRDS">
+	  <ProductDetails xml:lang="en-US">
+	    <Name>Finch</Name>
+	    <Image>bird1.gif</Image>
+	    <Description>Great stress reliever</Description>
+	  </ProductDetails>
+         <ProductDetails xml:lang="ja-JP">
+	    <Name>フィンチ</Name>
+	    <Image>bird1.gif</Image>
+	    <Description>癒し系ペット</Description>
+	  </ProductDetails>
+	  <ProductDetails xml:lang="zh-CN">
+	    <Name>雀鸣类鸟</Name>
+	    <Image>bird1.gif</Image>
+	    <Description>美丽的声音为您解除疲劳</Description>
+	  </ProductDetails>	
+	</Product>
+      </Products>
+    <Items>
+	<Item id="EST-1" product="FI-SW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>16.50</ListPrice>
+	    <UnitCost>10.00</UnitCost>
+	    <Attribute>Large</Attribute>
+	    <Attribute>Cuddly</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>Fresh Water fish from Japan</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1951</ListPrice>
+	    <UnitCost>1551</UnitCost>
+	    <Attribute>大</Attribute>
+	    <Attribute>優しい</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>142</ListPrice>
+	    <UnitCost>86</UnitCost>
+	    <Attribute>大</Attribute>
+	    <Attribute>喜欢群居</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-2" product="FI-SW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>16.50</ListPrice>
+	    <UnitCost>10.00</UnitCost>
+	    <Attribute>Small</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>Fresh Water fish from Japan</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1114</ListPrice>
+	    <UnitCost>1003</UnitCost>
+	    <Attribute>小</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>142</ListPrice>
+	    <UnitCost>86</UnitCost>
+	    <Attribute>小</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-3" product="FI-SW-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Toothless</Attribute>
+	    <Attribute>Mean</Attribute>
+	    <Image>fish4.gif</Image>
+	    <Description>Salt Water fish from Australia</Description>
+	  </ItemDetails>
+       	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1351</ListPrice>
+	    <UnitCost>1231</UnitCost>
+	    <Attribute>歯がない</Attribute>
+	    <Attribute>Mean</Attribute>
+	    <Image>fish4.gif</Image>
+	    <Description>オーストラリア産の海水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>158</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>没有牙齿</Attribute>
+	    <Attribute>Mean</Attribute>
+	    <Image>fish4.gif</Image>
+	    <Description>澳大利亚产的海水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-4" product="FI-FW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Spotted</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>Fresh Water fish from Japan</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1323</ListPrice>
+	    <UnitCost>1251</UnitCost>
+	    <Attribute>まだら</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>有斑点</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-5" product="FI-FW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Spotless</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>Fresh Water fish from Japan</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1250</ListPrice>
+	    <UnitCost>1100</UnitCost>
+	    <Attribute>まだらなし</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>没有斑点</Attribute>
+	    <Image>fish3.gif</Image>
+	    <Description>日本产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-6" product="K9-BD-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Male Adult</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>Friendly dog from England</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1450</ListPrice>
+	    <UnitCost>1200</UnitCost>
+	    <Attribute>雄 おとな</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>人なつっこい性質、イギリス産</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>性格温和的英国狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-7" product="K9-BD-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Female Puppy</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>Friendly dog from England</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1150</ListPrice>
+	    <UnitCost>1011</UnitCost>
+	    <Attribute>雌 子犬</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>人なつっこい性質、イギリス産</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>雌性小</Attribute>
+	    <Image>dog2.gif</Image>
+	    <Description>性格温和的英国狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-8" product="K9-PO-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Male Puppy</Attribute>
+	    <Image>dog6.gif</Image>
+	    <Description>Cute dog from France</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1220</ListPrice>
+	    <UnitCost>1110</UnitCost>
+	    <Attribute>雄 子犬</Attribute>
+	    <Image>dog6.gif</Image>
+	    <Description>キュートなフランス産の犬</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>107</UnitCost>
+	    <Attribute>雄性小</Attribute>
+	    <Image>dog6.gif</Image>
+	    <Description>一种机灵的法国狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-9" product="K9-DL-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Spotless Male Puppy</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great dog for a Fire Station</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1440</ListPrice>
+	    <UnitCost>1410</UnitCost>
+	    <Attribute>まだらなし 雄 子犬</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>消防署で大活躍</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>140</UnitCost>
+	    <Attribute>无斑点雄性小</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>经常用于消防部门</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-10" product="K9-DL-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Spotted Adult Female</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great dog for a Fire Station</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1830</ListPrice>
+	    <UnitCost>1610</UnitCost>
+	    <Attribute>まだら おとな 雌</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>消防署で大活躍</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>157</ListPrice>
+	    <UnitCost>150</UnitCost>
+	    <Attribute>有斑点成年雌性</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>经常用于消防部门</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-11" product="RP-SN-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Venomless</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>More Bark than bite</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1770</ListPrice>
+	    <UnitCost>1330</UnitCost>
+	    <Attribute>毒なし</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>番犬代わりにどうぞ</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>152</ListPrice>
+	    <UnitCost>134</UnitCost>
+	    <Attribute>无毒</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>可代替狗来看家</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-12" product="RP-SN-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>18.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Rattleless</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>Doubles as a watch dog</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1550</ListPrice>
+	    <UnitCost>1330</UnitCost>
+	    <Attribute>音なし</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>番犬代わりにどうぞ</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>140</ListPrice>
+	    <UnitCost>128</UnitCost>
+	    <Attribute>无声音的</Attribute>
+	    <Image>lizard3.gif</Image>
+	    <Description>可代替狗来看家</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-13" product="RP-LI-02">
+       	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>12.50</ListPrice>
+	    <UnitCost>11.10</UnitCost>
+	    <Attribute>Green Adult</Attribute>
+	    <Image>lizard2.gif</Image>
+	    <Description>Friendly green friend</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1850</ListPrice>
+	    <UnitCost>1200</UnitCost>
+      	    <Attribute>緑</Attribute>
+	    <Attribute>おとな</Attribute>
+	    <Image>lizard2.gif</Image>
+	    <Description>人なつこい緑色のお友達</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>160</ListPrice>
+	    <UnitCost>105</UnitCost>
+      	    <Attribute>绿色</Attribute>
+	    <Attribute>成年</Attribute>
+	    <Image>lizard2.gif</Image>
+	    <Description>人类的绿色朋友</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-14" product="FL-DSH-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>58.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Tailless</Attribute>
+	    <Image>cat3.gif</Image>
+	    <Description>Great for reducing mouse populations</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>5840</ListPrice>
+	    <UnitCost>3200</UnitCost>
+	    <Attribute>しっぽなし</Attribute>
+	    <Image>cat3.gif</Image>
+	    <Description>ねずみ退治に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>480</ListPrice>
+	    <UnitCost>340</UnitCost>
+	    <Attribute>无尾型</Attribute>
+	    <Image>cat3.gif</Image>
+	    <Description>捕鼠能手</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-15" product="FL-DSH-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>23.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>With tail</Attribute>
+	    <Image>cat3.gif</Image>
+	    <Description>Great for reducing mouse populations</Description>
+	  </ItemDetails>
+       	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>190</ListPrice>
+	    <UnitCost>150</UnitCost>
+	    <Attribute>有尾型</Attribute>
+	    <Image>cat3.gif</Image>
+	    <Description>捕鼠能手</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-16" product="FL-DLH-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>93.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Adult Female</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>Friendly house cat, doubles as a princess</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>9350</ListPrice>
+	    <UnitCost>8100</UnitCost>
+	    <Attribute>おとな 雌</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>プリンセスみたいな、優しい家ネコ</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>800</ListPrice>
+	    <UnitCost>680</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>漂亮友善的伺养型猫</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-17" product="FL-DLH-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>93.50</ListPrice>
+	    <UnitCost>12.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>Friendly house cat, doubles as a prince</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>9350</ListPrice>
+	    <UnitCost>6100</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>プリンスみたいな、優しい家ネコ</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>800</ListPrice>
+	    <UnitCost>640</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>cat1.gif</Image>
+	    <Description>漂亮友善的伺养型猫</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-18" product="AV-CB-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>193.50</ListPrice>
+	    <UnitCost>92.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>bird4.gif</Image>
+	    <Description>Great companion for up to 75 years</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>19350</ListPrice>
+	    <UnitCost>12000</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>bird4.gif</Image>
+	    <Description>最高で 75 年も長生きする友達</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1600</ListPrice>
+	    <UnitCost>1300</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>bird4.gif</Image>
+	    <Description>最长可活75年</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-19" product="AV-SB-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>15.50</ListPrice>
+	    <UnitCost>2.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>bird1.gif</Image>
+	    <Description>Great stress reliever</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>1540</ListPrice>
+	    <UnitCost>1200</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>bird1.gif</Image>
+	    <Description>癒し系ペット</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>152</ListPrice>
+	    <UnitCost>136</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>bird1.gif</Image>
+	    <Description>美丽的声音给您解除疲劳</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-20" product="FI-FW-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>5.50</ListPrice>
+	    <UnitCost>2.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>Fresh Water fish from China</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>550</ListPrice>
+	    <UnitCost>440</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>中国産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>50</ListPrice>
+	    <UnitCost>39</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>中国产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-21" product="FI-FW-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>5.29</ListPrice>
+	    <UnitCost>1.00</UnitCost>
+	    <Attribute>Adult Female</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>Fresh Water fish from China</Description>
+	  </ItemDetails>
+          <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>549</ListPrice>
+	    <UnitCost>400</UnitCost>
+	    <Attribute>おとな 雌</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>中国産の淡水魚</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>30</ListPrice>
+	    <UnitCost>25</UnitCost>
+	    <Attribute>成年雌性</Attribute>
+	    <Image>fish2.gif</Image>
+	    <Description>中国产的淡水鱼</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-22" product="K9-RT-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>135.50</ListPrice>
+	    <UnitCost>100.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great hunting dog</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>13550</ListPrice>
+	    <UnitCost>10000</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>猟犬に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1100</ListPrice>
+	    <UnitCost>880</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>最好的猎狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-23" product="K9-RT-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>145.49</ListPrice>
+	    <UnitCost>100.00</UnitCost>
+	    <Attribute>Adult Female</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great hunting dog</Description>
+	  </ItemDetails>
+      	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>14549</ListPrice>
+	    <UnitCost>10000</UnitCost>
+	    <Attribute>おとな 雌</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>猟犬に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1200</ListPrice>
+	    <UnitCost>980</UnitCost>
+	    <Attribute>成年雌性</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>最好的猎狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-24" product="K9-RT-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>255.50</ListPrice>
+	    <UnitCost>92.00</UnitCost>
+	    <Attribute>Male Puppy</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great addition to a family</Description>
+	  </ItemDetails>
+       	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>25550</ListPrice>
+	    <UnitCost>19200</UnitCost>
+	    <Attribute>雄 子犬</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>飼い犬に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>2100</ListPrice>
+	    <UnitCost>1980</UnitCost>
+	    <Attribute>雄性小</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>最适合伺养的狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-25" product="K9-RT-02">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>325.29</ListPrice>
+	    <UnitCost>90.00</UnitCost>
+	    <Attribute>Female Puppy</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>Great hunting dog</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>32529</ListPrice>
+	    <UnitCost>12100</UnitCost>
+	    <Attribute>雄 子犬</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>猟犬に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>32529</ListPrice>
+	    <UnitCost>12100</UnitCost>
+	    <Attribute>雄性小</Attribute>
+	    <Image>dog5.gif</Image>
+	    <Description>最好的猎狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-26" product="K9-CW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>125.50</ListPrice>
+	    <UnitCost>92.00</UnitCost>
+	    <Attribute>Adult Male</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>Little yapper</Description>
+	  </ItemDetails>
+       	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>12550</ListPrice>
+	    <UnitCost>19200</UnitCost>
+	    <Attribute>おとな 雄</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>よく鳴く犬</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1080</ListPrice>
+	    <UnitCost>980</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>善于叫唤的狗</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-27" product="K9-CW-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>155.29</ListPrice>
+	    <UnitCost>90.00</UnitCost>
+	    <Attribute>Adult Female</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>Great companion dog</Description>
+	  </ItemDetails>
+         <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>15519</ListPrice>
+	    <UnitCost>14111</UnitCost>
+	    <Attribute>おとな 雌</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>とても人なつこい</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1300</ListPrice>
+	    <UnitCost>1220</UnitCost>
+	    <Attribute>成年雄性</Attribute>
+	    <Image>dog4.gif</Image>
+	    <Description>能成为您的朋友</Description>
+	  </ItemDetails>
+	</Item>
+	<Item id="EST-28" product="K9-RT-01">
+	  <ItemDetails xml:lang="en-US">
+	    <ListPrice>155.29</ListPrice>
+	    <UnitCost>90.00</UnitCost>
+	    <Attribute>Adult Female</Attribute>
+	    <Image>dog1.gif</Image>
+	    <Description>Great family dog</Description>
+	  </ItemDetails>
+       	  <ItemDetails xml:lang="ja-JP">
+	    <ListPrice>15529</ListPrice>
+	    <UnitCost>10900</UnitCost>
+	    <Attribute>おとな 雌</Attribute>
+	    <Image>dog1.gif</Image>
+	    <Description>飼い犬に最適</Description>
+	  </ItemDetails>
+	  <ItemDetails xml:lang="zh-CN">
+	    <ListPrice>1400</ListPrice>
+	    <UnitCost>1280</UnitCost>
+	    <Attribute>成年雌性</Attribute>
+	    <Image>dog1.gif</Image>
+	    <Description>最适合家养的狗</Description>
+	  </ItemDetails>
+	</Item>
+      </Items>
+  </Catalog>
+</Populate>

@@ -1,0 +1,44 @@
+<analysisengine>
+
+  <collection name="componentBehaviors">
+    <attribute key="evictionPolicy">PeriodicCBFlush</attribute>
+  </collection>
+
+  <collection name="historicalGrossComponentBehaviors"/>
+
+  <plugin name="loadHistoricalGrossComponentBehaviors">
+    <classname>roc.pinpoint.analysis.plugins2.records.LoadRecordsFromDiskId</classname>
+    <arg key="historicaldir">$historicaldir</arg>
+    <arg key="prepend">hgcb-</arg>
+    <arg key="id">$id</arg>
+    <arg key="online">$online</arg>
+    <arg key="outputCollection">historicalGrossComponentBehaviors</arg>
+  </plugin>
+
+  <plugin name="CollectComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.components.CollectComponentBehaviorFromPaths</classname>
+    <arg key="inputCollection">paths</arg>
+    <arg key="outputCollection">componentBehaviors</arg>
+    <arg key="definingAttributes">ipaddress,name</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+  <plugin name="HistoricalAnomaliesInComponents">
+    <classname>roc.pinpoint.analysis.plugins2.anomalies.HistoricalAnomalies</classname>
+    <arg key="inputCollection">componentBehaviors</arg>
+    <arg key="historicalCollection">historicalGrossComponentBehaviors</arg>
+    <arg key="outputCollection">anomalousComponents</arg>
+    <arg key="definingAttributes">name</arg>
+    <arg key="outputid">$id</arg>
+    <arg key="detectionPeriod">5000</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+  <plugin name="FlushOldComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.eviction.PeriodicComponentBehaviorFlush</classname>
+    <arg key="period">20000</arg>
+    <arg key="isDefaultEvictionPolicy">false</arg>
+  </plugin>
+
+
+</analysisengine>

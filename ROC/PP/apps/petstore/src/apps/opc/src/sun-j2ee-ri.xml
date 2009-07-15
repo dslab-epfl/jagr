@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE j2ee-ri-specific-information PUBLIC '-//Sun Microsystems Inc.//DTD J2EE Reference Implementation 1.3//EN' 'http://localhost:8000/sun-j2ee-ri_1_3.dtd'>
+
+<!-- OPC Application-->
+<j2ee-ri-specific-information>
+  <server-name></server-name>
+
+  <web>
+    <module-name>opc.war</module-name>
+    <context-root>opc</context-root>
+  </web>
+  <enterprise-beans>
+
+    <!-- OPCAdmin Facade Start -->
+
+    <ejb>
+      <ejb-name>OPCAdminFacadeEJB</ejb-name>
+      <jndi-name>ejb/opc/opc/OPCAdminFacadeEJBRemote</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+        <jndi-name>ejb/opc/po/PurchaseOrder<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <jndi-name>ejb/opc/po/Address<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+        <jndi-name>ejb/opc/po/CreditCard<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+        <jndi-name>ejb/opc/po/LineItem<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <jndi-name>ejb/opc/processmanager/ProcessManager<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+
+    <!-- OPCAdmin Facade end -->
+
+    <!--Purchase Order MDB Start -->
+    <ejb>
+      <ejb-name>PurchaseOrderMDB</ejb-name>
+      <jndi-name>jms/opc/OrderQueue</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <jndi-name>ejb/opc/processmanager/ProcessManager<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <jndi-name>http://localhost:8000/opc/EntityCatalog.jsp</jndi-name>
+    </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/OrderApprovalQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/OrderApprovalQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/QueueConnectionFactory</mdb-connection-factory>
+    </ejb>
+    <!--Purchase Order MDB End-->
+
+
+    <!--INVOICE MDB Start -->
+    <ejb>
+      <ejb-name>InvoiceMDB</ejb-name>
+      <jndi-name>jms/opc/InvoiceTopic</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <jndi-name>ejb/opc/processmanager/ProcessManager<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <jndi-name>http://localhost:8000/opc/EntityCatalog.jsp</jndi-name>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/CompletedOrderMailQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/MailCompletedOrderQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/TopicConnectionFactory</mdb-connection-factory>
+    </ejb>
+    <!--INVOICE MDB End-->
+
+
+    <!--Order Approval MDB Start -->
+    <ejb>
+      <ejb-name>OrderApprovalMDB</ejb-name>
+      <jndi-name>jms/opc/OrderApprovalQueue</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <jndi-name>ejb/opc/processmanager/ProcessManager<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>     
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <jndi-name>http://localhost:8000/opc/EntityCatalog.jsp</jndi-name>
+    </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/OrderApprovalMailQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/MailOrderApprovalQueue</jndi-name>
+      </resource-env-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/PurchaseOrderQueue</resource-env-ref-name>
+        <jndi-name>jms/supplier/PurchaseOrderQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/QueueConnectionFactory</mdb-connection-factory>
+    </ejb>
+    <!--Order Approval MDB End  -->
+
+    <!-- CUSTOMER RELATIONS INVOICE MDB Start -->
+    <ejb>
+      <ejb-name>MailInvoiceMDB</ejb-name>
+      <jndi-name>jms/opc/InvoiceTopic</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <jndi-name>http://localhost:8000/opc/EntityCatalog.jsp</jndi-name>
+    </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/MailQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/TopicConnectionFactory</mdb-connection-factory>
+    </ejb>
+
+    <!-- CUSTOMER RELATIONS INVOICE MDB End -->
+
+    <!-- CUSTOMER RELATIONS ORDER APPROVAL MDB Start -->
+    <ejb>
+      <ejb-name>MailOrderApprovalMDB</ejb-name>
+      <jndi-name>jms/opc/MailOrderApprovalQueue</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <jndi-name>http://localhost:8000/opc/EntityCatalog.jsp</jndi-name>
+    </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/MailQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/QueueConnectionFactory</mdb-connection-factory>
+    </ejb>
+
+    <!-- CUSTOMER RELATIONS ORDER APPROVAL MDB End -->
+
+   <!-- CUSTOMER RELATIONS COMPLETED ORDER  MDB Start -->
+    <ejb>
+      <ejb-name>MailCompletedOrderMDB</ejb-name>
+      <jndi-name>jms/opc/MailCompletedOrderQueue</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <jndi-name>jms/opc/QueueConnectionFactory</jndi-name>
+        <default-resource-principal>
+          <name>j2ee</name>
+          <password>j2ee</password>
+        </default-resource-principal>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <jndi-name>jms/opc/MailQueue</jndi-name>
+      </resource-env-ref>
+
+      <mdb-connection-factory>jms/QueueConnectionFactory</mdb-connection-factory>
+    </ejb>
+
+    <!-- CUSTOMER RELATIONS COMPLETED ORDER MDB End -->
+
+
+
+   <!--Mailer Service MDB Start -->
+    <ejb>
+      <ejb-name>MailerMDB</ejb-name>
+      <jndi-name>jms/opc/MailQueue</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>      
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <principal>
+        <name></name>
+      </principal>
+
+       <resource-ref>
+        <res-ref-name>mail/MailSession</res-ref-name>
+        <jndi-name>mail/opc/MailSession</jndi-name>
+        <mail-configuration>
+          <name>yourname</name>
+          <mail-from>customerservice@javapetstoredemo.com</mail-from>
+          <mail-host>mymailserver</mail-host>
+        </mail-configuration>
+      </resource-ref>
+
+      <mdb-connection-factory>jms/QueueConnectionFactory</mdb-connection-factory>
+    </ejb>
+    <!--Mailer Service MDB End-->
+
+  </enterprise-beans>
+
+
+    <!--ProcessManager EJB Bean Start -->
+
+  <enterprise-beans>
+    <!-- ProcessManager Component Start-->
+    <module-name>processmanager-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>ManagerEJB</ejb-name>
+      <jndi-name>ejb/opc/processmanager/Manager</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "ManagerEJBTable" SET "status" = ?  WHERE "orderId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "status" FROM "ManagerEJBTable" WHERE "orderId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "ManagerEJBTable" WHERE "orderId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "ManagerEJBTable" ( "orderId" , "status" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "ManagerEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "orderId" FROM "ManagerEJBTable" WHERE "orderId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "ManagerEJBTable" ("orderId" VARCHAR(255) , "status" VARCHAR(255), CONSTRAINT "pk_ManagerEJBTabl" PRIMARY KEY ("orderId") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>ManagerEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findOrdersByStatus</method-name>
+            <method-params>
+              <method-param>java.lang.String</method-param>
+            </method-params>
+          </method>
+          <sql>SELECT DISTINCT "a"."orderId" FROM "ManagerEJBTable" "a" WHERE ("a"."status"  = ? )</sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>ProcessManagerEJB</ejb-name>
+      <jndi-name>ejb/opc/processmanager/ProcessManager</jndi-name>
+      <ior-security-config>
+        <transport-config>
+          <integrity>supported</integrity>
+          <confidentiality>supported</confidentiality>
+          <establish-trust-in-target>supported</establish-trust-in-target>
+          <establish-trust-in-client>supported</establish-trust-in-client>
+        </transport-config>
+        <as-context>
+          <auth-method>username_password</auth-method>
+          <realm>default</realm>
+          <required>true</required>
+        </as-context>
+        <sas-context>
+          <caller-propagation>supported</caller-propagation>
+        </sas-context>
+      </ior-security-config>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Manager</ejb-ref-name>
+        <jndi-name>ejb/opc/processmanager/ProcessManager<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+    </ejb>
+    <cmpresource>
+      <ds-jndi-name>jdbc/opc/OPCDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+    <!-- ProcessManager Component end -->
+  </enterprise-beans>
+
+    <!--ProcessManager EJB Bean End -->
+
+
+
+    <!--Purchase Order EJB Bean Start -->
+
+  <enterprise-beans>
+    <module-name>po-ejb.jar</module-name>
+    <unique-id>0</unique-id>
+    <ejb>
+      <ejb-name>ContactInfoEJB</ejb-name>
+      <jndi-name>ejb/opc/po/ContactInfo</jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <jndi-name>ejb/opc/po/Address</jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "ContactInfoEJBTable" SET "__reverse_contactInfo_poId" = ?  , "_address___PMPrimaryKey" = ?  , "email" = ?  , "familyName" = ?  , "givenName" = ?  , "telephone" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_contactInfo_poId" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "ContactInfoEJBTable" ( "__PMPrimaryKey" , "__reverse_contactInfo_poId" , "_address___PMPrimaryKey" , "email" , "familyName" , "givenName" , "telephone" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "ContactInfoEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "ContactInfoEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "ContactInfoEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_contactInfo_poId" VARCHAR(255) , "_address___PMPrimaryKey" LONGINT , "email" VARCHAR(255) , "familyName" VARCHAR(255) , "givenName" VARCHAR(255) , "telephone" VARCHAR(255), CONSTRAINT "pk_ContactInfoEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>AddressEJB</ejb-name>
+      <jndi-name>ejb/opc/po/Address<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "AddressEJBTable" SET "__reverse_address___PMPrimaryKey" = ?  , "city" = ?  , "country" = ?  , "state" = ?  , "streetName1" = ?  , "streetName2" = ?  , "zipCode" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "AddressEJBTable" ( "__PMPrimaryKey" , "__reverse_address___PMPrimaryKey" , "city" , "country" , "state" , "streetName1" , "streetName2" , "zipCode" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "AddressEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "AddressEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "AddressEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_address___PMPrimaryKey" LONGINT , "city" VARCHAR(255) , "country" VARCHAR(255) , "state" VARCHAR(255) , "streetName1" VARCHAR(255) , "streetName2" VARCHAR(255) , "zipCode" VARCHAR(255), CONSTRAINT "pk_AddressEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>PurchaseOrderEJB</ejb-name>
+      <jndi-name>ejb/opc/po/PurchaseOrder<!--N/A--></jndi-name>
+      <ejb-ref>
+        <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+        <jndi-name>ejb/opc/po/ContactInfo<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+        <jndi-name>ejb/opc/po/CreditCard<!--N/A--></jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+        <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+        <jndi-name>ejb/opc/po/LineItem<!--N/A--></jndi-name>
+      </ejb-ref>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "PurchaseOrderEJBTable" SET "_contactInfo___PMPrimaryKey" = ?  , "_creditCard___PMPrimaryKey" = ?  , "poDate" = ?  , "poEmailId" = ?  , "poLocale" = ?  , "poUserId" = ?  , "poValue" = ?  WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "_contactInfo___PMPrimaryKey" , "_creditCard___PMPrimaryKey" , "poDate" , "poEmailId" , "poLocale" , "poUserId" , "poValue" FROM "PurchaseOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "PurchaseOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "PurchaseOrderEJBTable" ( "_contactInfo___PMPrimaryKey" , "_creditCard___PMPrimaryKey" , "poDate" , "poEmailId" , "poId" , "poLocale" , "poUserId" , "poValue" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "PurchaseOrderEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "poId" FROM "PurchaseOrderEJBTable" WHERE "poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "PurchaseOrderEJBTable" ("_contactInfo___PMPrimaryKey" LONGINT , "_creditCard___PMPrimaryKey" LONGINT , "poDate" LONGINT NOT NULL , "poEmailId" VARCHAR(255) , "poId" VARCHAR(255) , "poLocale" VARCHAR(255) , "poUserId" VARCHAR(255) , "poValue" REAL NOT NULL, CONSTRAINT "pk_PurchaseOrderEJBTabl" PRIMARY KEY ("poId") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+        <sql-statement>
+          <method>
+            <ejb-name>PurchaseOrderEJB</ejb-name>
+            <method-intf>LocalHome</method-intf>
+            <method-name>findPOBetweenDates</method-name>
+            <method-params>
+              <method-param>long</method-param>
+              <method-param>long</method-param>
+            </method-params>
+          </method>
+          <sql>SELECT "a"."poId" FROM "PurchaseOrderEJBTable" "a" WHERE (("a"."poDate"  &gt;= ? ) AND ("a"."poDate"  &lt;= ? ))</sql>
+        </sql-statement>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>LineItemEJB</ejb-name>
+      <jndi-name>ejb/opc/po/LineItem<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "LineItemEJBTable" SET "categoryId" = ?  , "itemId" = ?  , "lineNumber" = ?  , "productId" = ?  , "quantity" = ?  , "quantityShipped" = ?  , "unitPrice" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "categoryId" , "itemId" , "lineNumber" , "productId" , "quantity" , "quantityShipped" , "unitPrice" FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "LineItemEJBTable" ( "__PMPrimaryKey" , "categoryId" , "itemId" , "lineNumber" , "productId" , "quantity" , "quantityShipped" , "unitPrice" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "LineItemEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "LineItemEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "LineItemEJBTable" ("__PMPrimaryKey" LONGINT , "categoryId" VARCHAR(255) , "itemId" VARCHAR(255) , "lineNumber" VARCHAR(255) , "productId" VARCHAR(255) , "quantity" INTEGER NOT NULL , "quantityShipped" INTEGER NOT NULL , "unitPrice" REAL NOT NULL, CONSTRAINT "pk_LineItemEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+    <ejb>
+      <ejb-name>CreditCardEJB</ejb-name>
+      <jndi-name>ejb/opc/po/CreditCard<!--N/A--></jndi-name>
+      <gen-classes />
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "CreditCardEJBTable" SET "__reverse_creditCard_poId" = ?  , "cardNumber" = ?  , "cardType" = ?  , "expiryDate" = ?  WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "__reverse_creditCard_poId" , "cardNumber" , "cardType" , "expiryDate" FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "CreditCardEJBTable" ( "__PMPrimaryKey" , "__reverse_creditCard_poId" , "cardNumber" , "cardType" , "expiryDate" ) VALUES (  ?  ,  ?  ,  ?  ,  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "CreditCardEJBTable"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "__PMPrimaryKey" FROM "CreditCardEJBTable" WHERE "__PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "CreditCardEJBTable" ("__PMPrimaryKey" LONGINT , "__reverse_creditCard_poId" VARCHAR(255) , "cardNumber" VARCHAR(255) , "cardType" VARCHAR(255) , "expiryDate" VARCHAR(255), CONSTRAINT "pk_CreditCardEJBTabl" PRIMARY KEY ("__PMPrimaryKey") )</sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+    </ejb>
+
+    <join-object>
+      <name>com.sun.j2ee.blueprints.lineitem.ejb.PurchaseOrderEJB_lineItems_LineItemEJB_</name>
+      <ejb20-cmp>
+        <sql-statement>
+          <operation>storeRow</operation>
+          <sql>UPDATE "PurchaseOrderEJB_lineItems_LineItemEJB_Table" SET "_PurchaseOrderEJB_poId" = ?  WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findBySourceKey</operation>
+          <sql>SELECT "_LineItemEJB___PMPrimaryKey" FROM "PurchaseOrderEJB_lineItems_LineItemEJB_Table" WHERE "_PurchaseOrderEJB_poId" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteRow</operation>
+          <sql>DELETE FROM "PurchaseOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>loadRow</operation>
+          <sql>SELECT "_PurchaseOrderEJB_poId" FROM "PurchaseOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findByPrimaryKey</operation>
+          <sql>SELECT "_LineItemEJB___PMPrimaryKey" FROM "PurchaseOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createRow</operation>
+          <sql>INSERT INTO "PurchaseOrderEJB_lineItems_LineItemEJB_Table" ( "_LineItemEJB___PMPrimaryKey" , "_PurchaseOrderEJB_poId" ) VALUES (  ?  ,  ?  )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>deleteTable</operation>
+          <sql>DROP TABLE "PurchaseOrderEJB_lineItems_LineItemEJB_Table"</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>createTable</operation>
+          <sql>CREATE TABLE "PurchaseOrderEJB_lineItems_LineItemEJB_Table" ("_LineItemEJB___PMPrimaryKey" LONGINT , "_PurchaseOrderEJB_poId" VARCHAR(255), CONSTRAINT "pk_PurchaseOrderEJB_lineItems_LineItemEJB_Tabl" PRIMARY KEY ("_LineItemEJB___PMPrimaryKey") )</sql>
+        </sql-statement>
+        <sql-statement>
+          <operation>findBySinkKey</operation>
+          <sql>SELECT "_PurchaseOrderEJB_poId" FROM "PurchaseOrderEJB_lineItems_LineItemEJB_Table" WHERE "_LineItemEJB___PMPrimaryKey" = ? </sql>
+        </sql-statement>
+        <create-table-deploy>true</create-table-deploy>
+        <delete-table-undeploy>true</delete-table-undeploy>
+      </ejb20-cmp>
+      <source>
+        <name>PurchaseOrderEJB</name>
+        <field>lineItems</field>
+      </source>
+      <sink>
+        <name>LineItemEJB</name>
+        <field></field>
+      </sink>
+    </join-object>
+    <cmpresource>
+      <ds-jndi-name>jdbc/opc/OPCDB</ds-jndi-name>
+      <default-resource-principal>
+        <name>estoreuser</name>
+        <password>estore</password>
+      </default-resource-principal>
+    </cmpresource>
+  </enterprise-beans>
+
+    <!--Purchase Order EJB Bean End -->
+
+</j2ee-ri-specific-information>
+
+

@@ -1,0 +1,480 @@
+  The contents of the Pinpoint release are Copyright 2004
+  Emre Kiciman and Stanford University, excluding the Ant binaries
+  included in ROC/common/tools, and portions of the JBoss 3.2.1
+  modifications in ROC/PP/pp-jboss-3.2.1
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as 
+  published by the Free Software Foundation; either version 2.1 of the 
+  License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public 
+  License along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+
+-------------------------------------------
+
+README for Pinpoint 1.0B release.
+
+I.   What's in this release
+       (directory structure, java packages, sample traces)
+III. Building Pinpoint
+IV.  Running Pinpoint with existing data 
+V.   Running Pinpoint Instrumentation for JBoss
+
+Contact Information:
+
+Please contact Emre Kiciman via emrek@cs.stanford.edu
+regarding any questions about this package.
+
+============================================================================
+
+I. What's in this release
+   ----------------------
+
+This release is an early release of the Pinpoint analysis engine,
+built for analyzing request traces observed in Internet services.
+It contains the code for component-interaction analysis, partial
+path-shape analysis, as well as modifications to enable tracing
+in JBoss 3.2.1 application server.
+
+Included with this release are three sample traces of the behavior
+of a single-node Petstore 1.3.1 on JBoss.  Two samples are of Petstore's
+correct behavior, one is of its behavior during a fault.
+
+---
+
+DIRECTORY STRUCTURE
+-------------------
+
+Here is a quick overview of the files and source contained within
+this package:
+
+ROC/PP/pinpoint            Root directory for Pinpoint source and config
+ROC/PP/pinpoint/build      Contains a build.sh script and Ant build.xml
+ROC/PP/pinpoint/bin        Contains run-pinpoint.sh wrapper script
+ROC/PP/pinpoint/conf/main  The configuration files that tell the pinpoint
+                           engine what plugins to load, and what to do.
+ROC/PP/pinpoint/src/main   The main source code tree for the pinpoint
+                            analysis engine and generic tracing code
+ROC/PP/pinpoint/src/jboss-ext
+                           JBoss extensions to enable EJB tracing.
+ROC/PP/pp-jboss-3.2.1      Modifications required to core JBoss 3.2.1 source
+                            to enable tracing of HTTP, JSP, servlets,
+                            RMI, JDBC, JNI, and JMS.
+
+ROC/PP/expts               Contains sample traces from two experiments.
+                           See ROC/PP/expts/README for details.
+
+ROC/common/tools           Tools for building Pinpoint (i.e., Ant)
+
+---
+
+JAVA PACKAGES
+-------------
+
+As stated above, the Pinpoint source code can be found in the 
+ROC/PP/pinpoint/src/main directory.  The Java packages of interest are:
+
+roc.pinpoint.analysis           The core analysis engine.  This engine
+                                is simply a framework for connecting different
+                                analysis plugins together, and does little
+                                work on its own.
+roc.pinpoint.analysis.plugins2  The plugins that actually manipulate and
+                                 analyze data are all located in packages
+                                 within this directory.
+roc.pinpoint.analysis.pcfg      Probabilistic context free grammar
+roc.pinpoint.analysis.structure Code for representing components, paths,
+                                 and basic statistics about their behavior.
+roc.pinpoint.analysis.timeseries  Implement's Keogh's time-series analysis.
+
+roc.pinpoint.injection          Support code for injecting failures into
+                                 a system at runtime.
+roc.pinpoint.tracing            Support code for tracing a system
+
+The code in these packages is commented with Javadoc-style comments.  The
+generated Javadoc HTML can be found at ROC/PP/pinpoint/javadoc/
+
+---
+
+SAMPLE TRACES
+-------------
+
+This release includes three sample traces of Petstore 1.3.1 running on
+JBoss 3.2.1.  These are in ROC/PP/expts/sample-data-good,
+ROC/PP/expts/sample-data-good2 and ROC/PP/sample-data-bad.  The
+sample-data-good directory contains the trace from a believed good run
+of the system.  The sample-data-bad directory contains a trace where
+we injected a failure into the AccountEJB component.
+
+Each of these directories contains many files.  The most important,
+for our purposes, is the *.observations file.  This contains the
+observations recorded by Pinpoint.
+
+The *.request file contains the HTTP server log.  The *.server file is
+the stdout and stderr from the JBoss server.  The *.loadgen.log.*
+files are the logfiles from the 24 clients that were generating load
+on the system.
+
+============================================================================
+
+III. Building Pinpoint
+     -----------------
+
+    1. set your environment variable "ROC_TOP" to point to the ROC directory
+       of this package.
+
+    2. cd ROC/PP/pinpoint/build
+    
+    3. ./build.sh
+
+    A pinpoint.jar file should be generated and placed in
+        ROC/PP/pinpoint/dist/lib/pinpoint.jar
+
+
+
+============================================================================
+
+IV.  Running Pinpoint with sample data 
+     ---------------------------------
+
+To use the Pinpoint analysis engine, you run it with a configuration file
+that tells the engine what plugins to load and how to connect the plugins
+together.
+
+The configuration files also require named arguments, e.g., filenames
+to load or save. If you forget to give a required argument to a
+configuration file, Pinpoint will catch it and print out an
+appropriate failure message.  The details and descriptions for the
+arguments to any given configuration file are commented at the top of
+the configuration file.
+
+This release comes with several configuration files, we'll go through
+examples of how to use them here.
+
+---
+
+The simplest configuration files are the "inspect" configurations,
+that simply load observations and let you inspect the paths and
+components implied by the observations.
+
+Let's use the inspect-components
+
+ ./run-pinpoint.sh ../conf/main/inspect-components \
+     inputfile=../../expts/sample-data-good/faultconfig-nofault1.observations
+
+The output should look something like this:
+
+	Loading Subconfigurations...
+	Loading Subconfigurations...
+	Loading collections...
+	Loading plugins...
+	    loading plugin: httpfe(roc.pinpoint.analysis.plugins2.fe.HttpFrontEnd)HttpService: No datadir specified; page loading disabled.
+	 
+	                                                            [ OK ]
+	Loading subanalysis...
+	       [ OK ]
+	Loading collections...
+	    creating collection: records                            [ OK ]
+	Loading plugins...
+	Loading subanalysis...
+	    loading subanalysis: loadRecords(../embed/general/LoadFromDisk.econf)Loading Subconfigurations...
+	Loading collections...
+	Loading plugins...
+	    loading plugin: loadfromdisk(roc.pinpoint.analysis.plugins2.records.LoadRecordsFromDisk)Beginning to Load Records!!!!!!
+	loaded Record class
+	loaded Record class
+	loaded Record class
+	loaded Record class
+	loaded Record class
+	...
+ 	...
+
+There are many observations to load in this file (about 54,207), so it
+may take some time to load all of them, but we can start to browse
+the HTTP interface and inspect the results while the records load.  To
+do this, open a web browser and point it at
+http://machinename:8888/service/httpfe (replacing "machinename" with
+the hostname Pinpoint is running on.
+
+This web interface lets you inspect the plugins and the record
+collections in the analysis engine.  Click on "record collections" to
+see what collections there are.  You should see three, "Component
+Behaviors", "Observations", and "verifiedTraces".  Click on "Component
+Behaviors", and we see a list of components and summaries of their
+interactions with other components in the system.  Here's one showing
+the behavior of the CreditCardEJB bean:
+
+key = {Component: attrs={ipaddress=169.229.50.213, name=CreditCardEJB}}
+
+{ComponentBehavior: 
+  component={Component: attrs={ipaddress=169.229.50.213, name=CreditCardEJB}},
+      links={{Link:  src={Component: attrs={ipaddress=169.229.50.213, 
+                                           name=PurchaseOrderEJB}},
+                    sink={Component: attrs={ipaddress=169.229.50.213,
+                                            name=CreditCardEJB}},
+                   stats={AbstractStatistics: count=12.0, mean=2.25,
+                                              stddev=10.404326023342406}
+             }...
+             {Link:  src={Component: attrs={ipaddress=169.229.50.213,
+                                            name=CreditCardEJB}},
+                    sink={Component: attrs={ipaddress=169.229.50.213,
+                                            name=creditcardejb}},
+                   stats={AbstractStatistics: count=42.0, mean=1.0, stddev=0.0}
+             }...
+            }
+}
+
+
+This ComponentBehavior record shows that the CreditCardEJB was called
+by the PurchaseOrderEJB twelve times, and had a mean call-time of
+2.25ms, but with a large std deviation.  Since the Component is
+determined by its component name, this std deviation makes sense, as
+different methods in the component can take widely varying amounts of
+time to respond.
+
+We also see that the CreditCardEJB calls the "creditcardejb"
+component.  The lower-cased creditcardejb happens to be the name of a
+table in the SQL database.  Because we don't have the necessary
+internals in JBoss instrumented, we can only record the fact that this
+database table was accessed, and cannot record reliable information
+for its performance.  Hence the artificially stable mean/stddev.
+
+From here, let's see what what plugins are running in the analysis
+engine.  Clicking on the "plugins" link, we see that there appears to
+be only one plugin running, the http front end plugin.  This is
+because all the real work is being done in other namespaces in
+lower-levels of the anlaysis engine, and by default, we only see the
+top-level namespace.
+
+Click on the "namespace" link, and we'll see what child namespaces
+exist in this configuration.  Here we see three namespaces:
+
+- "loadObs" is the namespace responsible for loading observations
+  from the file on disk.
+- "verifyPaths" is the namespace responsible for sorting observations
+  and verifying that we have complete request traces.
+- "extractCB" analyzes these request traces and pulls out the component
+  behaviors we saw earlier.
+
+These namespaces communicate with each other through the shared
+top-level record collections we saw earlier.  The "observations"
+collection passes data between the loadObs and verifyPaths namespaces.
+The verifiedtraces collection passes data between the verifyPaths
+and the extractCB namespaces.  The componentbehaviors collection holds
+the output of the extractCB collection.
+
+Clicking through to any of these namespaces will let you inspect the
+plugins and record collections within them.  The "return to root namespace"
+link on the namespaces page will return you to the top-level namespace.
+
+There are two more "inspection" configuration files:
+
+- inspect-records.conf simply loads the records in a file and places them
+  into a record collection.  This configuration can load any type of
+  record that you've saved to disk, and does not additional processing.
+  
+  *** IMPORTANT: inspect-records.conf is particularly useful for looking
+  at the resulting output files of analyses that generate Record-based
+  outputs, instead of ASCII outputs.
+
+- inspect-paths.conf loads observations from disk, and regenerates the
+  paths taken by each request in the system.
+
+Both of these configuration files take the same "inputfile" argument
+that we used to tell "inspect-components.conf" where to load its
+observations from.
+
+---
+
+The off-line analysis method in Pinpoint is a two step process of
+first generating a model of normal behavior from a trace of a believed
+good system; and secondly, using this model to detect anomalies in
+other traces of the same or similar systems.
+
+For component interaction analysis, we generate a model with the
+configuration "ci-generate-historical-model.conf".  This configuration
+generates several output files (one set of gross component behaviors
+per request type).  So, first, let's create a new directory to store all
+these files.
+
+  mkdir goodmodel.ci
+
+Now, run pinpoint, passing in the name of the directory we just created.
+
+  ./run-pinpoint.sh ../conf/main/ci-generate-historical-model.conf \
+        inputfile=../../expts/sample-data-good/faultconfig-nofault1.observations \
+        outputdir=goodmodel.ci
+
+* Unfortunately, this configuration will not automatically shut down
+when its finished processing.  Once all the records have finished loading,
+and a screenful or so of "GrossComponentBehavior Collection Plugin pass..."
+messages has scrolled by, feel free to ctl-break the process. 
+
+Looking in the goodmodel.ci directory, you should see one file for each
+type of request in the petstore system.  These files are named after the
+URL of the request, with some munging of the URL into a valid filename.
+E.g., the http:///petstore/cart.do URL becomes hgcb-_petstore-cart.do.
+
+Now, we can use this model to analyze a bad trace of the system.  For this,
+we use the ci-analysis-offline.conf configuration:
+
+  ./run-pinpoint.sh ../conf/main/ci-analysis-offline.conf \
+        inputfile=../../expts/sample-data-bad/faultconfig-name_AccountEJB-expected_exception.observations \
+        historicaldir=goodmodel.ci \
+        outputfile=sample-bad.ci.analysis
+
+Currently, this analysis will continue running, periodically
+reevaluating the set of anomalous components---even after all the
+original traces have finished loading.  If we look at the tail of
+sample-bad.ci.analysis, we can see what the current set of anomalous
+components are:
+
+	...
+	{Rank = 0.23345511024461596; id={name=/category.jsp}}
+	{Rank = 0.48605109434791033; id={name=ShoppingClientFacadeEJB}}
+	{Rank = 0.6001832277482477; id={name=/product.jsp}}
+	{Rank = 1.3408946792854426; id={name=org.jnp.server.NamingContext}}
+	{Rank = 1.9197737508978314; id={name=/petstore/main.screen}}
+	{Rank = 4.683312986849732; id={name=ShoppingControllerEJB}}
+	{Rank = 5.6034964518264685; id={name=/advice_banner.jsp}}
+	{Rank = 5.821033717676742; id={name=into}}
+	{Rank = 6.652855212834202; id={name=/mylist.jsp}}
+	{Rank = 7.6147557235885515; id={name=(product}}
+	{Rank = 8.410798867312261; id={name=AccountEJB}}
+	{Rank = 9.12824900528865; id={name=class com.sun.j2ee.blueprints.waf.controller.web.MainServlet}}
+	{Rank = 13.894579987322123; id={name=CustomerEJB}}
+
+
+Included in this list are many "non-components" as well, such as the
+(slight mislabeled "(product" table in the database, and several .jsp
+files.  Any component ranked higher than "1.0" is, with an 0.005-level of
+confidence, not matching our model of normal behavior.
+
+The three EJBs that are acting differently are the
+ShoppingControllerEJB, the AccountEJB, and the CustomerEJB.  Though
+the AccountEJB is where we are injecting our failure, its failure also
+causes problems in the other beans as well.
+
+We can also run our analysis on a second sample of good data:
+
+    ./run-pinpoint.sh ../conf/main/ci-analysis-offline.conf \
+        inputfile=../../expts/sample-data-good2/faultconfig-nofault2.observations \
+        historicaldir=goodmodel.ci outputfile=sample-good.ci.analysis
+
+This analysis shows an almost zero ranking for every component,
+indicating that there are no anomalies in this trace.
+
+
+---
+
+We follow a similar process to generate our model of good behavior for
+path-shape analysis.  First, run:
+
+    ./run-pinpoint.sh ../conf/main/ps-generate-historical-model.conf \
+       inputfile=../../expts/sample-data-good/faultconfig-nofault.observations \
+	outputfile=goodmodel.ps \
+
+
+Notice that in this case, the path-shape analysis stores the models
+of good behavior for all of the request types in a single output file.
+
+We run the path-shape analysis for detecting anomalous paths as:
+
+    ./run-pinpoint.sh ../conf/main/ps-detect-offline.conf \
+         inputfile=../../expts/sample-data-bad/faultconfig-name_AccountEJB-expected_exception.observations   \
+         historicalfile=goodmodel.ps
+
+The output from this analysis can be seen in the "diagnosis" record
+collection.  This displays a ranked list of anomalous paths, with the
+most anomalous paths being shown at the bottom of the list.  Even
+small degrees of anomaly are significant here, with (depending on the
+application) a score above "0.03" or "0.05" being very anomalous.
+(See our USENIX submission for more details on determining this
+threshold).
+
+---
+
+Because the decision-tree code is currently in flux---the code needs
+significant refactoring to handle better exploration of alternative
+decision trees and pruning of the resultant rules, we do not currently
+include a configuration for running the decision-tree analysis on a
+set of paths.
+
+---
+
+We have included two more configuration files with this release of
+Pinpoint.
+
+The convert-records-to-ascii.conf configuration loads a file of
+Records, output from a previous run of the Pinpoint analysis engine,
+converts the values held in these records to text using their Java
+"toString()" methods, and saves the resulting text to an output file.
+
+The save-observations-to-disk.conf is used for saving the observations
+reported from the trace of a live system to disk.  This configuration
+initializes a plugin to receive observations over the network, and a
+second plugin to save these observations to disk.
+
+============================================================================
+
+V.   Using Pinpoint Instrumentation for JBoss
+     ----------------------------------------
+
+     To trace a live system...
+
+     Follow the instructions at 
+        http://crash.stanford.edu/resources/ps132_jb321/index.html
+
+     to install Petstore 1.3.2 on JBoss 3.2.1.  However, *before* building
+     JBoss:
+
+        * copy all the files (and new subdirectories) in 
+          ROC/PP/pp-jboss-3.2.1  to your JBoss-3.2.1 source tree.
+          This will overwrite the existing JBoss 3.2.1 files with
+          the modifications required to enable tracing.
+
+     And after building JBoss and deploying Petstore, but *before*
+     starting the process:
+
+        1. copy pinpoint.jar and required libraries into your deployment's
+           lib directory:  
+
+            cp ROC/PP/pinpoint/dist/lib/pinpoint.jar $JBOSS_SERVER/default/lib
+            cp ROC/PP/pinpoint/lib/xercesImpl.jar $JBOSS_SERVER/default/lib
+            cp ROC/PP/pinpoint/lib/xmlParserAPIs.jar $JBOSS_SERVER/default/lib
+
+        2. copy the configuration changes to load the Pinpoint EJB tracer
+           into JBoss:
+
+            cp ROC/PP/pinpoint/src/jboss-ext/conf/standardjboss.xml-jboss-3.2.1 $JBOSS_SERVER/default/conf/standardjboss.xml
+
+        3. set the following environment variables
+
+           export OBSERVATION_HOSTNAME=[the hostname of the machine
+                                        you're going to run pinpoint on]
+           export JAVA_OPTS="-server \
+               -Droc.pinpoint.tracing.Publisher=roc.pinpoint.tracing.java.TCPObservationPublisher \
+               -Droc.pinpoint.publishto.hostname=$OBSERVATION_HOSTNAME"
+
+        4. run the pinpoint analysis engine to record the observations
+            from the traced machine.
+
+             cd ROC/PP/pinpoint/bin
+             ./run-pinpoint.sh ../conf/main/save-observations-to-disk.conf \
+                   output=myoutput.observations
+
+      Then start JBoss as you normally would:
+
+            cd $JBOSS/bin
+            ./run.sh
+
+      Put some load against the Petstore website, and the observations of
+      the system should start appearing in the myoutput.observations output
+      file.
+

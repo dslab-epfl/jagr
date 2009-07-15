@@ -1,0 +1,21 @@
+<analysisengine>
+  <!-- 
+    This embedded configuration is for saving records to disk.
+
+    The arguments for this configuration are:
+
+      output=FILENAME
+          location at which to store records.
+
+    Also, be sure to pass in a record collection named 'input'
+
+    -->
+
+
+  <plugin name="savetodisk">
+    <classname>roc.pinpoint.analysis.plugins2.records.SaveRecordsToDisk</classname>
+    <arg key="inputCollection">input</arg>
+    <arg key="filename">$output</arg>
+  </plugin>
+
+</analysisengine>

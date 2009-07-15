@@ -1,0 +1,28 @@
+<analysisengine>
+
+<!--
+	pass in record collections:
+		input: the paths to be analyzed
+		output: the output WA-HGCB
+
+-->
+
+<plugin name="pathsplitter">
+  <classname>roc.pinpoint.analysis.plugins2.paths.SortPathsByRequestType</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="nsOutputCollection">output</arg>
+  <arg key="prependName">wahgcb</arg>
+  <arg key="inputCollectionNSName">input</arg>
+  <arg key="outputCollectionNSName">output</arg>
+  <arg key="collectionAttrs">transient=true</arg>
+  <arg key="namespaceConfig">WAHGCBGenerator-helper.econf</arg>
+<!-- <arg key="nsArgs">FILL IN</arg> -->
+
+</plugin>
+
+<plugin name="checkoutputready">
+  <classname>roc.pinpoint.analysis.plugins2.records.CheckIsReady</classname>
+  <arg key="monitor">output</arg>
+</plugin>
+
+</analysisengine>

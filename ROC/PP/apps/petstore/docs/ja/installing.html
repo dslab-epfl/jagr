@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                    
+<meta http-equiv="Content-Type"
+ content="text/html; charset=euc-jp">
+                    
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+<title>Java[TM] Pet Store Demo 1.3.1_02[TM] &gt;Web サービスなしのデモのインストール</title>
+</head>
+  <body>
+     &nbsp;     
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+     <tbody>
+        <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">Java[tm] Pet Store Demo 1.3.1_02</a></font></b> <font color="#ffffff">&gt; <b>デモのインストール</b></font></td>
+      <td bgcolor="#000033">                             
+<div align="right"><b><font color="#ccccff"><a
+ href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+     </td>
+     </tr>
+                 
+  </tbody>    
+</table>
+          
+<h1> デモのインストール</h1>
+ここでは、Java Pet Store Demo をインストールする方法について説明します。
+    
+<h2> システム要件</h2>
+デモをインストールする前に、次のソフトウェアをインストールしておく必要があります。
+     
+<ul>
+<b>1. Java 2 SDK, Standard Edition (J2SE<sup><font size="-2">TM</font></sup> SDK), v1.4.1</b>: <a href="http://java.sun.com/j2se/1.4.1">ダウンロード</a>            
+               
+<p><b>2. Java 2 SDK, Enterprise Edition (J2EE<sup><font size="-2">TM</font></sup> SDK), v1.3.1</b>: <a href="http://java.sun.com/j2ee/sdk_1.3/">ダウンロード</a><br>
+  </p>
+</ul>
+<ul>
+<p><b>　　　　　　　　　　　　</b><b>または<br><br>　</b><b>Java 2 SDK, Enterprise Edition (J2EE<sup><font
+ size="-2"> TM</font></sup> SDK), v1.4 Beta</b>: <a
+ href="http://java.sun.com/j2ee/download.html">ダウンロード</a> <br>
+     </p>
+        
+</ul>
+          
+<h2> 必要な環境変数</h2>
+環境変数 <tt>JAVA_HOME</tt> および <tt>J2EE_HOME</tt> を次のように設定する必要があります。
+<ul>
+<tt>JAVA_HOME</tt> には、J2SE SDK のインストール先のルートディレクトリを指定する必要があります。たとえば、J2SE SDK を <tt>c:\j2sdk1.4.1</tt> にインストールした場合は、そのパスを <tt>JAVA_HOME</tt> の値として設定する必要があります。
+<p><tt>J2EE_HOME</tt> には、J2EE SDK のインストール先のルートディレクトリを指定する必要があります。たとえば、J2EE SDK を <tt>/usr/local/java/j2sdkee1.3.1</tt> にインストールした場合は、そのパスを <tt>J2EE_HOME</tt> の値として設定する必要があります。</p>
+       
+</ul>
+また、<tt>PATH</tt> 変数には、ディレクトリ <tt>%JAVA_HOME%\bin</tt> (Windows の場合) または <tt>$JAVA_HOME/bin</tt> (UNIX の場合) を含める必要があります。変数を適切に指定しないと、ビルド作業に失敗することがあります。
+<h2> デモのインストール</h2>
+<h3>  Java 2 SDK, Enterprise Edition (J2EE<sup><font
+ size="-2"> TM</font></sup> SDK), v1.4 Beta でのデモのインストール方法</b> </h3>    
+<ol>
+<b>配布バンドル (petstore-1_3_1_02.zip) を任意のディレクトリに解凍します。</b> 
+             
+<p><tt>petstore1.3.1_02</tt> というディレクトリが作成されます。このドキュメントの以降の部分では、このディレクトリを <tt>&lt;petstore.home&gt;</tt> と表記します。</p>
+         
+</ol>
+          
+<p> </p>
+<blockquote>
+<b><tt></tt><font
+ face="Courier New, Courier, monospace">&lt;j2ee.home&gt;/lib/security/server.policy</font> ファイルを編集します。</b>
+</blockquote>
+<blockquote>
+このファイルの末尾に、次の文を挿入してください。</br></br>
+ 
+<font face="Courier New, Courier, monospace">grant { <br> &nbsp;&nbsp; permission java.io.FilePermission &quot;${com.sun.enterprise.home}${/}lib${/}endorsed${/}xalan.jar&quot;, &quot;read&quot;; <br> }; </font><br>
+</blockquote>         
+<blockquote>         
+<p><b>Cloudscape を起動します。</b></p>
+           
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+<b>J2EE サーバを起動します。</b>         
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+   </blockquote>
+     
+<ol>
+           
+<p><b>設定スクリプトを実行して、メッセージサービスとデータベースリソースをインストールして構成します。</b> </p>
+               
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd &lt;petstore.home&gt;<br>setup.bat</tt></pre>
+        
+</ol>
+     
+<blockquote>         
+<p><b>Cloudscape を停止します。</b></p>
+           
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -stop</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -stop</tt></pre>
+<b>J2EE サーバを停止します。</b>         
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -stop</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -stop</tt></pre>
+   </blockquote>
+
+<blockquote>         
+<p><b>Cloudscape を起動します。</b></p>
+           
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+<b>J2EE サーバを起動します。</b>         
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+   </blockquote>
+
+     
+<ol>
+<b>設定スクリプトを実行して、アプリケーションを配備します。</b>          
+  <p></p>
+               
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh deploy</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd &lt;petstore.home&gt;<br>setup.bat deploy</tt></pre>
+              
+  <p></p>
+       
+</ol>
+
+<h3>  Java 2 SDK, Enterprise Edition (J2EE<sup><font
+ size="-2"> TM</font></sup> SDK), v1.3.1 でのデモのインストール方法</b> </h3>    <ol>
+<b>配布バンドル (petstore-1_3_1_02.zip) を任意のディレクトリに解凍します。</b> 
+             
+<p><tt>petstore1.3.1_02</tt> というディレクトリが作成されます。このドキュメントの以降の部分では、このディレクトリを <tt>&lt;petstore.home&gt;</tt> と表記します。</p>
+         
+</ol>
+          
+<ol>
+           
+<p><b>設定スクリプトを実行して、メッセージサービスとデータベースリソースをインストールして構成します。</b> </p>
+               
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd &lt;petstore.home&gt;<br>setup.bat</tt></pre>
+        
+</ol>
+<blockquote>         
+<p><b>Cloudscape を起動します。</b></p>
+           
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>cloudscape -start</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>cloudscape.bat -start</tt></pre>
+<b>J2EE サーバを起動します。</b>         
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd $J2EE_HOME/bin<br>j2ee -verbose</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd %J2EE_HOME%\bin<br>j2ee.bat -verbose</tt></pre>
+   </blockquote>    
+     
+<ol>
+<b>設定スクリプトを実行して、アプリケーションを配備します。</b>          
+  <p></p>
+               
+<p>UNIX を使用している場合は、シェルプロンプトを開き、次のコマンドを入力します。
+  </p>
+           
+<pre><tt>cd &lt;petstore.home&gt;<br>sh setup.sh deploy</tt></pre>
+Windows を使用している場合は、コマンドプロンプトを開き、次のコマンドを入力します。
+             
+<pre><tt>cd &lt;petstore.home&gt;<br>setup.bat deploy</tt></pre>
+              
+  <p></p>
+       
+</ol>
+
+<br> デモをインストールした後は、Pet Store の<a href="using.html">使用</a>を開始できます。
+<p> </p>
+       
+<hr noshade="noshade" =""><a href="copyright.html">Copyright &copy; 2002 Sun Microsystems, Inc. All Rights Reserved.</a>  <br> <br> <br> <br>
+</body>
+</html>

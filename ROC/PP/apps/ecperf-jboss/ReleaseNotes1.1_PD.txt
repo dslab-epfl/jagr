@@ -1,0 +1,73 @@
+                     ECperf Kit Release Notes
+              Version 1.1 Public Draft, Dated 2/22/02
+
+Installation Instructions
+
+1. We recommend that you create a new user account (say 'ecperf')
+   whose home directory is where you will install the kit.
+2. Untar the kit and read the file README.html in the top-level
+   directory and follow its directions closely.
+
+Enhancements made in this release :
+
+1. The BMP code now provides transaction consistency (see Clause
+   4.11.6 of the ECperf 1.1 specification) by using optimistic 
+   concurrency control techniques.
+
+2. The design of the supplier emulator has been changed to create
+   a thread to handle the response to the supplier. The emulator
+   has also been made more robust by re-trying responses in case
+   of failure.
+
+
+The bugs fixed in this release are listed below. Each bug lists the
+following information : 
+    BugId       - identifier for the bug 
+    Synopsis    - brief summary of the bug 
+    Description - a more detailed account of the bug
+    Fix         - the actual fix made
+
+1. Bugid         4641321
+Synopsis      MfgReport compares avg. vs 90% response times incorrectly
+Description    The MfgReport uses this snippet of code to verify that the 
+               avgTime <= 90%Time+0.1 :
+
+              if (resp90 <= (avg + 0.1))
+               failavg = true;
+
+              I think it should be:
+           
+              if (resp90 <= (avg - 0.1))
+               failavg = true;
+
+Evaluation    The code has been fixed as described.
+
+
+2. Bugid        4641315
+Synopsis     single InitialContext being used for all largeorderline threads
+Description  ECperf1.0 Update 2 is supposed to have a fix for bugid 452411.
+             However, the LargeOrderLine starts multiple LrgLines. Each LrgLine
+             accesses the same InitialContext, created by the LargeOrderLine.
+             So I think the fix is not complete till LrgLine creates its own
+             InitialContext.
+Evaluation   The LrgLine class now creates its own InitialContext.
+
+
+3. Bugid     4641337
+Synopsis     float datatypes need to be changed to numeric
+Description  ECeprf 1.1 requires transaction consistency. Most optimistic 
+             concurrency techniques rely on comparing field values. As precise 
+             comparisons are not possible wih float datatypes, the float types 
+             in the tables O_item and S_supp_component need to be changed to 
+             numeric.
+Evaluation   Changed i_discount in schema_O.sql and sc_discount field in
+             schema_S.sql to numeric(6,4). No Java code changes were made
+             as these fields were being accessed using the 'float' datatype.
+
+
+4. Bugid     4642747
+Synopsis     In SupplierCompEnt.java, ejbCreate method returns null
+Description  In SupplierCompEnt.java, ejbCreate method return null instead 
+             of returning the primary key which is SuppCompEntPK.
+Evaluation   Added the following line at the end of the method :
+             return new SuppCompEntPK(suppCompID, suppCompSuppID);

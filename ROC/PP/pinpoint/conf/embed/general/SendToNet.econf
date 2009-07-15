@@ -1,0 +1,27 @@
+<analysisengine>
+  <!-- 
+    This embedded configuration is for sending records to network
+
+    The arguments for this configuration are:
+
+	hostname=HOSTNAME
+          hostname to send records to
+
+	port=TCPPORT
+          tcp port to send records to
+
+
+    Also, be sure to pass in a record collection named 'input'
+
+    -->
+
+
+  <plugin name="recvfromnet">
+    <classname>roc.pinpoint.analysis.plugins2.records.SendRecords</classname>
+    <arg key="inputCollection">input</arg>
+
+    <arg key="hostname">$hostname</arg>
+    <arg key="port">$port</arg>
+  </plugin>
+
+</analysisengine>

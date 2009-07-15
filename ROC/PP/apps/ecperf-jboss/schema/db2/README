@@ -1,0 +1,73 @@
+DB2 Database/Table Build Instructions
+
+Two forms of the build scripts are provided.  One set of .bat files for deployment on
+Windows NT and a set of shell scripts for Unix.
+
+Please note that these scripts should be run using the same userid which will
+be used when connecting to the datasource.  This will ensure the fully qualified table
+names created by the scripts will match the ones accessed at runtime.
+
+For Windows NT based deployments:
+
+From the "$ECPERF\schema\db2" directory, run "blddb.sh $dbname $dbpath"
+  Note that:
+      Both '$dbname' and '$dbpath' are mandatory parameters.
+      '$dbname' must be a valid DB2 database name, and any existing database by that name
+      will be dropped first, and then recreated.
+
+      '$dbpath' is the directory where all ECPerf Tables will be stored.  It must be fully qualified meaning that
+      the drive letter must be included.  For example, typing the following command will create the ECPerf tables
+      in the \ecperfdb directory on the C: drive with a database name of ecperf.
+      
+      mkdir C:\ECPerfDB
+      blddb ecperf C:\ECPerfDB
+      
+
+builddb.bat will perform the following functions:
+     
+  1. Execute createdb.bat
+  2. Execute schema_c.bat, schema_m.bat, schema_o.bat, schema_s.bat and schema_u.bat
+
+createdb.bat - drops and creates the database which houses the tables for ECPerf.
+schema_x.bat - drops and creates the tables for the appropriate domain (c, m, o, s, u).
+
+Loading the tables:
+
+
+  1. Update the *db.properties files with the appropriate information.  Assuming the database userid, name and password 
+     is ecperf the following would be the entry for the *db.properties.  These files are located in the 
+     ECPERF_HOME/config directory.
+     
+     dbURL =	jdbc:db2:ecperf
+     dbUser = ecperf
+     dbPassword = ecperf
+     dbDriver = COM.ibm.db2.jdbc.app.DB2Driver
+     jdbcVersion = 1
+
+
+  2. To load the tables execute $ECPERF/schema/db2/loaddb.bat
+
+
+
+Unix Deployments:
+
+From the "$ECPERF/schema/db2" directory, run "blddb.sh $dbname $dbpath"
+  Note that:
+    Both '$dbname' and '$dbpath' are mandatory parameters.
+      '$dbname' must be a valid DB2 database name, and any existing database by that name
+      will be dropped first, and then recreated.
+
+      '$dbpath' must be a valid, writeable path, NOT ending in a slash ('/').  This is the 
+      directory where the table spaces will be created.
+
+builddb.sh will perform the following functions:
+
+  1. Execute createdb.sh
+  2. Execute schema_C.sh, schema_M.sh, schema_O.sh, schema_S.sh and schema_U.sh
+
+createdb.sh - drops and creates the database which houses the tables for ECPerf.
+schema_x.sh - drops and creates the tables for the appropriate domain (C, M, O, S, U).
+
+To load the tables execute $ECPERF/schema/db2/load.sh
+
+

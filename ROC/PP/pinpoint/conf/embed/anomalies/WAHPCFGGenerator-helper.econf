@@ -1,0 +1,26 @@
+<analysisengine>
+
+<!--
+	pass in record collections:
+
+	input:  the paths to be used as the base for the hpcfg
+	output: the output hpcfg
+
+-->
+
+<collection name="hpcfg"/>
+
+<subanalysis name="pcfggen" file="PCFGGenerator.econf">
+  <arg key="online">$online</arg>
+  <bindrecord key="input">input</bindrecord>
+  <bindrecord key="output">hpcfg</bindrecord>
+</subanalysis>
+
+<plugin name="CollectRecords">
+  <classname>roc.pinpoint.analysis.plugins2.records.CollectionToMap</classname>
+  <arg key="online">$online</arg>
+  <arg key="input">hpcfg</arg>
+  <arg key="output">output</arg>
+</plugin>
+
+</analysisengine>

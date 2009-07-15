@@ -1,0 +1,347 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                            
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+                            
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=iso-8859-1">
+                            
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+                            
+  <meta name="CREATED" content="20011213;15203600">
+                            
+  <meta name="CHANGEDBY" content="Thierry Violleau">
+                            
+  <meta name="CHANGED" content="20011213;15331400">
+  <title>Java[tm] Pet Store Demo 1.3.2 &gt; Configuring the Demo</title>
+</head>
+ <body>
+       &nbsp;       
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="100%page-break-before: always; ">
+       <tbody>
+          <tr>
+       <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">
+ Java&trade; &nbsp; Pet Store Demo 1.3.2</a></font></b> <font color="#ffffff">
+ &gt; <b>Configuring &nbsp;&nbsp; the Demo</b></font></td>
+        <td bgcolor="#000033">                                          
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+ Java BluePrints</a></font></b></div>
+       </td>
+       </tr>
+                         
+  </tbody>      
+</table>
+              
+<h1> Configuring the Demo</h1>
+       The Java Pet Store Demo allows various behaviors to be configured. 
+This   section describes the following customizations:       
+<ul>
+                   <a href="#e-mail">Setting Up E-mail Notifications Using
+ the J2EE SDK Deployment Tool</a> <br>
+     <a href="#e-mail-manual">Setting Up E-mail Notification by Editing the
+ Deployment Descriptors</a><br>
+     <a href="#l10n">Adding a New Localization</a> <br>
+     <a href="#db">Configuring the Database</a>      
+</ul>
+              
+<h2> <a name="e-mail"></a>Setting Up E-mail Notifications Using the J2EE
+SDK Deployment Tool</h2>
+       You can configure the Java Pet Store Demo to send customers e-mail 
+notifications    regarding the status of their orders. By default, these notifications
+are    disabled, but you can enable them at deployment time.       
+<p>To set up e-mail notifications <b>using the J2EE SDK deployment tool</b>
+ ,    follow these steps: </p>
+           
+<ol>
+        <b>Open the OPC EAR (OrderProcessingCenter EAR).</b>            
+      
+  <ol type="a">
+      From the menu, select File -&gt; Open.                            
+  
+    <p>The Open Object dialog appears. </p>
+                                   
+    <p>Find <tt>&lt;petstore.home&gt;/opc.ear</tt> (or <tt>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear</tt>
+     if you built the EAR) and click Open Object. </p>
+                                   
+    <p>The OPC EAR appears in the Applications tree on the left panel.</p>
+                       
+  </ol>
+       <b>Enable order approval notifications.</b>                   
+  <ol type="a">
+      In the Applications tree on the left panel, select OrderProcessingCenterEAR 
+   -&gt; OrderProcessingCenterJAR -&gt; MailOrderApprovalMDB.            
+                  
+    <p>In the inspector on the right panel, select the Env. Entries tab. 
+   </p>
+                                   
+    <p>Select the <tt>param/SendApprovalMail</tt>  entry, and set its value 
+  to <tt>true</tt>.</p>
+                       
+  </ol>
+       <b>Enable order confirmation notifications.</b>                  
+  <ol type="a">
+      In the Applications tree on the left panel, select OrderProcessingCenterEAR 
+   -&gt; OrderProcessingCenterJAR -&gt; MailInvoiceMDB.                  
+            
+    <p>In the inspector on the right panel, select the Env. Entries tab. 
+   </p>
+                                   
+    <p>Select the <tt>param/SendConfirmationMail</tt> entry, and set its
+value to <tt>true</tt>.</p>
+                       
+  </ol>
+       <b>Enable order completion notifications.</b>                   
+  <ol type="a">
+      In the Applications tree on the left panel, select OrderProcessingCenterEAR 
+   -&gt; OrderProcessingCenterJAR -&gt; MailCompletedOrderMDB.           
+                   
+    <p>In the inspector on the right panel, select the Env. Entries tab. 
+   </p>
+                                   
+    <p>Select the <tt>param/SendCompletedOrderMail</tt> entry, and set its
+  value to <tt>true</tt>.</p>
+                       
+  </ol>
+       <b>Configure the mail service.</b>                   
+  <ol type="a">
+      In the Applications tree on the left panel, select OrderProcessingCenterEAR 
+   -&gt; MailerJAR -&gt; MailerMDB.                               
+    <p>In the inspector on the right panel, select the Resource Refs tab. 
+       </p>
+                                   
+    <p>Select the <tt>mail/MailSession</tt> entry and edit the deployment
+   settings at the bottom of the panel: </p>
+                                   
+    <ol type="i">
+      Change the From field to the e-mail address for the <tt>From:</tt>
+header    of the confirmation messages.                                 
+         
+      <p>Change the Host field to the name of the mail server through which
+   the confirmation e-mails should be sent. </p>
+                                               
+      <p>Change the User Name to the name you use to access the mail server.</p>
+                                   
+    </ol>
+                         
+  </ol>
+       <b>Save your changes.</b>                   
+  <p>From the main menu, select File -&gt; Save.</p>
+           
+</ol>
+       
+<h2> <a name="e-mail-manual"></a>Setting Up E-mail Notifications by Editing
+  the Deployment Descriptors</h2>
+       To set up e-mail notifications <b>by editing the deployment descriptors</b>
+ ,    follow these steps:       
+<ol>
+        <b>Open the OPC application's standard EJB deployment descriptor.</b>
+                      
+  <p>Using a text editor, open <tt>&lt;petstore.home&gt;/src/apps/opc/src/ejb-jar.xml</tt>
+       </p>
+                       
+  <p><b>Enable order approval notifications.</b> </p>
+                       
+  <p>Look for these lines: </p>
+                    <pre><tt>&lt;env-entry&gt;<br>&nbsp; &lt;env-entry-name&gt;param/SendApprovalMail&lt;/env-entry-name&gt;<br>&nbsp; &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>&nbsp; <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+       Ensure that the <tt>env-entry-value</tt> entry is set to <tt>true</tt>
+ .                     
+  <p><b>Enable order confirmation notifications.</b> </p>
+                       
+  <p>Look for these lines: </p>
+                    <pre><tt>&lt;env-entry&gt;<br>&nbsp; &lt;env-entry-name&gt;param/SendConfirmationMail&lt;/env-entry-name&gt;<br>&nbsp; &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>&nbsp; <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+       Ensure that the <tt>env-entry-value</tt> entry is set to <tt>true</tt>
+ .                     
+  <p><b>Enable order completion notifications.</b> </p>
+                       
+  <p>Look for these lines: </p>
+                    <pre><tt>&lt;env-entry&gt;<br>&nbsp; &lt;env-entry-name&gt;param/SendCompletedOrderMail&lt;/env-entry-name&gt;<br>&nbsp; &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>&nbsp; <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+       Ensure that the <tt>env-entry-value</tt> entry is set to <tt>true</tt>
+ .                  
+  <p><b>Save your changes to the standard EJB deployment descriptor.</b> 
+ </p>
+                       
+  <p><b>Open the OPC application's J2EE RI specific deployment descriptor.</b>
+      </p>
+                       
+  <p>Using a text editor, open <tt>&lt;petstore.home&gt;/src/apps/opc/src/sun-j2ee-ri.xml</tt>
+ .      </p>
+                       
+  <p><b>Configure the mail service.</b> </p>
+                       
+  <p>Look for these lines: </p>
+                    <pre><tt>&lt;mail-configuration&gt;<br>&nbsp; <b>&lt;name&gt;yourname&lt;/name&gt;<br></b>&nbsp; <b>&lt;mail-from&gt;customerservice@javapetstoredemo.com&lt;/mail-from&gt;<br></b>&nbsp; <b>&lt;mail-host&gt;yourmailserver&lt;/mail-host&gt;<br></b>&lt;mail-configuration&gt;</tt></pre>
+                          
+  <ol type="a">
+      Change the value of the <tt>mail-from</tt> entry to the e-mail address
+  for  the <tt>From:</tt> header of the confirmation messages.          
+                    
+    <p>Change the value of the <tt>mail-host</tt> entry to the name of the 
+   mail server through which the confirmation e-mails should be sent. </p>
+                                   
+    <p>Change the value of the <tt>name</tt> entry to the name you use to
+   access the mail server.</p>
+                       
+  </ol>
+       <b>Save your changes to the J2EE RI specific deployment descriptor.</b>
+                      
+  <p><b>Rebuild the OPC EAR.</b> </p>
+                       
+  <p>If you use the provided build files to rebuild the application, the OPC
+EAR is placed in <tt>&lt;petstore.home&gt;/apps/opc/build/opc.ear</tt> .
+(For  more information on building the application, see <a href="building.html">
+ Building the Demo</a>.)</p>
+           
+</ol>
+       After you make your changes, the Java Pet Store Demo sends e-mail
+ notifications  the next time you deploy the OPC EAR.      
+<p>To test the  e-mail notifications, visit the Storefront, create a new
+user with  your e-mail address, and complete an order. If the order is approved, 
+   you will receive an e-mail. You will receive one or more e-mails as  parts
+  of the order are fulfilled. When the order is completely  fulfilled, you
+ will receive one final e-mail. (For more information  on how orders work
+in the pet store application, see <a href="using.html">Using the Demo</a>
+.) </p>
+           
+<h2> <a name="l10n"></a>Adding a New Localization</h2>
+       The Storefront of the Java Pet Store Demo is internationalized, and
+ comes   with the English (en) and Japanese (ja) localizations.       
+<p>To add another localization, follow these steps: </p>
+           
+<ol>
+        <b>Add new JSP pages for the locale.</b>                   
+  <p>Place these in the subdirectory <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/&lt;locale.code&gt;/</tt>
+ ,    where <tt>&lt;locale.code&gt;</tt> is the string representation of
+the locale.     </p>
+                       
+  <p>For example, the JSP pages for the Japanese localization are located 
+   in the directory <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/<b>
+ ja</b>/</tt>.      </p>
+                       
+  <p><b>Create a localized screen definitions file.</b> </p>
+                       
+  <p>Place the screen definitions (which use your localized JSP pages, of 
+   course) in a file called <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_&lt;locale.code&gt;.xml</tt>
+ ,    where <tt>&lt;locale.code&gt;</tt> is the string representation of
+the locale.     </p>
+                       
+  <p>For example, the Japanese screen definitions are stored in <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_<b>
+ ja_JP</b>.xml</tt>.      </p>
+                       
+  <p><b>Add new catalog data for the locale.</b> </p>
+                       
+  <p>The XML file <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</tt>
+     contains the data used to populate the pet store's database. Localizing 
+ the catalog for a particular language involves adding new data to this XML 
+ file.    </p>
+                       
+  <p>To support localization, the <tt>CategoryDetails</tt>, <tt>ProductDetails</tt>
+ ,    and <tt>ItemDetails</tt> elements take a xml:lang locale attribute. 
+Before   adding your own localized data, you may find it helpful to refer 
+to the Japanese  data in the XML file for examples.</p>
+           
+</ol>
+              
+<h2> <a name="db"></a>Configuring the Database</h2>
+              
+<p>The Storefront and Supplier applications in the Java Pet Store Demo can
+   be configured to use a different database from the default one (Cloudscape).
+   Using a different database may require different SQL statements (e.g.
+<code> create   table</code>, <code>drop table</code>) from the default ones.
+These statements   can be specified by editing some of the sample application's 
+XML configuration   files.</p>
+              
+<p>To configure the sample application to use a different database:</p>
+              
+<ol>
+           
+  <li>                              
+    <p><b>Add a new entry to the <code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/PopulateSQL.xml</code>
+     configuration file.</b></p>
+                                      
+    <p>Each database for which the sample application is configured has a 
+       <code>DatabaseStatements</code> entry, which contains fragments for 
+ performing various SQL operations on the application's database tables. For
+ example, here is a fragment from the default (Cloudscape) entry:</p>
+                                                        <pre><code>&lt;DatabaseStatements <b>database="cloudscape"</b>&gt;<br>  &lt;TableStatements table="category"&gt;<br>    &lt;CheckStatement&gt;<br>      select * from category<br>    &lt;/CheckStatement&gt;<br>    &lt;CreateStatement&gt;<br>      create table category (catid char(10) not null,<br>        constraint pk_category primary key (catid))<br>    &lt;/CreateStatement&gt;<br>    &lt;InsertStatement&gt;<br>      insert into category values (?)<br>    &lt;/InsertStatement&gt;<br>    &lt;DropStatement&gt;<br>      drop table category<br>    &lt;/DropStatement&gt;<br>  &lt;/TableStatements&gt;<br>  ...</code></pre>
+                                                             
+    <p>To create a new <code>DatabaseStatements</code> entry for a different
+   database, it is easiest to copy the default entry and edit the fragments
+  in the new copy. Note that each <code>DatabaseStatements</code> entry has
+  a     <code>database</code> attribute uniquely identifying the database
+to  which it belongs. So, before editing the new copy, make sure to change
+the  value of this attribute to a unique identifier. Remember this identifier 
+ as you  complete the rest of these steps.</p>
+                                      
+    <p>When editing the new <code>DatabaseStatements</code> entry, edit only
+   the fragments. The sample application expects certain elements and attributes
+   in this file. Also, make sure that the parentheses are balanced.</p>
+        </li>
+           
+  <li>                              
+    <p><b>Add a new entry to the <code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/CatalogDAOSQL.xml</code>
+     configuration file.</b></p>
+                                      
+    <p>Each database for which the sample application is configured has a 
+       <code>DAOStatements</code> entry, which contains fragments for performing
+       <code>select</code> statements on the application's database tables.
+  For example, here is a fragment from the default (Cloudscape) entry:</p>
+                                                        <pre><code>&lt;DAOStatements <b>database="cloudscape"</b>&gt;<br>    &lt;SQLStatement method="GET_CATEGORY"&gt;<br>        &lt;SQLFragment parameterNb="2"&gt;<br>            select name, descn<br>                from (category a join category_details b on a.catid=b.catid)<br>                where locale = ? and a.catid = ?<br>        &lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    &lt;SQLStatement method="GET_CATEGORIES"&gt;<br>        &lt;SQLFragment parameterNb="1"&gt;<br>            select a.catid, name, descn<br>                from (category a join category_details b on a.catid=b.catid) <br>                where locale = ?  order by name<br>        &lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    ...</code></pre>
+                                                             
+    <p>To create a new <code>DAOStatements</code> entry for a different database,
+   it is easier to copy the default entry and edit the fragments in the new
+  copy. Note that each <code>DAOStatements</code> entry has a <code>database</code>
+    attribute uniquely identifying the database to which it belongs. So,
+before    editing the new copy, make sure to change the value of this attribute
+to   the unique identifier you chose in step 1.</p>
+                                      
+    <p>When editing the new <code>DAOStatements</code> entry, edit only the
+   fragments. The sample application expects certain elements and attributes
+   in this file. Also, make sure that the parentheses are balanced.</p>
+        </li>
+           
+  <li>                              
+    <p><b>Edit the Storefront's Web deployment descriptor, <code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/web.xml</code>
+ .</b></p>
+                                      
+    <p>Look for the following entry:</p>
+                                                        <pre><code>&lt;init-param&gt;<br>  &lt;param-name&gt;Database&lt;/param-name&gt;<br>  <b>&lt;param-value&gt;cloudscape&lt;/param-value&gt;</b><br>&lt;/init-param&gt;</code></pre>
+                                                             
+    <p>Change the value of the <code>param-value</code> sub-entry to the unique
+identifier you chose in step 1.</p>
+                                      
+    <p>Also look for the following entry:</p>
+                                                        <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                              </li>
+                          
+  <p>Change the value of the <code>env-entry-value</code> sub-entry to the
+   unique identifier you chose in step 1.</p>
+           
+  <li>                              
+    <p><b>Edit the catalog component's EJB deployment descriptor, <code>&lt;petstore.home&gt;/src/components/catalog/src/ejb-jar.xml</code>
+ .</b></p>
+                                      
+    <p>Look for the following entry:</p>
+                                                        <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                              </li>
+                          
+  <p>Change the value of the <code>env-entry-value</code> sub-entry to the
+   unique identifier you chose in step 1.</p>
+             
+</ol>
+              
+<p>You also have the option of changing the catalog and inventory information
+   used to populate the sample application's database. To modify this data,
+  edit the file <code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</code>
+ .</p>
+        <br>
+           
+<hr size="3" noshade="">       
+<p><a href="copyright.html">Copyright &copy; 2003 Sun Microsystems, Inc. All
+Rights Reserved.</a> </p>
+      <br>
+      <br>
+     <br>
+    <br>
+     
+</body>
+</html>

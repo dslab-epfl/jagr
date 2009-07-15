@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1.1.1 2003/03/07 08:30:31 emrek Exp $              -->
+<!-- =================================================================== -->
+
+<project name="WSpetstore" default="core" basedir=".">
+
+  <target name="init">
+
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../../build.properties"/>
+
+    <property name="wscompile" value="${jwsdp.home}/bin/wscompile${jwsdp-script-suffix}"/>
+    <property name="wsdeploy" value="${jwsdp.home}/bin/wsdeploy${jwsdp-script-suffix}"/>
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <!-- JSTL -->
+    <property name="jstl.lib" value="../../../../lib/jstl"/>
+
+    <property name="WSpetstore.application.name" value="PetstoreEAR"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="WSpetstore.home" value=".."/>
+
+    <property name="petstore.home" value="../../../../apps/petstore"/>
+    <property name="petstore.src" value="${petstore.home}/src"/>
+    <property name="petstore.docroot" value="${petstore.src}/docroot"/>
+
+    <!-- The destination directory for the builds -->
+    <property name="WSpetstore.build" value="${WSpetstore.home}/build"/>
+    <property name="WSpetstore.buildjardir" value="${WSpetstore.home}/build/ejbjar"/>
+    <property name="WSpetstore.build.war" value="${WSpetstore.home}/build/war"/>
+
+    <property name="WSpetstore.src" value="${WSpetstore.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="WSpetstore.classbindir" value="${WSpetstore.build}/classes"/>
+
+    <!-- The root directory of all the components. -->
+    <property name="WSpetstore.components.basedir" value="../../../../components"/>
+
+    <property name="WSpetstore.docroot" value="${WSpetstore.src}/docroot"/>
+    <property name="WSpetstore.war.lib" value="${WSpetstore.build.war}/WEB-INF/lib"/>
+    <property name="WSpetstore.war.classes" value="${WSpetstore.build.war}/WEB-INF/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="WSpetstore.javadocs.dir" value="${WSpetstore.build}/docs/api"/>
+
+    <!-- WAF  -->
+    <property name="WSpetstore.waf.home" value="../../../../waf/"/>
+    <property name="WSpetstore.waf.classbindir" value="${WSpetstore.waf.home}/build/classes"/>
+    <property name="WSpetstore.waf.docroot" value="${WSpetstore.waf.home}/src/docroot"/>
+    <property name="WSpetstore.waf.lib" value="${WSpetstore.waf.home}/src/lib"/>
+    <property name="WSpetstore.waf.web.jar" value="${WSpetstore.waf.home}/build/waf-web.jar"/>
+    <property name="WSpetstore.waf.ejbjar" value="${WSpetstore.waf.home}/build/waf-ejb.jar"/>
+    <property name="WSpetstore.waf.ejbjar.client" value="${WSpetstore.waf.home}/build/waf-ejb-client.jar"/>
+
+    <!-- Tracer Component -->
+    <property name="WSpetstore.tracer.home" value="${WSpetstore.components.basedir}/util/tracer"/>
+    <property name="WSpetstore.tracer.client" value="${WSpetstore.tracer.home}/build/tracer.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="WSpetstore.servicelocator.home" value="${WSpetstore.components.basedir}/servicelocator"/>
+    <property name="WSpetstore.servicelocator.client" value="${WSpetstore.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="WSpetstore.xmldocuments.home" value="${WSpetstore.components.basedir}/xmldocuments"/>
+    <property name="WSpetstore.xmldocuments.client" value="${WSpetstore.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- SignOn Component -->
+    <property name="WSpetstore.signon.home" value="${WSpetstore.components.basedir}/signon"/>
+    <property name="WSpetstore.signon.classbindir" value="${WSpetstore.signon.home}/build/classes"/>
+    <property name="WSpetstore.signon.ejbjar" value="${WSpetstore.signon.home}/build/signon-ejb.jar"/>
+    <property name="WSpetstore.signon.ejbjar.client" value="${WSpetstore.signon.home}/build/signon-ejb-client.jar"/>
+
+    <!-- Encoding Filter Component -->
+    <property name="WSpetstore.encodingfilter.home" value="${WSpetstore.components.basedir}/encodingfilter"/>
+    <property name="WSpetstore.encodingfilter.classbindir" value="${WSpetstore.encodingfilter.home}/build/classes"/>
+    
+    <!-- UniqueIdGenerator Component -->
+    <property name="WSpetstore.uidgen.home" value="${WSpetstore.components.basedir}/uidgen"/>
+    <property name="WSpetstore.uidgen.ejbjar" value="${WSpetstore.uidgen.home}/build/uidgen-ejb.jar"/>
+    <property name="WSpetstore.uidgen.ejbjar.client" value="${WSpetstore.uidgen.home}/build/uidgen-ejb-client.jar"/>
+
+
+    <!-- Async Component -->
+    <property name="WSpetstore.asyncsender.home" value="${WSpetstore.components.basedir}/asyncsender"/>
+    <property name="WSpetstore.asyncsender.ejbjar" value="${WSpetstore.asyncsender.home}/build/asyncsender-ejb.jar"/>
+    <property name="WSpetstore.asyncsender.ejbjar.client" value="${WSpetstore.asyncsender.home}/build/asyncsender-ejb-client.jar"/>
+
+    <!-- Catalog Component -->
+    <property name="WSpetstore.catalog.home" value="${WSpetstore.components.basedir}/catalog"/>
+    <property name="WSpetstore.catalog.ejbjar" value="${WSpetstore.catalog.home}/build/catalog-ejb.jar"/>
+    <property name="WSpetstore.catalog.ejbjar.client" value="${WSpetstore.catalog.home}/build/catalog-ejb-client.jar"/>
+
+    <!-- Cart Component -->
+    <property name="WSpetstore.cart.home" value="${WSpetstore.components.basedir}/cart"/>
+    <property name="WSpetstore.cart.ejbjar" value="${WSpetstore.cart.home}/build/cart-ejb.jar"/>
+    <property name="WSpetstore.cart.ejbjar.client" value="${WSpetstore.cart.home}/build/cart-ejb-client.jar"/>
+
+    <!-- Customer Component -->
+    <property name="WSpetstore.customer.home" value="${WSpetstore.components.basedir}/customer"/>
+    <property name="WSpetstore.customer.ejbjar" value="${WSpetstore.customer.home}/build/customer-ejb.jar"/>
+    <property name="WSpetstore.customer.ejbjar.client" value="${WSpetstore.customer.home}/build/customer-ejb-client.jar"/>
+
+    <!-- Purchase Order Components -->
+    <property name="WSpetstore.po.home" value="${WSpetstore.components.basedir}/purchaseorder"/>
+    <property name="WSpetstore.po.ejbjar.client" value="${WSpetstore.po.home}/build/po-ejb-client.jar"/>
+
+    <!-- Petstore Components -->
+    <property name="WSpetstore.war" value="petstore.war"/>
+    <property name="WSpetstore.ear" value="petstore.ear"/>
+    <property name="WSpetstore.ejbjar" value="petstore-ejb.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar"/>
+
+    <!-- Classpaths -->
+    <property name="WSpetstore.classpath" value="${WSpetstore.signon.classbindir}:${WSpetstore.uidgen.ejbjar.client}:${WSpetstore.asyncsender.ejbjar.client}:${WSpetstore.xmldocuments.client}:${WSpetstore.po.ejbjar.client}:${WSpetstore.customer.ejbjar.client}:${WSpetstore.cart.ejbjar.client}:${WSpetstore.catalog.ejbjar.client}:${WSpetstore.tracer.client}:${WSpetstore.servicelocator.client}:${WSpetstore.waf.classbindir}:${WSpetstore.classbindir}:${j2ee.classpath}:${WSpetstore.classbindir}"/>
+
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${WSpetstore.classbindir}"/>
+    <!-- Petstore Classes -->
+    <javac srcdir="${petstore.src}"
+           destdir="${WSpetstore.classbindir}"
+           classpath="${WSpetstore.classpath}"
+           includes="com/**"/>
+  </target>
+
+  <target name="war" depends="init">
+    <!-- Combine the waf and the petstore docroots -->
+    <mkdir dir="${WSpetstore.build.war}"/>
+    <copy todir="${WSpetstore.build.war}" >
+     <fileset dir="${WSpetstore.waf.docroot}">
+      <exclude name="**.jsp"/>
+      <exclude name="**/WEB-INF/*.xml"/>
+     </fileset>
+     <fileset dir="${petstore.docroot}"/>
+    </copy>
+    <!--combine the waf and petstore classes -->
+    <mkdir dir="${WSpetstore.war.lib}"/>
+    <mkdir dir="${WSpetstore.war.classes}"/>
+    <copy file="${WSpetstore.waf.web.jar}" todir="${WSpetstore.war.lib}" />
+    <copy todir="${WSpetstore.war.classes}">
+     <fileset dir= "${WSpetstore.classbindir}">
+      <exclude name="**/ejb/ShoppingClientControllerEJB.class"/>
+      <exclude name="**/ejb/ShoppingClientFacadeLocalEJB.class"/>
+      <exclude name="**/ejb/StateMachine.class"/>
+      <exclude name="**/ejb/actions/**"/>
+     </fileset>
+    </copy>
+
+    <!--Add In the JSTL Libraries and Classes -->
+    <copy file="${jstl.lib}/standard.jar" todir="${WSpetstore.war.lib}" />
+    <copy file="${jstl.lib}/jstl.jar" todir="${WSpetstore.war.lib}" />
+    <copy file="${jstl.lib}/c.tld" todir="${WSpetstore.build.war}/WEB-INF" />
+    <copy file="${jstl.lib}/fmt.tld" todir="${WSpetstore.build.war}/WEB-INF" />
+    <!--Add the encoding fitler to petstore classes -->
+    <copy todir="${WSpetstore.war.classes}">
+     <fileset dir= "${WSpetstore.encodingfilter.classbindir}"/>
+    </copy>
+    <!--add the signon to the petstore classes -->
+    <copy todir="${WSpetstore.war.classes}">
+     <fileset dir= "${WSpetstore.signon.classbindir}">
+      <!--exclude CreateUserServlet because we use an Action -->
+      <exclude name="**/CreateUserServlet.class"/>
+      <exclude name="**/ejb/**"/>
+     </fileset>
+    </copy>
+    <!-- combination complete -->
+    <!-- copy in the ejb client jars -->
+    <copy file="${WSpetstore.tracer.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.servicelocator.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.customer.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.waf.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.cart.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.signon.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.catalog.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <copy file="${WSpetstore.po.ejbjar.client}" todir="${WSpetstore.war.lib}" />
+    <delete file="${WSpetstore.build}/${WSpetstore.war}" quiet="true"/>
+    <jar jarfile="${WSpetstore.build}/${WSpetstore.war}" basedir="${WSpetstore.build.war}" excludes="cvs" />
+    <delete dir="${WSpetstore.build}/${WSpetstore.build.war}"/>
+ </target>
+
+ <target name="ejbjar" depends="init">
+    <delete dir="${WSpetstore.buildjardir}" quiet="true"/>
+    <mkdir dir="${WSpetstore.buildjardir}"/>
+    <!-- copy in the petstore ejb action classes -->
+    <copy todir="${WSpetstore.buildjardir}" >
+     <fileset dir= "${WSpetstore.classbindir}">
+      <include name="**/ejb/**"/>
+      <include name="**/exceptions/**"/>
+      <include name="**/events/**"/>
+      <exclude name="**/web/**"/>
+      <exclude name="**/view/**"/>
+      <exclude name="**/test/**"/>
+      <exclude name="**/util/tracer/**"/>
+     </fileset>
+    </copy>
+    <unjar src="${WSpetstore.waf.ejbjar}" dest="${WSpetstore.buildjardir}" />
+    <delete dir="${WSpetstore.buildjardir}/META-INF"/>
+    <delete dir="${WSpetstore.buildjardir}/com/sun/j2ee/blueprints/util/tracer"/>
+    <mkdir dir="${WSpetstore.buildjardir}/META-INF"/>
+    <copy file="${petstore.src}/ejb-jar.xml" tofile="${WSpetstore.buildjardir}/META-INF/ejb-jar.xml" />
+    <jar jarfile="${WSpetstore.build}/${WSpetstore.ejbjar}" basedir="${WSpetstore.buildjardir}" manifest="${petstore.src}/ejb-jar-manifest.mf"/>
+    <delete dir="${WSpetstore.buildjardir}"/>
+ </target>
+
+ <target name="ear" depends="init">
+    <mkdir dir="${WSpetstore.buildjardir}"/>
+    <mkdir dir="${WSpetstore.buildjardir}/META-INF"/>
+    <copy file="${petstore.src}/application.xml" todir="${WSpetstore.buildjardir}/META-INF/" />
+    <copy file="${WSpetstore.src}/sun-j2ee-ri.xml" todir="${WSpetstore.buildjardir}/META-INF/" />
+    <!-- Copy in the EJB jars --> 
+    <copy file="${WSpetstore.customer.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.build}/${WSpetstore.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.signon.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.asyncsender.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.uidgen.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.build}/${WSpetstore.war}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.catalog.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.cart.ejbjar}" todir="${WSpetstore.buildjardir}" />
+    <!-- Copy in the client jars -->
+    <copy file="${WSpetstore.customer.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.servicelocator.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.signon.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.uidgen.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.catalog.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.asyncsender.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.po.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.cart.ejbjar.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.tracer.client}" todir="${WSpetstore.buildjardir}" />
+    <copy file="${WSpetstore.xmldocuments.client}" todir="${WSpetstore.buildjardir}" />
+    <!-- Delete the old Jar and rebuild -->
+    <delete file="${WSpetstore.build}/${WSpetstore.ear}" quiet="true"/>
+    <jar jarfile="${WSpetstore.build}/${WSpetstore.ear}" basedir="${WSpetstore.buildjardir}" />
+    <delete dir="${WSpetstore.buildjardir}"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${WSpetstore.build}/${WSpetstore.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${WSpetstore.build}/${WSpetstore.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${WSpetstore.build}/${WSpetstore.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${WSpetstore.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${WSpetstore.build}"/>
+    <delete dir="${WSpetstore.javadocs.dir}"/>
+  </target>
+
+   <target name="clean_all" depends="init,clean">
+      <ant dir="${WSpetstore.waf.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.servicelocator.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.tracer.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.xmldocuments.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.asyncsender.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.customer.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.catalog.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.cart.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.signon.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.po.home}/src" target="clean"/>
+      <ant dir="${WSpetstore.encodingfilter.home}/src" target="clean"/>
+      </target>
+
+  <target name="components" depends="init">
+      <ant dir="${WSpetstore.servicelocator.home}/src" target="core"/>
+      <ant dir="${WSpetstore.tracer.home}/src" target="core"/>
+      <ant dir="${WSpetstore.xmldocuments.home}/src" target="core"/>
+      <ant dir="${WSpetstore.waf.home}/src" target="core"/>
+      <ant dir="${WSpetstore.asyncsender.home}/src" target="core"/>
+      <ant dir="${WSpetstore.customer.home}/src" target="core"/>
+      <ant dir="${WSpetstore.catalog.home}/src" target="core"/>
+      <ant dir="${WSpetstore.cart.home}/src" target="core"/>
+      <ant dir="${WSpetstore.signon.home}/src" target="core"/>
+      <ant dir="${WSpetstore.uidgen.home}/src" target="core"/>
+      <ant dir="${WSpetstore.po.home}/src" target="core"/>
+      <ant dir="${WSpetstore.encodingfilter.home}/src" target="core"/>
+   </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${WSpetstore.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${WSpetstore.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Application API"
+             doctitle="Java Pet Store Application"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${WSpetstore.waf.home}/build/classes"/>
+        <pathelement path="${WSpetstore.servicelocator.home}/build/classes"/>
+        <pathelement path="${WSpetstore.tracer.home}/build/classes"/>
+        <pathelement path="${WSpetstore.xmldocuments.home}/build/classes"/>
+        <pathelement path="${WSpetstore.asyncsender.home}/build/classes"/>
+        <pathelement path="${WSpetstore.customer.home}/build/classes"/>
+        <pathelement path="${WSpetstore.catalog.home}/build/classes"/>
+        <pathelement path="${WSpetstore.cart.home}/build/classes"/>
+        <pathelement path="${WSpetstore.signon.home}/build/classes"/>
+        <pathelement path="${WSpetstore.uidgen.home}/build/classes"/>
+        <pathelement path="${WSpetstore.po.home}/build/classes"/>
+        <pathelement path="${WSpetstore.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${WSpetstore.waf.home}/src"/>
+        <pathelement path="${WSpetstore.tracer.home}/src"/>
+        <pathelement path="${WSpetstore.xmldocuments.home}/src"/>
+        <pathelement path="${WSpetstore.asyncsender.home}/src"/>
+        <pathelement path="${WSpetstore.customer.home}/src"/>
+        <pathelement path="${WSpetstore.catalog.home}/src"/>
+        <pathelement path="${WSpetstore.cart.home}/src"/>
+        <pathelement path="${WSpetstore.signon.home}/src"/>
+        <pathelement path="${WSpetstore.uidgen.home}/src"/>
+        <pathelement path="${WSpetstore.po.home}/src"/>
+        <pathelement path="${WSpetstore.encodingfilter.home}/src"/>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Petstore Application      +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+  <target name="small" depends="compile, ejbjar, war, ear" />
+  <target name="core" depends="components, banner, compile, ejbjar, war, ear" />
+  <target name="all" depends="components, core, docs" />
+</project>

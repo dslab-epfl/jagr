@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<screen-definitions>
+
+  <default-template>/ja/template.jsp</default-template>
+
+  <screen name="main">
+    <parameter key="title" value="ようこそ" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/main.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="advicebanner" value="/advice_banner.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="cart">
+    <parameter key="title" value="Cart" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/cart.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+    <parameter key="advicebanner" value="/advice_banner.jsp" />
+   </screen>
+
+   <screen name="product">
+    <parameter key="title" value="商品に相当するアイテム" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/product.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="category">
+    <parameter key="title" value="カテゴリ" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/category.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="item">
+    <parameter key="title" value="アイテム" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/item.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="customer">
+    <parameter key="title" value="顧客情報" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/customer.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="update_customer">
+    <parameter key="title" value="顧客情報を更新" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/edit_customer.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="search">
+    <parameter key="title" value="検索" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/search.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="create_customer">
+    <parameter key="title" value="Create Customer" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/create_customer.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="order_complete">
+    <parameter key="title" value="Order Placed" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/order_completed.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="enter_order_information">
+    <parameter key="title" value="Enter Order Information" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/enter_order_information.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="signoff">
+    <parameter key="title" value="Sign Off" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/signoff.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="signon_welcome">
+    <parameter key="title" value="Welcome" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="mylist" value="/ja/mylist.jsp" />
+    <parameter key="body" value="/main.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="signon">
+    <parameter key="title" value="Sign On" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/signon.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="duplicate_account">
+    <parameter key="title" value="Duplicate Account" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/duplicate_account.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="signon_create">
+    <parameter key="title" value="Create Sign On" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/create_user.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="signon_error">
+    <parameter key="title" value="Sign On Error" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/signon_failed.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="cart_empty_order_error">
+    <parameter key="title" value="Cart Empty Error" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/cart_empty_order_error.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+   <screen name="general_error">
+    <parameter key="title" value="General Error" direct="true"/>
+    <parameter key="banner" value="/ja/banner.jsp" />
+    <parameter key="sidebar" value="/ja/sidebar.jsp" />
+    <parameter key="body" value="/ja/general_error.jsp" />
+    <parameter key="footer" value="/ja/footer.jsp" />
+   </screen>
+
+</screen-definitions>
+

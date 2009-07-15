@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+<!-- $Id: iiop-service.xml,v 1.1.1.1 2003/03/07 08:26:04 emrek Exp $ -->
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss RMI/IIOP Configuration                                         -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<server>
+
+  <classpath codebase="lib" archives="jboss-iiop.jar, jacorb.jar"/>
+
+  <!-- ==================================================================== -->
+  <!-- CorbaORB service                                                     -->
+  <!-- The ORB is pluggable. This configuration uses JacORB.                -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.iiop.CorbaORBService"
+         name="jboss:service=CorbaORB">
+    <attribute name="ORBClass">org.jacorb.orb.ORB</attribute>
+    <attribute name="ORBSingletonClass">org.jboss.system.ORBSingleton</attribute>
+    <attribute name="ORBSingletonDelegate">org.jacorb.orb.ORBSingleton</attribute>
+    <attribute name="ORBPropertiesFileName">jacorb.properties</attribute>
+    <attribute name="PortableInterceptorInitializerClass">org.jboss.ejb.plugins.iiop.server.CodebaseInterceptorInitializer</attribute>
+  </mbean>
+
+</server>

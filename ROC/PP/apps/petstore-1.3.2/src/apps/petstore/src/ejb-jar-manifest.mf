@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Class-Path: asyncsender-ejb-client.jar
+  uidgen-ejb-client.jar
+  signon-ejb-client.jar
+  cart-ejb-client.jar
+  customer-ejb-client.jar
+  catalog-ejb-client.jar
+  po-ejb-client.jar
+  tracer.jar
+  servicelocator.jar
+  xmldocuments.jar

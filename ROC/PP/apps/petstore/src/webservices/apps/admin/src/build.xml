@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1.1.1 2003/03/07 08:30:31 emrek Exp $           -->
+<!-- =================================================================== -->
+
+<project name="WSpetstoreadmin" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../../build.properties"/>
+
+    <property name="wscompile" value="${jwsdp.home}/bin/wscompile${jwsdp-script-suffix}"/>
+    <property name="wsdeploy" value="${jwsdp.home}/bin/wsdeploy${jwsdp-script-suffix}"/>
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <property name="WSadmin.application.name" value="AdminEAR"/>
+
+    <!-- The root directory of the Admin workspace -->
+    <property name="admin.home" value="../../../../apps/admin"/>
+    <property name="admin.src" value="${admin.home}/src"/>
+
+    <!-- The root directory of the WSAdmin workspace -->
+    <property name="WSadmin.home" value=".."/>
+
+    <property name="WSadmin.src" value="${WSadmin.home}/src"/>
+    <!-- The destination directory for the build -->
+    <property name="WSadmin.build" value="${WSadmin.home}/build"/>
+    <property name="WSadmin.buildjardir" value="${WSadmin.build}/ejbjar"/>
+    <property name="WSadmin.buildwardir" value="${WSadmin.build}/docroot"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="WSadmin.classbindir" value="${WSadmin.build}/classes"/>
+
+    <!-- OPC Component -->
+    <property name="WSadmin.opc.home" value="../../../../apps/opc"/>
+    <property name="WSadmin.opc.ejbjar" value="${WSadmin.opc.home}/build/opc-ejb.jar"/>
+    <property name="WSadmin.opc.ejbjar.client" value="${WSadmin.opc.home}/build/opc-ejb-client.jar"/>
+
+    <!-- Async Sender Component -->
+    <property name="WSadmin.async.home" value="../../../../components/asyncsender"/>
+    <property name="WSadmin.async.ejbjar" value="${WSadmin.async.home}/build/asyncsender-ejb.jar"/>
+    <property name="WSadmin.async.ejbjar.client" value="${WSadmin.async.home}/build/asyncsender-ejb-client.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="WSadmin.servicelocator.home" value="../../../../components/servicelocator"/>
+    <property name="WSadmin.servicelocator.client" value="${WSadmin.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="WSadmin.xmldocuments.home" value="../../../../components/xmldocuments"/>
+    <property name="WSadmin.xmldocuments.client" value="${WSadmin.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- Rich Client Component -->
+    <property name="client.src" value="${admin.src}/client"/>
+    <property name="client.classbindir" value="${WSadmin.build}/client"/>
+    <property name="WSclient.jar" value="${WSadmin.build}/AdminApp.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="jwsdp.jar" value="${j2ee.home}/lib/system/jwsdp-common.jar"/>
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${jwsdp.jar}:${jwsdp.home}"/>
+
+    <property name="WSadmin.jaxrpc.wsdl" value="${WSadmin.build}/AdminWebService.wsdl"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="WSadmin.classpath" value="${WSadmin.classbindir}:${WSadmin.opc.ejbjar.client}:${WSadmin.async.ejbjar.client}:${WSadmin.xmldocuments.client}:${WSadmin.servicelocator.client}:${j2ee.classpath}"/>
+
+    <property name="WSadmin.war" value="${WSadmin.build}/petstoreadmin.war"/>
+    <property name="WSadmin.ear" value="${WSadmin.build}/petstoreadmin.ear"/>    
+  </target>
+
+  <target name="compile" depends="init" >
+    <ant  target="compile-server" />
+    <ant  target="war" />
+    <ant  target="process-war" />
+    <ant  target="compile-client" />
+  </target>
+
+
+  <target name="compile-server" depends="init">
+    <mkdir dir="${WSadmin.classbindir}"/>
+    <javac srcdir="${admin.src}"
+           debug="${javac.debug}"
+           destdir="${WSadmin.classbindir}"
+           classpath="${WSadmin.classpath}"
+           includes="admin/com/**"/>
+    <!--unjar src="${WSadmin.xmldocuments.client}" dest="${WSadmin.classbindir}" /-->
+    <javac srcdir="."
+           debug="${javac.debug}"
+           destdir="${WSadmin.classbindir}"
+           classpath="${WSadmin.classpath}"
+           includes="com/**"/>
+  </target> 
+
+  <target name="process-war" depends="init"
+      description="Runs wsdeploy to generate the ties and create a deployable WAR file">
+   <echo message="Running wsdeploy...."/>
+   <delete dir="${WSadmin.buildwardir}"/>
+   <delete file="${WSadmin.war}.tmp" />
+   <mkdir dir="${WSadmin.buildwardir}"/>
+   <exec executable="${wsdeploy}">
+      <arg line="-tmpdir"/>
+      <arg line="${WSadmin.buildwardir}"/>
+      <arg line="-keep"/>
+      <arg line="-o"/>
+      <arg line="${WSadmin.war}.tmp"/>
+      <arg line="${WSadmin.war}"/>
+      <arg line="-verbose"/>
+    </exec>
+    <move file="${WSadmin.war}.tmp" tofile="${WSadmin.war}" />
+
+    <copy todir="${WSadmin.build}" flatten="true" overwrite="true">
+      <fileset dir="${WSadmin.buildwardir}" includes="*/WEB-INF/AdminWebService.wsdl" /> 
+    </copy>
+    <delete dir="${WSadmin.buildwardir}"/>
+  </target>
+
+  <target name="compile-client" depends="init">
+    <mkdir dir="${client.classbindir}"/>
+    <echo message="Running wscompile for the client: "/>
+    <exec executable="${wscompile}">
+        <arg line="-classpath ${WSadmin.classpath}" />
+        <arg line="-gen:client" />
+        <arg line="-d ${client.classbindir}" />
+        <arg line="admin-client-jaxrpc-ri-config.xml" />
+    </exec>
+    <javac srcdir="${client.src}"
+           debug="${javac.debug}"
+           destdir="${client.classbindir}"
+           classpath="${WSadmin.classpath}"
+	   includes="**"/>
+    <javac srcdir="client"
+           debug="${javac.debug}"
+           destdir="${client.classbindir}"
+           classpath="${WSadmin.classpath}"
+	   includes="**"/>
+    <mkdir dir="${client.classbindir}/resources"/>
+    <copy todir="${client.classbindir}/resources">
+          <fileset dir="${client.src}/resources" excludes="cvs"/>
+    </copy>
+    <!--<copy todir="${client.classbindir}/com/sun/j2ee/blueprints/admin/webservice/adminclient">
+       <fileset dir="${WSadmin.classbindir}/com/sun/j2ee/blueprints/admin/webservice/adminclient" />
+    </copy>-->
+    <jar jarfile="${WSclient.jar}" basedir="${client.classbindir}" excludes="cvs,META-INF" />
+    <copy file="adminwsclient.bat" todir="${WSadmin.build}" />
+    <copy file="adminwsclient.sh" todir="${WSadmin.build}" />
+  </target>
+
+  <target name="war" depends="init">
+    <delete dir="${WSadmin.buildwardir}" quiet="true"/>
+    <mkdir dir="${WSadmin.buildwardir}"/>
+    <copy todir="${WSadmin.buildwardir}">
+          <fileset dir="${admin.src}/docroot" excludes="cvs,**/web.xml"/>
+    </copy>
+    <copy todir="${WSadmin.buildwardir}">
+          <fileset dir="${WSadmin.src}/docroot" excludes="cvs"/>
+    </copy>
+    <copy todir="${WSadmin.buildwardir}/WEB-INF/classes">
+          <fileset dir="${WSadmin.classbindir}" excludes="cvs"/>
+    </copy>
+    <copy file="jaxrpc-ri.xml" todir="${WSadmin.buildwardir}/WEB-INF"/>
+    <copy file="${WSadmin.opc.ejbjar.client}" todir="${WSadmin.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSadmin.async.ejbjar.client}" todir="${WSadmin.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSadmin.xmldocuments.client}" todir="${WSadmin.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSadmin.servicelocator.client}" todir="${WSadmin.buildwardir}/WEB-INF/lib" />
+    <!-- Copy the client jar only if it exists - used to create the fake war to be -->
+    <!--copy file="${WSclient.jar}" todir="${WSadmin.buildwardir}" failonerror="false" /-->
+    <copy todir="${WSadmin.buildwardir}" >
+          <fileset dir="${WSadmin.build}" includes="*AdminApp.jar"/>
+    </copy>
+    <copy file="${client.src}/jaxp.jar" todir="${WSadmin.buildwardir}" />
+    <copy file="${client.src}/crimson.jar" todir="${WSadmin.buildwardir}" />
+    <delete file="${WSadmin.war}" quiet="true"/>
+    <jar jarfile="${WSadmin.war}" basedir="${WSadmin.buildwardir}"/>
+  </target>
+
+  <target name="ear" depends="init">
+      <mkdir dir="${WSadmin.buildjardir}"/>
+      <mkdir dir="${WSadmin.buildjardir}/META-INF"/>
+      <copy file="${admin.src}/application.xml" todir="${WSadmin.buildjardir}/META-INF" />
+      <copy file="${admin.src}/sun-j2ee-ri.xml" todir="${WSadmin.buildjardir}/META-INF" />
+      <copy file="${WSadmin.war}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.opc.ejbjar}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.async.ejbjar}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.opc.ejbjar.client}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.async.ejbjar.client}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.xmldocuments.client}" todir="${WSadmin.buildjardir}" />
+      <copy file="${WSadmin.servicelocator.client}" todir="${WSadmin.buildjardir}" />
+      <delete file="${WSadmin.ear}" quiet="true"/>
+      <jar jarfile="${WSadmin.ear}" basedir="${WSadmin.buildjardir}" />
+      <delete dir="${WSadmin.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${WSadmin.build}"/>
+    <delete dir="${WSadmin.dstdocdir}"/>
+    <ant dir="${WSadmin.opc.home}/src" target="clean" />
+    <ant dir="${WSadmin.async.home}/src" target="clean"/>
+    <ant dir="${WSadmin.xmldocuments.home}/src" target="clean"/>
+    <ant dir="${WSadmin.servicelocator.home}/src" target="clean"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${WSadmin.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${WSadmin.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${WSadmin.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${WSadmin.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${WSadmin.opc.home}/src" target="core"/>
+      <ant dir="${WSadmin.async.home}/src" target="core"/>
+      <ant dir="${WSadmin.xmldocuments.home}/src" target="core"/>
+      <ant dir="${WSadmin.servicelocator.home}/src" target="core"/>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+  Building WSPetstoreAdmin Application +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, war, process-war, ear" />
+  <target name="all" depends="core" />
+  
+  
+</project>
+

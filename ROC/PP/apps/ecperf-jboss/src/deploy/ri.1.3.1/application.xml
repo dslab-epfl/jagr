@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE application PUBLIC '-//Sun Microsystems, Inc.//DTD J2EE Application 1.2//EN' 'http://java.sun.com/j2ee/dtds/application_1_2.dtd'>
+
+<application>
+  <display-name>ECperf</display-name>
+  <description>ECperf Corp, Customer and Mfg domains</description>
+  <module>
+    <web>
+      <web-uri>supplier.war</web-uri>
+      <context-root>Supplier</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>web.war</web-uri>
+      <context-root>ECperf</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>util.jar</ejb>
+  </module>
+  <module>
+    <ejb>corp.jar</ejb>
+  </module>
+  <module>
+    <ejb>orders.jar</ejb>
+  </module>
+  <module>
+    <ejb>mfg.jar</ejb>
+  </module>
+  <module>
+    <ejb>supplier.jar</ejb>
+  </module>
+</application>

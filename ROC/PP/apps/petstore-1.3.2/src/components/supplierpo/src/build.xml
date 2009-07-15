@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:30 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="supplierpo" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="suppPO.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="suppPO.build" value="${suppPO.home}/build"/>
+
+    <property name="suppPO.src" value="${suppPO.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="suppPO.classbindir" value="${suppPO.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="suppPO.javadocs.dir" value="${suppPO.build}/docs/api"/>
+
+    <property name="suppPO.buildjardir" value="${suppPO.build}/ejbjar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="suppPO.xmldocuments.home" value="../../xmldocuments"/>
+    <property name="suppPO.xmldocuments.client" value="${suppPO.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- ServiceLocator Component  -->
+    <property name="suppPO.servicelocator.home" value="../../servicelocator"/>
+    <property name="suppPO.servicelocator.client" value="${suppPO.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- Lineitem, Contactinfo and address components references -->
+    <property name="suppPO.contactinfo.home" value="../../contactinfo"/>
+    <property name="suppPO.address.home" value="../../address"/>
+    <property name="suppPO.lineitem.home" value="../../lineitem"/>
+
+    <property name="suppPO.ejbjar" value="${suppPO.build}/supplierpo-ejb.jar"/>
+    <property name="suppPO.ejbclientjar" value="${suppPO.build}/supplierpo-ejb-client.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="suppPO.classpath" value="${suppPO.classbindir}:${suppPO.xmldocuments.client}:${suppPO.servicelocator.client}:${j2ee.classpath}"/>
+
+  </target>
+
+
+  <target name="compile" depends="init">
+    <mkdir dir="${suppPO.classbindir}"/>
+    <copy todir="${suppPO.classbindir}">
+      <fileset dir="${suppPO.address.home}/build/classes"/>
+      <fileset dir="${suppPO.contactinfo.home}/build/classes"/>
+      <fileset dir="${suppPO.lineitem.home}/build/classes"/>
+    </copy>
+    <javac srcdir="${suppPO.src}"
+           debug="${javac.debug}"
+           destdir="${suppPO.classbindir}"
+	   classpath="${suppPO.classpath}"
+	   includes="com/**"/>
+    <copy todir="${suppPO.classbindir}" >
+     <fileset dir="${suppPO.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target> 
+
+  <target name="ejbjar" depends="init,compile">
+    <mkdir dir="${suppPO.buildjardir}"/>
+    <mkdir dir="${suppPO.buildjardir}/META-INF"/>
+    <copy todir="${suppPO.buildjardir}">
+      <fileset dir="${suppPO.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${suppPO.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="jaws.xml" tofile="${suppPO.buildjardir}/META-INF/jaws.xml"/>
+    <copy file="jboss.xml" tofile="${suppPO.buildjardir}/META-INF/jboss.xml" />
+    <copy file="jbosscmp-jdbc.xml" tofile="${suppPO.buildjardir}/META-INF/jbosscmp-jdbc.xml"/>
+    <jar jarfile="${suppPO.ejbjar}" basedir="${suppPO.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${suppPO.buildjardir}"/>
+  </target>
+
+
+  <target name="ejbclientjar" depends="compile">
+    <property name="suppPO.buildjardir" value="${suppPO.home}/build/ejbjar"/>
+    <copy todir="${suppPO.buildjardir}">
+     <fileset dir= "${suppPO.classbindir}"/>
+    </copy>
+
+    <!-- delete uneeded files for client jar -->
+    <delete file="${suppPO.buildjardir}/com/sun/j2ee/blueprints/supplierpo/ejb/SupplierOrderEJB.class"/>
+   <delete file="${suppPO.buildjardir}/com/sun/j2ee/blueprints/address/ejb/AddressEJB.class"/>
+   <delete file="${suppPO.buildjardir}/com/sun/j2ee/blueprints/lineitem/ejb/LineItemEJB.class"/>
+   <delete file="${suppPO.buildjardir}/com/sun/j2ee/blueprints/contactinfo/ejb/ContactInfoEJB.class"/>
+    <delete file="${suppPO.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${suppPO.ejbclientjar}" basedir="${suppPO.buildjardir}"/>
+    <delete dir="${suppPO.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${suppPO.build}"/>
+    <delete dir="${suppPO.dstdocdir}"/>
+    <ant dir="${suppPO.contactinfo.home}/src" target="clean"/>
+    <ant dir="${suppPO.lineitem.home}/src" target="clean"/>
+    <ant dir="${suppPO.xmldocuments.home}/src" target="clean"/>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${suppPO.xmldocuments.home}/src" target="core"/>
+      <ant dir="${suppPO.address.home}/src" target="compile"/>
+      <ant dir="${suppPO.lineitem.home}/src" target="compile"/>
+      <ant dir="${suppPO.contactinfo.home}/src" target="compile"/>
+      <ant dir="${suppPO.servicelocator.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${suppPO.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${suppPO.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="SupplierPurchaseOrder Component API"
+             doctitle="SupplierPurchaseOrder Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${suppPO.xmldocuments.home}/build/classes"/>
+        <pathelement path="${suppPO.classbindir}"/>
+	<pathelement path="${suppPO.servicelocator.home}/build/classes"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${suppPO.xmldocuments.home}/src"/>
+        <pathelement path="${suppPO.src}"/>
+	<pathelement path="${suppPO.servicelocator.home}/src"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building SupplierPO Component      +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+</project>
+

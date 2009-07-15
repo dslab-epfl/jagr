@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+  <display-name>LineItemJAR</display-name>
+  <enterprise-beans>
+    <entity>
+      <description>LineItem CMP EJB</description>
+      <display-name>LineItemEB</display-name>
+      <ejb-name>LineItemEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.lineitem.ejb.LineItemEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>2.x</cmp-version>  
+      <abstract-schema-name>LineItem</abstract-schema-name>
+      <cmp-field>
+        <field-name>id</field-name>
+      </cmp-field>
+      <primkey-field>id</primkey-field>
+      <cmp-field>
+        <field-name>categoryId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>productId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>itemId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>lineNumber</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>quantity</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>unitPrice</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>quantityShipped</field-name>
+      </cmp-field>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+    </entity>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+      <method>
+        <ejb-name>LineItemEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getCategoryId</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getProductId</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getItemId</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getLineNumber</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getQuantity</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getUnitPrice</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getQuantityShipped</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>setQuantityShipped</method-name>
+       <method-params>
+         <method-param>int</method-param>
+       </method-params>
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>LineItemEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+          <method-param>int</method-param>
+          <method-param>float</method-param>
+          <method-param>int</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>LineItemEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>com.sun.j2ee.blueprints.lineitem.ejb.LineItem</method-param>
+          <method-param>int</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+     <method>
+       <ejb-name>LineItemEJB</ejb-name>
+       <method-intf>Local</method-intf>
+       <method-name>getData</method-name>
+       <method-params />
+     </method>
+     <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+
+

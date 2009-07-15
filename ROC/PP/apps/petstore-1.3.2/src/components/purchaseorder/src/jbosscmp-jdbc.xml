@@ -1,0 +1,76 @@
+<jbosscmp-jdbc>
+
+  <relationships>
+    <ejb-relation>
+      <ejb-relation-name>PurchaseOrder-ContactInfo</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>purchaseorder-has-contactinfo</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>contactinfo-for-purchaseorder</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+    <ejb-relation>
+      <ejb-relation-name>RelContactInfoEJBAddressEJB</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>ContactInfoEJB</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>AddressEJB</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+    <ejb-relation>
+      <ejb-relation-name>PurchaseOrder-Card</ejb-relation-name>
+      <foreign-key-mapping/>
+      
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>purchaseorder-has-card</ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>card-for-purchaseorder</ejb-relationship-role-name>
+        <key-fields>
+          <key-field><field-name>id</field-name></key-field>
+        </key-fields>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+    <ejb-relation>
+      <ejb-relation-name>PurchaseOrder-LineItem</ejb-relation-name>
+      <foreign-key-mapping/>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>purchaseorder-has-lineitems
+        </ejb-relationship-role-name>
+        <key-fields>
+          <key-field>
+            <field-name>poId</field-name>
+            <column-name>poId</column-name>
+          </key-field>
+        </key-fields>
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>lineItem-for-purchaseorder
+        </ejb-relationship-role-name>
+        <key-fields/>
+      </ejb-relationship-role>
+    </ejb-relation>
+
+  </relationships>
+
+</jbosscmp-jdbc>
+

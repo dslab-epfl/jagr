@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+  <description>Supplier</description>
+  <display-name>SupplierJAR</display-name>
+
+  <enterprise-beans>
+
+    <entity>
+      <description>Inventory CMP EJB</description>
+      <display-name>InventoryEB</display-name>
+      <ejb-name>InventoryEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.supplier.inventory.ejb.InventoryLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.supplier.inventory.ejb.InventoryLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.supplier.inventory.ejb.InventoryEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>2.x</cmp-version>  
+      <abstract-schema-name>Inventory</abstract-schema-name>
+      <cmp-field>
+        <field-name>itemId</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>quantity</field-name>
+      </cmp-field>
+      <primkey-field>itemId</primkey-field>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+      <query>
+        <description>EJBQL to find all Inventory Items</description>
+        <query-method>
+          <method-name>findAllInventoryItems</method-name>
+	  <!--method-intf>LocalHome</method-intf--> 
+	  <method-params />
+        </query-method>
+        <ejb-ql>Select OBJECT(a) From Inventory a</ejb-ql>
+      </query>
+    </entity>
+
+    <!-- PO Message Driven EJB Start-->
+
+    <message-driven>
+      <description>opc node to process PurchaseOrders from the Java Pet Store</description>
+      <display-name>SupplierOrderMDB</display-name>
+      <ejb-name>SupplierOrderMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.supplier.processpo.ejb.SupplierOrderMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Queue</destination-type>
+      </message-driven-destination>
+
+      <env-entry>
+       <env-entry-name>param/transitiondelegate/SupplierOrderTD</env-entry-name>
+       <env-entry-type>java.lang.String</env-entry-type>
+       <env-entry-value>com.sun.j2ee.blueprints.supplier.webservice.transitions.SupplierOrderTD</env-entry-value>
+      </env-entry>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/OrderFulfillmentFacade</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.supplier.orderfulfillment.ejb.OrderFulfillmentFacadeLocalHome</local-home>
+	<local>com.sun.j2ee.blueprints.supplier.orderfulfillment.ejb.OrderFulfillmentFacadeLocal</local>
+	<ejb-link>OrderFulfillmentFacadeEJB</ejb-link>
+      </ejb-local-ref>
+
+      <resource-ref>
+        <description>description</description>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+
+      <resource-ref>
+        <res-ref-name>jms/TopicConnectionFactory</res-ref-name>
+        <res-type>javax.jms.TopicConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/OPCWebServiceEndPointURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+
+     <resource-env-ref>
+        <resource-env-ref-name>jms/opc/InvoiceTopic</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Topic</resource-env-ref-type>
+     </resource-env-ref>
+
+   </message-driven>
+
+ <!-- OrderFulfillmentFacade EJB start -->
+
+    <session>
+      <description>The OrderFulfillmentFacade</description>
+      <display-name>OrderFulfillmentFacadeSB</display-name>
+      <ejb-name>OrderFulfillmentFacadeEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.supplier.orderfulfillment.ejb.OrderFulfillmentFacadeLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.supplier.orderfulfillment.ejb.OrderFulfillmentFacadeLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.supplier.orderfulfillment.ejb.OrderFulfillmentFacadeEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+       <env-entry-name>param/xml/validation/SupplierOrder</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>false</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/xsdvalidation/Invoice</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/xsdvalidation/SupplierOrder</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>false</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/SupplierOrderSchema</env-entry-name>
+       <env-entry-type>java.lang.String</env-entry-type>
+       <env-entry-value>-//Sun Microsystems, Inc. - J2EE Blueprints Group//DTD SupplierOrder 1.1//EN</env-entry-value>
+      </env-entry>
+
+      <!--Supplier Order EJB reference -->
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/SupplierOrder</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.supplierpo.ejb.SupplierOrderLocalHome</local-home>
+	<local>com.sun.j2ee.blueprints.supplierpo.ejb.SupplierOrderLocal</local>
+	<ejb-link>SupplierOrderEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/Address</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+        <ejb-link>AddressEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+        <ejb-link>ContactInfoEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+        <ejb-link>LineItemEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/Inventory</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.supplier.inventory.ejb.InventoryLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.supplier.inventory.ejb.InventoryLocal</local>
+        <ejb-link>InventoryEJB</ejb-link>
+      </ejb-local-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+
+    </session>
+
+ <!-- OrderFulfillmentFacade EJB end -->
+
+ <!-- PO Message Driven EJB End-->
+
+  </enterprise-beans>
+
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>InventoryEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>SupplierOrderMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>OrderFulfillmentFacadeEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+
+    <!-- Inventory EJB Methods -->
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getItemId</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getQuantity</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setQuantity</method-name>
+        <method-params>
+          <method-param>int</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>reduceQuantity</method-name>
+        <method-params>
+	  <method-param>int</method-param>	  
+	</method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+     </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>int</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findByPrimaryKey</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>InventoryEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findAllInventoryItems</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+   <!-- PO Message Driven EJB Start-->
+    <container-transaction>
+      <method>
+        <ejb-name>SupplierOrderMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <!-- PO Message Driven EJB Start-->
+   <!-- OrderFulfillmentFacade EJB start -->
+    <container-transaction>
+      <method>
+        <ejb-name>OrderFulfillmentFacadeEJB</ejb-name>
+        <method-name>processPO</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>OrderFulfillmentFacadeEJB</ejb-name>
+        <method-name>processPendingPO</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   <!-- OrderFulfillmentFacade EJB end -->
+
+  </assembly-descriptor>
+</ejb-jar>
+
+

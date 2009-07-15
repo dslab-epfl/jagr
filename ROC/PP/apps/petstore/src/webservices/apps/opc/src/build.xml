@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1.1.1 2003/03/07 08:30:31 emrek Exp $               -->
+<!-- =================================================================== -->
+
+<project name="orderprocesscontroller" default="core" basedir=".">
+
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../../build.properties"/>
+
+    <property name="wscompile" value="${jwsdp.home}/bin/wscompile${jwsdp-script-suffix}"/>
+    <property name="wsdeploy" value="${jwsdp.home}/bin/wsdeploy${jwsdp-script-suffix}"/>
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <property name="WSopc.application.name" value="OrderProcessingCenterEAR"/>
+
+    <property name="WSopc.home" value=".."/>
+
+    <property name="WSopc.src" value="${WSopc.home}/src"/>
+
+    <property name="WSopc.rsrc" value="${WSopc.src}/rsrc"/>
+
+    <!-- The destination directory for the build -->
+    <property name="WSopc.build" value="${WSopc.home}/build"/>
+    <property name="WSopc.buildjardir" value="${WSopc.home}/build/earjar"/>
+    <property name="WSopc.build.war" value="${WSopc.home}/build/war"/>
+
+    <property name="opc.home" value="../../../../apps/opc"/>
+    <property name="opc.src" value="${opc.home}/src"/>
+    <property name="opc.docroot" value="${opc.src}/docroot"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="WSopc.classbindir" value="${WSopc.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="WSopc.javadocs.dir" value="${WSopc.build}/docs/api"/>
+
+    <!-- The root directory of all the components. -->
+    <property name="WSopc.components.basedir" value="../../../../components"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="WSopc.xmldocuments.home" value="${WSopc.components.basedir}/xmldocuments"/>
+    <property name="WSopc.xmldocuments.client" value="${WSopc.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- Service Locator -->
+    <property name="WSopc.servicelocator.home" value="${WSopc.components.basedir}/servicelocator"/>
+    <property name="WSopc.servicelocator.client" value="${WSopc.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- Purchase Order EJB Components -->
+    <property name="WSopc.po.home" value="${WSopc.components.basedir}/purchaseorder"/>
+    <property name="WSopc.po.ejbjar" value="${WSopc.po.home}/build/po-ejb.jar"/>
+    <property name="WSopc.po.ejbjar.client" value="${WSopc.po.home}/build/po-ejb-client.jar"/>
+
+    <!-- Mailer Component -->
+    <property name="WSopc.mailer.home" value="${WSopc.components.basedir}/mailer"/>
+    <property name="WSopc.mailer.ejbjar" value="${WSopc.mailer.home}/build/mailer-ejb.jar"/>
+    <property name="WSopc.mailer.ejbjar.client" value="${WSopc.mailer.home}/build/mailer-ejb-client.jar"/>
+
+    <!-- ProcessManager Component -->
+    <property name="WSopc.processmanager.home" value="${WSopc.components.basedir}/processmanager"/>
+    <property name="WSopc.processmanager.ejbjar" value="${WSopc.processmanager.home}/build/processmanager-ejb.jar"/>
+    <property name="WSopc.processmanager.ejbjar.client" value="${WSopc.processmanager.home}/build/processmanager-ejb-client.jar"/>
+
+    <!-- Supplier Peer WS Client -->
+    <property name="WSopc.supplier.home" value="${WSopc.home}/../supplier"/>
+    <property name="WSopc.supplier.jaxrpc.wsdl" value="${WSopc.supplier.home}/build/SupplierWebService.wsdl"/>
+
+    <!-- OPC components and glue code -->
+    <property name="WSopc.ejbjar" value="${WSopc.build}/opc-ejb.jar"/>
+    <property name="WSopc.ejbclientjar" value="${WSopc.build}/opc-ejb-client.jar"/>
+    <property name="WSopc.war" value="${WSopc.build}/opc.war"/>
+    <property name="WSopc.ear" value="opc.ear"/>
+
+    <!-- OPC web tier -->
+    <property name="WSopc.docroot" value="${WSopc.src}/docroot"/>
+    <property name="WSopc.war.lib" value="${WSopc.build.war}/WEB-INF/lib"/>
+    <property name="WSopc.war.classes" value="${WSopc.build.war}/WEB-INF/classes"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${j2ee.home}/lib/system/jwsdp-common.jar"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <!--<property name="WSopc.classpath" value="${WSopc.classbindir}:${WSopc.xmldocuments.client}:${WSopc.servicelocator.client}:${WSopc.po.ejbjar.client}:${WSopc.mailer.ejbjar.client}:${WSopc.processmanager.ejbjar.client}:${j2ee.classpath}"/>-->
+    <property name="WSopc.classpath" value="${WSopc.classbindir}:${WSopc.xmldocuments.client}:${WSopc.servicelocator.client}:${WSopc.po.ejbjar.client}:${WSopc.mailer.ejbjar.client}:${WSopc.processmanager.ejbjar.client}:${j2ee.classpath}"/>
+
+    <property name="WSopc.jaxrpc.wsdl" value="${WSopc.build}/OPCWebService.wsdl"/>
+
+  </target>
+
+  <target name="compile" depends="compile-core, peers, compile-clients" />
+
+  <target name="compile-core" depends="compile-core1, war, process-war" />
+
+  <target name="compile-core1" depends="init, components">
+    <mkdir dir="${WSopc.classbindir}"/>
+    <javac srcdir="${opc.src}"
+           destdir="${WSopc.classbindir}"
+	   classpath="${WSopc.classpath}"
+	   includes="com/**"/>
+    <javac srcdir="${WSopc.src}"
+           excludes="com/**/transitions/**, com/**/posender/**"
+           destdir="${WSopc.classbindir}"
+	   classpath="${WSopc.classpath}"
+	   includes="com/**"/>
+    <copy todir="${WSopc.classbindir}" >
+     <fileset dir="${opc.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target>
+
+  <target name="compile-clients" depends="init">
+    <echo message="Running wscompile for the Supplier client from WSDL:"/>
+    <exec executable="${wscompile}">
+        <arg line="-classpath ${WSopc.classpath}" />
+        <arg line="-gen:client" />
+        <arg line="-d ${WSopc.classbindir}" />
+        <arg line="supplier-client-jaxrpc-ri-config.xml" />
+    </exec>
+    <javac srcdir="${WSopc.src}"
+           destdir="${WSopc.classbindir}"
+	   classpath="${WSopc.classpath}"
+	   includes="com/**/transitions/**, com/**/posender/**"/>
+  </target>
+
+  <target name="process-war" depends="init"
+      description="Runs wsdeploy to generate the ties and create a deployable WAR file">
+   <echo message="Running wsdeploy...."/>
+   <delete dir="${WSopc.build.war}"/>
+   <delete file="${WSopc.war}.tmp" />
+   <mkdir dir="${WSopc.build.war}"/>
+   <exec executable="${wsdeploy}">
+      <arg line="-tmpdir"/>
+      <arg line="${WSopc.build.war}"/>
+      <arg line="-keep"/>
+      <arg line="-o"/>
+      <arg line="${WSopc.war}.tmp"/>
+      <arg line="${WSopc.war}"/>
+      <arg line="-verbose"/>
+    </exec>
+    <move file="${WSopc.war}.tmp" tofile="${WSopc.war}" />
+    <copy todir="${WSopc.build}" flatten="true" overwrite="true">
+      <fileset dir="${WSopc.build.war}" includes="*/WEB-INF/OPCWebService.wsdl" /> 
+    </copy>
+    <delete dir="${WSopc.build.war}"/>
+  </target>
+
+  <target name="ejbjar" depends="init">
+    <mkdir dir="${WSopc.buildjardir}/META-INF"/>
+
+    <copy todir="${WSopc.buildjardir}">
+     <fileset dir= "${WSopc.classbindir}" excludes="**/*.java" /> <!--excludes: because of xrpcc -keep option-->
+    </copy>
+
+    <copy file="${WSopc.src}/ejb-jar.xml" tofile="${WSopc.buildjardir}/META-INF/ejb-jar.xml" />
+
+    <delete file="${WSopc.ejbjar}" quiet="true"/>
+    <jar jarfile="${WSopc.ejbjar}" basedir="${WSopc.buildjardir}" manifest="${opc.src}/ejb-jar-manifest.mf"/>
+
+    <delete dir="${WSopc.buildjardir}"/>
+  </target>
+
+
+  <target name="ejbclientjar" depends="init">
+    <property name="WSopc.buildjardir" value="${WSopc.home}/build/ejbjar"/>
+    <copy todir="${WSopc.buildjardir}">
+     <fileset dir= "${WSopc.classbindir}" excludes="**/*.java" /> <!--excludes: because of xrpcc -keep option-->
+    </copy>
+
+    <!-- Delete any unecessary files for client jars -->
+    <delete file="${WSopc.buildjardir}/com/sun/j2ee/blueprints/opc/ejb/PurchaseOrderMDB.class"/>
+    <delete file="${WSopc.buildjardir}/com/sun/j2ee/blueprints/opc/ejb/InvoiceMDB.class"/>
+
+    <delete file="${WSopc.buildjardir}/com/sun/j2ee/blueprints/opc/ejb/OrderApprovalMDB.class"/>
+
+    <delete file="${WSopc.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${WSopc.ejbclientjar}" basedir="${WSopc.buildjardir}"/>
+    <delete dir="${WSopc.buildjardir}"/>
+  </target>
+
+  <target name="war" depends="init">
+    <delete dir="${WSopc.build.war}"/>
+    <mkdir dir="${WSopc.build.war}"/>
+    <copy todir="${WSopc.build.war}" >
+     <fileset dir="${opc.docroot}" excludes="cvs"/>
+    </copy>
+    <copy todir="${WSopc.build}/${WSopc.build.war}/WEB-INF/classes">
+          <fileset dir="${WSopc.classbindir}" excludes="**/*.java" /> <!--excludes: because of xrpcc -keep option-->
+    </copy>
+    <copy file="${WSopc.src}/docroot/WEB-INF/web.xml" todir="${WSopc.build.war}/WEB-INF" overwrite="true" />
+    <unjar src="${WSopc.xmldocuments.client}" dest="${WSopc.build.war}/schemas/tmp" />
+    <copy todir="${WSopc.build.war}/schemas" >
+     <fileset dir="${WSopc.build.war}/schemas/tmp">
+        <include name="**/rsrc/schemas/TPA*.dtd"/>
+        <include name="**/rsrc/schemas/TPA*.xsd"/>
+     </fileset>
+    </copy>
+    <delete dir="${WSopc.build.war}/schemas/tmp"/>
+    <copy file="${WSopc.processmanager.ejbjar.client}" todir="${WSopc.war.lib}" />
+    <copy file="${WSopc.xmldocuments.client}" todir="${WSopc.war.lib}" />
+    <copy file="${WSopc.servicelocator.client}" todir="${WSopc.war.lib}" />
+    <copy file="jaxrpc-ri.xml" todir="${WSopc.build.war}/WEB-INF"/>
+    <delete file="${WSopc.build}/${WSopc.war}"  quiet="true"/>
+    <jar jarfile="${WSopc.build}/${WSopc.war}" basedir="${WSopc.build.war}" excludes="cvs" />
+    <delete dir="${WSopc.build.war}"/>
+ </target>
+
+ <target name="ear" depends="init, ejbjar, war, process-war">
+    <mkdir dir="${WSopc.buildjardir}/META-INF"/>
+    <copy file="${opc.src}/application.xml" todir="${WSopc.buildjardir}/META-INF/" />
+    <copy file="${WSopc.src}/sun-j2ee-ri.xml" todir="${WSopc.buildjardir}/META-INF/" />
+
+    <!-- Copy in the EJB jars -->
+    <copy file="${WSopc.ejbjar}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.mailer.ejbjar}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.processmanager.ejbjar}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.po.ejbjar}" todir="${WSopc.buildjardir}" />
+
+    <!-- Copy in the WAR -->
+    <copy file="${WSopc.war}" todir="${WSopc.buildjardir}" />
+
+    <!-- Copy in the client jars -->
+    <copy file="${WSopc.mailer.ejbjar.client}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.processmanager.ejbjar.client}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.po.ejbjar.client}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.xmldocuments.client}" todir="${WSopc.buildjardir}" />
+    <copy file="${WSopc.servicelocator.client}" todir="${WSopc.buildjardir}" />
+
+    <!-- Delete the old Jar and rebuild -->
+    <delete file="${WSopc.build}/${WSopc.ear}" quiet="true"/>
+    <jar jarfile="${WSopc.build}/${WSopc.ear}" basedir="${WSopc.buildjardir}" />
+    <delete dir="${WSopc.buildjardir}"/>
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${WSopc.build}/${WSopc.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${WSopc.build}/${WSopc.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${WSopc.build}/${WSopc.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${WSopc.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${WSopc.build}"/>
+    <ant dir="${WSopc.xmldocuments.home}/src" target="clean"/>
+    <ant dir="${WSopc.mailer.home}/src" target="clean"/>
+    <ant dir="${WSopc.processmanager.home}/src" target="clean"/>
+    <ant dir="${WSopc.servicelocator.home}/src" target="clean"/>
+    <ant dir="${WSopc.po.home}/src" target="clean"/>
+  </target>
+
+  <target name="components" depends="init">
+    <ant dir="${WSopc.xmldocuments.home}/src" target="core"/>
+    <ant dir="${WSopc.servicelocator.home}/src" target="core"/>
+    <ant dir="${WSopc.mailer.home}/src" target="core"/>
+    <ant dir="${WSopc.processmanager.home}/src" target="core"/>
+    <ant dir="${WSopc.po.home}/src" target="core"/>
+  </target>
+
+  <target name="peers" depends="init">
+    <ant dir="${WSopc.supplier.home}/src" target="compile-core"/>
+    <copy file="${WSopc.supplier.jaxrpc.wsdl}" todir="${WSopc.build}" />
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${WSopc.javadocs.dir}"/>
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${WSopc.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Order Processing Center API"
+             doctitle="Java Pet Store Order Processing Center Application"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${WSopc.mailer.home}/build/classes"/>
+        <pathelement path="${WSopc.processmanager.home}/build/classes"/>
+        <pathelement path="${WSopc.po.home}/build/classes"/>
+        <pathelement path="${WSopc.xmldocuments.home}/build/classes"/>
+        <pathelement path="${WSopc.servicelocator.home}/build/classes"/>
+        <pathelement path="${WSopc.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${WSopc.mailer.home}/src"/>
+        <pathelement path="${WSopc.processmanager.home}/src"/>
+        <pathelement path="${WSopc.po.home}/src"/>
+        <pathelement path="${WSopc.xmldocuments.home}/src"/>
+        <pathelement path="${WSopc.servicelocator.home}/src"/>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building OPC Application           +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+
+  <target name="ejbs" depends="compile, ejbjar, ejbclientjar" />
+
+  <target name="core" depends="components, banner, compile, ejbjar, war, process-war, ear" />
+
+  <target name="all" depends="core, docs" />
+
+  <target name="clientjar" depends="compile, ejbclientjar" />
+
+</project>
+

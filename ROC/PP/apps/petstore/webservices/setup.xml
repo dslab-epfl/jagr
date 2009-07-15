@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: setup.xml,v 1.1.1.1 2003/03/07 08:30:32 emrek Exp $            -->
+<!-- =================================================================== -->
+
+<project name="petstore" default="core" basedir=".">
+
+  <target name="core" depends="init, help"/>
+  
+  <target name="all" depends="core, docs"/>
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../src/build.properties"/>
+
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/system/jwsdp-common.jar:${j2ee.home}/lib/system/cloudscape.jar:${j2ee.home}/lib/cloudscape/RmiJdbc.jar:${j2ee.home}/lib/cloudscape/cloudclient.jar:${j2ee.home}/lib/classes:${j2ee.home}/classes:${j2ee.home}/lib/locale:${j2ee.home}/lib/jhall.jar"/>
+  </target>
+
+  <target name="help" depends="init">
+    <echo message="Usage: setup.bat [options] (or setup.sh [options] on unix)"/>
+    <echo message="deploy    to deploy the web-services-enabled petstore applications"/>
+    <echo message="docs      to generate javadocs for all the web-services related code"/>
+    <echo message="Please ensure that you have applied the Java Web Services Developer Pack 1.0_01 on the J2EE SDK before deploying petstore applications. See documentation for details on how to do this."/>
+  </target>
+  
+  <target name="deploy" depends="init">
+    <echo message="Deploying ears ...."/>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL petstore.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy petstore.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL opc.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy opc.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL supplier.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy supplier.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL petstoreadmin.ear ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy petstoreadmin.ear ${j2ee.server.name}" />
+    </exec>
+    <echo message="The webservices-enabled applications are now installed."/>
+    <echo message="Please point your browser to http://${j2ee.server.name}:8080/petstore to access petstore."/>
+  </target>
+  
+  <target name="build" depends="init">
+    <ant dir="../src/webservices" target="core"/>
+  </target>
+
+  <target name="docs" depends="init">
+    <property name="wspetstore.javadocs.dir" value="docs/api"/>
+    <ant dir="../src/webservices" target="docs"/>
+  </target>
+</project>

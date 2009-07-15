@@ -1,0 +1,148 @@
+<jboss>
+ <enterprise-beans>
+  <session>
+    <ejb-name>OPCAdminFacadeEJB</ejb-name>
+    <jndi-name>ejb/opc/opc/OPCAdminFacadeEJBRemote</jndi-name>
+  </session>
+
+  <message-driven>
+    <ejb-name>PurchaseOrderMDB</ejb-name>
+    <!--jndi-name>jms/opc/OrderQueue</jndi-name-->
+    <destination-jndi-name>queue/orderQueue</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+    
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <res-url>http://localhost:8080/opc/EntityCatalog.jsp</res-url>
+    </resource-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/OrderApprovalQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/OrderApprovalQueue</jndi-name-->
+      <jndi-name>queue/orderApprovalQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+
+  <message-driven>
+    <ejb-name>InvoiceMDB</ejb-name>
+    <!--jndi-name>jms/opc/InvoiceTopic</jndi-name-->
+    <destination-jndi-name>topic/invoiceTopic</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <res-url>http://localhost:8080/opc/EntityCatalog.jsp</res-url>
+    </resource-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/CompletedOrderMailQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/MailCompletedOrderQueue</jndi-name-->
+      <jndi-name>queue/mailCompletedOrderQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+
+  <message-driven>   
+    <ejb-name>OrderApprovalMDB</ejb-name>
+    <!--jndi-name>jms/opc/OrderApprovalQueue</jndi-name-->
+    <destination-jndi-name>queue/orderApprovalQueue</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <res-url>http://localhost:8080/opc/EntityCatalog.jsp</res-url>
+    </resource-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/OrderApprovalMailQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/MailOrderApprovalQueue</jndi-name-->
+      <jndi-name>queue/mailOrderApprovalQueue</jndi-name>
+    </resource-env-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/PurchaseOrderQueue</resource-env-ref-name>
+      <!--jndi-name>jms/supplier/PurchaseOrderQueue</jndi-name-->
+      <jndi-name>queue/purchaseOrderQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+
+  <message-driven>
+    <ejb-name>MailInvoiceMDB</ejb-name>
+    <!--jndi-name>jms/opc/InvoiceTopic</jndi-name-->
+    <destination-jndi-name>topic/invoiceTopic</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <res-url>http://localhost:8080/opc/EntityCatalog.jsp</res-url>
+    </resource-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/MailQueue</jndi-name-->
+      <jndi-name>queue/mailQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+
+  <message-driven>
+    <ejb-name>MailOrderApprovalMDB</ejb-name>
+    <!--jndi-name>jms/opc/MailOrderApprovalQueue</jndi-name-->
+    <destination-jndi-name>queue/mailOrderApprovalQueue</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>
+
+    <resource-ref>
+      <res-ref-name>url/EntityCatalogURL</res-ref-name>
+      <res-url>http://localhost:8080/opc/EntityCatalog.jsp</res-url>
+    </resource-ref>
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/MailQueue</jndi-name-->
+      <jndi-name>queue/mailQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+  <message-driven>
+    <ejb-name>MailCompletedOrderMDB</ejb-name>
+    <!--jndi-name>jms/opc/MailCompletedOrderQueue</jndi-name-->
+    <destination-jndi-name>queue/mailCompletedOrderQueue</destination-jndi-name>
+
+    <resource-ref>
+      <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+      <jndi-name>ConnectionFactory</jndi-name>
+    </resource-ref>    
+
+    <resource-env-ref>
+      <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+      <!--jndi-name>jms/opc/MailQueue</jndi-name-->
+      <jndi-name>queue/mailQueue</jndi-name>
+    </resource-env-ref>
+  </message-driven>
+
+
+ </enterprise-beans>
+    
+</jboss>

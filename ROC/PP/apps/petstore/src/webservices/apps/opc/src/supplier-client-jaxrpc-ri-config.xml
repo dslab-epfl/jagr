@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration
+    xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+    <wsdl name="SupplierWebServiceClient"
+        location="file:../build/SupplierWebService.wsdl"
+        packageName="com.sun.j2ee.blueprints.opc.webservice.supplierclient">
+        <typeMappingRegistry />
+    </wsdl>
+</configuration>
+
+

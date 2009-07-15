@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss>
+
+    <container-configurations>
+
+      <container-configuration>
+	 <container-name>Clustered CMP 2.x EntityBean</container-name>
+	 <call-logging>true</call-logging>
+	 <container-interceptors>
+	    <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+	    <interceptor>org.jboss.ha.framework.test.ExplicitFailoverServerInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+	    <interceptor metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityLockInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityInstanceInterceptor</interceptor>
+	    <interceptor>org.jboss.resource.connectionmanager.CachedConnectionInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntitySynchronizationInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.cmp.jdbc.JDBCRelationInterceptor</interceptor>
+	 </container-interceptors>
+	 <client-interceptors>
+           <home>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </home>
+           <bean>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.EntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </bean>
+           <list-entity>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.ListEntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </list-entity>
+	 </client-interceptors>
+      </container-configuration>
+
+      <container-configuration>
+	 <container-name>Clustered CMP EntityBean</container-name>
+	 <call-logging>true</call-logging>
+	 <container-interceptors>
+	    <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+	    <interceptor>org.jboss.ha.framework.test.ExplicitFailoverServerInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+	    <interceptor metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityLockInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityInstanceInterceptor</interceptor>
+	    <interceptor>org.jboss.resource.connectionmanager.CachedConnectionInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntitySynchronizationInterceptor</interceptor>
+	 </container-interceptors>
+	 <client-interceptors>
+           <home>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </home>
+           <bean>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.EntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </bean>
+           <list-entity>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.ListEntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </list-entity>
+	 </client-interceptors>
+      </container-configuration>
+
+      <container-configuration>
+	 <container-name>Clustered Stateless SessionBean</container-name>
+	 <call-logging>true</call-logging>
+	 <container-interceptors>
+	    <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+	    <interceptor>org.jboss.ha.framework.test.ExplicitFailoverServerInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+	    <!-- CMT -->
+	    <interceptor transaction="Container">org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+	    <interceptor transaction="Container" metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor transaction="Container">org.jboss.ejb.plugins.StatelessSessionInstanceInterceptor</interceptor>
+	    <!-- BMT -->
+	    <interceptor transaction="Bean">org.jboss.ejb.plugins.StatelessSessionInstanceInterceptor</interceptor>
+	    <interceptor transaction="Bean">org.jboss.ejb.plugins.TxInterceptorBMT</interceptor>
+	    <interceptor transaction="Bean" metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor>org.jboss.resource.connectionmanager.CachedConnectionInterceptor</interceptor>
+	 </container-interceptors>
+	 <client-interceptors>
+           <home>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </home>
+           <bean>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.StatelessSessionInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </bean>
+	 </client-interceptors>
+      </container-configuration>
+
+      <container-configuration>
+	 <container-name>Clustered Stateful SessionBean</container-name>
+	 <call-logging>true</call-logging>
+	 <container-interceptors>
+	    <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+	    <interceptor>org.jboss.ha.framework.test.ExplicitFailoverServerInterceptor</interceptor>
+	    <!-- CMT -->
+	    <interceptor transaction="Container">org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+	    <interceptor transaction="Container" metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor transaction="Container">org.jboss.ejb.plugins.StatefulSessionInstanceInterceptor</interceptor>
+	    <!-- BMT -->
+	    <interceptor transaction="Bean">org.jboss.ejb.plugins.StatefulSessionInstanceInterceptor</interceptor>
+	    <interceptor transaction="Bean">org.jboss.ejb.plugins.TxInterceptorBMT</interceptor>
+	    <interceptor transaction="Bean" metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+	    <interceptor>org.jboss.resource.connectionmanager.CachedConnectionInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.StatefulHASessionSynchronisationInterceptor</interceptor>
+	 </container-interceptors>
+	 <client-interceptors>
+           <home>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </home>
+           <bean>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.StatefulSessionInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </bean>
+	 </client-interceptors>
+      </container-configuration>
+
+      <container-configuration>
+	 <container-name>Clustered BMP EntityBean</container-name>
+	 <call-logging>true</call-logging>
+	 <container-interceptors>
+	    <interceptor>org.jboss.ejb.plugins.LogInterceptor</interceptor>
+	    <interceptor>org.jboss.ha.framework.test.ExplicitFailoverServerInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.SecurityInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.TxInterceptorCMT</interceptor>
+	    <interceptor metricsEnabled="true">org.jboss.ejb.plugins.MetricsInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityLockInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntityInstanceInterceptor</interceptor>
+	    <interceptor>org.jboss.resource.connectionmanager.CachedConnectionInterceptor</interceptor>
+	    <interceptor>org.jboss.ejb.plugins.EntitySynchronizationInterceptor</interceptor>
+	 </container-interceptors>
+	 <client-interceptors>
+           <home>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </home>
+           <bean>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.EntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </bean>
+           <list-entity>
+             <interceptor>org.jboss.ha.framework.test.ExplicitFailoverClientInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.ejb.ListEntityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+             <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+             <interceptor>org.jboss.invocation.InvokerInterceptor</interceptor>
+           </list-entity>
+	 </client-interceptors>
+      </container-configuration>
+
+    </container-configurations>
+
+
+
+
+	<enterprise-beans>
+		<session>
+		  <ejb-name>nextgen.StatelessSession</ejb-name>
+		  <jndi-name>nextgen.StatelessSession</jndi-name>
+		  <clustered>true</clustered>
+		</session>
+		<session>
+		  <ejb-name>nextgen.StatefulSession</ejb-name>
+		  <jndi-name>nextgen.StatefulSession</jndi-name>
+		  <clustered>true</clustered>
+		</session>
+		<session>
+		  <ejb-name>nextgen.TxSession</ejb-name>
+		  <jndi-name>nextgen.TxSession</jndi-name>
+		  <clustered>true</clustered>
+		</session>
+		<entity>
+		  <ejb-name>nextgen.EnterpriseEntity</ejb-name>
+		  <jndi-name>nextgen.EnterpriseEntity</jndi-name>
+		  <clustered>true</clustered>
+		</entity>
+		<entity>
+		  <ejb-name>nextgen.EntityBMP</ejb-name>
+		  <jndi-name>nextgen.EntityBMP</jndi-name>
+		  <clustered>true</clustered>
+		</entity>
+		<entity>
+		  <ejb-name>nextgen.EntityPK</ejb-name>
+		  <jndi-name>nextgen.EntityPK</jndi-name>
+		  <clustered>true</clustered>
+		</entity>
+	</enterprise-beans>
+</jboss>

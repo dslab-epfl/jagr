@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: supplierpo-ejb-client.jar
+  servicelocator.jar
+  xmldocuments.jar 
+  processmanager-ejb-client.jar
+

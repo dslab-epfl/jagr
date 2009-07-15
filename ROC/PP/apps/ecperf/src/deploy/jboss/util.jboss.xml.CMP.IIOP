@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<jboss>
+<container-configurations>
+   <container-configuration extends="IIOP CMP EntityBean">
+      <container-name>ECPerf CMP</container-name>
+      <commit-option>B</commit-option>
+   </container-configuration>
+</container-configurations>
+
+  <enterprise-beans>
+    <entity>
+      <ejb-name>SequenceEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <resource-ref>
+         <res-ref-name>UtilDataSource</res-ref-name>
+         <resource-name>UtilDataSource</resource-name>
+      </resource-ref>
+    </entity>
+    <session>
+      <ejb-name>SequenceSes</ejb-name>
+      <clustered>true</clustered>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceEnt</ejb-ref-name>
+	<jndi-name>SequenceEnt</jndi-name>
+      </ejb-ref>
+    </session>
+  </enterprise-beans>
+  <resource-managers>
+    <resource-manager>
+        <res-name>UtilDataSource</res-name>
+        <res-jndi-name>java:/ECPerfDS</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

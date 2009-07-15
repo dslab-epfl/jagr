@@ -1,0 +1,28 @@
+<analysisengine>
+  <!--
+      This embedded configuration extracts component behaviors from
+      verified request traces
+
+      Takes one argument:
+         definingAttributes=comma separated list
+            defining attributes of components
+         online=true/false   -- whether to run this config in online or offline
+            mode
+
+      Pass in two record collections: 
+
+         * 'input' (with raw observations) and
+         * 'output (for verified traces)
+
+   -->
+
+  <plugin name="CollectComponentBehavior">
+    <classname>roc.pinpoint.analysis.plugins2.components.CollectComponentBehavior</classname>
+    <arg key="inputCollection">input</arg>
+    <arg key="outputCollection">output</arg>
+    <arg key="definingAttributes">$definingAttributes</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+</analysisengine>
+  

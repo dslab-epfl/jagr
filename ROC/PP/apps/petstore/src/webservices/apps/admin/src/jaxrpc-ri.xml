@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<webServices xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/dd"
+    version="1.0"
+    targetNamespaceBase="http://supplier.blueprints.j2ee.sun.com/wsdl"
+    typeNamespaceBase="http://supplier.blueprints.j2ee.sun.com/types"
+    urlPatternBase="/webservice">
+
+    <endpoint name="AdminWebService"
+        displayName="Admin Web Service"
+        description="Admin Web Service" 
+        interface="com.sun.j2ee.blueprints.admin.webservice.AdminService"  
+        implementation="com.sun.j2ee.blueprints.admin.webservice.AdminServiceImpl"/> 
+ 
+    <endpointMapping
+        endpointName="AdminWebService"
+        urlPattern="/webservice/AdminService"/>
+
+</webServices>

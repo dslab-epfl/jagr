@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<webServices xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/dd"
+    version="1.0"
+    targetNamespaceBase="http://supplier.blueprints.j2ee.sun.com/wsdl"
+    typeNamespaceBase="http://supplier.blueprints.j2ee.sun.com/types"
+    urlPatternBase="/webservice">
+
+    <endpoint name="SupplierWebService"
+        displayName="Supplier Web Service"
+        description="Supplier Web Service" 
+        interface="com.sun.j2ee.blueprints.supplier.webservice.SupplierService"  
+        implementation="com.sun.j2ee.blueprints.supplier.webservice.SupplierServiceImpl"/> 
+ 
+    <endpointMapping
+        endpointName="SupplierWebService"
+        urlPattern="/webservice/SupplierService"/>
+
+</webServices>

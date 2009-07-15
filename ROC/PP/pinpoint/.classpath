@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/CVS|**/CVS/*|CVS/|CVS/*" kind="src" path="src/main"/>
+	<classpathentry excluding="**/CVS|**/CVS/*|CVS|CVS/*" kind="src" path="src/jboss-ext"/>
+	<classpathentry kind="src" path="src/loadgen"/>
+	<classpathentry kind="src" path="/swig-util"/>
+	<classpathentry kind="lib" path="lib/jboss.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-j2ee.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-jmx.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-system.jar"/>
+	<classpathentry kind="lib" path="lib/swigutil.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xmlParserAPIs.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/emrek/Projects/swig/ROC/common/loadgen4/dist/lib/loadgen4.jar"/>
+	<classpathentry kind="output" path="build/output"/>
+</classpath>

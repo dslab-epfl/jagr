@@ -1,0 +1,25 @@
+<analysisengine>
+  <!-- 
+    This embedded configuration is for loading records from disk.
+
+    The arguments for this configuration are:
+
+	input=FILENAME
+          location from which to read records.
+        online=true/false
+            whether these plugins should operate in online or offline
+            mode.
+
+    Also, be sure to pass in a record collection named 'output'
+
+    -->
+
+
+  <plugin name="loadfromdisk">
+    <classname>roc.pinpoint.analysis.plugins2.records.LoadRecordsFromDisk</classname>
+    <arg key="outputCollection">output</arg>
+    <arg key="filename">$input</arg>
+    <arg key="online">$online</arg>
+  </plugin>
+
+</analysisengine>

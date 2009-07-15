@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+  <description>order process controller</description>
+  <display-name>OrderProcessingCenterJAR</display-name>
+  <enterprise-beans>
+
+<!-- Admin Facade fromOPC -->
+
+    <session>
+      <description>The Admin OPC Facade</description>
+      <display-name>OrderProcessingCenterAdminFacadeSB</display-name>
+      <ejb-name>OPCAdminFacadeEJB</ejb-name>
+      <home>com.sun.j2ee.blueprints.opc.admin.ejb.OPCAdminFacadeHome</home>
+      <remote>com.sun.j2ee.blueprints.opc.admin.ejb.OPCAdminFacade</remote>
+      <ejb-class>com.sun.j2ee.blueprints.opc.admin.ejb.OPCAdminFacadeEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocal</local>
+        <ejb-link>ProcessManagerEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+          <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+	  <ejb-ref-type>Entity</ejb-ref-type>
+	  <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+	  <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+	  <ejb-link>ContactInfoEJB</ejb-link>
+      </ejb-local-ref>
+      <ejb-local-ref>
+          <ejb-ref-name>ejb/Address</ejb-ref-name>
+	  <ejb-ref-type>Entity</ejb-ref-type>
+	  <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+	  <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+	  <ejb-link>AddressEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+          <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+	  <ejb-ref-type>Entity</ejb-ref-type>
+	  <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+	  <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+	  <ejb-link>PurchaseOrderEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+          <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+	  <ejb-ref-type>Entity</ejb-ref-type>
+	  <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+	  <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+	  <ejb-link>CreditCardEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+          <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+	  <ejb-ref-type>Entity</ejb-ref-type>
+	  <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+	  <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+	  <ejb-link>LineItemEJB</ejb-link>
+      </ejb-local-ref>
+    </session>
+
+<!-- End of Admin Facade -->
+ 
+ <!-- Process recieving a PO from the Java Pet Store Start-->
+    <message-driven>
+      <description>opc node to process PurchaseOrders from the Java Pet Store</description>
+      <display-name>PurchaseOrderMDB</display-name>
+      <ejb-name>PurchaseOrderMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.ejb.PurchaseOrderMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Queue</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/xml/validation/PurchaseOrder</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+
+      <!-- ProcessManager EJB Local Ref Start  -->
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocal</local>
+        <ejb-link>ProcessManagerEJB</ejb-link>
+      </ejb-local-ref>
+      <!-- ProcessManager EJB Local Ref End  -->
+
+
+      <!--Purchase Order EJB reference start-->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference end -->
+
+      <resource-ref>
+        <description>description</description>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/OrderApprovalQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+ <!-- Process recieving a PO from the Java Pet Store End-->
+
+
+ <!-- Process recieving an INVOICE from the Suppler Start-->
+    <message-driven>
+      <description>opc node to process Invoice from the Supplier</description>
+      <display-name>InvoiceMDB</display-name>
+      <ejb-name>InvoiceMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.ejb.InvoiceMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+
+      <message-driven-destination>
+        <destination-type>javax.jms.Topic</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/xml/validation/Invoice</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/XSDValidation</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+
+            <!-- ProcessManager EJB Local Ref Start  -->
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocal</local>
+        <ejb-link>ProcessManagerEJB</ejb-link>
+      </ejb-local-ref>
+             <!-- ProcessManager EJB Local Ref End  -->
+
+
+     <!--Purchase Order EJB reference -->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference -->
+
+      <resource-ref>
+        <description>description</description>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/CompletedOrderMailQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+ <!-- Process recieving an INVOICE from the Suppler End-->
+
+<!-- Process recieving a list of OrderApprovals from the Admin Start-->
+    <message-driven>
+      <description>opc node to process OrderApprovals from the Admin</description>
+      <display-name>OrderApprovalMDB</display-name>
+      <ejb-name>OrderApprovalMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.ejb.OrderApprovalMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Queue</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/xml/validation/OrderApproval</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/XSDValidation</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/transitiondelegate/OrderApprovalTD</env-entry-name>
+       <env-entry-type>java.lang.String</env-entry-type>
+       <env-entry-value>com.sun.j2ee.blueprints.opc.webservice.transitions.OrderApprovalTD</env-entry-value>
+      </env-entry>
+
+     <!-- ProcessManager EJB Local Ref Start  -->
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/ProcessManager</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocal</local>
+        <ejb-link>ProcessManagerEJB</ejb-link>
+      </ejb-local-ref>
+      <!-- ProcessManager EJB Local Ref End  -->
+
+
+     <!--Purchase Order EJB reference -->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference End-->
+
+      <resource-ref>
+        <description>description</description>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/SupplierWebServiceEndPointURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/OrderApprovalMailQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/PurchaseOrderQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+<!-- Process recieving a list of OrderApprovals from the Admin End-->
+
+
+
+
+ <!-- CUSTOMER RELATIONS Process recieving an INVOICE from the Suppler Start-->
+    <message-driven>
+      <description>opc node to process Invoice from the Supplier</description>
+      <display-name>MailInvoiceMDB</display-name>
+      <ejb-name>MailInvoiceMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.customerrelations.ejb.MailInvoiceMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Topic</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/SendConfirmationMail</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>false</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/validation/Invoice</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/XSDValidation</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+
+    <!--Purchase Order EJB reference -->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference -->
+
+       <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+
+ <!-- CUSTOMER RELATIONS Process recieving an INVOICE from the Suppler End-->
+
+
+ <!-- CUSTOMER RELATIONS Process recieving an Order Approval Start-->
+    <message-driven>
+      <description>opc node to process Invoice from the Supplier</description>
+      <display-name>MailOrderApprovalMDB</display-name>
+      <ejb-name>MailOrderApprovalMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.customerrelations.ejb.MailOrderApprovalMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Queue</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/SendApprovalMail</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>false</env-entry-value>
+      </env-entry>
+      <env-entry>
+       <env-entry-name>param/xml/validation/OrderApproval</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>true</env-entry-value>
+      </env-entry>
+
+    <!--Purchase Order EJB reference -->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference -->
+
+       <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-ref>
+        <res-ref-name>url/EntityCatalogURL</res-ref-name>
+        <res-type>java.net.URL</res-type>
+        <res-auth>Container</res-auth>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+
+ <!-- CUSTOMER RELATIONS Process recieving an Order Approval End-->
+
+
+
+ <!-- CUSTOMER RELATIONS process a COMPLETED Order Start-->
+    <message-driven>
+      <description>opc node to process Completed order from InvoiceMDB</description>
+      <display-name>MailCompletedOrderMDB</display-name>
+      <ejb-name>MailCompletedOrderMDB</ejb-name>
+      <ejb-class>com.sun.j2ee.blueprints.opc.customerrelations.ejb.MailCompletedOrderMDB</ejb-class>
+      <transaction-type>Container</transaction-type>
+      <message-driven-destination>
+        <destination-type>javax.jms.Queue</destination-type>
+      </message-driven-destination>
+      <env-entry>
+       <env-entry-name>param/SendCompletedOrderMail</env-entry-name>
+       <env-entry-type>java.lang.Boolean</env-entry-type>
+       <env-entry-value>false</env-entry-value>
+      </env-entry>
+  
+    <!--Purchase Order EJB reference -->
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/PurchaseOrder</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.purchaseorder.ejb.PurchaseOrderLocal</local>
+    <ejb-link>PurchaseOrderEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/ContactInfo</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.contactinfo.ejb.ContactInfoLocal</local>
+    <ejb-link>ContactInfoEJB</ejb-link>
+  </ejb-local-ref>
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/Address</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.address.ejb.AddressLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.address.ejb.AddressLocal</local>
+    <ejb-link>AddressEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/CreditCard</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.creditcard.ejb.CreditCardLocal</local>
+    <ejb-link>CreditCardEJB</ejb-link>
+  </ejb-local-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/LineItem</ejb-ref-name>
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.lineitem.ejb.LineItemLocal</local>
+    <ejb-link>LineItemEJB</ejb-link>
+  </ejb-local-ref>
+
+      <!--Purchase Order EJB reference -->
+
+       <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <res-type>javax.jms.QueueConnectionFactory</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/MailQueue</resource-env-ref-name>
+        <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+      </resource-env-ref>
+
+     </message-driven>
+
+ <!-- CUSTOMER RELATIONS process a COMPLETED Order  End-->
+
+
+  </enterprise-beans>
+
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+      <method>
+          <ejb-name>OPCAdminFacadeEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>PurchaseOrderMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>InvoiceMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>OrderApprovalMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>MailInvoiceMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>MailOrderApprovalMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>MailCompletedOrderMDB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+
+    <container-transaction>
+      <method>
+        <ejb-name>PurchaseOrderMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+    <container-transaction>
+      <method>
+        <ejb-name>OrderApprovalMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+    <container-transaction>
+      <method>
+        <ejb-name>InvoiceMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+
+    <container-transaction>
+      <method>
+        <ejb-name>MailInvoiceMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+    <container-transaction>
+      <method>
+        <ejb-name>MailOrderApprovalMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+    <container-transaction>
+      <method>
+        <ejb-name>MailCompletedOrderMDB</ejb-name>
+        <method-name>onMessage</method-name>
+        <method-params>
+          <method-param>javax.jms.Message</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+
+    <container-transaction>
+      <method>
+        <ejb-name>OPCAdminFacadeEJB</ejb-name>
+        <method-intf>Remote</method-intf>
+        <method-name>getOrdersByStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>OPCAdminFacadeEJB</ejb-name>
+        <method-intf>Remote</method-intf>
+        <method-name>getChartInfo</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.util.Date</method-param>
+          <method-param>java.util.Date</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+
+  </assembly-descriptor>
+</ejb-jar>
+
+

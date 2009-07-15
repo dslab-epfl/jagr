@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+  <mbean code="org.jboss.jmx.adaptor.rmi.RMIAdaptorService" 
+	 name="jboss.jmx:type=Connector,name=RMI">
+    <attribute name="RMIObjectPort">0</attribute>
+    <attribute name="ServerAddress"></attribute>
+    <attribute name="JndiName">jmx/rmi/RMIAdaptor</attribute>
+  </mbean>
+</server>

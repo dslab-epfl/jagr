@@ -1,0 +1,56 @@
+- installation
+  - convert to PAUSE-style module (aka CPAN)
+  - rename to HTTP::Deluge or LWP::Deluge or what?
+  - provide 'make', 'make test', etc. in Makefile.PL
+
+- playback
+  - compare reponse content.  use Algorithm-Diff
+  - profiling... where are all the cycles going? LWP overhead?
+  - using HTTPD::Bench::ApacheBench for HTTP might result in more
+      efficient load generation.
+
+- log evaluation
+  - write it to match user-centric
+  - response code counts per url, global
+
+- documentation
+  - finish _script_hacks_ file
+  - write something on how to use dlg_proxy
+  - write something on how to assemble an attack
+
+- allow for more than one text regexp for a single URL regexp in
+  the V_pos_*/V_neg_* hashes (duh, don't use hashes).
+
+- recording should probably lock the script file while writing.  if
+  any of the events start plowing through each other, it'll have to
+  be done.
+
+- User.pm is big and messy.  
+  - there's too much happening in it; it
+    should probably be broken into several different classes.  Maybe
+    a userdef class for the stuff from the config file, maybe a proxy
+    class.  anything else?
+  - split dynamic (per-user) from static (config per-userdef)
+
+- an "include" directive in the configuration file would be nice, so
+  that you could put all your user definitions in different files, and
+  just "include" them into the top level dcf.
+
+- check for the existance of the log file, and bail out if it already
+  exists.  i've overwritten too many useful log files this way.
+  better: auto-store run info in a time-date-stamped subdir.
+
+- get Parallel::UserAgent to do secure requests, like it says it does.
+
+- verify off-site links, but don't parse.
+
+- parallel lists are so LISP.  be more perl5.
+
+- make config file parser more elegant: XML?
+  - tags should have data flags with them to lose the multiple quasi-switches
+
+- make a second proxy server that acts as a live dlg_eval.  calling up a
+  url in the log file creates a page where the requested url is in a
+  subframe, and surrounding it are the stats from the logfile for that
+  page.
+

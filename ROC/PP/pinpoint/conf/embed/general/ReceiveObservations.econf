@@ -1,0 +1,15 @@
+<analysisengine>  
+  <!--
+	This configuration is for receiving observations (e.g., of
+        a live system) over the network.
+
+        Pass in a record collection named "output"
+    -->
+
+  <plugin name="observationCollector">
+    <classname>roc.pinpoint.analysis.plugins2.observations.ObservationCollector</classname>
+    <arg key="collectionName">output</arg>
+    <arg key="subscriberClassName">roc.pinpoint.tracing.java.TCPObservationSubscriber</arg>
+  </plugin>
+
+</analysisengine>

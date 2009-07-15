@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<jboss>
+
+<container-configurations>
+<container-configuration extends="Standard CMP EntityBean">
+   <container-name>ECPerf CMP</container-name>
+   <commit-option>B</commit-option>
+<!--   <optiond-refresh-rate>6000000</optiond-refresh-rate>  -->
+</container-configuration>
+</container-configurations>
+
+
+
+ <enterprise-beans>
+    <entity>
+      <ejb-name>OrderLineEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <resource-ref>
+         <res-ref-name>OrdersDataSource</res-ref-name>
+         <resource-name>OrdersDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+      -->
+    </entity>
+    <session>
+      <ejb-name>OrderSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <ejb-ref>
+	<ejb-ref-name>ejb/OrderEnt</ejb-ref-name>
+	<jndi-name>OrderEnt</jndi-name>
+      </ejb-ref>
+    </session>
+    <session>
+      <ejb-name>CartSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <ejb-ref>
+	<ejb-ref-name>ejb/OrderSes</ejb-ref-name>
+	<jndi-name>OrderSes</jndi-name>
+      </ejb-ref>
+    </session>
+    <session>
+      <ejb-name>OrderCustomerSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <ejb-ref>
+	<ejb-ref-name>ejb/OrderCustomerEnt</ejb-ref-name>
+	<jndi-name>OrderCustomerEnt</jndi-name>
+      </ejb-ref>
+    </session>
+    <entity>
+      <ejb-name>OrderCustomerEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<jndi-name>SequenceSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+	<jndi-name>CustomerEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>OrdersDataSource</res-ref-name>
+         <resource-name>OrdersDataSource</resource-name>
+      </resource-ref>
+      <!--
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+      -->
+    </entity>
+    <entity>
+      <ejb-name>ItemEnt</ejb-name>
+      <configuration-name>Instance Per Transaction CMP EntityBean</configuration-name>
+      <resource-ref>
+         <res-ref-name>OrdersDataSource</res-ref-name>
+         <resource-name>OrdersDataSource</resource-name>
+      </resource-ref>
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+    </entity>
+    <entity>
+      <ejb-name>OrderEnt</ejb-name>
+      <configuration-name>ECPerf CMP</configuration-name>
+      <ejb-ref>
+	<ejb-ref-name>ejb/SequenceSes</ejb-ref-name>
+	<jndi-name>SequenceSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/CustomerEnt</ejb-ref-name>
+	<jndi-name>CustomerEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/LargeOrderSes</ejb-ref-name>
+	<jndi-name>LargeOrderSes</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/ItemEnt</ejb-ref-name>
+	<jndi-name>ItemEnt</jndi-name>
+      </ejb-ref>
+      <ejb-ref>
+	<ejb-ref-name>ejb/OrderLineEnt</ejb-ref-name>
+	<jndi-name>OrderLineEnt</jndi-name>
+      </ejb-ref>
+      <resource-ref>
+         <res-ref-name>OrdersDataSource</res-ref-name>
+         <resource-name>OrdersDataSource</resource-name>
+      </resource-ref>
+      <method-attributes>
+         <method>
+            <method-name>get*</method-name>
+            <read-only>true</read-only>
+         </method>
+      </method-attributes>  
+    </entity>
+    <session>
+      <ejb-name>OrderAuditSes</ejb-name>
+<!--
+      <home-invoker>jboss:service=invoker,type=pooled</home-invoker>
+      <bean-invoker>jboss:service=invoker,type=pooled</bean-invoker>
+-->
+      <resource-ref>
+         <res-ref-name>OrdersDataSource</res-ref-name>
+         <resource-name>OrdersDataSource</resource-name>
+      </resource-ref>
+    </session>
+  </enterprise-beans>
+  <resource-managers>
+    <resource-manager>
+        <res-name>OrdersDataSource</res-name>
+        <res-jndi-name>java:/ECPerfDS</res-jndi-name>
+    </resource-manager>
+  </resource-managers>
+</jboss>

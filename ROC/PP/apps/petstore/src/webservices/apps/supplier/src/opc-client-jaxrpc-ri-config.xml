@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration
+    xmlns="http://java.sun.com/xml/ns/jax-rpc/ri/config">
+    <wsdl name="OPCWebServiceClient"
+        location="file:../build/OPCWebService.wsdl"
+        packageName="com.sun.j2ee.blueprints.supplier.webservice.opcclient">
+        <typeMappingRegistry />
+    </wsdl>
+</configuration>
+
+
+
+

@@ -1,0 +1,79 @@
+Please contact Franck Sidi (fsidi@sybase.com) for any questions on
+this file or creating the Sybase ECperf database(s).
+
+Tasks:
+
+Input:
+
+	Mode : Standard/Distributed
+	ScaleFactor: s
+	Physical device location to be used:
+
+		Raw Devices ?
+			Not supported now. Need to modify scripts manually
+		File System ?
+			Specify the Directory name under which device files 
+			are to be created. 
+
+			We assume this is a fresh ASE installation and 
+			enough vdevnumbers(10 for this) are available
+			We will calculate the max used vdevno and start 
+			after that. (We will also check if enough devices
+			have been configured.)
+
+			We will not create device for tempdb.
+
+			Database names are fixed
+				For Standard create a single DB 
+					ecperfdb : 
+						ecperfdata.dev   140MB * S
+						ecperflog.dev     15MB * S(min 30MB)
+				For Distributed create 4 DBs 
+					corpdb  :  
+						corpdbdata.dev    20MB * S
+						corpdblog.dev      2MB * S(min 4 MB)
+					orderdb :  
+						orderdbdata.dev   50MB * S
+						orderdblog.dev     5MB * S(Min 10MB)
+					mfgdb   :  
+						mfgdbdata.dev     22MB * S
+						mfgdblog.dev       3MB * S(Min 5MB)
+					supplierdb :  
+						supplierdbdata.dev 38MB * S
+						supplierdblog.dev   4MB * S(Min 8MB)
+
+	Create the tables(execute the schema_?.sql sql scripts)
+
+
+createdevice.sh Done (need to run once for each DB)
+-- Get current max vdevno used
+-- get max devices configured
+-- if mode = S we need 2 vdevno
+-- else we need 8 vdevno
+-- if we don't have enough return error
+-- do disk init for the required devices
+
+
+createdb.sh   Done (need to run once for each DB)
+-- if mode = S we create 1 DB
+-- else we create 4 DBs
+-- do the required create databases 
+
+
+Now run the other scripts (Done)
+
+NOTE on schema :
+
+Null/Not Null 
+
+If you do not specify null or not null, Adaptive Server uses not null by 
+default, unlike Oracle which is using null by default. However, you can switch 
+this default using sp_dboption to make the default compatible with the SQL 
+standards. If you specify (or imply) not null for the newly added column, a 
+default clause is required. 
+
+Propose to explicitly specify null during the creation of table if column allow 
+null. 
+
+Example : 
+create table C_parts (..., p_lomark int null, p_himark int null)

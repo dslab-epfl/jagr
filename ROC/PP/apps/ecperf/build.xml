@@ -1,0 +1,610 @@
+<?xml version="1.0"?>
+
+<!--  ECperf build definitions.
+
+  March 2001 : Thanks to Bill Kayser (Alliare) for creating the initial version of this
+	       ant input file and for the documentation accompanying it which has been 
+	       incorporated into the README.html
+
+  April 2001 : Minor Modifications by Tom Daly (Sun)
+
+  Please refer to the readme.html for instructions on building and deploying 
+  the ecperf source.
+
+  This file contains targets for compiling and packaging war files and
+  ejb files using ant 1.3 or later.
+
+  You can find the ant binaries at http://jakarta.apache.org/ant
+
+  It should not be necessary to edit this file.  
+
+  EXECUTING TARGETS
+
+  To execute a target for a particular appserver such as the reference
+  implementation, do this:
+
+  ant -Dappserver=ri target
+
+  Substitute "ri" for the name of the appserver, such as "tomcat" or 
+  "jrun". 
+
+  "ant" should be invoked from the ecperf top directory ($ECPERF_HOME)
+
+  SUPPORTED TARGETS
+
+  These are the targets you are most likely to use:
+
+  clean:          Delete all output files
+  ecperf-ear:     Builds all ejb jar files and warfiles needed for 
+                  ecperf, minus the supplier, emulator and driver.
+  emulator-ear:   Builds the emulator ear file with the war inside.
+  allejbs:	  Builds just the ejb jar files for all deployable ejbs
+  clean-driver:	  Removes the driver class files and jar in preparation for 
+	          rebuilding.
+  driver:	  Builds the driver.jar file, this must be called explicitly
+	          as it is not part of the default build also driver.jar is not 
+	          removed by the "clean" target
+  load:		  builds the load.jar file
+  loaddb:         Executes the load program for all domains.
+  load-corp,load-supp,load-mfg,load-ords,load-rules:
+                  The targets for individual domain db loading
+
+  -->
+
+<project name="ECPerf" default="all">
+
+  <!-- This property determines where env and config files will
+       be loaded from.  The default is "ri" which means that
+       config/ri.env will be loaded and the EJB descriptors will
+       be found in src/deploy/ri.  -->
+
+  <property name="appserver" value="jboss"/>
+
+  <!-- This is the classpath used for compilation.
+       If you don't have the j2ee.jar file handy, you
+       can substitute it with the individual ext jar
+       files if you have them instead.  -->
+
+  
+  <!-- Load the external properties.  
+       These will override any settings here.    -->
+
+  <property file="config/${appserver}.env"/>
+  <property name="jbossconfig" value="ecperf"/>
+
+  <property name="compile.classpath"
+            value="${JAVAX_JAR}:jars/xerces.jar" />
+ 
+  <!-- This uses the JDK1.3 compiler if available.  You may need to set JAVA_HOME. -->
+    <property name="build.compiler" value="modern"/> 
+
+    <property name="descriptor-dir" location="src/deploy/${appserver}"/>
+
+    <target name="all" depends="ecperf-ear,emulator-ear,load"/>
+
+    <!-- Delete all the targets -->
+    <target name="clean">
+        <delete dir="./classes/WEB-INF" />
+        <mkdir dir="./classes/WEB-INF" />
+        <delete>
+          <fileset dir="." 
+              includes="**/*~,**/*.class,*.zip,**/*.?ar"
+	      excludes="ant/lib/*.jar,jars/*chart*.jar,jars/driver.jar,
+                        ,jars/launcher.jar,jars/xerces.jar"/> 
+	  <fileset dir="${J2EE_HOME}/server/${jbossconfig}/deploy"
+	      includes="ecperf.ear,emulator.ear,xerces.jar,ecperfdb-service.xml"/>
+	  <fileset dir="config"
+	      includes="corpdb.properties,mfgdb.properties,ordsdb.properties,suppdb.properties"
+          />
+	</delete>
+   </target>
+
+    <!-- Compile everything -->
+    <target name="compile">
+    <echo message="The classpath for compilation is ${compile.classpath}" />
+    <mkdir dir="classes"/>
+    <javac srcdir="src"
+           deprecation="on"
+	   debug="on"
+	   destdir="classes"
+	   includes="**/*.java"
+	   excludes="**/charts*/*"
+	   target="1.2"
+	   classpath="${compile.classpath}"/>
+    </target>
+
+
+    <!-- DRIVER clean and REBUILD Targets
+ 	 It is not expected that the driver will need to be deleted or rebuilt
+         but the next 2 targets provide for this should the user explicitly want
+	 to do it. So be aware that the "clean" target will not effect the 
+	 driver classes or jar, you must use "ant clean-driver" to remove driver files
+	 and then "ant driver" to build the new driver
+
+	 The driver target also rebuilds the launcher.jar file which contains the 
+	 logic to initiate the driver in a portable fashion.
+    -->
+
+    <target name="clean-driver" >
+        <delete>
+            <fileset dir="." includes="**/driver/*.class, **/jars/driver.jar,
+				      **/jars/launcher.jar" />
+        </delete>
+    </target>
+
+    <target name="driver" depends="compile">
+    <rmic base="./classes" includes="**/driver/*Impl.class,**/driver/*Agent.class" 
+			   excludes="**/driver/Agent.class" /> 
+    <jar jarfile="jars/driver.jar">
+        <fileset dir="classes"
+               includes="**/driver/*.class"/>
+    </jar>    
+    <jar jarfile="jars/launcher.jar">
+        <fileset dir="classes"
+               includes="**/launcher/*.class"/>
+    </jar></target>
+
+
+  <!-- Definitions for the names of the descriptor files -->
+  <!-- persistence mechanism -->
+  <property name="ejbjarsuffix" value="CMP"/>
+  <property name="jdbcsuffix" value="cluster.xml"/>
+  <property name="jbosssuffix" value="CMP.cluster"/>
+
+  <!-- ejb-jar.xml files -->
+  <property name="dd.util" value="util.xml.${ejbjarsuffix}"/>
+  <property name="dd.corp" value="corp.xml.${ejbjarsuffix}"/>
+  <property name="dd.orders" value="orders.xml.${ejbjarsuffix}"/>
+  <property name="dd.mfg" value="mfg.xml.${ejbjarsuffix}"/>
+  <property name="dd.supp" value="supplier.xml.${ejbjarsuffix}"/>
+
+  <!-- jbosscmp-jdbc.xml files -->
+  <property name="dd.util.cmp" value="utiljbosscmp-jdbc.${jdbcsuffix}"/>
+  <property name="dd.corp.cmp" value="corpjbosscmp-jdbc.${jdbcsuffix}"/>
+  <property name="dd.orders.cmp" value="ordersjbosscmp-jdbc.${jdbcsuffix}"/>
+  <property name="dd.mfg.cmp" value="mfgjbosscmp-jdbc.${jdbcsuffix}"/>
+  <property name="dd.supp.cmp" value="supplierjbosscmp-jdbc.${jdbcsuffix}"/>
+
+  <!-- jboss.xml files -->
+  <property name="dd.util.jboss" value="util.jboss.xml.${jbosssuffix}"/>
+  <property name="dd.corp.jboss" value="corp.jboss.xml.${jbosssuffix}"/>
+  <property name="dd.orders.jboss" value="orders.jboss.xml.${jbosssuffix}"/>
+  <property name="dd.mfg.jboss" value="mfg.jboss.xml.${jbosssuffix}"/>
+  <property name="dd.supp.jboss" value="supplier.jboss.xml.${jbosssuffix}"/>
+
+  <property name="dd.servlet" value="servlet.xml"/>
+  <property name="dd.servlet.jboss" value="servlet.jboss.xml"/>
+  <property name="dd.web" value="web.xml"/>
+  <property name="dd.web.jboss" value="jboss-web.xml"/>
+  <property name="dd.application" value="application.xml"/>
+  <property name="dd.emu-web" value="emulator-web.xml"/>
+  <property name="dd.emu-app" value="emulator-app.xml"/>
+
+  <property name="dd.application-specific" value="sun-j2ee-ri.xml"/>  
+  <property name="tmpdir" value="./tmpdir"/>  
+
+  <!-- EJB Jar Packaging  -->
+
+  <target name="allejbs" depends="util,corp,orders,mfg,supplier-ejb"/>
+
+  <target name="util" depends="compile">
+    <jar jarfile="jars/util.jar">
+      <fileset dir="classes"
+               includes="**/common/**,**/util/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.util}"
+                  fullpath="META-INF/ejb-jar.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.util.jboss}"
+                  fullpath="META-INF/jboss.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.util.cmp}"
+                  fullpath="META-INF/jaws.xml"/>
+    </jar></target>
+
+  <target name="corp" depends="compile">
+    <jar jarfile="jars/corp.jar">
+      <fileset dir="classes"
+               includes="**/ruleengine/**,**/corp/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.corp}"
+                  fullpath="META-INF/ejb-jar.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.corp.jboss}"
+                  fullpath="META-INF/jboss.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.corp.cmp}"
+                  fullpath="META-INF/jaws.xml"/>
+  </jar></target>
+
+  <target name="orders" depends="compile">
+    <jar jarfile="jars/orders.jar">
+      <fileset dir="classes"
+               includes="**/orders/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.orders}"
+                  fullpath="META-INF/ejb-jar.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.orders.jboss}"
+                  fullpath="META-INF/jboss.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.orders.cmp}"
+                  fullpath="META-INF/jaws.xml"/>
+  </jar></target>
+
+  <target name="mfg" depends="compile">
+    <jar jarfile="jars/mfg.jar">
+      <fileset dir="classes"
+               includes="**/mfg/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.mfg}"
+                  fullpath="META-INF/ejb-jar.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.mfg.jboss}"
+                  fullpath="META-INF/jboss.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.mfg.cmp}"
+                  fullpath="META-INF/jaws.xml"/>
+  </jar></target>
+
+  <!-- 
+    The supplier needs to have the xerces xml parser classes 
+    so add xerces.jar in the classpath of the server
+  -->
+
+  <target name="supplier-ejb" depends="compile">
+    <property name="tmpfile" value="tmp.xml"/>
+    <antcall target="process-dd">
+      <param name="source-dd" value="${descriptor-dir}/${dd.supp}"/>
+      <param name="target-dd" value="${tmpfile}"/></antcall>
+	     
+    <jar jarfile="jars/supplier.jar">
+      <fileset dir="classes"
+               includes="**/supplier/**"
+               excludes="**/supplier/helper/LogManager.class,
+                         **/supplier/web/**,**/supplier/emulator/**"/>
+      <zipfileset dir="."
+                  includes="${tmpfile}"
+                  fullpath="META-INF/ejb-jar.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.supp.jboss}"
+                  fullpath="META-INF/jboss.xml"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.supp.cmp}"
+                  fullpath="META-INF/jaws.xml"/>
+    </jar>
+    <delete file="${tmpfile}"/></target>
+
+  <!-- This is an ant subroutine.
+
+       This routine should be called with the property source-dd set
+       to the deployment descriptor which will be copied to the file
+       given by target-dd with the emulator host and port tokens
+       substituted.  
+
+       NOTE: This could be done automatically if the tokens
+       fit ant token syntax: @token@   Ant does automatic token 
+       substitution during <copy>   -->
+
+  <target name="process-dd">
+    <property name="tmpfile" location="classes/tmp.xml"/>
+    <copy tofile="${target-dd}"
+          overwrite="true"
+          file="${source-dd}"/>
+    <replace file="${target-dd}"
+             token="EMULATOR_HOST"
+	     value="${EMULATOR_HOST}"/>
+    <replace file="${target-dd}"
+             token="EMULATOR_PORT"
+	     value="${EMULATOR_PORT}"/>
+    <replace file="${target-dd}"
+             token="_EMULATOR_PREFIX_"
+	     value="${EMULATOR_PREFIX}"/>
+    <replace file="${target-dd}"
+             token="ECPERF_HOST"
+	     value="${ECPERF_HOST}" />
+    <replace file="${target-dd}"
+             token="ECPERF_PORT"
+	     value="${ECPERF_PORT}" />
+    <replace file="${target-dd}"
+             token="_ECPERF_PREFIX_"
+	     value="${ECPERF_PREFIX}" /></target>
+
+  <!-- Web application archive packaging.
+       The web applications consist of the targets:
+         
+	 supplier-war
+	 ecperf-war
+	 emulator-war       -->
+ 
+  <target name="supplier-war" depends="compile">
+    <war warfile="jars/supplier.war"
+         webxml="${descriptor-dir}/${dd.servlet}"
+         basedir="src/docroot" includes="dtd/**/*">
+      <classes 
+         dir="classes" 
+         includes="**/supplier/helper/**,
+                   **/supplier/web/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.servlet.jboss}"
+                  fullpath="WEB-INF/jboss-web.xml"/>
+    </war>
+  </target>
+
+  <target name="ecperf-war" depends="compile">
+    <war warfile="jars/web.war"
+         webxml="${descriptor-dir}/${dd.web}"
+	 basedir="src/docroot">
+      <classes 
+         dir="classes" 
+         includes="**/webbeans/**"/>
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.web.jboss}"
+                  fullpath="WEB-INF/jboss-web.xml"/>
+    </war></target>
+
+
+  <!-- 
+    The emulator needs to have the xerces xml parser classes 
+    so add xerces.jar in the classpath of the server
+  -->
+  <target name="emulator-war" depends="compile">
+
+    <property name="tmpfile" location="classes/tmp.xml"/>
+    <antcall target="process-dd">
+      <param name="source-dd" value="${descriptor-dir}/${dd.emu-web}"/>
+      <param name="target-dd" value="${tmpfile}"/></antcall>
+    <war warfile="jars/emulator.war"
+         webxml="${tmpfile}"
+	 basedir="src/docroot"
+	 includes="dtd/**/*">
+      <classes 
+         dir="classes" 
+         includes="**/supplier/emulator/**,
+                   **/jini/**,**/supplier/helper/**"/>
+    </war>
+    <delete file="${tmpfile}"/></target>
+
+  <!-- Convenience target for building the entire supplier -->
+  <target name="supplier" depends="supplier-ejb,supplier-war"/>
+
+  <!-- EAR Files -->
+  <target name="ecperf-ear" depends="util,supplier,ecperf-war,corp,orders,mfg">  
+    <mkdir dir="${tmpdir}" />
+    <mkdir dir="${tmpdir}/META-INF"/>
+    <copy todir="${tmpdir}/META-INF" >
+	  <fileset dir="${descriptor-dir}" 
+	  includes="${dd.application},${dd.application-specific}" /> 
+    </copy>
+    <copy todir="${tmpdir}" >
+        <fileset dir="jars"
+                 includes="corp.jar,mfg.jar,orders.jar,supplier.jar,util.jar
+                           supplier.war,web.war" />
+    </copy>
+    <jar jarfile="jars/ecperf.ear" 
+         basedir="${tmpdir}" >
+    </jar>
+    <delete dir="${tmpdir}" />
+  </target>
+
+  <target name="emulator-ear" depends="emulator-war">
+    <zip zipfile="jars/emulator.ear"
+         basedir="jars"
+	 includes="emulator.war">
+      <zipfileset dir="${descriptor-dir}"
+                  includes="${dd.emu-app}"
+		  fullpath="META-INF/application.xml"/></zip>
+  </target>
+
+
+  <property name="jdbc.url" value="${JDBC_URL}"/>
+  <property name="jdbc.classname" value="${JDBC_CLASSNAME}"/>
+  <property name="jdbc.userid" value="${JDBC_USERID}"/>
+  <property name="jdbc.password" value="${JDBC_PASSWORD}"/>
+  <target name="deploy" depends="ecperf-ear,emulator-ear">
+    <mkdir dir="./output" />
+    <copy todir="${J2EE_HOME}/server/${jbossconfig}/deploy" filtering="no">
+        <fileset dir="jars"
+                 includes="ecperf.ear,emulator.ear,xerces.jar" />
+        <fileset dir="src/deploy/jboss"
+                 includes="${JDBC_JAR}" />
+    </copy>
+    <copy todir="${J2EE_HOME}/server/${jbossconfig}/deploy" filtering="yes">
+        <fileset dir="src/deploy/jboss"
+                 includes="ecperfdb-service.xml" />
+        <filterset>
+           <filter token="jdbc.url" value="${jdbc.url}"/>
+           <filter token="jdbc.classname" value="${jdbc.classname}"/>
+           <filter token="jdbc.userid" value="${jdbc.userid}"/>
+           <filter token="jdbc.password" value="${jdbc.password}"/>
+        </filterset>
+    </copy>
+    <copy file="config/templatedb.properties" tofile="config/corpdb.properties" filtering="yes">
+        <filterset>
+           <filter token="jdbc.url" value="${jdbc.url}"/>
+           <filter token="jdbc.classname" value="${jdbc.classname}"/>
+           <filter token="jdbc.userid" value="${jdbc.userid}"/>
+           <filter token="jdbc.password" value="${jdbc.password}"/>
+        </filterset>
+    </copy>
+    <copy file="config/templatedb.properties" tofile="config/mfgdb.properties" filtering="yes">
+        <filterset>
+           <filter token="jdbc.url" value="${jdbc.url}"/>
+           <filter token="jdbc.classname" value="${jdbc.classname}"/>
+           <filter token="jdbc.userid" value="${jdbc.userid}"/>
+           <filter token="jdbc.password" value="${jdbc.password}"/>
+        </filterset>
+    </copy>
+    <copy file="config/templatedb.properties" tofile="config/ordsdb.properties" filtering="yes">
+        <filterset>
+           <filter token="jdbc.url" value="${jdbc.url}"/>
+           <filter token="jdbc.classname" value="${jdbc.classname}"/>
+           <filter token="jdbc.userid" value="${jdbc.userid}"/>
+           <filter token="jdbc.password" value="${jdbc.password}"/>
+        </filterset>
+    </copy>
+    <copy file="config/templatedb.properties" tofile="config/suppdb.properties" filtering="yes">
+        <filterset>
+           <filter token="jdbc.url" value="${jdbc.url}"/>
+           <filter token="jdbc.classname" value="${jdbc.classname}"/>
+           <filter token="jdbc.userid" value="${jdbc.userid}"/>
+           <filter token="jdbc.password" value="${jdbc.password}"/>
+        </filterset>
+    </copy>
+
+  </target>
+
+
+  <!-- DB Load -->
+
+  <!-- Default scale value.  Should be overridden on the command line. -->
+  <property name="SCALE" value="18"/>
+
+  <property name="ECPERF_HOME" location="."/>
+
+  <target name="loaddb" 
+          depends="load-corp,load-supp,load-mfg,load-ords,load-rules"/>
+  <target name="load-corp">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Corp"/></antcall></target>
+     
+  <target name="load-supp">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Supp"/></antcall></target>
+     
+  <target name="load-mfg">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Mfg"/></antcall></target>
+     
+  <target name="load-ords">
+    <antcall target="_loaddb">
+      <param name="Domain" value="Ords"/></antcall></target>
+
+  <target name="load-rules">
+    <property name="LoadPkg" value="com.sun.ecperf.load"/>
+    <java classname="${LoadPkg}.LoadRules"
+          fork="true">
+      <classpath>
+        <pathelement path="${JDBC_CLASSPATH}"/>
+        <pathelement path="${CLASSPATH}"/>
+	<pathelement location="jars/load.jar"/></classpath>
+      <jvmarg value="-Decperf.home=${ECPERF_HOME}"/>
+      <arg value="discount"/>
+      <arg value="${ECPERF_HOME}/schema/discount.rules"/></java></target>
+
+  <!-- Generic Ant target for loading a table.  Should
+        be invoked using antcall action seting the Domain argument. -->
+
+  <target name="_loaddb" depends="load">
+    <property name="LoadPkg" value="com.sun.ecperf.load"/>
+    <property name="Domain" value="Ords"/>
+    <java classname="${LoadPkg}.Load${Domain}" fork="true">
+      <jvmarg value="-Decperf.home=${ECPERF_HOME}"/>
+      <arg value="${SCALE}"/>
+      <classpath>
+        <pathelement path="${JDBC_CLASSPATH}"/>
+        <pathelement path="${CLASSPATH}"/>
+	<pathelement location="jars/load.jar"/></classpath></java></target>
+
+  <target name="load" depends="compile">
+    <jar jarfile="jars/load.jar"
+         basedir="classes"
+         includes="com/sun/ecperf/load/**/*.class"/></target>
+    
+  <!-- Compile charts -->
+  <target name="compile-charts">
+    <echo message="The classpath for compilation is ${compile.classpath}:jars/jcchart450K.jar" />
+    <javac srcdir="src"
+           deprecation="on"
+	   debug="on"
+	   destdir="classes"
+	   includes="**/charts*/*"
+	   target="1.2"
+	   classpath="${compile.classpath}:jars/jcchart450K.jar"/>
+  </target>
+
+  <target name="charts" depends="compile-charts">
+    <jar jarfile="jars/charts.jar"
+         basedir="classes"
+         includes="com/sun/ecperf/charts/*.class"/>
+  </target>
+
+   <target name="drop-schema">
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/drop.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+   </target>
+   <target name="create-schema">
+     <echo message="classpath = ${JDBC_CLASSPATH}"/>
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/schema_C.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/schema_M.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/schema_O.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/schema_S.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+      <sql
+         driver="${JDBC_CLASSNAME}"
+         url="${JDBC_URL}"
+         userid="${JDBC_USERID}"
+         password="${JDBC_PASSWORD}"
+         src="schema/${DB}/schema_U.sql"
+         autocommit="true"
+         >
+         <classpath>
+            <pathelement location="${JDBC_CLASSPATH}"/>
+         </classpath>
+      </sql>
+   </target>
+
+</project>

@@ -1,0 +1,26 @@
+ Release  Notes
+
+Java Pet Store Demo 1.3.1_02
+
+
+This release note describes known issues with Java Pet Store Demo 1.3.1_02 :
+
+1. Admin Client problem
+
+Environment :  Java Pet Store Demo 1.3.1_02 , Java 2 SDK, Enterprise Edition 
+v1.4 Beta , Java Web Start  v1.2 or Java Web Start  v1.0.1  and Internet Explorer 
+
+Problem :  Web Start is not able to launch the admin client when Java Pet Store 
+Demo 1.3.1_02 is deployed on J2EE reference implementation 1.4 Beta.  
+Both the two versions of Java Web Start which are currently available for
+download (Java Web Start  v1.2 or Java Web Start  v1.0.1_02 ) are not
+able to launch the admin client  on Windows with Internet Explorer.  
+
+2. I18N in RI1.4 Beta
+
+Environment : Java Pet Store Demo 1.3.1_02 , Java 2 SDK, Enterprise Edition 
+v1.4 Beta
+
+Problem : There are known issues with I18N in 1.4 RI Beta version. So
+the Japanese and Chinese versions of the petstore store front may not function
+properly with 1.4 Beta RI                   

@@ -1,0 +1,81 @@
+
+        dlg_proxy fills a directory with files that describe how to
+playback the events of your web browsing session.  here's what they are:
+
+_playback_ : this is the actual playback script
+[0-9]{5}   : the data from the response of certain events in the 
+             playback script.  used for comparison checking.
+
+        the stuff in the directory is usable immediately as an attack
+method, but sometimes you might want to make changes to it before you run
+the attack.  there's a bunch of stuff in Deluge to give you extra
+features if you're willing to hack these playback files.
+
+The _playback_ file
+===================
+
+The _playback_ file is broken down into individual events, separated by a
+blank line.  Within each event, there's a bunch of stuff to describe both
+the request that the browser made and the response the server made.
+
+One important distinction is how each line is predicated.  If a line
+starts with "DLG-", it's a special tag that Deluge uses.  If the line
+doesn't start that way, then that line is one of the headers of the
+request. 
+
+1] Secure transactions
+
+    If you haven't noticed, dlg_proxy can't record secure transactions.
+    That's because by the time the requests reach dlg_proxy, they've
+    already been encrypted... the browser did it.  So until somebody
+    comes up with a very efficient way of doing prime factorization of
+    very large numbers, or the site your testing is willing to give you
+    their keys, dlg_proxy can't figure out what the request really was.
+
+    The solution is to record everything in non-secure mode, and then
+    hack the _playback_ file to make certain requests secure.  First,
+    find that event in the _playback_ file, and then locate the DLG-URL
+    line (it should be right at the top of the event).  Now, change the
+    "http://" to "https://".
+
+    Yep, pretty easy.
+
+    The trick is that this makes things slow.  Besides all the encrypting
+    and decrypting that happens, secure transactions don't work through
+    the parallel system.  So when a secure request is made, it puts 
+    everything else on hold.  Hopefully this will be fixed in a future
+    version, but it depends on LWP::Parallel::UserAgent.
+
+2] Cookie jar and cache control
+
+    Deluge is meant to emulate a real user with a real browser, so each
+    user has its own cookie jar and cache.  Sometimes, you might want to
+    clear those out in the middle of a playback.  You'd do this if you
+    wanted the user to create an account on a web site, pretend to log
+    out, and log back in, and have to enter a password.
+
+    If you add a new line to an event that says "DLG-Delete-Cookies", the
+    cookie jar will be emptied *before that event is run*.  You should
+    probably only put this tag onto events requesting the first document
+    for a page (usually a .html file, or a .cgi script, or something
+    similar.
+
+    Likewise, if you add a line that says "DLG-Delete-Cache", it will
+    clear the user's cache *before* the rest of that event is run.
+
+
+*** put in the description of how variable replacement works in the
+_playback_ files.  applied to request headers and request content.
+system defined variables first, then user defined, in order.
+
+-------------------
+
+The data files
+==============
+
+Some events have a tag called "DLG-Compare".  That tag refers to a file
+in the playback directory.  In that file is stored the content of the
+response from the server.  Basically, every event that doesn't refer to
+an image has a "DLG-Compare" line, and an associated file.
+
+

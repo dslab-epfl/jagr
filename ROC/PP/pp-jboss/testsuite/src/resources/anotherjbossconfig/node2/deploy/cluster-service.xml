@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Sample Clustering Service Configuration                              -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<server>
+
+  <classpath codebase="lib" archives="jbossha.jar"/>
+
+
+  <!-- ==================================================================== -->
+  <!-- Cluster Partition: defines cluster                                   -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.ha.framework.server.ClusterPartition"
+         name="jboss:service=DefaultPartition">
+  </mbean>
+
+  <!-- ==================================================================== -->
+  <!-- HA Session State Service for SFSB                                    -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.ha.hasessionstate.server.HASessionStateService"
+         name="jboss:service=HASessionState">
+     <depends>jboss:service=DefaultPartition</depends>
+  </mbean>
+
+  <!-- ==================================================================== -->
+  <!-- HA JNDI                                                              -->
+  <!-- ==================================================================== -->
+
+  <mbean code="org.jboss.ha.jndi.HANamingService"
+         name="jboss:service=HAJNDI">
+     <depends>jboss:service=DefaultPartition</depends>
+    <attribute name="Port">11100</attribute>
+  </mbean>
+
+  <mbean code="org.jboss.invocation.jrmp.server.JRMPInvokerHA"
+         name="jboss:service=invoker,type=jrmpha">
+  </mbean>
+
+</server>

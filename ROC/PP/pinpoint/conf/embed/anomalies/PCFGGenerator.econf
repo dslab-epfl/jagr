@@ -1,0 +1,16 @@
+<analysisengine>
+
+<!--
+      pass in record collections:
+	    input    : the paths to be analyzed
+	    output   : the output PCFG.
+
+  -->
+
+<plugin name="pcfggenerator">
+  <classname>roc.pinpoint.analysis.plugins2.anomalies.PCFGGenerator</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="outputCollection">output</arg>
+</plugin>   
+
+</analysisengine>

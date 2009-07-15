@@ -1,0 +1,6 @@
+<jboss-web>
+  <ejb-ref>
+    <ejb-ref-name>ejb/OPCAdminFacadeRemote</ejb-ref-name>
+    <jndi-name>ejb/opc/opc/OPCAdminFacadeEJBRemote</jndi-name>
+  </ejb-ref>
+</jboss-web>

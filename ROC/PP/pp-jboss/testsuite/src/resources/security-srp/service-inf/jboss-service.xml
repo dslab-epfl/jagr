@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<server>
+
+   <!-- 
+   -->
+   <mbean code="org.jboss.test.security.service.SecurityConfig"
+         name="jboss.security.tests:service=SecuritySpecLoginConfig">
+      <attribute name="AuthConfig">META-INF/srp-test-config.xml</attribute>
+      <attribute name="SecurityConfigName">jboss.security:name=SecurityConfig</attribute>
+   </mbean>
+
+  <!-- The SRP service that sets up the RMI interface to SRP -->
+  <mbean code="org.jboss.security.srp.SRPService"
+	 name="jboss.security.tests:service=SRPService">
+    <attribute name="VerifierSourceJndiName">srp-test/TestVerifierSource</attribute>
+    <attribute name="JndiName">srp-test/SRPServerInterface</attribute>
+    <attribute name="AuthenticationCacheJndiName">srp-test/AuthenticationCache</attribute>
+    <attribute name="ServerPort">0</attribute>
+    <depends>jboss.security.tests:service=PropertiesVerifierStore</depends>
+  </mbean>
+
+  <!-- Expose the SRP service interface via HTTP -->
+  <mbean code="org.jboss.invocation.http.server.HttpProxyFactory"
+	 name="jboss.security.tests:service=SRP/HTTP">
+    <attribute name="InvokerURL">http://localhost:8080/invoker/JMXInvokerServlet</attribute>
+    <attribute name="InvokerName">jboss.security.tests:service=SRPService</attribute>
+    <attribute name="ExportedInterface">org.jboss.security.srp.SRPRemoteServerInterface</attribute>
+    <attribute name="JndiName">srp-test-http/SRPServerInterface</attribute>
+  </mbean>
+
+  <!-- The SRP store handler service -->
+  <mbean code="org.jboss.test.security.service.PropertiesVerifierStore"
+	 name="jboss.security.tests:service=PropertiesVerifierStore">
+    <attribute name="JndiName">srp-test/TestVerifierSource</attribute>
+  </mbean>
+
+</server>

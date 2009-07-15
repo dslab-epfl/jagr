@@ -1,0 +1,129 @@
+#!/usr/bin/perl
+
+local $^W = 1;
+use strict;
+
+use Getopt::Long;
+
+# load the deluge-provided libraries before searching local Perl libs
+use English;
+use File::Basename;
+use lib File::Basename::dirname($PROGRAM_NAME);
+
+sub usage
+{
+    my $comment = shift;
+    select STDERR;
+    print "ERROR: $comment\n\n" if $comment;
+    print '
+USAGE: deluge [-ae] {configuration file}
+       deluge -p {configuration file} {user definition}
+   
+   -a    Attack Mode (default)
+
+   -e    Eval Mode (default)
+         --hist-time-buckets   Overrride the dcf setting hist-time-buckets.
+         --hist-value-buckets  Overrride the dcf setting hist-value-buckets.
+         --histograms          Display tabular histograms for attack results.
+         --eval-per-url             Overrride the dcf setting per-url.
+         --eval-per-user            Display results by user definition.
+
+   -p    Proxy Mode       Supply a user definition name after the filename.
+
+   -r    Results Mode (synonym for -e)
+
+';
+    exit 1;
+}
+
+# defaults for options
+my ($attack_mode, $eval_mode, $help, $proxy_mode) = 
+    (0, 0, 0, 0);
+
+# options hashref - grow as needed
+my %eval = ( 
+	     #hist-time-buckets => undef,
+	     #hist-value-buckets => undef,
+	     #histograms => undef,
+	     #per-url => undef,
+	     #per-user => undef,
+	     );
+
+# get any command-line options
+GetOptions(
+	   'attack' => \$attack_mode,
+	   'eval' => \$eval_mode,
+	   'help' => \$help,
+	   'proxy' => \$proxy_mode,
+	   'results' => \$eval_mode,
+
+	   # eval-specific
+	   'hist-time-buckets!' => \$eval{hist_time_buckets},
+	   'hist-value-buckets!' => \$eval{hist_value_buckets},
+	   'histograms!' => \$eval{histograms},
+	   'eval-per-url' => \$eval{per_url},
+	   'eval-per-user' => \$eval{per_user}
+);
+
+usage() if $help;
+
+use Deluge::Config;
+use Deluge::Mcp;
+
+my $cfg = shift() 
+    or usage("Please specify a scenario file.");
+$cfg = Deluge::Config->new($cfg)
+    or usage("Missing or invalid scenario file.");
+my $mcp;
+
+# if no mode was specified, default to attack then eval
+unless ($attack_mode or $eval_mode or $proxy_mode) {
+    $attack_mode = $eval_mode = 1;
+}
+
+if ($proxy_mode) {
+    # second argument is the user profile that we're recording to
+    my $defname;
+    $defname = shift() or usage("Please specify a user scenario.");
+ 	$mcp = Deluge::Mcp->new($cfg, $defname);
+    $mcp->start_proxy();
+    $mcp->shut_down();
+    # it doesn't make sense to eval or attack after proxy
+    exit 0;
+}
+
+# now set up a config object for eval or attack
+$mcp = Deluge::Mcp->new($cfg, $proxy_mode);
+
+# We might want to eval after attacking
+
+if ($attack_mode) {
+    $mcp->prep_for_attack();
+    if ($$ == $mcp->parent()) {
+	print STDERR "Starting attack at " . localtime() . "...\n";
+	# wait for all children to die (SIGCHLD)
+	while ($mcp->children()) { sleep 60 }
+    } else {
+	# child process
+	$mcp->main_attack_loop();
+	$mcp->shut_down();
+	# parent will handle any follow-up actions (eval, etc)
+	exit 0;
+    }
+}
+
+if ($eval_mode) {
+    print STDERR "Evaluating results...\n";
+    my $log = Deluge::Log->new();
+
+    # allow command-line options to override the dcf settings
+    $eval{per_url} = $mcp->eval_per_url() unless defined $eval{per_url};
+    $eval{hist_time_buckets} = $mcp->eval_hist_time_buckets() unless 
+	defined $eval{hist_time_buckets};
+    $eval{hist_value_buckets} = $mcp->eval_hist_value_buckets() unless 
+	defined $eval{hist_value_buckets};
+    
+    $log->evaluate($mcp->log_filename(), \%eval);
+}
+
+# end deluge

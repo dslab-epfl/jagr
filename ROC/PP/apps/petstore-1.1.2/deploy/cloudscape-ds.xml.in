@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  JBoss Server Configuration                                           -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<datasources>
+
+  <local-tx-datasource>
+
+    <jndi-name>EstoreDB</jndi-name>
+
+    <connection-url>jdbc:rmi://$CLOUDSCAPEHOST$:1088/jdbc:cloudscape:EstoreDB;create=true</connection-url>
+    
+    <driver-class>COM.cloudscape.core.RmiJdbcDriver</driver-class>
+    <user-name>estoreuser</user-name>
+    <password>estore</password>
+
+    <!--security-domain>CloudscapeDbRealm</security-domain-->
+
+    <min-pool-size>24</min-pool-size>
+    <max-pool-size>30</max-pool-size>
+
+  </local-tx-datasource>
+
+  <local-tx-datasource>
+    <jndi-name>InventoryDB</jndi-name>
+
+    <connection-url>jdbc:rmi://$CLOUDSCAPEHOST$:1088/jdbc:cloudscape:EstoreDB;create=true</connection-url>
+
+    <driver-class>COM.cloudscape.core.RmiJdbcDriver</driver-class>
+    <user-name>estoreuser</user-name>
+    <password>estore</password>
+
+    <!--security-domain>CloudscapeDbRealmInventory</security-domain-->
+
+    <min-pool-size>24</min-pool-size>
+    <max-pool-size>30</max-pool-size>
+
+  </local-tx-datasource>
+
+</datasources>

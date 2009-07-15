@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+  
+<meta http-equiv="Content-Type"
+ content="text/html; charset=gb2312">
+
+  
+<meta name="GENERATOR"
+ content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+<title>Java[tm] Pet Store Demo 1.3.1_02 &gt;在 Java PetStore Demo 中启用 Web 服务功能</title>
+</head>
+  <body>  
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+      <tbody>
+         <tr>
+<td bgcolor="#000033"><b><font color="#ccccff"> <a  href="index.html">Java(tm) Pet Store Demo 1.3.1_02</a></font></b>  <font  color="#ffffff">&gt; <b>为了启用 Web 服务所做的改动</b></font></td>
+<td bgcolor="#000033"> <div align="right"><b><font color="#ccccff"> <a  href="http://java.sun.com/j2ee/blueprints/"> Java BluePrints</a></font></b></div>
+      </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<h1> <font color="#000000">为了启用 Web 服务在 Java PetStore Demo 应用程序中所做的改动</font></h1> <font color="#000000">下面列出了对 Java  PetStore Demo 示例应用程序所做的一些改动，以实现在 J2EE 平台上提供 Web 服务技术。</font>
+<p><font color="#000000">pet store 示范应用程序包括四个</font><font  color="#000000">独立部分：<br> </font></p>
+
+<ol>
+<li><font color="#000000"><tt>PetStore 网站 (PetStore Website)</tt>应用程序实现了与用户交互并提交用户的订单</font></li>
+<li><font color="#000000"><tt>订单处理中心 (Order Processing Center, OPC)</tt> 应用程序实现了进行订单处理的工作流程</font></li>
+<li><font color="#000000"><tt>供应商 (Supplier)</tt>应用程序完成 OPC 批准的订单并将发票返送回 OPC</font></li>
+<li><font color="#000000"> <tt>管理 (Admin) </tt>应用程序负责与 OPC 交互。管理员 (Admin) 应用程序提供了一个由管理员使用的启用了 JavaWebStart 的 Swing 客户端</font></li>
+
+</ol> <font color="#000000">在没有 Web 服务时，PetStore-OPC 之间的通信和 OPC-供应商程序 (Supplier) 之间的通信都是利用 <tt>Java Messaging Service (JMS)</tt> 技术完成的，JMS 可方便地提供异步通信。</font>想要了解更多信息，请参阅<i> Designing Enterprise Applications with the J2EE Platform </i>，第二版中的<a  href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html"> Architecture of the Sample Application </a> 和<a  href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/sample-app/sample-app1.3.1.html"> Design and Implementation of Sample Application</a>。<br> 我们现在改用 Web 服务技术进行通信。 <br> 
+
+<h2><font color="#000000">Web 服务用于面向文档的交互：</font></h2>
+
+<p><font color="#000000">面向文档的交互方式促进了“松耦合”型 Web 服务的实现。在这种情况下，Web 服务应用程序之间通过交换 XML 文档实现交互。下面的情形就是一个例证，我们将 OPC 程序与“供应商”程序之间的原有通信方式改为：使用基于 XML 技术的 RPC (JAXRPC) 的 Java API 来传递 XML 文档。应用程序的设计也展示了如何扩展您现有的 J2EE 应用程序以便使用 Web 服务。<br> </font></p>
+
+<p><font color="#000000">OPC 和“供应商”程序之间的通信过程是：</font> </p>
+
+<ul>
+
+  <ul>
+<li> <font color="#000000">OPC 将批准后的订单提交给“供应商”程序</font></li>
+<li> <font color="#000000">“供应商”程序将那些已经发货的货项的发票返送回</font><font color="#000000"> OPC </font> <font  color="#000000"> </font></li>
+
+  </ul>
+
+</ul> <font color="#000000">为清楚地区分特定于 Web 服务的改动，我们将所有的修改放在一个独立的“源代码树”中，命名为<tt> webservices</tt>，位于<tt>&lt;petstore.home&gt;/src</tt> 目录下。下面是这个目录下包含的改动情况：</font>
+<ul>
+<li> <font color="#000000">供应商程序 (Supplier) 已更改为能提供 Web 服务，处理来自 OPC 的“订单”。 </font> </li>
+<li> <font color="#000000"><font color="#000000">OPC 已更改为提供 Web 服务，处理来自“供应商”(Supplier) 程序的发票。</font> </li>
+<li> <font color="#000000">分别由 OPC 程序和“供应商”(Supplier) 程序提供的订单 Web 服务和发票处理 Web 服务，都遵循<a href="http://java.sun.com/blueprints/guidelines"> BluePrints for Web-services </a>文档中描述的<tt>异步服务</tt>模式。这是因为两种 Web 服务都需要一些时间进行处理，因此没有必要让服务请求进程在服务完成之前一直处于等待状态。</font></li>
+<li> <font color="#000000">两种 Web 服务都会收到一个 XML 文档（也就是订单和发票），然后确认它们，并将确认后的 XML 文档放到一个适当的 JMS 队列中处理，再将答复返回给请求方。</font></li>
+<li> <font color="#000000">OPC 提供的 Web 服务接口和实现由文件</font> <font  color="#000000"><tt>&lt;petstore.home&gt;src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/OPC*.java</tt>实现。</font></li> <font color="#000000">        <li> <font color="#000000">“供应商”(Supplier) 程序提供的 Web 服务接口和执行由文件</font><tt>&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/Supplier*.java</tt>实现。 <font color="#000000"> </font></li>
+<li> <font color="#000000">为通过 JAXRPC 实现 OPC 与“供应商”(Supplier) 程序之间的双向通信，必须执行两个新的转换代理程序（一个程序负责 OPC-供应商的通信，而另一个负责供应商-OPC 之间的通信）。这些文件如下：</font><tt>&lt;petstore.home&gt;/src/webservices/apps/opc/src/com/sun/j2ee/blueprints/opc/webservice/transitions/OrderApprovalTD.java</tt> 和 <tt>&lt;petstore.home&gt;/src/webservices/apps/supplier/src/com/sun/j2ee/blueprints/supplier/webservice/transitions/SupplierOrderTD.java</tt>.
+   </li>
+<li> <font color="#000000">其中使用了 <tt>Java Web 服务开发者包 (Java Web Services Developer Pack)，即 JWSDP</tt>来实现 Web 服务。相应地，JWSDP 所需的配置已包含在文件<tt>  &lt;petstore.home&gt;/src/webservices/apps/opc/src/xrpcc-config.xml</tt> 和 <tt> &lt;petstore.home&gt;/src/webservices/apps/supplier/src/xrpcc-config.xml</tt>中。</font></li>
+<li>所有用于“供应商”(Supplier) 程序和 OPC 程序的 ejb-jar.xml 和 web.xml 都做了改动，以反映 Web 服务是通过“服务器小程序” (servlet) 终端实现的，并且安装 JWSDP 时已将操作端口从 8000 改为 8080。</li> </font>
+</ul> <font color="#000000">  </font>
+<h2><font color="#000000">面向方法交互的 Web 服务：</font></h2> <font color="#000000">  </font>
+<p><font color="#000000"><font color="#000000">在 PetStore 中，启用 JavaWebStart 的管理应用程序说明了如何为您的应用程序提供功能更为丰富强大的用户界面。这个 Swing 应用程序调用了在服务器上完备定义的几个操作，例如，获取销售报表、批准未决订单等。不具备 Web 服务的该应用程序版本用一种特有的 XML 格式通过 HTTP POST 协议将这些命令发送到服务器，这就需要编写大量的代码来创建、解析、发送这些命令并处理命令的结果。现在我们提供另一种 Web 服务，即<tt>AdminWebService </tt>，进行管理，其通过提供面向方法的 JAXRPC 接口，大大降低了复杂程度。下面是我们所做的一些改动： <br> </font></font></p> <font color="#000000">  </font>
+<ul> <font color="#000000">   <li>我们创建了一个新的 Web 服务，即 <tt>AdminWebService</tt>，它由 JAXRPC 接口<tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/com/sun/j2ee/blueprints/admin/webservice/AdminService.java</tt> 实现</li>
+<li>Swing 客户端使用一个特定于 Web 服务的代理类与服务器通信<tt>&lt;petstore.home&gt;/src/webservices/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/WebServicePetStoreProxy.java</tt><i>。</i>在 <tt>&lt;petstore.home&gt;/webservices </tt>（如果已经重新编译了源代码，则为<tt>&lt;petstore.home&gt;/src/webservices/apps/admin/build </tt>）目录下运行 <tt>adminwsclient.bat </tt>（Windows 操作系统） 或 <tt>adminwsclient.sh </tt>（Unix 操作系统）文件就可运行此客户端程序。</li>
+<li>注意启用 JavaWebStart 的客户端程序仍使用 HTTP POST 协议与服务器通信。这个客户端程序使用 HTTP POST 的一个特定代理类与服务器通信<tt>&lt;petstore.home&gt;/src/apps/admin/src/client/com/sun/j2ee/blueprints/admin/client/HttpPostPetStoreProxy.java</tt></li> </font>
+</ul> <font color="#000000">         </font>
+<hr noshade="" =""><font color="#000000"><a href="copyright.html">版权所有 &copy; 2002 Sun Microsystems，Inc. 保留所有权利。</a>  <br> <br> <br> </font> <br>
+</body>
+</html>

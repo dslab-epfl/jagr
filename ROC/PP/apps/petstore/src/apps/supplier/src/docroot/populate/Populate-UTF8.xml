@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE InventoryList [
+	<!ELEMENT InventoryList (Inventory)+>
+	<!ELEMENT Inventory EMPTY>
+	<!ATTLIST Inventory
+	        id CDATA #REQUIRED
+	        quantity CDATA #REQUIRED
+	>
+]>
+
+<InventoryList>
+	<Inventory id="EST-1" quantity="10000" />
+	<Inventory id="EST-2" quantity="10000" />
+	<Inventory id="EST-3" quantity="10000" />
+	<Inventory id="EST-4" quantity="10000" />
+	<Inventory id="EST-5" quantity="10000" />
+	<Inventory id="EST-6" quantity="10000" />
+	<Inventory id="EST-7" quantity="10000" />
+	<Inventory id="EST-8" quantity="10000" />
+	<Inventory id="EST-9" quantity="10000" />
+	<Inventory id="EST-10" quantity="10000" />
+	<Inventory id="EST-11" quantity="10000" />
+	<Inventory id="EST-12" quantity="10000" />
+	<Inventory id="EST-13" quantity="10000" />
+	<Inventory id="EST-14" quantity="10000" />
+	<Inventory id="EST-15" quantity="10000" />
+	<Inventory id="EST-16" quantity="10000" />
+	<Inventory id="EST-17" quantity="10000" />
+	<Inventory id="EST-18" quantity="10000" />
+	<Inventory id="EST-19" quantity="10000" />
+	<Inventory id="EST-20" quantity="10000" />
+	<Inventory id="EST-21" quantity="10000" />
+	<Inventory id="EST-22" quantity="10000" />
+	<Inventory id="EST-23" quantity="10000" />
+	<Inventory id="EST-24" quantity="10000" />
+	<Inventory id="EST-25" quantity="10000" />
+	<Inventory id="EST-26" quantity="10000" />
+	<Inventory id="EST-27" quantity="10000" />
+	<Inventory id="EST-28" quantity="10000" />
+	<Inventory id="EST-29" quantity="10000" />
+</InventoryList>
+
+

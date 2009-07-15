@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<screen-definitions>
+
+  <default-template>/zh/template.jsp</default-template>
+
+  <screen name="main">
+    <parameter key="title" value="欢迎您" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/main.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="advicebanner" value="/advice_banner.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="cart">
+    <parameter key="title" value="购物筐" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/cart.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+    <parameter key="advicebanner" value="/advice_banner.jsp" />
+   </screen>
+
+   <screen name="product">
+    <parameter key="title" value="产品系列" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/product.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="category">
+    <parameter key="title" value="宠物种类" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/category.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="item">
+    <parameter key="title" value="详细产品" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/item.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="customer">
+    <parameter key="title" value="顾客信息" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/customer.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="update_customer">
+    <parameter key="title" value="更新顾客信息" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/edit_customer.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="search">
+    <parameter key="title" value="检索" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/search.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="create_customer">
+    <parameter key="title" value="创建用户" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/create_customer.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="order_complete">
+    <parameter key="title" value="订购完成" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/order_completed.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="enter_order_information">
+    <parameter key="title" value="输入订购信息" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/enter_order_information.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="signoff">
+    <parameter key="title" value="登出" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/signoff.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="signon_welcome">
+    <parameter key="title" value="欢迎" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="mylist" value="/zh/mylist.jsp" />
+    <parameter key="body" value="/main.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="signon">
+    <parameter key="title" value="登入" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/signon.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="duplicate_account">
+    <parameter key="title" value="重复帐户" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/duplicate_account.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="signon_create">
+    <parameter key="title" value="登入：创建帐户" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/create_user.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="signon_error">
+    <parameter key="title" value="登入错误" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/signon_failed.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="cart_empty_order_error">
+    <parameter key="title" value="错误：购物筐为空" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/cart_empty_order_error.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+   <screen name="general_error">
+    <parameter key="title" value="一般错误" direct="true"/>
+    <parameter key="banner" value="/zh/banner.jsp" />
+    <parameter key="sidebar" value="/zh/sidebar.jsp" />
+    <parameter key="body" value="/zh/general_error.jsp" />
+    <parameter key="footer" value="/zh/footer.jsp" />
+   </screen>
+
+</screen-definitions>
+

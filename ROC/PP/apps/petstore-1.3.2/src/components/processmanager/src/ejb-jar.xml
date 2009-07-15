@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+<ejb-jar>
+  <display-name>ProcessManagerJAR</display-name>
+  <enterprise-beans>
+    <entity>
+      <display-name>ManagerEB</display-name>
+      <ejb-name>ManagerEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerEJB</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.String</prim-key-class>
+      <reentrant>False</reentrant>
+      <cmp-version>2.x</cmp-version>
+      <abstract-schema-name>Manager</abstract-schema-name>
+      <cmp-field>
+        <description>no description</description>
+        <field-name>status</field-name>
+      </cmp-field>
+      <cmp-field>
+        <description>no description</description>
+        <field-name>orderId</field-name>
+      </cmp-field>
+      <primkey-field>orderId</primkey-field>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+      <query>
+        <description></description>
+        <query-method>
+          <method-name>findOrdersByStatus</method-name>
+          <method-params>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+        </query-method>
+        <ejb-ql>SELECT DISTINCT OBJECT(a) FROM Manager a WHERE a.status = ?1</ejb-ql>
+      </query>
+    </entity>
+    <session>
+      <display-name>ProcessManagerSB</display-name>
+      <ejb-name>ProcessManagerEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.processmanager.ejb.ProcessManagerEJB</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/Manager</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocal</local>
+        <ejb-link>ManagerEJB</ejb-link>
+      </ejb-local-ref>
+      <security-identity>
+        <description></description>
+        <use-caller-identity></use-caller-identity>
+      </security-identity>
+    </session>
+  </enterprise-beans>
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+       <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>remove</method-name>
+        <method-params>
+          <method-param>java.lang.Object</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getEJBLocalHome</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findByPrimaryKey</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findOrdersByStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getOrderId</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getStatus</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getPrimaryKey</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>remove</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>isIdentical</method-name>
+        <method-params>
+          <method-param>javax.ejb.EJBLocalObject</method-param>
+        </method-params>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>createManager</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getPrimaryKey</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getEJBLocalHome</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>remove</method-name>
+        <method-params>
+          <method-param>java.lang.Object</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>remove</method-name>
+        <method-params />
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>isIdentical</method-name>
+        <method-params>
+          <method-param>javax.ejb.EJBLocalObject</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>updateStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getOrdersByStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params />
+      </method>
+    </method-permission>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>create</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getStatus</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>remove</method-name>
+        <method-params>
+          <method-param>java.lang.Object</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>remove</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findByPrimaryKey</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>LocalHome</method-intf>
+        <method-name>findOrdersByStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>setStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getOrderId</method-name>
+        <method-params />
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>createManager</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>updateStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+        <ejb-name>ProcessManagerEJB</ejb-name>
+        <method-intf>Local</method-intf>
+        <method-name>getOrdersByStatus</method-name>
+        <method-params>
+          <method-param>java.lang.String</method-param>
+        </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+</ejb-jar>
+
+

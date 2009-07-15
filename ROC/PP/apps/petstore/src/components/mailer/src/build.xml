@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.3 2003/03/14 09:58:59 emrek Exp $               -->
+<!-- =================================================================== -->
+
+<project name="mailer" default="core" basedir=".">
+
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <property name="mailer.home" value=".."/>
+
+    <property name="mailer.src" value="${mailer.home}/src"/>
+
+    <!-- The destination directory for the build -->
+    <property name="mailer.build" value="${mailer.home}/build"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="mailer.classbindir" value="${mailer.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="mailer.javadocs.dir" value="${mailer.build}/docs/api"/>
+
+    <!-- The root directory of all the components. -->
+    <property name="mailer.components.basedir" value="../.."/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="mailer.xmldocuments.home" value="${mailer.components.basedir}/xmldocuments"/>
+    <property name="mailer.xmldocuments.client" value="${mailer.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${jboss.home}/client/jbossall-client.jar:${jboss.home}/server/default/lib/activation.jar:${jboss.home}/server/default/lib/mail.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="mailer.classpath" value="${mailer.classbindir}:${mailer.xmldocuments.client}:${j2ee.classpath}"/>
+
+    <property name="mailer.ejbjar" value="${mailer.build}/mailer-ejb.jar"/>
+
+    <property name="mailer.ejbclientjar" value="${mailer.build}/mailer-ejb-client.jar"/>
+  </target>
+
+
+  <target name="compile" depends="init">
+    <mkdir dir="${mailer.classbindir}"/>
+    <javac srcdir="${mailer.src}"
+           debug="${javac.debug}"
+           destdir="${mailer.classbindir}"
+	   classpath="${mailer.classpath}"
+	   includes="com/**"/>
+    <copy todir="${mailer.classbindir}" >
+     <fileset dir="${mailer.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target> 
+
+
+  <target name="ejbjar" depends="init">
+    <property name="mailer.buildjardir" value="${mailer.home}/build/ejbjar"/>
+    <mkdir dir="${mailer.buildjardir}/META-INF"/>
+    <copy todir="${mailer.buildjardir}">
+     <fileset dir= "${mailer.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${mailer.buildjardir}/META-INF/ejb-jar.xml" />  
+    <copy file="jboss.xml" tofile="${mailer.buildjardir}/META-INF/jboss.xml" />  
+    <delete file="${mailer.ejbjar}" quiet="true"/>
+    <jar jarfile="${mailer.ejbjar}" basedir="${mailer.buildjardir}" manifest="ejb-jar-manifest.mf" />
+    <delete dir="${mailer.buildjardir}"/>
+  </target>
+
+
+  <target name="ejbclientjar" depends="init">
+    <property name="mailer.buildjardir" value="${mailer.home}/build/ejbjar"/>
+
+    <copy todir="${mailer.buildjardir}">
+     <fileset dir= "${mailer.classbindir}"/>
+    </copy>
+
+    <delete file="${mailer.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${mailer.ejbclientjar}" basedir="${mailer.buildjardir}"/>
+    <delete dir="${mailer.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${mailer.build}"/>
+  </target>
+
+  <target name="components" depends="init">
+    <ant dir="${mailer.xmldocuments.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${mailer.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${mailer.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Mailer Component API"
+             doctitle="Mailer Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${mailer.xmldocuments.home}/build/classes"/>
+        <pathelement path="${mailer.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${mailer.xmldocuments.home}/src"/>
+        <pathelement path="${mailer.src}"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Mailer Component          +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+</project>
+

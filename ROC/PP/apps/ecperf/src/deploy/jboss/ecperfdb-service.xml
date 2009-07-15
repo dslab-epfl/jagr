@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!-- ==================================================================== -->
+  <!-- New ConnectionManager setup for default PostgreSQL dbs               -->
+  <!-- Build jmx-api (build/build.sh all) and view for config documentation -->
+  <!-- To avoid class not found headaches, copy your postgres driver to the -->
+  <!-- jboss lib directory                                                  -->
+  <!-- ==================================================================== -->
+
+<server>
+
+   <mbean code="org.jboss.resource.connectionmanager.LocalTxConnectionManager"
+      name="jboss.jca:service=LocalTxCM,name=ECPerfDS">
+    <!-- ======================================================= -->
+    <depends optional-attribute-name="ManagedConnectionFactoryName">
+      <!--embedded mbean-->
+      <mbean code="org.jboss.resource.connectionmanager.RARDeployment"
+         name="jboss.jca:service=LocalTxDS,name=ECPerfDS">
+<!-- ========== Set the JndiName ======================= -->
+        <attribute name="JndiName">ECPerfDS</attribute>
+        <attribute name="ManagedConnectionFactoryProperties">
+          <properties>
+            <config-property name="ConnectionURL" type="java.lang.String">@jdbc.url@</config-property>
+            <config-property name="DriverClass" type="java.lang.String">@jdbc.classname@</config-property>
+            <config-property name="UserName" type="java.lang.String">@jdbc.userid@</config-property>
+            <config-property name="Password" type="java.lang.String">@jdbc.password@</config-property>
+          </properties>
+
+        </attribute>
+
+<!--Below here are advanced properties -->
+        <!--hack-->
+        <depends optional-attribute-name="OldRarDeployment">jboss.jca:service=RARDeployment,name=JBoss LocalTransaction JDBC Wrapper</depends>
+
+        <!--real attributes-->
+      </mbean>
+    </depends>
+
+    <depends optional-attribute-name="ManagedConnectionPool"> 
+      <!--embedded mbean-->
+      <mbean code="org.jboss.resource.connectionmanager.JBossManagedConnectionPool" name="jboss.jca:service=LocalTxPool,name=ECPerfDS">
+
+        <attribute name="MinSize">50</attribute>
+        <attribute name="MaxSize">400</attribute>
+        <attribute name="BlockingTimeoutMillis">50000000</attribute>
+        <attribute name="IdleTimeoutMinutes">15</attribute>
+        <attribute name="Criteria">ByContainer</attribute>
+      </mbean>
+
+    </depends>
+    <depends optional-attribute-name="CachedConnectionManager">jboss.jca:service=CachedConnectionManager</depends>
+
+    <depends optional-attribute-name="JaasSecurityManagerService">jboss.security:service=JaasSecurityManager</depends>
+
+    <attribute name="TransactionManager">java:/TransactionManager</attribute>
+    <!--make the rar deploy! hack till better deployment-->
+    <depends>jboss.jca:service=RARDeployer</depends>
+
+
+  </mbean>
+
+</server>

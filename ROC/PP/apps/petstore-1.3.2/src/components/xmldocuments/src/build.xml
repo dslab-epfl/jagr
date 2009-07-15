@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:31 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="xmldocuments" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="xmldocuments.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="xmldocuments.build" value="${xmldocuments.home}/build"/>
+    <property name="xmldocuments.buildjardir" value="${xmldocuments.build}/jar"/>
+
+    <property name="xmldocuments.src" value="${xmldocuments.home}/src"/>
+
+    <property name="xmldocuments.rsrc" value="${xmldocuments.src}/rsrc"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="xmldocuments.classbindir" value="${xmldocuments.build}/classes"/>
+
+    <property name="xmldocuments.client.jar" value="xmldocuments.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="xmldocuments.classpath" value="${xmldocuments.classbindir}:${j2ee.classpath}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${xmldocuments.classbindir}"/>
+    <javac srcdir="${xmldocuments.src}"
+           debug="${javac.debug}"
+           destdir="${xmldocuments.classbindir}"
+	   classpath="${xmldocuments.classpath}"
+	   includes="com/**"/>
+    <copy todir="${xmldocuments.classbindir}" >
+     <fileset dir="${xmldocuments.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+    <copy todir="${xmldocuments.classbindir}" >
+     <fileset dir= "${xmldocuments.rsrc}"/>
+    </copy>
+  </target>
+
+ <target name="clientjar" depends="init">
+    <delete dir="${xmldocuments.buildjardir}" quiet="true"/>
+    <mkdir dir="${xmldocuments.buildjardir}"/>
+    <copy todir="${xmldocuments.buildjardir}" >
+     <fileset dir= "${xmldocuments.classbindir}"/>
+    </copy>
+    <jar jarfile="${xmldocuments.build}/${xmldocuments.client.jar}" basedir="${xmldocuments.buildjardir}" />
+    <delete dir="${xmldocuments.buildjardir}"/>
+ </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${xmldocuments.build}"/>
+  </target>
+
+  <target name="core" depends="compile,clientjar" />
+  <target name="all" depends="core" />
+
+</project>

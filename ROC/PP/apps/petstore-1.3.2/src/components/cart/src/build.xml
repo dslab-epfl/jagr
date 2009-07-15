@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:26 emrek Exp $               -->
+<!-- =================================================================== -->
+
+<project name="cart" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The tracer util home directory of the workspace -->
+    <property name="cart.util.home" value="../../util"/>
+    <property name="cart.tracer.home" value="${cart.util.home}/tracer"/>
+
+    <!-- The tracer util src directory of the workspace -->
+    <property name="cart.tracer.src" value="${cart.tracer.home}"/>
+    <property name="cart.tracer.client" value="${cart.tracer.home}/build/tracer.jar"/>
+
+
+    <!-- The destination directory for the catalog compiled classes. -->
+    <property name="cart.catalog.home" value="../../catalog"/>
+    <property name="cart.catalog.client" value="${cart.catalog.home}/build/catalog-ejb-client.jar"/>
+
+    <property name="cart.home" value=".."/>
+
+    <property name="cart.src" value="${cart.home}/src"/>
+
+    <!-- The destination directory for the build -->
+    <property name="cart.build" value="${cart.home}/build"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="cart.classbindir" value="${cart.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="cart.javadocs.dir" value="${cart.build}/docs/api"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="cart.classpath" value="${cart.catalog.client}:${cart.tracer.client}:${cart.classbindir}:${j2ee.classpath}"/>
+
+    <property name="cart.ejbjar" value="${cart.build}/cart-ejb.jar"/>
+    <property name="cart.ejbclientjar" value="${cart.build}/cart-ejb-client.jar"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${cart.classbindir}"/>
+    <javac srcdir="${cart.src}"
+           debug="${javac.debug}"
+           destdir="${cart.classbindir}"
+	   classpath="${cart.classpath}"
+	   includes="com/**"/>
+  </target> 
+
+  <target name="ejbjar" depends="init">
+    <property name="cart.buildjardir" value="${cart.home}/build/ejbjar"/>
+    <mkdir dir="${cart.buildjardir}/META-INF"/>
+    <copy todir="${cart.buildjardir}">
+     <fileset dir= "${cart.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${cart.buildjardir}/META-INF/ejb-jar.xml" />   
+    <delete file="${cart.ejbjar}" quiet="true"/>
+    <jar jarfile="${cart.ejbjar}" basedir="${cart.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${cart.buildjardir}"/>
+  </target>
+
+  <target name="ejbclientjar" depends="init">
+    <property name="cart.buildjardir" value="${cart.home}/build/ejbjar"/>
+    <copy todir="${cart.buildjardir}">
+     <fileset dir= "${cart.classbindir}"/>
+    </copy>
+    <delete file="${cart.buildjardir}/com/sun/j2ee/blueprints/cart/ejb/ShoppingCartEJB.class"/>
+    <delete file="${cart.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${cart.ejbclientjar}" basedir="${cart.buildjardir}"/>
+    <delete dir="${cart.buildjardir}"/>
+  </target>
+
+
+  <target name="clean" depends="init">
+    <delete dir="${cart.build}"/>
+    <ant dir="${cart.tracer.home}/src" target="clean"/>
+    <ant dir="${cart.catalog.home}/src" target="clean"/>
+  </target>
+
+  <target name="components" depends="init">
+    <ant dir="${cart.tracer.home}/src" target="core"/>
+    <ant dir="${cart.catalog.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${cart.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${cart.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="ShoppingCart Component API"
+             doctitle="ShoppingCart Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${cart.tracer.home}/build/classes"/>
+        <pathelement path="${cart.catalog.build}/build/classes"/>
+        <pathelement path="${cart.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${cart.tracer.home}/src"/>
+        <pathelement path="${cart.catalog.home}/src"/>
+        <pathelement path="${cart.src}"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building ShoppingCart Component    +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+</project>
+

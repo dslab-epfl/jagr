@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jboss>
+    <enterprise-beans>
+        <session>
+            <ejb-name>ENCBean1</ejb-name>
+            <local-jndi-name>jbosstest/ejbs/local/ENCBean1</local-jndi-name>
+        </session>
+        <session>
+            <ejb-name>SecuredEJB</ejb-name>
+            <jndi-name>jbosstest/ejbs/SecuredEJB</jndi-name>
+            <configuration-name>Secure Stateless SessionBean</configuration-name>
+        </session>
+        <session>
+            <ejb-name>UnsecuredEJB</ejb-name>
+            <jndi-name>jbosstest/ejbs/UnsecuredEJB</jndi-name>
+            <ejb-ref>
+                <ejb-ref-name>ejb/Session</ejb-ref-name>
+                <jndi-name>jbosstest/ejbs/SecuredEJB</jndi-name>
+            </ejb-ref>
+        </session>
+        <session>
+            <ejb-name>NotOptimizedEJB</ejb-name>
+            <jndi-name>jbosstest/ejbs/NotOptimizedEJB</jndi-name>
+            <configuration-name>Not Optimized Stateless SessionBean</configuration-name> 
+        </session>
+    </enterprise-beans>
+
+    <container-configurations>
+        <container-configuration extends="Standard Stateless SessionBean">
+            <container-name>Secure Stateless SessionBean</container-name>
+            <security-domain>java:/jaas/other</security-domain>
+        </container-configuration>
+
+        <container-configuration extends="Standard Stateless SessionBean">
+           <container-name>Not Optimized Stateless SessionBean</container-name>
+           <client-interceptors>
+              <home>
+                 <interceptor>org.jboss.proxy.ejb.HomeInterceptor</interceptor>
+                 <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+                 <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+                 <interceptor>org.jboss.invocation.ByValueInvokerInterceptor</interceptor>
+              </home>
+              <bean>
+                 <interceptor>org.jboss.proxy.ejb.EntityInterceptor</interceptor>
+                 <interceptor>org.jboss.proxy.SecurityInterceptor</interceptor>
+                 <interceptor>org.jboss.proxy.TransactionInterceptor</interceptor>
+                 <interceptor>org.jboss.invocation.ByValueInvokerInterceptor</interceptor>
+              </bean>
+           </client-interceptors>
+        </container-configuration>
+    </container-configurations>
+
+</jboss>

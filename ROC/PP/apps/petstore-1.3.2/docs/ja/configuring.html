@@ -1,0 +1,281 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+                      
+  <meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
+                      
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=euc-jp">
+                      
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+                        
+  <meta name="CREATED" content="20011213;15203600">
+                      
+  <meta name="CHANGEDBY" content="Thierry Violleau">
+                        
+  <meta name="CHANGED" content="20011213;15331400">
+  <title>Java[TM] Pet Store Demo 1.3.2 &gt; デモの構成</title>
+</head>
+ <body>
+      &nbsp;      
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="100%page-break-before: always; ">
+      <tbody>
+         <tr>
+ <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">Java&trade;
+Pet Store Demo 1.3.2</a></font></b> <font color="#ffffff">&gt; <b>デモの構成</b></font></td>
+       <td bgcolor="#000033">                              
+      <div align="Right"><b><font color="#ccccff"><a href="http://java.sun.com/j2ee/blueprints/">
+Java BluePrints</a></font></b></div>
+      </td>
+      </tr>
+                     
+  </tbody>     
+</table>
+            
+<h1> デモの構成</h1>
+ Java Pet Store Demo では、各種の動作を構成できます。このセクションでは、次のカスタマイズ例について説明します。 
+<ul>
+ <a href="#e-mail">J2EE SDK 配備ツールを使用する電子メール通知の設定</a> <br>
+ <a href="#e-mail-manual">配備記述子の編集による電子メール通知の設定</a><br>
+ <a href="#l10n">新しい地域対応の追加</a> <br>
+ <a href="#db">データベースの構成</a>     
+</ul>
+            
+<h2> <a name="e-mail"></a>J2EE SDK 配備ツールを使用する電子メール通知の設定</h2>
+ Java Pet Store Demo は、注文のステータスについて顧客に電子メール通知を送信するように構成することができます。デフォルトではこの通知は無効にされていますが、配備の時点で有効にできます。 
+<p>電子メール通知を <b>J2EE SDK 配備ツール</b>を使用して設定するには、次の手順に従います。</p>
+         
+<ol>
+ <b>OPC EAR (OrderProcessingCenter EAR) を開きます。</b>                
+  <ol type="a">
+ メニューから、「ファイル」&rarr;「開く」を選択します。 
+    <p>「オブジェクトを開く」ダイアログが表示されます。</p>
+                         
+    <p><tt>&lt;petstore.home&gt;/opc.ear</tt> (または、自分で EAR をビルドした場合は <tt>
+&lt;petstore.home&gt;/src/apps/opc/build/opc.ear</tt>) を選択して、「オブジェクトを開く」をクリックします。</p>
+                         
+    <p>OPC EAR が、左側のパネルのアプリケーションツリーに表示されます。</p>
+                   
+  </ol>
+ <b>注文承認通知を有効にします。</b>                
+  <ol type="a">
+ 左側のパネルのアプリケーションツリーで、「OrderProcessingCenterEAR」&rarr;「OrderProcessingCenterJAR」&rarr;「MailOrderApprovalMDB」を選択します。 
+        
+    <p>右側のパネルのインスペクタで、「環境エントリ」タブを選択します。    </p>
+                         
+    <p><tt>param/SendApprovalMail</tt> エントリを選択して、その値を <tt>true</tt> に設定します。</p>
+                   
+  </ol>
+ <b>注文確認通知を有効にします。</b>                
+  <ol type="a">
+ 左側のパネルのアプリケーションツリーで、「OrderProcessingCenterEAR」&rarr;「OrderProcessingCenterJAR」&rarr;「MailInvoiceMDB」を選択します。 
+   
+    <p>右側のパネルのインスペクタで、「環境エントリ」タブを選択します。    </p>
+                         
+    <p><tt>param/SendConfirmationMail</tt> エントリを選択して、その値を <tt>true</tt> に設定します。</p>
+                   
+  </ol>
+ <b>注文完了通知を有効にします。</b>                
+  <ol type="a">
+ 左側のパネルのアプリケーションツリーで、「OrderProcessingCenterEAR」&rarr;「OrderProcessingCenterJAR」&rarr;「MailCompletedOrderMDB」を選択します。 
+          
+    <p>右側のパネルのインスペクタで、「環境エントリ」タブを選択します。    </p>
+                         
+    <p><tt>param/SendCompletedOrderMail</tt> エントリを選択して、その値を <tt>true</tt>
+ に設定します。</p>
+                   
+  </ol>
+ <b>メールサービスを構成します。</b>                
+  <ol type="a">
+ 左側のパネルのアプリケーションツリーで、「OrderProcessingCenterEAR」&rarr;「MailerJAR」&rarr;「MailerMDB」を選択します。 
+    <p>右側のパネルのインスペクタで、「リソース参照」タブを選択します。       </p>
+                         
+    <p><tt>mail/MailSession</tt> エントリを選択して、パネルの下部にある配備設定を次のように編集します。</p>
+                             
+    <ol type="i">
+ 「送信元」フィールドを、確認メッセージの <tt>From:</tt> ヘッダに表示する電子メールアドレスに変更します。 
+      <p>「ホスト」フィールドを、確認電子メールの送信元になるメールサーバの名前に変更します。</p>
+                                 
+      <p>「ユーザ名」を、メールサーバにアクセスするために使用する名前に変更します。</p>
+                             
+    </ol>
+                     
+  </ol>
+ <b>変更内容を保存します。</b>              
+  <p>メインメニューから、「ファイル」&rarr;「保存」を選択します。</p>
+         
+</ol>
+     
+<h2> <a name="e-mail-manual"></a>配備記述子の編集による電子メール通知の設定</h2>
+ <b>配備記述子を編集</b>して電子メール通知を設定するには、次の手順に従います。 
+<ol>
+ <b>OPC アプリケーションの標準 EJB 配備記述子を開きます。</b>                
+  <p>テキストエディタを使って、<tt>&lt;petstore.home&gt;/src/apps/opc/src/ejb-jar.xml</tt>
+ を開きます。     </p>
+                 
+  <p><b>注文承認通知を有効にします。</b> </p>
+                 
+  <p>以下の行を探してください。</p>
+                 <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendApprovalMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+ <tt>env-entry-value</tt> エントリが <tt>true</tt> に設定されていることを確認します。         
+     
+  <p><b>注文確認通知を有効にします。</b> </p>
+                 
+  <p>以下の行を探してください。</p>
+                 <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendConfirmationMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+ <tt>env-entry-value</tt> エントリが <tt>true</tt> に設定されていることを確認します。         
+     
+  <p><b>注文完了通知を有効にします。</b> </p>
+                 
+  <p>以下の行を探してください。</p>
+                 <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendCompletedOrderMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+ <tt>env-entry-value</tt> エントリが <tt>true</tt> に設定されていることを確認します。         
+  
+  <p><b>変更内容を標準 EJB 配備記述子に保存します。</b>   </p>
+                 
+  <p><b>OPC アプリケーションの J2EE RI 固有の配備記述子を開きます。</b>     </p>
+                 
+  <p>テキストエディタを使って、<tt>&lt;petstore.home&gt;/src/apps/opc/src/sun-j2ee-ri.xml</tt>
+ を開きます。     </p>
+                 
+  <p><b>メールサービスを構成します。</b> </p>
+                 
+  <p>以下の行を探してください。</p>
+                 <pre><tt>&lt;mail-configuration&gt;<br>&nbsp; <b>&lt;name&gt;yourname&lt;/name&gt;<br></b>&nbsp; <b>&lt;mail-from&gt;customerservice@javapetstoredemo.com&lt;/mail-from&gt;<br></b>&nbsp; <b>&lt;mail-host&gt;yourmailserver&lt;/mail-host&gt;<br></b>&lt;mail-configuration&gt;</tt></pre>
+                      
+  <ol type="a">
+ <tt>mail-from</tt> エントリの値を、確認メッセージの <tt>From:</tt> ヘッダに表示する電子メールアドレスに変更します。 
+          
+    <p><tt>mail-host</tt> エントリの値を、確認電子メールの送信元になるメールサーバの名前に変更します。</p>
+                         
+    <p><tt>name</tt> エントリの値を、メールサーバにアクセスするために使用する名前に変更します。</p>
+                   
+  </ol>
+ <b>変更内容を J2EE RI 固有の配備記述子に保存します。</b>                
+  <p><b>OPC EAR を再ビルドします。</b> </p>
+                 
+  <p>提供されたビルドファイルを使用してアプリケーションを再ビルドした場合、OPC EAR は <tt>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear</tt>
+ に配置されます。アプリケーションのビルドについての詳細は、「<a href="building.html">デモのビルド</a>」を参照してください。</p>
+         
+</ol>
+ これらの変更を加えた後、OPC EAR を配備した時点で、Java Pet Store Demo は電子メール通知を送信するようになります。 
+<p>電子メール通知をテストするには、Storefront ページで自分の電子メールアドレスを使って新規ユーザを作成し、注文を行います。注文が承認されると、電子メールを受け取ります。注文が処理されていく過程で、さらに
+1 通かそれ以上の電子メールを受け取ります。注文の処理が完了すると、最終的な電子メールを受け取ります。Pet Store アプリケーションにおける注文処理のしくみについての詳細は、「<a href="using.html">
+デモの使用</a>」を参照してください。 </p>
+         
+<h2> <a name="l10n"></a>新しい地域対応の追加</h2>
+ Java Pet Store Demo の Storefront は国際化されており、英語版 (en)、日本語版 (ja)、および中国版 (zh)
+が同梱されています。 
+<p>別の地域対応を追加するには、次の手順に従います。</p>
+         
+<ol>
+ <b>そのロケール用の新しい JSP ページを追加します。</b>              
+  <p>これらのページを、サブディレクトリ <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/&lt;locale.code&gt;/</tt>
+ に置きます。ここで、<tt>&lt;locale.code&gt;</tt> は、ロケールの文字列表現です。     </p>
+                 
+  <p>たとえば、日本語化した JSP ページは、ディレクトリ <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/<b>
+ja</b>/</tt> に置きます。     </p>
+                 
+  <p><b>地域対応された画面定義ファイルを作成します。</b> </p>
+                 
+  <p>画面定義 (地域対応された JSP ページを使用するもの) は、<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_&lt;locale.code&gt;.xml</tt>
+ というファイルに置きます。ここで、<tt>&lt;locale.code&gt;</tt> は、ロケールの文字列表現です。     </p>
+                 
+  <p>たとえば、日本語の画面定義は、<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_<b>
+ja_JP</b>.xml</tt> に格納します。     </p>
+                 
+  <p><b>新しいロケール用のカタログデータを追加します。</b> </p>
+                 
+  <p>XML ファイル <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</tt>
+ には、Pet Store のデータベースを生成するために使用されるデータが入っています。特定の言語用にカタログを地域対応するには、この XML
+ファイルに新しいデータを追加します。</p>
+                 
+  <p>地域対応をサポートするために、<tt>CategoryDetails</tt>、<tt>ProductDetails</tt>、および
+  <tt>ItemDetails</tt> 要素は、xml:lang ロケール属性をとります。独自に地域対応されたデータを追加する前に、XML
+ファイル内の日本語のデータを実例として参照すると役立つでしょう。</p>
+         
+</ol>
+            
+<h2> <a name="db"></a>データベースの構成</h2>
+            
+<p>Java Pet Store Demo の Storefront アプリケーションおよび Supplier アプリケーションは、デフォルトのデータベース
+(Cloudscape) とは別のデータベースを使用するように構成できます。別のデータベースを使用するには、デフォルトとは異なる SQL 文 (たとえば、<code>
+create table</code>、<code>drop table</code>) が必要になります。これらの文を指定するには、サンプルアプリケーションのいくつかの
+XML 構成ファイルを編集します。</p>
+            
+<p>別のデータベースを使用するようにサンプルアプリケーションを構成するには、次の手順に従います。</p>
+            
+<ol>
+       
+  <li>                     
+    <p><b><code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/PopulateSQL.xml</code>
+ 構成ファイルに新しいエントリを追加します。</b></p>
+                            
+    <p>サンプルアプリケーションが使用するように構成されているデータベースごとに、<code>DatabaseStatements</code>
+ エントリがあります。このエントリには、アプリケーションのデータベーステーブルに対して各種の SQL 操作を実行するためのコード断片が含まれています。たとえば、デフォルト
+(Cloudscape) のエントリの一部は次のとおりです。</p>
+                                                   <pre><code>&lt;DatabaseStatements <b>database="cloudscape"</b>&gt;<br>  &lt;TableStatements table="category"&gt;<br>    &lt;CheckStatement&gt;<br>      select * from category<br>    &lt;/CheckStatement&gt;<br>    &lt;CreateStatement&gt;<br>      create table category (catid char(10) not null,<br>        constraint pk_category primary key (catid))<br>    &lt;/CreateStatement&gt;<br>    &lt;InsertStatement&gt;<br>      insert into category values (?)<br>    &lt;/InsertStatement&gt;<br>    &lt;DropStatement&gt;<br>      drop table category<br>    &lt;/DropStatement&gt;<br>  &lt;/TableStatements&gt;<br>  ...</code></pre>
+                                                   
+    <p>異なるデータベース用に新しい <code>DatabaseStatements</code> エントリを作成するには、デフォルトのエントリをコピーして、新しいコピーの中でコード断片を編集すれば簡単です。各
+    <code>DatabaseStatements</code> エントリには、そのエントリが所属するデータベースを一意に識別する <code>
+database</code> 属性があることに注意してください。したがって、新しいコピーを編集する前に、必ずこの属性を一意の識別子に変更します。その識別子は、この構成作業の残りの部分が完了するまで覚えておいてください。</p>
+                            
+    <p>新しい <code>DatabaseStatements</code> エントリを編集するときには、コード部分だけを編集してください。サンプルアプリケーションでは、このファイルに一定の要素および属性が含まれていることが想定されています。さらに、左右の括弧の数が一致するようにしてください。</p>
+       </li>
+       
+  <li>                     
+    <p><b><code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/CatalogDAOSQL.xml</code>
+ 構成ファイルに新しいエントリを追加します。</b></p>
+                            
+    <p>サンプルアプリケーションが使用するように構成されているデータベースごとに、<code>DAOStatements</code> エントリがあります。このエントリには、アプリケーションのデータベーステーブルに対して
+    <code>select</code> 文を実行するためのコード断片が含まれています。たとえば、デフォルト (Cloudscape) のエントリの一部は次のとおりです。</p>
+                                                       <pre><code>&lt;DAOStatements <b>database="cloudscape"</b>&gt;<br>    &lt;SQLStatement method="GET_CATEGORY"&gt;<br>        &lt;SQLFragment parameterNb="2"&gt;<br>            select name, descn<br>                from (category a join category_details b on a.catid=b.catid)<br>                where locale = ? and a.catid = ?<br>        &lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    &lt;SQLStatement method="GET_CATEGORIES"&gt;<br>        &lt;SQLFragment parameterNb="1"&gt;<br>            select a.catid, name, descn<br>                from (category a join category_details b on a.catid=b.catid) <br>                where locale = ?  order by name<br>        &lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    ...</code></pre>
+                                                   
+    <p>異なるデータベース用に新しい <code>DAOStatements</code> エントリを作成するには、デフォルトのエントリをコピーして、新しいコピーの中でコード断片を編集すれば簡単です。各
+    <code>DAOStatements</code> エントリには、そのエントリが所属するデータベースを一意に識別する <code>database</code>
+ 属性があることに注意してください。したがって、新しいコピーを編集する前に、必ずこの属性を手順 1 で使用した一意の識別子に変更します。</p>
+                            
+    <p>新しい <code>DAOStatements</code> エントリを編集するときには、コード部分だけを編集してください。サンプルアプリケーションでは、このファイルに一定の要素および属性が含まれていることが想定されています。さらに、左右の括弧の数が一致するようにしてください。</p>
+       </li>
+       
+  <li>                     
+    <p><b>Storefront の Web 配備記述子 <code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/web.xml</code>
+ を編集します。</b></p>
+                            
+    <p>次のエントリを探してください。</p>
+                                                   <pre><code>&lt;init-param&gt;<br>  &lt;param-name&gt;Database&lt;/param-name&gt;<br>  <b>&lt;param-value&gt;cloudscape&lt;/param-value&gt;</b><br>&lt;/init-param&gt;</code></pre>
+                                                   
+    <p><code>param-value</code> サブエントリの値を、手順 1 で使用した一意の識別子に変更します。</p>
+                            
+    <p>さらに、次のエントリを探してください。</p>
+                                                   <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                             </li>
+                    
+  <p><code>env-entry-value</code> サブエントリの値を、手順 1 で使用した一意の識別子に変更します。</p>
+       
+  <li>                     
+    <p><b>カタログコンポーネントの EJB 配備記述子 <code>&lt;petstore.home&gt;/src/components/catalog/src/ejb-jar.xml</code>
+ を編集します。</b></p>
+                            
+    <p>次のエントリを探してください。</p>
+                                                   <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                             </li>
+                    
+  <p><code>env-entry-value</code> サブエントリの値を、手順 1 で使用した一意の識別子に変更します。</p>
+           
+</ol>
+            
+<p>さらに、サンプルアプリケーションのデータベースを生成するために使用されるカタログおよび在庫情報を変更することもできます。このデータを修正するには、ファイル
+<code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</code>
+ を編集してください。</p>
+       <br>
+         
+<hr size="3" noshade="">      
+<p><a href="copyright.html">Copyright &copy; 2003 Sun Microsystems, Inc.
+All Rights Reserved.</a> </p>
+     <br>
+ <br>
+ <br>
+ <br>
+   
+</body>
+</html>

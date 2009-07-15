@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+<ejb-jar>
+  <description>This component represents the set of EJBs related to the
+                         BluePrints Framework EJB Controller which is responsible for procssing Events
+  </description>
+  <display-name>PetStoreJAR</display-name>
+  <enterprise-beans>
+    <session>
+      <display-name>ShoppingControllerEJB</display-name>
+      <ejb-name>ShoppingControllerEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingControllerLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingControllerLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingControllerEJB</ejb-class>
+      <session-type>Stateful</session-type>
+      <transaction-type>Container</transaction-type>
+      <env-entry>
+        <env-entry-name>param/event/ChangeLocaleEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.waf.controller.ejb.action.actions.ChangeLocaleEJBAction</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <env-entry-name>param/event/SignOnEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.petstore.controller.ejb.actions.SignOnEJBAction</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <env-entry-name>param/event/CustomerEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.petstore.controller.ejb.actions.CustomerEJBAction</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <env-entry-name>param/event/OrderEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.petstore.controller.ejb.actions.OrderEJBAction</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <env-entry-name>param/event/CartEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.petstore.controller.ejb.actions.CartEJBAction</env-entry-value>
+      </env-entry>
+      <env-entry>
+        <env-entry-name>param/event/CreateUserEvent</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>com.sun.j2ee.blueprints.petstore.controller.ejb.actions.CreateUserEJBAction</env-entry-value>
+      </env-entry>
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/Catalog</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.catalog.ejb.CatalogLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.catalog.ejb.CatalogLocal</local>
+        <ejb-link>CatalogEJB</ejb-link>
+      </ejb-local-ref>
+      <ejb-local-ref>
+       <ejb-ref-name>ejb/ShoppingCart</ejb-ref-name>
+       <ejb-ref-type>Session</ejb-ref-type>
+       <local-home>com.sun.j2ee.blueprints.cart.ejb.ShoppingCartLocalHome</local-home>
+       <local>com.sun.j2ee.blueprints.cart.ejb.ShoppingCartLocal</local>
+       <ejb-link>ShoppingCartEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+       <ejb-ref-name>ejb/ShoppingClientFacade</ejb-ref-name>
+       <ejb-ref-type>Session</ejb-ref-type>
+       <local-home>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingClientFacadeLocalHome</local-home>
+       <local>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingClientFacadeLocal</local>
+       <ejb-link>ShoppingClientFacadeEJB</ejb-link>
+      </ejb-local-ref>
+
+      <!-- UniqueIdGenerator EJB Local Ref Start  -->
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/UniqueIdGenerator</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.uidgen.ejb.UniqueIdGeneratorLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.uidgen.ejb.UniqueIdGeneratorLocal</local>
+        <ejb-link>UniqueIdGeneratorEJB</ejb-link>
+      </ejb-local-ref>
+      <!-- UniqueIdGenerator EJB Local Ref End  -->
+
+      <!--Async Bean Ref Start  -->
+      <ejb-local-ref>
+       <ejb-ref-name>ejb/AsyncSender</ejb-ref-name>
+       <ejb-ref-type>Session</ejb-ref-type>
+       <local-home>com.sun.j2ee.blueprints.asyncsender.ejb.AsyncSenderLocalHome</local-home>
+       <local>com.sun.j2ee.blueprints.asyncsender.ejb.AsyncSender</local>
+       <ejb-link>AsyncSenderEJB</ejb-link>
+      </ejb-local-ref>
+      <!--Async Bean Ref End  -->
+
+      <!-- Sigon EJB Local Ref Start  -->
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/SignOn</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local-home>com.sun.j2ee.blueprints.signon.ejb.SignOnLocalHome</local-home>
+        <local>com.sun.j2ee.blueprints.signon.ejb.SignOnLocal</local>
+        <ejb-link>SignOnEJB</ejb-link>
+      </ejb-local-ref>
+      <!-- Sigon EJB Local Ref End  -->
+    </session>
+
+
+    <session>
+      <display-name>ShoppingClientFacadeEJB</display-name>
+      <ejb-name>ShoppingClientFacadeEJB</ejb-name>
+      <local-home>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingClientFacadeLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingClientFacadeLocal</local>
+      <ejb-class>com.sun.j2ee.blueprints.petstore.controller.ejb.ShoppingClientFacadeLocalEJB</ejb-class>
+      <session-type>Stateful</session-type>
+      <transaction-type>Container</transaction-type>
+
+      <ejb-local-ref>
+       <ejb-ref-name>ejb/Customer</ejb-ref-name>
+       <ejb-ref-type>Entity</ejb-ref-type>
+      <local-home>com.sun.j2ee.blueprints.customer.ejb.CustomerLocalHome</local-home>
+      <local>com.sun.j2ee.blueprints.customer.ejb.CustomerLocal</local>
+       <ejb-link>CustomerEJB</ejb-link>
+      </ejb-local-ref>
+
+      <ejb-local-ref>
+       <ejb-ref-name>ejb/ShoppingCart</ejb-ref-name>
+       <ejb-ref-type>Session</ejb-ref-type>
+       <local-home>com.sun.j2ee.blueprints.cart.ejb.ShoppingCartLocalHome</local-home>
+       <local>com.sun.j2ee.blueprints.cart.ejb.ShoppingCartLocal</local>
+       <ejb-link>ShoppingCartEJB</ejb-link>
+      </ejb-local-ref>
+   </session>
+
+  </enterprise-beans>
+
+  <assembly-descriptor>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>ShoppingControllerEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+    <method-permission>
+      <unchecked />
+      <method>
+      <ejb-name>ShoppingClientFacadeEJB</ejb-name>
+        <method-name>*</method-name>
+      </method>
+    </method-permission>
+
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingClientFacadeEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>getShoppingCart</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingClientFacadeEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>getUserId</method-name>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingClientFacadeEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>createCustomer</method-name>
+	<method-params>
+	  <method-param>java.lang.String</method-param>
+	</method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingClientFacadeEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>setUserId</method-name>
+	<method-params>
+	  <method-param>java.lang.String</method-param>
+	</method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingClientFacadeEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>getCustomer</method-name>
+	<method-params/>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingControllerEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>processEvent</method-name>
+	<method-params>
+	  <method-param>com.sun.j2ee.blueprints.waf.event.Event</method-param>
+	</method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+    <container-transaction>
+      <method>
+	<ejb-name>ShoppingControllerEJB</ejb-name>
+	<method-intf>Local</method-intf>
+	<method-name>getShoppingClientFacade</method-name>
+	<method-params/>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+  </assembly-descriptor>
+
+</ejb-jar>
+
+
+
+
+

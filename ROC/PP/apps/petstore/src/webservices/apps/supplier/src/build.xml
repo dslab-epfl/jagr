@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.2 2003/03/10 13:40:07 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="WSsupplier" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../../build.properties"/>
+
+    <property name="wscompile" value="${jwsdp.home}/bin/wscompile${jwsdp-script-suffix}"/>
+    <property name="wsdeploy" value="${jwsdp.home}/bin/wsdeploy${jwsdp-script-suffix}"/>
+    <property name="deploytool" value="${j2ee.home}/bin/deploytool${j2ee-script-suffix}"/>
+    <property name="verifier" value="${j2ee.home}/bin/verifier${j2ee-script-suffix}"/>
+
+    <property name="WSsupplier.application.name" value="SupplierEAR"/>
+
+    <!-- The root directory of the WSSupplier workspace -->
+    <property name="WSsupplier.home" value=".."/>
+    <property name="WSsupplier.src" value="${WSsupplier.home}/src"/>
+
+    <!-- The root directory of the Supplier workspace -->
+    <property name="supplier.home" value="../../../../apps/supplier"/>
+    <!--<property name="supplier.home" value="${WSsupplier.home}"/>-->
+    <property name="supplier.src" value="${supplier.home}/src"/>
+
+    <!-- The destination directory for the build -->
+    <property name="WSsupplier.build" value="${WSsupplier.home}/build"/>
+    <property name="WSsupplier.buildjardir" value="${WSsupplier.build}/ejbjar"/>
+    <property name="WSsupplier.buildwardir" value="${WSsupplier.build}/war"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="WSsupplier.classbindir" value="${WSsupplier.build}/classes"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="WSsupplier.javadocs.dir" value="${WSsupplier.build}/docs/api"/>
+
+   <!-- The root directory of all the components. -->
+    <property name="WSsupplier.components.basedir" value="../../../../components"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="WSsupplier.dstdocdir" value="${WSsupplier.build}/docs/api"/>
+
+    <!-- ServiceLocator Component  -->
+    <property name="WSsupplier.servicelocator.home" value="${WSsupplier.components.basedir}/servicelocator"/>
+    <property name="WSsupplier.servicelocator.client" value="${WSsupplier.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- ProcessManager Component -->
+    <property name="WSsupplier.processmanager.home" value="${WSsupplier.components.basedir}/processmanager"/>
+    <property name="WSsupplier.processmanager.ejbjar" value="${WSsupplier.processmanager.home}/build/processmanager-ejb.jar"/>
+    <property name="WSsupplier.processmanager.ejbjar.client" value="${WSsupplier.processmanager.home}/build/processmanager-ejb-client.jar"/>
+
+    <!-- OPC Peer WS Client -->
+    <property name="WSsupplier.opc.home" value="${WSsupplier.home}/../opc"/>
+    <property name="WSsupplier.opc.jaxrpc.wsdl" value="${WSsupplier.opc.home}/build/OPCWebService.wsdl"/>
+
+    <!-- Supplier Order Components -->
+    <property name="WSsupplier.po.home" value="${WSsupplier.components.basedir}/supplierpo"/>
+    <property name="WSsupplier.po.ejbjar" value="${WSsupplier.po.home}/build/supplierpo-ejb.jar"/>
+    <property name="WSsupplier.po.ejbjar.client" value="${WSsupplier.po.home}/build/supplierpo-ejb-client.jar"/>
+
+    <!--XML Docs Components -->
+    <property name="WSsupplier.xmldocs.home" value="${WSsupplier.components.basedir}/xmldocuments"/>
+    <property name="WSsupplier.xmldocs.client" value="${WSsupplier.xmldocs.home}/build/xmldocuments.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale:${j2ee.home}/lib/j2eetools.jar:${j2ee.home}/lib/system/jwsdp-common.jar"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="WSsupplier.classpath" value="${WSsupplier.classbindir}:${WSsupplier.po.ejbjar.client}:${WSsupplier.xmldocs.client}:${WSsupplier.servicelocator.client}:${WSsupplier.components.basedir}:${WSsupplier.processmanager.ejbjar.client}:${j2ee.classpath}"/>
+
+    <property name="WSsupplier.ejbjar" value="${WSsupplier.build}/supplier-ejb.jar"/>
+    <property name="WSsupplier.war" value="${WSsupplier.build}/supplier.war"/>
+    <property name="WSsupplier.ear" value="${WSsupplier.build}/supplier.ear"/>
+
+    <property name="WSsupplier.jaxrpc.wsdl" value="${WSsupplier.build}/SupplierWebService.wsdl"/>
+    
+  </target>
+
+  <target name="compile" depends="compile-core, peers, compile-clients" />
+
+  <target name="compile-core" depends="compile-core1, war, process-war" />
+
+  <target name="compile-core1" depends="init, components">
+    <mkdir dir="${WSsupplier.classbindir}"/>
+    <javac srcdir="${supplier.src}"
+           destdir="${WSsupplier.classbindir}"
+	   classpath="${WSsupplier.classpath}"
+	   includes="com/**"/>
+    <javac srcdir="${WSsupplier.src}"
+           excludes="com/**/transitions/**, com/**/invoicesender/**"
+           destdir="${WSsupplier.classbindir}"
+	   classpath="${WSsupplier.classpath}"
+	   includes="com/**"/>
+    <copy todir="${WSsupplier.classbindir}" >
+     <fileset dir="${supplier.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target>
+
+  <target name="compile-clients" depends="init">
+    <echo message="Running wscompile for the OPC client from WSDL:"/>
+    <exec executable="${wscompile}">
+        <arg line="-classpath ${WSsupplier.classpath}" />
+        <arg line="-gen:client" />
+        <arg line="-d ${WSsupplier.classbindir}" />
+        <arg line="opc-client-jaxrpc-ri-config.xml" />
+    </exec>
+    <javac srcdir="${WSsupplier.src}"
+           destdir="${WSsupplier.classbindir}"
+	   classpath="${WSsupplier.classpath}"
+	   includes="com/**/transitions/**, com/**/invoicesender/**"/>
+  </target>
+
+  <target name="process-war" depends="init"
+      description="Runs wsdeploy to generate the ties and create a deployable WAR file">
+   <echo message="Running wsdeploy...."/>
+   <delete dir="${WSsupplier.buildwardir}"/>
+   <delete file="${WSsupplier.war}.tmp" />
+   <mkdir dir="${WSsupplier.buildwardir}"/>
+   <exec executable="${wsdeploy}">
+      <arg line="-tmpdir"/>
+      <arg line="${WSsupplier.buildwardir}"/>
+      <arg line="-keep"/>
+      <arg line="-o"/>
+      <arg line="${WSsupplier.war}.tmp"/>
+      <arg line="${WSsupplier.war}"/>
+      <arg line="-verbose"/>
+    </exec>
+    <move file="${WSsupplier.war}.tmp" tofile="${WSsupplier.war}" />
+
+    <copy todir="${WSsupplier.build}" flatten="true" overwrite="true">
+      <fileset dir="${WSsupplier.buildwardir}" includes="*/WEB-INF/SupplierWebService.wsdl" /> 
+    </copy>
+    <delete dir="${WSsupplier.buildwardir}"/>
+  </target>
+
+  <target name="ejbjar" depends="init">
+    <delete dir="${WSsupplier.buildjardir}" quiet="true"/>
+    <mkdir dir="${WSsupplier.buildjardir}"/>
+    <mkdir dir="${WSsupplier.buildjardir}/META-INF"/>
+    <copy todir="${WSsupplier.buildjardir}">
+      <fileset dir="${WSsupplier.classbindir}" excludes="**/*.java" /> <!--excludes: because of jaxrpc -keep option-->
+    </copy>
+    <copy file="${WSsupplier.src}/ejb-jar.xml" tofile="${WSsupplier.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="${WSsupplier.src}/jaws.xml" tofile="${WSsupplier.buildjardir}/META-INF/jaws.xml"/>
+    <jar jarfile="${WSsupplier.ejbjar}" basedir="${WSsupplier.buildjardir}" manifest="${supplier.src}/ejb-jar-manifest.mf"/>
+  </target>
+
+  <target name="war" depends="init">
+    <delete dir="${WSsupplier.buildwardir}" quiet="true"/>
+    <mkdir dir="${WSsupplier.buildwardir}"/>
+    <copy todir="${WSsupplier.buildwardir}">
+          <fileset dir="${supplier.src}/docroot" excludes="cvs"/>
+    </copy>
+    <copy todir="${WSsupplier.buildwardir}/WEB-INF/classes">
+          <fileset dir="${WSsupplier.classbindir}" excludes="**/*.java" /> <!--excludes: because of jaxrpc -keep option-->
+    </copy>
+    <copy file="${WSsupplier.src}/docroot/WEB-INF/web.xml" todir="${WSsupplier.buildwardir}/WEB-INF" overwrite="true" />
+    <copy file="${WSsupplier.po.ejbjar.client}" todir="${WSsupplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSsupplier.servicelocator.client}" todir="${WSsupplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSsupplier.processmanager.ejbjar.client}" todir="${WSsupplier.buildwardir}/WEB-INF/lib" />
+    <copy file="${WSsupplier.xmldocs.client}" todir="${WSsupplier.buildwardir}/WEB-INF/lib" />
+    <copy file="jaxrpc-ri.xml" todir="${WSsupplier.buildwardir}/WEB-INF"/>
+    <delete file="${WSsupplier.war}"  quiet="true"/>
+    <jar jarfile="${WSsupplier.war}" basedir="${WSsupplier.buildwardir}" excludes="cvs" />
+    <delete dir="${WSsupplier.buildwardir}"/>
+  </target>
+
+  <target name="ear" depends="init">
+      <delete dir="${WSsupplier.buildjardir}" quiet="true"/>
+      <mkdir dir="${WSsupplier.buildjardir}"/>
+      <mkdir dir="${WSsupplier.buildjardir}/META-INF"/>
+      <copy file="${supplier.src}/application.xml" todir="${WSsupplier.buildjardir}/META-INF" />
+      <copy file="${WSsupplier.src}/sun-j2ee-ri.xml" todir="${WSsupplier.buildjardir}/META-INF" />
+      <copy file="${WSsupplier.ejbjar}" todir="${WSsupplier.buildjardir}" />
+      <copy file="${WSsupplier.po.ejbjar}" todir="${WSsupplier.buildjardir}" />
+      <copy file="${WSsupplier.processmanager.ejbjar}" todir="${WSsupplier.buildjardir}" />
+
+      <copy file="${WSsupplier.xmldocs.client}" todir="${WSsupplier.buildjardir}" />
+      <copy file="${WSsupplier.po.ejbjar.client}" todir="${WSsupplier.buildjardir}" />
+      <copy file="${WSsupplier.servicelocator.client}" todir="${WSsupplier.buildjardir}" />
+      <copy file="${WSsupplier.processmanager.ejbjar.client}" todir="${WSsupplier.buildjardir}" />
+
+      <copy file="${WSsupplier.war}" todir="${WSsupplier.buildjardir}" />
+      <delete file="${WSsupplier.ear}" quiet="true"/>
+      <jar jarfile="${WSsupplier.ear}" basedir="${WSsupplier.buildjardir}" />
+  </target>
+
+  <target name="verify" depends="init">
+    <exec executable="${verifier}">
+      <arg line="-w ${WSsupplier.ear}"/>
+    </exec>
+  </target>
+
+  <target name="deploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-generateSQL ${WSsupplier.ear} ${j2ee.server.name}" />
+    </exec>
+    <exec executable="${deploytool}">
+        <arg line="-deploy ${WSsupplier.ear} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="undeploy" depends="init">
+    <exec executable="${deploytool}">
+        <arg line="-uninstall ${WSsupplier.application.name} ${j2ee.server.name}" />
+    </exec>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${WSsupplier.build}"/>
+    <delete dir="${WSsupplier.dstdocdir}"/>
+    <ant dir="${WSsupplier.processmanager.home}/src" target="clean"/>
+    <ant dir="${WSsupplier.po.home}/src" target="clean" />
+  </target>
+
+  <target name="peers" depends="init">
+    <ant dir="${WSsupplier.opc.home}/src" target="compile-core"/>
+    <copy file="${WSsupplier.opc.jaxrpc.wsdl}" todir="${WSsupplier.build}" />
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${WSsupplier.xmldocs.home}/src" target="core"/>
+      <ant dir="${WSsupplier.servicelocator.home}/src" target="core"/>
+      <ant dir="${WSsupplier.po.home}/src" target="core"/>
+      <ant dir="${WSsupplier.processmanager.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${WSsupplier.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${WSsupplier.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="Java Pet Store Supplier Application API"
+             doctitle="Java Pet Store Supplier Application"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${j2ee.home}/lib/locale"/>
+        <pathelement path="${j2ee.home}/lib/system/jwsdp-common.jar"/>
+        <pathelement path="${WSsupplier.xmldocs.home}/build/classes"/>
+        <pathelement path="${WSsupplier.po.home}/build/classes"/>
+        <pathelement path="${WSsupplier.servicelocator.home}/build/classes"/>
+        <pathelement path="${WSsupplier.processmanager.home}/build/classes"/>
+        <pathelement path="${WSsupplier.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${WSsupplier.xmldocs.home}/src"/>
+        <pathelement path="${WSsupplier.po.home}/src"/>
+        <pathelement path="${WSsupplier.servicelocator.home}/src"/>
+        <pathelement path="${WSsupplier.processmanager.home}/src"/>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building Supplier Application      +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, war, process-war, ear" />
+  <target name="all" depends="core, docs" />
+
+</project>
+

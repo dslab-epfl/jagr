@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Sealed: true
+Package-Version: 1.0.0
+Package-Title: org.mortbay.util.jmx
+Specification-Version: RELEASE_MAJOR
+Implementation-Version: RELEASE_MAJOR_MINOR
+Specification-Vendor: Mort Bay Consulting, Pty. Ltd.
+Implementation-Vendor: Mort Bay Consulting, Pty. Ltd.
+Implementation-URL: http://jetty.mortbay.org
+Main-Class: org.mortbay.util.jmx.Main
+Class-Path: org.mortbay.jetty.jar org.mortbay.jetty.jar ../ext/jmxri.jar ../ext/jmxtools.jar
+
+Name: org/mortbay/jetty/jmx
+Specification-Title:  JMX Jetty HTTP Servlet Server
+Implementation-Title: JMX Jetty HTTP Servlet Server
+
+Name: org/mortbay/jetty/servlet/jmx
+Specification-Title:  JMX J2EE Servlet Container
+Implementation-Title: JMX Jetty Servlet Container
+
+Name: org/mortbay/http/jmx
+Specification-Title: JMX HTTP Server
+Implementation-Title: JMX Mort Bay HTTP Server
+
+Name: org/mortbay/util/jmx
+Specification-Title:  JMX Mort Bay Misc. Utilities
+Implementation-Title: JMX Mort Bay Misc. Utilities

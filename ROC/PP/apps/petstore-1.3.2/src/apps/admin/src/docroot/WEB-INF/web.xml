@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+  <display-name>AdminWAR</display-name>
+  <description>WebTier for the Admin Client for the PetStore</description>
+
+  <servlet>
+    <servlet-name>AdminRequestProcessor</servlet-name>
+    <display-name>AdminRequestProcessor</display-name>
+    <servlet-class>com.sun.j2ee.blueprints.admin.web.AdminRequestProcessor</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ApplRequestProcessor</servlet-name>
+    <display-name>ApplRequestProcessor</display-name>
+    <servlet-class>com.sun.j2ee.blueprints.admin.web.ApplRequestProcessor</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminRequestProcessor</servlet-name>
+    <url-pattern>/AdminRequestProcessor</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ApplRequestProcessor</servlet-name>
+    <url-pattern>/ApplRequestProcessor</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>54</session-timeout>
+  </session-config>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>MySecureBit0</web-resource-name>
+      <url-pattern>/AdminRequestProcessor</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>administrator</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>default</realm-name>
+    <form-login-config>
+      <form-login-page>/login.jsp</form-login-page>
+      <form-error-page>/error.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+
+  <security-role>
+    <role-name>administrator</role-name>
+  </security-role>
+  
+  <ejb-ref>
+    <ejb-ref-name>ejb/OPCAdminFacadeRemote</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <home>com.sun.j2ee.blueprints.opc.admin.ejb.OPCAdminFacadeHome</home>
+    <remote>com.sun.j2ee.blueprints.opc.admin.ejb.OPCAdminFacade</remote>
+  </ejb-ref>
+
+  <ejb-local-ref>
+    <ejb-ref-name>ejb/AsyncSender</ejb-ref-name>
+    <ejb-ref-type>Session</ejb-ref-type>
+    <local-home>com.sun.j2ee.blueprints.asyncsender.ejb.AsyncSenderLocalHome</local-home>
+    <local>com.sun.j2ee.blueprints.asyncsender.ejb.AsyncSender</local>
+    <ejb-link>AsyncSenderEJB</ejb-link>
+  </ejb-local-ref>
+
+</web-app>
+

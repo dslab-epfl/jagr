@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.2 2003/03/09 23:23:52 emrek Exp $              -->
+<!-- =================================================================== -->
+
+<project name="waf" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../build.properties"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="waf.home" value=".."/>
+
+    <!-- The destination directories for the build -->
+    <property name="waf.src" value="${waf.home}/src"/>
+    <property name="waf.build" value="${waf.home}/build"/>
+    <property name="waf.buildjardir" value="${waf.home}/build/ejbjar"/>
+    <property name="waf.temp.jar.build" value="${waf.build}/waftemp"/>
+    <property name="waf.lib" value="${waf.home}/src/lib"/>
+    <property name="waf.classbindir" value="${waf.build}/classes"/>
+    <property name="waf.component.basedir" value="../../components"/>
+    <property name="waf.srcdocroot" value="${waf.src}/docroot"/>
+    <property name="waf.web.lib" value="${waf.srcdocroot}/WEB-INF/lib"/>
+    <property name="waf.web.classes" value="${waf.srcdocroot}/WEB-INF/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="waf.javadocs.dir" value="${waf.build}/docs/api"/>
+
+    <!-- Base64 Encoder/Decoder -->
+    <property name="waf.base64.jar" value="../../lib/base64/base64.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="waf.tracer.home" value="../../components/util/tracer"/>
+    <property name="waf.tracer.client" value="${waf.tracer.home}/build/tracer.jar"/>
+
+    <!-- Service Locator Component -->
+    <property name="waf.servicelocator.home" value="../../components/servicelocator"/>
+    <property name="waf.servicelocator.client" value="${waf.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${jboss.home}/client/jbossall-client.jar:${j2ee.home}/lib/locale:${jboss.home}/server/default/lib/javax.servlet.jar"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="waf.classpath" value="${waf.classbindir}:${waf.tracer.client}:${waf.servicelocator.client}:${j2ee.classpath}:${waf.base64.jar}:${jboss.home}/server/default/lib/javax.servlet.jar"/>
+
+    <property name="waf.ejbjar" value="waf-ejb.jar"/>
+    <property name="waf.ejbjar.client" value="waf-ejb-client.jar"/>
+    <property name="waf.war" value="waf.war"/>
+
+    <property name="waf.ear" value="waf.ear"/>
+
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${waf.classbindir}"/>
+    <javac srcdir="${waf.src}"
+           destdir="${waf.classbindir}"
+           classpath="${waf.classpath}"
+           includes="controller/com/**"/>
+    <!-- Templating -->
+    <javac srcdir="${waf.src}"
+           destdir="${waf.classbindir}"
+           classpath="${waf.classpath}"
+           includes="view/template/com/**"/>
+    <!-- TagLibs -->
+    <javac srcdir="${waf.src}"
+           destdir="${waf.classbindir}"
+           classpath="${waf.classpath}"
+           includes="view/taglibs/com/**"/>
+    <!-- Test -->
+    <javac srcdir="${waf.src}"
+           destdir="${waf.classbindir}"
+           classpath="${waf.classpath}"
+           includes="test/com/**"/>
+  </target>
+
+  <target name="ejbjar" depends="init">
+    <mkdir dir="${waf.build}"/>
+    <mkdir dir="${waf.buildjardir}/META-INF"/>
+    <copy todir="${waf.buildjardir}" >
+     <fileset dir= "${waf.classbindir}">
+      <exclude name="**/web/**"/>
+     </fileset>
+    </copy>
+    <copy file="${waf.src}/ejb-jar.xml" tofile="${waf.buildjardir}/META-INF/ejb-jar.xml" />
+    <delete file="${waf.build}/${waf.ejbjar}"/>
+    <jar jarfile="${waf.build}/${waf.ejbjar}" basedir="${waf.buildjardir}" excludes="**/web/**" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${waf.buildjardir}"/>
+  </target>
+
+  <target name="ejbclientjar" depends="init">
+    <delete dir="${waf.buildjardir}"/>
+    <mkdir dir="${waf.buildjardir}"/>
+    <copy todir="${waf.buildjardir}" >
+     <fileset dir= "${waf.classbindir}">
+      <include name="**/controller/ejb/**"/>
+      <exclude name="**/web/**"/>
+      <exclude name="**/view/**"/>
+      <exclude name="**/ejb/action/**"/>
+      <exclude name="**/ejb/StateMachine.class"/>
+      <exclude name="**/ejb/EJBClientControllerEJB.class"/>
+     </fileset>
+    </copy>
+    <delete file="${waf.build}/${waf.ejbjar.client}"/>
+    <jar jarfile="${waf.build}/${waf.ejbjar.client}" basedir="${waf.buildjardir}" excludes="**/web/**"/>
+    <delete dir="${waf.buildjardir}"/>
+  </target>
+
+
+  <target name="war" depends="init">
+    <!-- Build the WAF  jar -->
+    <mkdir dir="${waf.temp.jar.build}"/>
+    <unjar src="${waf.base64.jar}"  dest="${waf.classbindir}" />
+    <copy todir="${waf.temp.jar.build}">
+     <fileset dir="${waf.classbindir}" excludes="**/ejb/**" />
+    </copy>
+    <jar jarfile="${waf.build}/waf-web.jar"  basedir="${waf.temp.jar.build}" />
+    <delete dir="${waf.temp.jar.build}"/>
+    <!-- copy the WAF client jar into the WAF war file -->
+    <mkdir dir="${waf.temp.jar.build}"/>
+    <copy todir="${waf.temp.jar.build}">
+     <fileset dir="${waf.srcdocroot}" excludes="**/cvs/**" />
+    </copy>
+    <mkdir dir="${waf.temp.jar.build}/WEB-INF/lib"/>
+    <copy file="${waf.tracer.client}" todir="${waf.temp.jar.build}/WEB-INF/lib" />
+    <copy file="${waf.servicelocator.client}" todir="${waf.temp.jar.build}/WEB-INF/lib" />
+    <copy file="${waf.build}/waf-web.jar" todir="${waf.temp.jar.build}/WEB-INF/lib" />
+    <!-- make the waf file -->
+    <delete file="${waf.build}/${waf.war}"/>
+    <jar jarfile="${waf.build}/${waf.war}" basedir="${waf.temp.jar.build}" />
+    <delete dir="${waf.temp.jar.build}"/>
+  </target>
+
+
+ <target name="ear" depends="init, ejbclientjar">
+    <mkdir dir="${waf.buildjardir}"/>
+    <mkdir dir="${waf.buildjardir}/META-INF"/>
+    <copy file="application.xml" todir="${waf.buildjardir}/META-INF/" />
+    <copy file="sun-j2ee-ri.xml" todir="${waf.buildjardir}/META-INF/" />
+    <copy file="${waf.build}/${waf.ejbjar}" todir="${waf.buildjardir}" />
+    <copy file="${waf.tracer.client}" todir="${waf.buildjardir}" />
+    <copy file="${waf.servicelocator.client}" todir="${waf.buildjardir}" />
+    <copy file="${waf.build}/${waf.war}" todir="${waf.buildjardir}" />
+    <delete file="${waf.build}/${waf.ear}"/>
+    <jar jarfile="${waf.build}/${waf.ear}" basedir="${waf.buildjardir}" />
+    <delete dir="${waf.buildjardir}"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${waf.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${waf.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="BluePrints Web Application Framework API"
+             doctitle="BluePrints Web Application Framework"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${waf.classbindir}"/>
+        <pathelement path="${waf.tracer.client}"/>
+        <pathelement path="${waf.servicelocator.client}"/>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${j2ee.home}/lib/locale"/>
+        <pathelement path="${waf.base64.jar}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="${waf.src}/controller"/>
+        <pathelement path="${waf.src}/view/taglibs"/>
+        <pathelement path="${waf.src}/view/template"/>
+        <pathelement path="${waf.tracer.home}/src"/>
+        <pathelement path="${waf.servicelocator.home}/src"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+
+  <target name="clean" depends="init">
+    <delete dir="${waf.build}"/>
+    <delete dir="${waf.dstdocdir}"/>
+    <delete dir="${waf.temp.jar.build}"/>
+  </target>
+
+  <target name="deploy" depends="init">
+    <java classname="com.sun.enterprise.tools.deployment.main.Main" fork="yes">
+      <classpath path="${j2ee.classpath}"/>
+      <sysproperty key="com.sun.enterprise.home" value="${j2ee.home}"/>
+      <sysproperty key="org.omg.CORBA.ORBInitialPort" value="1050"/>
+      <sysproperty key="java.security.policy" value="${j2ee.home}/lib/security/java.policy"/>
+      <arg line="-deploy ${waf.build}/${waf.ear} ${j2ee.server.name}"/>
+    </java>
+  </target>
+
+  <target name="core" depends="compile, war, ejbclientjar, ejbjar, ear" />
+  <target name="coredeploy" depends="core, deploy" />
+  <target name="all" depends="core, docs" />
+</project>
+

@@ -1,0 +1,268 @@
+<!DOCTYPE doctype PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+       
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+       
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=gb2312">
+       
+  <meta name="GENERATOR" content="Mozilla/4.79C-CCK-MCD  [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+      
+  <meta name="CREATED" content="20011213;15203600">
+      
+  <meta name="CHANGEDBY" content="Thierry Violleau">
+      
+  <meta name="CHANGED" content="20011213;15331400">
+  <title>Java[tm] Pet Store Demo 1.3.2 &gt; 配置演示版</title>
+</head>
+  <body>
+   
+<table border="0" cellspacing="0" cellpadding="5" width="100%" style="100%page-break-before: always; ">
+       <tbody>
+          <tr>
+  <td bgcolor="#000033"><b><font color="#ccccff"><a href="index.html">Java(tm)Pet
+Store Demo 1.3.2</a></font></b> <font color="#ffffff">&gt; <b>配置演示版</b></font></td>
+  <td bgcolor="#000033"> 
+      <div align="Right"><b><font color="#ccccff"> <a href="http://java.sun.com/j2ee/blueprints/">
+Java BluePrints</a></font></b></div>
+       </td>
+       </tr>
+      
+  </tbody>  
+</table>
+    
+<h1> 配置演示版</h1>
+ 可对 Java Pet Store Demo 进行多种方式的配置。这部分内容介绍如下定制方式：  
+<ul>
+ <a href="#e-mail">使用 J2EE SDK 部署工具设置电子邮件通知</a> <br>
+ <a href="#e-mail-manual">通过编辑 Deployment Descriptors（部署描述文件）设置电子邮件通知</a><br>
+ <a href="#l10n">增加一个新的本地化版本</a> <br>
+ <a href="#db">配置数据库</a>  
+</ul>
+    
+<h2> <a name="e-mail"></a>使用 J2EE SDK 部署工具设置电子邮件通知</h2>
+ 可配置 Java Pet Store Demo，以便向客户发送有关他们订单状况的电子邮件通知。缺省情况下，禁用发送通知，但在部署时可以启用。  
+<p>要使用 <b> EE SDK 部署工具</b>设置邮件通知功能，请按如下步骤进行： </p>
+    
+<ol>
+ <b>打开&ldquo;OPC EAR&rdquo;(订单处理中心 EAR)。</b>  
+  <ol type="a">
+ 从菜单中，选中 File -&gt; Open。  
+    <p>此时出现&ldquo;Open Object&rdquo;对话框。 </p>
+    
+    <p>找到 <tt>&lt;petstore.home&gt;/opc.ear</tt>（或者，如果编译了 EAR 则为 <tt>&lt;petstore.home&gt;/src/apps/opc/build/opc.ear</tt>
+）并单击&ldquo;Open Object&rdquo;。 </p>
+    
+    <p>此时在左面板的应用程序树状结构中会出现&ldquo;OPC EAR&rdquo;。</p>
+    
+  </ol>
+ <b>启用订单批准通知。</b>  
+  <ol type="a">
+ 在左面板的应用程序树状结构中，选中&ldquo;OrderProcessingCenterEAR&rdquo;-&gt;&ldquo;OrderProcessingCenterJAR&rdquo;-&gt;&ldquo;MailOrderApprovalMDB&rdquo;。 
+   
+    <p>在右面板的 inspector 中，选中&ldquo;Env.Entries&rdquo;标签。     </p>
+    
+    <p>选中 <tt>param/SendApprovalMail</tt> 条目，并将值设为 <tt>true</tt>。</p>
+    
+  </ol>
+ <b>启用订单确认通知。</b>  
+  <ol type="a">
+ 在左面板的应用程序树状结构中，选中&ldquo;OrderProcessingCenterEAR&rdquo;-&gt;&ldquo;OrderProcessingCenterJAR&rdquo;-&gt;&ldquo;MailInvoiceMDB&rdquo;。 
+   
+    <p>在右面板的 inspector 中，选中&ldquo;Env.Entries&rdquo;标签。     </p>
+    
+    <p>选中 <tt>param/SendConfirmationMail</tt> 条目，并将其值设为 <tt>true</tt>。</p>
+    
+  </ol>
+ <b>启用订单完成通知。</b>  
+  <ol type="a">
+ 在左面板的应用程序树状结构中，选中&ldquo;OrderProcessingCenterEAR&rdquo;-&gt;&ldquo;OrderProcessingCenterJAR&rdquo;-&gt;&ldquo;MailCompletedOrderMDB&rdquo;。 
+   
+    <p>在右面板的 inspector 中，选中&ldquo;Env.Entries&rdquo;标签。     </p>
+    
+    <p>选中 <tt>param/SendCompletedOrderMail</tt> 条目，并将其值设为 <tt>true</tt>。</p>
+    
+  </ol>
+ <b>设置邮件服务。</b>  
+  <ol type="a">
+ 在左面板的应用程序树状结构中，选中&ldquo;OrderProcessingCenterEAR&rdquo;-&gt;&ldquo;MailerJAR&rdquo;-&gt;
+&ldquo;MailerMDB&rdquo;。  
+    <p>在右面板的 inspector 中，选中&ldquo;Resource Refs&rdquo;标签。        </p>
+    
+    <p>选中 <tt>mail/MailSession</tt> 条目并编辑面板下方的部署设置： </p>
+    
+    <ol type="i">
+ 将&ldquo;From&rdquo;字段改为确认信息的 <tt>From:</tt> 标题对应的电子邮件地址。  
+      <p>将&ldquo;Host&rdquo;字段改为邮件服务器（确认电子邮件将通过此邮件服务器发送）名称。 </p>
+    
+      <p>将&ldquo;User Name&rdquo;改为用来访问邮件服务器的名称。</p>
+        
+    </ol>
+    
+  </ol>
+ <b>保存更改。</b>  
+  <p>从菜单中，选择&ldquo;File&rdquo;-&gt;&ldquo;Save&rdquo;</p>
+    
+</ol>
+    
+<h2> <a name="e-mail-manual"></a>通过编辑 Deployment Descriptors (部署描述文件) 设置电子邮件通知。</h2>
+ 通过编辑 <b>deployment descriptors</b> 设置邮件通知，请按如下步骤进行：  
+<ol>
+ <b>打开 OPC 应用程序的标准 EJB 部署描述文件。</b>    
+  <p>使用文本编辑器，打开 <tt>&lt;petstore.home&gt;/src/apps/opc/src/ejb-jar.xml</tt>
+      </p>
+    
+  <p><b>启用订单批准通知。</b> </p>
+    
+  <p>查找如下行： </p>
+    <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendApprovalMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+  确保将 <tt>env-entry-value</tt> 条目设置为 <tt>true</tt>。    
+  <p><b>启用订单确认通知。</b> </p>
+    
+  <p>查找如下行： </p>
+    <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendConfirmationMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+ 确保将 <tt>env-entry-value</tt> 条目设置为 <tt>true</tt>。  
+  <p><b>启用订单完成通知。</b> </p>
+    
+  <p>查找如下行： </p>
+    <pre><tt>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/SendCompletedOrderMail&lt;/env-entry-name&gt;<br>  &lt;env-entry-type&gt;java.lang.Boolean&lt;/env-entry-type&gt;<br>  <b>&lt;env-entry-value&gt;true&lt;/env-entry-value&gt;<br></b>&lt;/env-entry&gt;</tt></pre>
+  确保将 <tt>env-entry-value</tt> 条目设为 <tt>true</tt>。  
+  <p><b>将更改保存到标准 EJB 部署描述文件中。</b>   </p>
+    
+  <p><b>打开 OPC 应用程序的 J2EE RI 特定部署描述文件。</b>     </p>
+    
+  <p>使用文本编辑器，打开 <tt>&lt;petstore.home&gt;/src/apps/opc/src/sun-j2ee-ri.xml</tt>
+。      </p>
+    
+  <p><b>配置邮件服务。</b> </p>
+    
+  <p>查找如下行： </p>
+    <pre><tt>&lt;mail-configuration&gt;<br>  <b>&lt;name&gt;yourname&lt;/name&gt;<br></b>  <b>&lt;mail-from&gt;customerservice@javapetstoredemo.com&lt;/mail-from&gt;<br></b>  <b>&lt;mail-host&gt;yourmailserver&lt;/mail-host&gt;<br></b>&lt;mail-configuration&gt;</tt></pre>
+    
+  <ol type="a">
+ 将 <tt>mail-from</tt> 条目的值改为确认信息的 <tt>From:</tt> 标题对应的电子邮件地址。    
+    <p>将 <tt>mail-host</tt> 条目值改为邮件服务器（确认电子邮件通过此邮件服务器发送）的名称。 </p>
+    
+    <p>将 <tt>name</tt> 条目的值改为用来访问邮件服务器的名称。</p>
+    
+  </ol>
+ <b>将更改保存到 J2EE RI 特定的部署描述文件中。</b>    
+  <p><b>重新编译 OPC EAR。</b> </p>
+    
+  <p>如果使用提供的编译文件重新编译应用程序，就会将 OPC EAR 放置在<tt>&lt;petstore.home&gt;/apps/opc/build/opc.ear</tt>
+ 目录下。（有关如何编译应用程序的详细信息，请参阅<a href="building.html">编译演示版</a>。）</p>
+    
+</ol>
+ 在做了上述改动之后，Java Pet Store Demo 会在您下次部署 OPC EAR 时发送电子邮件通知。  
+<p>为检测电子邮件通知是否好用，请访问 Storefront，以您的电子邮件地址创建一个新用户，并完成一个订单。如果订单得到批准，您就会收到一封电子邮件。当履行订单的一部分后，您会收到一封或多封电子邮件。订单全部处理完毕后，您会收到最终的一封电子邮件。（有关在
+petstore 应用程序中订单如何工作的详细信息，参见 <a href="using.html">使用演示版</a>。）  </p>
+    
+<h2> <a name="l10n"></a>添加一个新的本地化版本</h2>
+ Java Pet Store Demo 的 Storefront 目前已国际化，并有英文(en)，日文(ja)和简体中文(zh)本地化版本。  
+<p>要添加另一个本地化版本，请按如下步骤进行： </p>
+    
+<ol>
+ <b>为该本地化版本添加新的 JSP 页面。</b>  
+  <p>将这些页面放在子目录<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/&lt;locale.code&gt;/</tt>
+下，其中 <tt>&lt;locale.code&gt;</tt> 代表本地语言的字符串。      </p>
+    
+  <p>例如，日文本地化版本的 JSP 页面放在目录<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/<b>
+ja</b>/</tt>下。      </p>
+    
+  <p><b>创建一个本地化好的屏幕定义文件。</b> </p>
+    
+  <p>将屏幕定义文件（当然是使用您的本地化好的 JSP 页面）放在一个称为 <tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_&lt;locale.code&gt;.xml</tt>
+ 的文件中，这里 <tt>&lt;locale.code&gt;</tt> 是代表本地语言的字符串。      </p>
+    
+  <p>例如，日语的屏幕定义文件存放在<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/screendefinitions_<b>
+ja_JP</b>.xml</tt>中。      </p>
+    
+  <p><b>为本地化添加目录数据。</b> </p>
+    
+  <p>XML 文件<tt>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</tt>
+ 包含用来生成 petstore 的数据库的数据。为某种语言本地化目录涉及到在这个 XML 文件中添加新数据。    </p>
+    
+  <p>要支持本地化，<tt>CategoryDetails</tt>、<tt>ProductDetails</tt> 和<tt>ItemDetails</tt>
+ 都带有一个 xml:lang 本地化属性。在添加您自己的本地化数据前，先将 XML 文件中的日语数据作为参考示例是很有帮助的。</p>
+    
+</ol>
+    
+<h2> <a name="db"></a>配置数据库</h2>
+    
+<p>可对 Java Pet Store Demo 中的&ldquo;Storefront&rdquo;和&ldquo;Supplier&rdquo;应用程序进行配置，以便可以使用不同于缺省数据库
+(Cloudscape) 的其它数据库。使用不同的数据库时，可能需要使用与缺省数据库不同的 SQL 语句（例如<code>创建表</code>，<code>
+删除表</code>）。可通过编辑示范应用程序的 XML 配置文件来指定这些语句。</p>
+    
+<p>配置示范应用程序以便使用一个不同的数据库：</p>
+    
+<ol>
+        
+  <li>  
+    <p><b>在<code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/PopulateSQL.xml</code>
+ 配置文件中添加一个新的条目。</b></p>
+    
+    <p>为示范应用程序配置的每个数据库包括一个 <code>DatabaseStatements</code> 条目，其中包含了在应用程序的数据库表中执行各种
+SQL 操作的片段。例如，下面的这个取自缺省数据库 (Cloudscape) 条目中的片段：</p>
+    <pre><code>&lt;DatabaseStatements <b>database="cloudscape"</b>&gt;<br>  &lt;TableStatements table="category"&gt;<br>    &lt;CheckStatement&gt;<br>      select * from category<br>    &lt;/CheckStatement&gt;<br>    &lt;CreateStatement&gt;<br>      create table category (catid char(10) not null,<br>        constraint pk_category primary key (catid))<br>    &lt;/CreateStatement&gt;<br>    &lt;InsertStatement&gt;<br>      insert into category values (?)<br>    &lt;/InsertStatement&gt;<br>    &lt;DropStatement&gt;<br>      drop table category<br>    &lt;/DropStatement&gt;<br>  &lt;/TableStatements&gt;<br>  ...</code></pre>
+    
+    <p>要为不同的数据库创建一个新的 <code>DatabaseStatements</code> 条目，最简单的办法是复制缺省的条目并编辑其中的片段。注意每个
+    <code>DatabaseStatements</code> 条目都有一个 <code>database</code> 属性，可唯一确定它所属的数据库。所以，在编辑新复制的条目时，确保更改这个属性的值使其成为唯一标识。在完成下述其余步骤时要牢记这个标识。</p>
+    
+    <p>在编辑新的 <code>DatabaseStatements</code> 条目时，只需改动几个片段。该示范应用程序只需要在这个文件中改动几个要素和属性。同时，应确保括号匹配。</p>
+        </li>
+        
+  <li>  
+    <p><b>在<code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/CatalogDAOSQL.xml</code>
+ 配置文件中添加一个新条目。</b></p>
+    
+    <p>示范应用程序配置的每个数据库包括一个 <code>DAOStatements</code> 条目，其中包含了在应用程序的数据库表中执行各种
+    <code>select</code> 语句操作的片段。例如，下面是缺省数据库 (Cloudscape) 条目中的一个片段：</p>
+    <pre><code>&lt;DAOStatements <b>database="cloudscape"</b>&gt;<br>    &lt;SQLStatement method="GET_CATEGORY"&gt;<br>        &lt;SQLFragment parameterNb="2"&gt;<br>            select name, descn<br>                from (category a join category_details b on a.catid=b.catid)<br>                where locale = ? and a.catid = ?<br>&lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    &lt;SQLStatement method="GET_CATEGORIES"&gt;<br>        &lt;SQLFragment parameterNb="1"&gt;<br>            select a.catid, name, descn<br>                from (category a join category_details b on a.catid=b.catid) <br>                where locale = ?  order by name<br>        &lt;/SQLFragment&gt;<br>    &lt;/SQLStatement&gt;<br>    ...</code></pre>
+    
+    <p>要为不同的一个数据库创建一个新的 <code>DAOStatements</code> 条目，最简单的办法是复制缺省条目并编辑其中的片段。注意每个
+    <code>DAOStatements</code> 条目都有一个<code>database</code> 属性，可唯一确定它所属的数据库。所以，在编辑新复制的条目时，确保更改这个属性的值，使它与步骤
+1 中的唯一标识一致。</p>
+    
+    <p>在编辑新的 <code>DAOStatements</code> 条目时，只需改动几个片段。示范应用程序只需要在这个文件中改动几个要素和属性。同时，应确保括号匹配。</p>
+        </li>
+        
+  <li>  
+    <p><b>编辑 Storefront 的 Web 部署描述文件<code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/WEB-INF/web.xml</code>
+。</b></p>
+    
+    <p>查找下列条目：</p>
+    <pre><code>&lt;init-param&gt;<br>  &lt;param-name&gt;Database&lt;/param-name&gt;<br>  <b>&lt;param-value&gt;cloudscape&lt;/param-value&gt;</b><br>&lt;/init-param&gt;</code></pre>
+    
+    <p>将 <code>param-value</code> 子条目的值改为在步骤 1 中选择的唯一标识。</p>
+    
+    <p>查找下列条目：</p>
+    <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                              </li>
+    
+  <p>将 <code>env-entry-value</code> 子条目的值改为在步骤 1 中选择的唯一标识。</p>
+        
+  <li>  
+    <p><b>编辑目录组件的 EJB 部署描述文件 <code>&lt;petstore.home&gt;/src/components/catalog/src/ejb-jar.xml</code>
+。</b></p>
+    
+    <p>查找下列条目：</p>
+    <pre><code>&lt;env-entry&gt;<br>  &lt;env-entry-name&gt;param/CatalogDAODatabase&lt;/env-entry-name&gt;<br>  <b>&lt;env-entry-value&gt;cloudscape&lt;/env-entry-value&gt;</b><br>  &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;<br>&lt;/env-entry&gt;</code></pre>
+                              </li>
+    
+  <p>将 <code>env-entry-value</code> 子条目的值改为在步骤 1 中选择的唯一标识。</p>
+    
+</ol>
+    
+<p>您也可以选择改变用于生成示范应用程序数据库的目录和库存信息。要修改该数据，编辑文件<code>&lt;petstore.home&gt;/src/apps/petstore/src/docroot/populate/Populate-UTF8.xml</code></p>
+ <br>
+    
+<hr size="3" noshade="">  
+<p><a href="copyright.html">版权所有 &copy; 2003 Sun Microsystems，Inc. 保留所有权利。</a>
+ </p>
+ <br>
+ <br>
+ <br>
+ <br>
+    
+</body>
+</html>

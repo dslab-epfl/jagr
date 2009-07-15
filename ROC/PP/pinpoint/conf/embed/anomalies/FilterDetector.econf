@@ -1,0 +1,22 @@
+<analysisengine>
+
+<!--
+      pass in record collections:
+	    input    : the paths to be analyzed
+            output   : paths, marked with their probabilities.
+
+      arguments to pass in:
+            idList   the name of the file which has the list of ids to mark
+	             as anomalous in it...
+
+
+  -->
+
+<plugin name="filterdetector">
+  <classname>roc.pinpoint.analysis.plugins2.anomalies.FilterDetector</classname>
+  <arg key="inputCollection">input</arg>
+  <arg key="idList">$idList</arg>
+  <arg key="outputCollection">output</arg>
+</plugin>   
+
+</analysisengine>

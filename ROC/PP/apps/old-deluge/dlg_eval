@@ -1,0 +1,44 @@
+#!/usr/bin/perl -w
+
+use Deluge::Config;
+use Deluge::Log;
+use Deluge::Mcp;
+
+# -------------------------------------------------------------------
+
+package main;
+
+&main();
+exit(0);
+
+# -------------------------------------------------------------------
+
+sub usage
+{
+    my ($comment) = @_;
+
+	print STDERR "USAGE: dlg_eval {configuration file}\n";
+
+	($comment) && (print STDERR "ERROR: $comment\n");
+
+	exit (1);
+}
+
+# -------------------------------------------------------------------
+
+sub main
+{
+	my ($mcp, $cfg, $log);
+
+	($#ARGV == -1) && (&usage());
+	($#ARGV > 0) && (&usage("Incorrect number of parameters"));
+
+	$cfg = Deluge::Config->new(shift(@ARGV));
+	$mcp = Deluge::Mcp->new($cfg, 0);
+	$log = Deluge::Log->new;
+
+	$log->evaluate($mcp->log_filename, $mcp->eval_per_url,
+				   $mcp->eval_hist_time_buckets,
+				   $mcp->eval_hist_value_buckets);
+}
+

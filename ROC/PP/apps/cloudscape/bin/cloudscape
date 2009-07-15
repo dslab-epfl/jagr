@@ -1,0 +1,50 @@
+#!/bin/sh
+
+#
+# Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+# SUN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+#
+
+# Environment variables needed to run...
+BINDIR=`dirname $0`
+. $BINDIR/userconfig.sh
+if [ -n "$BINDIR" ]
+then
+    J2EE_HOME=`cd $BINDIR/.. > /dev/null 2>&1 && pwd`
+    export J2EE_HOME
+fi
+if [ -z "$J2EE_HOME" ]
+then
+        error "Can not set environment variable J2EE_HOME"
+fi
+if [ -z "$JAVA_HOME" ]
+then
+        error "Please set JAVA_HOME to the installation directory of Java2, SDK 1.2"
+fi
+
+# The following is here as a work around for BugId 4191819. Without it
+# the JVM will crash with a bus error...
+JIT_ARGS="bco=off"
+export JIT_ARGS
+
+JAVA_COMPILER=NONE
+export JAVA_COMPILER
+
+if [ "$1" = "-start" ] 
+then
+        $JAVA_HOME/bin/java -Dcloudscape.system.home=$J2EE_HOME/cloudscape -classpath $J2EE_HOME/lib/system/cloudutil.jar:$J2EE_HOME/lib/system/cloudscape.jar:$J2EE_HOME/lib/cloudscape/RmiJdbc.jar:$J2EE_HOME/lib/j2ee.jar:$J2EE_CLASSPATH -ms16m -mx32m RmiJdbc.RJJdbcServer -port 1088 COM.cloudscape.core.JDBCDriver
+
+elif [ "$1" = "-stop" ] 
+then
+        $JAVA_HOME/bin/java -classpath $J2EE_HOME/lib/cloudscape/cloudclient.jar:$J2EE_HOME/lib/system/cloudutil.jar:$J2EE_HOME/lib/system/cloudscape.jar:$J2EE_HOME/lib/cloudscape/RmiJdbc.jar RJPing jdbc:rmi://localhost:1088/jdbc:cloudscape: shutdown
+
+elif [ "$1" = "-isql" ]
+then
+	$JAVA_HOME/bin/java -Dij.protocol=jdbc:rmi:jdbc:cloudscape -D'ij.database=jdbc:rmi://localhost:1099/jdbc:cloudscape:CloudscapeDB;create=true' -classpath $J2EE_HOME/lib/system/cloudutil.jar:$J2EE_HOME/lib/system/cloudscape.jar:$J2EE_HOME/lib/cloudscape/RmiJdbc.jar COM.cloudscape.tools.ij
+
+else
+        echo "Usage: cloudscape [ -start | -stop | -isql ] "
+fi
+
+
+

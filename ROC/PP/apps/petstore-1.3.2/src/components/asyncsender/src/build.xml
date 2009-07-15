@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:25 emrek Exp $               -->
+<!-- =================================================================== -->
+
+<project name="asyncsender" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <property name="asyncSender.home" value=".."/>
+
+    <property name="asyncSender.src" value="${asyncSender.home}/src"/>
+
+    <!-- The destination directory for the build -->
+    <property name="asyncSender.build" value="${asyncSender.home}/build"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="asyncSender.classbindir" value="${asyncSender.build}/classes"/>
+
+    <property name="asyncSender.javadocs.dir" value="${asyncSender.build}/docs/api"/>
+
+    <property name="asyncSender.components.basedir" value="../.."/>
+
+    <!-- Service Locator -->
+    <property name="asyncSender.servicelocator.home" value="${asyncSender.components.basedir}/servicelocator"/>
+    <property name="asyncSender.servicelocator.client" value="${asyncSender.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="asyncSender.classpath" value="${asyncSender.classbindir}:${asyncSender.servicelocator.client}:${j2ee.classpath}"/>
+
+    <property name="asyncSender.ejbjar" value="${asyncSender.build}/asyncsender-ejb.jar"/>
+
+    <property name="asyncSender-admin.ejbjar" value="${asyncSender.build}/asyncsender-admin-ejb.jar"/>
+
+    <property name="asyncSender.ejbclientjar" value="${asyncSender.build}/asyncsender-ejb-client.jar"/>
+  </target>
+
+  <target name="compile" depends="init, components">
+    <mkdir dir="${asyncSender.classbindir}"/>
+    <javac srcdir="${asyncSender.src}"
+           debug="${javac.debug}"
+           destdir="${asyncSender.classbindir}"
+	   classpath="${asyncSender.classpath}"
+	   includes="com/**"/>
+  </target> 
+
+  <target name="ejbjar" depends="init">
+    <property name="asyncSender.buildjardir" value="${asyncSender.home}/build/ejbjar"/>
+    <mkdir dir="${asyncSender.buildjardir}/META-INF"/>
+    <copy todir="${asyncSender.buildjardir}">
+     <fileset dir= "${asyncSender.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${asyncSender.buildjardir}/META-INF/ejb-jar.xml" /> 
+    <copy file="jboss.xml" tofile="${asyncSender.buildjardir}/META-INF/jboss.xml" /> 
+    <delete file="${asyncSender.ejbjar}" quiet="true"/>
+    <jar jarfile="${asyncSender.ejbjar}" basedir="${asyncSender.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+
+    <!-- now create asyncSender-admin.ejbjar -->
+    <delete file="${asyncSender.buildjardir}/META-INF/jboss.xml" quiet="true"/>
+    <copy file="jboss-admin.xml"
+          tofile="${asyncSender.buildjardir}/META-INF/jboss.xml" />  
+    <delete file="${asyncSender-admin.ejbjar}" quiet="true"/>
+    <jar jarfile="${asyncSender-admin.ejbjar}" basedir="${asyncSender.buildjardir}"
+         manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${asyncSender.buildjardir}"/>
+  </target>
+  
+  <target name="ejbclientjar" depends="init">
+    <property name="asyncSender.buildjardir" value="${asyncSender.home}/build/ejbjar"/>
+    <copy todir="${asyncSender.buildjardir}">
+     <fileset dir= "${asyncSender.classbindir}"/>
+    </copy>
+    <delete file="${asyncSender.buildjardir}/com/sun/j2ee/blueprints/asyncsender/ejb/AsyncSenderEJB.class"/>
+    <delete file="${asyncSender.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${asyncSender.ejbclientjar}" basedir="${asyncSender.buildjardir}"/>
+    <delete dir="${asyncSender.buildjardir}"/>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${asyncSender.servicelocator.home}/src" target="core"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${asyncSender.build}"/>
+  </target>
+ 
+  <target name="docs" depends="init, core">
+    <mkdir dir="${asyncSender.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${asyncSender.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="AsnycSender Component API"
+             doctitle="AsyncSender Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${asyncSender.classbindir}"/>
+      </classpath>
+      <sourcepath>
+        <pathelement path="."/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building AsyncSender Component     +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+
+</project>
+

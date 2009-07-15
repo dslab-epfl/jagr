@@ -1,0 +1,597 @@
+########################################################################
+###                    Deluge example config file                    ###
+########################################################################
+
+### -------------
+### General setup
+### -------------
+
+## owner_email
+## 
+## The email address that gets sent with all HTTP requests.  The owner of
+## the website you're attacking needs to know who you are.
+## 
+## Value: {string}
+
+owner_email = your-address@attack-from-this-site.com
+
+
+## hostname
+##
+## Override the system's assumption of what the hostname should be.  This
+## is useful for the proxy, which requires that the browser and and proxy
+## server are using the same string to define the hostname.  Also useful
+## in variable replacement in playback attacks.
+##
+## Value: {string}
+
+hostname = frobozz
+
+
+## proxy_http_port
+##
+## Ports for proxy server used to record user action.
+##
+## Value: {positive integer (preferrably between 15000 and 20000)}
+
+proxy_http_port = 16008
+
+
+## timeout
+##
+## Maximum timeout in seconds to wait for HTTP request to come
+## back.  Anything longer generates an error.
+##
+## Value: {positive integer}
+##
+## Note: Within a process, a single user makes requests in
+## parallel, but the collection of users operates in series.  If
+## this number is set too high, it will block the other users in
+## the process.
+
+timeout = 10
+
+
+## log_filename
+## 
+## Filename to log all info to.  This is the name of the final log file;
+## individual processes will have their own interim log files for the
+## duration of the attack.  Deluge will merge these logs back together
+## when the attacks have completed.
+##
+## Value: filename
+
+log_filename = example.log
+
+
+## threads_per_proc
+##
+## Number of threads allowed per process.
+##
+## Value: {positive integer}
+
+threads_per_proc = 5
+
+
+## queue_max_delay
+## 
+## Maximum time (in seconds) the queue can be non-empty before it's sent
+## to the server.
+##
+## Value: {0 or positive float}
+
+queue_max_delay = 0.3
+
+
+## attack_time_length
+##
+## Time in seconds for full attack to run.  All users and processes will
+## be terminated when this time limit is reached.
+##
+## Value: {0 or positive float (0 means no time-based limit)}
+##
+## Note: This value must be larger than user_ramp_time, if this value is
+## not zero.
+##
+## Note: If any of your users has the restartable flag set, this value
+## must be non-zero.
+
+attack_time_length = 300
+
+
+## user_ramp_time
+##
+## Time in seconds to ramp up to full user count.  Users will start in
+## a (somewhat) smooth fashion over this time.
+##
+## Value: {0 or positive float (0 means no ramp)}
+##
+## Note: This value must be less than limit_attack_time, if
+## limit_attack_time is not zero.
+
+user_ramp_time = 60
+
+
+## debug_level
+##
+## The level of debug information to print out.  Higher numbers mean more
+## crap streaming by.  (Ew, crap stream.)
+##
+## Value: {0 - 5}
+
+debug_level = 0
+
+
+## dump_responses
+##
+## For each request/response pair, write out a pair of files with all the
+## transaction information.  Good for debugging, really bad during an
+## attack.  Use with caution.
+##
+## Value: {0 | 1}
+
+dump_responses = 0
+
+
+## verbose_logs
+##
+## For speed, logs spit out the minimum information necessary.  Turn this
+## on to get all kinds of extra info (for example, a list of all links on
+## each page, so you can generate a site map).
+##
+## Value: {0 | 1}
+
+verbose_logs = 1
+
+
+## allow_secure
+##
+## Normally, HTTP, HTTPS, and FTP requests are allowed.  If this switch
+## is turned off, HTTPS requests are not allowed.  
+##
+## Note: This WILL affect users running in playback mode.
+##
+## Value: {0 | 1}
+
+allow_secure = 1
+
+
+## eval_per_url
+##
+## To save time and memory, dlg_eval by default doesn't do the per-URL
+## stats (for instance, error counts per URL).  Change this behavior
+## here.
+##
+## Value: {0 | 1}
+
+eval_per_url = 0
+
+
+## eval_hist_value_buckets
+## eval_hist_time_buckets
+##
+## The number of buckets in the histogram for two different histogram
+## types.  eval_hist_value_buckets affects sections of the log like "Load
+## time per URL", while eval_hist_time_buckets controls things like
+## "Average load time per URL over time".
+##
+## Value: {positive integer}
+
+eval_hist_value_buckets = 15
+eval_hist_time_buckets = 15
+
+
+
+### -------------------------
+### Global attack limitations
+### -------------------------
+
+## domain_match
+##
+## Level of domain match required in traversal URL compared to top URLs.
+## Strip off all but the last domain_match elements of both site names.
+## If they match, traverse.  If not, don't.
+##
+## Example:  
+##        top URL:              http://www.redhat.com
+##        URL to be traversed:  http://www.microsoft.com
+##
+##                      traversal becomes     top becomes     will traverse
+## domain_match value
+##         0                   ""                 ""              yes
+##         1                  .com               .com             yes
+##         2              microsoft.com       redhat.com          no
+##         3            www.microsoft.com   www.redhat.com        no
+##
+## Value: {0 or positive integer}
+##
+## Note: For many .coms, a value of 2 will keep you from wandering
+## offsite, but still allow you to effectively test your site.
+##
+## Note: Ignored by users running playback attacks.
+
+domain_match = 2
+
+
+## require_url_regexps
+##
+## If a new URL doesn't match one of these regexps, skip it.
+##
+## Values: {regexp [...]}
+##
+## Note: whitespace separated
+##
+## Note: Ignored by users running playback attacks.
+##
+## Note: No regexps in the list turns off this check, allowing all URLs
+## except those denied by other limits, like ignore_url_regeps.
+
+require_url_regexps
+END
+
+
+## ignore_url_regexps
+##
+## If a new URL matches one of these regexps, skip it.
+##
+## Values: {regexp [...]}
+##
+## Note: whitespace separated
+##
+## Note: Ignored by users running playback attacks.
+
+ignore_url_regexps
+        \.bz$   \.bz2$
+        \.gz$
+        \.mov$
+        \.mp3$
+        \.mpg$
+        \.ps$
+        \.qt$
+        \.ram$   \.rm$
+        \.tar$
+        \.tgz$
+END
+
+
+
+### ---------------------
+### Global error checking
+### ---------------------
+
+## If the URL being attacked matches the URL regexp, the visible text in
+## the page is searched for the visible text regexp.  If it is NOT
+## found, an error is logged for that URL.
+##
+## Values: {{URL regexp} {visible text regexp} [...] }
+##
+## Note: whitespace separated on a single line 
+
+pos_vis_regexps
+        # There's usually a "Copyright" line at the bottom of the page.
+        # If we can't find it, the page was truncated.  Flag an error.
+        \.html          Copyright
+        \.asp           Copyright
+        \.cgi           Copyright
+        \.pl            Copyright
+END
+
+
+## If the URL being attacked matches the URL regexp, the visible text in
+## the page is searched for the visible text regexp.  If it IS found an
+## error is logged for that URL.
+##
+## Values: {{URL regexp} {visible text regexp} [...] }
+##
+## Note: whitespace separated on a single line 
+
+neg_vis_regexps
+        # If the word "Error" shows up on the page, flag an error.
+        \.html          [Ee][Rr][Rr][Oo][Rr]
+        \.asp           [Ee][Rr][Rr][Oo][Rr]
+        \.cgi           [Ee][Rr][Rr][Oo][Rr]
+        \.pl            [Ee][Rr][Rr][Oo][Rr]
+END
+
+
+## If the URL being attacked matches the URL regexp, the invisible text
+## in the page is searched for the invisible text regexp.  If it is NOT
+## found, an error is logged for that URL.
+##
+## Values: {{URL regexp} {invisible text regexp} [...] }
+##
+## Note: whitespace separated on a single line 
+
+pos_invis_regexps
+        # There should be a </html> tag at the end of the page.  If
+        # it's missing, flag an error.
+        \.html            \/[Hh][Tt][Mm][Ll]
+END
+
+
+## If the URL being attacked matches the URL regexp, the visible text in
+## the page is searched for the visible text regexp.  If it IS found an
+## error is logged for that URL.
+##
+## Values: {{URL regexp} {visible text regexp} [...] }
+##
+## Note: whitespace separated on a single line 
+
+neg_invis_regexps
+END
+
+
+
+### ---------------
+### User definition
+### ---------------
+
+## For each user type, a user_def block is necessary.
+## 
+## Value: {string - name of the user definition}
+
+user_def = NAME
+
+         ## attack_type
+         ##
+         ## The type of attack this user is to run.
+         ##
+         ## Values: {depth | breadth | wander | bounce | playback}
+
+         attack_type = playback
+
+
+         ## script_dir
+         ##
+         ## Directory containing playback information.
+         ##
+         ## Value: {string}
+         ##
+         ## Note: Ignored if user is running a non-playback attack.
+
+         script_dir = scripts/example
+
+
+         ## script_file
+         ##
+         ## File in script_dir to hold playback.  This is useful so that
+         ## if you're hacking the playback file, you can have a few
+         ## different versions in the same script_dir, thereby sharing
+         ## the content comparison files.
+         ##
+         ## Value: {string}
+         ##
+         ## Note: Ignored if user is running a non-playback attack.
+
+         script_file = _playback_
+
+
+         ## instances
+         ##
+         ## The number of users that will use this definition.
+         ##
+         ## Value: {0 or positive integer}
+
+         instances = 100
+
+
+         ## top_url
+         ##
+         ## The url used as the starting point for non-playback attacks.
+         ##
+         ## Value: {string}
+
+         top_url = http://www.attack-this-site.com
+
+
+		 ## playback_errors
+		 ##
+		 ## In a playback attack, decide whether to playback events that
+		 ## had errors in the original record.  An error is defined as
+		 ## a response code of 400 or greater.
+		 ##
+		 ## Value: {0 | 1}
+
+		 playback_errors = 0
+
+
+         ## delay_time
+         ##
+         ## The average time in seconds that the user will spend reading
+         ## the page (ie: idleing) before requesting another.
+         ##
+         ## Value: {0 or positive float}
+
+         delay_time = 45
+
+
+         ## delay_spread
+         ##
+         ## Deviation in seconds around delay_time that the idle can
+         ## vary.
+         ##
+         ## Value: {0 or positive float}
+
+         delay_spread = 10
+
+
+         ## limit_depth
+         ##
+         ## Limit how deep a traversal can go from a top URL.
+         ##
+         ## Values: {0 or positive integer (0 means no limit)}
+         ##
+         ## Note: Ignored by users running playback attacks.
+
+         limit_depth = 0
+
+
+         ## limit_hits_per_url
+         ##
+         ## Limit how many times a single URL can get retreived.
+         ##
+         ## Values: {0 or positive integer (0 means no limit)}
+         ##
+         ## Note: Ignored by users running playback attacks.
+
+         limit_hits_per_url = 1
+
+
+         ## limit_pages_traversed
+         ##
+         ## Limit how many pages will be retreived.
+         ##
+         ## Values: {0 or positive integer (0 means no limit)}
+         ##
+         ## Note: Ignored by users running playback attacks.
+
+         limit_pages_traversed = 5
+
+
+         ## limit_attack_time
+         ##
+         ## Limit how long an attack will run in wall-clock time in seconds.
+         ## 
+         ## Values: 0 or positive float (0 means no limit)
+
+         limit_attack_time = 0
+
+
+         ## restartable
+         ##
+         ## If set, a user will restart its attack after it finishes.
+         ## (It's finished when any one of the above limit_* conditions
+         ## is met.)
+         ## 
+         ## Values: {0 | 1}
+         ##
+         ## Note:  If any user has this flag set, attack_time_length
+         ## must be non-zero.
+
+         restartable = 1
+
+
+         ## restart_time
+         ##
+         ## The average time in seconds that the user will sleep before
+         ## restarting, if 'restartable' is true.
+         ##
+         ## Value: {0 or positive float}
+
+         restart_time = 45
+
+
+         ## restart_spread
+         ##
+         ## Deviation in seconds around restart_time that the sleep can
+         ## vary.
+         ##
+         ## Value: {0 or positive float}
+
+         restart_spread = 10
+
+        
+         ## get_images
+         ##
+         ## Retreive images, either in "img" tags or any files with
+         ## extensions listed in the @C_IMAGE_FILE_TYPES array in the
+         ## code.
+         ##
+         ## Values: {0 | 1}
+         ##
+         ## Note: Ignored by users running playback attacks.
+
+         get_images = 1
+         
+
+         ## accept_cookies
+         ## 
+         ## Accept and send requested cookies.
+         ##
+         ## Values: {0 | 1}
+
+         accept_cookies = 1
+
+
+         ## compare_content
+         ## 
+         ## Compare the content of server responses in a playback attack
+         ## to the responses during the recording session.  Only the
+         ## content of non-images is compared.
+         ##
+         ## Value: {0 | 1}
+         ##
+         ## Note: This has the potential for significantly slowing down
+         ##       attacks.
+
+         compare_content = 1
+
+
+		 ## request_vars
+		 ##
+		 ## Local variable replacement inside requests sent to server.
+		 ## For information, read the _script_hacks_ file.
+		 ##
+		 ## Value: {{search for string} {replace with string} [...] }
+		 ##
+		 ## Note: Ignored by users running non-playback attacks.
+
+		 request_vars
+				__FIRSTNAME = Johnny
+				__LASTNAME = Deluge
+		 END
+
+
+		 ## translator
+		 ##
+		 ## This is used for URL rewriting, when the URLs are dynamically
+		 ## modified each time a page is loaded.  Playback attacks need
+		 ## to adjust themselves based on state embedded in URLs.
+		 ## Translators are used to modify the destination and referring
+		 ## URLs in a request.
+		 ##
+		 ## You may define as many translators as are necessary.
+		 ## Translators will be run in the order they were defined.
+
+		 translator
+
+				## header
+				##
+				## A regular expression to identify the beginning of
+				## a dynamic tag embedded in a URL.
+				##
+				## Value: {regular expression}
+
+				header = \;\$sessionid\$
+
+
+				## regexp
+				##
+				## A regular expression to identify the embedded data.
+				##
+				## Value: {regular expression}
+
+				regexp = [A-Z0-9]+
+
+
+				## footer
+				## 
+				## A regular expression to identify the end of the
+				## embedded tag.
+				##
+				## Value: {regular expression}
+
+				footer = \?
+
+
+				## update_per_page
+				##
+				## If the tag is one that's constant across a session,
+				## this should be zero.  If the tag has the potential
+				## to change more frequently, set this flag.
+				##
+				## Value: {0 | 1}
+
+				update_per_page = 0
+ 		 END
+END

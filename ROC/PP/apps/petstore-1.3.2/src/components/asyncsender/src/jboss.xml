@@ -1,0 +1,20 @@
+<jboss>
+  <enterprise-beans>
+    <session>
+      <ejb-name>AsyncSenderEJB</ejb-name>
+      <local-jndi-name>ejb/local/admin/asyncsender/AsyncSender</local-jndi-name>
+      <!--Queues for petstore.ear-->
+      <resource-ref>
+        <res-ref-name>jms/QueueConnectionFactory</res-ref-name>
+        <!--jndi-name>jms/petstore/QueueConnectionFactory</jndi-name-->
+        <jndi-name>ConnectionFactory</jndi-name>
+      </resource-ref>
+      <resource-env-ref>
+        <resource-env-ref-name>jms/AsyncSenderQueue</resource-env-ref-name>
+        <!--jndi-name>jms/opc/OrderQueue</jndi-name-->
+        <jndi-name>queue/orderQueue</jndi-name>
+      </resource-env-ref>
+    </session>
+  </enterprise-beans>
+</jboss>
+

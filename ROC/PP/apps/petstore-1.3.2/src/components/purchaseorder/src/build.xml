@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+
+<!--
+ Copyright 2002 Sun Microsystems, Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in
+   the documentation and/or other materials provided with the
+   distribution.
+ 
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ 
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES
+ SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL SUN
+ OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR
+ FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR
+ PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF
+ LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE,
+ EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+ You acknowledge that Software is not designed, licensed or intended
+ for use in the design, construction, operation or maintenance of
+ any nuclear facility.
+-->
+
+
+<!-- =================================================================== -->
+<!-- $Id: build.xml,v 1.1 2004/02/04 10:06:29 emrek Exp $                -->
+<!-- =================================================================== -->
+
+<project name="purchaseorder" default="core" basedir=".">
+
+  <target name="init">
+    <!-- include user specific build properties first -->
+    <property file="${user.home}/petstore.properties"/>
+    <!-- include top-level common properties -->
+    <property file="../../../build.properties"/>
+
+    <!-- The root directory of the workspace -->
+    <property name="po.home" value=".."/>
+
+    <!-- The destination directory for the build -->
+    <property name="po.build" value="${po.home}/build"/>
+
+    <property name="po.src" value="${po.home}/src"/>
+
+    <!-- The destination directory for all the compiled classes. -->
+    <property name="po.classbindir" value="${po.build}/classes"/>
+
+    <!-- The destination directory for all the javadocs. -->
+    <property name="po.javadocs.dir" value="${po.build}/docs/api"/>
+
+    <property name="po.buildjardir" value="${po.build}/ejbjar"/>
+
+    <!-- XML Documents Component - this contains the PO/Invoice classes -->
+    <property name="po.xmldocuments.home" value="../../xmldocuments"/>
+    <property name="po.xmldocuments.client" value="${po.xmldocuments.home}/build/xmldocuments.jar"/>
+
+    <!-- ServiceLocator Component  -->
+    <property name="po.servicelocator.home" value="../../servicelocator"/>
+    <property name="po.servicelocator.client" value="${po.servicelocator.home}/build/servicelocator.jar"/>
+
+    <!-- LineItem, cinfo, card and address Component -->
+    <property name="po.contactinfo.home" value="../../contactinfo"/>
+    <property name="po.address.home" value="../../address"/>
+    <property name="po.creditcard.home" value="../../creditcard"/>
+    <property name="po.lineitem.home" value="../../lineitem"/>
+
+    <property name="po.ejbjar" value="${po.build}/po-ejb.jar"/>
+    <property name="po.ejbclientjar" value="${po.build}/po-ejb-client.jar"/>
+
+    <!-- The classpath for J2EE classes. -->
+    <property name="j2ee.classpath" value="${j2ee.home}/lib/j2ee.jar:${j2ee.home}/lib/locale"/>
+
+    <!-- The classpath used for building the workspace. -->
+    <property name="po.classpath" value="${po.classbindir}:${po.xmldocuments.client}:${po.servicelocator.client}:${j2ee.classpath}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <mkdir dir="${po.classbindir}"/>
+    <copy todir="${po.classbindir}">
+      <fileset dir="${po.address.home}/build/classes"/>
+      <fileset dir="${po.contactinfo.home}/build/classes"/>
+      <fileset dir="${po.creditcard.home}/build/classes"/>
+      <fileset dir="${po.lineitem.home}/build/classes"/>
+    </copy>
+    <javac srcdir="${po.src}"
+           debug="${javac.debug}"
+           destdir="${po.classbindir}"
+	   classpath="${po.classpath}"
+	   includes="com/**"/>
+    <copy todir="${po.classbindir}" >
+     <fileset dir="${po.src}">
+       <include name="**/rsrc/**"/>
+     </fileset>
+    </copy>
+  </target> 
+
+  <target name="ejbjar" depends="init, compile">
+    <mkdir dir="${po.buildjardir}"/>
+    <mkdir dir="${po.buildjardir}/META-INF"/>
+    <copy todir="${po.buildjardir}">
+      <fileset dir="${po.classbindir}"/>
+    </copy>
+    <copy file="ejb-jar.xml" tofile="${po.buildjardir}/META-INF/ejb-jar.xml"/>
+    <copy file="jboss.xml" tofile="${po.buildjardir}/META-INF/jboss.xml" />
+    <copy file="jaws.xml" tofile="${po.buildjardir}/META-INF/jaws.xml"/>
+    <copy file="jbosscmp-jdbc.xml" tofile="${po.buildjardir}/META-INF/jbosscmp-jdbc.xml"/>
+    <jar jarfile="${po.ejbjar}" basedir="${po.buildjardir}" manifest="ejb-jar-manifest.mf"/>
+    <delete dir="${po.buildjardir}"/>
+  </target>
+
+
+  <target name="ejbclientjar" depends="init, compile">
+    <property name="po.buildjardir" value="${po.home}/build/ejbjar"/>
+    <copy todir="${po.buildjardir}">
+     <fileset dir= "${po.classbindir}"/>
+    </copy>
+
+    <!-- delete uneeded files for client jar -->
+    <delete file="${po.buildjardir}/com/sun/j2ee/blueprints/purchaseorder/ejb/PurchaseOrderEJB.class"/>
+   <delete file="${po.buildjardir}/com/sun/j2ee/blueprints/creditcard/ejb/CardEJB.class"/>
+   <delete file="${po.buildjardir}/com/sun/j2ee/blueprints/lineitem/ejb/LineItemEJB.class"/>
+   <delete file="${po.buildjardir}/com/sun/j2ee/blueprints/address/ejb/AddressEJB.class"/>
+   <delete file="${po.buildjardir}/com/sun/j2ee/blueprints/contactinfo/ejb/ContactInfoEJB.class"/>
+
+    <delete file="${po.ejbclientjar}" quiet="true"/>
+    <jar jarfile="${po.ejbclientjar}" basedir="${po.buildjardir}"/>
+    <delete dir="${po.buildjardir}"/>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${po.build}"/>
+    <delete dir="${po.xmldocuments.home}/build"/>
+    <ant dir="${po.lineitem.home}/src" target="clean"/>
+    <delete dir="${po.dstdocdir}"/>
+  </target>
+
+  <target name="components" depends="init">
+      <ant dir="${po.xmldocuments.home}/src" target="core"/>
+      <ant dir="${po.address.home}/src" target="compile"/>
+      <ant dir="${po.contactinfo.home}/src" target="compile"/>
+      <ant dir="${po.creditcard.home}/src" target="compile"/>
+      <ant dir="${po.lineitem.home}/src" target="compile"/>
+      <ant dir="${po.servicelocator.home}/src" target="core"/>
+  </target>
+
+  <target name="docs" depends="init, core">
+    <mkdir dir="${po.javadocs.dir}"/>    
+    <javadoc packagenames="com.sun.j2ee.blueprints.*"
+             destdir="${po.javadocs.dir}"
+             author="false" version="true" use="true"
+             windowtitle="PurchaseOrder Component API"
+             doctitle="PurchaseOrder Component"
+             bottom="Copyright &#169; 2001 Sun Microsystems Inc. All Rights Reserved.">
+      <classpath>
+        <pathelement path="${j2ee.home}/lib/j2ee.jar"/>
+        <pathelement path="${po.xmldocuments.home}/build/classes"/>
+	<pathelement path="${po.servicelocator.home}/build/classes"/>
+        <pathelement path="${po.classbindir}"/>
+      </classpath>
+      <sourcepath>
+	<pathelement path="${po.servicelocator.home}/src"/>
+        <pathelement path="${po.xmldocuments.home}/src"/>
+        <pathelement path="${po.src}"/>
+      </sourcepath>
+    </javadoc>
+  </target>
+
+  <target name="banner">
+      <echo>+---------------------------------------+</echo>
+      <echo>+    Building PurchaseOrder Component   +</echo>
+      <echo>+---------------------------------------+</echo>
+  </target>
+
+  <target name="core" depends="components, banner, compile, ejbjar, ejbclientjar" />
+  <target name="all" depends="core, docs" />
+</project>
+
+
+
